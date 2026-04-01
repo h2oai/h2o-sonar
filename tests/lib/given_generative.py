@@ -33,8 +33,8 @@ TS_SR = "data/generative/sr1107_test_suite.json"
 TS_SR_171OP = "data/generative/sr1107_test_suite_171.json"
 
 # judge LLMs
-H2OGPTE_JUDGE_LLM_MODEL_NAME = LLM_CLAUDE_SONNET_46  # valid model for C_D
-# H2OGPTE_JUDGE_LLM_MODEL_NAME = LLM_CLAUDE_SONNET_45  # valid model for I_D
+# H2OGPTE_JUDGE_LLM_MODEL_NAME = LLM_CLAUDE_SONNET_46  # valid model for C_D
+H2OGPTE_JUDGE_LLM_MODEL_NAME = LLM_CLAUDE_SONNET_45  # valid model for I_D
 
 # H2O.ai cloud clusters
 CLOUD_CLUSTER_D = "CLOUD_D"
