@@ -1,0 +1,1140 @@
+{
+    "created": 1760004074.6012156,
+    "progress": 1.0,
+    "progress_message": "DONE",
+    "status": 0,
+    "error": "",
+    "interpretation_key": "7ee992f2-e30f-485e-8a06-2bc0e0978e49",
+    "interpretation_parameters": {
+        "model": null,
+        "models": "<class 'list'>",
+        "dataset": "<class 'h2o_sonar.lib.api.datasets.LlmDataset'>",
+        "validset": null,
+        "testset": null,
+        "use_raw_features": true,
+        "target_col": "",
+        "weight_col": "",
+        "prediction_col": "",
+        "drop_cols": [],
+        "sample_num_rows": 0,
+        "results_location": "./.local",
+        "used_features": null
+    },
+    "explainers": [
+        {
+            "h2o_sonar.evaluators.agent_sanity_check_evaluator.AgentSanityCheckEvaluator": {}
+        }
+    ],
+    "result": {
+        "dataset": {
+            "data": "<class 'datatable.Frame'>",
+            "metadata": {
+                "shape": "(2, 14)",
+                "row_count": 2,
+                "column_names": [
+                    "key",
+                    "input",
+                    "corpus",
+                    "context",
+                    "categories",
+                    "relationships",
+                    "expected_output",
+                    "output_constraints",
+                    "output_condition",
+                    "actual_output",
+                    "actual_duration",
+                    "cost",
+                    "model_key",
+                    "test_key"
+                ],
+                "column_types": [
+                    "str",
+                    "str",
+                    "str",
+                    "str",
+                    "str",
+                    "str",
+                    "str",
+                    "str",
+                    "str",
+                    "str",
+                    "real",
+                    "real",
+                    "str",
+                    "str"
+                ],
+                "column_uniques": [
+                    2,
+                    2,
+                    1,
+                    1,
+                    2,
+                    2,
+                    1,
+                    1,
+                    1,
+                    2,
+                    2,
+                    2,
+                    1,
+                    1
+                ],
+                "columns_cat": [],
+                "columns_num": [],
+                "file_path": "",
+                "file_name": "",
+                "file_size": 0,
+                "missing_values": [
+                    "",
+                    "?",
+                    "None",
+                    "nan",
+                    "NA",
+                    "N/A",
+                    "unknown",
+                    "inf",
+                    "-inf",
+                    "1.7976931348623157e+308",
+                    "-1.7976931348623157e+308"
+                ],
+                "columns_meta": [
+                    {
+                        "name": "key",
+                        "data_type": "str",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": false,
+                        "is_categorical": true,
+                        "count": 2,
+                        "frequency": 0,
+                        "unique": 2,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "input",
+                        "data_type": "str",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": false,
+                        "is_categorical": true,
+                        "count": 2,
+                        "frequency": 0,
+                        "unique": 2,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "corpus",
+                        "data_type": "str",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": false,
+                        "is_categorical": true,
+                        "count": 1,
+                        "frequency": 0,
+                        "unique": 1,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "context",
+                        "data_type": "str",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": false,
+                        "is_categorical": true,
+                        "count": 1,
+                        "frequency": 0,
+                        "unique": 1,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "categories",
+                        "data_type": "str",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": false,
+                        "is_categorical": true,
+                        "count": 2,
+                        "frequency": 0,
+                        "unique": 2,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "relationships",
+                        "data_type": "str",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": false,
+                        "is_categorical": true,
+                        "count": 2,
+                        "frequency": 0,
+                        "unique": 2,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "expected_output",
+                        "data_type": "str",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": false,
+                        "is_categorical": true,
+                        "count": 1,
+                        "frequency": 0,
+                        "unique": 1,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "output_constraints",
+                        "data_type": "str",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": false,
+                        "is_categorical": true,
+                        "count": 1,
+                        "frequency": 0,
+                        "unique": 1,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "output_condition",
+                        "data_type": "str",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": false,
+                        "is_categorical": true,
+                        "count": 1,
+                        "frequency": 0,
+                        "unique": 1,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "actual_output",
+                        "data_type": "str",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": false,
+                        "is_categorical": true,
+                        "count": 2,
+                        "frequency": 0,
+                        "unique": 2,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "actual_duration",
+                        "data_type": "real",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": true,
+                        "is_categorical": false,
+                        "count": 2,
+                        "frequency": 0,
+                        "unique": 2,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "cost",
+                        "data_type": "real",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": true,
+                        "is_categorical": false,
+                        "count": 2,
+                        "frequency": 0,
+                        "unique": 2,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "model_key",
+                        "data_type": "str",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": false,
+                        "is_categorical": true,
+                        "count": 1,
+                        "frequency": 0,
+                        "unique": 1,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    },
+                    {
+                        "name": "test_key",
+                        "data_type": "str",
+                        "logical_types": [],
+                        "format": "",
+                        "is_id": false,
+                        "is_numeric": false,
+                        "is_categorical": true,
+                        "count": 1,
+                        "frequency": 0,
+                        "unique": 1,
+                        "max": null,
+                        "min": null,
+                        "mean": null,
+                        "std": null,
+                        "histogram_counts": [],
+                        "histogram_ticks": []
+                    }
+                ],
+                "original_dataset_sampled": false,
+                "original_dataset_path": "",
+                "original_dataset_size": 0,
+                "original_dataset_shape": [
+                    2,
+                    14
+                ]
+            }
+        },
+        "testset": {},
+        "validset": {},
+        "model": {},
+        "models": [
+            {
+                "connection": "2329d33b-f5f7-4587-b4c3-ec69d90760ce",
+                "model_type": "h2ogpte",
+                "name": "RAG model - LLM: claude-3-7-sonnet-20250219, corpus: ['Guides_FBI+Jobs+Eligibility+Guide+2022.pdf'], config: 140005109853312",
+                "collection_id": "e8aef4e4-5a15-4319-ba42-9b5311fe2ca9",
+                "collection_name": "Ephemeral H2O Sonar RAG collection (docs: ['Guides_FBI+Jobs+Eligibility+Guide+2022.pdf'])",
+                "llm_model_name": "claude-3-7-sonnet-20250219",
+                "documents": [
+                    "https://eval-studio-artifacts.s3.us-east-1.amazonaws.com/h2o-eval-studio-demo-data/fbi-agent-gpt/corpus/Guides_FBI+Jobs+Eligibility+Guide+2022.pdf"
+                ],
+                "model_cfg": {
+                    "llm_args": {
+                        "use_agent": true
+                    }
+                },
+                "key": "79dee3a0-1182-4538-83ff-d8629d4117aa",
+                "llm_model_meta": {
+                    "success_count": 2,
+                    "retry_count": 0,
+                    "timeout_count": 0,
+                    "failure_count": 0,
+                    "duration_stats": {
+                        "n": 2,
+                        "sum": 122.13611888885498,
+                        "min": 53.82195258140564,
+                        "max": 68.31416630744934,
+                        "avg": 61.06805944442749
+                    },
+                    "h2ogpte_perf_stats": {
+                        "llm_name": "claude-3-7-sonnet-20250219",
+                        "call_count": 2,
+                        "input_tokens": 102930,
+                        "output_tokens": 4979,
+                        "tokens_per_second": 41.311034500000005,
+                        "time_to_first_token": 6.5633205,
+                        "vision_model_name": "claude-3-7-sonnet-20250219"
+                    }
+                }
+            }
+        ],
+        "all_explainer_ids": [
+            "h2o_sonar.evaluators.agent_sanity_check_evaluator.AgentSanityCheckEvaluator"
+        ],
+        "incompatible_explainer_ids": [],
+        "incompatible_explainers": {},
+        "scheduled_explainers": [
+            "h2o_sonar.evaluators.agent_sanity_check_evaluator.AgentSanityCheckEvaluator"
+        ],
+        "explainers_parameters": {
+            "h2o_sonar.evaluators.agent_sanity_check_evaluator.AgentSanityCheckEvaluator": {
+                "metric_threshold": 0.75,
+                "agent_tools_failures": 0.0,
+                "agent_tools_used": 3.0,
+                "agent_plan_changes": 3.0,
+                "agent_steps": 125.0,
+                "agent_cost": 0.5,
+                "agent_duration_s": 600.0,
+                "agent_data_size_mb": 1.5,
+                "agent_file_count": 25.0,
+                "save_llm_result": true
+            }
+        },
+        "executed_explainers": [
+            {
+                "key": "7a7f97d6-c2b0-419d-af2a-6601759c2055",
+                "progress": 1.0,
+                "status": 0,
+                "error": "",
+                "message": "DONE",
+                "explainer": {
+                    "id": "h2o_sonar.evaluators.agent_sanity_check_evaluator.AgentSanityCheckEvaluator",
+                    "name": "AgentSanityCheckEvaluator",
+                    "display_name": "Agent Sanity Check",
+                    "tagline": "Assess integrity and quality of agent created artifacts.",
+                    "description": "**Evaluator input requirements**:\n\n| Question | Expected Answer | Retrieved Context | Actual Answer | Conditions  |\n| --- | --- | --- | --- | --- |\n| \u2713 |   |   |   |   |\n\n**Description**:\n\nAgent Sanity Check Evaluator performs basic check of the\nagentic RAG/LLM system. The evaluator reviews agent chat session to check for\nproblems and inspects the artifacts created by the agent during its operation. It\nverifies the integrity and sanity of the artifacts created by the agent during its\noperation. This includes checking for the presence of expected files, validating\ntheir formats, and ensuring that the content meets  predefined criteria. The evaluator\nhelps identify potential issues in the agent's workflow, ensuring that it operates\ncorrectly and reliably.\n\n**Method**:\n\n- Looks for artifacts created by the agent during its operation prepared by\n  the test lab completion.\n- Performs sanity checks on the artifacts to ensure they meet expected standards:\n  linting (JSon), content validation (non-empty, non-empty pages), expected structure\n  (for directories and files) and field values.\n- Create problems and insights if any issues are found during the sanity checks.\n- Calculates a sanity score based on the results of the checks, providing an overall\n  assessment of the agent's performance.\n\n\n**Metrics** calculated by the evaluator:\n\n- **Sanity** (float)\n    - The sanity and integrity of the agent-created artifacts.\n    - Higher score is better.\n    - Range: `[0.0, 1.0]`\n    - Default threshold: `0.75`\n    - This is **primary** metric.\n- **Tool/Script Failures** (float)\n    - The number of agent's tools and scripts execution failures.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `0.0`\n- **Used Tools** (float)\n    - The number of tools actually used by the agentic run.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `3.0`\n- **Plan Changes** (float)\n    - The number of re-planning actions made by the agent - when agent changes the strategy, reacts to tool failures and inability to provide desired results.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `3.0`\n- **Agent Steps** (float)\n    - The number of steps - user and assistant chat messages - agent needed to provide actual answer and/or to finish.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `125.0`\n- **Cost** (float)\n    - Agentic run cost in USD.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `0.5`\n- **Duration (s)** (float)\n    - Agentic run duration in seconds.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `600.0`\n- **Data Size (MB)** (float)\n    - Amount of data created by the agentic run in MBs.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `1.5`\n- **File Count** (float)\n    - Number of files created by the agentic run.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `25.0`\n\n**Problems** reported by the evaluator:\n\n- If average score of the metric for an evaluated LLM is below the threshold, then the evaluator will report a problem for that LLM.\n- If test suite has perturbed test cases, then the evaluator will report a problem for each perturbed test case and LLM model whose metric flipped (moved above/below threshold) after perturbation.\n\n**Insights** diagnosed by the evaluator:\n\n- Best performing LLM model based on the evaluated primary metric.\n- The most difficult test case for the evaluated LLM models, i.e., the prompt, which most of the evaluated LLM models had a problem answering correctly.\n\nEvaluator **parameters**:\n\n- `metric_threshold` (float):\n    - Evaluated metric threshold - values below this threshold are considered problematic.\n    - Default value: `0.75`\n- `agent_tools_failures` (float):\n    - Metric 'agent_tools_failures' threshold - values above this threshold are considered problematic.\n    - Default value: `\"\"`\n- `agent_tools_used` (float):\n    - Metric 'agent_tools_used' threshold - values above this threshold are considered problematic.\n    - Default value: `3.0`\n- `agent_plan_changes` (float):\n    - Metric 'agent_plan_changes' threshold - values above this threshold are considered problematic.\n    - Default value: `3.0`\n- `agent_steps` (float):\n    - Metric 'agent_steps' threshold - values above this threshold are considered problematic.\n    - Default value: `125.0`\n- `agent_cost` (float):\n    - Metric 'agent_cost' threshold - values above this threshold are considered problematic.\n    - Default value: `0.5`\n- `agent_duration_s` (float):\n    - Metric 'agent_duration_s' threshold - values above this threshold are considered problematic.\n    - Default value: `600.0`\n- `agent_data_size_mb` (float):\n    - Metric 'agent_data_size_mb' threshold - values above this threshold are considered problematic.\n    - Default value: `1.5`\n- `agent_file_count` (float):\n    - Metric 'agent_file_count' threshold - values above this threshold are considered problematic.\n    - Default value: `25.0`\n- `save_llm_result` (bool):\n    - Control whether to save LLM result which contains input LLM dataset and all metrics calculated by the evaluator.\n    - Default value: `True`\n",
+                    "brief_description": "Agent Sanity Check Evaluator performs basic check of the\nagentic RAG/LLM system. The evaluator reviews agent chat session to check for\nproblems and inspects the artifacts created by the agent during its operation. It\nverifies the integrity and sanity of the artifacts created by the agent during its\noperation. This includes checking for the presence of expected files, validating\ntheir formats, and ensuring that the content meets  predefined criteria. The evaluator\nhelps identify potential issues in the agent's workflow, ensuring that it operates\ncorrectly and reliably.",
+                    "model_types": [
+                        "llm",
+                        "rag"
+                    ],
+                    "can_explain": [],
+                    "explanation_scopes": [
+                        "global_scope",
+                        "local_scope"
+                    ],
+                    "explanations": [
+                        {
+                            "explanation_type": "global-llm-eval-results",
+                            "name": "LlmEvalResultsExplanation",
+                            "category": "",
+                            "scope": "global",
+                            "has_local": "",
+                            "formats": []
+                        },
+                        {
+                            "explanation_type": "global-llm-heatmap-leaderboard",
+                            "name": "LlmHeatmapLeaderboardExplanation",
+                            "category": "",
+                            "scope": "global",
+                            "has_local": "",
+                            "formats": []
+                        },
+                        {
+                            "explanation_type": "global-work-dir-archive",
+                            "name": "WorkDirArchiveExplanation",
+                            "category": "",
+                            "scope": "global",
+                            "has_local": "",
+                            "formats": []
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "name": "metric_threshold",
+                            "description": "Evaluated metric threshold - values below this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 0.75,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_tools_failures",
+                            "description": "Metric 'agent_tools_failures' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 0.0,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_tools_used",
+                            "description": "Metric 'agent_tools_used' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 3.0,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_plan_changes",
+                            "description": "Metric 'agent_plan_changes' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 3.0,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_steps",
+                            "description": "Metric 'agent_steps' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 125.0,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_cost",
+                            "description": "Metric 'agent_cost' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 0.5,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_duration_s",
+                            "description": "Metric 'agent_duration_s' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 600.0,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_data_size_mb",
+                            "description": "Metric 'agent_data_size_mb' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 1.5,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_file_count",
+                            "description": "Metric 'agent_file_count' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 25.0,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "save_llm_result",
+                            "description": "Control whether to save LLM result which contains input LLM dataset and all metrics calculated by the evaluator.",
+                            "comment": "",
+                            "type": "bool",
+                            "val": true,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        }
+                    ],
+                    "keywords": [
+                        "hardware-gpu-optional",
+                        "llm",
+                        "evaluates_llm",
+                        "evaluates_rag",
+                        "requires_prompts",
+                        "sr-11-7-conceptual-soundness",
+                        "sr-11-7-outcomes-analysis",
+                        "nist-ai-rmf-safe",
+                        "problem-type-information-retrieval",
+                        "problem-type-question-answering",
+                        "evaluator-role-regulator",
+                        "es-purpose-generation",
+                        "evaluation-method-semantic-similarity",
+                        "evaluation-type-deterministic"
+                    ],
+                    "metrics_meta": [
+                        {
+                            "key": "agent_sanity",
+                            "display_name": "Sanity",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "The sanity and integrity of the agent-created artifacts.",
+                            "value_range": [
+                                0.0,
+                                1.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": true,
+                            "threshold": 0.75,
+                            "is_primary_metric": true,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_tools_failures",
+                            "display_name": "Tool/Script Failures",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "The number of agent's tools and scripts execution failures.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 0.0,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_tools_used",
+                            "display_name": "Used Tools",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "The number of tools actually used by the agentic run.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 3.0,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_plan_changes",
+                            "display_name": "Plan Changes",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "The number of re-planning actions made by the agent - when agent changes the strategy, reacts to tool failures and inability to provide desired results.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 3.0,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_steps",
+                            "display_name": "Agent Steps",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "The number of steps - user and assistant chat messages - agent needed to provide actual answer and/or to finish.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 125.0,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_cost",
+                            "display_name": "Cost",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "Agentic run cost in USD.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 0.5,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_duration_s",
+                            "display_name": "Duration (s)",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "Agentic run duration in seconds.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 600.0,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_data_size_mb",
+                            "display_name": "Data Size (MB)",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "Amount of data created by the agentic run in MBs.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 1.5,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_file_count",
+                            "display_name": "File Count",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "Number of files created by the agentic run.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 25.0,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        }
+                    ]
+                },
+                "created": 1760004074.632707,
+                "duration": 0.30563998222351074,
+                "child_explainer_job_keys": null,
+                "job_location": "./.local/h2o-sonar/mli_experiment_7ee992f2-e30f-485e-8a06-2bc0e0978e49/explainer_h2o_sonar_evaluators_agent_sanity_check_evaluator_AgentSanityCheckEvaluator_7a7f97d6-c2b0-419d-af2a-6601759c2055",
+                "result_descriptor": {
+                    "id": "h2o_sonar.evaluators.agent_sanity_check_evaluator.AgentSanityCheckEvaluator",
+                    "name": "AgentSanityCheckEvaluator",
+                    "display_name": "Agent Sanity Check",
+                    "tagline": "Assess integrity and quality of agent created artifacts.",
+                    "description": "**Evaluator input requirements**:\n\n| Question | Expected Answer | Retrieved Context | Actual Answer | Conditions  |\n| --- | --- | --- | --- | --- |\n| \u2713 |   |   |   |   |\n\n**Description**:\n\nAgent Sanity Check Evaluator performs basic check of the\nagentic RAG/LLM system. The evaluator reviews agent chat session to check for\nproblems and inspects the artifacts created by the agent during its operation. It\nverifies the integrity and sanity of the artifacts created by the agent during its\noperation. This includes checking for the presence of expected files, validating\ntheir formats, and ensuring that the content meets  predefined criteria. The evaluator\nhelps identify potential issues in the agent's workflow, ensuring that it operates\ncorrectly and reliably.\n\n**Method**:\n\n- Looks for artifacts created by the agent during its operation prepared by\n  the test lab completion.\n- Performs sanity checks on the artifacts to ensure they meet expected standards:\n  linting (JSon), content validation (non-empty, non-empty pages), expected structure\n  (for directories and files) and field values.\n- Create problems and insights if any issues are found during the sanity checks.\n- Calculates a sanity score based on the results of the checks, providing an overall\n  assessment of the agent's performance.\n\n\n**Metrics** calculated by the evaluator:\n\n- **Sanity** (float)\n    - The sanity and integrity of the agent-created artifacts.\n    - Higher score is better.\n    - Range: `[0.0, 1.0]`\n    - Default threshold: `0.75`\n    - This is **primary** metric.\n- **Tool/Script Failures** (float)\n    - The number of agent's tools and scripts execution failures.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `0.0`\n- **Used Tools** (float)\n    - The number of tools actually used by the agentic run.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `3.0`\n- **Plan Changes** (float)\n    - The number of re-planning actions made by the agent - when agent changes the strategy, reacts to tool failures and inability to provide desired results.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `3.0`\n- **Agent Steps** (float)\n    - The number of steps - user and assistant chat messages - agent needed to provide actual answer and/or to finish.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `125.0`\n- **Cost** (float)\n    - Agentic run cost in USD.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `0.5`\n- **Duration (s)** (float)\n    - Agentic run duration in seconds.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `600.0`\n- **Data Size (MB)** (float)\n    - Amount of data created by the agentic run in MBs.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `1.5`\n- **File Count** (float)\n    - Number of files created by the agentic run.\n    - Lower score is better.\n    - Range: `[0.0, 1234567.0]`\n    - Default threshold: `25.0`\n\n**Problems** reported by the evaluator:\n\n- If average score of the metric for an evaluated LLM is below the threshold, then the evaluator will report a problem for that LLM.\n- If test suite has perturbed test cases, then the evaluator will report a problem for each perturbed test case and LLM model whose metric flipped (moved above/below threshold) after perturbation.\n\n**Insights** diagnosed by the evaluator:\n\n- Best performing LLM model based on the evaluated primary metric.\n- The most difficult test case for the evaluated LLM models, i.e., the prompt, which most of the evaluated LLM models had a problem answering correctly.\n\nEvaluator **parameters**:\n\n- `metric_threshold` (float):\n    - Evaluated metric threshold - values below this threshold are considered problematic.\n    - Default value: `0.75`\n- `agent_tools_failures` (float):\n    - Metric 'agent_tools_failures' threshold - values above this threshold are considered problematic.\n    - Default value: `\"\"`\n- `agent_tools_used` (float):\n    - Metric 'agent_tools_used' threshold - values above this threshold are considered problematic.\n    - Default value: `3.0`\n- `agent_plan_changes` (float):\n    - Metric 'agent_plan_changes' threshold - values above this threshold are considered problematic.\n    - Default value: `3.0`\n- `agent_steps` (float):\n    - Metric 'agent_steps' threshold - values above this threshold are considered problematic.\n    - Default value: `125.0`\n- `agent_cost` (float):\n    - Metric 'agent_cost' threshold - values above this threshold are considered problematic.\n    - Default value: `0.5`\n- `agent_duration_s` (float):\n    - Metric 'agent_duration_s' threshold - values above this threshold are considered problematic.\n    - Default value: `600.0`\n- `agent_data_size_mb` (float):\n    - Metric 'agent_data_size_mb' threshold - values above this threshold are considered problematic.\n    - Default value: `1.5`\n- `agent_file_count` (float):\n    - Metric 'agent_file_count' threshold - values above this threshold are considered problematic.\n    - Default value: `25.0`\n- `save_llm_result` (bool):\n    - Control whether to save LLM result which contains input LLM dataset and all metrics calculated by the evaluator.\n    - Default value: `True`\n",
+                    "brief_description": "Agent Sanity Check Evaluator performs basic check of the\nagentic RAG/LLM system. The evaluator reviews agent chat session to check for\nproblems and inspects the artifacts created by the agent during its operation. It\nverifies the integrity and sanity of the artifacts created by the agent during its\noperation. This includes checking for the presence of expected files, validating\ntheir formats, and ensuring that the content meets  predefined criteria. The evaluator\nhelps identify potential issues in the agent's workflow, ensuring that it operates\ncorrectly and reliably.",
+                    "model_types": [
+                        "llm",
+                        "rag"
+                    ],
+                    "can_explain": [],
+                    "explanation_scopes": [
+                        "global_scope",
+                        "local_scope"
+                    ],
+                    "explanations": [
+                        {
+                            "explanation_type": "global-llm-eval-results",
+                            "name": "Evaluation metrics data",
+                            "category": "LLM",
+                            "scope": "global",
+                            "has_local": null,
+                            "formats": [
+                                "application/json",
+                                "text/csv",
+                                "application/vnd.h2oai.datatable.jay"
+                            ]
+                        },
+                        {
+                            "explanation_type": "global-llm-heatmap-leaderboard",
+                            "name": "LLM heatmap leaderboard",
+                            "category": "LLM",
+                            "scope": "global",
+                            "has_local": null,
+                            "formats": [
+                                "application/json",
+                                "text/markdown",
+                                "application/vnd.h2oai-evalstudio-leaderboard.markdown"
+                            ]
+                        },
+                        {
+                            "explanation_type": "global-html-fragment",
+                            "name": "LLM heatmap leaderboard as HTML",
+                            "category": "COMPLIANCE TESTS",
+                            "scope": "global",
+                            "has_local": null,
+                            "formats": [
+                                "text/html"
+                            ]
+                        },
+                        {
+                            "explanation_type": "global-work-dir-archive",
+                            "name": "Archive of Agent Sanity Check artifacts",
+                            "category": "COMPLIANCE TESTS",
+                            "scope": "global",
+                            "has_local": null,
+                            "formats": [
+                                "application/zip"
+                            ]
+                        }
+                    ],
+                    "parameters": [
+                        {
+                            "name": "metric_threshold",
+                            "description": "Evaluated metric threshold - values below this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 0.75,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_tools_failures",
+                            "description": "Metric 'agent_tools_failures' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 0.0,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_tools_used",
+                            "description": "Metric 'agent_tools_used' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 3.0,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_plan_changes",
+                            "description": "Metric 'agent_plan_changes' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 3.0,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_steps",
+                            "description": "Metric 'agent_steps' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 125.0,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_cost",
+                            "description": "Metric 'agent_cost' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 0.5,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_duration_s",
+                            "description": "Metric 'agent_duration_s' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 600.0,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_data_size_mb",
+                            "description": "Metric 'agent_data_size_mb' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 1.5,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "agent_file_count",
+                            "description": "Metric 'agent_file_count' threshold - values above this threshold are considered problematic.",
+                            "comment": "",
+                            "type": "float",
+                            "val": 25.0,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        },
+                        {
+                            "name": "save_llm_result",
+                            "description": "Control whether to save LLM result which contains input LLM dataset and all metrics calculated by the evaluator.",
+                            "comment": "",
+                            "type": "bool",
+                            "val": true,
+                            "predefined": [],
+                            "tags": [],
+                            "min_": 0.0,
+                            "max_": 0.0,
+                            "category": ""
+                        }
+                    ],
+                    "keywords": [
+                        "hardware-gpu-optional",
+                        "llm",
+                        "evaluates_llm",
+                        "evaluates_rag",
+                        "requires_prompts",
+                        "sr-11-7-conceptual-soundness",
+                        "sr-11-7-outcomes-analysis",
+                        "nist-ai-rmf-safe",
+                        "problem-type-information-retrieval",
+                        "problem-type-question-answering",
+                        "evaluator-role-regulator",
+                        "es-purpose-generation",
+                        "evaluation-method-semantic-similarity",
+                        "evaluation-type-deterministic"
+                    ],
+                    "metrics_meta": [
+                        {
+                            "key": "agent_sanity",
+                            "display_name": "Sanity",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "The sanity and integrity of the agent-created artifacts.",
+                            "value_range": [
+                                0.0,
+                                1.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": true,
+                            "threshold": 0.75,
+                            "is_primary_metric": true,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_tools_failures",
+                            "display_name": "Tool/Script Failures",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "The number of agent's tools and scripts execution failures.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 0.0,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_tools_used",
+                            "display_name": "Used Tools",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "The number of tools actually used by the agentic run.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 3.0,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_plan_changes",
+                            "display_name": "Plan Changes",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "The number of re-planning actions made by the agent - when agent changes the strategy, reacts to tool failures and inability to provide desired results.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 3.0,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_steps",
+                            "display_name": "Agent Steps",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "The number of steps - user and assistant chat messages - agent needed to provide actual answer and/or to finish.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 125.0,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_cost",
+                            "display_name": "Cost",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "Agentic run cost in USD.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 0.5,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_duration_s",
+                            "display_name": "Duration (s)",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "Agentic run duration in seconds.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 600.0,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_data_size_mb",
+                            "display_name": "Data Size (MB)",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "Amount of data created by the agentic run in MBs.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 1.5,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        },
+                        {
+                            "key": "agent_file_count",
+                            "display_name": "File Count",
+                            "data_type": "float",
+                            "display_value": ".4f",
+                            "description": "Number of files created by the agentic run.",
+                            "value_range": [
+                                0.0,
+                                1234567.0
+                            ],
+                            "value_enum": null,
+                            "higher_is_better": false,
+                            "threshold": 25.0,
+                            "is_primary_metric": false,
+                            "parent_metric": "",
+                            "exclude": false
+                        }
+                    ]
+                }
+            }
+        ],
+        "problems": [],
+        "insights": [],
+        "overall_result": "no_problem",
+        "results_location": "./.local",
+        "interpretation_location": "./.local/h2o-sonar/mli_experiment_7ee992f2-e30f-485e-8a06-2bc0e0978e49"
+    }
+}
