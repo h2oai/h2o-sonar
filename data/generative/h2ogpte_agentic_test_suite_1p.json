@@ -1,0 +1,23 @@
+{
+    "tests": [
+        {
+            "key": "da503caf-a2dc-4c0a-b5f7-618bebd7860d",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "d981bf23-9790-4c5e-905e-2ab56cba7ece",
+                    "prompt": "Estimate expected revenue of Brazil in 2030 and provide the answer in French.",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "expected_output": "Brazil revenue was 15,969 million.",
+                    "constraints": [
+                         "15,969"
+                    ]
+                }
+            ]
+        }
+   ]
+}

@@ -1,0 +1,332 @@
+{
+    "name": "h2oGPTe Benchmark - part 4",
+    "description": "h2oGPTe benchmark data import (2024-10-01_15h37m17s).",
+    "tests": [
+        {
+            "key": "44d4d42b-8cdd-412b-b635-f370a760ea46",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/jobs.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "8f70cc03-4bb8-4d71-8b3d-8cb7548ead82",
+                    "prompt": "Which is the metro in California that has a good job Outlook?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)Los Angeles\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "b46ff494-757a-4a7b-b1e6-782c299fabd1",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/leaf_shapes.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "23a3b5f7-019a-46ee-8d42-0acf326c2e8f",
+                    "prompt": "What letter does a keel-shaped cross-section look like?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)V\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "8e28bdf1-f7cf-440d-8923-c6b79e064d22",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/red_tree_vole.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "65f0c8e0-35a2-4f79-96e3-0fbe6f98a102",
+                    "prompt": "If in the food web shown in the diagram, Douglas fir tree needles are absent, which organism would starve?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)red tree vole\") OR regexp(\"(?i)Red tree vole\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "1df2d148-d1cc-41ab-bd01-0c21b81f85e3",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bigben.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "302ce86a-2d22-4cc5-a6d5-e7c3d71d3de1",
+                    "prompt": "What is the name of the tower?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)big ben\") OR regexp(\"(?i)Big Ben\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "f6d89199-d9ea-46f8-a297-7560f87de1d5",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/hbo.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "7292a3ed-4102-422e-9ec8-d0e572efeef4",
+                    "prompt": "Aidan Gillen acted in how many series?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"2\" OR regexp(\"(?i)two\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "c75613ba-f224-411e-b5f5-88acd4f49bd6",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/displays.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "99ee5540-f042-429e-b905-6865a15d42f2",
+                    "prompt": "What was the pack spinner capacity?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"118\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "2d564cec-8ee8-4cff-a885-6292755bee85",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/desktop.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "a95d44d8-c15d-440a-af79-3369d2d04eed",
+                    "prompt": "is the 2nd email starred, yes or no?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)no\") OR regexp(\"(?i)No\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "afc01a91-a2e0-48a9-ac64-2b95baf572c8",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/googlemaps.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "27a1f887-cd1d-4e6e-8f21-0e311b7cf23d",
+                    "prompt": "is La Taqueria north of the 24th St Mission Bart station?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)no\") OR regexp(\"(?i)No\") OR regexp(\"(?i)south\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "389bd1f2-34b0-4519-9856-75e8a2267fae",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/baby_cake.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "f537d974-70ab-4fa2-8826-c9d8e377a561",
+                    "prompt": "Extract the text in the image",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)Congratulations Kate & Luke on your upcoming arrival\") OR regexp(\"(?i)Congratulations Kate and Luke on your upcoming arrival\") OR regexp(\"(?i)Congratulations Kate + Luke on your upcoming arrival\") OR regexp(\"(?i)Congratulations\nKate & Luke\non your\nupcoming arrival\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "169ac080-bbd7-4309-b8a5-fe5d9b787e41",
+                    "prompt": "Extract the text shown.",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)Congratulations Kate & Luke on your upcoming arrival\") OR regexp(\"(?i)Congratulations Kate and Luke on your upcoming arrival\") OR regexp(\"(?i)Congratulations Kate + Luke on your upcoming arrival\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "cd7a18fd-63c6-4271-ac3c-07ddde165f31",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/chart.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "afb12b45-f98c-46d8-8447-e9afd4830da6",
+                    "prompt": "What is the highest life expectancy at birth of males?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"80.7\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "14792e63-d957-4443-90e0-78dc62dd0a2d",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/food_poisoning.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "c84dc718-f991-4ca2-821f-273ef03e5843",
+                    "prompt": "According to the table below, which food is the most likely cause of the outbreak of food poisoning: A. Cold chicken B. Potato salad C. Egg sandwiches D. Fruit pie and cream",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)B\") OR regexp(\"(?i)Potato salad\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "1f2ad562-1acf-42b3-bb35-e97b48a8ce39",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/janet.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "4ae86d58-2576-4d98-a508-1ee431fb114c",
+                    "prompt": "Janet Ludlow\u2019s firm requires all its analysts to use a two-stage dividend discount model (DDM) and the capital asset pricing model (CAPM) to value stocks. Using the CAPM and DDM, Ludlow has valued QuickBrush Company at $63 per share. She now must value SmileWhite Corporation. Calculate the required rate of return for SmileWhite by using the information in the following table. A. 14% B. 15% C. 16%",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)C\") OR \"16%\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "a52eb09b-3577-4441-a99d-b7a411f1ee49",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/net_worth.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "aee111e0-34a4-4170-bc77-f3ab6ad2de68",
+                    "prompt": "Table 11.47 provides a recent survey of the youngest online entrepreneurs whose net worth is estimated at one million dollars or more. Their ages range from 17 to 30. Each cell in the table illustrates the number of entrepreneurs who correspond to the specific age group and their net worth. We want to know whether the ages and net worth independent. \\chi^2 test statistic = ______.  A. 1.56 B. 1.76 C. 1.96 D. 2.06",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)B\") OR \"1.76\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "1920df79-0ba2-4de8-b0c0-924ebc77f3f6",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/physics.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "cabebadf-f9bb-4a14-9429-422a7de7abf6",
+                    "prompt": "Answer question in the image",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"28.0\" AND regexp(\"(?i)m/s\")) OR (\"28.0\" AND regexp(\"(?i)ms^{-1}\")) OR (\"28 \" AND regexp(\"(?i)m/s\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "48a24583-594a-4cbb-9840-7d70b4d1173f",
+                    "prompt": "Answer the question",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"28.0\" AND regexp(\"(?i)m/s\")) OR (\"28.0\" AND regexp(\"(?i)ms^{-1}\")) OR (\"28 \" AND regexp(\"(?i)m/s\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "ee152776-5b15-4f14-9be9-c8ff153c0efd",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/dates_camps.png"
+            ],
+            "test_cases": [
+                {
+                    "key": "9355cd0c-0329-4ec0-847f-4a0e87be513d",
+                    "prompt": "Answer question",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)January 1, 2013 4:10PM\") OR regexp(\"(?i)January 1, 2013 4:10 PM\") OR regexp(\"(?i)January 1, 2013, at 4:10 PM\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "808b8f77-d31f-44b9-8541-bc0ac6f31175",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/NTI+Fleet+Motor+PDS+(NTI306A)+(1).pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "44482589-f5ba-4af0-b598-f6d7f4ae162b",
+                    "prompt": "For cargo of livestock, what is the radius of operations for a driver with only two years experience?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)Australia wide\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        }
+    ]
+}

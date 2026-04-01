@@ -1,0 +1,14 @@
+Dataset: Titanic - Machine Learning from Disaster (Raw Version)
+Source: Kaggle Competition
+URL: https://www.kaggle.com/competitions/titanic
+
+License: Kaggle Competition License / Apache 2.0 (varies by version)
+
+Description:
+Raw version of the Titanic dataset. Contains the same passenger information as the
+cleaned version but may include missing values or unprocessed data.
+
+See pd_ice_titanic_cleaned-license.txt for full license details.
+
+Note: This is the raw/uncleaned version of the Titanic dataset. It has the same license
+as pd_ice_titanic_cleaned.csv.

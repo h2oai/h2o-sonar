@@ -1,0 +1,16 @@
+*-generated.json
+
+# CACHE
+h2o-eval-studio-suite-library/
+
+# INDICES
+index.json
+index.md
+index.html
+h2o-eval-studio-suite-library.md
+h2o-eval-studio-suite-library.html
+h2o-eval-studio-suite-library---SONAR.md
+h2o-eval-studio-suite-library---GEN.md
+
+# CONFIG FILES
+h2o-eval-studio-suite-library-urls.txt

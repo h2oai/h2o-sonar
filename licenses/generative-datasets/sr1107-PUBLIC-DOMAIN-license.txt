@@ -1,0 +1,113 @@
+Dataset: sr1107_test_lab_*.json, sr1107_test_suite*.json
+Source: Federal Reserve Board of Governors
+License: Public Domain (U.S. Government Work)
+
+Description:
+SR 11-7 is a Supervision and Regulation Letter issued by the Board of Governors of
+the Federal Reserve System titled "Guidance on Model Risk Management." This dataset
+contains questions, test scenarios, and evaluation prompts derived from this guidance
+document used for RAG (Retrieval Augmented Generation) system evaluation.
+
+Original Source: Board of Governors of the Federal Reserve System
+Document: SR 11-7: Guidance on Model Risk Management
+Issued: April 4, 2011
+URL: https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm
+PDF: https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf
+
+Dataset Variants in H2O Sonar:
+- sr1107_test_lab_171.json (171 test cases, 17.3 MB)
+- sr1107_test_lab_15m.json (15 minute test lab, 953 KB)
+- sr1107_test_lab_3m.json (3 minute test lab, 119 KB)
+- sr1107_test_lab_7p_perturbed.json (7 prompts perturbed, 563 KB)
+- sr1107_test_suite_171.json (171 test suite, 112 KB)
+- sr1107_test_suite_7p.json (7 prompts, 5.2 KB)
+- sr1107_test_suite_7p_perturbed.json (7 prompts perturbed, 15 KB)
+- sr1107_test_suite.json (standard test suite, 2.2 KB)
+
+Content Description:
+The dataset contains test scenarios and evaluation prompts derived from SR 11-7,
+which provides guidance on:
+- Model risk management for financial institutions
+- Model development, implementation, and use
+- Model validation practices
+- Governance, policies, and controls
+- Roles and responsibilities for model risk management
+- Documentation standards for models
+- Ongoing monitoring and model review
+
+This guidance is widely used by banks and financial institutions supervised by the
+Federal Reserve System to establish sound model risk management frameworks.
+
+License Terms - U.S. Government Work (Public Domain):
+
+As a work of the United States Government, SR 11-7 and its content are in the
+PUBLIC DOMAIN under U.S. law (17 U.S.C. § 105).
+
+1. No Copyright: This work is not subject to copyright protection in the United States
+2. Commercial Use: Fully allowed without restriction
+3. Modification: Allowed without restriction
+4. Distribution: Allowed without restriction
+5. Attribution: NOT legally required, but recommended as a professional courtesy
+
+Recommended Attribution (Best Practice):
+```
+Board of Governors of the Federal Reserve System (2011).
+SR 11-7: Guidance on Model Risk Management
+URL: https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm
+```
+
+Alternative Citation Format:
+```
+Federal Reserve System. (2011). Supervisory Guidance on Model Risk Management.
+SR Letter 11-7. Board of Governors of the Federal Reserve System.
+```
+
+International Copyright Notice:
+While this work is in the public domain in the United States, it may be subject to
+copyright or related rights in other countries. Users outside the United States should
+check their local laws.
+
+Federal Reserve Disclaimer:
+The Federal Reserve System provides this information for public use. The views and
+interpretations in derivative works are those of the authors and do not necessarily
+represent the views of the Federal Reserve System.
+
+Usage in H2O Sonar:
+H2O Sonar uses SR 11-7 content for:
+- RAG (Retrieval Augmented Generation) system evaluation
+- Document Q&A testing for financial services domain
+- Model risk management knowledge assessment
+- Financial services regulatory compliance testing
+- Internal research and development
+
+Purpose of Dataset Variants:
+- Test Labs: Contain full prompts, expected answers, and document contexts for RAG evaluation
+- Test Suites: Contain prompts and expected outputs for LLM evaluation
+- Perturbed versions: Include intentionally modified prompts to test robustness
+- Size variants (171, 15m, 3m, 7p): Different sizes for various testing scenarios
+
+Legal Duties and Requirements:
+- NO attribution legally required (but recommended for professional/academic integrity)
+- NO license terms to comply with
+- NO restrictions on use, modification, or distribution
+- NO commercial use limitations
+- Recommended: Include citation when publishing results or using in commercial products
+
+Regulatory Context:
+SR 11-7 is one of the most influential guidance documents for model risk management
+in the financial services industry. It defines model risk as arising from:
+1. Potential adverse consequences from decisions based on incorrect or misused model outputs
+2. Potential adverse consequences from incorrect or misused models
+
+Notes:
+- SR 11-7 applies to all types of models used by financial institutions
+- Emphasizes the importance of effective challenge in model validation
+- Requires ongoing monitoring and periodic validation of models
+- Has been widely adopted beyond Federal Reserve supervised institutions
+- Complements other regulatory guidance (OCC 2011-12, FDIC FIL-22-2017)
+
+Public Domain Status: Confirmed
+Attribution Required: No (but recommended)
+Commercial Use: Unrestricted
+Modification: Unrestricted
+Distribution: Unrestricted

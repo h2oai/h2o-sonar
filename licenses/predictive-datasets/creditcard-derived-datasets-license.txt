@@ -1,0 +1,51 @@
+Derived Creditcard Test Datasets - License Information
+
+The following datasets are derived from the UCI "Default of Credit Card Clients" dataset
+for testing purposes. They inherit the license of the original dataset.
+
+Original Dataset License: CC BY 4.0 (UCI Machine Learning Repository)
+See: creditcard-license.txt for full details
+
+Derived Datasets:
+
+1. Datasets with modified column structure:
+   - cc_cat_num.csv
+   - cc_imbalanced.csv
+   - creditcard_cat-train-int-target.csv
+   - creditcard_cats_missing.csv
+   - creditcard_missing.csv
+
+2. Datasets with subsampled data:
+   - creditcard100_pred.csv (100 rows)
+   - creditcard100_pred_missing_values.csv (100 rows with missing values)
+   - creditcard_12_actuals.csv (12 rows)
+   - pd_ice_creditcard_10_rows.csv (10 rows)
+   - pd_ice_creditcard_1_row.csv (1 row)
+
+3. Datasets with predictions added:
+   - creditcard_with_preds.csv
+   - creditcard_regression_with_preds.csv
+
+4. Datasets with modified targets:
+   - creditcard_const_target.csv (constant target for testing)
+   - creditcard_multinomial.csv (multinomial target)
+
+5. Datasets for string/encoding testing:
+   - creditcard_str_10k.csv (10,000 rows)
+   - creditcard_train_BAD_COL_NAMES_BAD_EDU_VALUES.csv (malformed names for testing)
+
+6. Training subsets:
+   - pd_ice_creditcard_train.csv
+
+License Terms:
+All derived datasets inherit the CC BY 4.0 license from the original UCI dataset:
+- Free to share and adapt for any purpose
+- Attribution required
+- Commercial use allowed
+
+Full license: https://creativecommons.org/licenses/by/4.0/
+
+Attribution:
+Original dataset: UCI Machine Learning Repository
+DOI: 10.24432/C55S3H
+URL: https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients

@@ -1,0 +1,959 @@
+{
+    "name": "h2oGPTe Benchmark - part 1",
+    "description": "h2oGPTe benchmark data import (2024-10-01_15h37m17s).",
+    "tests": [
+        {
+            "key": "d05c395b-ab5e-411f-8449-ec5b4e521826",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "8ab55d74-aa9d-4b92-b17e-7f5f920e740b",
+                    "prompt": "What was the revenue of Brazil?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"15,969\" AND regexp(\"(?i)million\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "545d80ff-0c26-4b2f-8167-c5950001b1cb",
+                    "prompt": "What was the revenue of Mexico?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"27,229\" AND regexp(\"(?i)million\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "0fca9e7e-924a-4686-a075-1fe4c6399a0d",
+                    "prompt": "How did gross profit change YoY for South America?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"11.0%\" OR \"11%\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "06aff9d4-5494-4ad7-b21f-5d77ac39f90f",
+                    "prompt": "When was the cybersecurity incident announced?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)April 26\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "56d08489-5bb8-4a74-8022-67b3e48b1c3d",
+                    "prompt": "Did inflation affect gross profit?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)inflation affected gross profit.\") OR regexp(\"(?i)inflation appears to have affected\") OR regexp(\"(?i)inflation impacted\") OR regexp(\"(?i)inflation did have an impact\") OR regexp(\"(?i)did affect\") OR regexp(\"(?i)inflation had a\") OR regexp(\"(?i)was affected\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "a44a535d-f175-423e-821f-69500a964206",
+                    "prompt": "What country had the largest revenue and how much was it?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(regexp(\"(?i)Mexico\") AND \"27,229\" AND regexp(\"(?i)million\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "40e6281a-a382-4a20-b3cc-295d620fee4a",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/wellsfargo-2022-annual-report.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "34b2c126-c891-4329-9794-512ba85befc1",
+                    "prompt": "What was goodwill balance?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$25.2\" AND regexp(\"(?i)billion\")) OR (\"$25.173\" AND regexp(\"(?i)billion\")) OR (\"$25,173\" AND regexp(\"(?i)million\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "52377821-f148-4f79-a210-85043f62ee45",
+                    "prompt": "What was the available borrowing capacity?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$209.0\" AND regexp(\"(?i)billion\")) OR (\"$209\" AND regexp(\"(?i)billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "80a3c17f-781c-4dcf-9ce3-75048413fc40",
+                    "prompt": "What was the value of total foreclosed assets in 2022?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$137\" AND regexp(\"(?i)million\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "54444541-6d03-436d-b63b-afed04ee7aec",
+                    "prompt": "How much was the average VaR in 2022?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$35\" AND regexp(\"(?i)million\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "70e58a09-9e9a-4d9f-9b44-b6fade7d9463",
+                    "prompt": "What was long-term debt at the end of 2022?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$174,870\" AND regexp(\"(?i)million\")) OR (\"$174.870\" AND regexp(\"(?i)billion\")) OR (\"$174.87\" AND regexp(\"(?i)billion\")) OR (\"$174.9\" AND regexp(\"(?i)billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "0b23b8b6-474e-417d-aaa4-c0a2a5c70b91",
+                    "prompt": "What was diluted EPS for 2021?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"$4.95\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "e8fe3224-b802-43c6-afd1-305b36ce0ec9",
+                    "prompt": "What was diluted EPS for 2022?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"$3.14\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "0972d105-00e0-4233-b80a-cf89e24d3e56",
+                    "prompt": "What was total noninterest income for commercial banking?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$3,631\" AND regexp(\"(?i)million\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "fa755ece-9835-4d4d-a0fd-7d27f8efcee3",
+                    "prompt": "What was total noninterest income for corporate and investment banking?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$6,509\" AND regexp(\"(?i)million\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "7acaee58-3890-4c84-a3e7-b98e2b5665dd",
+                    "prompt": "What were total nonperforming assets?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$5,763\" AND regexp(\"(?i)million\")) OR (\"$5.8\" AND regexp(\"(?i)billion\")) OR (\"$5.763\" AND regexp(\"(?i)billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "6ca6732f-e62b-4cf7-8970-d2533dbbdffe",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/citi-2022-annual-report.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "6e1a26b2-f242-42dd-b12b-400e2398dc1c",
+                    "prompt": "What was net income?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$14,845\" AND regexp(\"(?i)million\")) OR (\"$14.8\" AND regexp(\"(?i)billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "eccb5cc2-cadc-48cc-b9d5-86148834fec7",
+                    "prompt": "How many hours were volunteered, and across how many countries?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"115,000\" AND \"84\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "5b25e60f-3b2d-41a2-8f35-7d46d6392f6a",
+                    "prompt": "How much did Citi finance for affordable housing in the U.S.?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$6\" AND regexp(\"(?i)billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "3b6b08b4-a974-4964-b70c-2415b41b01f2",
+                    "prompt": "What were total liabilities of Citigroup as of Dec 31 2022?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$2,214,838\" AND regexp(\"(?i)million\")) OR (\"$2,416,676\" AND regexp(\"(?i)million\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "6f065839-009a-40d7-9633-b2dece20c062",
+                    "prompt": "What were total assets of Citigroup as of Dec 31 2022?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"2,416,676\" AND regexp(\"(?i)million\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "9f11f154-3fb4-4737-8b00-899a41a0293d",
+                    "prompt": "On what page are Basel III Revisions?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"49\" OR \"34\" OR \"52\" OR \"53\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "c0ff5f8b-f1e9-4328-a426-ea0a56d836bb",
+                    "prompt": "How many employees are at Citi?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"240,000\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "90067ece-3edb-4562-884c-2b4a13d6e894",
+                    "prompt": "What was the revenue from legacy franchises",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"8.5\" AND regexp(\"(?i)billion\")) OR (\"8,472\" AND regexp(\"(?i)million\")) OR (\"8.472\" AND regexp(\"(?i)billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "f59da9c7-4b87-4d6f-85dc-92439ab02a6b",
+                    "prompt": "How large is the new stress capital buffer?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"4.0%\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "9741acf2-c327-4f9f-9c1d-5415a7ffb462",
+                    "prompt": "What were total revenues of Citigroup?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$75,338\" AND regexp(\"(?i)million\")) OR (\"$75.338\" AND regexp(\"(?i)billion\")) OR (\"$75.3\" AND regexp(\"(?i)billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "95991fd5-4585-4fff-a4c8-72d499a49f39",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/kp-annual-report-en-2019.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "7720f913-c3a3-4abb-87f9-9dab0988e1df",
+                    "prompt": "How many employees does kaiser permanente have?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"217,000\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "d7c15a79-b9b3-465e-958a-e1b3030fcb44",
+                    "prompt": "How many lab results were viewed online?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"60.6\" AND regexp(\"(?i)million\")) OR regexp(\"(?i)60.6M\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "9bd24312-c2dd-421a-9568-de714f7769e4",
+                    "prompt": "How many members does KP have?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"12.2\" AND regexp(\"(?i)million\")) OR regexp(\"(?i)12.2M\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "b1761ef2-7590-4c48-9e70-8f70e6f65cec",
+                    "prompt": "Who's the regional president in Georgia?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)Jim Simpson\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "9e22a972-5c7f-427a-ad3c-1d3866e18c95",
+                    "prompt": "Who's the CEO?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)Greg A. Adams\") OR regexp(\"(?i)Greg Adams\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "a399e55e-2fe2-480c-b096-07dae0a0ad60",
+                    "prompt": "How many nurses work at Kaiser?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)63k\") OR \"63,000\" OR (\"63\" AND regexp(\"(?i)thousand\")) OR regexp(\"(?i)63K\") OR \"63000\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "53bb9de4-8c6b-4e32-b72d-fb362afce710",
+                    "prompt": "How many colorectal cancer screenings happened that year?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"2.2\" AND regexp(\"(?i)million\")) OR regexp(\"(?i)2.2M\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "c23a84b5-3404-4677-9dc2-cf5cd6598825",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/2023-Annual-Report-Spreads.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "a0fd5fba-8e7b-4229-8125-4a7b603cccad",
+                    "prompt": "What is CBA NPAT this year?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$10,188\" AND regexp(\"(?i)million\")) OR (\"$10,164\" AND regexp(\"(?i)million\")) OR regexp(\"(?i)$10,164m\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "f7506674-4a99-4fe4-a815-5c285e69d921",
+                    "prompt": "On what page does the five-year financial summary start?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"285\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "849dae60-d686-44d2-b6c8-f9933f0df2c3",
+                    "prompt": "What's the address of CBA in Syndey?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)11 Harbour Street\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "ffa86eef-3c9b-4e9a-9c0c-92b7c2b93f8e",
+                    "prompt": "What are the top 3 holders of CommBank PERLS XV Capital Notes?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(regexp(\"(?i)BNP\") AND regexp(\"(?i)HSBC\") AND regexp(\"(?i)Citi\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "3669d64e-47b9-4d0b-b83b-0e520a387b9b",
+                    "prompt": "How much net profit did New Zealand contribute in 2023?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"1,356\" AND regexp(\"(?i)million\")) OR regexp(\"(?i)1,356m\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "ad8f18ec-62bc-4048-9a62-ba1e98e5a665",
+                    "prompt": "How much net profit did New Zealand contribute in 2022?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"1,265\" AND regexp(\"(?i)million\")) OR regexp(\"(?i)1,265m\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "cba5539d-bdc2-488f-b4de-3283ee9f29e3",
+                    "prompt": "How did H2O.ai help CBA?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)world-leading talent\") OR regexp(\"(?i)AI models across the bank\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "38dfcf59-3f2b-4a95-a691-775771767792",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/2022-nyl-investment-report.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "65302348-a9ba-4fa5-962f-9706ed83f73e",
+                    "prompt": "How much total assets under management?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$710\" AND regexp(\"(?i)billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "ec46ca99-5e45-4153-b4aa-f0859cd099fc",
+                    "prompt": "How many issuers are in the corporate bond portfolio?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"3,300\" OR \"3300\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "7154a95a-ccdc-4de8-a93c-e5d748323704",
+                    "prompt": "What was NYLIC's statutory surplus in 2021?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$24.57\" AND regexp(\"(?i)billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "30e6613a-9c55-4d30-9f1f-7ac2e90ac49e",
+                    "prompt": "What was total surplus (incl. asset valuation reserve)?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)$30.1 billion\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "7c84e697-da3c-4d90-ac7c-d52eeb4d5271",
+                    "prompt": "What percentage is in RMBS?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"6%\" OR regexp(\"(?i)6 percent\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "714ba940-62d1-46fe-9613-ce4037e0fef4",
+                    "prompt": "How large was the dividend payout in 2023?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$2\" AND regexp(\"(?i)billion\")) OR (\"$2.0\" AND regexp(\"(?i)billion\")) OR (\"$2.0\" AND regexp(\"(?i)BILLION\")) OR (\"$2.0\" AND regexp(\"(?i)Billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "5711b9d0-93d4-4508-b988-a62a7c04002f",
+                    "prompt": "How large was the general account investment portfolio?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$317.13\" AND regexp(\"(?i)billion\")) OR (\"$317\" AND regexp(\"(?i)billion\")) OR (\"$317.1\" AND regexp(\"(?i)billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "0ae21a05-8d49-4f46-8105-ce493c5d93ea",
+                    "prompt": "Who's America's largest mutual life insurer?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)New York Life\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "9c9433e1-924d-4dd6-ab7b-7f17c82d85dd",
+                    "prompt": "When was New York Life insurance founded?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"1845\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "8eda5969-d5e9-4134-8ede-3d667a9977de",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bradesco-2022-integrated-report.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "1e2727d5-a79f-41f8-a050-cfd59a7bebd8",
+                    "prompt": "How many clients does Bradesco serve?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)77.1 million\") OR regexp(\"(?i)77 million\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "3d27214d-7da0-4ac9-9e03-66e305496548",
+                    "prompt": "Who is the chairman of the board?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)Luiz Carlos Trabuco Cappi\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "43a74a65-0240-4585-86db-233d9d7b45d4",
+                    "prompt": "What was the number of agreements that include human rights clauses, in 2022?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"22\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "0af5c523-c69c-493e-bf3b-03ea0d766390",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/STRYKER_CORPORATION_2018.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "5d973a26-b835-4f83-a78b-31ffd9b33c25",
+                    "prompt": "How many shares were issued as performance incentive awards in Q4 2018?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"150\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "7697fcc0-3806-48a0-987a-615620ed14f2",
+                    "prompt": "What was gross profit in 2017?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$8,180\" AND regexp(\"(?i)million\")) OR (\"$8.180\" AND regexp(\"(?i)billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "9a32ff58-705b-4718-8ccf-f7149643a5a0",
+                    "prompt": "What was total current income tax expense in 2017?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"$1,007\" AND regexp(\"(?i)million\")) OR (\"$1.007\" AND regexp(\"(?i)billion\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "d91a6494-22e4-42d8-9cb7-5a23a42e718c",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/label-genie-intro-youtube.mp3"
+            ],
+            "test_cases": [
+                {
+                    "key": "41008728-7b17-4b9d-a734-3f908fc77f2d",
+                    "prompt": "What is Label Genie?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)zero-shot labeling\") OR regexp(\"(?i)Zero-shot Labeling\") OR regexp(\"(?i)zero shot labeling\") OR regexp(\"(?i)zero-shot labelling\") OR regexp(\"(?i)zero shot labelling\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "5daf6c5d-d0b4-4149-98ce-383ac2e266a7",
+                    "prompt": "Does label genie support audio classification?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)Yes\") OR regexp(\"(?i)supports audio classification\") OR regexp(\"(?i)does support audio classification\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "95509cf9-6ee0-421e-93c1-707d9e63764c",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Itau_Economic_Prospects_Report-Sep2023.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "1c605f07-840e-4f9c-bca7-6c4d89e3be1c",
+                    "prompt": "What is the Outlook for Eurozone GDP for 2024?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"0.7%\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "a626a7a3-9be9-4ecc-8971-216c156b6a2a",
+                    "prompt": "What is the Outlook for China GDP for 2023?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"4.9%\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "e4a29c7b-b68d-4918-974c-bc0da8b0c56f",
+                    "prompt": "What is the Outlook for China GDP for 2024?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"4.1%\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "22a17f3e-e45e-42a3-9ea0-a988a096b688",
+            "documents": [
+                "https://s3.amazonaws.com/artifacts.h2o.ai/releases/ai/h2o/dai/rel-1.10.6-17/docs/userguide/install/ubuntu.html"
+            ],
+            "test_cases": [
+                {
+                    "key": "86e53b82-b752-4ffa-a4d2-411b6682a550",
+                    "prompt": "Do I need to install CUDA or does Driverless AI ships with CUDA?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)Driverless AI ships with CUDA\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "25b32fb3-ed73-428c-9379-216be637d3a5",
+                    "prompt": "What's the minimum memory requirements?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"64\" AND regexp(\"(?i)GB\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "9652eb8c-c42e-45c9-9938-48fc34cb9ebe",
+                    "prompt": "How do I start Driverless AI in Docker? Please include the docker run command.",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(regexp(\"(?i)docker run\") AND regexp(\"(?i)--pid=host\") AND regexp(\"(?i)--rm\") AND regexp(\"(?i)--shm-size=2g\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "ccde648f-ad7a-4072-912f-844fb1dce713",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/fastfood.jpg"
+            ],
+            "test_cases": [
+                {
+                    "key": "3da58efe-f509-44bf-89d6-ce6012ccb88e",
+                    "prompt": "What are the top 3 fast-food restaurants across all age cohorts?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(regexp(\"(?i)MCDONALD'S\") AND regexp(\"(?i)CHICK-FIL-A\") AND regexp(\"(?i)TACO BELL\")) OR (regexp(\"(?i)McDonald's\") AND regexp(\"(?i)Chick-fil-A\") AND regexp(\"(?i)Taco Bell\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "486aef5c-0eae-4b18-8462-b34dd61ac833",
+                    "prompt": "What is the total number of Wendy's customers?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"4,527,294\" OR \"4527294\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "6c3984e6-ab43-42aa-8ed4-fd83af6eee12",
+                    "prompt": "How many baby boomer customers for Subway are there?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"528,785\" OR \"528785\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "ce309310-9fa0-4bc6-a412-dc77b6a221a1",
+                    "prompt": "Between which years is a Gen Xer?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"1965-1981\" OR regexp(\"(?i)1965 to 1981\") OR regexp(\"(?i)1965 and 1981\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "d801317e-aa29-4442-99c3-f1231a16aa3d",
+                    "prompt": "Total customers Gen X?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"13,192,015\" OR \"13192015\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "d014cc75-2738-4b8e-8477-b808f1e980b0",
+                    "prompt": "Number of Silent Gen customers for Chipotle?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"16,263\" OR \"16263\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "f395e7e2-20e1-41b6-beb6-813f8d8724d6",
+                    "prompt": "Total number of customers for Gen X and Gen Z combined?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"24,038,048\" OR \"24038048\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "3178bdfc-9ca7-4c10-be4b-06a5e63d5dd6",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/demo_data_jon.zip"
+            ],
+            "test_cases": [
+                {
+                    "key": "db0932ab-f705-41af-9e14-707d4b8340c4",
+                    "prompt": "What is whisper?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)speech recognition\") OR regexp(\"(?i)speech processing\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "e49a90f5-169c-4d0a-9782-ce3942f7f94b",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/AXA-Sigorta-2022-Annual-Report.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "95a26d8c-0ad2-4747-ae72-7c6cc6692fca",
+                    "prompt": "Who are the board members?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(regexp(\"(?i)Christophe Knaub\") AND regexp(\"(?i)Yavuz \u00d6lken\") AND regexp(\"(?i)Guillaume Herve Marie Xavier Lejeune\") AND regexp(\"(?i)Xavier Veyry\") AND regexp(\"(?i)Maria Jesus De Arteaga Larru\") AND regexp(\"(?i)Nuria Fernandez Paris\") AND regexp(\"(?i)Onur Ko\u00e7kar\")) OR (regexp(\"(?i)Christophe Stephane Knaub\") AND regexp(\"(?i)Yavuz \u00d6lken\") AND regexp(\"(?i)Guillaume Herve Marie Xavier Lejeune\") AND regexp(\"(?i)Xavier Veyry\") AND regexp(\"(?i)Maria Jesus De Arteaga Larru\") AND regexp(\"(?i)Nuria Fernandez Paris\") AND regexp(\"(?i)Onur Ko\u00e7kar\")) OR (regexp(\"(?i)Christophe Knaub\") AND regexp(\"(?i)Yavuz \u00d6lken\") AND regexp(\"(?i)Guillaume Herve Marie Xavier Lejeune\") AND regexp(\"(?i)Xavier Veyry\") AND regexp(\"(?i)Maria Jesus de Arteaga Larru\") AND regexp(\"(?i)Nuria Fernandez Paris\") AND regexp(\"(?i)Onur Ko\u00e7kar\")) OR (regexp(\"(?i)Christophe Stephane Knaub\") AND regexp(\"(?i)Yavuz \u00d6lken\") AND regexp(\"(?i)Guillaume Herve Marie Xavier Lejeune\") AND regexp(\"(?i)Xavier Veyry\") AND regexp(\"(?i)Maria Jesus de Arteaga Larru\") AND regexp(\"(?i)Nuria Fernandez Paris\") AND regexp(\"(?i)Onur Ko\u00e7kar\")) OR (regexp(\"(?i)Christophe Knaub\") AND regexp(\"(?i)Yavuz \u00d6lken\") AND regexp(\"(?i)Guillaume Herve Marie Xavier Lejeune\") AND regexp(\"(?i)Xavier Veyry\") AND regexp(\"(?i)Maria Jesus de Artega Larru\") AND regexp(\"(?i)Nuria Fernandez Paris\") AND regexp(\"(?i)Onur Ko\u00e7kar\")) OR (regexp(\"(?i)Christophe Stephane Knaub\") AND regexp(\"(?i)Yavuz \u00d6lken\") AND regexp(\"(?i)Guillaume Herve Marie Xavier Lejeune\") AND regexp(\"(?i)Xavier Veyry\") AND regexp(\"(?i)Maria Jesus de Artega Larru\") AND regexp(\"(?i)Nuria Fernandez Paris\") AND regexp(\"(?i)Onur Ko\u00e7kar\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "59a5061e-04c0-4205-928f-bc198ccc3f83",
+                    "prompt": "Compare Axa sigorta's paid claims from 2022 to 2018.",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(regexp(\"(?i)4,852,940 thousand TL\") AND regexp(\"(?i)2,014,216 thousand TL\")) OR (regexp(\"(?i)4.852.940 (in thousand of TL)\") AND regexp(\"(?i)2.014.216 (in thousands of TL)\")) OR (regexp(\"(?i)4.852.940 (in thousand TL)\") AND regexp(\"(?i)2.014.216 (in thousand TL)\")) OR (regexp(\"(?i)4.852.940 thousand TL\") AND regexp(\"(?i)2.014.216 thousand TL\")) OR (regexp(\"(?i)4,852,940 TL\") AND regexp(\"(?i)2,014,216 TL\") AND regexp(\"(?i)in thousands of Turkish Lira\")) OR (\"4.852.940\" AND \"2.014.216\" AND regexp(\"(?i)1,000 TL\")) OR (\"4,852,940\" AND \"2,014,216\" AND regexp(\"(?i)1,000 TL\")) OR (regexp(\"(?i)4.852.940 TL\") AND regexp(\"(?i)2.014.216 TL\") AND regexp(\"(?i)in thousands of Turkish Lira\")) OR (\"4,852,940,000\" AND \"2,014,216,000\") OR (\"4.852.940.000\" AND \"2.014.216.000\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "bdeb4030-e1c6-459b-a99f-54607ecf592d",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/2016-1452_guidelines_mifid_ii_transaction_reporting.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "96642451-6bee-4de8-86c1-ea8ae647591d",
+                    "prompt": "When should 'PNDG' be used in the price field?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)not available but pending\") OR regexp(\"(?i)price is not yet available but is pending\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        },
+        {
+            "key": "f99c37da-8ad5-42d8-b36b-44fb229f3d36",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/esma65-8-2594_annex_1_mifir_transaction_reporting_validation_rules.xlsx"
+            ],
+            "test_cases": [
+                {
+                    "key": "e8e808bb-ee06-4929-8430-263c658b137f",
+                    "prompt": "What does rule ID 011 say is the Validation Rule?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)mandatory for all new transaction reports\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+        }
+    ]
+}

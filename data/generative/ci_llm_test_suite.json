@@ -1,0 +1,46 @@
+{
+    "tests": [
+        {
+            "key": "48099214-7b33-443a-a456-eb44519521f1",
+            "documents": [],
+            "test_cases": [
+                {
+                    "key": "9c3a7df3-67df-4819-babb-20636611f077",
+                    "prompt": "Respond to the following question with single letter answer.\n\nQuestion: A customer approaches your window and starts to complain.\n\"I have been waiting here for half an hour I'm about to be late for a meeting now because everyone here is taking their time. I need to deposit this check ASAP\". How do you respond?\n\nA. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\nB. I apologize and explain that this is usually a busy time in the branch, and advise him to come in the morning next time so that he won't have to wait so long.\nC. I explain that we can't control the length of the waiting line. It's important to maintain the bank's reputation.\nD. I say that I understand it's frustrating to wait, but now I need him to calm down so that I can help him with what he needs.",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "constraints": [
+                        "REGEXP:^A.*"
+                    ],
+                    "expected_output": "A"
+                },
+                {
+                    "key": "6709c0e1-de57-4b5b-b826-2060bf935574",
+                    "prompt": "Respond to the following question with single letter answer.\n\nQuestion: While handling the customer's check, you see that some of the details on the deposit \nslip are missing and that the check is not signed. As you ask the customer to fill in those details, he responds aggressively: \"Oh common you have got these details on the check, can't you feel them for me later? I told you I'm late. What do you do?\n\nA. I fill in all the details myself and endorse the check. Customer service is important to me and he is already upset with the bank.\nB. I explain that due to regulations, I cannot sign the check for him.\nC. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.\nD. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "constraints": [
+                        "REGEXP:^D.*"
+                    ],
+                    "expected_output": "D"
+                },
+                {
+                    "key": "c2513694-3fde-465d-99d8-285334a4ff59",
+                    "prompt": "Respond to the following question with a pair of number and a single letter answer.\n\nQuestion: What languages are the following words in? Word 1: Häufigkeit, 2: Großer, 3: sráží, 4: l'arrêt, 5: façon, 6: très, 7: 大型強子對撞機.\nA. Čeština\nB. Deutsch\nC. English\nD. Español\nE. 中文\nF. Français",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "constraints": [
+                        "REGEXP:^B.*",
+                        "REGEXP:^A.*",
+                        "REGEXP:^F.*",
+                        "REGEXP:^E.*"
+                    ],
+                    "expected_output": "Sure! Here are the answers:\n\n1. Häufigkeit - B (German)\n2. Großer - B (German)\n3. sráží - C (Czech)\n4. l'arrêt - F (French)\n5. façon - F (French)\n6. très - F (French)\n7. 大型強子對撞機 - E (Chinese)"
+                }
+           ]
+        }
+    ]
+}

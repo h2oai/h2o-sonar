@@ -1,0 +1,45 @@
+Dataset: creditcard_multinomial.csv
+Source: Derived from UCI Default of Credit Card Clients Dataset
+DOI: 10.24432/C55S3H
+Original Dataset: creditcard.csv
+URL: https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients
+
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Description:
+This dataset is derived from the UCI Default of Credit Card Clients dataset and inherits
+its CC BY 4.0 license. It represents a modified or subset version of the original dataset
+for testing purposes.
+
+Original Dataset:
+This research employed a binary variable, default payment (Yes = 1, No = 0), as the
+response variable. This study reviewed the literature and used 23 variables as
+explanatory variables.
+
+License Terms:
+The Creative Commons Attribution 4.0 International (CC BY 4.0) license allows for:
+- Commercial use: Yes
+- Modification and distribution: Yes
+- Private use: Yes
+- Patent use: Not granted
+
+Requirements:
+- Attribution: You must give appropriate credit to the original authors
+- Indicate changes: State if you modified the dataset
+- No additional restrictions
+
+Full license: https://creativecommons.org/licenses/by/4.0/
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Source License File: creditcard-license.txt
+Group License File: creditcard-derived-datasets-license.txt
+
+Citation:
+Yeh, I. C., & Lien, C. H. (2009). The comparisons of data mining techniques for the
+predictive accuracy of probability of default of credit card clients. Expert Systems
+with Applications, 36(2), 2473-2480.
+
+Attribution Required: Yes (CC BY 4.0)
+Commercial Use: Allowed
+Modification: Allowed
+Distribution: Allowed with attribution

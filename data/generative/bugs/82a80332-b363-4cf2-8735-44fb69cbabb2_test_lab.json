@@ -1,0 +1,230 @@
+{
+    "name": "TestLab",
+    "description": "Test lab for RAG / LLM evaluation.",
+    "raw_dataset": {
+        "inputs": [
+            {
+                "key": "fbfb2b1e-52ac-4e2a-a2c8-9bbf2d8422e2",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: In this sentence, there may be a problem with English grammar.\nIf a problem does exist, select the letter that indicates the most effective change. If no problem exists, select choice D. The new restaurant specializes in preparing rear meat.\n\nA. Change specializes to specialize\nB. Change rear to rare\nC. Change meat to meet\nD. No changes are necessary",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "B",
+                "output_constraints": [
+                    "REGEXP:^B.*"
+                ],
+                "output_condition": "",
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+            },
+            {
+                "key": "4eb15ccd-ba9a-4867-8ffc-bcaa0ad395a9",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: While handling the customer's check, you see that some of the details on the deposit \nslip are missing and that the check is not signed. As you ask the customer to fill in those details, he responds aggressively: \"Oh common you have got these details on the check, can't you feel them for me later? I told you I'm late. What do you do?\n\nA. I fill in all the details myself and endorse the check. Customer service is important to me and he is already upset with the bank.\nB. I explain that due to regulations, I cannot sign the check for him.\nC. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.\nD. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "D",
+                "output_constraints": [
+                    "REGEXP:^D.*"
+                ],
+                "output_condition": "",
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+            },
+            {
+                "key": "d9ae7fbc-5ac6-405a-a16d-177ad9ac431e",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: Cynthia's net income is $4,300. She opened both a checking account and a savings account, into which she has all of her income directly deposited each month. The ratio between the amount that is deposited in her savings account and the amount that is deposited in her checking account is 1:3, respectively. How much money is being deposited into Cynthia's savings account each month?\nA. 3,225$\nB. 2,866$\nC. 1,433$\nD. 1,075$",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "A",
+                "output_constraints": [
+                    "REGEXP:^A.*"
+                ],
+                "output_condition": "",
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+            },
+            {
+                "key": "a933db2a-b7e5-43bc-9f51-86024bed10ce",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: A specific bank branch serves 256 clients on average every day. The ratio between tellers and clients is 1:32, so that every teller serves 32 people on average every day. The management wishes to change this ratio to 1:20. How many new tellers should be hired?\nA. 4\nB. 5\nC. 9\nD. 12 ",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "B",
+                "output_constraints": [
+                    "REGEXP:^B.*"
+                ],
+                "output_condition": "",
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+            },
+            {
+                "key": "7849610f-8f7d-49c2-9325-b61749efcd68",
+                "input": "Respond to the following question with single letter answer.\n        \nQuestion: There is no doubt that the Lancaster Bomber severely reduced the ability of the German war machine to function. Britain\u2019s Strategic Bombing Offensive, which was mounted with increasing intensity from 1942, meant that the Reich had to put huge resources into defending the homeland. These were resources that could have been used on the Western Front against D-Day, or even more strongly on the Eastern Front against Russia. Germany had to turn forces to:\n\nA. The Russian front.\nB. The western front.\nC. Defend Germany.\nD. Defend Austria.",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "C",
+                "output_constraints": [
+                    "REGEXP:^C.*"
+                ],
+                "output_condition": "",
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+            },
+            {
+                "key": "805efe3a-4942-4dfc-a084-8ef0782a4d69",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: A customer approaches your window and starts to complain.\n\"I have been waiting here for half an hour I'm about to be late for a meeting now because everyone here is taking their time. I need to deposit this check ASAP\". How do you respond?\n\nA. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\nB. I apologize and explain that this is usually a busy time in the branch, and advise him to come in the morning next time so that he won't have to wait so long.\nC. I explain that we can't control the length of the waiting line. It's important to maintain the bank's reputation.\nD. I say that I understand it's frustrating to wait, but now I need him to calm down so that I can help him with what he needs.",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "A",
+                "output_constraints": [
+                    "REGEXP:^A.*"
+                ],
+                "output_condition": "",
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+            }
+        ]
+    },
+    "dataset": {
+        "inputs": [
+            {
+                "key": "fbfb2b1e-52ac-4e2a-a2c8-9bbf2d8422e2",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: In this sentence, there may be a problem with English grammar.\nIf a problem does exist, select the letter that indicates the most effective change. If no problem exists, select choice D. The new restaurant specializes in preparing rear meat.\n\nA. Change specializes to specialize\nB. Change rear to rare\nC. Change meat to meet\nD. No changes are necessary",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "B",
+                "output_constraints": [
+                    "REGEXP:^B.*"
+                ],
+                "output_condition": "",
+                "actual_output": "B. Change rear to rare\n\nThe word \"rear\" is incorrect in this context. It seems the sentence is trying to say that the new restaurant specializes in preparing meat that is rarely found or cooked, so the correct choice is \"rare.\"",
+                "actual_duration": 2.5021514892578125,
+                "cost": 0.00020900000000001473,
+                "model_key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+            },
+            {
+                "key": "4eb15ccd-ba9a-4867-8ffc-bcaa0ad395a9",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: While handling the customer's check, you see that some of the details on the deposit \nslip are missing and that the check is not signed. As you ask the customer to fill in those details, he responds aggressively: \"Oh common you have got these details on the check, can't you feel them for me later? I told you I'm late. What do you do?\n\nA. I fill in all the details myself and endorse the check. Customer service is important to me and he is already upset with the bank.\nB. I explain that due to regulations, I cannot sign the check for him.\nC. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.\nD. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "D",
+                "output_constraints": [
+                    "REGEXP:^D.*"
+                ],
+                "output_condition": "",
+                "actual_output": "D. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.\n\nIt's important to maintain the bank's policies and regulations while providing excellent customer service. The bank has rules in place to ensure the security and accuracy of financial transactions, and it's crucial to adhere to them. In this situation, the best course of action is to ask the customer to sign the check, as it is not appropriate for the bank representative to sign it on their behalf. Offering a solution for the next time, such as filling out the deposit slip in advance, can help maintain a positive relationship with the customer.",
+                "actual_duration": 4.260360240936279,
+                "cost": 0.000512000000000068,
+                "model_key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+            },
+            {
+                "key": "d9ae7fbc-5ac6-405a-a16d-177ad9ac431e",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: Cynthia's net income is $4,300. She opened both a checking account and a savings account, into which she has all of her income directly deposited each month. The ratio between the amount that is deposited in her savings account and the amount that is deposited in her checking account is 1:3, respectively. How much money is being deposited into Cynthia's savings account each month?\nA. 3,225$\nB. 2,866$\nC. 1,433$\nD. 1,075$",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "A",
+                "output_constraints": [
+                    "REGEXP:^A.*"
+                ],
+                "output_condition": "",
+                "actual_output": "D. 1,075$\n\nExplanation:\nThe ratio of savings to checking is 1:3, so for every 1 part that goes into savings, 3 parts go into checking. To find out how much goes into savings, we need to find 1 part of the total income.\n\nTo do this, we can set up a proportion: 1 part / (1+3) parts = x part / $4,300\n\nSolving for x, we get:\n\nx = ($4,300 * 1) / 4\nx = $4,300 / 4\nx = $1,075\n\nTherefore, Cynthia deposits $1,075 into her savings account each month. Answer: D. 1,075$.",
+                "actual_duration": 4.33708643913269,
+                "cost": 0.0005039999999999489,
+                "model_key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+            },
+            {
+                "key": "a933db2a-b7e5-43bc-9f51-86024bed10ce",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: A specific bank branch serves 256 clients on average every day. The ratio between tellers and clients is 1:32, so that every teller serves 32 people on average every day. The management wishes to change this ratio to 1:20. How many new tellers should be hired?\nA. 4\nB. 5\nC. 9\nD. 12 ",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "B",
+                "output_constraints": [
+                    "REGEXP:^B.*"
+                ],
+                "output_condition": "",
+                "actual_output": "A\nHere's the reasoning:\n1. The current ratio is 1:32, and the management wants to change it to 1:20.\n2. This means they want each teller to serve fewer clients, reducing the number of clients served by a single teller from 32 to 20.\n3. To find out how many new tellers are needed, divide the current number of clients (32) by the desired number of clients per teller (20).\n4. Doing this calculation gives us 32 / 20 = 1.6, which means we need 1.6 tellers for every current teller to achieve the desired ratio.\n5. However, since we cannot hire a fraction of a teller, we round up to the nearest whole number.\n6. Therefore, we need to hire 1 additional teller for every current teller, which translates to a 1:1 ratio between current and new tellers.\n7. With 4 tellers currently serving 256 clients (32 clients per teller), hiring 4 new tellers will result in a 1:1 ratio of current to new tellers, allowing each teller to serve 16 clients (20 clients per teller minus the initial 4 clients per teller).\n8. This results in a total of 8 tellers serving 256 clients, with each teller serving 32 clients on average, which meets the desired 1:20 ratio.\n\nSo, the answer is A (4).",
+                "actual_duration": 6.255473613739014,
+                "cost": 0.0008590000000000542,
+                "model_key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+            },
+            {
+                "key": "7849610f-8f7d-49c2-9325-b61749efcd68",
+                "input": "Respond to the following question with single letter answer.\n        \nQuestion: There is no doubt that the Lancaster Bomber severely reduced the ability of the German war machine to function. Britain\u2019s Strategic Bombing Offensive, which was mounted with increasing intensity from 1942, meant that the Reich had to put huge resources into defending the homeland. These were resources that could have been used on the Western Front against D-Day, or even more strongly on the Eastern Front against Russia. Germany had to turn forces to:\n\nA. The Russian front.\nB. The western front.\nC. Defend Germany.\nD. Defend Austria.",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "C",
+                "output_constraints": [
+                    "REGEXP:^C.*"
+                ],
+                "output_condition": "",
+                "actual_output": "C. Defend Germany.\n\nThe Lancaster Bomber campaign forced Germany to divert resources to defend the homeland, which could have been used on other fronts. While it is true that some of these resources may have been used on the Western Front against D-Day or more strongly on the Eastern Front against Russia, the primary concern for Germany would have been to protect its own territory (Option C).",
+                "actual_duration": 3.2338600158691406,
+                "cost": 0.0003089999999998927,
+                "model_key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+            },
+            {
+                "key": "805efe3a-4942-4dfc-a084-8ef0782a4d69",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: A customer approaches your window and starts to complain.\n\"I have been waiting here for half an hour I'm about to be late for a meeting now because everyone here is taking their time. I need to deposit this check ASAP\". How do you respond?\n\nA. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\nB. I apologize and explain that this is usually a busy time in the branch, and advise him to come in the morning next time so that he won't have to wait so long.\nC. I explain that we can't control the length of the waiting line. It's important to maintain the bank's reputation.\nD. I say that I understand it's frustrating to wait, but now I need him to calm down so that I can help him with what he needs.",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "A",
+                "output_constraints": [
+                    "REGEXP:^A.*"
+                ],
+                "output_condition": "",
+                "actual_output": "A. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\n\nThis is the best response because it acknowledges the customer's frustration and shows empathy, while also committing to help them as quickly as possible. It's important to address the customer's immediate concern and make them feel heard and valued.",
+                "actual_duration": 3.2705492973327637,
+                "cost": 0.00037200000000003897,
+                "model_key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+            }
+        ]
+    },
+    "models": [
+        {
+            "connection": "f17d5d18-d98f-4ca5-af5f-73e8ea6ea544",
+            "model_type": "h2ogpte_llm",
+            "name": "LLM model - LLM: mistralai/Mixtral-8x7B-Instruct-v0.1",
+            "llm_model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+            "model_cfg": {},
+            "key": "d9a11f6d-12e3-41c4-aecb-197b9c57b10e"
+        }
+    ],
+    "llm_model_names": [
+        "mistralai/Mixtral-8x7B-Instruct-v0.1"
+    ],
+    "docs_cache": {}
+}

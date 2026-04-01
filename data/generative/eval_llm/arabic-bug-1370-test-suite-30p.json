@@ -1,0 +1,252 @@
+{
+  "name": "[Workflows] Test Generated for خدمة العملاء اليدوي (Arabic customer care)",
+  "tests": [
+    {
+      "documents": [
+        "https://eval-studio-artifacts.s3.us-east-1.amazonaws.com/h2o-eval-studio-demo-data/arabic-crm/arabic-crm.pdf"
+      ],
+      "test_cases": [
+        {
+          "key": "95a115c2-87c6-4a9f-a5e6-fa6a4ce58a21",
+          "prompt": "What does the term 'ةمير' translate to in English?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "ةمير translates to 'Crisis'.",
+          "condition": ""
+        },
+        {
+          "key": "e15124d0-84c8-4fdf-8265-8a20a87f5cc7",
+          "prompt": "What does \"ةدوجب\" signify in relation to \"ةيرارمتلا\"?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "\"ةدوجب\" signifies the result or outcome of \"ةيرارمتلا\".",
+          "condition": ""
+        },
+        {
+          "key": "bee83fc5-1976-4800-b8ee-a25bd5bb05a5",
+          "prompt": "What is the term translated to 'Crisis Management' in the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "ةمر و ادارة الازمات",
+          "condition": ""
+        },
+        {
+          "key": "89414091-b388-47bb-8ebe-ab049c8a1a9c",
+          "prompt": "What does \"θيرارمتلا\" indicate in the context of the passage?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "\"θيرارمتلا\" indicates a significant part of the main topic.",
+          "condition": ""
+        },
+        {
+          "key": "83d9cd2c-c830-4edc-95b7-3b4a65d55f05",
+          "prompt": "What does \"ةيرجتi izzizعلادبع\" refer to?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "\"ةيرجتi izzizعلادبع\" refers to the main subject of the passage.",
+          "condition": ""
+        },
+        {
+          "key": "ce1515d7-49b6-4943-81a5-f2f3b68e0946",
+          "prompt": "What is the significance of \"ةيفرعلا\" in the passage?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "\"ةيفرعلا\" describes a specific aspect or quality of \"ةيرارمتلا\".",
+          "condition": ""
+        },
+        {
+          "key": "ceede631-05ef-4719-a573-c05ba1bed65c",
+          "prompt": "What is the title of the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "ةمير و ادارة الازمات: دراسة في الية اتخاذ القرارات",
+          "condition": ""
+        },
+        {
+          "key": "7c43d810-f10e-4654-9638-dbb0d06fda7b",
+          "prompt": "What is the term 'ةمر و ادارة الازمات' referring to?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "ةمر و ادارة الازمات is referring to crisis management.",
+          "condition": ""
+        },
+        {
+          "key": "654ee1a6-7a22-4626-82b6-0ca783e03273",
+          "prompt": "What is the main subject of the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The main subject of the document is crisis management.",
+          "condition": ""
+        },
+        {
+          "key": "5ab02a62-51d9-4d0a-b970-2e293b9ac7c9",
+          "prompt": "What is the relevance of \"θيفرعلا\" in the passage?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "\"θيفرعلا\" is relevant as it is part of the main topic.",
+          "condition": ""
+        },
+        {
+          "key": "1709775f-4491-45d0-b8d6-21f4958e4df9",
+          "prompt": "What is the main topic of the passage?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The main topic of the passage is \"ةيرجتi izzizعلادبع: ةيرارمتلا ةيفرعلا ةدوجب\".",
+          "condition": ""
+        },
+        {
+          "key": "bc25bed2-c6d7-4933-9e36-be1db5f20db6",
+          "prompt": "What is the significance of \"θيرارمتلا\" in the passage?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "\"θيرارمتلا\" is a significant part of the main topic discussed in the passage.",
+          "condition": ""
+        },
+        {
+          "key": "eb6f1c2d-963b-4ee9-b30c-1dd28bb2263b",
+          "prompt": "What is the main objective of the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The main objective of the document is to study the methodology of decision-making in crisis management.",
+          "condition": ""
+        },
+        {
+          "key": "0fa11b76-c3e6-4ade-a2f5-ddcdf0af5b6f",
+          "prompt": "What is the significance of \"θيرارمتلا\" in the context of the passage?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "\"θيرارمتلا\" is significant as it is part of the main topic.",
+          "condition": ""
+        },
+        {
+          "key": "353c3450-91a4-40da-a71a-45f92705d56a",
+          "prompt": "What does the document focus on in terms of decision-making?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The document focuses on the methodology of decision-making in crisis management.",
+          "condition": ""
+        },
+        {
+          "key": "66e30a1a-4606-4eba-92b8-76d35bdfbddb",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What is the central subject of the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The central subject of the document is crisis management and the decision-making process.",
+          "condition": ""
+        },
+        {
+          "key": "65b811a9-2638-48a4-9af2-607dae8916f3",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What is the central theme of the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The central theme of the document is crisis management and the decision-making process.",
+          "condition": ""
+        },
+        {
+          "key": "03e00b23-3c55-4e15-ac22-6d992b9e3f61",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What does the fourth image contain?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The fourth image contains information about customer service.",
+          "condition": ""
+        },
+        {
+          "key": "93b4acd9-f456-4f20-8e3d-2dfbc367a313",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What is the focus of the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The focus of the document is on crisis management and the strategies involved in decision-making.",
+          "condition": ""
+        },
+        {
+          "key": "cf3917ef-57a4-44f5-8f05-450fa641376f",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What does the document study?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The document studies the methodology of decision-making in crisis management.",
+          "condition": ""
+        },
+        {
+          "key": "72749489-529a-49e7-b0ba-c2de642dfdc8",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What is the main topic of the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The main topic of the document is crisis management and decision-making.",
+          "condition": ""
+        },
+        {
+          "key": "f8829618-02c4-479f-b481-aff4e3c7d604",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What is the name of the second logo?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The second logo is 'TAZIZ'",
+          "condition": ""
+        },
+        {
+          "key": "87b8ee1f-785a-4880-ba94-d58776094a12",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What does the second image discuss?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The second image discusses the importance of customer service.",
+          "condition": ""
+        },
+        {
+          "key": "134ac898-85cf-49bc-a1b3-ea2bed1b5730",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What does the document examine?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The document examines the techniques and strategies of decision-making in crisis situations.",
+          "condition": ""
+        },
+        {
+          "key": "21bd79d6-ceab-46d7-865f-8568fd9204dc",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What is the main study area of the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The main study area of the document is crisis management and decision-making strategies.",
+          "condition": ""
+        },
+        {
+          "key": "68406067-e4b1-4caf-9a51-d9dff968e880",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What does the eighth image highlight?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The eighth image highlights the key aspects of customer service.",
+          "condition": ""
+        },
+        {
+          "key": "4cf19352-2399-4ffa-b02b-8787ad76ddd7",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What services are mentioned in the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The document mentions various services but does not specify them clearly.",
+          "condition": ""
+        },
+        {
+          "key": "0591334d-c81d-4333-9b49-f589019dbf7f",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What is the main study topic of the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The main study topic of the document is crisis management and the decision-making process.",
+          "condition": ""
+        },
+        {
+          "key": "5fff25d0-f345-428d-b898-aee0f20363cc",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What is the title of the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "ةمير و ادارة الازمات: دراسة في الية اتخاذ القرارات",
+          "condition": ""
+        },
+        {
+          "key": "ab0c5912-fb15-4e10-b6b6-2a1e15d8987d",
+          "prompt": "Answer only with the single word 'Yes' or 'No': What is the name of the business mentioned?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "The name of the business is 'القداسي'",
+          "condition": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,335 @@
+{
+    "name": "TestLab",
+    "description": "Test lab for RAG / LLM evaluation.",
+    "raw_dataset": {
+        "inputs": []
+    },
+    "dataset": {
+        "inputs": [
+            {
+                "key": "d981bf23-9790-4c5e-905e-2ab56cba7ece",
+                "input": "What was the revenue of Brazil?",
+                "corpus": [
+                    "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+                ],
+                "context": [
+                    "OPERATIONS\nSOUTH AMERICA DIVISION\nFor the First Quarter of:\nMillions of Pesos (1)\n72.5%\n10.2%\n11.0%\n2027\n2.5%\n2025\n3.8%\n2026\n2028+\nCoca-Cola FEMSA Reports 1Q23 Results\nApril 26, 2023\nPage 12 of 14\nAssets\nMar-23\nDec-22\n% Var.\nLiabilities & Equity\nMar-23\nDec-22\n% Var.\nCurrent Assets\nCurrent Liabilities\nShort-term bank loans and notes payable\n7,901\n8,524\n-7%\n41,147\n40,277\n2%\nSuppliers\n24,759\n26,834\n-8%\nTotal accounts receivable\n14,024\n16,318\n-14%\nShort-term leasing Liabilities\n520\n472\n10%\nInventories\n13,842\n11,888\n16%\nOther current liabilities\n35,667\n22,129\n61%\nOther current assets\n9,811\n10,729\n-9%\nTotal current liabilities\n68,848\n57,959\n19%\nTotal current assets\n78,825\n79,211\n0%\nNon-Current Liabilities\n-\n-\nNon-Current Assets\n-\n-\nLong-term bank loans and notes payable\n67,851\n70,146\n-3%\nProperty, plant and equipment\n124,014\n125,293\n-1%\nLong Term Leasing"
+                ],
+                "categories": [
+                    "question_answering"
+                ],
+                "relationships": [],
+                "expected_output": "Brazil revenue was 15,969 million.",
+                "output_constraints": [
+                    "15,969",
+                    "REGEXP:15?,969 [Mm]illion",
+                    [
+                        "BRAZIL",
+                        "REGEXP:[B]razil"
+                    ]
+                ],
+                "output_condition": "",
+                "actual_output": "According to the provided documents, the revenue of Brazil was Ps. 15,969 million for the first quarter of 2023.",
+                "actual_duration": 17.148982524871826,
+                "cost": 0.05585899999999988,
+                "model_key": "469f7653-48f2-45ab-8e1f-e349ee94bf8b"
+            },
+            {
+                "key": "3db6878b-1511-4b58-b42f-985ca9699d1d",
+                "input": "Who is the chairman of the board?",
+                "corpus": [
+                    "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bradesco-2022-integrated-report.pdf"
+                ],
+                "context": [
+                    "EXECUTIVE COMMITTEES\nThey assist in the activities of the Board of Executive\nOfficers, all governed by their own regulations.\nBOARD OF DIRECTORS\nIt is tasked with determining the corporate strategy\nand reviewing business plans and policies, as well as\noverseeing and monitoring the Board of Executive\nOfficers, electing and dismissing its members. It meets\nordinarily six times a year, and extraordinarily when the\ninterests of the company so require. It includes its own\nInternal Regulations and its president is an independent\nmember who does not hold an executive position at the\nOrganization.\nComposition: Eleven members, four of whom are\nindependent.\nBOARD OF EXECUTIVE OFFICERS\nIt is tasked with outlining and monitoring the execution\nof the strategic orientation established by the Board\nof Directors. Members have a two-year term and are\nallowed to be re-elected. The positions of Chairman of\nthe Board of Directors and Chief Executive Officer cannot\nbe held by the same person.\nsee details about our governance structure GRI 2-9, 2-11\nNOVO\nNEW\n\u2022\nan 80-year history with\npurpose and values\n\u2022 corporate strategy\n\u2022 digital and physical presence\n\u2022 value creation\n\u2022\necosystem and activities |\nportfolio\n\u2022 corporate governance\n\u2022\nethics, integrity and\ntransparency\n\u2022 risk management\nintegrated\nreport 2022\n33\nfinancial\nperformance\nsocial activity and\nrelationships\nconnection with\nsustainability\nour\npeople\nclient\nin focus\nabout\nus\nbradesco\nintroduction\nsummary of\nGRI/SASB\nannexes\n"
+                ],
+                "categories": [
+                    "question_answering"
+                ],
+                "relationships": [],
+                "expected_output": "The chairman of the board was Luiz Carlos Trabuco Cappi.",
+                "output_constraints": [
+                    "Luiz Carlos Trabuco Cappi"
+                ],
+                "output_condition": "",
+                "actual_output": "According to the information provided in the document \"bradesco-2022-integrated-report.pdf\" on page 8, the chairman of the Board of Directors is Luiz Carlos Trabuco Cappi.",
+                "actual_duration": 7.260527849197388,
+                "cost": 0.0017450000000001076,
+                "model_key": "fc34b3ba-f6c0-4dde-bd03-845f3ca19143"
+            },
+            {
+                "key": "13011931-70c4-40b9-aacc-3870f521dbaa",
+                "input": "What was the number of agreements that include human rights clauses, in 2022? Provide the answer in both French and Chinese.",
+                "corpus": [
+                    "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bradesco-2022-integrated-report.pdf"
+                ],
+                "context": [
+                    "Those whose self-\nassessment points to a high or very\nhigh risk may undergo an on-site or\nremote audit the following year. We\nmonitor 100% of our suppliers on a\nmonthly basis and immediately blocks\nthose in which any occurrence linked\nto the social aspect is identified from\nentering into future contracts.\nWith clients and business partners,\nespecially when it comes to granting\nfinancing, part of our scope of action\nfor managing social, environmental\nand climate risks is monitoring for\npossible breaches of human rights.\nThrough a due diligence process,\nwe identify potential risks related to\nlocal and traditional communities,\ninvoluntary resettlements, indigenous\nlands, quilombolas, slave-like labor,\nchild labor, sexual exploitation,\nhuman trafficking and labor rights. In\n2022, we did not identify any cases\nof human rights violations, so no\nremedial measures were taken.\nWe monitor respect for human\nrights in the relationships\nwith customers and business\npartners, especially when it\ncomes to granting financing\nOur respect for, and protection of\nHuman Rights is expressed in the\nCorporate Human Rights Policy\nand the Bradesco Commitment to\nHuman Rights. Both are aligned with\ninternationally accepted principles\nsuch as: the Universal Declaration of\nHuman Rights; \u201cUnited Nation Guiding\nPrinciples on Business and Human\nRights\u201d; and ILO (International Labor\nOrganization) Conventions. These\ndocuments cover all our operations\nin Brazil and abroad, and include the\nrelationship with all stakeholders\n(clients, suppliers, civil society\norganizations, business partners,\ninvestors, press, and others).\n"
+                ],
+                "categories": [
+                    "question_answering"
+                ],
+                "relationships": [],
+                "expected_output": "French: Le nombre d'accords comprenant des clauses relatives aux droits de l'homme en 2022 \u00e9tait de 22. Chinese: 2022 \u5e74\u5305\u542b\u4eba\u6743\u6761\u6b3e\u7684\u534f\u8bae\u6570\u91cf\u4e3a 22 \u4e2a\u3002",
+                "output_constraints": [
+                    [
+                        "22",
+                        "twenty-two",
+                        "22222"
+                    ]
+                ],
+                "output_condition": "",
+                "actual_output": "According to the provided documents, the number of agreements that include human rights clauses in 2022 was 22. \n\nIn French: Le nombre d'accords qui incluent des clauses relatives aux droits de l'homme en 2022 \u00e9tait de 22.\n\nIn Chinese: \u6839\u636e\u63d0\u4f9b\u7684\u6587\u6863\uff0c2022\u5e74\u5305\u542b\u4eba\u6743\u6761\u6b3e\u7684\u534f\u8bae\u6570\u91cf\u4e3a22\u3002",
+                "actual_duration": 8.132230281829834,
+                "cost": 0.11756900000000003,
+                "model_key": "fc34b3ba-f6c0-4dde-bd03-845f3ca19143"
+            },
+            {
+                "key": "d981bf23-9790-4c5e-905e-2ab56cba7ece",
+                "input": "What was the revenue of Brazil?",
+                "corpus": [
+                    "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+                ],
+                "context": [
+                    "This increase was driven mainly by\ninflationary effects across our territories, effects of non-recoverable withholdings, and deferred taxes.\nNet income attributable to equity holders of the company was Ps. 3,916 million as compared to Ps. 2,894 million during the\nsame period of the previous year. This increase was driven mainly by operating income growth, coupled with a one-off non-cash\neffect that affected our comprehensive financial result during the same period of 2022. Earnings per share1 were Ps. 0.23\n(Earnings per unit were Ps. 1.86 and per ADS were Ps. 18.85.).\n(1)\nQuarterly earnings / outstanding shares. Earnings per share (EPS) were calculated using 16,806.7 million shares outstanding. For the convenience of the reader, as a\nKOFUBL Unit is comprised of 8 shares (3 Series B shares and 5 Series L shares), earnings per unit are equal to EPS multiplied by 8. Each ADS represents 10 KOFUBL Units.\n"
+                ],
+                "categories": [
+                    "question_answering"
+                ],
+                "relationships": [],
+                "expected_output": "Brazil revenue was 15,969 million.",
+                "output_constraints": [
+                    "15,969",
+                    "REGEXP:15?,969 [Mm]illion",
+                    [
+                        "BRAZIL",
+                        "REGEXP:[B]razil"
+                    ]
+                ],
+                "output_condition": "",
+                "actual_output": "According to the information provided in the document text, the revenue of Brazil was Ps. 15,969 million for the first quarter of 2023, which represents an increase of 11.0% compared to the same period of the previous year. Additionally, it is mentioned that Brazil includes beer revenues of Ps. 1,450 million for the first quarter of 2023 and Ps. 1,250 million for the same period of the previous year.",
+                "actual_duration": 20.922088146209717,
+                "cost": 0.07635300000000012,
+                "model_key": "551a3ce8-0e12-425c-9bda-7a48d0baeb4c"
+            },
+            {
+                "key": "3db6878b-1511-4b58-b42f-985ca9699d1d",
+                "input": "Who is the chairman of the board?",
+                "corpus": [
+                    "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bradesco-2022-integrated-report.pdf"
+                ],
+                "context": [
+                    "EXECUTIVE COMMITTEES\nThey assist in the activities of the Board of Executive\nOfficers, all governed by their own regulations.\nBOARD OF DIRECTORS\nIt is tasked with determining the corporate strategy\nand reviewing business plans and policies, as well as\noverseeing and monitoring the Board of Executive\nOfficers, electing and dismissing its members. It meets\nordinarily six times a year, and extraordinarily when the\ninterests of the company so require. It includes its own\nInternal Regulations and its president is an independent\nmember who does not hold an executive position at the\nOrganization.\nComposition: Eleven members, four of whom are\nindependent.\nBOARD OF EXECUTIVE OFFICERS\nIt is tasked with outlining and monitoring the execution\nof the strategic orientation established by the Board\nof Directors. Members have a two-year term and are\nallowed to be re-elected. The positions of Chairman of\nthe Board of Directors and Chief Executive Officer cannot\nbe held by the same person.\nsee details about our governance structure GRI 2-9, 2-11\nNOVO\nNEW\n\u2022\nan 80-year history with\npurpose and values\n\u2022 corporate strategy\n\u2022 digital and physical presence\n\u2022 value creation\n\u2022\necosystem and activities |\nportfolio\n\u2022 corporate governance\n\u2022\nethics, integrity and\ntransparency\n\u2022 risk management\nintegrated\nreport 2022\n33\nfinancial\nperformance\nsocial activity and\nrelationships\nconnection with\nsustainability\nour\npeople\nclient\nin focus\nabout\nus\nbradesco\nintroduction\nsummary of\nGRI/SASB\nannexes\n"
+                ],
+                "categories": [
+                    "question_answering"
+                ],
+                "relationships": [],
+                "expected_output": "The chairman of the board was Luiz Carlos Trabuco Cappi.",
+                "output_constraints": [
+                    "Luiz Carlos Trabuco Cappi"
+                ],
+                "output_condition": "",
+                "actual_output": "According to the information provided in the document text, specifically on page 8 of the \"bradesco-2022-integrated-report.pdf\" document, the Chairman of the Board of Directors is Luiz Carlos Trabuco Cappi.",
+                "actual_duration": 17.45577359199524,
+                "cost": 0.05585899999999988,
+                "model_key": "2f0b2924-6e94-42a6-9b60-6f0bc99adffe"
+            },
+            {
+                "key": "13011931-70c4-40b9-aacc-3870f521dbaa",
+                "input": "What was the number of agreements that include human rights clauses, in 2022? Provide the answer in both French and Chinese.",
+                "corpus": [
+                    "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bradesco-2022-integrated-report.pdf"
+                ],
+                "context": [
+                    "In addition to these documents and\nthe Codes of Ethical Conduct, we\ndeal with the subject in a joint and\nintegrated manner with a variety\nof internal Policies, such as the\nSustainability, Socio-environmental\nand Climate Responsibility, Diversity\nand Inclusion Policies, and internal\nrespect for human rights\nGRI 2-23; FS1\n\u2022\nan 80-year history with\npurpose and values\n\u2022 corporate strategy\n\u2022 digital and physical presence\n\u2022 value creation\n\u2022\necosystem and activities |\nportfolio\n\u2022 corporate governance\n\u2022\nethics, integrity and\ntransparency\n\u2022 risk management\nintegrated\nreport 2022\n42\nfinancial\nperformance\nsocial activity and\nrelationships\nconnection with\nsustainability\nour\npeople\nclient\nin focus\nabout\nus\nintroduction\nsummary of\nGRI/SASB\nannexes\nMONITORING OF SOCIAL AND ENVIRONMENTAL PORTFOLIOS WITH HUMAN RIGHTS CLAUSES (R$ MILLION)\n2019\n2021\n2021\n2022\nNo.\nAmount\nfinanced\nNo.\nAmount\nfinanced\nNo.\nAmount\nfinanced\nNo.\n"
+                ],
+                "categories": [
+                    "question_answering"
+                ],
+                "relationships": [],
+                "expected_output": "French: Le nombre d'accords comprenant des clauses relatives aux droits de l'homme en 2022 \u00e9tait de 22. Chinese: 2022 \u5e74\u5305\u542b\u4eba\u6743\u6761\u6b3e\u7684\u534f\u8bae\u6570\u91cf\u4e3a 22 \u4e2a\u3002",
+                "output_constraints": [
+                    [
+                        "22",
+                        "twenty-two",
+                        "22222"
+                    ]
+                ],
+                "output_condition": "",
+                "actual_output": "According to the information provided in the document text, the total number of agreements that include human rights clauses in 2022 was 22.\n\nEn fran\u00e7ais : Selon les informations fournies dans le texte du document, le nombre total d'accords qui incluent des clauses relatives aux droits de l'homme en 2022 \u00e9tait de 22.\n\nEn chinois: \u6839\u636e\u63d0\u4f9b\u7684\u6587\u6863\u6587\u672c\u4e2d\u7684\u4fe1\u606f\uff0c2022 \u5e74\u5305\u542b\u4eba\u6743\u6761\u6b3e\u7684\u534f\u8bae\u603b\u6570\u4e3a 22\u3002",
+                "actual_duration": 10.681668758392334,
+                "cost": 0.01742700000000008,
+                "model_key": "2f0b2924-6e94-42a6-9b60-6f0bc99adffe"
+            },
+            {
+                "key": "d981bf23-9790-4c5e-905e-2ab56cba7ece",
+                "input": "What was the revenue of Brazil?",
+                "corpus": [
+                    "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+                ],
+                "context": [
+                    "Total revenues increased 6.6% to Ps. 23,740 million, driven by our volume growth, revenue management and favorable mix\neffects. This increase was partially offset by unfavorable currency translation effects of most of our operating currencies in the\ndivision into Mexican Pesos. On a comparable basis, total revenues would have increased 27.5%.\nGross profit increased 11.0% to Ps. 9,539 million, and gross margin expanded 160 basis points to 40.2%. This increase was\ndriven mainly by our top-line growth, favorable mix effects, and raw material hedging strategies. This increase was partially\noffset by increases in raw material costs such as sweeteners and PET. On a comparable basis, gross profit would have increased\n34.8%.\nOperating income increased 43.3% to Ps. 2,713 million in the first quarter of 2023, resulting in an operating margin expansion of\n290 basis points to 11.4%. This increase was driven mainly by higher gross profit and an increase in operating leverage resulting\nfrom volume growth and operating expense efficiencies. On a comparable basis, operating income would have increased 77.7%.\n(1)\nPlease refer to page 8 for our definition of \u201ccomparable\u201d and a description of the factors affecting the comparability of our financial and operating performance.\n"
+                ],
+                "categories": [
+                    "question_answering"
+                ],
+                "relationships": [],
+                "expected_output": "Brazil revenue was 15,969 million.",
+                "output_constraints": [
+                    "15,969",
+                    "REGEXP:15?,969 [Mm]illion",
+                    [
+                        "BRAZIL",
+                        "REGEXP:[B]razil"
+                    ]
+                ],
+                "output_condition": "",
+                "actual_output": "According to the provided document text, specifically on page 13 of the Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf, the revenue of Brazil for the first quarter of 2023 was Ps. 15,969 million, which includes beer revenues of Ps. 1,450 million. For the same period in the previous year, the revenue was Ps. 14,388 million, including beer revenues of Ps. 1,250 million.",
+                "actual_duration": 24.386210918426514,
+                "cost": 0.11931400000000014,
+                "model_key": "602a4141-04ab-4abd-aeaf-b226d3166270"
+            },
+            {
+                "key": "3db6878b-1511-4b58-b42f-985ca9699d1d",
+                "input": "Who is the chairman of the board?",
+                "corpus": [
+                    "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bradesco-2022-integrated-report.pdf"
+                ],
+                "context": [
+                    "EXECUTIVE COMMITTEES\nThey assist in the activities of the Board of Executive\nOfficers, all governed by their own regulations.\nBOARD OF DIRECTORS\nIt is tasked with determining the corporate strategy\nand reviewing business plans and policies, as well as\noverseeing and monitoring the Board of Executive\nOfficers, electing and dismissing its members. It meets\nordinarily six times a year, and extraordinarily when the\ninterests of the company so require. It includes its own\nInternal Regulations and its president is an independent\nmember who does not hold an executive position at the\nOrganization.\nComposition: Eleven members, four of whom are\nindependent.\nBOARD OF EXECUTIVE OFFICERS\nIt is tasked with outlining and monitoring the execution\nof the strategic orientation established by the Board\nof Directors. Members have a two-year term and are\nallowed to be re-elected. The positions of Chairman of\nthe Board of Directors and Chief Executive Officer cannot\nbe held by the same person.\nsee details about our governance structure GRI 2-9, 2-11\nNOVO\nNEW\n\u2022\nan 80-year history with\npurpose and values\n\u2022 corporate strategy\n\u2022 digital and physical presence\n\u2022 value creation\n\u2022\necosystem and activities |\nportfolio\n\u2022 corporate governance\n\u2022\nethics, integrity and\ntransparency\n\u2022 risk management\nintegrated\nreport 2022\n33\nfinancial\nperformance\nsocial activity and\nrelationships\nconnection with\nsustainability\nour\npeople\nclient\nin focus\nabout\nus\nbradesco\nintroduction\nsummary of\nGRI/SASB\nannexes\n"
+                ],
+                "categories": [
+                    "question_answering"
+                ],
+                "relationships": [],
+                "expected_output": "The chairman of the board was Luiz Carlos Trabuco Cappi.",
+                "output_constraints": [
+                    "Luiz Carlos Trabuco Cappi"
+                ],
+                "output_condition": "",
+                "actual_output": "According to the provided text, the Chairman of the Board of Directors is Luiz Carlos Trabuco Cappi.",
+                "actual_duration": 17.897708654403687,
+                "cost": 0.05585899999999988,
+                "model_key": "4eeb0e20-761a-4d44-bae0-5160eb1b768c"
+            },
+            {
+                "key": "13011931-70c4-40b9-aacc-3870f521dbaa",
+                "input": "What was the number of agreements that include human rights clauses, in 2022? Provide the answer in both French and Chinese.",
+                "corpus": [
+                    "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bradesco-2022-integrated-report.pdf"
+                ],
+                "context": [
+                    "Protecting the rights of children and\nadolescents is contained in the audit\nchecklist, and it is through this list that\nwe verify if the company has minors.\nFor the Young Apprentice program,\nwe analyzed if there is a supporting\ndocument related to any educational\ninstitution, according to current\nlegislation. GRI 408-1\nIn order to avoid working with\nsuppliers who use forced or slave\nlabor, we also monitor the Ministry\nof Labor's Black List of Employers.\nWe also use audits to verify respect\nfor human rights, checking to see if a\nsupplier has an employment contract\nwith its employees and the respective\nproof of payment, in addition to\nverifying if those employees are\ngranted the right to join trade unions\nand associations. Once any occurrence\nhas been identified, we have guidelines\nto apply impediment or restrictive\nmeasures according to internal\ngovernance. We did not identify any\nviolations in 2022. GRI 407-1\nFinally, we review our suppliers\u2019\nadaption to the Regulatory Standards\nthat subscribe employee Health and\nSafety and whether reporting channels\nare available to contractors. GRI 409-1\nSUPPLIERS WHO COULD PRESENT SIGNIFICANT RISKS IN HUMAN RIGHTS\nGRI 407-1, 408-1, 409-1\n2019\n2020\n2021\n2022\nChild labor\n34\n83\n80\n85\nForced labor or slave-like labor\n34\n83\n80\n85\nYoung workers exposed to dangerous labor\n34\n83\n80\n85\nFreedom of association and collective bargaining\n34\n83\n80\n85\nNote: In 2022, there were no human rights violations identified."
+                ],
+                "categories": [
+                    "question_answering"
+                ],
+                "relationships": [],
+                "expected_output": "French: Le nombre d'accords comprenant des clauses relatives aux droits de l'homme en 2022 \u00e9tait de 22. Chinese: 2022 \u5e74\u5305\u542b\u4eba\u6743\u6761\u6b3e\u7684\u534f\u8bae\u6570\u91cf\u4e3a 22 \u4e2a\u3002",
+                "output_constraints": [
+                    [
+                        "22",
+                        "twenty-two",
+                        "22222"
+                    ]
+                ],
+                "output_condition": "",
+                "actual_output": "According to the provided text, specifically on page 43 of the Bradesco 2022 Integrated Report, the total number of agreements that include human rights clauses in 2022 was 22.\n\nEn fran\u00e7ais: Selon le texte fourni, sp\u00e9cifiquement \u00e0 la page 43 du Rapport int\u00e9gr\u00e9 2022 de Bradesco, le nombre total d'accords qui incluent des clauses relatives aux droits de l'homme en 2022 \u00e9tait de 22.\n\n (zh\u014dng w\u00e9n): g\u0113n j\u00f9 t\u00ed g\u014dng de w\u00e9n b\u011bn, t\u00e8 bi\u00e9 sh\u00ec Bradesco 2022 ni\u00e1n B\u00e0og\u00e0o de d\u00ec 43 y\u00e8, 2022 ni\u00e1n b\u0101o ku\u00f2 r\u00e9n qu\u00e1n ti\u00e1o ku\u01cen de xi\u00e9 y\u00ec z\u01d2ng sh\u00f9 w\u00e8i 22.",
+                "actual_duration": 17.130714893341064,
+                "cost": 0.05324600000000013,
+                "model_key": "4eeb0e20-761a-4d44-bae0-5160eb1b768c"
+            }
+        ]
+    },
+    "models": [
+        {
+            "connection": "099ffcde-076c-492f-8692-d92908ba2500",
+            "model_type": "h2ogpte",
+            "name": "RAG model - LLM: meta-llama/Meta-Llama-3.1-8B-Instruct, corpus: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf']",
+            "collection_id": "03862db0-f58b-4185-9b89-e95137c1a650",
+            "collection_name": "Ephemeral H2O Sonar RAG collection (docs: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf'])",
+            "llm_model_name": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+            ],
+            "model_cfg": {},
+            "key": "469f7653-48f2-45ab-8e1f-e349ee94bf8b"
+        },
+        {
+            "connection": "099ffcde-076c-492f-8692-d92908ba2500",
+            "model_type": "h2ogpte",
+            "name": "RAG model - LLM: meta-llama/Meta-Llama-3.1-8B-Instruct, corpus: ['bradesco-2022-integrated-report.pdf']",
+            "collection_id": "d6b59038-9a2a-4cfe-b79b-d2a5d2f4eb1e",
+            "collection_name": "Ephemeral H2O Sonar RAG collection (docs: ['bradesco-2022-integrated-report.pdf'])",
+            "llm_model_name": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bradesco-2022-integrated-report.pdf"
+            ],
+            "model_cfg": {},
+            "key": "fc34b3ba-f6c0-4dde-bd03-845f3ca19143"
+        },
+        {
+            "connection": "099ffcde-076c-492f-8692-d92908ba2500",
+            "model_type": "h2ogpte",
+            "name": "RAG model - LLM: meta-llama/Meta-Llama-3.1-70B-Instruct, corpus: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf']",
+            "collection_id": "03862db0-f58b-4185-9b89-e95137c1a650",
+            "collection_name": "Ephemeral H2O Sonar RAG collection (docs: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf'])",
+            "llm_model_name": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+            ],
+            "model_cfg": {},
+            "key": "551a3ce8-0e12-425c-9bda-7a48d0baeb4c"
+        },
+        {
+            "connection": "099ffcde-076c-492f-8692-d92908ba2500",
+            "model_type": "h2ogpte",
+            "name": "RAG model - LLM: meta-llama/Meta-Llama-3.1-70B-Instruct, corpus: ['bradesco-2022-integrated-report.pdf']",
+            "collection_id": "d6b59038-9a2a-4cfe-b79b-d2a5d2f4eb1e",
+            "collection_name": "Ephemeral H2O Sonar RAG collection (docs: ['bradesco-2022-integrated-report.pdf'])",
+            "llm_model_name": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bradesco-2022-integrated-report.pdf"
+            ],
+            "model_cfg": {},
+            "key": "2f0b2924-6e94-42a6-9b60-6f0bc99adffe"
+        },
+        {
+            "connection": "099ffcde-076c-492f-8692-d92908ba2500",
+            "model_type": "h2ogpte",
+            "name": "RAG model - LLM: meta-llama/Meta-Llama-3.1-405B-Instruct-FP8, corpus: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf']",
+            "collection_id": "03862db0-f58b-4185-9b89-e95137c1a650",
+            "collection_name": "Ephemeral H2O Sonar RAG collection (docs: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf'])",
+            "llm_model_name": "meta-llama/Meta-Llama-3.1-405B-Instruct-FP8",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+            ],
+            "model_cfg": {},
+            "key": "602a4141-04ab-4abd-aeaf-b226d3166270"
+        },
+        {
+            "connection": "099ffcde-076c-492f-8692-d92908ba2500",
+            "model_type": "h2ogpte",
+            "name": "RAG model - LLM: meta-llama/Meta-Llama-3.1-405B-Instruct-FP8, corpus: ['bradesco-2022-integrated-report.pdf']",
+            "collection_id": "d6b59038-9a2a-4cfe-b79b-d2a5d2f4eb1e",
+            "collection_name": "Ephemeral H2O Sonar RAG collection (docs: ['bradesco-2022-integrated-report.pdf'])",
+            "llm_model_name": "meta-llama/Meta-Llama-3.1-405B-Instruct-FP8",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bradesco-2022-integrated-report.pdf"
+            ],
+            "model_cfg": {},
+            "key": "4eeb0e20-761a-4d44-bae0-5160eb1b768c"
+        }
+    ],
+    "llm_model_names": [
+        "meta-llama/Meta-Llama-3.1-8B-Instruct",
+        "meta-llama/Meta-Llama-3.1-70B-Instruct",
+        "meta-llama/Meta-Llama-3.1-405B-Instruct-FP8"
+    ],
+    "docs_cache": {
+        "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf": "data/generative/rag_docs/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf",
+        "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bradesco-2022-integrated-report.pdf": "data/generative/rag_docs/bradesco-2022-integrated-report.pdf",
+        "data/generative/rag_docs/h2o-eval-studio-empty-corpus-dummy-document.txt": "data/generative/rag_docs/h2o-eval-studio-empty-corpus-dummy-document.txt"
+    }
+}

@@ -1,0 +1,84 @@
+{
+    "response_time": "112.60 seconds",
+    "queue_time": "0.65 seconds",
+    "retrieval_time": "0.20 seconds",
+    "cost": "0.24341 [USD]",
+    "llm": "claude-3-7-sonnet-20250219",
+    "llm_args": {
+        "use_agent": true,
+        "enable_vision": "auto",
+        "visible_vision_models": [
+            "auto"
+        ],
+        "agent_type": "auto",
+        "cost_controls": {
+            "max_cost": 0.05,
+            "max_cost_per_million_tokens": 75,
+            "model": null,
+            "willingness_to_pay": 0.2,
+            "willingness_to_wait": 10
+        },
+        "client_metadata": "\"_c57d4b39-0b32-4b89-bb02-00b28b3c6c23_b589f47f-9bb9-442e-bed5-add71da3a811_firstname.lastname@h2o.ai_89.177.35.24\"",
+        "agent_tools": [
+            "advanced_reasoning.py",
+            "aider_code_generation.py",
+            "ask_question_about_documents.py",
+            "audio_video_transcription.py",
+            "browser_agent.py",
+            "claude_tool_creator.py",
+            "claude_tool_runner.py",
+            "convert_document_to_text.py",
+            "download_web_video.py",
+            "driverless_ai_data_science.py",
+            "evaluate_answer.py",
+            "github.py",
+            "global",
+            "google_search.py",
+            "image_generation.py",
+            "internet",
+            "intranet",
+            "litellm_tool_runner.py",
+            "mermaid_renderer.py",
+            "news_query.py",
+            "python",
+            "query_to_web_image.py",
+            "rag_text",
+            "rag_vision",
+            "scholar_papers_query.py",
+            "screenshot_webpage.py",
+            "shell",
+            "unified_search.py",
+            "wayback_machine_search.py",
+            "wikipedia_article.py",
+            "wolfram_alpha_math_science_query.py"
+        ]
+    },
+    "chat_conversation": false,
+    "num_chunks": 4,
+    "num_images": 0,
+    "rag_config": {
+        "rag_type": "rag",
+        "hyde_no_rag_llm_prompt_extension": "Keep the answer brief, and list the 5 most relevant key words at the end."
+    },
+    "self_reflection_config": null,
+    "usage": [
+        {
+            "llm": "claude-3-7-sonnet-20250219",
+            "input_tokens": 61037,
+            "output_tokens": 4020,
+            "tokens_per_second": 36.28275587295202,
+            "time_to_first_token": 6.846685171127319,
+            "origin": "rag",
+            "cost": "0.24341 [USD]",
+            "time_taken": 111.63847637176514
+        }
+    ],
+    "prompt_template": {
+        "id": null,
+        "name": "English Defaults",
+        "is_default": true,
+        "is_system_default": true
+    },
+    "prompt_overrides": {},
+    "timestamp": "2025-10-02T08:06:26.596619"
+}

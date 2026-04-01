@@ -1,0 +1,72 @@
+# pip install h2ogpte==1.6.41  # Install h2oGPTe client wheel first
+from h2ogpte import H2OGPTE
+
+ADDRESS = "__ORIGIN__"  # Update as needed
+API_KEY = "sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"  # Update as needed
+
+client = H2OGPTE(address=ADDRESS, api_key=API_KEY)
+chat_session_id = client.create_chat_session(
+    collection_id="e8aef4e4-5a15-4319-ba42-9b5311fe2ca9"
+)
+chat_session_id = client.set_chat_session_prompt_template(
+    chat_session_id=chat_session_id, prompt_template_id=None
+)
+with client.connect(chat_session_id) as session:
+    answer = session.query(
+        message="Can a candidate apply for any FBI position if they have a criminal record?",
+        llm="auto",
+        llm_args={
+            "use_agent": True,
+            "enable_vision": "auto",
+            "visible_vision_models": ["auto"],
+            "agent_type": "auto",
+            "cost_controls": {
+                "max_cost": 0.05,
+                "max_cost_per_million_tokens": 75,
+                "model": None,
+                "willingness_to_pay": 0.2,
+                "willingness_to_wait": 10,
+            },
+            "client_metadata": '"_c57d4b39-0b32-4b89-bb02-00b28b3c6c23_b589f47f-9bb9-442e-bed5-add71da3a811_firstname.lastname@h2o.ai_89.177.35.24"',
+            "agent_tools": [
+                "advanced_reasoning.py",
+                "aider_code_generation.py",
+                "ask_question_about_documents.py",
+                "audio_video_transcription.py",
+                "browser_agent.py",
+                "claude_tool_creator.py",
+                "claude_tool_runner.py",
+                "convert_document_to_text.py",
+                "download_web_video.py",
+                "driverless_ai_data_science.py",
+                "evaluate_answer.py",
+                "github.py",
+                "global",
+                "google_search.py",
+                "image_generation.py",
+                "internet",
+                "intranet",
+                "litellm_tool_runner.py",
+                "mermaid_renderer.py",
+                "news_query.py",
+                "python",
+                "query_to_web_image.py",
+                "rag_text",
+                "rag_vision",
+                "scholar_papers_query.py",
+                "screenshot_webpage.py",
+                "shell",
+                "unified_search.py",
+                "wayback_machine_search.py",
+                "wikipedia_article.py",
+                "wolfram_alpha_math_science_query.py",
+            ],
+        },
+        self_reflection_config=None,
+        rag_config={
+            "rag_type": "rag",
+            "hyde_no_rag_llm_prompt_extension": "Keep the answer brief, and list the 5 most relevant key words at the end.",
+        },
+        include_chat_history="auto",
+    )
+    print(answer.content)

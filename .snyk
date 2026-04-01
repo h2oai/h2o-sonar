@@ -1,0 +1,11 @@
+# Copyright 2018-2026 H2O.ai, Inc. All rights reserved.
+version: v1.22.1
+ignore:
+  snyk:lic:pip:datatable:MPL-2.0:
+    - "*":
+        reason: H2O datatable license is safe
+        expires: 2024-01-01T00:00:00.000Z
+  snyk:lic:pip:certifi:MPL-2.0:
+    - "*":
+        reason: H2O-3 certify dependency license has been verified by H2O-3
+        expires: 2024-01-01T00:00:00.000Z

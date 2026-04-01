@@ -1,0 +1,89 @@
+H2O Tree as Text:
+===
+1. IF feature("LIMIT.BAL") < 105229.5 AND
+ feature("LIMIT.BAL") < 45060.5 AND
+  MARRIAGE.married < 0.5 OR MARRIAGE.married IS N/A
+   THEN AVERAGE VALUE OF TARGET IS 0.33453724
+
+2. IF feature("LIMIT.BAL") < 105229.5 AND
+ feature("LIMIT.BAL") < 45060.5 AND
+  MARRIAGE.married >= 0.5
+   THEN AVERAGE VALUE OF TARGET IS 0.40399384
+
+3. IF feature("LIMIT.BAL") < 105229.5 AND
+ feature("LIMIT.BAL") >= 45060.5 AND
+  MARRIAGE.married < 0.5 OR MARRIAGE.married IS N/A
+   THEN AVERAGE VALUE OF TARGET IS 0.24274889
+
+4. IF feature("LIMIT.BAL") < 105229.5 AND
+ feature("LIMIT.BAL") >= 45060.5 AND
+  MARRIAGE.married >= 0.5
+   THEN AVERAGE VALUE OF TARGET IS 0.2857143
+
+5. IF feature("LIMIT.BAL") >= 105229.5 OR feature("LIMIT.BAL") IS N/A AND
+ feature("LIMIT.BAL") < 144550.5 AND
+  SEX.female < 0.5
+   THEN AVERAGE VALUE OF TARGET IS 0.25882354
+
+6. IF feature("LIMIT.BAL") >= 105229.5 OR feature("LIMIT.BAL") IS N/A AND
+ feature("LIMIT.BAL") < 144550.5 AND
+  SEX.female >= 0.5 OR SEX.female IS N/A
+   THEN AVERAGE VALUE OF TARGET IS 0.19986586
+
+7. IF feature("LIMIT.BAL") >= 105229.5 OR feature("LIMIT.BAL") IS N/A AND
+ feature("LIMIT.BAL") >= 144550.5 OR feature("LIMIT.BAL") IS N/A AND
+  feature("LIMIT.BAL") < 375121.5 OR feature("LIMIT.BAL") IS N/A
+   THEN AVERAGE VALUE OF TARGET IS 0.16943213
+
+8. IF feature("LIMIT.BAL") >= 105229.5 OR feature("LIMIT.BAL") IS N/A AND
+ feature("LIMIT.BAL") >= 144550.5 OR feature("LIMIT.BAL") IS N/A AND
+  feature("LIMIT.BAL") >= 375121.5
+   THEN AVERAGE VALUE OF TARGET IS 0.12228692
+===
+H2O Tree as Py Code:
+===
+import numpy as np # For missing value handling (N/A)
+from math import nan # For handling nan thresholds
+
+def dt_surrogate(MARRIAGE.married, SEX.female, feature("LIMIT.BAL")):
+
+  if(feature("LIMIT.BAL") < 105229.5 and
+   feature("LIMIT.BAL") < 45060.5 and
+    MARRIAGE.married < 0.5 or MARRIAGE.married is np.nan):
+       return 0.33453724
+
+  if(feature("LIMIT.BAL") < 105229.5 and
+   feature("LIMIT.BAL") < 45060.5 and
+    MARRIAGE.married >= 0.5):
+       return 0.40399384
+
+  if(feature("LIMIT.BAL") < 105229.5 and
+   feature("LIMIT.BAL") >= 45060.5 and
+    MARRIAGE.married < 0.5 or MARRIAGE.married is np.nan):
+       return 0.24274889
+
+  if(feature("LIMIT.BAL") < 105229.5 and
+   feature("LIMIT.BAL") >= 45060.5 and
+    MARRIAGE.married >= 0.5):
+       return 0.2857143
+
+  if(feature("LIMIT.BAL") >= 105229.5 or feature("LIMIT.BAL") is np.nan and
+   feature("LIMIT.BAL") < 144550.5 and
+    SEX.female < 0.5):
+       return 0.25882354
+
+  if(feature("LIMIT.BAL") >= 105229.5 or feature("LIMIT.BAL") is np.nan and
+   feature("LIMIT.BAL") < 144550.5 and
+    SEX.female >= 0.5 or SEX.female is np.nan):
+       return 0.19986586
+
+  if(feature("LIMIT.BAL") >= 105229.5 or feature("LIMIT.BAL") is np.nan and
+   feature("LIMIT.BAL") >= 144550.5 or feature("LIMIT.BAL") is np.nan and
+    feature("LIMIT.BAL") < 375121.5 or feature("LIMIT.BAL") is np.nan):
+       return 0.16943213
+
+  if(feature("LIMIT.BAL") >= 105229.5 or feature("LIMIT.BAL") is np.nan and
+   feature("LIMIT.BAL") >= 144550.5 or feature("LIMIT.BAL") is np.nan and
+    feature("LIMIT.BAL") >= 375121.5):
+       return 0.12228692
+===

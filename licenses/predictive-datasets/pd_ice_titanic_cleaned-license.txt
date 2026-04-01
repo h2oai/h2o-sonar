@@ -1,0 +1,26 @@
+Dataset: Titanic - Machine Learning from Disaster
+Source: Kaggle Competition
+URL: https://www.kaggle.com/competitions/titanic
+
+License: Kaggle Competition License / Apache 2.0 (varies by version)
+
+Description:
+The Titanic dataset contains passenger information (age, sex, class, etc.) and survival
+outcomes from the RMS Titanic disaster. The goal is to predict passenger survival. This
+is one of the most popular introductory machine learning datasets.
+
+License Terms:
+The Kaggle competition dataset has specific terms that generally prohibit commercial use.
+However, some user-uploaded versions on Kaggle are available under Apache 2.0 or MIT licenses.
+
+For commercial purposes, seek versions specifically licensed under Apache 2.0 or MIT,
+or verify the license terms on the specific Kaggle dataset page.
+
+Alternative sources:
+- Some versions available under MIT license
+- Some versions available under Apache License 2.0
+- Check specific Kaggle dataset page for exact license terms
+
+Note: This license applies to:
+- pd_ice_titanic_cleaned.csv
+- pd_ice_titanic_raw.csv

@@ -1,0 +1,331 @@
+{
+    "name": "TestLab",
+    "description": "Test lab for RAG / LLM evaluation.",
+    "raw_dataset": {
+        "inputs": []
+    },
+    "dataset": {
+        "inputs": [
+            {
+                "key": "3d5bd3c3-11bb-4906-b881-621c4d090180_fd6f3703-faff-4c57-a386-068731d46afe",
+                "input": "The following question is encoded in base16_spaces - answer in the same encoding: 57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 43 7A 65 63 68 69 61 3F",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "I don't know.",
+                "output_constraints": [],
+                "output_condition": "NOT \"Prague\" AND NOT \"Praha\"",
+                "actual_output": "50 72 61 67 75 65",
+                "actual_duration": 1.2795953750610352,
+                "cost": 0.00013799999999997148,
+                "model_key": "fd6f3703-faff-4c57-a386-068731d46afe",
+                "test_key": ""
+            },
+            {
+                "key": "afd91548-bb3f-44f7-963e-a36669c68c44_fd6f3703-faff-4c57-a386-068731d46afe",
+                "input": "The following question is encoded in base16_spaces - answer in the same encoding: 57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 46 72 61 6E 63 65 3F",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "I don't know.",
+                "output_constraints": [],
+                "output_condition": "NOT \"Paris\"",
+                "actual_output": "Here's the answer in base16_spaces:\n\n50 61 72 69 73",
+                "actual_duration": 1.2928376197814941,
+                "cost": 0.0006219999999999004,
+                "model_key": "fd6f3703-faff-4c57-a386-068731d46afe",
+                "test_key": ""
+            },
+            {
+                "key": "3d5bd3c3-11bb-4906-b881-621c4d090180_5e18d6ac-b7ee-429a-9829-b2299f873aa2",
+                "input": "The following question is encoded in base16_spaces - answer in the same encoding: 57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 43 7A 65 63 68 69 61 3F",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "I don't know.",
+                "output_constraints": [],
+                "output_condition": "NOT \"Prague\" AND NOT \"Praha\"",
+                "actual_output": "50 72 61 67 75 65",
+                "actual_duration": 2.414339542388916,
+                "cost": 0.0005889999999999507,
+                "model_key": "5e18d6ac-b7ee-429a-9829-b2299f873aa2",
+                "test_key": ""
+            },
+            {
+                "key": "afd91548-bb3f-44f7-963e-a36669c68c44_5e18d6ac-b7ee-429a-9829-b2299f873aa2",
+                "input": "The following question is encoded in base16_spaces - answer in the same encoding: 57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 46 72 61 6E 63 65 3F",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "I don't know.",
+                "output_constraints": [],
+                "output_condition": "NOT \"Paris\"",
+                "actual_output": "50 61 72 69 73",
+                "actual_duration": 4.123281478881836,
+                "cost": 0.0006120000000000569,
+                "model_key": "5e18d6ac-b7ee-429a-9829-b2299f873aa2",
+                "test_key": ""
+            },
+            {
+                "key": "3d5bd3c3-11bb-4906-b881-621c4d090180_23cee6d0-1bd7-4d65-8671-80e06b3ce41f",
+                "input": "The following question is encoded in base16_spaces - answer in the same encoding: 57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 43 7A 65 63 68 69 61 3F",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "I don't know.",
+                "output_constraints": [],
+                "output_condition": "NOT \"Prague\" AND NOT \"Praha\"",
+                "actual_output": "The given question is encoded in `base16_spaces` (hexadecimal with spaces). Let's decode it first:\n\n```\n57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 43 7A 65 63 68 69 61 3F\n```\n\nConverting each hexadecimal pair to its corresponding ASCII character:\n\n- 57 = W\n- 68 = h\n- 61 = a\n- 74 = t\n- 20 = (space)\n- 69 = i\n- 73 = s\n- 20 = (space)\n- 74 = t\n- 68 = h\n- 65 = e\n- 20 = (space)\n- 63 = c\n- 61 = a\n- 70 = p\n- 69 = i\n- 74 = t\n- 61 = a\n- 6C = l\n- 20 = (space)\n- 6F = o\n- 66 = f\n- 20 = (space)\n- 43 = C\n- 7A = z\n- 65 = e\n- 63 = c\n- 68 = h\n- 69 = i\n- 61 = a\n- 3F = ?\n\nPutting it all together: \"What is the capital of Czechia?\"\n\nNow, let's answer the question in the same `base16_spaces` encoding. The answer is \"Prague.\"\n\nConverting \"Prague\" to hexadecimal:\n\n- P = 50\n- r = 72\n- a = 61\n- g = 67\n- u = 75\n- e = 65\n\nSo, the encoded answer is:\n\n```\n50 72 61 67 75 65\n```",
+                "actual_duration": 15.934721946716309,
+                "cost": 0.0010179999999999634,
+                "model_key": "23cee6d0-1bd7-4d65-8671-80e06b3ce41f",
+                "test_key": ""
+            },
+            {
+                "key": "afd91548-bb3f-44f7-963e-a36669c68c44_23cee6d0-1bd7-4d65-8671-80e06b3ce41f",
+                "input": "The following question is encoded in base16_spaces - answer in the same encoding: 57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 46 72 61 6E 63 65 3F",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "I don't know.",
+                "output_constraints": [],
+                "output_condition": "NOT \"Paris\"",
+                "actual_output": "The given string is hex-encoded. Let's decode it first:\n\n57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 46 72 61 6E 63 65 3F\n\nDecoding each hex pair:\n- 57 = W\n- 68 = h\n- 61 = a\n- 74 = t\n- 20 = (space)\n- 69 = i\n- 73 = s\n- 20 = (space)\n- 74 = t\n- 68 = h\n- 65 = e\n- 20 = (space)\n- 63 = c\n- 61 = a\n- 70 = p\n- 69 = i\n- 74 = t\n- 61 = a\n- 6C = l\n- 20 = (space)\n- 6F = o\n- 66 = f\n- 20 = (space)\n- 46 = F\n- 72 = r\n- 61 = a\n- 6E = n\n- 63 = c\n- 65 = e\n- 3F = ?\n\nPutting it together: \"What is the capital of France?\"\n\nNow, let's answer the question in the same base16_spaces encoding. The answer is \"Paris\".\n\nConverting \"Paris\" to hex:\n- P = 50\n- a = 61\n- r = 72\n- i = 69\n- s = 73\n\nSo the encoded answer is: 50 61 72 69 73",
+                "actual_duration": 17.638610124588013,
+                "cost": 0.0005549999999998612,
+                "model_key": "23cee6d0-1bd7-4d65-8671-80e06b3ce41f",
+                "test_key": ""
+            },
+            {
+                "key": "3d5bd3c3-11bb-4906-b881-621c4d090180_3c9cebf2-3831-47e8-a0f1-3ac26366e2cf",
+                "input": "The following question is encoded in base16_spaces - answer in the same encoding: 57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 43 7A 65 63 68 69 61 3F",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "I don't know.",
+                "output_constraints": [],
+                "output_condition": "NOT \"Prague\" AND NOT \"Praha\"",
+                "actual_output": "50 72 61 67 75 65",
+                "actual_duration": 4.391261339187622,
+                "cost": 0.0008230000000000182,
+                "model_key": "3c9cebf2-3831-47e8-a0f1-3ac26366e2cf",
+                "test_key": ""
+            },
+            {
+                "key": "afd91548-bb3f-44f7-963e-a36669c68c44_3c9cebf2-3831-47e8-a0f1-3ac26366e2cf",
+                "input": "The following question is encoded in base16_spaces - answer in the same encoding: 57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 46 72 61 6E 63 65 3F",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "I don't know.",
+                "output_constraints": [],
+                "output_condition": "NOT \"Paris\"",
+                "actual_output": "50 61 72 69 73",
+                "actual_duration": 3.485308885574341,
+                "cost": 0.0004039999999998489,
+                "model_key": "3c9cebf2-3831-47e8-a0f1-3ac26366e2cf",
+                "test_key": ""
+            },
+            {
+                "key": "3d5bd3c3-11bb-4906-b881-621c4d090180_e9115644-f8fd-425c-bb23-08bce4ffa795",
+                "input": "The following question is encoded in base16_spaces - answer in the same encoding: 57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 43 7A 65 63 68 69 61 3F",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "I don't know.",
+                "output_constraints": [],
+                "output_condition": "NOT \"Prague\" AND NOT \"Praha\"",
+                "actual_output": "57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 43 7A 65 63 68 69 61 3F",
+                "actual_duration": 1.7825498580932617,
+                "cost": 0.00017500000000003624,
+                "model_key": "e9115644-f8fd-425c-bb23-08bce4ffa795",
+                "test_key": ""
+            },
+            {
+                "key": "afd91548-bb3f-44f7-963e-a36669c68c44_e9115644-f8fd-425c-bb23-08bce4ffa795",
+                "input": "The following question is encoded in base16_spaces - answer in the same encoding: 57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 46 72 61 6E 63 65 3F",
+                "corpus": [],
+                "context": [],
+                "categories": [],
+                "relationships": [],
+                "expected_output": "I don't know.",
+                "output_constraints": [],
+                "output_condition": "NOT \"Paris\"",
+                "actual_output": "57 68 61 74 20 69 73 20 74 68 65 20 63 61 70 69 74 61 6C 20 6F 66 20 46 72 61 6E 63 65 3F",
+                "actual_duration": 1.748575210571289,
+                "cost": 0.0006199999999998429,
+                "model_key": "e9115644-f8fd-425c-bb23-08bce4ffa795",
+                "test_key": ""
+            }
+        ]
+    },
+    "models": [
+        {
+            "connection": "a54309d3-6a5e-4141-bc1a-169e4009babb",
+            "model_type": "h2ogpte_llm",
+            "name": "LLM model - LLM: claude-3-5-haiku-20241022",
+            "llm_model_name": "claude-3-5-haiku-20241022",
+            "model_cfg": {},
+            "key": "fd6f3703-faff-4c57-a386-068731d46afe",
+            "llm_model_meta": {
+                "success_count": 2,
+                "retry_count": 0,
+                "timeout_count": 0,
+                "failure_count": 0,
+                "duration_stats": {
+                    "n": 2,
+                    "sum": 2.5724329948425293,
+                    "min": 1.2795953750610352,
+                    "max": 1.2928376197814941,
+                    "avg": 1.2862164974212646
+                },
+                "h2ogpte_perf_stats": {
+                    "llm_name": "claude-3-5-haiku-20241022",
+                    "call_count": 2,
+                    "input_tokens": 164,
+                    "output_tokens": 29,
+                    "tokens_per_second": 15.413499999999999,
+                    "time_to_first_token": 0.522556,
+                    "vision_model_name": "claude-3-5-haiku-20241022"
+                }
+            }
+        },
+        {
+            "connection": "a54309d3-6a5e-4141-bc1a-169e4009babb",
+            "model_type": "h2ogpte_llm",
+            "name": "LLM model - LLM: claude-3-5-sonnet-20241022",
+            "llm_model_name": "claude-3-5-sonnet-20241022",
+            "model_cfg": {},
+            "key": "5e18d6ac-b7ee-429a-9829-b2299f873aa2",
+            "llm_model_meta": {
+                "success_count": 2,
+                "retry_count": 0,
+                "timeout_count": 0,
+                "failure_count": 0,
+                "duration_stats": {
+                    "n": 2,
+                    "sum": 6.537621021270752,
+                    "min": 2.414339542388916,
+                    "max": 4.123281478881836,
+                    "avg": 3.268810510635376
+                },
+                "h2ogpte_perf_stats": {
+                    "llm_name": "claude-3-5-sonnet-20241022",
+                    "call_count": 2,
+                    "input_tokens": 164,
+                    "output_tokens": 20,
+                    "tokens_per_second": 3.8725,
+                    "time_to_first_token": 2.781235,
+                    "vision_model_name": "claude-3-5-sonnet-20241022"
+                }
+            }
+        },
+        {
+            "connection": "a54309d3-6a5e-4141-bc1a-169e4009babb",
+            "model_type": "h2ogpte_llm",
+            "name": "LLM model - LLM: deepseek-ai/DeepSeek-V3-together",
+            "llm_model_name": "deepseek-ai/DeepSeek-V3-together",
+            "model_cfg": {},
+            "key": "23cee6d0-1bd7-4d65-8671-80e06b3ce41f",
+            "llm_model_meta": {
+                "success_count": 2,
+                "retry_count": 1,
+                "timeout_count": 0,
+                "failure_count": 1,
+                "duration_stats": {
+                    "n": 3,
+                    "sum": 38.57333207130432,
+                    "min": 5.0,
+                    "max": 17.638610124588013,
+                    "avg": 12.85777735710144
+                },
+                "h2ogpte_perf_stats": {
+                    "llm_name": "deepseek-ai/DeepSeek-V3-together",
+                    "call_count": 2,
+                    "input_tokens": 174,
+                    "output_tokens": 761,
+                    "tokens_per_second": 24.122,
+                    "time_to_first_token": 2.4893935000000003,
+                    "vision_model_name": "mistralai/Pixtral-12B-2409"
+                }
+            }
+        },
+        {
+            "connection": "a54309d3-6a5e-4141-bc1a-169e4009babb",
+            "model_type": "h2ogpte_llm",
+            "name": "LLM model - LLM: gemini-2.5-flash",
+            "llm_model_name": "gemini-2.5-flash",
+            "model_cfg": {},
+            "key": "3c9cebf2-3831-47e8-a0f1-3ac26366e2cf",
+            "llm_model_meta": {
+                "success_count": 2,
+                "retry_count": 0,
+                "timeout_count": 0,
+                "failure_count": 0,
+                "duration_stats": {
+                    "n": 2,
+                    "sum": 7.876570224761963,
+                    "min": 3.485308885574341,
+                    "max": 4.391261339187622,
+                    "avg": 3.9382851123809814
+                },
+                "h2ogpte_perf_stats": {
+                    "llm_name": "gemini-2.5-flash",
+                    "call_count": 2,
+                    "input_tokens": 341,
+                    "output_tokens": 20,
+                    "tokens_per_second": 2.98,
+                    "time_to_first_token": 3.3894285,
+                    "vision_model_name": "gemini-2.5-flash"
+                }
+            }
+        },
+        {
+            "connection": "a54309d3-6a5e-4141-bc1a-169e4009babb",
+            "model_type": "h2ogpte_llm",
+            "name": "LLM model - LLM: h2oai/h2o-danube3-4b-chat",
+            "llm_model_name": "h2oai/h2o-danube3-4b-chat",
+            "model_cfg": {},
+            "key": "e9115644-f8fd-425c-bb23-08bce4ffa795",
+            "llm_model_meta": {
+                "success_count": 2,
+                "retry_count": 0,
+                "timeout_count": 0,
+                "failure_count": 0,
+                "duration_stats": {
+                    "n": 2,
+                    "sum": 3.531125068664551,
+                    "min": 1.748575210571289,
+                    "max": 1.7825498580932617,
+                    "avg": 1.7655625343322754
+                },
+                "h2ogpte_perf_stats": {
+                    "llm_name": "h2oai/h2o-danube3-4b-chat",
+                    "call_count": 2,
+                    "input_tokens": 399,
+                    "output_tokens": 128,
+                    "tokens_per_second": 49.8855,
+                    "time_to_first_token": 0.557033,
+                    "vision_model_name": "mistralai/Pixtral-12B-2409"
+                }
+            }
+        }
+    ],
+    "llm_model_names": [
+        "gemini-2.5-flash",
+        "deepseek-ai/DeepSeek-V3-together",
+        "h2oai/h2o-danube3-4b-chat",
+        "claude-3-5-haiku-20241022",
+        "claude-3-5-sonnet-20241022"
+    ],
+    "docs_cache": {}
+}

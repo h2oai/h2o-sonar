@@ -1,0 +1,239 @@
+# Copyright 2018-2026 H2O.ai, Inc. All rights reserved.
+name: PREDICTIVE AI build
+
+on:
+  pull_request:
+    branches:
+      - main
+      - 'release-**'
+      - 'dev-**'
+      - 'bug-**'
+      - 'enh-**'
+  push:
+    branches:
+      - main
+      - 'release-**'
+      - 'dev-**'
+      - 'bug-**'
+      - 'enh-**'
+
+# kill any in-progress PREDICTIVE runs for the same branch/PR
+concurrency:
+  group: h2o-sonar-predictive-ci-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  code-style:
+    runs-on: ubuntu-latest-16-cores
+    name: Check code style
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@85856786d1ce8acfbcc2f13a5f3fbd6b938f9f41 # v7.1.2
+        with:
+          python-version: 3.11
+          enable-cache: true
+          activate-environment: 'true'
+
+      - name: Install Python 3.11
+        run: uv python install 3.11
+
+      - name: Versions checks for code style
+        run: |
+          make diagnostics
+          git rev-parse --abbrev-ref HEAD
+          git rev-parse HEAD
+
+      - name: Prepare virtual env for code style
+        run: uv venv --python python3.11 --clear .venv
+
+      - name: Format and lint
+        run: |
+          source ./.venv/bin/activate
+          make code_format_check
+          make code_analysis
+          make test_code_format_check
+          make test_code_analysis
+
+  build:
+    runs-on: ${{ matrix.os }}
+    name: Build on ${{ matrix.os }} for ${{ matrix.python }}
+    timeout-minutes: ${{ matrix.build-timeout }}
+    needs: code-style
+    permissions: # AWS permissions for OIDC
+      id-token: write # Required to fetch the OIDC token
+      contents: read  # Required for actions like checkout, adjust as needed
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest-16-cores] # [ubuntu-latest-16-cores, macos-14-large]
+        python: ['3.11']
+        distro-type: [reg]
+        include:
+          - os: ubuntu-latest-16-cores
+            build-timeout: 120
+          # - os: macos-14-large
+          #   build-timeout: 120
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install doc deps on Ubuntu
+        if: ${{ matrix.os == 'ubuntu-latest-16-cores' }}
+        run: sudo apt install pandoc
+
+      # - name: Install doc deps on macOS
+      #   if: ${{ matrix.os == 'macos-14-large' }}
+      #  run: brew install pandoc
+
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Versions checks
+        run: |
+          python3 --version
+          pip3 --version
+          uv --version
+
+      - name: Prepare virtual env for build
+        run: make setup TARGET_PYTHON_VERSION=${{ matrix.python }}
+
+      # BINARY distro build replaces with SOURCE distro - FLOSS, speed, cost, macOS HW arch, ...
+      #- name: Build BINARY distro
+      #  env:
+      #    SYSTEM_VERSION_COMPAT: 0
+      #    DISTRO_TYPE: "${{ matrix.distro-type }}"
+      #  run: |
+      #    source ./.venv/bin/activate
+      #    make clean binary_distribution
+      #    deactivate
+
+      - name: Build SOURCE distro
+        env:
+          SYSTEM_VERSION_COMPAT: 0
+          DISTRO_TYPE: "${{ matrix.distro-type }}"
+        run: |
+          source ./.venv/bin/activate
+          make clean dist_src
+          deactivate
+
+      - name: Push build artifacts archive(s)
+        uses: actions/upload-artifact@v4
+        with:
+          name: h2o-sonar-${{ matrix.os }}-${{ matrix.python }}-${{ matrix.distro-type }}
+          path: dist/*.tgz
+
+      - name: Prepare virtual env for test
+        run: uv venv --python python${{ matrix.python }} --clear .test-venv
+
+      - name: Install JSON file with test services configuration
+        run: |
+          cat > ./tests/lib/given_generative_TEMPLATE.json << 'EOF'
+          ${{ secrets.GIVEN_GENERATIVE_TEMPLATE_JSON }}
+          EOF
+          cp -vf ./tests/lib/given_generative_TEMPLATE.json ./tests/lib/given_generative.json
+          ls -al ./tests/lib/given_*.json
+
+      - name: Install distro into test env
+        # H2O-3 works on macOS 12, but is broken on macOS 13+
+        if: ${{ matrix.os == 'ubuntu-latest-16-cores' }}
+        env:
+          SYSTEM_VERSION_COMPAT: 0
+        run: |
+          source ./.test-venv/bin/activate
+          ls -1 dist
+          ls -1 dist/h2o_sonar*.whl | grep whl | while read F; do uv pip install ${F}[explainers,evaluators] --no-cache; done
+          deactivate
+
+      - name: Install test dependencies
+        # H2O-3 works on macOS 12, but is broken on macOS 13+
+        if: ${{ matrix.os == 'ubuntu-latest-16-cores' }}
+        run: |
+          source ./.test-venv/bin/activate
+          uv pip install --group test
+          deactivate
+
+      - name: Rename h2o_sonar module
+        # H2O-3 works on macOS 12, but is broken on macOS 13+
+        if: ${{ matrix.os == 'ubuntu-latest-16-cores' }}
+        run: |
+          mv h2o_sonar ___h2o_sonar
+          ls -al
+
+      #- name: Run SMOKE tests
+      #  # H2O-3 works on macOS 12, but is broken on macOS 13+
+      #  if: ${{ matrix.os == 'ubuntu-latest-16-cores' }}
+      #  env:
+      #    SYSTEM_VERSION_COMPAT: 0
+      #    DISTRO_TYPE: "${{ matrix.distro-type }}"
+      #  run: |
+      #    source ./.test-venv/bin/activate
+      #    python -c "import h2o_sonar; print(f'{h2o_sonar.__file__=}')"
+      #    # Run predictive smoke tests directly (h2o_sonar dir is renamed, so can't use make targets)
+      #    mkdir -p tests/build/test-reports
+      #    python -m pytest -m "not generative" -ra --maxfail=10 -k "not shap and not _dai" \
+      #      --junit-prefix=ubuntu-latest-16-cores \
+      #      --junitxml=tests/build/test-reports/TEST-h2o_sonar.xml \
+      #      tests/lib/test_container_local.py \
+      #      tests/methods
+      #    deactivate
+
+      - name: Run ALL tests
+        # H2O-3 works on macOS 12, but is broken on macOS 13+
+        if: ${{ matrix.os == 'ubuntu-latest-16-cores' }}
+        env:
+          SYSTEM_VERSION_COMPAT: 0
+          DISTRO_TYPE: "${{ matrix.distro-type }}"
+        run: |
+          source ./.test-venv/bin/activate
+          python -c "import h2o_sonar; print(f'{h2o_sonar.__file__=}')"
+          mkdir -p tests/build/test-reports
+          python -m pytest -m "not generative" -ra --maxfail=10 -k "not shap and not _dai" \
+            --junit-prefix=ubuntu-latest-16-cores \
+            --junitxml=tests/build/test-reports/TEST-h2o_sonar.xml \
+            tests/
+          deactivate
+
+      - name: Upload build results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: h2o-sonar-test-results-${{ matrix.os }}-${{ matrix.python }}-${{ matrix.distro-type }}
+          path: tests/build/test-reports/TEST-h2o_sonar.xml
+
+  publish-test-results:
+    name: "Publish distribution build results"
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      checks: write
+
+      # only needed unless run with comment_mode: off
+      pull-requests: write
+
+      # only needed for private repository
+      contents: read
+
+      # only needed for private repository
+      issues: read
+    if: always()
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Publish build results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          junit_files: "artifacts/**/*.xml"
+          report_individual_runs: true
+          check_name: "pytest Results"

@@ -1,0 +1,36 @@
+{
+  "name": "[Workflows] Test Generated for خدمة العملاء اليدوي (Arabic customer care)",
+  "tests": [
+    {
+      "documents": [
+        "https://eval-studio-artifacts.s3.us-east-1.amazonaws.com/h2o-eval-studio-demo-data/arabic-crm/arabic-crm.pdf"
+      ],
+      "test_cases": [
+        {
+          "key": "95a115c2-87c6-4a9f-a5e6-fa6a4ce58a21",
+          "prompt": "What does the term 'ةمير' translate to in English?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "ةمير translates to 'Crisis'.",
+          "condition": ""
+        },
+        {
+          "key": "e15124d0-84c8-4fdf-8265-8a20a87f5cc7",
+          "prompt": "What does \"ةدوجب\" signify in relation to \"ةيرارمتلا\"?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "\"ةدوجب\" signifies the result or outcome of \"ةيرارمتلا\".",
+          "condition": ""
+        },
+        {
+          "key": "bee83fc5-1976-4800-b8ee-a25bd5bb05a5",
+          "prompt": "What is the term translated to 'Crisis Management' in the document?",
+          "categories": null,
+          "constraints": [],
+          "expected_output": "ةمر و ادارة الازمات",
+          "condition": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1772 @@
+{
+    "inputs": [
+        {
+            "input": "What was the revenue of Brazil?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "15,969",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the revenue of Mexico?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "27,229",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How did gross profit change YoY for South America?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "11.0%"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "When was the cybersecurity incident announced?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "April 26"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Did inflation affect gross profit?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "inflation affected gross profit."
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What country had the largest revenue and how much was it?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Mexico",
+                "27,229",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was goodwill balance?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$25.2",
+                "billion"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the available borrowing capacity?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$209.0",
+                "billion"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the value of total foreclosed assets in 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$137",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How much was the average VaR in 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$35",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was long-term debt at the end of 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$174,870",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was diluted EPS for 2021?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$4.95"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was diluted EPS for 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$3.14"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was total noninterest income for commercial banking?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$3,631",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was total noninterest income for corporate and investment banking?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$6,509",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What were total nonperforming assets?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$5,763",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was net income?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$14,845",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many hours were volunteered, and across how many countries?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "115,000",
+                "84"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How much did Citi finance for affordable housing in the U.S.?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$6",
+                "billion"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What were total liabilities of Citigroup as of Dec 31 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$2,214,838",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What were total assets of Citigroup as of Dec 31 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "2,416,676",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "On what page are Basel III Revisions?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "49"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many employees are at Citi?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "240,000"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the revenue from legacy franchises",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "8.5",
+                "billion"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How large is the new stress capital buffer?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "4.0%"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What were total revenues of Citigroup?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$75,338",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many employees does kaiser permanente have?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "217,000"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many lab results were viewed online?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "60.6",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many members does KP have?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "12.2",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Who's the regional president in Georgia?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Jim Simpson"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Who's the CEO?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Greg A. Adams"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many nurses work at Kaiser?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "63k"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many colorectal cancer screenings happened that year?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "2.2",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What is CBA NPAT this year?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$10,188",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "On what page is the five-year financial summary?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "285"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What's the address of CBA in Syndey?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "11 Harbour Street"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What are the top 3 holders of CommBank PERLS XV Capital Notes?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "BNP",
+                "HSBC",
+                "Citi"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How much net profit did New Zealand contribute in 2023?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "1,356",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How much net profit did New Zealand contribute in 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "1,265",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How did H2O.ai help CBA?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "world-leading talent"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How much total assets under management?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$710",
+                "billion"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many issuers are in the corporate bond portfolio?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "3,300"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was NYLIC's statutory surplus in 2021?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$24.57",
+                "billion"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was total surplus (incl. asset valuation reserve)?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$30.1 billion"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What percentage is in RMBS?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "6%"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How large was the dividend payout in 2023?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$2",
+                "billion"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How large was the general account investment portfolio?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$317.13",
+                "billion"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Who's America's largest mutual life insurer?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "New York Life"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "When was New York Life insurance founded?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "1845"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many clients does Bradesco serve?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "77.1 million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Who is the chairman of the board?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Luiz Carlos Trabuco Cappi"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the number of agreements that include human rights clauses, in 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "22"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many shares were issued as performance incentive awards in Q4 2018?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "150"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was gross profit in 2017?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$8,180",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was total current income tax expense in 2017?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$1,007",
+                "million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Is the information on interest rate swaps present in paragraphs or tables in the document ?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "information on interest rate swaps is present"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What is Label Genie?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "zero-shot labeling"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Does label genie support audio classification?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Yes"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What is the Outlook for Eurozone GDP for 2024?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "0.7%"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What is the Outlook for China GDP for 2023?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "4.9%"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What is the Outlook for China GDP for 2024?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "4.1%"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Do I need to install CUDA or does Driverless AI ships with CUDA?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Driverless AI ships with CUDA"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What's the minimum memory requirements?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "64",
+                "GB"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How do I start Driverless AI in Docker? Please include the docker run command.",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "docker run",
+                "--pid=host",
+                "--rm",
+                "--shm-size=2g"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What are the top 3 fast-food restaurants across all age cohorts?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "MCDONALD'S",
+                "CHICK-FIL-A",
+                "TACO BELL"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What is the total number of Wendy's customers?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "4,527,294",
+                "4527294"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many baby boomer customers for Subway are there?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "528,785"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Between which years is a Gen Xer?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "1965-1981"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Total customers Gen X?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "13,192,015"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Number of Silent Gen customers for Chipotle?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "16,263"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Total number of customers for Gen X and Gen Z combined?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "24,038,048"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What is whisper?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "speech recognition"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Who are the board members?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Christophe Knaub",
+                "Yavuz \u00d6lken",
+                "Guillaume Herve Marie Xavier Lejeune",
+                "Xavier Veyry",
+                "Maria Jesus De Arteaga Larru",
+                "Nuria Fernandez Paris",
+                "Onur Ko\u00e7kar"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Compare Axa sigorta's paid claims from 2022 to 2018.",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "34.478"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "When should 'PNDG' be used in the price field?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "not available but pending"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "An Investment Firm acquires a Strip FRTR 0% 04/25/2041 (ISIN Code FR0010773200) by trading over the counter at 1.06%. The nominal value of the transaction is EUR 1000000. What is the bond yield of the strip?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "1.06%"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What does rule ID 011 say is the Validation Rule?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "mandatory",
+                "new"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What were Total Liabilities at the end of First Quarter 2023?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "1,816",
+                "billion"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many branches does TD Bank have in Canada?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "1,060"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many Active U.S. banking mobile users does TD Bank have?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "4.8MM"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many books did the Adyen team donate to children in-need in San Francisco?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "60"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Who is the CEO?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Corie Barry"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How much of the population lives within 10 miles of a Best Buy?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "70"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many totaltech members are there?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "4.6 million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How much of Tengizchevroil does Chevron own?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "50%"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the net income for 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "35,465 million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How much did DoorDash spend on the gas savings program?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$40 million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Who are the main participants on the call?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Andy Hargreaves",
+                "Prabir Adarkar",
+                "Tony Xu"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What drove spending reductions?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "workforce",
+                "reduction",
+                "data centers"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many bolt-on acquisitions have been made?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "13"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "In which city was Scuderia Ferrari founded and who founded it?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Modena",
+                "Enzo"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many cars did Ferrari sell in 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "13,221"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many employees did the company have at the end of 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "4,919"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was 4th Quarter net income?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$20 million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How much higher are raw material costs expected to be?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$300 million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Who is the new CFO?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Christina Zamarro"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How much was revenue growth?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "30.4%"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What's the name of the campaign Heineken launched to tackle gender bias?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Cheers to All Fans"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What is the leading spirit beer?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Desperados"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was FY22 total revenue?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "63.1 billion"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the code name of the 4th gen xeon processors?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Sapphire Rapids"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What's the world record for overclocking?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "9.008 GHz"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What is Jacobs purpose?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "connected",
+                "sustainable",
+                "world"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What is Jacobs expected capital expenditure in 2023?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "125 million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was Critical Mission Solutions revenue?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "4.4 billion"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What are some brands in the Tyson portfolio?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Hillshire",
+                "Jimmy Dean"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the primary driver of volume increase?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "improved",
+                "internal",
+                "production"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was 1H22 net interest expense?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "191 million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How much was paid in bonuses to frontline associates?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "$580+ million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many stores are in Florida?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "128"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the adjusted operating margin?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "13.0%"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many cars did Mercedes-Benz sell in 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "2,040,700"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "How many electrified vehicles did Mercedes-Benz sell in 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "333,500"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the net profit?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "14,809,000,000"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the third most popular series ever on Netflix?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Wednesday"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the most popular film in Norway?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Troll"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was the operating margin in 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "18.0%"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "Who is the CFO?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "Makarand Padalkar"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What do Oracles revenues comprise of?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "License fees",
+                "Maintenance fees",
+                "Consulting fees"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What was profit margin in 2022?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "46%"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What is the revenue reported by Chevron in 2013?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "220,156 million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        },
+        {
+            "input": "What is the revenue reported by Chevron in 2014?",
+            "context": [],
+            "categories": [
+                ""
+            ],
+            "expected_output": "",
+            "output_constraints": [
+                "200,494 million"
+            ],
+            "actual_output": "",
+            "actual_duration": 0.0,
+            "model_key": ""
+        }
+    ]
+}

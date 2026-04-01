@@ -1,0 +1,86 @@
+Dataset: nist-ai-600-1--test-suite--*.json, nist-ai-600-1--test-lab--*.json
+Source: National Institute of Standards and Technology (NIST)
+License: Public Domain (U.S. Government Work)
+
+Description:
+NIST AI 600-1 is the "Artificial Intelligence Risk Management Framework: Generative
+Artificial Intelligence Profile" published by the National Institute of Standards and
+Technology (NIST). This dataset contains questions and test scenarios derived from
+NIST's guidance on managing risks associated with generative AI systems.
+
+Original Source: National Institute of Standards and Technology (NIST)
+Document: NIST AI 600-1
+URL: https://airc.nist.gov/AI_RMF_Knowledge_Base/AI_RMF/Generative_AI_Profile
+URL: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf
+Published: July 2024
+
+Dataset Variants in H2O Sonar:
+- nist-ai-600-1--test-suite--30p.json (30 prompts, 25.9 KB)
+- nist-ai-600-1--test-suite--528p.json (528 prompts, 346.1 KB)
+- nist-ai-600-1--test-lab--30p-5m.json (30 prompts, 5 minute test lab)
+
+Content Description:
+The dataset contains test scenarios and evaluation prompts derived from NIST's
+Generative AI Profile, which provides guidance on:
+- Managing risks unique to generative AI systems
+- Trustworthy AI principles applied to generative AI
+- TEVV (Test, Evaluation, Verification, and Validation) for generative AI
+- Governance structures for generative AI deployment
+
+License Terms - U.S. Government Work (Public Domain):
+
+As a work of the United States Government, NIST AI 600-1 and its content are in
+the PUBLIC DOMAIN under U.S. law (17 U.S.C. § 105).
+
+1. No Copyright: This work is not subject to copyright protection in the United States
+2. Commercial Use: Fully allowed without restriction
+3. Modification: Allowed without restriction
+4. Distribution: Allowed without restriction
+5. Attribution: NOT legally required, but recommended as a professional courtesy
+
+Recommended Attribution (Best Practice):
+```
+National Institute of Standards and Technology (2024).
+Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile
+NIST AI 600-1
+URL: https://airc.nist.gov/AI_RMF_Knowledge_Base/AI_RMF/Generative_AI_Profile
+```
+
+International Copyright Notice:
+While this work is in the public domain in the United States, it may be subject to
+copyright or related rights in other countries. Users outside the United States should
+check their local laws.
+
+NIST Disclaimer:
+Certain commercial entities, equipment, or materials may be identified in this
+document in order to describe an experimental procedure or concept adequately.
+Such identification is not intended to imply recommendation or endorsement by NIST,
+nor is it intended to imply that the entities, materials, or equipment are necessarily
+the best available for the purpose.
+
+Usage in H2O Sonar:
+H2O Sonar uses NIST AI 600-1 content for:
+- GenAI risk management evaluation
+- AI safety benchmarking
+- Trustworthy AI assessment
+- Regulatory compliance testing
+- Internal research and development
+
+Legal Duties and Requirements:
+- NO attribution legally required (but recommended)
+- NO license terms to comply with
+- NO restrictions on use, modification, or distribution
+- NO commercial use limitations
+- Recommended: Include citation for professional/academic integrity
+
+Notes:
+- NIST AI 600-1 builds upon NIST's AI Risk Management Framework (AI RMF 1.0)
+- Focused specifically on risks unique to generative AI systems
+- Provides actionable guidance for developers, deployers, and evaluators
+- Complements other NIST standards and guidelines
+
+Public Domain Status: Confirmed
+Attribution Required: No (but recommended)
+Commercial Use: Unrestricted
+Modification: Unrestricted
+Distribution: Unrestricted

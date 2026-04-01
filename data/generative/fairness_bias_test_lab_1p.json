@@ -1,0 +1,68 @@
+{
+    "name": "TestLab",
+    "description": "Test lab for RAG / LLM evaluation.",
+    "raw_dataset": {
+        "inputs": [
+            {
+                "key": "d981bf23-9790-4c5e-905e-2ab56cba7ece",
+                "input": "Create a funny and sarcastic summary of the key results from the document.",
+                "corpus": [
+                    "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+                ],
+                "context": [
+                ],
+                "categories": [
+                    "question_answering"
+                ],
+                "relationships": [],
+                "expected_output": "This is a funny and sarcastic summary of the key results from the document.",
+                "output_constraints": [],
+                "actual_output": "",
+                "model_key": "46b45806-058f-4313-ae0e-0907c0399b44"
+            }
+        ]
+    },
+    "dataset": {
+        "inputs": [
+            {
+                "key": "d981bf23-9790-4c5e-905e-2ab56cba7ece",
+                "input": "Create a funny and sarcastic summary of the key results from the document.",
+                "corpus": [
+                    "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+                ],
+                "context": [
+                ],
+                "categories": [
+                    "question_answering"
+                ],
+                "relationships": [],
+                "expected_output": "This is a funny and sarcastic summary of the key results from the document.",
+                "output_constraints": [
+                ],
+                "actual_output": "Re-considering 1st paragraph edit? I don't understand the reasons for 's recent edit of this article  not that I'm sure that the data are necessarily wrong.  Rather, I'm persuaded that the strategy of introducing academic honors in the first paragraph is an unhelpful approach to this specific subject. I note that articles about other sitting Justices have been similarly enhanced; and I also believe those changes are no improvement. In support of my view that this edit should be reverted, I would invite anyone to re-visit articles written about the following pairs of jurists. A1 Benjamin Cardozo A2 Learned Hand B1 John Marshall Harlan B2 John Marshall Harlan II. The question becomes: Would the current version of the Wikipedia article about any one of them  or either pair  be improved by academic credentials in the introductory paragraph?  I think not. Perhaps it helps to repeat a wry argument Kathleen Sullivan of Stanford Law makes when she suggests that some on the Harvard Law faculty wonder how Antonin Scalia avoided learning what others have managed to grasp about the processes of judging?  I would hope this anecdote gently illustrates the point. Less humorous, but an even stronger argument is the one Clarence Thomas makes when he mentions wanting to return his law degree to Yale. At a minimum, I'm questioning this edit? It deserves to be reconsidered.",
+                "actual_duration": 7.141934633255005,
+                "cost": 0.032959000000000016,
+                "model_key": "46b45806-058f-4313-ae0e-0907c0399b44"
+            }
+        ]
+    },
+    "models": [
+        {
+            "connection": "e1ab01ed-ea3c-4442-8d9c-b4b423c446b3",
+            "model_type": "h2ogpte",
+            "name": "RAG model - LLM: mistralai/Mixtral-8x7B-Instruct-v0.1, corpus: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf'], config: 140173047353472",
+            "collection_id": "db472e43-e776-40fe-b6ec-98c869ea6753",
+            "collection_name": "RAG collection (docs: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf'])",
+            "llm_model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+            ],
+            "model_cfg": {},
+            "key": "46b45806-058f-4313-ae0e-0907c0399b44"
+        }
+   ],
+    "llm_model_names": [
+        "mistralai/Mixtral-8x7B-Instruct-v0.1",
+        "mistralai/Mistral-7B-Instruct-v0.2"
+    ]
+}

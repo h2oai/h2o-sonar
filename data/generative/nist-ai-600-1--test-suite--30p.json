@@ -1,0 +1,465 @@
+{
+    "name": "NIST AI 600-1 Test Suite",
+    "description": "NIST AI 600-1 document questions and answers with constraints.",
+    "tests": [
+        {
+            "key": "6d14677a-a47c-4ff3-8708-94a94057b85c",
+            "documents": [
+                "https://airc.nist.gov/docs/NIST.AI.600-1.GenAI-Profile.ipd.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "8e4157e8-3ad6-4d4c-be2c-4fc881f6d92c",
+                    "prompt": "What is the purpose of the NIST AI 600-1 document?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "risk management",
+                        "framework",
+                        "legal",
+                        "regulatory",
+                        "best practices"
+                    ],
+                    "expected_output": "The purpose of the NIST AI 600-1 document is to provide a risk management framework for generative artificial intelligence (AI) and to assist organizations in managing AI risks in a manner that is well-aligned with their goals, legal /regulatory requirements, and best practices."
+                },
+                {
+                    "key": "5d65e4e0-5143-4560-b0e8-8f424461c88a",
+                    "prompt": "What is the AI Risk Management Framework (AI RMF)?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "trustworthiness",
+                        "design",
+                        "development",
+                        "evaluation"
+                    ],
+                    "expected_output": "The AI Risk Management Framework (AI RMF) is a document released by NIST in January 2023, which provides a structured approach for organizations to incorporate trustworthiness considerations into the design, development, use, and evaluation of AI products, services, and systems."
+                },
+                {
+                    "key": "d42f4d19-a3e5-40d6-bb16-7aa11f013c19",
+                    "prompt": "What is the relationship between the NIST AI 600-1 document and the AI RMF?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "companion",
+                        "resource",
+                        "profile"
+
+                    ],
+                    "expected_output": "The NIST AI 600-1 document is a companion resource to the AI RMF, and it serves as both a use-case and cross-sectoral profile of the AI RMF 1.0."
+                },
+                {
+                    "key": "d714cb84-e7a4-4361-865d-f2ea38209eda",
+                    "prompt": "What are the primary considerations for managing GAI risks, as mentioned in the NIST AI 600-1 document?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "12",
+                        "unique",
+                        "risks"
+                    ],
+                    "expected_output": "The primary considerations for managing GAI risks, as mentioned in the NIST AI 600-1 document, include the 12 risks unique to or exacerbated by generative AI, which are listed in the document."
+                },
+                {
+                    "key": "9b49c475-03e6-4e60-adb4-65b85411afc7",
+                    "prompt": "How can organizations provide feedback on the NIST AI 600-1 document?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "electronically",
+                        "NIST-AI-600-1@nist.gov",
+                        "www.regulations.gov",
+                        "NIST-2024-0001"
+                    ],
+                    "expected_output": "Organizations can provide feedback on the NIST AI 600-1 document by sending comments electronically to NIST-AI-600-1@nist.gov or via www.regulations.gov, enter NIST-2024-0001 in the search field, click on the \u201cComment Now!\u201d icon, complete the required fields, including \u201cNIST AI 600-1, Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile\u201d in the subject field, and enter or attach your comments."
+                },
+                {
+                    "key": "9a2d379a-cb74-47f1-8fc0-25220375479d",
+                    "prompt": "What is the deadline for providing feedback on the NIST AI 600-1 document?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "June 2",
+                        "2024"
+                    ],
+                    "expected_output": "The deadline for providing feedback on the NIST AI 600-1 document is June 2, 2024, at 11:59 PM Eastern Time."
+                },
+                {
+                    "key": "564b73a1-ed94-496b-a73f-8b1309d7864b",
+                    "prompt": "Who can provide feedback on the NIST AI 600-1 document?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "organizations",
+                        "individuals",
+                        "experts"
+                    ],
+                    "expected_output": "Anyone can provide feedback on the NIST AI 600-1 document, including organizations, individuals, and experts in the field of AI."
+                },
+                {
+                    "key": "3fca2993-d504-49a4-b7b6-85148e839908",
+                    "prompt": "What is the purpose of the glossary terms mentioned in the NIST AI 600-1 document?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "standardized vocabulary"
+                    ],
+                    "expected_output": "The purpose of the glossary terms mentioned in the NIST AI 600-1 document is to provide a standardized vocabulary for discussing AI risk management and to help organizations understand and communicate about AI risks in a consistent manner."
+                },
+                {
+                    "key": "10957c66-2da3-481d-a2ca-f0806545df24",
+                    "prompt": "What is the role of the NIST Generative AI Public Working Group in the development of the NIST AI 600-1 document?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "comments",
+                        "contributions"
+                    ],
+                    "expected_output": "The NIST Generative AI Public Working Group provided helpful comments and contributions to the development of the NIST AI 600-1 document."
+                },
+                {
+                    "key": "6dee638d-1dce-4cb1-a41d-bef60328bfd8",
+                    "prompt": "What is the disclaimer mentioned in the NIST AI 600-1 document?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "information only",
+                        "not imply",
+                        "endorsement",
+                        "recommendation"
+                    ],
+                    "expected_output": "The disclaimer mentioned in the NIST AI 600-1 document states that any mention of commercial, non-profit, academic partners, or their products, or references is for information only and does not imply endorsement or recommendation by any U.S. Government agency."
+                },
+                {
+                    "key": "891740dc-d51b-4ad8-802c-c218cd77c7e9",
+                    "prompt": "What is the purpose of the AI RMF 1.0 companion resource?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "use-case",
+                        "cross-sectoral",
+                        "profile"
+                    ],
+                    "expected_output": "The purpose of the AI RMF 1.0 companion resource is to provide a use-case and cross-sectoral profile of the AI RMF 1.0 for Generative AI (GAI) to help organizations manage AI risk in a manner that is well-aligned with their goals, considers legal/regulatory requirements and best practices, and reflects risk management priorities."
+                },
+                {
+                    "key": "ca2ae282-2b31-4027-879a-5d92cf9c59d0",
+                    "prompt": "What is GAI defined as in the context of the AI RMF 1.0 companion resource?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "class",
+                        "models",
+                        "synthetic content",
+                        "images",
+                        "videos",
+                        "audio"
+                    ],
+                    "expected_output": "GAI is defined as the class of AI models that emulate the structure and characteristics of input data in order to generate derived synthetic content, including images, videos, audio, text, and other digital content."
+                },
+                {
+                    "key": "1bcb0d8a-6a92-4c74-bf05-0ddbc5930aae",
+                    "prompt": "What are some of the risks associated with GAI that are highlighted in the AI RMF 1.0 companion resource?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "CBRN",
+                        "confabulation",
+                        "violent",
+                        "recommendations",
+                        "data privacy",
+                        "environmental",
+                        "integrity",
+                        "security",
+                        "intellectual property",
+                        "obscene",
+                        "abusive",
+                        "toxicity",
+                        "bias",
+                        "homogenization",
+                        "value chain",
+                        "component integration"
+                    ],
+                    "expected_output": "Some of the risks associated with GAI that are highlighted in the AI RMF 1.0 companion resource include CBRN information, confabulation, dangerous or violent recommendations, data privacy, environmental, human-AI configuration, information integrity, information security, intellectual property, obscene, degrading, and/or abusive content, toxicity, bias, and homogenization, and value chain and component integration."
+                },
+                {
+                    "key": "47564c25-21e2-4cc8-b0d7-1bb393f42936",
+                    "prompt": "What is the purpose of the GAI PWG?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "input",
+                        "insight",
+                        "GAI",
+                        "risk management"
+                    ],
+                    "expected_output": "The purpose of the GAI PWG is to obtain multistakeholder input and insight on GAI risk management and inform NIST\u2019s approach to GAI risk management."
+                },
+                {
+                    "key": "bee61003-c9fa-4165-9fb3-c1ceefcdee19",
+                    "prompt": "How does GAI differ from traditional software risks?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "exacerbate",
+                        "create",
+                        "unique"
+                    ],
+                    "expected_output": "GAI risks can differ from or intensify traditional software risks, and GAI can exacerbate existing AI risks and create unique risks."
+                },
+                {
+                    "key": "e6173c26-a7f5-484e-87c0-72427eb2b633",
+                    "prompt": "Where do GAI risks arise?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "lifecycle",
+                        "development",
+                        "decommission",
+                        "system level",
+                        "ecosystem level"
+                    ],
+                    "expected_output": "GAI risks may arise across the entire AI lifecycle, from problem formulation to development and decommission, and may present at system level or at the ecosystem level \u2013 outside of system or organizational contexts."
+                },
+                {
+                    "key": "b874a5f4-8f5e-4528-a816-a7567c4813ab",
+                    "prompt": "How should organizations manage GAI risks?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "measure",
+                        "allocate",
+                        "resources"
+                    ],
+                    "expected_output": "Organizations may choose to measure these risks and allocate risk management resources relative to where and how these risks manifest, their direct and material impacts, and failure modes."
+                },
+                {
+                    "key": "53bceaf7-4491-4b92-a813-3e2e8b2534db",
+                    "prompt": "What is the difference between system level risks and ecosystem level risks in the context of GAI?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "within",
+                        "outside"
+                    ],
+                    "expected_output": "System level risks refer to risks that occur within a specific system or organization, while ecosystem level risks refer to risks that occur outside of system or organizational contexts, such as the impact of disinformation on social institutions or GAI impacts on the creative economies or labor markets."
+                },
+                {
+                    "key": "25483c2a-35b4-49b1-a4fc-186cba352f26",
+                    "prompt": "How can mitigations for GAI risks vary?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "system level",
+                        "ecosystem level"
+                    ],
+                    "expected_output": "Mitigations for system level risks may vary from ecosystem level risks, and organizations may choose to allocate risk management resources differently depending on the direct and material impacts of the risks and the failure modes."
+                },
+                {
+                    "key": "1ba44aa1-3189-486c-b9dc-801c236f8d39",
+                    "prompt": "What is the significance of the AI RMF 1.0 companion resource for organizations using GAI?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "framework",
+                        "managing",
+                        "AI",
+                        "risk",
+                        "aligned",
+                        "legal",
+                        "best practices"
+                    ],
+                    "expected_output": "The AI RMF 1.0 companion resource provides organizations using GAI with a framework for managing AI risk in a manner that is well-aligned with their goals, considers legal/regulatory requirements and best practices, and reflects risk management priorities, thereby helping to ensure that GAI is developed and used in a responsible and ethical manner."
+                },
+                {
+                    "key": "29491e88-cb59-4022-a544-4e627c9dc754",
+                    "prompt": "What are the potential risks associated with the development and deployment of GAI systems?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "CBRN",
+                        "confabulation",
+                        "violent",
+                        "data privacy",
+                        "integrity",
+                        "security",
+                        "intellectual property",
+                        "obscene",
+                        "abusive"
+                    ],
+                    "expected_output": "The potential risks associated with the development and deployment of GAI systems include, but are not limited to, CBRN information, confabulation, dangerous or violent recommendations, data privacy, environmental impacts, human-AI configuration, information integrity, information security, intellectual property, and obscene, degrading, and/or abusive content."
+                },
+                {
+                    "key": "f153c7ad-a04e-4195-9dc2-59430a2067ae",
+                    "prompt": "What is the definition of confabulation in the context of GAI systems?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "hallucinations",
+                        "fabrications"
+                    ],
+                    "expected_output": "Confabulation in the context of GAI systems refers to the production of confidently stated but erroneous or false content, also known colloquially as \"hallucinations\" or \"fabrications.\""
+                },
+                {
+                    "key": "91f616f8-d0f8-41ea-8874-afaae6a29263",
+                    "prompt": "What are some potential environmental impacts of GAI systems?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "resource utilization"
+                    ],
+                    "expected_output": "Potential environmental impacts of GAI systems include high resource utilization in training GAI models, which may result in damage to ecosystems."
+                },
+                {
+                    "key": "bc798497-f155-4117-901a-096e6ce9705c",
+                    "prompt": "What is algorithmic aversion in the context of GAI systems?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "human",
+                        "aversion",
+                        "trust"
+                    ],
+                    "expected_output": "Algorithmic aversion in the context of GAI systems refers to the potential for humans to develop an aversion to algorithms or AI systems, leading to a decrease in trust and potentially harmful outcomes."
+                },
+                {
+                    "key": "1c360a04-3034-40ad-a1ef-2a17fc1b3319",
+                    "prompt": "What is the difference between hallucination and fabrication in the context of GAI systems?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "erroneous",
+                        "false",
+                        "not intentional"
+                    ],
+                    "expected_output": "Hallucination in the context of GAI systems refers to the production of confidently stated but erroneous or false content that is not intentionally created, while fabrication refers to the intentional creation of false or misleading information."
+                },
+                {
+                    "key": "4607495d-f26f-4348-b05d-fbc7a224bd6e",
+                    "prompt": "What is the potential risk of anthropomorphization in GAI systems?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "attribute",
+                        "human characteristics"
+                    ],
+                    "expected_output": "Anthropomorphization in GAI systems refers to the potential for humans to inappropriately attribute human characteristics to non-human entities, leading to misinterpretation and potentially harmful outcomes."
+                },
+                {
+                    "key": "9af67e37-3703-411d-bff4-6ba57a148321",
+                    "prompt": "What is the potential risk of abuse, misuse, and unsafe repurposing of GAI systems?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "malicious",
+                        "cyber attacks",
+                        "hacking",
+                        "offensive"
+                    ],
+                    "expected_output": "The potential risk of abuse, misuse, and unsafe repurposing of GAI systems includes the use of GAI systems for malicious purposes, such as cyber attacks, hacking, and offensive cyber operations."
+                },
+                {
+                    "key": "b02698e1-5cee-4cf4-97fa-59014fab403f",
+                    "prompt": "What is the potential impact of GAI systems on intellectual property?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "without authorization",
+                        "copyrighted",
+                        "licensed",
+                        "infringing",
+                        "plagiarism"
+                    ],
+                    "expected_output": "The potential impact of GAI systems on intellectual property includes the ease of production of alleged copyrighted, trademarked, or licensed content used without authorization and/or in an infringing manner, as well as the potential for plagiarism or replication with related economic or ethical impacts."
+                },
+                {
+                    "key": "f96d6b74-4658-400d-b487-913cb5af8acc",
+                    "prompt": "What is the potential risk of obscene, degrading, and/or abusive content in GAI systems?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "production",
+                        "CSAM",
+                        "NCII"
+                    ],
+                    "expected_output": "The potential risk of obscene, degrading, and/or abusive content in GAI systems includes the ease of production and access to obscene, degrading, and/or abusive imagery, including synthetic child sexual abuse material (CSAM) and nonconsensual intimate images (NCII) of adults."
+                },
+                {
+                    "key": "e3bd24de-1e56-48b4-b39c-2498944024bf",
+                    "prompt": "How can organizations mitigate the risks associated with GAI systems?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "relationships": [],
+                    "constraints": [
+                        "risk management",
+                        "strategies",
+                        "allocate resources",
+                        "failure modes",
+                        "review",
+                        "literature"
+                    ],
+                    "expected_output": "Organizations can mitigate the risks associated with GAI systems by implementing risk management strategies that address the specific risks and allocate resources relative to the direct and material impacts and failure modes of each risk. Ongoing review of relevant literature and resources can also enable documentation and measurement of ecosystem-level or longitudinal risks."
+                }
+            ]
+        }
+    ]
+}

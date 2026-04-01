@@ -1,0 +1,58 @@
+{
+    "name": "h2oGPTe Benchmark",
+    "description": "h2oGPTe benchmark data import (2024-08-26_16h52m16s).",
+    "tests": [
+        {
+            "key": "053dfaad-7cf8-493c-b213-718fce180f86",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "dbf1aa44-5b13-4d19-b00d-d88d56c41abd",
+                    "prompt": "What was the revenue of Brazil?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"15,969\" AND regexp(\"(?i)million\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "26de52ad-53cb-42e2-b59c-a85375cbb923",
+                    "prompt": "What was the revenue of Mexico?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "(\"27,229\" AND regexp(\"(?i)million\"))",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "e88d2763-5324-4ebd-b1b3-bfa398a401eb",
+                    "prompt": "How did gross profit change YoY for South America?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "\"11.0%\" OR \"11%\"",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                },
+                {
+                    "key": "edcbc8e2-faf4-4cf0-9cda-51bcf832b402",
+                    "prompt": "When was the cybersecurity incident announced?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "condition": "regexp(\"(?i)April 26\")",
+                    "relationships": [],
+                    "constraints": null,
+                    "expected_output": ""
+                }
+            ]
+       }
+    ]
+}

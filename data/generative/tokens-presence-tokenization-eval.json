@@ -1,0 +1,426 @@
+{
+    "raw_dataset": {
+        "inputs": [
+            {
+                "input": "What was the revenue of Brazil?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "15,969",
+                    "million"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "9db686de-bdb1-42e4-bdef-b36353ada74b"
+            },
+            {
+                "input": "What was the revenue of Mexico?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "27,229",
+                    "million"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "9db686de-bdb1-42e4-bdef-b36353ada74b"
+            },
+            {
+                "input": "How did gross profit change YoY for South America?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "11.0%"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "9db686de-bdb1-42e4-bdef-b36353ada74b"
+            },
+            {
+                "input": "When was the cybersecurity incident announced?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "April 26"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "9db686de-bdb1-42e4-bdef-b36353ada74b"
+            },
+            {
+                "input": "Did inflation affect gross profit?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "inflation affected gross profit."
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "9db686de-bdb1-42e4-bdef-b36353ada74b"
+            },
+            {
+                "input": "What was the revenue of Brazil?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "15,969",
+                    "million"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "a3589ea8-ec52-45d9-bd0e-4d58790e10dc"
+            },
+            {
+                "input": "What was the revenue of Mexico?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "27,229",
+                    "million"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "a3589ea8-ec52-45d9-bd0e-4d58790e10dc"
+            },
+            {
+                "input": "How did gross profit change YoY for South America?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "11.0%"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "a3589ea8-ec52-45d9-bd0e-4d58790e10dc"
+            },
+            {
+                "input": "When was the cybersecurity incident announced?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "April 26"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "a3589ea8-ec52-45d9-bd0e-4d58790e10dc"
+            },
+            {
+                "input": "Did inflation affect gross profit?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "inflation affected gross profit."
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "a3589ea8-ec52-45d9-bd0e-4d58790e10dc"
+            },
+            {
+                "input": "What was the revenue of Brazil?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "15,969",
+                    "million"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "997f901a-cbb4-4730-b243-e6320720198c"
+            },
+            {
+                "input": "What was the revenue of Mexico?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "27,229",
+                    "million"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "997f901a-cbb4-4730-b243-e6320720198c"
+            },
+            {
+                "input": "How did gross profit change YoY for South America?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "11.0%"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "997f901a-cbb4-4730-b243-e6320720198c"
+            },
+            {
+                "input": "When was the cybersecurity incident announced?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "April 26"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "997f901a-cbb4-4730-b243-e6320720198c"
+            },
+            {
+                "input": "Did inflation affect gross profit?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "inflation affected gross profit."
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "model_key": "997f901a-cbb4-4730-b243-e6320720198c"
+            }
+        ]
+    },
+    "dataset": {
+        "inputs": [
+            {
+                "input": "What was the revenue of Brazil?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "15,969",
+                    "million"
+                ],
+                "actual_output": "According to the information provided in the document, the revenue of Brazil for the first quarter of 2023 was Ps. 15,969 million. This information can be found on page 13 of the document, where it is stated that the revenue for Brazil was 15,969 million, an increase of 11.0% compared to the same period of the previous year.",
+                "actual_duration": 12.61356782913208,
+                "model_key": "9db686de-bdb1-42e4-bdef-b36353ada74b"
+            },
+            {
+                "input": "What was the revenue of Mexico?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "27,229",
+                    "million"
+                ],
+                "actual_output": "THIS ANSWER WAS INTENTIONALLY MADE INVALID FOR TESTING PURPOSES.",
+                "actual_duration": 10.96569037437439,
+                "model_key": "9db686de-bdb1-42e4-bdef-b36353ada74b"
+            },
+            {
+                "input": "How did gross profit change YoY for South America?",
+                "context": [
+                    "SYNTHETIC CHUNK: Profit 11.0%"
+                ],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "11.0%"
+                ],
+                "actual_output": "THIS ANSWER WAS INTENTIONALLY MADE INVALID FOR TESTING PURPOSES.",
+                "actual_duration": 12.608188152313232,
+                "model_key": "9db686de-bdb1-42e4-bdef-b36353ada74b"
+            },
+            {
+                "input": "When was the cybersecurity incident announced?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "April 26"
+                ],
+                "actual_output": "According to the information provided in the document, the cybersecurity incident was announced on April 26, 2023. This is stated on page 3 of the document, where it says: \"\u2022 On April 26, the Company announced that it experienced a cybersecurity incident in recent days and has implemented its cybersecurity protection and response protocols.\"",
+                "actual_duration": 12.871459245681763,
+                "model_key": "9db686de-bdb1-42e4-bdef-b36353ada74b"
+            },
+            {
+                "input": "Did inflation affect gross profit?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "inflation affected gross profit."
+                ],
+                "actual_output": "Yes, inflation affected gross profit. The document states that \"gross profit increased 13.6% to Ps. 15,919 million, and gross margin contracted 100 basis points to 47.4%. This margin decrease was driven mainly by an increase in raw material costs such as sweeteners and concentrate in Mexico.\" This suggests that the increase in raw material costs, which is likely due to inflation, had a negative impact on gross profit margin.",
+                "actual_duration": 14.053186655044556,
+                "model_key": "9db686de-bdb1-42e4-bdef-b36353ada74b"
+            },
+            {
+                "input": "What was the revenue of Brazil?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "15,969",
+                    "million"
+                ],
+                "actual_output": "According to the information provided in the document, the revenue of Brazil for the first quarter of 2023 was Ps. 15,969 million. This information can be found in the table on page 13, which shows the revenue breakdown for Coca-Cola FEMSA's South America division.",
+                "actual_duration": 19.664475917816162,
+                "model_key": "a3589ea8-ec52-45d9-bd0e-4d58790e10dc"
+            },
+            {
+                "input": "What was the revenue of Mexico?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "27,229",
+                    "million"
+                ],
+                "actual_output": "According to the information provided in the document, the revenue of Mexico was Ps. 27,229 million in the first quarter of 2023, which represents a 17.3% increase compared to the same period of the previous year.",
+                "actual_duration": 18.937834978103638,
+                "model_key": "a3589ea8-ec52-45d9-bd0e-4d58790e10dc"
+            },
+            {
+                "input": "How did gross profit change YoY for South America?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "11.0%"
+                ],
+                "actual_output": "According to the information provided in the document, gross profit for South America increased by 11.0% YoY. This information can be found on page 7 of the document, which states: \"Gross profit increased 11.0% to Ps. 9,539 million, and gross margin expanded 160 basis points to 40.2%.\"",
+                "actual_duration": 21.225308418273926,
+                "model_key": "a3589ea8-ec52-45d9-bd0e-4d58790e10dc"
+            },
+            {
+                "input": "When was the cybersecurity incident announced?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "April 26"
+                ],
+                "actual_output": "According to the information provided in the document, the cybersecurity incident was announced on April 26. It is mentioned in the section \"RECENT DEVELOPMENTS\" on page 3 of the document:\n\n\"\u2022 On April 26, the Company announced that it experienced a cybersecurity incident in recent days and has implemented its cybersecurity protection and response protocols.\"\n\nTherefore, the answer to the question is April 26.",
+                "actual_duration": 21.623655796051025,
+                "model_key": "a3589ea8-ec52-45d9-bd0e-4d58790e10dc"
+            },
+            {
+                "input": "Did inflation affect gross profit?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "inflation affected gross profit."
+                ],
+                "actual_output": "Yes, according to the information provided in the document, inflation did affect gross profit. On a comparable basis, excluding currency translation effects, total revenues would have increased 17.9%. Gross profit increased 13.6% to Ps. 15,919 million, and gross margin contracted 100 basis points to 47.4%. This margin decrease was driven mainly by an increase in raw material costs such as sweeteners and concentrate in Mexico. These effects were partially offset by our top-line growth, favorable raw material hedging initiatives, and the appreciation of the Mexican Peso as applied to our dollar-denominated raw material costs. On a comparable basis, gross profit would have increased 15.2%.\n\nTherefore, the document states that the increase in raw material costs, such as sweeteners and concentrate in Mexico, partially offset the growth in gross profit. This implies that inflation affected the gross profit of the company.",
+                "actual_duration": 28.52234673500061,
+                "model_key": "a3589ea8-ec52-45d9-bd0e-4d58790e10dc"
+            },
+            {
+                "input": "What was the revenue of Brazil?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "15,969",
+                    "million"
+                ],
+                "actual_output": "The revenue of Brazil in the first quarter of 2023 was Ps. 15,969 million, which represents an increase of 11.0% compared to the same period in the previous year. This includes the revenues from beer, which amounted to Ps. 1,450 million and Ps. 1,250 million for the first quarter of 2023 and the same period of the previous year, respectively.",
+                "actual_duration": 14.899935007095337,
+                "model_key": "997f901a-cbb4-4730-b243-e6320720198c"
+            },
+            {
+                "input": "What was the revenue of Mexico?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "27,229",
+                    "million"
+                ],
+                "actual_output": "The revenue for Mexico was not explicitly mentioned in the provided context. However, we can calculate the revenue for Mexico & Central America Division by subtracting the revenue of other divisions from the total revenue.\n\nTotal revenue for 1Q23 was 57,357 million Mexican Pesos. The revenue for Mexico & Central America Division was 33,617 million Mexican Pesos. We can calculate the revenue for other divisions by subtracting the revenue for Mexico & Central America Division from the total revenue:\n\nOther divisions' revenue = Total revenue - Mexico & Central America Division revenue\nOther divisions' revenue = 57,357 - 33,617\nOther divisions' revenue = 23,740 million Mexican Pesos\n\nSo, the revenue for Mexico was not mentioned explicitly, but we can infer that it was part of the 23,740 million Mexican Pesos attributed to the \"Other divisions.\"",
+                "actual_duration": 18.54872441291809,
+                "model_key": "997f901a-cbb4-4730-b243-e6320720198c"
+            },
+            {
+                "input": "How did gross profit change YoY for South America?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "11.0%"
+                ],
+                "actual_output": "The gross profit for South America increased by 11.0% YoY.",
+                "actual_duration": 13.463225603103638,
+                "model_key": "997f901a-cbb4-4730-b243-e6320720198c"
+            },
+            {
+                "input": "When was the cybersecurity incident announced?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "April 26"
+                ],
+                "actual_output": "The cybersecurity incident was announced on April 26, 2023.",
+                "actual_duration": 13.428252220153809,
+                "model_key": "997f901a-cbb4-4730-b243-e6320720198c"
+            },
+            {
+                "input": "Did inflation affect gross profit?",
+                "context": [],
+                "categories": [],
+                "expected_output": "",
+                "output_constraints": [
+                    "inflation affected gross profit."
+                ],
+                "actual_output": "Yes, inflation affected gross profit. In the document, it is mentioned that inflation had an impact on the cost of goods sold and operating expenses such as labor, marketing, and maintenance. This led to an increase in raw material costs, mainly sweeteners and PET, coupled with an increase in operating expenses. As a result, gross profit was affected, and on a comparable basis, it would have increased by 21.8%.",
+                "actual_duration": 14.996453285217285,
+                "model_key": "997f901a-cbb4-4730-b243-e6320720198c"
+            }
+        ]
+    },
+    "models": [
+        {
+            "connection": "fad3af6c-ed1e-432d-92f7-8e743fd87742",
+            "model_type": "h2ogpte",
+            "name": "h2oGPTE model h2oai/h2ogpt-4096-llama2-70b-chat (docs: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf'])",
+            "collection_id": "4275a1dd-9c82-451a-b683-fcf162b9fe0b",
+            "collection_name": "h2oGPTE collection (docs: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf'])",
+            "llm_model_name": "h2oai/h2ogpt-4096-llama2-70b-chat",
+            "documents": [
+                "data/generative/rag_docs/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+            ],
+            "key": "9db686de-bdb1-42e4-bdef-b36353ada74b"
+        },
+        {
+            "connection": "fad3af6c-ed1e-432d-92f7-8e743fd87742",
+            "model_type": "h2ogpte",
+            "name": "h2oGPTE model h2oai/h2ogpt-4096-llama2-70b-chat-4bit (docs: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf'])",
+            "collection_id": "4275a1dd-9c82-451a-b683-fcf162b9fe0b",
+            "collection_name": "h2oGPTE collection (docs: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf'])",
+            "llm_model_name": "h2oai/h2ogpt-4096-llama2-70b-chat-4bit",
+            "documents": [
+                "data/generative/rag_docs/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+            ],
+            "key": "a3589ea8-ec52-45d9-bd0e-4d58790e10dc"
+        },
+        {
+            "connection": "fad3af6c-ed1e-432d-92f7-8e743fd87742",
+            "model_type": "h2ogpte",
+            "name": "h2oGPTE model lmsys/vicuna-13b-v1.5-16k (docs: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf'])",
+            "collection_id": "4275a1dd-9c82-451a-b683-fcf162b9fe0b",
+            "collection_name": "h2oGPTE collection (docs: ['Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf'])",
+            "llm_model_name": "lmsys/vicuna-13b-v1.5-16k",
+            "documents": [
+                "data/generative/rag_docs/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+            ],
+            "key": "997f901a-cbb4-4730-b243-e6320720198c"
+        }
+    ],
+    "llm_model_names": [],
+    "docs_cache": {
+        "data/generative/rag_docs/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf": "Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+    }
+}

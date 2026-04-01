@@ -1,0 +1,40 @@
+{
+    "tests": [
+        {
+            "documents": [
+                "https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf"
+            ],
+            "test_cases": [
+                {
+                    "prompt": "What is the purpose of the document?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [
+                        "guidance",
+                        "model risk management"
+                    ],
+                    "expected_output": "The purpose of this document is to provide comprehensive guidance for banks on effective model risk management. Rigorous model validation plays a critical role in model risk management; however, sound development, implementation, and use of models are also vital elements. Furthermore, model risk management encompasses governance and control mechanisms such as board and senior management oversight, policies and procedures, controls and compliance, and an appropriate incentive and organizational structure."
+                },
+                {
+                    "prompt": "What are the three core elements of a comprehensive validation framework?",
+                    "categories": [
+                        "question-answering"
+                    ],
+                    "constraints": ["conceptual soundness", "ongoing monitoring", "outcomes analysis"],
+                    "expected_output": "The three core elements of a comprehensive validation framework are evaluation of conceptual soundness, ongoing monitoring, and outcomes analysis."
+                },
+                {
+                    "prompt": "Which model risk management role is responsible for models proper development, implementation, and use?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [
+                        "model owner"
+                    ],
+                    "expected_output": "Model owners should be responsible for ensuring that models are properly developed, implemented, and used."
+                }
+           ]
+        }
+    ]
+}

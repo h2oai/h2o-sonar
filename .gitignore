@@ -1,0 +1,85 @@
+# Copyright 2018-2026 H2O.ai, Inc. All rights reserved.
+# OS specific
+.DS_Store
+
+# Distribution / packaging
+# NOTE: With uv migration, pyproject.toml is now tracked in git (no longer auto-generated)
+.buildinfo/
+.cache/
+*.egg-info/
+**/__pycache__/
+build/
+deps
+deps/
+dist/
+h2o_sonar/BUILD_INFO.txt
+libs
+tests/build/
+
+# Testing
+h2o-sonar/
+h2o-sonar.log
+random-attack/
+
+# Agent assisted coding
+.claude/settings.local.json
+.vibe/
+
+# Coverage reports
+pycov/
+ccov/
+.coverage
+coverage.xml
+coverage.info
+.benchmarks
+.pytest_cache/
+tests/__pycache__/
+
+# Sphinx documentation
+techdocs/_build/
+docs/source/_static/custom.css
+
+# IPython Notebook
+.ipynb_checkpoints
+results/
+
+# Project managers
+.idea
+!.idea/inspectionProfiles
+*.sublime-*
+.vscode
+**/*/temp_test_run_data.json
+temp_test_run_data.json
+
+# Landfill area
+temp/
+
+# Auto-generated files
+ci/fast.mk
+
+# Scorers
+.venv-scorers/
+benchmarks/scorers/
+tests/methods/tmp/
+
+# DAI scorers
+tests/scorers
+benchmarks/data
+tests/methods/tmp/
+tmp/
+
+# LLM
+h2o-eval-studio-empty-corpus-dummy-document.txt
+
+# Examples
+examples/.ipnb_checkpoints
+examples/predictive/*.zip
+examples/predictive/*.log
+
+# Python envs
+env/
+venv/
+.venv/
+
+# VS Code
+.history/

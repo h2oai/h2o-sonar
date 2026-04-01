@@ -1,0 +1,23 @@
+{
+    "tests": [
+        {
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+            ],
+            "test_cases": [
+                {
+                    "prompt": "What was the revenue of Brazil?",
+                    "expected_output": "Brazil revenue was 15,969 million.",
+                    "constraints": [
+                    ]
+                },
+                {
+                    "key": "bde4da72-c160-46cd-bed1-b1d0e103e301",
+                    "prompt": "What was the revenue of Mexico?",
+                    "constraints": [
+                    ]
+                }
+            ]
+        }
+    ]
+}

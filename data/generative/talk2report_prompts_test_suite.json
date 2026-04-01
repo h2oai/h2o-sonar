@@ -1,0 +1,154 @@
+{
+    "tests": [
+        {
+            "key": "751cef14-275d-4839-ac94-79ed8eee6de8",
+            "documents": [ "data/generative/corpus/talk2report-deepeval-20231103.pdf" ],
+            "test_cases": [
+                {
+                    "key": "c812074e-e3af-434b-bc48-76205a6e601b",
+                    "prompt": "Did interpretation find any model problem?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "Yes, according to the information provided in the context, the interpretation found a potential model problem. On page 3, it is mentioned that \"Explainer  the following potential problems with the model: Severity Type Problem Suggested actions Explainer Resources LOW bias A path in the residual surrogate decision tree leading to the largest residual (2.226343) may indicate a problem.\" This suggests that the model may have a bias or other problem that needs to be addressed. Additionally, on page 59, it is mentioned that \"Verify that feature `PAY_0' error interaction in class '1' does not indicate a model bias other problem. Residual Partial Dependence Plot PartialDependenceExplanation / application/json,\" which suggests that there may be an issue with the feature `PAY_0` in class '1' that needs to be investigated further."
+                },
+                {
+                    "key": "cdf7a0ee-6880-4fbb-94ae-6a901c5a538c",
+                    "prompt": "How many model problems were found?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "According to the information provided in the document, 2 model problems were found. This is stated in the \"Summary\" section on page 1, which says \"Problems: 2.\""
+                },
+                {
+                    "key": "5937b73a-df26-411c-b49e-c66fa0140baf",
+                    "prompt": "Were there any HIGH/MEDIUM/LOW severity problems?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "Yes, there were some HIGH/MEDIUM/LOW severity problems mentioned in the document.\n\nOn page 94, it is mentioned that there is a MEDIUM severity problem with the model, which is related to the residual partial dependence plot of feature 'PAY_0' in class '1'. The explanation suggests that the feature 'PAY_0' has the highest interaction with the error, and it is recommended to verify that this feature does not indicate a model bias or other problem.\n\nOn page 109, it is mentioned that there are LOW severity problems with the model, including missing values in the target column and a low number of unique values across columns of a feature.\n\nIt is also mentioned on page 11 that there are 2 potential problems with the model, but the severity of these problems is not specified."
+                },
+                {
+                    "key": "0701aeb3-11cb-444f-84e9-9aefa9432ef3",
+                    "prompt": "Suggest how to solve the HIGH SEVERITY problem.",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "No suggestion can be provided as no HIGH severity problems were found."
+                },
+                {
+                    "key": "ee6cd5a7-fa67-4c7c-b318-d96e2e91681a",
+                    "prompt": "Create action plan as bullet list to solve the LOW SEVERITY problem.",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "Sure, here's an action plan to address the LOW SEVERITY problem identified in the document:\n\n* Review the residual surrogate decision tree and identify the path leading to the largest residual (2.226343) that may indicate a problem.\n* Investigate the feature(s) associated with the identified path and determine if there are any issues with the data or the model that could be causing the problem.\n* Check if there are any missing values or outliers in the feature(s) that could be affecting the model's behavior.\n* Verify that the feature(s) are correctly encoded and that there are no errors in the data preprocessing step.\n* If necessary, consider adding additional features or transforming the existing features to improve the model's performance.\n* Re-run the model with the updated features or data preprocessing steps to see if the problem persists.\n* If the problem still persists, consider using a different model or algorithm that may be less sensitive to the identified issue.\n* Document the findings and actions taken to address the problem, and include them in the model interpretation report."
+                },
+                {
+                    "key": "fe684afb-4159-4467-bfba-90b438d2fd62",
+                    "prompt": "Is the model fair?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "It is not possible to determine whether the model is fair or not."
+                },
+                {
+                    "key": "602bed3f-e1e6-4b31-b107-a89e092bd748",
+                    "prompt": "Which features are on the path which leads to the highest model error?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "The features on the path that leads to the highest model error are PAY_0, PAY_ATM4 and LIMIT_BAL."
+                },
+                {
+                    "key": "6f8a4ad0-bc38-43e0-a79f-6d11e601c69e",
+                    "prompt": "Summarize the report.",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "The document appears to be a collection of extracts from various reports and data related to a machine learning model interpretation. The reports are generated by H2O Sonar, a tool for model interpretation and explanation.\n\nThe first page (page 44) contains information about the model's performance on a test set, including accuracy, precision, recall, F1, and AUC-ROC. The second page (page 55) contains information about the model's performance on a validation set, including accuracy, precision, recall, F1, and AUC-ROC. The third page (page 1) contains information about the model's performance on a test set, including accuracy, precision, recall, F1, and AUC-ROC.\n\nPage 108 contains information about the model's feature importance, including a list of features and their importance scores. Page 63 contains information about the model's Shapley values for original features, including a list of features and their Shapley values. Page 19 contains information about the model's PAY 6-1 metrics, including precision, recall, F1, and AUC-ROC for different groups.\n\nPage 106 contains information about the model's partial dependence plot for features 'SEX' and 'EDUCATION', including a graphical representation of the plot. Page 7 contains information about the dataset used for the model, including the number of rows, column names, and data types.\n\nPage 10 contains information about the model's fairness metrics, including disparate impact analysis. Page 35 contains information about the model's PAY 2-1 metrics, including precision, recall, F1, and AUC-ROC for different groups. Page 33 contains"
+                },
+                {
+                    "key": "b2a0db4f-5da7-4e04-8d86-3dd8e1ca95a8",
+                    "prompt": "What is the target column of the model?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "The target column of the model is \"default payment next month\"."
+                },
+                {
+                    "key": "dac60759-81d8-45bb-8c7c-cc2c779c72ab",
+                    "prompt": "Which features are used by the model?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "The following features are used by the model: 'LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_0', 'PAY_2', 'PAY_3','PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2', 'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5','BILL_AMT6', 'PAY_AMT1', 'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6'"
+                },
+                {
+                    "key": "761383e2-ffc8-4851-ad0b-cf52baca0f0a",
+                    "prompt": "What is the most important original feature of the model?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "According to the document, the most important original feature of the model is PAY_0, with an importance score of 0.48431425950676193. This information can be found on page 102 of the document, which mentions that the Shapley value of the feature PAY_0 is 0.48431425950676193."
+                },
+                {
+                    "key": "cbed2514-96d7-43a6-8ae8-d9a883322fec",
+                    "prompt": "What is the most important transformed feature of the model?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "According to the information provided in the document, the most important transformed feature of the model is 10_PAY_0. This is stated on page 64, which explains that the feature importance for class 1's most critical transformed feature is 10_PAY_0. Additionally, it lists the importance of other features, such as 11_PAY_2, 8_LIMIT_BAL, 19_PAY_AMT4, and 17_PAY_AMT2.\n\nTherefore, based on the provided information, the most important transformed feature of the model is 10_PAY_0."
+                },
+                {
+                    "key": "6d7e7135-17e8-49ae-ac92-4bc6ef4d0a95",
+                    "prompt": "What are the 3 most important original features of the model?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "Based on the information provided in the document sources, the three most important original features of the model are:\n\n1. PAY_0 feature with importance 0.48431425950676193\n2. PAY_2 feature with importance 0.17728837728463115\n3. LIMIT_BAL feature with importance 0.14293027323329396\n\nThese features are identified as the most important original features for the class '1' in the Shapley Values for Original Features of MOJO Models (Naive Method) plot on page 62."
+                },
+                {
+                    "key": "8b222b11-3d6d-47fa-bd08-bb2a1e149b3f",
+                    "prompt": "What are the 3 most important transformed features of the model?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "According to the information provided in the document, the three most important transformed features of the model are:\n\n1. '10_PAY_0' with a Shapley value of 0.5\n2. '11_PAY_2' with a Shapley value of 0.4\n3. '8_LIMIT_BAL' with a Shapley value of 0.3\n\nThese values are listed on page 64 of the document, which provides a summary of the Shapley values for the transformed features of the MOJO model. The Shapley value is a measure of the feature's contribution to the model's prediction, with higher values indicating a greater contribution. Therefore, '10_PAY_0', '11_PAY_2', and '8_LIMIT_BAL' are the three most important transformed features of the model, in order of their Shapley values."
+                },
+                {
+                    "key": "3e7df66a-060f-4701-80ae-cb92851118f6",
+                    "prompt": "What were the columns of the training dataset?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "Based on the information provided in the document sources, the columns of the training dataset are:\n\n* ID\n* LIMIT_BAL\n* SEX\n* EDUCATION\n* MARRIAGE\n* AGE\n* PAY_0\n* PAY_2\n* PAY_3\n* PAY_4\n* PAY_5\n* PAY_6\n* BILL_AMT1\n* BILL_AMT2\n* BILL_AMT3\n* BILL_AMT4\n* BILL_AMT5\n* BILL_AMT6\n* PAY_AMT1\n* PAY_AMT2\n* PAY_AMT3\n* PAY_AMT4\n* PAY_AMT5\n* PAY_AMT6\n\nThese columns are mentioned in various places throughout the document, such as in the description of the dataset data frame shape, the explanation of the model's parameters, and the description of the transformed features."
+                },
+                {
+                    "key": "a14f1043-8cf4-48c9-a4c1-ce3a3f79f1c8",
+                    "prompt": "Which explainers were run by the interpretation?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [],
+                    "expected_output": "The following explainers were run by the interpretation:\n\n1. Disparate Impact Analysis\n2. Shapley Values for Original Features of MOJO Models (Naive Method)\n3. Shapley Values for Transformed Features of MOJO Models\n4. Residual Surrogate Decision Tree\n5. Surrogate Decision Tree\n6. Shapley Summary Plot for Original Features (Kernel SHAP Method)\n7. Partial Dependence Plot\n9. Residual Partial Dependence Plot\n10. Shapley Values for Original Features (Kernel SHAP Method)\n11. Partial Dependence Plot for Two Features\n12. Friedman's H-statistic\n13. Dataset and model insights explainer\n14 Retrieval Augmented Generation Assessment (DeepEval)."
+                }
+            ]
+        }
+    ]
+}

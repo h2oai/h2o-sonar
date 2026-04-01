@@ -1,0 +1,1054 @@
+{
+    "inputs": [
+        {
+            "input": "Which of the following statements accurately describes the impact of Modified Newtonian Dynamics (MOND) on the observed \"missing baryonic mass\" discrepancy in galaxy clusters?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Physical Review Letters. 99 (14): 141302. arXiv:0704.1932. Bibcode:2007PhRvL..99n1302Z. doi:10.1103/PhysRevLett.99.141302. PMID\u00a017930657. S2CID\u00a0119672184. Alzain, Mohammed (2017). \"Modified Newtonian Dynamics (MOND) as a Modification of Newtonian Inertia\". Journal of Astrophysics and Astronomy. 38 (4): 59. arXiv:1708.05385. Bibcode:2017JApA...38...59A. doi:10.1007/s12036-017-9479-0. S2CID\u00a0119245210. S. McGaugh, The EFE in MOND Archived 2017-07-16 at the Wayback Machine Milgrom, Mordehai (2008).",
+                "The homogeneously distributed mass of the universe would result in a roughly scalar field that permeated the universe and would serve as a source for Newton's gravitational constant; creating a theory of quantum gravity. Modified Newtonian Dynamics (MOND) is a relatively modern proposal to explain the galaxy rotation problem based on a variation of Newton's Second Law of Dynamics at low accelerations.",
+                "Modified Newtonian dynamics (MOND) is a hypothesis that proposes a modification of Newton's law of universal gravitation to account for observed properties of galaxies. It is an alternative to the hypothesis of dark matter in terms of explaining why galaxies do not appear to obey the currently understood laws of physics. Created in 1982 and first published in 1983 by Israeli physicist Mordehai Milgrom, the hypothesis' original motivation was to explain why the velocities of stars in galaxies were observed to be larger than expected based on Newtonian mechanics.",
+                "Unsolved problem in physics: What is the nature of dark matter? Is it a particle, or do the phenomena attributed to dark matter actually require a modification of the laws of gravity? (more unsolved problems in physics) MOND is an example of a class of theories known as modified gravity, and is an alternative to the hypothesis that the dynamics of galaxies are determined by massive, invisible dark matter halos.",
+                "MOND reduces the discrepancy between the velocity dispersions and clusters' observed missing baryonic mass from a factor of around 10 to a factor of about 2. However, the residual discrepancy cannot be accounted for by MOND, requiring that other explanations close the gap such as the presence of as-yet undetected missing baryonic matter."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "MOND is a theory that reduces the discrepancy between the observed missing baryonic mass in galaxy clusters and the measured velocity dispersions from a factor of around 10 to a factor of about 2.",
+            "output_constraints": [],
+            "actual_output": "MOND is a theory that reduces the discrepancy between the observed missing baryonic mass in galaxy clusters and the measured velocity dispersions from a factor of around 10 to a factor of about 2.",
+            "actual_duration": 2.1430046558380127,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "Which of the following statements accurately describes the impact of Modified Newtonian Dynamics (MOND) on the observed \"missing baryonic mass\" discrepancy in galaxy clusters?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Physical Review Letters. 99 (14): 141302. arXiv:0704.1932. Bibcode:2007PhRvL..99n1302Z. doi:10.1103/PhysRevLett.99.141302. PMID\u00a017930657. S2CID\u00a0119672184. Alzain, Mohammed (2017). \"Modified Newtonian Dynamics (MOND) as a Modification of Newtonian Inertia\". Journal of Astrophysics and Astronomy. 38 (4): 59. arXiv:1708.05385. Bibcode:2017JApA...38...59A. doi:10.1007/s12036-017-9479-0. S2CID\u00a0119245210. S. McGaugh, The EFE in MOND Archived 2017-07-16 at the Wayback Machine Milgrom, Mordehai (2008).",
+                "The homogeneously distributed mass of the universe would result in a roughly scalar field that permeated the universe and would serve as a source for Newton's gravitational constant; creating a theory of quantum gravity. Modified Newtonian Dynamics (MOND) is a relatively modern proposal to explain the galaxy rotation problem based on a variation of Newton's Second Law of Dynamics at low accelerations.",
+                "Modified Newtonian dynamics (MOND) is a hypothesis that proposes a modification of Newton's law of universal gravitation to account for observed properties of galaxies. It is an alternative to the hypothesis of dark matter in terms of explaining why galaxies do not appear to obey the currently understood laws of physics. Created in 1982 and first published in 1983 by Israeli physicist Mordehai Milgrom, the hypothesis' original motivation was to explain why the velocities of stars in galaxies were observed to be larger than expected based on Newtonian mechanics.",
+                "Unsolved problem in physics: What is the nature of dark matter? Is it a particle, or do the phenomena attributed to dark matter actually require a modification of the laws of gravity? (more unsolved problems in physics) MOND is an example of a class of theories known as modified gravity, and is an alternative to the hypothesis that the dynamics of galaxies are determined by massive, invisible dark matter halos.",
+                "MOND reduces the discrepancy between the velocity dispersions and clusters' observed missing baryonic mass from a factor of around 10 to a factor of about 2. However, the residual discrepancy cannot be accounted for by MOND, requiring that other explanations close the gap such as the presence of as-yet undetected missing baryonic matter."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "MOND is a theory that reduces the discrepancy between the observed missing baryonic mass in galaxy clusters and the measured velocity dispersions from a factor of around 10 to a factor of about 2.",
+            "output_constraints": [],
+            "actual_output": "MOND is a theory that reduces the discrepancy between the observed missing baryonic mass in galaxy clusters and the measured velocity dispersions from a factor of around 10 to a factor of about 2.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "Which of the following is an accurate definition of dynamic scaling in self-similar systems?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "\"Emergence of fractals in aggregation with stochastic self-replication\". Physical Review E. 88 (4): 042137. arXiv:1307.7804. Bibcode:2013PhRvE..88d2137H. doi:10.1103/physreve.88.042137. ISSN\u00a01539-3755. PMID\u00a024229145. S2CID\u00a030562144. Hassan, M Kamrul; Hassan, M Zahedul; Pavel, Neeaj I (2011-04-04). \"Dynamic scaling, data-collapse and self-similarity in Barab\u00e1si\u2013Albert networks\". Journal of Physics A: Mathematical and Theoretical. IOP Publishing. 44 (17): 175101. arXiv:1101.4730. Bibcode:2011JPhA...44q5101K.",
+                "The numerical value of f / t \u03b8 {\\displaystyle f/t^{\\theta }} should remain invariant despite the unit of measurement of t t is changed by some factor since \u03c6 \\varphi is a dimensionless quantity. Many of these systems evolve in a self-similar fashion in the sense that data obtained from the snapshot at any fixed time is similar to the respective data taken from the snapshot of any earlier or later time.",
+                "{\\displaystyle w=(2-\\tau )z.} In such systems we can define a certain time-dependent stochastic variable x x . We are interested in computing the probability distribution of x x at various instants of time i.e. f ( x , t ) f(x,t) . The numerical value of f f and the typical or mean value of x x generally changes over time. The question is: what happens to the corresponding dimensionless variables? If the numerical values of the dimensional quantities change, but corresponding dimensionless quantities remain invariant then we can argue that snapshots of the system at different times are similar.",
+                "Dynamic scaling (sometimes known as Family-Vicsek scaling) is a litmus test that shows whether an evolving system exhibits self-similarity. In general a function is said to exhibit dynamic scaling if it satisfies: f ( x , t ) \u223c t \u03b8 \u03c6 ( x t z ) . {\\displaystyle f(x,t)\\sim t^{\\theta }\\varphi \\left({\\frac {x}{t^{z}}}\\right).} Here the exponent \u03b8 \\theta is fixed by the dimensional requirement [ f ] = [ t \u03b8 ] {\\displaystyle [f]=[t^{\\theta }]} .",
+                "When this happens we say that the system is self-similar. One way of verifying dynamic scaling is to plot dimensionless variables f / t \u03b8 {\\displaystyle f/t^{\\theta }} as a function of x / t z {\\displaystyle x/t^{z}} of the data extracted at various different time. Then if all the plots of f f vs x x obtained at different times collapse onto a single universal curve then it is said that the systems at different time are similar and it obeys dynamic scaling."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Dynamic scaling refers to the evolution of self-similar systems, where data obtained from snapshots at fixed times exhibits similarity to the respective data taken from snapshots of any earlier or later time. This similarity is tested by a certain time-dependent stochastic variable x.",
+            "output_constraints": [],
+            "actual_output": "Dynamic scaling refers to the evolution of self-similar systems, where data obtained from snapshots at fixed times exhibits similarity to the respective data taken from snapshots of any earlier or later time. This similarity is tested by a certain time-dependent stochastic variable x.",
+            "actual_duration": 1.1891906261444092,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "Which of the following is an accurate definition of dynamic scaling in self-similar systems?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "\"Emergence of fractals in aggregation with stochastic self-replication\". Physical Review E. 88 (4): 042137. arXiv:1307.7804. Bibcode:2013PhRvE..88d2137H. doi:10.1103/physreve.88.042137. ISSN\u00a01539-3755. PMID\u00a024229145. S2CID\u00a030562144. Hassan, M Kamrul; Hassan, M Zahedul; Pavel, Neeaj I (2011-04-04). \"Dynamic scaling, data-collapse and self-similarity in Barab\u00e1si\u2013Albert networks\". Journal of Physics A: Mathematical and Theoretical. IOP Publishing. 44 (17): 175101. arXiv:1101.4730. Bibcode:2011JPhA...44q5101K.",
+                "The numerical value of f / t \u03b8 {\\displaystyle f/t^{\\theta }} should remain invariant despite the unit of measurement of t t is changed by some factor since \u03c6 \\varphi is a dimensionless quantity. Many of these systems evolve in a self-similar fashion in the sense that data obtained from the snapshot at any fixed time is similar to the respective data taken from the snapshot of any earlier or later time.",
+                "{\\displaystyle w=(2-\\tau )z.} In such systems we can define a certain time-dependent stochastic variable x x . We are interested in computing the probability distribution of x x at various instants of time i.e. f ( x , t ) f(x,t) . The numerical value of f f and the typical or mean value of x x generally changes over time. The question is: what happens to the corresponding dimensionless variables? If the numerical values of the dimensional quantities change, but corresponding dimensionless quantities remain invariant then we can argue that snapshots of the system at different times are similar.",
+                "Dynamic scaling (sometimes known as Family-Vicsek scaling) is a litmus test that shows whether an evolving system exhibits self-similarity. In general a function is said to exhibit dynamic scaling if it satisfies: f ( x , t ) \u223c t \u03b8 \u03c6 ( x t z ) . {\\displaystyle f(x,t)\\sim t^{\\theta }\\varphi \\left({\\frac {x}{t^{z}}}\\right).} Here the exponent \u03b8 \\theta is fixed by the dimensional requirement [ f ] = [ t \u03b8 ] {\\displaystyle [f]=[t^{\\theta }]} .",
+                "When this happens we say that the system is self-similar. One way of verifying dynamic scaling is to plot dimensionless variables f / t \u03b8 {\\displaystyle f/t^{\\theta }} as a function of x / t z {\\displaystyle x/t^{z}} of the data extracted at various different time. Then if all the plots of f f vs x x obtained at different times collapse onto a single universal curve then it is said that the systems at different time are similar and it obeys dynamic scaling."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Dynamic scaling refers to the evolution of self-similar systems, where data obtained from snapshots at fixed times exhibits similarity to the respective data taken from snapshots of any earlier or later time. This similarity is tested by a certain time-dependent stochastic variable x.",
+            "output_constraints": [],
+            "actual_output": "Dynamic scaling refers to the evolution of self-similar systems, where data obtained from snapshots at fixed times exhibits similarity to the respective data taken from snapshots of any earlier or later time. This similarity is tested by a certain time-dependent stochastic variable x.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "Which of the following statements accurately describes the origin and significance of the triskeles symbol?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Trinacria may refer to: the ancient Name of Sicily Sicily in the classical Greek period, see History of Greek and Hellenistic Sicily Name for the Kingdom of Sicily during the 1300s Name for the emblem of Sicily (the triskeles with the Gorgoneion Medusa), see Triskelion#Sicily A nickname of the modern Flag of Sicily Trinacria (bivalve), a genus of bivalves in the family Noetiidae Trinacria (diatom), a genus of diatoms Trinacria, a noise/death metal band which is a side project for members of Enslaved Three valli of Sicily Three-finger salute (Sicilian) Thrinacia, the Homeric island of Helios' cattle This disambiguation page lists articles associated with the title Trinacria.",
+                "The flag of Sicily (Sicilian: Bannera d\u00e2 Sicilia; Italian: Bandiera della Sicilia) shows a triskeles symbol (a figure of three legs arranged in rotational symmetry), and at its center a Gorgoneion (depiction of the head of Medusa) and a pair of wings and three wheat ears.",
+                "The Flag of Sicily, regarded as a regional icon, was first adopted in 1282, after the Sicilian Vespers of Palermo. It is characterised by the presence of the triskeles in the middle, depicting the head of Medusa and three wheat ears representing the extreme fertility of the land of Sicily.[additional citation(s) needed] In early mythology, when Medusa was slain and beheaded by Perseus, the Medusa head was placed in the centre of Athena's shield.",
+                "The flag is characterized by the presence of the triskeles in its middle, the (winged) head of Medusa and three wheat ears, representing the extreme fertility of the land of Sicily, The triskelion symbol is said to represent the three capes (headlands or promontories of the island of Sicily), namely: Pelorus (Peloro, Tip of Faro, Messina: North-East); Pachynus (Passero, Syracuse: South); and Lilyb\u00e6um (Lilibeo, Cape Boeo, Marsala: West), which form three points of a triangle from the historical three valli of the island.",
+                "The triskeles was adopted as emblem by the rulers of Syracuse. It is possible that this usage is related with the Greek name of the island of Sicily, Trinacria (\u03a4\u03c1\u03b9\u03bd\u03b1\u03ba\u03c1\u03af\u03b1 \"having three headlands\"). The Sicilian triskeles is shown with the head of Medusa at the center. The ancient symbol has been re-introduced in modern flags of Sicily since 1848. The oldest find of a triskeles in Sicily is a vase dated to 700 BCE, for which researchers assume a Minoan-Mycenaean origin."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The triskeles symbol was reconstructed as a feminine divine triad by the rulers of Syracuse, and later adopted as an emblem. Its usage may also be related to the Greek name of Sicily, Trinacria, which means \"having three headlands.\" The head of Medusa at the center of the Sicilian triskeles represents the three headlands.",
+            "output_constraints": [],
+            "actual_output": "The triskeles symbol is a representation of a triple goddess, reconstructed by the rulers of Syracuse, who adopted it as an emblem. Its significance lies in the fact that it represents the Greek name for Sicily, Trinacria, which contains the element \"tria,\" meaning three. The head of Medusa at the center of the Sicilian triskeles represents the three headlands.",
+            "actual_duration": 1.1886906623840332,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "Which of the following statements accurately describes the origin and significance of the triskeles symbol?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Trinacria may refer to: the ancient Name of Sicily Sicily in the classical Greek period, see History of Greek and Hellenistic Sicily Name for the Kingdom of Sicily during the 1300s Name for the emblem of Sicily (the triskeles with the Gorgoneion Medusa), see Triskelion#Sicily A nickname of the modern Flag of Sicily Trinacria (bivalve), a genus of bivalves in the family Noetiidae Trinacria (diatom), a genus of diatoms Trinacria, a noise/death metal band which is a side project for members of Enslaved Three valli of Sicily Three-finger salute (Sicilian) Thrinacia, the Homeric island of Helios' cattle This disambiguation page lists articles associated with the title Trinacria.",
+                "The flag of Sicily (Sicilian: Bannera d\u00e2 Sicilia; Italian: Bandiera della Sicilia) shows a triskeles symbol (a figure of three legs arranged in rotational symmetry), and at its center a Gorgoneion (depiction of the head of Medusa) and a pair of wings and three wheat ears.",
+                "The Flag of Sicily, regarded as a regional icon, was first adopted in 1282, after the Sicilian Vespers of Palermo. It is characterised by the presence of the triskeles in the middle, depicting the head of Medusa and three wheat ears representing the extreme fertility of the land of Sicily.[additional citation(s) needed] In early mythology, when Medusa was slain and beheaded by Perseus, the Medusa head was placed in the centre of Athena's shield.",
+                "The flag is characterized by the presence of the triskeles in its middle, the (winged) head of Medusa and three wheat ears, representing the extreme fertility of the land of Sicily, The triskelion symbol is said to represent the three capes (headlands or promontories of the island of Sicily), namely: Pelorus (Peloro, Tip of Faro, Messina: North-East); Pachynus (Passero, Syracuse: South); and Lilyb\u00e6um (Lilibeo, Cape Boeo, Marsala: West), which form three points of a triangle from the historical three valli of the island.",
+                "The triskeles was adopted as emblem by the rulers of Syracuse. It is possible that this usage is related with the Greek name of the island of Sicily, Trinacria (\u03a4\u03c1\u03b9\u03bd\u03b1\u03ba\u03c1\u03af\u03b1 \"having three headlands\"). The Sicilian triskeles is shown with the head of Medusa at the center. The ancient symbol has been re-introduced in modern flags of Sicily since 1848. The oldest find of a triskeles in Sicily is a vase dated to 700 BCE, for which researchers assume a Minoan-Mycenaean origin."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The triskeles symbol was reconstructed as a feminine divine triad by the rulers of Syracuse, and later adopted as an emblem. Its usage may also be related to the Greek name of Sicily, Trinacria, which means \"having three headlands.\" The head of Medusa at the center of the Sicilian triskeles represents the three headlands.",
+            "output_constraints": [],
+            "actual_output": "The triskeles symbol is a representation of a triple goddess, reconstructed by the rulers of Syracuse, who adopted it as an emblem. Its significance lies in the fact that it represents the Greek name for Sicily, Trinacria, which contains the element \"tria,\" meaning three. The head of Medusa at the center of the Sicilian triskeles represents the three headlands.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is the significance of regularization in terms of renormalization problems in physics?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Regularization is the first step towards obtaining a completely finite and meaningful result; in quantum field theory it must be usually followed by a related, but independent technique called renormalization. Renormalization is based on the requirement that some physical quantities \u2014 expressed by seemingly divergent expressions such as 1 / \u03f5 {\\displaystyle 1/\\epsilon } \u2014 are equal to the observed values.",
+                "This is precisely the motivation behind string theory and other multi-dimensional models including multiple time dimensions. Rather than the existence of unknown new physics, assuming the existence of particle interactions with other surrounding particles in the environment, renormalization offers an alternatively strategy to resolve infinities in such classical problems.",
+                "The problem of infinities first arose in the classical electrodynamics of point particles in the 19th and early 20th century. The mass of a charged particle should include the mass\u2013energy in its electrostatic field (electromagnetic mass). Assume that the particle is a charged spherical shell of radius re. The mass\u2013energy in the field is m e m = \u222b 1 2 E 2 d V = \u222b r e \u221e 1 2 ( q 4 \u03c0 r 2 ) 2 4 \u03c0 r 2 d r = q 2 8 \u03c0 r e , {\\displaystyle m_{\\mathrm {em} }=\\int {1 \\over 2}E^{2}\\,dV=\\int _{r_{e}}^{\\infty }{\\frac {1}{2}}\\left({q \\over 4\\pi r^{2}}\\right)^{2}4\\pi r^{2}\\,dr={q^{2} \\over 8\\pi r_{e}},} which becomes infinite as re \u2192 0.",
+                "Similar regularization arguments work in other renormalization problems. For example, a theory may hold under one narrow set of conditions, but due to calculations involving infinities or singularities, it may breakdown under other conditions or scales. In the case of the electron, another way to avoid infinite mass-energy while retaining the point nature of the particle is to postulate tiny additional dimensions over which the particle could 'spread out' rather than restrict its motion solely over 3D space.",
+                "Regularization: Classical physics theory breaks down at small scales, e.g., the difference between an electron and a point particle shown above. Addressing this problem requires new kinds of additional physical constraints. For instance, in this case, assuming a finite electron radius (i.e., regularizing the electron mass-energy) suffices to explain the system below a certain size."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Regularizing the mass-energy of an electron with a finite radius is a means of demonstrating that a system below a certain size can be explained without the need for further calculations. This approach can be applied to other renormalization problems as well.",
+            "output_constraints": [],
+            "actual_output": "Regularizing the mass-energy of an electron with a finite radius is a means of demonstrating that a system below a certain size can be explained without the need for further calculations. This approach can be applied to other renormalization problems as well.",
+            "actual_duration": 0.7872703075408936,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is the significance of regularization in terms of renormalization problems in physics?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Regularization is the first step towards obtaining a completely finite and meaningful result; in quantum field theory it must be usually followed by a related, but independent technique called renormalization. Renormalization is based on the requirement that some physical quantities \u2014 expressed by seemingly divergent expressions such as 1 / \u03f5 {\\displaystyle 1/\\epsilon } \u2014 are equal to the observed values.",
+                "This is precisely the motivation behind string theory and other multi-dimensional models including multiple time dimensions. Rather than the existence of unknown new physics, assuming the existence of particle interactions with other surrounding particles in the environment, renormalization offers an alternatively strategy to resolve infinities in such classical problems.",
+                "The problem of infinities first arose in the classical electrodynamics of point particles in the 19th and early 20th century. The mass of a charged particle should include the mass\u2013energy in its electrostatic field (electromagnetic mass). Assume that the particle is a charged spherical shell of radius re. The mass\u2013energy in the field is m e m = \u222b 1 2 E 2 d V = \u222b r e \u221e 1 2 ( q 4 \u03c0 r 2 ) 2 4 \u03c0 r 2 d r = q 2 8 \u03c0 r e , {\\displaystyle m_{\\mathrm {em} }=\\int {1 \\over 2}E^{2}\\,dV=\\int _{r_{e}}^{\\infty }{\\frac {1}{2}}\\left({q \\over 4\\pi r^{2}}\\right)^{2}4\\pi r^{2}\\,dr={q^{2} \\over 8\\pi r_{e}},} which becomes infinite as re \u2192 0.",
+                "Similar regularization arguments work in other renormalization problems. For example, a theory may hold under one narrow set of conditions, but due to calculations involving infinities or singularities, it may breakdown under other conditions or scales. In the case of the electron, another way to avoid infinite mass-energy while retaining the point nature of the particle is to postulate tiny additional dimensions over which the particle could 'spread out' rather than restrict its motion solely over 3D space.",
+                "Regularization: Classical physics theory breaks down at small scales, e.g., the difference between an electron and a point particle shown above. Addressing this problem requires new kinds of additional physical constraints. For instance, in this case, assuming a finite electron radius (i.e., regularizing the electron mass-energy) suffices to explain the system below a certain size."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Regularizing the mass-energy of an electron with a finite radius is a means of demonstrating that a system below a certain size can be explained without the need for further calculations. This approach can be applied to other renormalization problems as well.",
+            "output_constraints": [],
+            "actual_output": "Regularizing the mass-energy of an electron with a finite radius is a means of demonstrating that a system below a certain size can be explained without the need for further calculations. This approach can be applied to other renormalization problems as well.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "Which of the following statements accurately describes the relationship between the dimensions of a diffracting object and the angular spacing of features in the diffraction pattern?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The intensity is given by: I ( \u03b8 ) \u221d cos 2 \u2061 [ \u03c0 S sin \u2061 \u03b8 \u03bb ] sinc 2 \u2061 [ \u03c0 W sin \u2061 \u03b8 \u03bb ] \u221d cos 2 \u2061 [ k S sin \u2061 \u03b8 2 ] sinc 2 \u2061 [ k W sin \u2061 \u03b8 2 ] {\\displaystyle {\\begin{aligned}I(\\theta )&\\propto \\cos ^{2}\\left[{\\frac {\\pi S\\sin \\theta }{\\lambda }}\\right]\\operatorname {sinc} ^{2}\\left[{\\frac {\\pi W\\sin \\theta }{\\lambda }}\\right]\\\\&\\propto \\cos ^{2}\\left[{\\frac {kS\\sin \\theta }{2}}\\right]\\operatorname {sinc} ^{2}\\left[{\\frac {kW\\sin \\theta }{2}}\\right]\\end{aligned}}} It can be seen that the form of the intensity pattern is the product of the individual slit diffraction pattern, and the interference pattern which would be obtained with slits of negligible width.",
+                "Keller, who introduced the notion of diffraction coefficients through his geometrical theory of diffraction (GTD). Pathak and Kouyoumjian extended the (singular) Keller coefficients via the uniform theory of diffraction (UTD). Diffraction on a sharp metallic edge Diffraction on a soft aperture, with a gradient of conductivity over the image width Several qualitative observations can be made of diffraction in general: The angular spacing of the features in the diffraction pattern is inversely proportional to the dimensions of the object causing the diffraction.",
+                "For light, we can often neglect one dimension if the diffracting object extends in that direction over a distance far greater than the wavelength. In the case of light shining through small circular holes we will have to take into account the full three-dimensional nature of the problem. Several qualitative observations can be made of diffraction in general: The angular spacing of the features in the diffraction pattern is inversely proportional to the dimensions of the object causing the diffraction.",
+                "In other words: the smaller the diffracting object, the wider the resulting diffraction pattern, and vice versa. (More precisely, this is true of the sines of the angles.) The diffraction angles are invariant under scaling; that is, they depend only on the ratio of the wavelength to the size of the diffracting object.",
+                "In other words: The smaller the diffracting object, the 'wider' the resulting diffraction pattern, and vice versa. (More precisely, this is true of the sines of the angles.) The diffraction angles are invariant under scaling; that is, they depend only on the ratio of the wavelength to the size of the diffracting object."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The angular spacing of features in the diffraction pattern is inversely proportional to the dimensions of the object causing the diffraction. Therefore, if the diffracting object is smaller, the resulting diffraction pattern will be wider.",
+            "output_constraints": [],
+            "actual_output": "The angular spacing of features in the diffraction pattern is inversely proportional to the dimensions of the object causing the diffraction. Therefore, if the diffracting object is smaller, the resulting diffraction pattern will be wider.",
+            "actual_duration": 0.9142334461212158,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "Which of the following statements accurately describes the relationship between the dimensions of a diffracting object and the angular spacing of features in the diffraction pattern?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The intensity is given by: I ( \u03b8 ) \u221d cos 2 \u2061 [ \u03c0 S sin \u2061 \u03b8 \u03bb ] sinc 2 \u2061 [ \u03c0 W sin \u2061 \u03b8 \u03bb ] \u221d cos 2 \u2061 [ k S sin \u2061 \u03b8 2 ] sinc 2 \u2061 [ k W sin \u2061 \u03b8 2 ] {\\displaystyle {\\begin{aligned}I(\\theta )&\\propto \\cos ^{2}\\left[{\\frac {\\pi S\\sin \\theta }{\\lambda }}\\right]\\operatorname {sinc} ^{2}\\left[{\\frac {\\pi W\\sin \\theta }{\\lambda }}\\right]\\\\&\\propto \\cos ^{2}\\left[{\\frac {kS\\sin \\theta }{2}}\\right]\\operatorname {sinc} ^{2}\\left[{\\frac {kW\\sin \\theta }{2}}\\right]\\end{aligned}}} It can be seen that the form of the intensity pattern is the product of the individual slit diffraction pattern, and the interference pattern which would be obtained with slits of negligible width.",
+                "Keller, who introduced the notion of diffraction coefficients through his geometrical theory of diffraction (GTD). Pathak and Kouyoumjian extended the (singular) Keller coefficients via the uniform theory of diffraction (UTD). Diffraction on a sharp metallic edge Diffraction on a soft aperture, with a gradient of conductivity over the image width Several qualitative observations can be made of diffraction in general: The angular spacing of the features in the diffraction pattern is inversely proportional to the dimensions of the object causing the diffraction.",
+                "For light, we can often neglect one dimension if the diffracting object extends in that direction over a distance far greater than the wavelength. In the case of light shining through small circular holes we will have to take into account the full three-dimensional nature of the problem. Several qualitative observations can be made of diffraction in general: The angular spacing of the features in the diffraction pattern is inversely proportional to the dimensions of the object causing the diffraction.",
+                "In other words: the smaller the diffracting object, the wider the resulting diffraction pattern, and vice versa. (More precisely, this is true of the sines of the angles.) The diffraction angles are invariant under scaling; that is, they depend only on the ratio of the wavelength to the size of the diffracting object.",
+                "In other words: The smaller the diffracting object, the 'wider' the resulting diffraction pattern, and vice versa. (More precisely, this is true of the sines of the angles.) The diffraction angles are invariant under scaling; that is, they depend only on the ratio of the wavelength to the size of the diffracting object."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The angular spacing of features in the diffraction pattern is inversely proportional to the dimensions of the object causing the diffraction. Therefore, if the diffracting object is smaller, the resulting diffraction pattern will be wider.",
+            "output_constraints": [],
+            "actual_output": "The angular spacing of features in the diffraction pattern is inversely proportional to the dimensions of the object causing the diffraction. Therefore, if the diffracting object is smaller, the resulting diffraction pattern will be wider.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "Which of the following statements accurately depicts the relationship between Gauss's law, electric flux, electric field, and symmetry in electric fields?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "In other words, Gauss's law for magnetism is the statement: \u03a6 B = \\Phi _{B}=\\,\\! S \\scriptstyle S B \u22c5 d S = 0 {\\mathbf {B} }\\cdot d{\\mathbf {S} }=0 for any closed surface S. While the magnetic flux through a closed surface is always zero, the magnetic flux through an open surface need not be zero and is an important quantity in electromagnetism.",
+                "For a closed Gaussian surface, electric flux is given by: \u03a6 E = \\Phi _{E}=\\,\\! S \\scriptstyle S E \u22c5 d S = Q \u03b5 0 {\\displaystyle \\mathbf {E} \\cdot {\\textrm {d}}\\mathbf {S} ={\\frac {Q}{\\varepsilon _{0}}}\\,\\!} where E is the electric field, S is any closed surface, Q is the total electric charge inside the surface S, \u03b50 is the electric constant (a universal constant, also called the \"permittivity of free space\") (\u03b50 \u2248 8.854187817\u00d710\u221212\u00a0F/m) This relation is known as Gauss' law for electric fields in its integral form and it is one of Maxwell's equations.",
+                "This formulation of Gauss's law states the total charge form: \u03a6 D = Q f r e e {\\displaystyle \\Phi _{D}=Q_{\\mathrm {free} }} where \u03a6D is the D-field flux through a surface S which encloses a volume V, and Qfree is the free charge contained in V. The flux \u03a6D is defined analogously to the flux \u03a6E of the electric field E through S: \u03a6 D = \\Phi _{D}= S {\\displaystyle {\\scriptstyle _{S}}} D \u22c5 d A \\mathbf {D} \\cdot \\mathrm {d} \\mathbf {A} The differential form of Gauss's law, involving free charge only, states: \u2207 \u22c5 D = \u03c1 f r e e {\\displaystyle \\nabla \\cdot \\mathbf {D} =\\rho _{\\mathrm {free} }} where \u2207 \u00b7 D is the divergence of the electric displacement field, and \u03c1free is the free electric charge density.",
+                "Then, if the total flux is known, the field itself can be deduced at every point. Common examples of symmetries which lend themselves to Gauss's law include: cylindrical symmetry, planar symmetry, and spherical symmetry. See the article Gaussian surface for examples where these symmetries are exploited to compute electric fields. By the divergence theorem, Gauss's law can alternatively be written in the differential form: \u2207 \u22c5 E = \u03c1 \u03b5 0 \u03b5 r {\\displaystyle \\nabla \\cdot \\mathbf {E} ={\\frac {\\rho }{\\varepsilon _{0}\\varepsilon _{r}}}} where \u2207 \u00b7 E is the divergence of the electric field, \u03b50 is the vacuum permittivity, \u03b5 r \\varepsilon _{r} is the relative permittivity, and \u03c1 is the volume charge density (charge per unit volume).",
+                "While the electric flux is not affected by charges that are not within the closed surface, the net electric field, E can be affected by charges that lie outside the closed surface. While Gauss's law holds for all situations, it is most useful for \"by hand\" calculations when high degrees of symmetry exist in the electric field. Examples include spherical and cylindrical symmetry. The SI unit of electric flux is the volt-meter (V\u00b7m), or, equivalently, newton-meter squared per coulomb (N\u00b7m2\u00b7C\u22121)."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Gauss's law holds in all cases, but it is most useful for calculations involving symmetric electric fields, like those with spherical or cylindrical symmetry, as they allow for simpler algebraic manipulations. Electric flux is not affected by distant charges outside the closed surface, whereas the net electric field, E, can be influenced by any charges positioned outside of the closed surface. In SI base units, the electric flux is expressed as kg\u00b7m3\u00b7s\u22123\u00b7A\u22121.",
+            "output_constraints": [],
+            "actual_output": "Gauss's law holds in all cases, but it is most useful for calculations involving symmetric electric fields, like those with spherical or cylindrical symmetry, as they allow for simpler algebraic manipulations. Electric flux is not affected by distant charges outside the closed surface, whereas the net electric field, E, can be influenced by any charges positioned outside of the closed surface. In SI base units, the electric flux is expressed as kg\u00b7m3\u00b7s\u22123\u00b7A\u22121.",
+            "actual_duration": 1.1717278957366943,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "Which of the following statements accurately depicts the relationship between Gauss's law, electric flux, electric field, and symmetry in electric fields?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "In other words, Gauss's law for magnetism is the statement: \u03a6 B = \\Phi _{B}=\\,\\! S \\scriptstyle S B \u22c5 d S = 0 {\\mathbf {B} }\\cdot d{\\mathbf {S} }=0 for any closed surface S. While the magnetic flux through a closed surface is always zero, the magnetic flux through an open surface need not be zero and is an important quantity in electromagnetism.",
+                "For a closed Gaussian surface, electric flux is given by: \u03a6 E = \\Phi _{E}=\\,\\! S \\scriptstyle S E \u22c5 d S = Q \u03b5 0 {\\displaystyle \\mathbf {E} \\cdot {\\textrm {d}}\\mathbf {S} ={\\frac {Q}{\\varepsilon _{0}}}\\,\\!} where E is the electric field, S is any closed surface, Q is the total electric charge inside the surface S, \u03b50 is the electric constant (a universal constant, also called the \"permittivity of free space\") (\u03b50 \u2248 8.854187817\u00d710\u221212\u00a0F/m) This relation is known as Gauss' law for electric fields in its integral form and it is one of Maxwell's equations.",
+                "This formulation of Gauss's law states the total charge form: \u03a6 D = Q f r e e {\\displaystyle \\Phi _{D}=Q_{\\mathrm {free} }} where \u03a6D is the D-field flux through a surface S which encloses a volume V, and Qfree is the free charge contained in V. The flux \u03a6D is defined analogously to the flux \u03a6E of the electric field E through S: \u03a6 D = \\Phi _{D}= S {\\displaystyle {\\scriptstyle _{S}}} D \u22c5 d A \\mathbf {D} \\cdot \\mathrm {d} \\mathbf {A} The differential form of Gauss's law, involving free charge only, states: \u2207 \u22c5 D = \u03c1 f r e e {\\displaystyle \\nabla \\cdot \\mathbf {D} =\\rho _{\\mathrm {free} }} where \u2207 \u00b7 D is the divergence of the electric displacement field, and \u03c1free is the free electric charge density.",
+                "Then, if the total flux is known, the field itself can be deduced at every point. Common examples of symmetries which lend themselves to Gauss's law include: cylindrical symmetry, planar symmetry, and spherical symmetry. See the article Gaussian surface for examples where these symmetries are exploited to compute electric fields. By the divergence theorem, Gauss's law can alternatively be written in the differential form: \u2207 \u22c5 E = \u03c1 \u03b5 0 \u03b5 r {\\displaystyle \\nabla \\cdot \\mathbf {E} ={\\frac {\\rho }{\\varepsilon _{0}\\varepsilon _{r}}}} where \u2207 \u00b7 E is the divergence of the electric field, \u03b50 is the vacuum permittivity, \u03b5 r \\varepsilon _{r} is the relative permittivity, and \u03c1 is the volume charge density (charge per unit volume).",
+                "While the electric flux is not affected by charges that are not within the closed surface, the net electric field, E can be affected by charges that lie outside the closed surface. While Gauss's law holds for all situations, it is most useful for \"by hand\" calculations when high degrees of symmetry exist in the electric field. Examples include spherical and cylindrical symmetry. The SI unit of electric flux is the volt-meter (V\u00b7m), or, equivalently, newton-meter squared per coulomb (N\u00b7m2\u00b7C\u22121)."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Gauss's law holds in all cases, but it is most useful for calculations involving symmetric electric fields, like those with spherical or cylindrical symmetry, as they allow for simpler algebraic manipulations. Electric flux is not affected by distant charges outside the closed surface, whereas the net electric field, E, can be influenced by any charges positioned outside of the closed surface. In SI base units, the electric flux is expressed as kg\u00b7m3\u00b7s\u22123\u00b7A\u22121.",
+            "output_constraints": [],
+            "actual_output": "Gauss's law holds in all cases, but it is most useful for calculations involving symmetric electric fields, like those with spherical or cylindrical symmetry, as they allow for simpler algebraic manipulations. Electric flux is not affected by distant charges outside the closed surface, whereas the net electric field, E, can be influenced by any charges positioned outside of the closed surface. In SI base units, the electric flux is expressed as kg\u00b7m3\u00b7s\u22123\u00b7A\u22121.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "Which of the following statements accurately describes the dimension of an object in a CW complex?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "This map can be perturbed to be disjoint from the 0-skeleton of X if and only if f ( 0 ) {\\displaystyle f(0)} and f ( 1 ) {\\displaystyle f(1)} are not 0-valence vertices of X. The standard CW structure on the real numbers has as 0-skeleton the integers Z {\\displaystyle \\mathbb {Z} } and as 1-cells the intervals { [ n , n + 1 ] : n \u2208 Z } {\\displaystyle \\{[n,n+1]:n\\in \\mathbb {Z} \\}} .",
+                "By definition, the k-th homology group of a simplicial complex depends only on the simplices of dimension at most k+1 (see simplicial homology). Therefore, the above theorem implies that a simplicial complex K is k-connected if and only if its (k+1)-dimensional skeleton (the subset of K containing only simplices of dimension at most k+1) is k-connected.::\u200a80,\u200aProp.4.4.2\u200a Let K and L be non-empty cell complexes.",
+                "As a consequence, we have that a CW-pair (X,A) is n-connected, if all cells of X \u2212 A {\\displaystyle X-A} have dimension strictly greater than n: If i \u2264 n {\\displaystyle i\\leq n\\,} , then any map ( D i , \u2202 D i ) {\\displaystyle (D^{i},\\partial D^{i})\\,} \u2192(X,A) is homotopic to a cellular map of pairs, and since the n-skeleton of X sits inside A, any such map is homotopic to a map whose image is in A, and hence it is 0 in the relative homotopy group \u03c0 i ( X , A ) {\\displaystyle \\pi _{i}(X,A)\\,} .",
+                "In mathematics, particularly in algebraic topology, the n-skeleton of a topological space X presented as a simplicial complex (resp. CW complex) refers to the subspace Xn that is the union of the simplices of X (resp. cells of X) of dimensions m \u2264 n. In other words, given an inductive definition of a complex, the n-skeleton is obtained by stopping at the n-th step. These subspaces increase with n. The 0-skeleton is a discrete space, and the 1-skeleton a topological graph.",
+                "Moreover, the boundary of a discrete set of points is the empty set, and therefore the empty set can be taken to have dimension -1. Similarly, for the class of CW complexes, the dimension of an object is the largest n for which the n-skeleton is nontrivial. Intuitively, this can be described as follows: if the original space can be continuously deformed into a collection of higher-dimensional triangles joined at their faces with a complicated surface, then the dimension of the object is the dimension of those triangles.[citation needed] The Hausdorff dimension is useful for studying structurally complicated sets, especially fractals."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The dimension of an object in a CW complex is the largest n for which the n-skeleton is nontrivial, where the empty set is considered to have dimension -1 and the boundary of a discrete set of points is the empty set.",
+            "output_constraints": [],
+            "actual_output": "The dimension of an object in a CW complex is the largest n for which the n-skeleton is nontrivial, where the empty set is considered to have dimension -1 and the boundary of a discrete set of points is the empty set.",
+            "actual_duration": 0.9723026752471924,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "Which of the following statements accurately describes the dimension of an object in a CW complex?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "This map can be perturbed to be disjoint from the 0-skeleton of X if and only if f ( 0 ) {\\displaystyle f(0)} and f ( 1 ) {\\displaystyle f(1)} are not 0-valence vertices of X. The standard CW structure on the real numbers has as 0-skeleton the integers Z {\\displaystyle \\mathbb {Z} } and as 1-cells the intervals { [ n , n + 1 ] : n \u2208 Z } {\\displaystyle \\{[n,n+1]:n\\in \\mathbb {Z} \\}} .",
+                "By definition, the k-th homology group of a simplicial complex depends only on the simplices of dimension at most k+1 (see simplicial homology). Therefore, the above theorem implies that a simplicial complex K is k-connected if and only if its (k+1)-dimensional skeleton (the subset of K containing only simplices of dimension at most k+1) is k-connected.::\u200a80,\u200aProp.4.4.2\u200a Let K and L be non-empty cell complexes.",
+                "As a consequence, we have that a CW-pair (X,A) is n-connected, if all cells of X \u2212 A {\\displaystyle X-A} have dimension strictly greater than n: If i \u2264 n {\\displaystyle i\\leq n\\,} , then any map ( D i , \u2202 D i ) {\\displaystyle (D^{i},\\partial D^{i})\\,} \u2192(X,A) is homotopic to a cellular map of pairs, and since the n-skeleton of X sits inside A, any such map is homotopic to a map whose image is in A, and hence it is 0 in the relative homotopy group \u03c0 i ( X , A ) {\\displaystyle \\pi _{i}(X,A)\\,} .",
+                "In mathematics, particularly in algebraic topology, the n-skeleton of a topological space X presented as a simplicial complex (resp. CW complex) refers to the subspace Xn that is the union of the simplices of X (resp. cells of X) of dimensions m \u2264 n. In other words, given an inductive definition of a complex, the n-skeleton is obtained by stopping at the n-th step. These subspaces increase with n. The 0-skeleton is a discrete space, and the 1-skeleton a topological graph.",
+                "Moreover, the boundary of a discrete set of points is the empty set, and therefore the empty set can be taken to have dimension -1. Similarly, for the class of CW complexes, the dimension of an object is the largest n for which the n-skeleton is nontrivial. Intuitively, this can be described as follows: if the original space can be continuously deformed into a collection of higher-dimensional triangles joined at their faces with a complicated surface, then the dimension of the object is the dimension of those triangles.[citation needed] The Hausdorff dimension is useful for studying structurally complicated sets, especially fractals."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The dimension of an object in a CW complex is the largest n for which the n-skeleton is nontrivial, where the empty set is considered to have dimension -1 and the boundary of a discrete set of points is the empty set.",
+            "output_constraints": [],
+            "actual_output": "The dimension of an object in a CW complex is the largest n for which the n-skeleton is nontrivial, where the empty set is considered to have dimension -1 and the boundary of a discrete set of points is the empty set.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "Which of the following statements accurately describes the blocking temperature of an antiferromagnetic layer in a spin valve?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "In particular, at a high enough temperature, antiferroelectricity disappears; this temperature is known as the N\u00e9el point or Curie point. Compendium of chemical terminology - Gold Book (PDF). International Union of Pure and Applied Chemistry. 2014. Archived from the original (PDF) on 2016-09-13. Retrieved 2012-10-01. Charles Kittel (1951). \"Theory of Antiferroelectric Crystals\". Phys. Rev. 82 (5): 729\u2013732. Bibcode:1951PhRv...82..729K. doi:10.1103/PhysRev.82.729. v t e v t e.",
+                "The basic operating principles of a pseudo spin valve are identical to that of an ordinary spin valve, but instead of changing the magnetic coercivity of the different ferromagnetic layers by pinning one with an antiferromagnetic layer, the two layers are made of different ferromagnets with different coercivities e.g., NiFe and Co.",
+                "A spin valve is a device, consisting of two or more conducting magnetic materials, whose electrical resistance can change between two values depending on the relative alignment of the magnetization in the layers. The resistance change is a result of the giant magnetoresistive effect. The magnetic layers of the device align \"up\" or \"down\" depending on an external magnetic field. In the simplest case, a spin valve consists of a non-magnetic material sandwiched between two ferromagnets, one of which is fixed (pinned) by an antiferromagnet which acts to raise its magnetic coercivity and behaves as a \"hard\" layer, while the other is free (unpinned) and behaves as a \"soft\" layer.",
+                "As the temperature of a magnet increases, the anisotropy tends to decrease, and there is often a blocking temperature at which a transition to superparamagnetism occurs. The above would seem to suggest that every piece of ferromagnetic material should have a strong magnetic field, since all the spins are aligned, yet iron and other ferromagnets are often found in an \"unmagnetized\" state.",
+                "This provides the ability to \"pin\" the orientation of a ferromagnetic film, which provides one of the main uses in so-called spin valves, which are the basis of magnetic sensors including modern hard disk drive read heads. The temperature at or above which an antiferromagnetic layer loses its ability to \"pin\" the magnetization direction of an adjacent ferromagnetic layer is called the blocking temperature of that layer and is usually lower than the N\u00e9el temperature."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The blocking temperature of an antiferromagnetic layer in a spin valve is the temperature at or above which the layer ceases to prevent the orientation of an adjacent ferromagnetic layer. The blocking temperature is typically lower than the N\u00e9el temperature.",
+            "output_constraints": [],
+            "actual_output": "The blocking temperature of an antiferromagnetic layer in a spin valve is the temperature at or above which the layer ceases to prevent the orientation of an adjacent ferromagnetic layer. The blocking temperature is typically lower than the N\u00e9el temperature.",
+            "actual_duration": 0.867398738861084,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "Which of the following statements accurately describes the blocking temperature of an antiferromagnetic layer in a spin valve?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "In particular, at a high enough temperature, antiferroelectricity disappears; this temperature is known as the N\u00e9el point or Curie point. Compendium of chemical terminology - Gold Book (PDF). International Union of Pure and Applied Chemistry. 2014. Archived from the original (PDF) on 2016-09-13. Retrieved 2012-10-01. Charles Kittel (1951). \"Theory of Antiferroelectric Crystals\". Phys. Rev. 82 (5): 729\u2013732. Bibcode:1951PhRv...82..729K. doi:10.1103/PhysRev.82.729. v t e v t e.",
+                "The basic operating principles of a pseudo spin valve are identical to that of an ordinary spin valve, but instead of changing the magnetic coercivity of the different ferromagnetic layers by pinning one with an antiferromagnetic layer, the two layers are made of different ferromagnets with different coercivities e.g., NiFe and Co.",
+                "A spin valve is a device, consisting of two or more conducting magnetic materials, whose electrical resistance can change between two values depending on the relative alignment of the magnetization in the layers. The resistance change is a result of the giant magnetoresistive effect. The magnetic layers of the device align \"up\" or \"down\" depending on an external magnetic field. In the simplest case, a spin valve consists of a non-magnetic material sandwiched between two ferromagnets, one of which is fixed (pinned) by an antiferromagnet which acts to raise its magnetic coercivity and behaves as a \"hard\" layer, while the other is free (unpinned) and behaves as a \"soft\" layer.",
+                "As the temperature of a magnet increases, the anisotropy tends to decrease, and there is often a blocking temperature at which a transition to superparamagnetism occurs. The above would seem to suggest that every piece of ferromagnetic material should have a strong magnetic field, since all the spins are aligned, yet iron and other ferromagnets are often found in an \"unmagnetized\" state.",
+                "This provides the ability to \"pin\" the orientation of a ferromagnetic film, which provides one of the main uses in so-called spin valves, which are the basis of magnetic sensors including modern hard disk drive read heads. The temperature at or above which an antiferromagnetic layer loses its ability to \"pin\" the magnetization direction of an adjacent ferromagnetic layer is called the blocking temperature of that layer and is usually lower than the N\u00e9el temperature."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The blocking temperature of an antiferromagnetic layer in a spin valve is the temperature at or above which the layer ceases to prevent the orientation of an adjacent ferromagnetic layer. The blocking temperature is typically lower than the N\u00e9el temperature.",
+            "output_constraints": [],
+            "actual_output": "The blocking temperature of an antiferromagnetic layer in a spin valve is the temperature at or above which the layer ceases to prevent the orientation of an adjacent ferromagnetic layer. The blocking temperature is typically lower than the N\u00e9el temperature.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is the term used in astrophysics to describe light-matter interactions resulting in energy shifts in the radiation field?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Look up blueshift in Wiktionary, the free dictionary. In astronomy, a blueshift is a decrease in electromagnetic wavelength caused by the motion of a celestial object toward an observer. Blueshift or blue shift may also refer to: Blue Shift (album), an ARIA Award-winning, 1990 album by Clarion Fracture Zone \"Blue Shift\", a song by Hawkwind from their 1993 album Electric Tepee \"Blue Shift\", a song by Lemaitre from their 2010 album \"The Friendly Sound EP\" Blueshift, an unreleased album by Splashdown \"Blue Shift\" (short story), a science fiction short story by Stephen Baxter Blueshifting, an information technology term defined in Redshift (theory) Blue shift (molecule) (a.k.a.",
+                "The interactions and phenomena summarized in the subjects of radiative transfer and physical optics can result in shifts in the wavelength and frequency of electromagnetic radiation. In such cases, the shifts correspond to a physical energy transfer to matter or other photons rather than being by a transformation between reference frames. Such shifts can be from such physical phenomena as coherence effects or the scattering of electromagnetic radiation whether from charged elementary particles, from particulates, or from fluctuations of the index of refraction in a dielectric medium as occurs in the radio phenomenon of radio whistlers.",
+                "A red shift can be observed when part of the energy of the photon is transferred to the interacting matter, where it adds to its internal energy in a process called Stokes Raman scattering. The blue shift can be observed when internal energy of the matter is transferred to the photon; this process is called anti-Stokes Raman scattering. Inelastic scattering is seen in the interaction between an electron and a photon. When a high-energy photon collides with a free electron (more precisely, weakly bound since a free electron cannot participate in inelastic scattering with a photon) and transfers energy, the process is called Compton scattering.",
+                "In physics, a redshift is an increase in the wavelength, and corresponding decrease in the frequency and photon energy, of electromagnetic radiation (such as light). The opposite change, a decrease in wavelength and simultaneous increase in frequency and energy, is known as a negative redshift, or blueshift. The terms derive from the colours red and blue which form the extremes of the visible light spectrum.",
+                "While such phenomena are sometimes referred to as \"redshifts\" and \"blueshifts\", in astrophysics light-matter interactions that result in energy shifts in the radiation field are generally referred to as \"reddening\" rather than \"redshifting\" which, as a term, is normally reserved for the effects discussed above."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Reddening",
+            "output_constraints": [],
+            "actual_output": "Reddening",
+            "actual_duration": 0.790325403213501,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is the term used in astrophysics to describe light-matter interactions resulting in energy shifts in the radiation field?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Look up blueshift in Wiktionary, the free dictionary. In astronomy, a blueshift is a decrease in electromagnetic wavelength caused by the motion of a celestial object toward an observer. Blueshift or blue shift may also refer to: Blue Shift (album), an ARIA Award-winning, 1990 album by Clarion Fracture Zone \"Blue Shift\", a song by Hawkwind from their 1993 album Electric Tepee \"Blue Shift\", a song by Lemaitre from their 2010 album \"The Friendly Sound EP\" Blueshift, an unreleased album by Splashdown \"Blue Shift\" (short story), a science fiction short story by Stephen Baxter Blueshifting, an information technology term defined in Redshift (theory) Blue shift (molecule) (a.k.a.",
+                "The interactions and phenomena summarized in the subjects of radiative transfer and physical optics can result in shifts in the wavelength and frequency of electromagnetic radiation. In such cases, the shifts correspond to a physical energy transfer to matter or other photons rather than being by a transformation between reference frames. Such shifts can be from such physical phenomena as coherence effects or the scattering of electromagnetic radiation whether from charged elementary particles, from particulates, or from fluctuations of the index of refraction in a dielectric medium as occurs in the radio phenomenon of radio whistlers.",
+                "A red shift can be observed when part of the energy of the photon is transferred to the interacting matter, where it adds to its internal energy in a process called Stokes Raman scattering. The blue shift can be observed when internal energy of the matter is transferred to the photon; this process is called anti-Stokes Raman scattering. Inelastic scattering is seen in the interaction between an electron and a photon. When a high-energy photon collides with a free electron (more precisely, weakly bound since a free electron cannot participate in inelastic scattering with a photon) and transfers energy, the process is called Compton scattering.",
+                "In physics, a redshift is an increase in the wavelength, and corresponding decrease in the frequency and photon energy, of electromagnetic radiation (such as light). The opposite change, a decrease in wavelength and simultaneous increase in frequency and energy, is known as a negative redshift, or blueshift. The terms derive from the colours red and blue which form the extremes of the visible light spectrum.",
+                "While such phenomena are sometimes referred to as \"redshifts\" and \"blueshifts\", in astrophysics light-matter interactions that result in energy shifts in the radiation field are generally referred to as \"reddening\" rather than \"redshifting\" which, as a term, is normally reserved for the effects discussed above."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Reddening",
+            "output_constraints": [],
+            "actual_output": "Reddening",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is the role of axioms in a formal theory?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "If the postulates allow deducing predictions of experimental results, the comparison with experiments allows falsifying (falsified) the theory that the postulates install. A theory is considered valid as long as it has not been falsified. Now, the transition between the mathematical axioms and scientific postulates is always slightly blurred, especially in physics. This is due to the heavy use of mathematical tools to support the physical theories.",
+                "When theories are studied in mathematics, they are usually expressed in some formal language and their statements are closed under application of certain procedures called rules of inference. A special case of this, an axiomatic theory, consists of axioms (or axiom schemata) and rules of inference. A theorem is a statement that can be derived from those axioms by application of these rules of inference.",
+                "In mathematics one neither \"proves\" nor \"disproves\" an axiom. A set of mathematical axioms gives a set of rules that fix a conceptual realm, in which the theorems logically follow. In contrast, in experimental sciences, a set of postulates shall allow deducing results that match or do not match experimental results. If postulates do not allow deducing experimental predictions, they do not set a scientific conceptual framework and have to be completed or made more accurate.",
+                "In mathematics and logic, an axiomatic system is any set of axioms from which some or all axioms can be used in conjunction to logically derive theorems. A theory is a consistent, relatively-self-contained body of knowledge which usually contains an axiomatic system and all its derived theorems. An axiomatic system that is completely described is a special kind of formal system. A formal theory is an axiomatic system (usually formulated within model theory) that describes a set of sentences that is closed under logical implication.",
+                "In this context, statements become well-formed formulas of some formal language. A theory consists of some basis statements called axioms, and some deducing rules (sometimes included in the axioms). The theorems of the theory are the statements that can be derived from the axioms by using the deducing rules. This formalization led to proof theory, which allows proving general theorems about theorems and proofs."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Basis statements called axioms form the foundation of a formal theory and, together with the deducing rules, help in deriving a set of statements called theorems using proof theory.",
+            "output_constraints": [],
+            "actual_output": "Basis statements called axioms form the foundation of a formal theory and, together with the deducing rules, help in deriving a set of statements called theorems using proof theory.",
+            "actual_duration": 0.718787670135498,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is the role of axioms in a formal theory?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "If the postulates allow deducing predictions of experimental results, the comparison with experiments allows falsifying (falsified) the theory that the postulates install. A theory is considered valid as long as it has not been falsified. Now, the transition between the mathematical axioms and scientific postulates is always slightly blurred, especially in physics. This is due to the heavy use of mathematical tools to support the physical theories.",
+                "When theories are studied in mathematics, they are usually expressed in some formal language and their statements are closed under application of certain procedures called rules of inference. A special case of this, an axiomatic theory, consists of axioms (or axiom schemata) and rules of inference. A theorem is a statement that can be derived from those axioms by application of these rules of inference.",
+                "In mathematics one neither \"proves\" nor \"disproves\" an axiom. A set of mathematical axioms gives a set of rules that fix a conceptual realm, in which the theorems logically follow. In contrast, in experimental sciences, a set of postulates shall allow deducing results that match or do not match experimental results. If postulates do not allow deducing experimental predictions, they do not set a scientific conceptual framework and have to be completed or made more accurate.",
+                "In mathematics and logic, an axiomatic system is any set of axioms from which some or all axioms can be used in conjunction to logically derive theorems. A theory is a consistent, relatively-self-contained body of knowledge which usually contains an axiomatic system and all its derived theorems. An axiomatic system that is completely described is a special kind of formal system. A formal theory is an axiomatic system (usually formulated within model theory) that describes a set of sentences that is closed under logical implication.",
+                "In this context, statements become well-formed formulas of some formal language. A theory consists of some basis statements called axioms, and some deducing rules (sometimes included in the axioms). The theorems of the theory are the statements that can be derived from the axioms by using the deducing rules. This formalization led to proof theory, which allows proving general theorems about theorems and proofs."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Basis statements called axioms form the foundation of a formal theory and, together with the deducing rules, help in deriving a set of statements called theorems using proof theory.",
+            "output_constraints": [],
+            "actual_output": "Basis statements called axioms form the foundation of a formal theory and, together with the deducing rules, help in deriving a set of statements called theorems using proof theory.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What did Fresnel predict and verify with regards to total internal reflections?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "He cut a rhomb to the latter angle and found that it performed as expected. Thus the specification of the Fresnel rhomb was completed. Similarly, Fresnel calculated and verified the angle of incidence that would give a 90\u00b0 phase difference after three reflections at the same angle, and four reflections at the same angle. In each case there were two solutions, and in each case he reported that the larger angle of incidence gave an accurate circular polarization (for an initial linear polarization at 45\u00b0 to the plane of reflection).",
+                "Noting that the magnitude represented the amplitude ratio as usual, he guessed that the argument represented the phase shift, and verified the hypothesis by experiment. The verification involved calculating the angle of incidence that would introduce a total phase difference of 90\u00b0 between the s and p components, for various numbers of total internal reflections at that angle (generally there were two solutions), subjecting light to that number of total internal reflections at that angle of incidence, with an initial linear polarization at 45\u00b0 to the plane of incidence, and checking that the final polarization was circular.",
+                "He cut a rhomb to the latter angle and found that it performed as expected. Thus the specification of the Fresnel rhomb was completed. Similarly, Fresnel calculated and verified the angle of incidence that would give a 90\u00b0 phase difference after three reflections at the same angle, and four reflections at the same angle. In each case there were two solutions, and in each case he reported that the larger angle of incidence gave an accurate circular polarization (for an initial linear polarization at 45\u00b0 to the plane of reflection).",
+                "For the case of three reflections he also tested the smaller angle, but found that it gave some coloration due to the proximity of the critical angle and its slight dependence on wavelength. (Compare Fig.\u202f2 above, which shows that the phase difference \u03b4 is more sensitive to the refractive index for smaller angles of incidence.) For added confidence, Fresnel predicted and verified that four total internal reflections at 68\u00b027' would give an accurate circular polarization if two of the reflections had water as the external medium while the other two had air, but not if the reflecting surfaces were all wet or all dry.",
+                "For the case of three reflections he also tested the smaller angle, but found that it gave some coloration due to the proximity of the critical angle and its slight dependence on wavelength. (Compare Fig.\u202f13 above, which shows that the phase difference \u03b4 is more sensitive to the refractive index for smaller angles of incidence.) For added confidence, Fresnel predicted and verified that four total internal reflections at 68\u00b027' would give an accurate circular polarization if two of the reflections had water as the external medium while the other two had air, but not if the reflecting surfaces were all wet or all dry."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Fresnel predicted and verified that four total internal reflections at 68\u00b027' would give a precise circular polarization if two of the reflections had water as the external medium while the other two had air, but not if the reflecting surfaces were all wet or all dry.",
+            "output_constraints": [],
+            "actual_output": "Fresnel predicted and verified that four total internal reflections at 68\u00b027' would give a precise circular polarization if two of the reflections had water as the external medium while the other two had air, but not if the reflecting surfaces were all wet or all dry.",
+            "actual_duration": 0.9289252758026124,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What did Fresnel predict and verify with regards to total internal reflections?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "He cut a rhomb to the latter angle and found that it performed as expected. Thus the specification of the Fresnel rhomb was completed. Similarly, Fresnel calculated and verified the angle of incidence that would give a 90\u00b0 phase difference after three reflections at the same angle, and four reflections at the same angle. In each case there were two solutions, and in each case he reported that the larger angle of incidence gave an accurate circular polarization (for an initial linear polarization at 45\u00b0 to the plane of reflection).",
+                "Noting that the magnitude represented the amplitude ratio as usual, he guessed that the argument represented the phase shift, and verified the hypothesis by experiment. The verification involved calculating the angle of incidence that would introduce a total phase difference of 90\u00b0 between the s and p components, for various numbers of total internal reflections at that angle (generally there were two solutions), subjecting light to that number of total internal reflections at that angle of incidence, with an initial linear polarization at 45\u00b0 to the plane of incidence, and checking that the final polarization was circular.",
+                "He cut a rhomb to the latter angle and found that it performed as expected. Thus the specification of the Fresnel rhomb was completed. Similarly, Fresnel calculated and verified the angle of incidence that would give a 90\u00b0 phase difference after three reflections at the same angle, and four reflections at the same angle. In each case there were two solutions, and in each case he reported that the larger angle of incidence gave an accurate circular polarization (for an initial linear polarization at 45\u00b0 to the plane of reflection).",
+                "For the case of three reflections he also tested the smaller angle, but found that it gave some coloration due to the proximity of the critical angle and its slight dependence on wavelength. (Compare Fig.\u202f2 above, which shows that the phase difference \u03b4 is more sensitive to the refractive index for smaller angles of incidence.) For added confidence, Fresnel predicted and verified that four total internal reflections at 68\u00b027' would give an accurate circular polarization if two of the reflections had water as the external medium while the other two had air, but not if the reflecting surfaces were all wet or all dry.",
+                "For the case of three reflections he also tested the smaller angle, but found that it gave some coloration due to the proximity of the critical angle and its slight dependence on wavelength. (Compare Fig.\u202f13 above, which shows that the phase difference \u03b4 is more sensitive to the refractive index for smaller angles of incidence.) For added confidence, Fresnel predicted and verified that four total internal reflections at 68\u00b027' would give an accurate circular polarization if two of the reflections had water as the external medium while the other two had air, but not if the reflecting surfaces were all wet or all dry."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Fresnel predicted and verified that four total internal reflections at 68\u00b027' would give a precise circular polarization if two of the reflections had water as the external medium while the other two had air, but not if the reflecting surfaces were all wet or all dry.",
+            "output_constraints": [],
+            "actual_output": "Fresnel predicted and verified that four total internal reflections at 68\u00b027' would give a precise circular polarization if two of the reflections had water as the external medium while the other two had air, but not if the reflecting surfaces were all wet or all dry.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is the relationship between the Wigner function and the density matrix operator?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Specifically, an operator's \u011c expectation value is a \"phase-space average\" of the Wigner transform of that operator: \u27e8 G ^ \u27e9 = \u222b d x d p W ( x , p ) g ( x , p ) . {\\displaystyle \\langle {\\hat {G}}\\rangle =\\int dx\\,dp\\,W(x,p)g(x,p).} 1. W(x,\u00a0p) is a real-valued function. 2. The x and p probability distributions are given by the marginals: \u222b \u2212 \u221e \u221e d p W ( x , p ) = \u27e8 x | \u03c1 ^ | x \u27e9 . {\\displaystyle \\int _{-\\infty }^{\\infty }dp\\,W(x,p)=\\langle x|{\\hat {\\rho }}|x\\rangle .} If the system can be described by a pure state, one gets \u222b \u2212 \u221e \u221e d p W ( x , p ) = | \u03c8 ( x ) | 2 .",
+                "Operator expectation values (averages) are calculated as phase-space averages of the respective Wigner transforms: g ( x , p ) \u2261 \u222b \u2212 \u221e \u221e d y \u27e8 x \u2212 y 2 | G ^ | x + y 2 \u27e9 e i p y / \u210f , {\\displaystyle g(x,p)\\equiv \\int _{-\\infty }^{\\infty }dy\\,\\left\\langle x-{\\frac {y}{2}}\\right|{\\hat {G}}\\left|x+{\\frac {y}{2}}\\right\\rangle e^{ipy/\\hbar },} \u27e8 \u03c8 | G ^ | \u03c8 \u27e9 = Tr \u2061 ( \u03c1 ^ G ^ ) = \u222b \u2212 \u221e \u221e d x \u222b \u2212 \u221e \u221e d p W ( x , p ) g ( x , p ) .",
+                "In any representation of the phase space distribution with its associated star product, this is \u2202 f \u2202 t = \u2212 1 i \u210f ( f \u22c6 H \u2212 H \u22c6 f ) , {\\displaystyle {\\frac {\\partial f}{\\partial t}}=-{\\frac {1}{i\\hbar }}\\left(f\\star H-H\\star f\\right),} or, for the Wigner function in particular, \u2202 W \u2202 t = \u2212 { { W , H } } = \u2212 2 \u210f W sin \u2061 ( \u210f 2 ( \u2202 \u2190 x \u2202 \u2192 p \u2212 \u2202 \u2190 p \u2202 \u2192 x ) ) H = \u2212 { W , H } + O ( \u210f 2 ) , {\\displaystyle {\\frac {\\partial W}{\\partial t}}=-\\{\\{W,H\\}\\}=-{\\frac {2}{\\hbar }}W\\sin \\left({\\frac {\\hbar }{2}}({\\overset {_{\\gets }}{\\partial }}_{x}{\\vec {\\partial }}_{p}-{\\overset {_{\\gets }}{\\partial }}_{p}{\\vec {\\partial }}_{x})\\right)H=-\\{W,H\\}+O(\\hbar ^{2}),} where {{\u00a0,\u00a0}} is the Moyal bracket, the Wigner transform of the quantum commutator, while {\u00a0,\u00a0} is the classical Poisson bracket.",
+                "{\\displaystyle \\rho (t)=G(t)\\rho (0)G(t)^{\\dagger }.} The density matrix operator may also be realized in phase space. Under the Wigner map, the density matrix transforms into the equivalent Wigner function, W ( x , p ) \u00a0 = d e f \u00a0 1 \u03c0 \u210f \u222b \u2212 \u221e \u221e \u03c8 \u2217 ( x + y ) \u03c8 ( x \u2212 y ) e 2 i p y / \u210f d y . {\\displaystyle W(x,p)\\,\\ {\\stackrel {\\mathrm {def} }{=}}\\ \\,{\\frac {1}{\\pi \\hbar }}\\int _{-\\infty }^{\\infty }\\psi ^{*}(x+y)\\psi (x-y)e^{2ipy/\\hbar }\\,dy.} The equation for the time evolution of the Wigner function, known as Moyal equation, is then the Wigner-transform of the above von Neumann equation, \u2202 W ( x , p , t ) \u2202 t = \u2212 { { W ( x , p , t ) , H ( x , p ) } } , {\\displaystyle {\\frac {\\partial W(x,p,t)}{\\partial t}}=-\\{\\{W(x,p,t),H(x,p)\\}\\},} where H ( x , p ) {\\displaystyle H(x,p)} is the Hamiltonian, and { { \u22c5 , \u22c5 } } {\\displaystyle \\{\\{\\cdot ,\\cdot \\}\\}} is the Moyal bracket, the transform of the quantum commutator.",
+                "The Wigner function W(x, p) discussed here is thus seen to be the Wigner transform of the density matrix operator \u03c1\u0302. Thus the trace of an operator with the density matrix Wigner-transforms to the equivalent phase-space integral overlap of g(x,\u00a0p) with the Wigner function. The Wigner transform of the von Neumann evolution equation of the density matrix in the Schr\u00f6dinger picture is Moyal's evolution equation for the Wigner function: \u2202 W ( x , p , t ) \u2202 t = \u2212 { { W ( x , p , t ) , H ( x , p ) } } , {\\displaystyle {\\frac {\\partial W(x,p,t)}{\\partial t}}=-\\{\\{W(x,p,t),H(x,p)\\}\\},} where H(x, p) is the Hamiltonian, and {{\u22c5,\u00a0\u22c5}} is the Moyal bracket."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The Wigner function W(x, p) is the Wigner transform of the density matrix operator \u03c1\u0302, and the trace of an operator with the density matrix Wigner-transforms to the equivalent phase-space integral overlap of g(x,p) with the Wigner function.",
+            "output_constraints": [],
+            "actual_output": "The Wigner function W(x, p) is the Wigner transform of the density matrix operator \u03c1\u0302, and the trace of an operator with the density matrix Wigner-transforms to the equivalent phase-space integral overlap of g(x,p) with the Wigner function.",
+            "actual_duration": 1.2906227111816406,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is the relationship between the Wigner function and the density matrix operator?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Specifically, an operator's \u011c expectation value is a \"phase-space average\" of the Wigner transform of that operator: \u27e8 G ^ \u27e9 = \u222b d x d p W ( x , p ) g ( x , p ) . {\\displaystyle \\langle {\\hat {G}}\\rangle =\\int dx\\,dp\\,W(x,p)g(x,p).} 1. W(x,\u00a0p) is a real-valued function. 2. The x and p probability distributions are given by the marginals: \u222b \u2212 \u221e \u221e d p W ( x , p ) = \u27e8 x | \u03c1 ^ | x \u27e9 . {\\displaystyle \\int _{-\\infty }^{\\infty }dp\\,W(x,p)=\\langle x|{\\hat {\\rho }}|x\\rangle .} If the system can be described by a pure state, one gets \u222b \u2212 \u221e \u221e d p W ( x , p ) = | \u03c8 ( x ) | 2 .",
+                "Operator expectation values (averages) are calculated as phase-space averages of the respective Wigner transforms: g ( x , p ) \u2261 \u222b \u2212 \u221e \u221e d y \u27e8 x \u2212 y 2 | G ^ | x + y 2 \u27e9 e i p y / \u210f , {\\displaystyle g(x,p)\\equiv \\int _{-\\infty }^{\\infty }dy\\,\\left\\langle x-{\\frac {y}{2}}\\right|{\\hat {G}}\\left|x+{\\frac {y}{2}}\\right\\rangle e^{ipy/\\hbar },} \u27e8 \u03c8 | G ^ | \u03c8 \u27e9 = Tr \u2061 ( \u03c1 ^ G ^ ) = \u222b \u2212 \u221e \u221e d x \u222b \u2212 \u221e \u221e d p W ( x , p ) g ( x , p ) .",
+                "In any representation of the phase space distribution with its associated star product, this is \u2202 f \u2202 t = \u2212 1 i \u210f ( f \u22c6 H \u2212 H \u22c6 f ) , {\\displaystyle {\\frac {\\partial f}{\\partial t}}=-{\\frac {1}{i\\hbar }}\\left(f\\star H-H\\star f\\right),} or, for the Wigner function in particular, \u2202 W \u2202 t = \u2212 { { W , H } } = \u2212 2 \u210f W sin \u2061 ( \u210f 2 ( \u2202 \u2190 x \u2202 \u2192 p \u2212 \u2202 \u2190 p \u2202 \u2192 x ) ) H = \u2212 { W , H } + O ( \u210f 2 ) , {\\displaystyle {\\frac {\\partial W}{\\partial t}}=-\\{\\{W,H\\}\\}=-{\\frac {2}{\\hbar }}W\\sin \\left({\\frac {\\hbar }{2}}({\\overset {_{\\gets }}{\\partial }}_{x}{\\vec {\\partial }}_{p}-{\\overset {_{\\gets }}{\\partial }}_{p}{\\vec {\\partial }}_{x})\\right)H=-\\{W,H\\}+O(\\hbar ^{2}),} where {{\u00a0,\u00a0}} is the Moyal bracket, the Wigner transform of the quantum commutator, while {\u00a0,\u00a0} is the classical Poisson bracket.",
+                "{\\displaystyle \\rho (t)=G(t)\\rho (0)G(t)^{\\dagger }.} The density matrix operator may also be realized in phase space. Under the Wigner map, the density matrix transforms into the equivalent Wigner function, W ( x , p ) \u00a0 = d e f \u00a0 1 \u03c0 \u210f \u222b \u2212 \u221e \u221e \u03c8 \u2217 ( x + y ) \u03c8 ( x \u2212 y ) e 2 i p y / \u210f d y . {\\displaystyle W(x,p)\\,\\ {\\stackrel {\\mathrm {def} }{=}}\\ \\,{\\frac {1}{\\pi \\hbar }}\\int _{-\\infty }^{\\infty }\\psi ^{*}(x+y)\\psi (x-y)e^{2ipy/\\hbar }\\,dy.} The equation for the time evolution of the Wigner function, known as Moyal equation, is then the Wigner-transform of the above von Neumann equation, \u2202 W ( x , p , t ) \u2202 t = \u2212 { { W ( x , p , t ) , H ( x , p ) } } , {\\displaystyle {\\frac {\\partial W(x,p,t)}{\\partial t}}=-\\{\\{W(x,p,t),H(x,p)\\}\\},} where H ( x , p ) {\\displaystyle H(x,p)} is the Hamiltonian, and { { \u22c5 , \u22c5 } } {\\displaystyle \\{\\{\\cdot ,\\cdot \\}\\}} is the Moyal bracket, the transform of the quantum commutator.",
+                "The Wigner function W(x, p) discussed here is thus seen to be the Wigner transform of the density matrix operator \u03c1\u0302. Thus the trace of an operator with the density matrix Wigner-transforms to the equivalent phase-space integral overlap of g(x,\u00a0p) with the Wigner function. The Wigner transform of the von Neumann evolution equation of the density matrix in the Schr\u00f6dinger picture is Moyal's evolution equation for the Wigner function: \u2202 W ( x , p , t ) \u2202 t = \u2212 { { W ( x , p , t ) , H ( x , p ) } } , {\\displaystyle {\\frac {\\partial W(x,p,t)}{\\partial t}}=-\\{\\{W(x,p,t),H(x,p)\\}\\},} where H(x, p) is the Hamiltonian, and {{\u22c5,\u00a0\u22c5}} is the Moyal bracket."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The Wigner function W(x, p) is the Wigner transform of the density matrix operator \u03c1\u0302, and the trace of an operator with the density matrix Wigner-transforms to the equivalent phase-space integral overlap of g(x,p) with the Wigner function.",
+            "output_constraints": [],
+            "actual_output": "The Wigner function W(x, p) is the Wigner transform of the density matrix operator \u03c1\u0302, and the trace of an operator with the density matrix Wigner-transforms to the equivalent phase-space integral overlap of g(x,p) with the Wigner function.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is one of the examples of the models proposed by cosmologists and theoretical physicists without the cosmological or Copernican principles that can be used to address specific issues in the Lambda-CDM model and distinguish between current models and other possible models?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Further assumptions, such as the Copernican principle, the cosmological principle, dark energy, and dark matter, eventually lead to the current model of cosmology, Lambda-CDM. The concept of an absolute velocity, including being \"at rest\" as a particular case, is ruled out by the principle of relativity, also eliminating any obvious \"center\" of the universe as a natural origin of coordinates.",
+                "Unsolved problem in physics: Is the universe homogeneous and isotropic at large enough scales, as claimed by the cosmological principle and assumed by all models that use the Friedmann\u2013Lema\u00eetre\u2013Robertson\u2013Walker metric, including the current version of the \u039bCDM model, or is the universe inhomogeneous or anisotropic? (more unsolved problems in physics) In modern physical cosmology, the cosmological principle is the notion that the spatial distribution of matter in the universe is homogeneous and isotropic when viewed on a large enough scale, since the forces are expected to act uniformly throughout the universe, and should, therefore, produce no observable irregularities in the large-scale structuring over the course of evolution of the matter field that was initially laid down by the Big Bang.",
+                "In Lambda-CDM, dark energy is an unknown form of energy that tends to accelerate the expansion of the universe. It is less well-understood than dark matter, and similarly mysterious. The simplest explanation of dark energy is the cosmological constant (the 'Lambda' in Lambda-CDM). This is a simple constant added to the Einstein field equations to provide a repulsive force. Thus far observations are fully consistent with the cosmological constant, but leave room for a plethora of alternatives, e.g.: Quintessence, which is a scalar field similar to the one that drove cosmic inflation shortly after the Big Bang.",
+                "A prominent example in this context is inhomogeneous cosmology, to model the observed accelerating universe and cosmological constant. Instead of using the current accepted idea of dark energy, this model proposes the universe is much more inhomogeneous than currently assumed, and instead, we are in an extremely large low-density void.",
+                "Extensive searches for dark matter particles have so far shown no well-agreed detection, while dark energy may be almost impossible to detect in a laboratory, and its value is unnaturally small compared to vacuum energy theoretical predictions. The \u039bCDM model has been shown to satisfy the cosmological principle, which states that, on a large-enough scale, the universe looks the same in all directions (isotropy) and from every location (homogeneity); \"the universe looks the same whoever and wherever you are.\" The cosmological principle exists because when the predecessors of the \u039bCDM model were first being developed, there was not sufficient data available to distinguish between more complex anisotropic or inhomogeneous models, so homogeneity and isotropy were assumed to simplify the models, and the assumptions were carried over into the \u039bCDM model."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Inhomogeneous cosmology, which models the universe as an extremely large, low-density void, instead of using the concept of dark energy. According to the model, this theory can match the observed accelerating universe and cosmological constant, but it contradicts the Copernican principle.",
+            "output_constraints": [],
+            "actual_output": "Inhomogeneous cosmology, which models the universe as an extremely large, low-density void, instead of using the concept of dark energy. According to the model, this theory can match the observed accelerating universe and cosmological constant, but it contradicts the Copernican principle.",
+            "actual_duration": 1.0243253707885742,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is one of the examples of the models proposed by cosmologists and theoretical physicists without the cosmological or Copernican principles that can be used to address specific issues in the Lambda-CDM model and distinguish between current models and other possible models?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Further assumptions, such as the Copernican principle, the cosmological principle, dark energy, and dark matter, eventually lead to the current model of cosmology, Lambda-CDM. The concept of an absolute velocity, including being \"at rest\" as a particular case, is ruled out by the principle of relativity, also eliminating any obvious \"center\" of the universe as a natural origin of coordinates.",
+                "Unsolved problem in physics: Is the universe homogeneous and isotropic at large enough scales, as claimed by the cosmological principle and assumed by all models that use the Friedmann\u2013Lema\u00eetre\u2013Robertson\u2013Walker metric, including the current version of the \u039bCDM model, or is the universe inhomogeneous or anisotropic? (more unsolved problems in physics) In modern physical cosmology, the cosmological principle is the notion that the spatial distribution of matter in the universe is homogeneous and isotropic when viewed on a large enough scale, since the forces are expected to act uniformly throughout the universe, and should, therefore, produce no observable irregularities in the large-scale structuring over the course of evolution of the matter field that was initially laid down by the Big Bang.",
+                "In Lambda-CDM, dark energy is an unknown form of energy that tends to accelerate the expansion of the universe. It is less well-understood than dark matter, and similarly mysterious. The simplest explanation of dark energy is the cosmological constant (the 'Lambda' in Lambda-CDM). This is a simple constant added to the Einstein field equations to provide a repulsive force. Thus far observations are fully consistent with the cosmological constant, but leave room for a plethora of alternatives, e.g.: Quintessence, which is a scalar field similar to the one that drove cosmic inflation shortly after the Big Bang.",
+                "A prominent example in this context is inhomogeneous cosmology, to model the observed accelerating universe and cosmological constant. Instead of using the current accepted idea of dark energy, this model proposes the universe is much more inhomogeneous than currently assumed, and instead, we are in an extremely large low-density void.",
+                "Extensive searches for dark matter particles have so far shown no well-agreed detection, while dark energy may be almost impossible to detect in a laboratory, and its value is unnaturally small compared to vacuum energy theoretical predictions. The \u039bCDM model has been shown to satisfy the cosmological principle, which states that, on a large-enough scale, the universe looks the same in all directions (isotropy) and from every location (homogeneity); \"the universe looks the same whoever and wherever you are.\" The cosmological principle exists because when the predecessors of the \u039bCDM model were first being developed, there was not sufficient data available to distinguish between more complex anisotropic or inhomogeneous models, so homogeneity and isotropy were assumed to simplify the models, and the assumptions were carried over into the \u039bCDM model."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Inhomogeneous cosmology, which models the universe as an extremely large, low-density void, instead of using the concept of dark energy. According to the model, this theory can match the observed accelerating universe and cosmological constant, but it contradicts the Copernican principle.",
+            "output_constraints": [],
+            "actual_output": "Inhomogeneous cosmology, which models the universe as an extremely large, low-density void, instead of using the concept of dark energy. According to the model, this theory can match the observed accelerating universe and cosmological constant, but it contradicts the Copernican principle.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is the Roche limit?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The tidal force is a gravitational effect that stretches a body along the line towards the center of mass of another body due to a gradient (difference in strength) in gravitational field from the other body; it is responsible for diverse phenomena, including tides, tidal locking, breaking apart of celestial bodies and formation of ring systems within the Roche limit, and in extreme cases, spaghettification of objects.",
+                "The rigid-body Roche limit is a simplified calculation for a spherical satellite. Irregular shapes such as those of tidal deformation on the body or the primary it orbits are neglected. It is assumed to be in hydrostatic equilibrium. These assumptions, although unrealistic, greatly simplify calculations. The Roche limit for a rigid spherical satellite is the distance, d {\\displaystyle d} , from the primary at which the gravitational force on a test mass at the surface of the object is exactly equal to the tidal force pulling the mass away from the object: d = R M ( 2 \u03c1 M \u03c1 m ) 1 3 {\\displaystyle d=R_{M}\\left(2{\\frac {\\rho _{M}}{\\rho _{m}}}\\right)^{\\frac {1}{3}}} where R M {\\displaystyle R_{M}} is the radius of the primary, \u03c1 M {\\displaystyle \\rho _{M}} is the density of the primary, and \u03c1 m {\\displaystyle \\rho _{m}} is the density of the satellite.",
+                "The Roche limit typically applies to a satellite's disintegrating due to tidal forces induced by its primary, the body around which it orbits. Parts of the satellite that are closer to the primary are attracted more strongly by gravity from the primary than parts that are farther away; this disparity effectively pulls the near and far parts of the satellite apart from each other, and if the disparity (combined with any centrifugal effects due to the object's spin) is larger than the force of gravity holding the satellite together, it can pull the satellite apart.",
+                "In celestial mechanics, the Roche limit, also called Roche radius, is the distance from a celestial body within which a second celestial body, held together only by its own force of gravity, will disintegrate because the first body's tidal forces exceed the second body's self-gravitation.",
+                "Figure 4 shows the differential force of gravity on a spherical body (body 1) exerted by another body (body 2). These so-called tidal forces cause strains on both bodies and may distort them or even, in extreme cases, break one or the other apart. The Roche limit is the distance from a planet at which tidal effects would cause an object to disintegrate because the differential force of gravity from the planet overcomes the attraction of the parts of the object for one another."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The Roche limit is the distance at which tidal effects would cause an object to disintegrate since differential force from a planet overcomes the attraction of the parts between them.",
+            "output_constraints": [],
+            "actual_output": "The Roche limit is the distance at which tidal effects would cause an object to disintegrate since differential force from a planet overcomes the attraction of the parts between them.",
+            "actual_duration": 0.8615536689758301,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is the Roche limit?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The tidal force is a gravitational effect that stretches a body along the line towards the center of mass of another body due to a gradient (difference in strength) in gravitational field from the other body; it is responsible for diverse phenomena, including tides, tidal locking, breaking apart of celestial bodies and formation of ring systems within the Roche limit, and in extreme cases, spaghettification of objects.",
+                "The rigid-body Roche limit is a simplified calculation for a spherical satellite. Irregular shapes such as those of tidal deformation on the body or the primary it orbits are neglected. It is assumed to be in hydrostatic equilibrium. These assumptions, although unrealistic, greatly simplify calculations. The Roche limit for a rigid spherical satellite is the distance, d {\\displaystyle d} , from the primary at which the gravitational force on a test mass at the surface of the object is exactly equal to the tidal force pulling the mass away from the object: d = R M ( 2 \u03c1 M \u03c1 m ) 1 3 {\\displaystyle d=R_{M}\\left(2{\\frac {\\rho _{M}}{\\rho _{m}}}\\right)^{\\frac {1}{3}}} where R M {\\displaystyle R_{M}} is the radius of the primary, \u03c1 M {\\displaystyle \\rho _{M}} is the density of the primary, and \u03c1 m {\\displaystyle \\rho _{m}} is the density of the satellite.",
+                "The Roche limit typically applies to a satellite's disintegrating due to tidal forces induced by its primary, the body around which it orbits. Parts of the satellite that are closer to the primary are attracted more strongly by gravity from the primary than parts that are farther away; this disparity effectively pulls the near and far parts of the satellite apart from each other, and if the disparity (combined with any centrifugal effects due to the object's spin) is larger than the force of gravity holding the satellite together, it can pull the satellite apart.",
+                "In celestial mechanics, the Roche limit, also called Roche radius, is the distance from a celestial body within which a second celestial body, held together only by its own force of gravity, will disintegrate because the first body's tidal forces exceed the second body's self-gravitation.",
+                "Figure 4 shows the differential force of gravity on a spherical body (body 1) exerted by another body (body 2). These so-called tidal forces cause strains on both bodies and may distort them or even, in extreme cases, break one or the other apart. The Roche limit is the distance from a planet at which tidal effects would cause an object to disintegrate because the differential force of gravity from the planet overcomes the attraction of the parts of the object for one another."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The Roche limit is the distance at which tidal effects would cause an object to disintegrate since differential force from a planet overcomes the attraction of the parts between them.",
+            "output_constraints": [],
+            "actual_output": "The Roche limit is the distance at which tidal effects would cause an object to disintegrate since differential force from a planet overcomes the attraction of the parts between them.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is Martin Heidegger's view on the relationship between time and human existence?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Therefore, this concern for a potential occurrence also allows the future to exist in the present. The present becomes an experience, which is qualitative instead of quantitative. Heidegger seems to think this is the way that a linear relationship with time, or temporal existence, is broken or transcended. We are not stuck in sequential time. We are able to remember the past and project into the future\u00a0\u2013 we have a kind of random access to our representation of temporal existence; we can, in our thoughts, step out of (ecstasis) sequential time.",
+                "What we call the \"world\" and the \"universe\" is only one frequency range in an infinite number sharing the same space. Icke believes that time is an illusion; there is no past or future, and only the \"infinite now\" is real, and that humans are an aspect of consciousness, or infinite awareness, which he describes as \"all that there is, has been, and ever can be\".",
+                "Heidegger does not engage in speculation about whether being after death is possible. He argues that all human existence is embedded in time: past, present, future, and when considering the future, we encounter the notion of death. This then creates angst. Angst can create a clear understanding in one that death is a possible mode of existence, which Heidegger described as \"clearing\".",
+                "Of course, these two senses are often very similar: One individual's history is heavily influenced by the tradition the individual is formed in, but personal history can also produce an object that wouldn't be a part of any tradition. In addition, personal historicity doesn't develop in the same way as tradition. Martin Heidegger argued in Being and Time that it is temporality that gives rise to history. All things have their place and time, and nothing past is outside of history.",
+                "Duration, in Bergson's view, was creativity and memory as an essential component of reality. According to Martin Heidegger we do not exist inside time, we are time. Hence, the relationship to the past is a present awareness of having been, which allows the past to exist in the present. The relationship to the future is the state of anticipating a potential possibility, task, or engagement. It is related to the human propensity for caring and being concerned, which causes \"being ahead of oneself\" when thinking of a pending occurrence."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Martin Heidegger believes that humans do not exist inside time, but that they are time. The relationship to the past is a present awareness of having been, and the relationship to the future involves anticipating a potential possibility, task, or engagement.",
+            "output_constraints": [],
+            "actual_output": "Martin Heidegger believes that humans do not exist inside time, but that they are time. The relationship to the past is a present awareness of having been, and the relationship to the future involves anticipating a potential possibility, task, or engagement.",
+            "actual_duration": 0.7718105316162109,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is Martin Heidegger's view on the relationship between time and human existence?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Therefore, this concern for a potential occurrence also allows the future to exist in the present. The present becomes an experience, which is qualitative instead of quantitative. Heidegger seems to think this is the way that a linear relationship with time, or temporal existence, is broken or transcended. We are not stuck in sequential time. We are able to remember the past and project into the future\u00a0\u2013 we have a kind of random access to our representation of temporal existence; we can, in our thoughts, step out of (ecstasis) sequential time.",
+                "What we call the \"world\" and the \"universe\" is only one frequency range in an infinite number sharing the same space. Icke believes that time is an illusion; there is no past or future, and only the \"infinite now\" is real, and that humans are an aspect of consciousness, or infinite awareness, which he describes as \"all that there is, has been, and ever can be\".",
+                "Heidegger does not engage in speculation about whether being after death is possible. He argues that all human existence is embedded in time: past, present, future, and when considering the future, we encounter the notion of death. This then creates angst. Angst can create a clear understanding in one that death is a possible mode of existence, which Heidegger described as \"clearing\".",
+                "Of course, these two senses are often very similar: One individual's history is heavily influenced by the tradition the individual is formed in, but personal history can also produce an object that wouldn't be a part of any tradition. In addition, personal historicity doesn't develop in the same way as tradition. Martin Heidegger argued in Being and Time that it is temporality that gives rise to history. All things have their place and time, and nothing past is outside of history.",
+                "Duration, in Bergson's view, was creativity and memory as an essential component of reality. According to Martin Heidegger we do not exist inside time, we are time. Hence, the relationship to the past is a present awareness of having been, which allows the past to exist in the present. The relationship to the future is the state of anticipating a potential possibility, task, or engagement. It is related to the human propensity for caring and being concerned, which causes \"being ahead of oneself\" when thinking of a pending occurrence."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Martin Heidegger believes that humans do not exist inside time, but that they are time. The relationship to the past is a present awareness of having been, and the relationship to the future involves anticipating a potential possibility, task, or engagement.",
+            "output_constraints": [],
+            "actual_output": "Martin Heidegger believes that humans do not exist inside time, but that they are time. The relationship to the past is a present awareness of having been, and the relationship to the future involves anticipating a potential possibility, task, or engagement.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is the \"ultraviolet catastrophe\"?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The phrase refers to the fact that the empirically derived Rayleigh\u2013Jeans law, which accurately predicted experimental results at large wavelengths, but not short (see the image for further elaboration.) As the theory diverged from empirical observations when these frequencies reached the ultraviolet region of the electromagnetic spectrum, there was a problem.",
+                "Since there are an infinite number of modes, this would imply infinite heat capacity, as well as a nonphysical spectrum of emitted radiation that grows without bound with increasing frequency, a problem known as the ultraviolet catastrophe. In the longer wavelengths this deviation is not so noticeable, as h \u03bd h\\nu and n h \u03bd {\\displaystyle nh\\nu } are very small. In the shorter wavelengths of the ultraviolet range, however, classical theory predicts the energy emitted tends to infinity, hence the ultraviolet catastrophe.",
+                "In fact, at short wavelengths, classical physics predicted that energy will be emitted by a hot body at an infinite rate. This result, which is clearly wrong, is known as the ultraviolet catastrophe. However, classical physics led to the Rayleigh\u2013Jeans law, which, as shown in the figure, agrees with experimental results well at low frequencies, but strongly disagrees at high frequencies.",
+                "In classical physics, a radiator of energy will act as a natural vibrator. Additionally, since each mode will have the same energy, most of the energy in a natural vibrator will be in the smaller wavelengths and higher frequencies, where most of the modes are. According to classical electromagnetism, the number of electromagnetic modes in a 3-dimensional cavity, per unit frequency, is proportional to the square of the frequency.",
+                "The \"ultraviolet catastrophe\" is the expression of the fact that the formula misbehaves at higher frequencies, i.e. B \u03bd ( T ) \u2192 \u221e {\\displaystyle B_{\\nu }(T)\\to \\infty } as \u03bd \u2192 \u221e {\\displaystyle \\nu \\to \\infty } . An example, from Mason's A History of the Sciences, illustrates multi-mode vibration via a piece of string. As a natural vibrator, the string will oscillate with specific modes (the standing waves of a string in harmonic resonance), dependent on the length of the string."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "It is the misbehavior of a formula for higher frequencies.",
+            "output_constraints": [],
+            "actual_output": "It is the misbehavior of a formula for higher frequencies.",
+            "actual_duration": 0.5895199775695801,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is the \"ultraviolet catastrophe\"?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The phrase refers to the fact that the empirically derived Rayleigh\u2013Jeans law, which accurately predicted experimental results at large wavelengths, but not short (see the image for further elaboration.) As the theory diverged from empirical observations when these frequencies reached the ultraviolet region of the electromagnetic spectrum, there was a problem.",
+                "Since there are an infinite number of modes, this would imply infinite heat capacity, as well as a nonphysical spectrum of emitted radiation that grows without bound with increasing frequency, a problem known as the ultraviolet catastrophe. In the longer wavelengths this deviation is not so noticeable, as h \u03bd h\\nu and n h \u03bd {\\displaystyle nh\\nu } are very small. In the shorter wavelengths of the ultraviolet range, however, classical theory predicts the energy emitted tends to infinity, hence the ultraviolet catastrophe.",
+                "In fact, at short wavelengths, classical physics predicted that energy will be emitted by a hot body at an infinite rate. This result, which is clearly wrong, is known as the ultraviolet catastrophe. However, classical physics led to the Rayleigh\u2013Jeans law, which, as shown in the figure, agrees with experimental results well at low frequencies, but strongly disagrees at high frequencies.",
+                "In classical physics, a radiator of energy will act as a natural vibrator. Additionally, since each mode will have the same energy, most of the energy in a natural vibrator will be in the smaller wavelengths and higher frequencies, where most of the modes are. According to classical electromagnetism, the number of electromagnetic modes in a 3-dimensional cavity, per unit frequency, is proportional to the square of the frequency.",
+                "The \"ultraviolet catastrophe\" is the expression of the fact that the formula misbehaves at higher frequencies, i.e. B \u03bd ( T ) \u2192 \u221e {\\displaystyle B_{\\nu }(T)\\to \\infty } as \u03bd \u2192 \u221e {\\displaystyle \\nu \\to \\infty } . An example, from Mason's A History of the Sciences, illustrates multi-mode vibration via a piece of string. As a natural vibrator, the string will oscillate with specific modes (the standing waves of a string in harmonic resonance), dependent on the length of the string."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "It is the misbehavior of a formula for higher frequencies.",
+            "output_constraints": [],
+            "actual_output": "It is the misbehavior of a formula for higher frequencies.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is the most popular explanation for the shower-curtain effect?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The shower-curtain effect in physics describes the phenomenon of a shower curtain being blown inward when a shower is running. The problem of identifying the cause of this effect has been featured in Scientific American magazine, with several theories given to explain the phenomenon but no definite conclusion. The shower-curtain effect may also be used to describe the observation how nearby phase front distortions of an optical wave are more severe than remote distortions of the same amplitude.[jargon] Also called Chimney effect or Stack effect, observes that warm air (from the hot shower) rises out over the shower curtain as cooler air (near the floor) pushes in under the curtain to replace the rising air.",
+                "The Straight Dope: Why does the shower curtain blow in despite the water pushing it out (revisited)? 2001 Ig Nobel Prize Winners Fluent NEWS: Shower Curtain Grabs Scientist \u2013 But He Lives to Tell Why Arggh, Why Does the Shower Curtain Attack Me? by Joe Palca.",
+                "The Coand\u0103 effect, also known as \"boundary layer attachment\", is the tendency of a moving fluid to adhere to an adjacent wall. A hot shower will produce steam that condenses on the shower side of the curtain, lowering the pressure there. In a steady state the steam will be replaced by new steam delivered by the shower but in reality the water temperature will fluctuate and lead to times when the net steam production is negative.[citation needed] Colder dense air outside and hot less dense air inside causes higher air pressure on the outside to force the shower curtain inwards to equalise the air pressure, this can be observed simply when the bathroom door is open allowing cold air into the bathroom.",
+                "This theory presumes that the water flowing out of a shower head causes the air through which the water moves to start flowing in the same direction as the water. This movement would be parallel to the plane of the shower curtain. If air is moving across the inside surface of the shower curtain, Bernoulli's principle says the air pressure there will drop. This would result in a pressure differential between the inside and outside, causing the curtain to move inward.",
+                "By pushing the curtain in towards the shower, the (short range) vortex and Coand\u0103 effects become more significant. However, the shower-curtain effect persists when cold water is used, implying that this cannot be the only mechanism at work. The most popular explanation given for the shower-curtain effect is Bernoulli's principle. Bernoulli's principle states that an increase in velocity results in a decrease in pressure."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Bernoulli's principle",
+            "output_constraints": [],
+            "actual_output": "Bernoulli's principle",
+            "actual_duration": 0.7109239101409912,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is the most popular explanation for the shower-curtain effect?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The shower-curtain effect in physics describes the phenomenon of a shower curtain being blown inward when a shower is running. The problem of identifying the cause of this effect has been featured in Scientific American magazine, with several theories given to explain the phenomenon but no definite conclusion. The shower-curtain effect may also be used to describe the observation how nearby phase front distortions of an optical wave are more severe than remote distortions of the same amplitude.[jargon] Also called Chimney effect or Stack effect, observes that warm air (from the hot shower) rises out over the shower curtain as cooler air (near the floor) pushes in under the curtain to replace the rising air.",
+                "The Straight Dope: Why does the shower curtain blow in despite the water pushing it out (revisited)? 2001 Ig Nobel Prize Winners Fluent NEWS: Shower Curtain Grabs Scientist \u2013 But He Lives to Tell Why Arggh, Why Does the Shower Curtain Attack Me? by Joe Palca.",
+                "The Coand\u0103 effect, also known as \"boundary layer attachment\", is the tendency of a moving fluid to adhere to an adjacent wall. A hot shower will produce steam that condenses on the shower side of the curtain, lowering the pressure there. In a steady state the steam will be replaced by new steam delivered by the shower but in reality the water temperature will fluctuate and lead to times when the net steam production is negative.[citation needed] Colder dense air outside and hot less dense air inside causes higher air pressure on the outside to force the shower curtain inwards to equalise the air pressure, this can be observed simply when the bathroom door is open allowing cold air into the bathroom.",
+                "This theory presumes that the water flowing out of a shower head causes the air through which the water moves to start flowing in the same direction as the water. This movement would be parallel to the plane of the shower curtain. If air is moving across the inside surface of the shower curtain, Bernoulli's principle says the air pressure there will drop. This would result in a pressure differential between the inside and outside, causing the curtain to move inward.",
+                "By pushing the curtain in towards the shower, the (short range) vortex and Coand\u0103 effects become more significant. However, the shower-curtain effect persists when cold water is used, implying that this cannot be the only mechanism at work. The most popular explanation given for the shower-curtain effect is Bernoulli's principle. Bernoulli's principle states that an increase in velocity results in a decrease in pressure."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Bernoulli's principle",
+            "output_constraints": [],
+            "actual_output": "Bernoulli's principle",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is the butterfly effect?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "This quantum butterfly effect has been demonstrated experimentally. Quantum and semiclassical treatments of system sensitivity to initial conditions are known as quantum chaos. Avalanche effect Behavioral cusp Cascading failure Catastrophe theory Causality Chain reaction Clapotis Determinism Domino effect Dynamical system Fractal Great Stirrup Controversy Innovation butterfly Kessler syndrome Norton's dome Numerical analysis Point of divergence Positive feedback Potentiality and actuality Representativeness heuristic Ripple effect Snowball effect Traffic congestion Tropical cyclogenesis Unintended consequences \"Predictability: Does the Flap of a Butterfly's Wings in Brazil Set Off a Tornado in Texas?\" (PDF).",
+                "In the book entitled The Essence of Chaos published in 1993, Lorenz defined butterfly effect as: \"The phenomenon that a small alteration in the state of a dynamical system will cause subsequent states to differ greatly from the states that would have followed without the alteration.\" This feature is the same as sensitive dependence of solutions on initial conditions (SDIC) in .",
+                "In chaos theory, the butterfly effect is the sensitive dependence on initial conditions in which a small change in one state of a deterministic nonlinear system can result in large differences in a later state. The term is closely associated with the work of mathematician and meteorologist Edward Norton Lorenz. He noted that the butterfly effect is derived from the metaphorical example of the details of a tornado (the exact time of formation, the exact path taken) being influenced by minor perturbations such as a distant butterfly flapping its wings several weeks earlier.",
+                "For instance, when a massive sphere is caused to roll down a slope starting from a point of unstable equilibrium, then its velocity is assumed to be caused by the force of gravity accelerating it; the small push that was needed to set it into motion is not explicitly dealt with as a cause.",
+                "A related way to interpret the butterfly effect is to see it as highlighting the difference between the application of the notion of causality in physics and a more general use of causality as represented by Mackie's INUS conditions. In classical (Newtonian) physics, in general, only those conditions are (explicitly) taken into account, that are both necessary and sufficient."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The butterfly effect is a phenomenon that highlights the difference between the application of the notion of causality in physics and a more general use of causality as represented by Mackie's INUS conditions.",
+            "output_constraints": [],
+            "actual_output": "The butterfly effect is a phenomenon that highlights the difference between the application of the notion of causality in physics and a more general use of causality as represented by Mackie's INUS conditions.",
+            "actual_duration": 0.7152047157287598,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is the butterfly effect?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "This quantum butterfly effect has been demonstrated experimentally. Quantum and semiclassical treatments of system sensitivity to initial conditions are known as quantum chaos. Avalanche effect Behavioral cusp Cascading failure Catastrophe theory Causality Chain reaction Clapotis Determinism Domino effect Dynamical system Fractal Great Stirrup Controversy Innovation butterfly Kessler syndrome Norton's dome Numerical analysis Point of divergence Positive feedback Potentiality and actuality Representativeness heuristic Ripple effect Snowball effect Traffic congestion Tropical cyclogenesis Unintended consequences \"Predictability: Does the Flap of a Butterfly's Wings in Brazil Set Off a Tornado in Texas?\" (PDF).",
+                "In the book entitled The Essence of Chaos published in 1993, Lorenz defined butterfly effect as: \"The phenomenon that a small alteration in the state of a dynamical system will cause subsequent states to differ greatly from the states that would have followed without the alteration.\" This feature is the same as sensitive dependence of solutions on initial conditions (SDIC) in .",
+                "In chaos theory, the butterfly effect is the sensitive dependence on initial conditions in which a small change in one state of a deterministic nonlinear system can result in large differences in a later state. The term is closely associated with the work of mathematician and meteorologist Edward Norton Lorenz. He noted that the butterfly effect is derived from the metaphorical example of the details of a tornado (the exact time of formation, the exact path taken) being influenced by minor perturbations such as a distant butterfly flapping its wings several weeks earlier.",
+                "For instance, when a massive sphere is caused to roll down a slope starting from a point of unstable equilibrium, then its velocity is assumed to be caused by the force of gravity accelerating it; the small push that was needed to set it into motion is not explicitly dealt with as a cause.",
+                "A related way to interpret the butterfly effect is to see it as highlighting the difference between the application of the notion of causality in physics and a more general use of causality as represented by Mackie's INUS conditions. In classical (Newtonian) physics, in general, only those conditions are (explicitly) taken into account, that are both necessary and sufficient."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The butterfly effect is a phenomenon that highlights the difference between the application of the notion of causality in physics and a more general use of causality as represented by Mackie's INUS conditions.",
+            "output_constraints": [],
+            "actual_output": "The butterfly effect is a phenomenon that highlights the difference between the application of the notion of causality in physics and a more general use of causality as represented by Mackie's INUS conditions.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is the 'reactive Leidenfrost effect' observed in non-volatile materials?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Physical Review Letters. 127 (20): 204501. arXiv:2107.00438. Bibcode:2021PhRvL.127t4501P. doi:10.1103/PhysRevLett.127.204501. PMID\u00a034860033. S2CID\u00a0235694660. Leah Crane (24 November 2021). \"Watch droplets bounce off each other as they levitate on a hot plate\". New Scientist. Subhrakanti Saha; Lee Chuin Chen; Mridul Kanti Mandal; Kenzo Hiraoka (March 2013). \"Leidenfrost Phenomenon-assisted Thermal Desorption (LPTD) and Its Application to Open Ion Sources at Atmospheric Pressure Mass Spectrometry\".",
+                "The effect also applies when the surface is at room temperature but the liquid is cryogenic, allowing liquid nitrogen droplets to harmlessly roll off exposed skin. Conversely, the inverse Leidenfrost effect lets drops of relatively warm liquid levitate on a bath of liquid nitrogen. The Leidenfrost point signifies the onset of stable film boiling. It represents the point on the boiling curve where the heat flux is at the minimum and the surface is completely covered by a vapor blanket.",
+                "The Leidenfrost effect is a physical phenomenon in which a liquid, close to a surface that is significantly hotter than the liquid's boiling point, produces an insulating vapor layer that keeps the liquid from boiling rapidly. Because of this repulsive force, a droplet hovers over the surface, rather than making physical contact with it. The effect is named after the German doctor Johann Gottlob Leidenfrost, who described it in A Tract About Some Qualities of Common Water.",
+                "Detailed characterization of the reactive Leidenfrost effect was completed for small particles of cellulose (~0.5\u00a0mm) on high temperature polished surfaces by high speed photography. Cellulose was shown to decompose to short-chain oligomers which melt and wet smooth surfaces with increasing heat transfer associated with increasing surface temperature.",
+                "While the Leidenfrost temperature is not directly related to the surface tension of the fluid, it is indirectly dependent on it through the film boiling temperature. For fluids with similar thermophysical properties, the one with higher surface tension usually has a higher Leidenfrost temperature. For example, for a saturated water\u2013copper interface, the Leidenfrost temperature is 257\u00a0\u00b0C (495\u00a0\u00b0F). The Leidenfrost temperatures for glycerol and common alcohols are significantly smaller because of their lower surface tension values (density and viscosity differences are also contributing factors.) Non-volatile materials were discovered in 2015 to also exhibit a 'reactive Leidenfrost effect', whereby solid particles were observed to float above hot surfaces and skitter around erratically."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The 'reactive Leidenfrost effect' is a phenomenon where solid particles float above hot surfaces and move erratically, observed in non-volatile materials.",
+            "output_constraints": [],
+            "actual_output": "The 'reactive Leidenfrost effect' is a phenomenon where solid particles float above hot surfaces and move erratically, observed in non-volatile materials.",
+            "actual_duration": 0.9827284812927246,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is the 'reactive Leidenfrost effect' observed in non-volatile materials?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "Physical Review Letters. 127 (20): 204501. arXiv:2107.00438. Bibcode:2021PhRvL.127t4501P. doi:10.1103/PhysRevLett.127.204501. PMID\u00a034860033. S2CID\u00a0235694660. Leah Crane (24 November 2021). \"Watch droplets bounce off each other as they levitate on a hot plate\". New Scientist. Subhrakanti Saha; Lee Chuin Chen; Mridul Kanti Mandal; Kenzo Hiraoka (March 2013). \"Leidenfrost Phenomenon-assisted Thermal Desorption (LPTD) and Its Application to Open Ion Sources at Atmospheric Pressure Mass Spectrometry\".",
+                "The effect also applies when the surface is at room temperature but the liquid is cryogenic, allowing liquid nitrogen droplets to harmlessly roll off exposed skin. Conversely, the inverse Leidenfrost effect lets drops of relatively warm liquid levitate on a bath of liquid nitrogen. The Leidenfrost point signifies the onset of stable film boiling. It represents the point on the boiling curve where the heat flux is at the minimum and the surface is completely covered by a vapor blanket.",
+                "The Leidenfrost effect is a physical phenomenon in which a liquid, close to a surface that is significantly hotter than the liquid's boiling point, produces an insulating vapor layer that keeps the liquid from boiling rapidly. Because of this repulsive force, a droplet hovers over the surface, rather than making physical contact with it. The effect is named after the German doctor Johann Gottlob Leidenfrost, who described it in A Tract About Some Qualities of Common Water.",
+                "Detailed characterization of the reactive Leidenfrost effect was completed for small particles of cellulose (~0.5\u00a0mm) on high temperature polished surfaces by high speed photography. Cellulose was shown to decompose to short-chain oligomers which melt and wet smooth surfaces with increasing heat transfer associated with increasing surface temperature.",
+                "While the Leidenfrost temperature is not directly related to the surface tension of the fluid, it is indirectly dependent on it through the film boiling temperature. For fluids with similar thermophysical properties, the one with higher surface tension usually has a higher Leidenfrost temperature. For example, for a saturated water\u2013copper interface, the Leidenfrost temperature is 257\u00a0\u00b0C (495\u00a0\u00b0F). The Leidenfrost temperatures for glycerol and common alcohols are significantly smaller because of their lower surface tension values (density and viscosity differences are also contributing factors.) Non-volatile materials were discovered in 2015 to also exhibit a 'reactive Leidenfrost effect', whereby solid particles were observed to float above hot surfaces and skitter around erratically."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The 'reactive Leidenfrost effect' is a phenomenon where solid particles float above hot surfaces and move erratically, observed in non-volatile materials.",
+            "output_constraints": [],
+            "actual_output": "The 'reactive Leidenfrost effect' is a phenomenon where solid particles float above hot surfaces and move erratically, observed in non-volatile materials.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is reciprocal length or inverse length?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The inverse second or reciprocal second (s\u22121), also called per second, is a unit of frequency, defined as the multiplicative inverse of the second (a unit of time). It is dimensionally equivalent to: hertz (Hz) \u2013 the SI unit for frequency becquerel (Bq) \u2013 the SI unit for the rate of occurrence of aperiodic or stochastic radionuclide events baud (Bd) \u2013 the unit for symbol rate over a communication link strain rate bits per second (bps or bit/s) \u2013 the unit of bit rate It is also related to radian per second (rad\u22c5s\u22121), the SI unit for angular frequency and angular velocity.",
+                "In some branches of physics, the universal constants c, the speed of light, and \u0127, the reduced Planck constant, are treated as being unity (i.e. that c = \u0127 = 1), which leads to mass, energy, momentum, frequency and reciprocal length all having the same unit. As a result, reciprocal length is used as a measure of energy. The frequency of a photon yields a certain photon energy, according to the Planck\u2013Einstein relation, and the frequency of a photon is related to its spatial frequency via the speed of light.",
+                "The inverse minute or reciprocal minute (min\u22121), also called per minute, is 60\u22121 s\u22121, as 1 min = 60 s; it is used in quantities of type \"counts per minute\", such as: Actions per minute Beats per minute Counts per minute Words per minute It is also related to revolutions per minute (RPM).",
+                "Spatial frequency is a reciprocal length, which can thus be used as a measure of energy, usually of a particle. For example, the reciprocal centimetre, cm\u22121, is an energy unit equal to the energy of a photon with a wavelength of 1\u00a0cm. That energy amounts to approximately 1.24\u00d710\u22124\u00a0eV or 1.986\u00d710\u221223\u00a0J. The energy is inversely proportional to the size of the unit of which the reciprocal is used, and is proportional to the number of reciprocal length units.",
+                "Reciprocal length or inverse length is a quantity or measurement used in several branches of science and mathematics. As the reciprocal of length, common units used for this measurement include the reciprocal metre or inverse metre (symbol: m\u22121), the reciprocal centimetre or inverse centimetre (symbol: cm\u22121). Quantities measured in reciprocal length include: absorption coefficient or attenuation coefficient, in materials science curvature of a line, in mathematics gain, in laser physics magnitude of vectors in reciprocal space, in crystallography more generally any spatial frequency e.g."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Reciprocal length or inverse length is a quantity or measurement used in several branches of science and mathematics. It is the reciprocal of length, and common units used for this measurement include the reciprocal metre or inverse metre (symbol: m\u22121), the reciprocal centimetre or inverse centimetre (symbol: cm\u22121).",
+            "output_constraints": [],
+            "actual_output": "Reciprocal length or inverse length is a quantity or measurement used in several branches of science and mathematics. It is the reciprocal of length, and common units used for this measurement include the reciprocal metre or inverse metre (symbol: m\u22121), the reciprocal centimetre or inverse centimetre (symbol: cm\u22121).",
+            "actual_duration": 1.0463488101959229,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is reciprocal length or inverse length?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The inverse second or reciprocal second (s\u22121), also called per second, is a unit of frequency, defined as the multiplicative inverse of the second (a unit of time). It is dimensionally equivalent to: hertz (Hz) \u2013 the SI unit for frequency becquerel (Bq) \u2013 the SI unit for the rate of occurrence of aperiodic or stochastic radionuclide events baud (Bd) \u2013 the unit for symbol rate over a communication link strain rate bits per second (bps or bit/s) \u2013 the unit of bit rate It is also related to radian per second (rad\u22c5s\u22121), the SI unit for angular frequency and angular velocity.",
+                "In some branches of physics, the universal constants c, the speed of light, and \u0127, the reduced Planck constant, are treated as being unity (i.e. that c = \u0127 = 1), which leads to mass, energy, momentum, frequency and reciprocal length all having the same unit. As a result, reciprocal length is used as a measure of energy. The frequency of a photon yields a certain photon energy, according to the Planck\u2013Einstein relation, and the frequency of a photon is related to its spatial frequency via the speed of light.",
+                "The inverse minute or reciprocal minute (min\u22121), also called per minute, is 60\u22121 s\u22121, as 1 min = 60 s; it is used in quantities of type \"counts per minute\", such as: Actions per minute Beats per minute Counts per minute Words per minute It is also related to revolutions per minute (RPM).",
+                "Spatial frequency is a reciprocal length, which can thus be used as a measure of energy, usually of a particle. For example, the reciprocal centimetre, cm\u22121, is an energy unit equal to the energy of a photon with a wavelength of 1\u00a0cm. That energy amounts to approximately 1.24\u00d710\u22124\u00a0eV or 1.986\u00d710\u221223\u00a0J. The energy is inversely proportional to the size of the unit of which the reciprocal is used, and is proportional to the number of reciprocal length units.",
+                "Reciprocal length or inverse length is a quantity or measurement used in several branches of science and mathematics. As the reciprocal of length, common units used for this measurement include the reciprocal metre or inverse metre (symbol: m\u22121), the reciprocal centimetre or inverse centimetre (symbol: cm\u22121). Quantities measured in reciprocal length include: absorption coefficient or attenuation coefficient, in materials science curvature of a line, in mathematics gain, in laser physics magnitude of vectors in reciprocal space, in crystallography more generally any spatial frequency e.g."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Reciprocal length or inverse length is a quantity or measurement used in several branches of science and mathematics. It is the reciprocal of length, and common units used for this measurement include the reciprocal metre or inverse metre (symbol: m\u22121), the reciprocal centimetre or inverse centimetre (symbol: cm\u22121).",
+            "output_constraints": [],
+            "actual_output": "Reciprocal length or inverse length is a quantity or measurement used in several branches of science and mathematics. It is the reciprocal of length, and common units used for this measurement include the reciprocal metre or inverse metre (symbol: m\u22121), the reciprocal centimetre or inverse centimetre (symbol: cm\u22121).",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "Which of the following statements is true about the categorization of planetary systems according to their orbital dynamics?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The different types of planetary systems, when classified using planetary masses, are: Similar: When the masses of all planets in a system are similar to each other, the system's architecture is Similar. This architecture type is the most common in our galaxy. Famous example of this type of planetary system is Trappist-1. The planets in these systems are said to be like 'peas in a pod'. Mixed: When the masses of planets in a system show large increasing or decreasing variations, the system's architecture is Mixed.",
+                "They can have 2, 3, or 4\u00a0stars. Most multiple-star systems are organized in what is called a hierarchical system: the stars in the system can be divided into two smaller groups, each of which traverses a larger orbit around the system's center of mass. Each of these smaller groups must also be hierarchical, which means that they must be divided into smaller subgroups which themselves are hierarchical, and so on.",
+                "The Solar System could be described as weakly interacting. In strongly interacting systems Kepler's laws do not hold. In hierarchical systems the planets are arranged so that the system can be gravitationally considered as a nested system of two-bodies, e.g. in a star with a close-in hot jupiter with another gas giant much further out, the star and hot jupiter form a pair that appears as a single object to another planet that is far enough out.",
+                "However, because of suspected selection effects, the ability to interpret these statistics is very limited. Multiple-star systems can be divided into two main dynamical classes: (1) hierarchical systems, which are stable, and consist of nested orbits that do not interact much, and so each level of the hierarchy can be treated as a Two-body problem or (2) the trapezia which have unstable strongly interacting orbits and are modelled as an n-body problem, exhibiting chaotic behavior.",
+                "Planetary systems can be categorized according to their orbital dynamics as resonant, non-resonant-interacting, hierarchical, or some combination of these. In resonant systems the orbital periods of the planets are in integer ratios. The Kepler-223 system contains four planets in an 8:6:4:3 orbital resonance. Giant planets are found in mean-motion resonances more often than smaller planets. In interacting systems the planets orbits are close enough together that they perturb the orbital parameters."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Planetary systems can be categorized as resonant, non-resonant-interacting, hierarchical, or some combination of these.",
+            "output_constraints": [],
+            "actual_output": "Planetary systems can be categorized as resonant, non-resonant-interacting, hierarchical, or some combination of these.",
+            "actual_duration": 0.871119499206543,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "Which of the following statements is true about the categorization of planetary systems according to their orbital dynamics?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The different types of planetary systems, when classified using planetary masses, are: Similar: When the masses of all planets in a system are similar to each other, the system's architecture is Similar. This architecture type is the most common in our galaxy. Famous example of this type of planetary system is Trappist-1. The planets in these systems are said to be like 'peas in a pod'. Mixed: When the masses of planets in a system show large increasing or decreasing variations, the system's architecture is Mixed.",
+                "They can have 2, 3, or 4\u00a0stars. Most multiple-star systems are organized in what is called a hierarchical system: the stars in the system can be divided into two smaller groups, each of which traverses a larger orbit around the system's center of mass. Each of these smaller groups must also be hierarchical, which means that they must be divided into smaller subgroups which themselves are hierarchical, and so on.",
+                "The Solar System could be described as weakly interacting. In strongly interacting systems Kepler's laws do not hold. In hierarchical systems the planets are arranged so that the system can be gravitationally considered as a nested system of two-bodies, e.g. in a star with a close-in hot jupiter with another gas giant much further out, the star and hot jupiter form a pair that appears as a single object to another planet that is far enough out.",
+                "However, because of suspected selection effects, the ability to interpret these statistics is very limited. Multiple-star systems can be divided into two main dynamical classes: (1) hierarchical systems, which are stable, and consist of nested orbits that do not interact much, and so each level of the hierarchy can be treated as a Two-body problem or (2) the trapezia which have unstable strongly interacting orbits and are modelled as an n-body problem, exhibiting chaotic behavior.",
+                "Planetary systems can be categorized according to their orbital dynamics as resonant, non-resonant-interacting, hierarchical, or some combination of these. In resonant systems the orbital periods of the planets are in integer ratios. The Kepler-223 system contains four planets in an 8:6:4:3 orbital resonance. Giant planets are found in mean-motion resonances more often than smaller planets. In interacting systems the planets orbits are close enough together that they perturb the orbital parameters."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Planetary systems can be categorized as resonant, non-resonant-interacting, hierarchical, or some combination of these.",
+            "output_constraints": [],
+            "actual_output": "Planetary systems can be categorized as resonant, non-resonant-interacting, hierarchical, or some combination of these.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is the propagation constant in sinusoidal waves?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The propagation constant, symbol \u03b3, for a given system is defined by the ratio of the complex amplitude at the source of the wave to the complex amplitude at some distance x, such that, A 0 A x = e \u03b3 x {\\displaystyle {\\frac {A_{0}}{A_{x}}}=e^{\\gamma x}} Since the propagation constant is a complex quantity we can write: \u03b3 = \u03b1 + i \u03b2 \u00a0 {\\displaystyle \\gamma =\\alpha +i\\beta \\ } where \u03b1, the real part, is called the attenuation constant \u03b2, the imaginary part, is called the phase constant i \u2261 j \u2261 \u2212 1 \u00a0 \u00a0 ; {\\displaystyle i\\equiv j\\equiv {\\sqrt {-1\\ }}\\ ;} more often j is used for electrical circuits.",
+                "If the attenuation constant is positive, then the wave amplitude decreases as the wave propagates in the x direction. Wavelength, phase velocity, and skin depth have simple relationships to the components of the propagation constant: \u03bb = 2 \u03c0 \u03b2 v p = \u03c9 \u03b2 \u03b4 = 1 \u03b1 {\\displaystyle \\lambda ={\\frac {2\\pi }{\\beta }}\\qquad v_{p}={\\frac {\\omega }{\\beta }}\\qquad \\delta ={\\frac {1}{\\alpha }}} In telecommunications, the term attenuation constant, also called attenuation parameter or attenuation coefficient, is the attenuation of an electromagnetic wave propagating through a medium per unit distance from the source.",
+                "The quantity measured, such as voltage, is expressed as a sinusoidal phasor. The phase of the sinusoid varies with distance which results in the propagation constant being a complex number, the imaginary part being caused by the phase change. The term \"propagation constant\" is somewhat of a misnomer as it usually varies strongly with \u03c9. It is probably the most widely used term but there are a large variety of alternative names used by various authors for this quantity.",
+                "In electromagnetic theory, the phase constant, also called phase change constant, parameter or coefficient is the imaginary component of the propagation constant for a plane wave. It represents the change in phase per unit length along the path travelled by the wave at any instant and is equal to the real part of the angular wavenumber of the wave.",
+                "The propagation constant of a sinusoidal electromagnetic wave is a measure of the change undergone by the amplitude and phase of the wave as it propagates in a given direction. The quantity being measured can be the voltage, the current in a circuit, or a field vector such as electric field strength or flux density. The propagation constant itself measures the change per unit length, but it is otherwise dimensionless."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The propagation constant is a complex number that varies with distance due to the phase change in the sinusoidal wave.",
+            "output_constraints": [],
+            "actual_output": "The propagation constant is a complex number that varies with distance due to the phase change in the sinusoidal wave.",
+            "actual_duration": 0.7733407020568848,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is the propagation constant in sinusoidal waves?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The propagation constant, symbol \u03b3, for a given system is defined by the ratio of the complex amplitude at the source of the wave to the complex amplitude at some distance x, such that, A 0 A x = e \u03b3 x {\\displaystyle {\\frac {A_{0}}{A_{x}}}=e^{\\gamma x}} Since the propagation constant is a complex quantity we can write: \u03b3 = \u03b1 + i \u03b2 \u00a0 {\\displaystyle \\gamma =\\alpha +i\\beta \\ } where \u03b1, the real part, is called the attenuation constant \u03b2, the imaginary part, is called the phase constant i \u2261 j \u2261 \u2212 1 \u00a0 \u00a0 ; {\\displaystyle i\\equiv j\\equiv {\\sqrt {-1\\ }}\\ ;} more often j is used for electrical circuits.",
+                "If the attenuation constant is positive, then the wave amplitude decreases as the wave propagates in the x direction. Wavelength, phase velocity, and skin depth have simple relationships to the components of the propagation constant: \u03bb = 2 \u03c0 \u03b2 v p = \u03c9 \u03b2 \u03b4 = 1 \u03b1 {\\displaystyle \\lambda ={\\frac {2\\pi }{\\beta }}\\qquad v_{p}={\\frac {\\omega }{\\beta }}\\qquad \\delta ={\\frac {1}{\\alpha }}} In telecommunications, the term attenuation constant, also called attenuation parameter or attenuation coefficient, is the attenuation of an electromagnetic wave propagating through a medium per unit distance from the source.",
+                "The quantity measured, such as voltage, is expressed as a sinusoidal phasor. The phase of the sinusoid varies with distance which results in the propagation constant being a complex number, the imaginary part being caused by the phase change. The term \"propagation constant\" is somewhat of a misnomer as it usually varies strongly with \u03c9. It is probably the most widely used term but there are a large variety of alternative names used by various authors for this quantity.",
+                "In electromagnetic theory, the phase constant, also called phase change constant, parameter or coefficient is the imaginary component of the propagation constant for a plane wave. It represents the change in phase per unit length along the path travelled by the wave at any instant and is equal to the real part of the angular wavenumber of the wave.",
+                "The propagation constant of a sinusoidal electromagnetic wave is a measure of the change undergone by the amplitude and phase of the wave as it propagates in a given direction. The quantity being measured can be the voltage, the current in a circuit, or a field vector such as electric field strength or flux density. The propagation constant itself measures the change per unit length, but it is otherwise dimensionless."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The propagation constant is a complex number that varies with distance due to the phase change in the sinusoidal wave.",
+            "output_constraints": [],
+            "actual_output": "The propagation constant is a complex number that varies with distance due to the phase change in the sinusoidal wave.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is the gravitomagnetic interaction?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "In 1963 Robert Forward, a physicist and aerospace engineer at Hughes Research Laboratories, published a paper showing how within the framework of general relativity \"anti-gravitational\" effects might be achieved. Since all atoms have spin, gravitational permeability may be able to differ from material to material. A strong toroidal gravitational field that acts against the force of gravity could be generated by materials that have nonlinear properties that enhance time-varying gravitational fields.",
+                "Artificial gravity is the creation of an inertial force that mimics the effects of a gravitational force, usually by rotation. Artificial gravity, or rotational gravity, is thus the appearance of a centrifugal force in a rotating frame of reference (the transmission of centripetal acceleration via normal force in the non-rotating frame of reference), as opposed to the force experienced in linear acceleration, which by the equivalence principle is indistinguishable from gravity.",
+                "According to general relativity, in its weak-field and slow-motion linearized approximation, a slowly spinning body induces an additional component of the gravitational field that acts on a freely-falling test particle with a non-central, gravitomagnetic Lorentz-like force.",
+                "The Einstein\u2013de Haas effect is a physical phenomenon in which a change in the magnetic moment of a free body causes this body to rotate. The effect is a consequence of the conservation of angular momentum. It is strong enough to be observable in ferromagnetic materials. The experimental observation and accurate measurement of the effect demonstrated that the phenomenon of magnetization is caused by the alignment (polarization) of the angular momenta of the electrons in the material along the axis of magnetization.",
+                "According to the general theory of relativity, rotating matter can generate a new force of nature, known as the gravitomagnetic interaction, whose intensity is proportional to the rate of spin. In certain conditions the gravitomagnetic field can be repulsive. In neutrons stars for example it can produce a gravitational analogue of the Meissner effect, but the force produced in such an example is theorized to be exceedingly weak."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The gravitomagnetic interaction is a new force of nature generated by rotating matter, whose intensity is proportional to the rate of spin, according to the general theory of relativity.",
+            "output_constraints": [],
+            "actual_output": "The gravitomagnetic interaction is a new force of nature generated by rotating matter, whose intensity is proportional to the rate of spin, according to the general theory of relativity.",
+            "actual_duration": 0.7396030426025391,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is the gravitomagnetic interaction?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "In 1963 Robert Forward, a physicist and aerospace engineer at Hughes Research Laboratories, published a paper showing how within the framework of general relativity \"anti-gravitational\" effects might be achieved. Since all atoms have spin, gravitational permeability may be able to differ from material to material. A strong toroidal gravitational field that acts against the force of gravity could be generated by materials that have nonlinear properties that enhance time-varying gravitational fields.",
+                "Artificial gravity is the creation of an inertial force that mimics the effects of a gravitational force, usually by rotation. Artificial gravity, or rotational gravity, is thus the appearance of a centrifugal force in a rotating frame of reference (the transmission of centripetal acceleration via normal force in the non-rotating frame of reference), as opposed to the force experienced in linear acceleration, which by the equivalence principle is indistinguishable from gravity.",
+                "According to general relativity, in its weak-field and slow-motion linearized approximation, a slowly spinning body induces an additional component of the gravitational field that acts on a freely-falling test particle with a non-central, gravitomagnetic Lorentz-like force.",
+                "The Einstein\u2013de Haas effect is a physical phenomenon in which a change in the magnetic moment of a free body causes this body to rotate. The effect is a consequence of the conservation of angular momentum. It is strong enough to be observable in ferromagnetic materials. The experimental observation and accurate measurement of the effect demonstrated that the phenomenon of magnetization is caused by the alignment (polarization) of the angular momenta of the electrons in the material along the axis of magnetization.",
+                "According to the general theory of relativity, rotating matter can generate a new force of nature, known as the gravitomagnetic interaction, whose intensity is proportional to the rate of spin. In certain conditions the gravitomagnetic field can be repulsive. In neutrons stars for example it can produce a gravitational analogue of the Meissner effect, but the force produced in such an example is theorized to be exceedingly weak."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "The gravitomagnetic interaction is a new force of nature generated by rotating matter, whose intensity is proportional to the rate of spin, according to the general theory of relativity.",
+            "output_constraints": [],
+            "actual_output": "The gravitomagnetic interaction is a new force of nature generated by rotating matter, whose intensity is proportional to the rate of spin, according to the general theory of relativity.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What did Newton's manuscripts of the 1660s show?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "In regard to evidence that still survives of the earlier history, manuscripts written by Newton in the 1660s show that Newton himself had, by 1669, arrived at proofs that in a circular case of planetary motion, \"endeavour to recede\" (what was later called centrifugal force) had an inverse-square relation with distance from the center.",
+                "These matters do not appear to have been learned by Newton from Hooke. Nevertheless, a number of authors have had more to say about what Newton gained from Hooke and some aspects remain controversial. The fact that most of Hooke's private papers had been destroyed or have disappeared does not help to establish the truth. Newton's role in relation to the inverse square law was not as it has sometimes been represented.",
+                "They also involved the combination of tangential and radial displacements, which Newton was making in the 1660s. The lesson offered by Hooke to Newton here, although significant, was one of perspective and did not change the analysis. This background shows there was basis for Newton to deny deriving the inverse square law from Hooke. On the other hand, Newton did accept and acknowledge, in all editions of the Principia, that Hooke (but not exclusively Hooke) had separately appreciated the inverse square law in the solar system.",
+                "They also involved the combination of tangential and radial displacements, which Newton was making in the 1660s. The difference between the centrifugal and centripetal points of view, though a significant change of perspective, did not change the analysis. Newton also clearly expressed the concept of linear inertia in the 1660s: for this Newton was indebted to Descartes' work published 1644.",
+                "As described above, Newton's manuscripts of the 1660s do show him actually combining tangential motion with the effects of radially directed force or endeavour, for example in his derivation of the inverse square relation for the circular case. They also show Newton clearly expressing the concept of linear inertia\u2014for which he was indebted to Descartes' work, published in 1644 (as Hooke probably was)."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Newton combined tangential motion with the effects of radially directed force or endeavour and expressed the concept of linear inertia.",
+            "output_constraints": [],
+            "actual_output": "Newton combined tangential motion with the effects of radially directed force or endeavour and expressed the concept of linear inertia.",
+            "actual_duration": 0.6895673274993896,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What did Newton's manuscripts of the 1660s show?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "In regard to evidence that still survives of the earlier history, manuscripts written by Newton in the 1660s show that Newton himself had, by 1669, arrived at proofs that in a circular case of planetary motion, \"endeavour to recede\" (what was later called centrifugal force) had an inverse-square relation with distance from the center.",
+                "These matters do not appear to have been learned by Newton from Hooke. Nevertheless, a number of authors have had more to say about what Newton gained from Hooke and some aspects remain controversial. The fact that most of Hooke's private papers had been destroyed or have disappeared does not help to establish the truth. Newton's role in relation to the inverse square law was not as it has sometimes been represented.",
+                "They also involved the combination of tangential and radial displacements, which Newton was making in the 1660s. The lesson offered by Hooke to Newton here, although significant, was one of perspective and did not change the analysis. This background shows there was basis for Newton to deny deriving the inverse square law from Hooke. On the other hand, Newton did accept and acknowledge, in all editions of the Principia, that Hooke (but not exclusively Hooke) had separately appreciated the inverse square law in the solar system.",
+                "They also involved the combination of tangential and radial displacements, which Newton was making in the 1660s. The difference between the centrifugal and centripetal points of view, though a significant change of perspective, did not change the analysis. Newton also clearly expressed the concept of linear inertia in the 1660s: for this Newton was indebted to Descartes' work published 1644.",
+                "As described above, Newton's manuscripts of the 1660s do show him actually combining tangential motion with the effects of radially directed force or endeavour, for example in his derivation of the inverse square relation for the circular case. They also show Newton clearly expressing the concept of linear inertia\u2014for which he was indebted to Descartes' work, published in 1644 (as Hooke probably was)."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "Newton combined tangential motion with the effects of radially directed force or endeavour and expressed the concept of linear inertia.",
+            "output_constraints": [],
+            "actual_output": "Newton combined tangential motion with the effects of radially directed force or endeavour and expressed the concept of linear inertia.",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        },
+        {
+            "input": "What is the decay energy for the free neutron decay process?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The Q value is the kinetic energy released in the decay at rest. For neutron decay, some mass disappears as neutrons convert to a proton, electron and antineutrino: Q = ( m n \u2212 m p \u2212 m \u03bd \u00af \u2212 m e ) c 2 = K p + K e + K \u03bd \u00af = 0.782 MeV , {\\displaystyle Q=(m_{\\text{n}}-m_{\\text{p}}-m_{\\mathrm {\\overline {\\nu }} }-m_{\\text{e}})c^{2}=K_{\\text{p}}+K_{\\text{e}}+K_{\\overline {\\nu }}={\\text{0.782 MeV ,}}} where mn is the mass of the neutron, mp is the mass of the proton, m\u03bd is the mass of the electron antineutrino, and me is the mass of the electron; and the K are the corresponding kinetic energies.",
+                "Nuclear energy is released by three exoenergetic (or exothermic) processes: Radioactive decay, where a neutron or proton in the radioactive nucleus decays spontaneously by emitting either particles, electromagnetic radiation (gamma rays), or both. Note that for radioactive decay, it is not strictly necessary for the binding energy to increase. What is strictly necessary is that the mass decrease. If a neutron turns into a proton and the energy of the decay is less than 0.782343\u00a0MeV, the difference between the masses of the neutron and proton multiplied by the speed of light squared, (such as rubidium-87 decaying to strontium-87), the average binding energy per nucleon will actually decrease.",
+                "The following diagram gives a summary sketch of the beta decay process according to the present level of understanding. The down quark shown in bold ( d ) is nominally the one emitting the boson ( W\u2212 ) and thereby changing into an up quark ( u ), also in bold. The u d quark pair not shown in bold are inert bystanders to the whole event. For diagrams at several levels of detail, see \u00a7 Decay process, below. For the free neutron, the decay energy for this process (based on the rest masses of the neutron, proton and electron) is 0.782343\u00a0MeV.",
+                "That is the difference between the rest mass of the neutron and the sum of the rest masses of the products. That difference has to be carried away as kinetic energy. The maximal energy of the beta decay electron (in the process wherein the neutrino receives a vanishingly small amount of kinetic energy) has been measured at 0.782\u00b10.013\u00a0MeV.",
+                "This decay is only possible because the mass of the proton is less than that of the neutron. By the mass-energy equivalence, when a neutron decays to a proton this way, a lower energy state is attained. For the free neutron the decay energy for this process (based on the masses of the neutron, proton, and electron) is 0.782343\u00a0MeV. The maximal energy of the beta decay electron (in the process wherein the neutrino receives a vanishingly small amount of kinetic energy) has been measured at 0.782\u00b10.013\u00a0MeV."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "0.782343 MeV",
+            "output_constraints": [],
+            "actual_output": "0.782343 MeV",
+            "actual_duration": 0.7698042392730713,
+            "model_key": "6d571b26-fafe-4552-a62c-e7f4e2b84413"
+        },
+        {
+            "input": "What is the decay energy for the free neutron decay process?",
+            "corpus": [
+                "https://www.wikipedia.org/"
+            ],
+            "context": [
+                "The Q value is the kinetic energy released in the decay at rest. For neutron decay, some mass disappears as neutrons convert to a proton, electron and antineutrino: Q = ( m n \u2212 m p \u2212 m \u03bd \u00af \u2212 m e ) c 2 = K p + K e + K \u03bd \u00af = 0.782 MeV , {\\displaystyle Q=(m_{\\text{n}}-m_{\\text{p}}-m_{\\mathrm {\\overline {\\nu }} }-m_{\\text{e}})c^{2}=K_{\\text{p}}+K_{\\text{e}}+K_{\\overline {\\nu }}={\\text{0.782 MeV ,}}} where mn is the mass of the neutron, mp is the mass of the proton, m\u03bd is the mass of the electron antineutrino, and me is the mass of the electron; and the K are the corresponding kinetic energies.",
+                "Nuclear energy is released by three exoenergetic (or exothermic) processes: Radioactive decay, where a neutron or proton in the radioactive nucleus decays spontaneously by emitting either particles, electromagnetic radiation (gamma rays), or both. Note that for radioactive decay, it is not strictly necessary for the binding energy to increase. What is strictly necessary is that the mass decrease. If a neutron turns into a proton and the energy of the decay is less than 0.782343\u00a0MeV, the difference between the masses of the neutron and proton multiplied by the speed of light squared, (such as rubidium-87 decaying to strontium-87), the average binding energy per nucleon will actually decrease.",
+                "The following diagram gives a summary sketch of the beta decay process according to the present level of understanding. The down quark shown in bold ( d ) is nominally the one emitting the boson ( W\u2212 ) and thereby changing into an up quark ( u ), also in bold. The u d quark pair not shown in bold are inert bystanders to the whole event. For diagrams at several levels of detail, see \u00a7 Decay process, below. For the free neutron, the decay energy for this process (based on the rest masses of the neutron, proton and electron) is 0.782343\u00a0MeV.",
+                "That is the difference between the rest mass of the neutron and the sum of the rest masses of the products. That difference has to be carried away as kinetic energy. The maximal energy of the beta decay electron (in the process wherein the neutrino receives a vanishingly small amount of kinetic energy) has been measured at 0.782\u00b10.013\u00a0MeV.",
+                "This decay is only possible because the mass of the proton is less than that of the neutron. By the mass-energy equivalence, when a neutron decays to a proton this way, a lower energy state is attained. For the free neutron the decay energy for this process (based on the masses of the neutron, proton, and electron) is 0.782343\u00a0MeV. The maximal energy of the beta decay electron (in the process wherein the neutrino receives a vanishingly small amount of kinetic energy) has been measured at 0.782\u00b10.013\u00a0MeV."
+            ],
+            "categories": [
+                "question_answering"
+            ],
+            "expected_output": "0.782343 MeV",
+            "output_constraints": [],
+            "actual_output": "0.782343 MeV",
+            "actual_duration": 0.0,
+            "model_key": "4b60abf6-0c8d-4765-804a-e830a211f152"
+        }
+    ]
+}

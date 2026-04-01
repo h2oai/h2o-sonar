@@ -1,0 +1,36 @@
+Dataset: Date Features Training Dataset
+File: pd_ice_date_features_train.csv
+
+License: CC BY 4.0 (Creative Commons Attribution 4.0)
+Source: Derived from Bank Marketing Dataset (UCI Machine Learning Repository)
+Source License File: bank_marketing_with_dates-license.txt
+
+Description:
+This dataset is a 250-row subset derived from the Bank Marketing dataset
+(bank_marketing_with_dates.csv), with the date column converted to integer YYYYMMDD format
+for testing purposes.
+
+The dataset inherits the CC BY 4.0 license from its source dataset.
+
+Features:
+- Date: Integer in YYYYMMDD format (e.g., 20080501 = May 1, 2008)
+- Numeric features: age, balance, day_of_week, duration, campaign, pdays, previous
+- Target: Binary (0/1)
+
+Size: 250 instances, 9 columns
+
+Replaces: pd_ice_weather_ymd_train.csv (which had BoM Copyright restrictions)
+
+Full License:
+This dataset is derived from the Bank Marketing Dataset and inherits its CC BY 4.0 license.
+For full license terms, see: bank_marketing_with_dates-license.txt
+
+Source Dataset Citation:
+[Moro et al., 2014] S. Moro, P. Cortez and P. Rita. A Data-Driven Approach to Predict the
+Success of Bank Telemarketing. Decision Support Systems, Elsevier, 62:22-31, June 2014
+DOI: https://doi.org/10.1016/j.dss.2014.03.001
+
+Attribution Required: Yes (CC BY 4.0)
+Commercial Use: Allowed
+Modification: Allowed
+Distribution: Allowed with attribution

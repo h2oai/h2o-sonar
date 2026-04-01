@@ -1,0 +1,1 @@
+{ "connection_type": "ML_API", "name": "My connection name", "description": "My connection description.", "auth_server_url": "http://localhost:8080/auth", "server_url": "http://localhost:8080", "environment_url": "", "realm_name": "my_realm", "client_id": "my_client_id", "token": "", "token_use_type": "", "username": "sonaruser", "password": "s3cr3tpa33word" }

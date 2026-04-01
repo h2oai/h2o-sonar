@@ -1,0 +1,34 @@
+{
+    "name": "Bank Teller Test Suite",
+    "description": "Bank tellers are responsible for handling customer transactions like deposits, withdrawals, transfers, money orders, and checking. They are also responsible for counting cash, answering customer questions, and keeping records of money and negotiable instruments involved in financial transactions.",
+    "tests": [
+        {
+            "key": "48099214-7b33-443a-a456-eb44519521f1",
+            "documents": [],
+            "test_cases": [
+                {
+                    "key": "6709c0e1-de57-4b5b-b826-2060bf935574",
+                    "prompt": "Respond to the following question with single letter answer.\n\nQuestion: While handling the customer's check, you see that some of the details on the deposit \nslip are missing and that the check is not signed. As you ask the customer to fill in those details, he responds aggressively: \"Oh common you have got these details on the check, can't you feel them for me later? I told you I'm late. What do you do?\n\nA. I fill in all the details myself and endorse the check. Customer service is important to me and he is already upset with the bank.\nB. I explain that due to regulations, I cannot sign the check for him.\nC. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.\nD. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.",
+                    "categories": [
+                        "question-answering", "situational-judgement"
+                    ],
+                    "constraints": [
+                        "REGEXP:^\\s*D.*"
+                    ],
+                    "expected_output": "D"
+                },
+                {
+                    "key": "c2513694-3fde-465d-99d8-285334a4ff59",
+                    "prompt": "Respond to the following question with single letter answer.\n\nQuestion: A specific bank branch serves 256 clients on average every day. The ratio between tellers and clients is 1:32, so that every teller serves 32 people on average every day. The management wishes to change this ratio to 1:20. How many new tellers should be hired?\nA. 4\nB. 5\nC. 9\nD. 12 ",
+                    "categories": [
+                        "question-answering", "math"
+                    ],
+                    "constraints": [
+                        "REGEXP:^\\s*B.*"
+                    ],
+                    "expected_output": "B"
+                }
+            ]
+        }
+    ]
+}

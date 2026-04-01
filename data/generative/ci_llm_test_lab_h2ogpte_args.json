@@ -1,0 +1,465 @@
+{
+    "name": "TestLab",
+    "description": "Test lab for RAG / LLM evaluation.",
+    "raw_dataset": {
+        "inputs": [
+            {
+                "key": "9c3a7df3-67df-4819-babb-20636611f077",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: A customer approaches your window and starts to complain.\n\"I have been waiting here for half an hour I'm about to be late for a meeting now because everyone here is taking their time. I need to deposit this check ASAP\". How do you respond?\n\nA. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\nB. I apologize and explain that this is usually a busy time in the branch, and advise him to come in the morning next time so that he won't have to wait so long.\nC. I explain that we can't control the length of the waiting line. It's important to maintain the bank's reputation.\nD. I say that I understand it's frustrating to wait, but now I need him to calm down so that I can help him with what he needs.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "A",
+                "output_constraints": [
+                    "REGEXP:^A.*"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "0ec39d88-f8e0-4d1a-bba4-75d86b107a64"
+            },
+            {
+                "key": "6709c0e1-de57-4b5b-b826-2060bf935574",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: While handling the customer's check, you see that some of the details on the deposit \nslip are missing and that the check is not signed. As you ask the customer to fill in those details, he responds aggressively: \"Oh common you have got these details on the check, can't you feel them for me later? I told you I'm late. What do you do?\n\nA. I fill in all the details myself and endorse the check. Customer service is important to me and he is already upset with the bank.\nB. I explain that due to regulations, I cannot sign the check for him.\nC. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.\nD. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "D",
+                "output_constraints": [
+                    "REGEXP:^D.*"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "0ec39d88-f8e0-4d1a-bba4-75d86b107a64"
+            },
+            {
+                "key": "9c3a7df3-67df-4819-babb-20636611f077",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: A customer approaches your window and starts to complain.\n\"I have been waiting here for half an hour I'm about to be late for a meeting now because everyone here is taking their time. I need to deposit this check ASAP\". How do you respond?\n\nA. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\nB. I apologize and explain that this is usually a busy time in the branch, and advise him to come in the morning next time so that he won't have to wait so long.\nC. I explain that we can't control the length of the waiting line. It's important to maintain the bank's reputation.\nD. I say that I understand it's frustrating to wait, but now I need him to calm down so that I can help him with what he needs.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "A",
+                "output_constraints": [
+                    "REGEXP:^A.*"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "dd13cc65-ee57-4727-b3ac-4b031339b76f"
+            },
+            {
+                "key": "6709c0e1-de57-4b5b-b826-2060bf935574",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: While handling the customer's check, you see that some of the details on the deposit \nslip are missing and that the check is not signed. As you ask the customer to fill in those details, he responds aggressively: \"Oh common you have got these details on the check, can't you feel them for me later? I told you I'm late. What do you do?\n\nA. I fill in all the details myself and endorse the check. Customer service is important to me and he is already upset with the bank.\nB. I explain that due to regulations, I cannot sign the check for him.\nC. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.\nD. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "D",
+                "output_constraints": [
+                    "REGEXP:^D.*"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "dd13cc65-ee57-4727-b3ac-4b031339b76f"
+            },
+            {
+                "key": "9c3a7df3-67df-4819-babb-20636611f077",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: A customer approaches your window and starts to complain.\n\"I have been waiting here for half an hour I'm about to be late for a meeting now because everyone here is taking their time. I need to deposit this check ASAP\". How do you respond?\n\nA. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\nB. I apologize and explain that this is usually a busy time in the branch, and advise him to come in the morning next time so that he won't have to wait so long.\nC. I explain that we can't control the length of the waiting line. It's important to maintain the bank's reputation.\nD. I say that I understand it's frustrating to wait, but now I need him to calm down so that I can help him with what he needs.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "A",
+                "output_constraints": [
+                    "REGEXP:^A.*"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "d4216ae1-783d-49fa-a618-5f7688ba6842"
+            },
+            {
+                "key": "6709c0e1-de57-4b5b-b826-2060bf935574",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: While handling the customer's check, you see that some of the details on the deposit \nslip are missing and that the check is not signed. As you ask the customer to fill in those details, he responds aggressively: \"Oh common you have got these details on the check, can't you feel them for me later? I told you I'm late. What do you do?\n\nA. I fill in all the details myself and endorse the check. Customer service is important to me and he is already upset with the bank.\nB. I explain that due to regulations, I cannot sign the check for him.\nC. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.\nD. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "D",
+                "output_constraints": [
+                    "REGEXP:^D.*"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "d4216ae1-783d-49fa-a618-5f7688ba6842"
+            },
+            {
+                "key": "9c3a7df3-67df-4819-babb-20636611f077",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: A customer approaches your window and starts to complain.\n\"I have been waiting here for half an hour I'm about to be late for a meeting now because everyone here is taking their time. I need to deposit this check ASAP\". How do you respond?\n\nA. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\nB. I apologize and explain that this is usually a busy time in the branch, and advise him to come in the morning next time so that he won't have to wait so long.\nC. I explain that we can't control the length of the waiting line. It's important to maintain the bank's reputation.\nD. I say that I understand it's frustrating to wait, but now I need him to calm down so that I can help him with what he needs.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "A",
+                "output_constraints": [
+                    "REGEXP:^A.*"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "5e5aae4e-ac82-43e9-912a-df25d9cd9ebb"
+            },
+            {
+                "key": "6709c0e1-de57-4b5b-b826-2060bf935574",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: While handling the customer's check, you see that some of the details on the deposit \nslip are missing and that the check is not signed. As you ask the customer to fill in those details, he responds aggressively: \"Oh common you have got these details on the check, can't you feel them for me later? I told you I'm late. What do you do?\n\nA. I fill in all the details myself and endorse the check. Customer service is important to me and he is already upset with the bank.\nB. I explain that due to regulations, I cannot sign the check for him.\nC. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.\nD. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "D",
+                "output_constraints": [
+                    "REGEXP:^D.*"
+                ],
+                "actual_output": "",
+                "actual_duration": 0.0,
+                "cost": 0.0,
+                "model_key": "5e5aae4e-ac82-43e9-912a-df25d9cd9ebb"
+            }
+        ]
+    },
+    "dataset": {
+        "inputs": [
+            {
+                "key": "9c3a7df3-67df-4819-babb-20636611f077",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: A customer approaches your window and starts to complain.\n\"I have been waiting here for half an hour I'm about to be late for a meeting now because everyone here is taking their time. I need to deposit this check ASAP\". How do you respond?\n\nA. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\nB. I apologize and explain that this is usually a busy time in the branch, and advise him to come in the morning next time so that he won't have to wait so long.\nC. I explain that we can't control the length of the waiting line. It's important to maintain the bank's reputation.\nD. I say that I understand it's frustrating to wait, but now I need him to calm down so that I can help him with what he needs.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "A",
+                "output_constraints": [
+                    "REGEXP:^A.*"
+                ],
+                "actual_output": "A. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\n\nThis is the best response because it acknowledges the customer's frustration and shows empathy, while also committing to help them as quickly as possible. It's important to prioritize customer service and address the customer's needs in a timely and respectful manner.",
+                "actual_duration": 3.0910866260528564,
+                "cost": 0.0008480000000000154,
+                "model_key": "0ec39d88-f8e0-4d1a-bba4-75d86b107a64"
+            },
+            {
+                "key": "6709c0e1-de57-4b5b-b826-2060bf935574",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: While handling the customer's check, you see that some of the details on the deposit \nslip are missing and that the check is not signed. As you ask the customer to fill in those details, he responds aggressively: \"Oh common you have got these details on the check, can't you feel them for me later? I told you I'm late. What do you do?\n\nA. I fill in all the details myself and endorse the check. Customer service is important to me and he is already upset with the bank.\nB. I explain that due to regulations, I cannot sign the check for him.\nC. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.\nD. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "D",
+                "output_constraints": [
+                    "REGEXP:^D.*"
+                ],
+                "actual_output": "D. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.\n\nIt's important to maintain the bank's policies and regulations while providing excellent customer service. You can apologize for the inconvenience and offer a solution for the future, but you cannot sign the check for the customer or fill in missing details on their behalf.",
+                "actual_duration": 3.0210518836975098,
+                "cost": 0.0008290000000000242,
+                "model_key": "0ec39d88-f8e0-4d1a-bba4-75d86b107a64"
+            },
+            {
+                "key": "9c3a7df3-67df-4819-babb-20636611f077",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: A customer approaches your window and starts to complain.\n\"I have been waiting here for half an hour I'm about to be late for a meeting now because everyone here is taking their time. I need to deposit this check ASAP\". How do you respond?\n\nA. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\nB. I apologize and explain that this is usually a busy time in the branch, and advise him to come in the morning next time so that he won't have to wait so long.\nC. I explain that we can't control the length of the waiting line. It's important to maintain the bank's reputation.\nD. I say that I understand it's frustrating to wait, but now I need him to calm down so that I can help him with what he needs.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "A",
+                "output_constraints": [
+                    "REGEXP:^A.*"
+                ],
+                "actual_output": "A. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\n\nThis is the best response because it acknowledges the customer's frustration and shows empathy, while also committing to help them as quickly as possible. It's important to prioritize customer service and address the customer's needs in a timely and respectful manner.",
+                "actual_duration": 3.0437581539154053,
+                "cost": 0.0008480000000000154,
+                "model_key": "dd13cc65-ee57-4727-b3ac-4b031339b76f"
+            },
+            {
+                "key": "6709c0e1-de57-4b5b-b826-2060bf935574",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: While handling the customer's check, you see that some of the details on the deposit \nslip are missing and that the check is not signed. As you ask the customer to fill in those details, he responds aggressively: \"Oh common you have got these details on the check, can't you feel them for me later? I told you I'm late. What do you do?\n\nA. I fill in all the details myself and endorse the check. Customer service is important to me and he is already upset with the bank.\nB. I explain that due to regulations, I cannot sign the check for him.\nC. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.\nD. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "D",
+                "output_constraints": [
+                    "REGEXP:^D.*"
+                ],
+                "actual_output": "D. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.\n\nIt's important to maintain the bank's policies and regulations while providing excellent customer service. You can apologize for the inconvenience and offer a solution for the future, but you cannot sign the check for the customer or fill in missing details on their behalf.",
+                "actual_duration": 3.15301775932312,
+                "cost": 0.0008290000000000242,
+                "model_key": "dd13cc65-ee57-4727-b3ac-4b031339b76f"
+            },
+            {
+                "key": "9c3a7df3-67df-4819-babb-20636611f077",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: A customer approaches your window and starts to complain.\n\"I have been waiting here for half an hour I'm about to be late for a meeting now because everyone here is taking their time. I need to deposit this check ASAP\". How do you respond?\n\nA. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\nB. I apologize and explain that this is usually a busy time in the branch, and advise him to come in the morning next time so that he won't have to wait so long.\nC. I explain that we can't control the length of the waiting line. It's important to maintain the bank's reputation.\nD. I say that I understand it's frustrating to wait, but now I need him to calm down so that I can help him with what he needs.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "A",
+                "output_constraints": [
+                    "REGEXP:^A.*"
+                ],
+                "actual_output": "A. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.",
+                "actual_duration": 3.048837184906006,
+                "cost": 0.0008480000000000154,
+                "model_key": "d4216ae1-783d-49fa-a618-5f7688ba6842"
+            },
+            {
+                "key": "6709c0e1-de57-4b5b-b826-2060bf935574",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: While handling the customer's check, you see that some of the details on the deposit \nslip are missing and that the check is not signed. As you ask the customer to fill in those details, he responds aggressively: \"Oh common you have got these details on the check, can't you feel them for me later? I told you I'm late. What do you do?\n\nA. I fill in all the details myself and endorse the check. Customer service is important to me and he is already upset with the bank.\nB. I explain that due to regulations, I cannot sign the check for him.\nC. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.\nD. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "D",
+                "output_constraints": [
+                    "REGEXP:^D.*"
+                ],
+                "actual_output": "C. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.",
+                "actual_duration": 2.2871055603027344,
+                "cost": 9.300000000000974e-05,
+                "model_key": "d4216ae1-783d-49fa-a618-5f7688ba6842"
+            },
+            {
+                "key": "9c3a7df3-67df-4819-babb-20636611f077",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: A customer approaches your window and starts to complain.\n\"I have been waiting here for half an hour I'm about to be late for a meeting now because everyone here is taking their time. I need to deposit this check ASAP\". How do you respond?\n\nA. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.\nB. I apologize and explain that this is usually a busy time in the branch, and advise him to come in the morning next time so that he won't have to wait so long.\nC. I explain that we can't control the length of the waiting line. It's important to maintain the bank's reputation.\nD. I say that I understand it's frustrating to wait, but now I need him to calm down so that I can help him with what he needs.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "A",
+                "output_constraints": [
+                    "REGEXP:^A.*"
+                ],
+                "actual_output": "A. I apologize that he has waited so long and that it must be very frustrating. I tell him that I will do the best I can so that we finish quickly.",
+                "actual_duration": 2.301959276199341,
+                "cost": 5.100000000002325e-05,
+                "model_key": "5e5aae4e-ac82-43e9-912a-df25d9cd9ebb"
+            },
+            {
+                "key": "6709c0e1-de57-4b5b-b826-2060bf935574",
+                "input": "Respond to the following question with single letter answer.\n\nQuestion: While handling the customer's check, you see that some of the details on the deposit \nslip are missing and that the check is not signed. As you ask the customer to fill in those details, he responds aggressively: \"Oh common you have got these details on the check, can't you feel them for me later? I told you I'm late. What do you do?\n\nA. I fill in all the details myself and endorse the check. Customer service is important to me and he is already upset with the bank.\nB. I explain that due to regulations, I cannot sign the check for him.\nC. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.\nD. I apologize and say that I will fill in the details that I can, but I need him to sign the check as I cannot do it myself.",
+                "corpus": [],
+                "context": [],
+                "categories": [
+                    "question-answering"
+                ],
+                "relationships": [],
+                "expected_output": "D",
+                "output_constraints": [
+                    "REGEXP:^D.*"
+                ],
+                "actual_output": "C. I ask him again to fill in the details and offer that next time he fills the deposit slip in advance to save time.",
+                "actual_duration": 2.26440167427063,
+                "cost": 0.0008429999999999827,
+                "model_key": "5e5aae4e-ac82-43e9-912a-df25d9cd9ebb"
+            }
+        ]
+    },
+    "models": [
+        {
+            "connection": "47a3b18f-f273-4068-9bd0-90b68a162c5d",
+            "model_type": "h2ogpte_llm",
+            "name": "LLM model - LLM: mistralai/Mixtral-8x7B-Instruct-v0.1, config: 139694517482624",
+            "llm_model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+            "model_cfg": {
+                "system_prompt": "You are h2oGPTe, an expert question-answering AI system created by H2O.ai that performs like GPT-4 by OpenAI. ",
+                "pre_prompt_query": "Pay attention and remember the information below. You will need to use only the given document context to answer the question or imperative at the end.",
+                "prompt_query": "According to only the information in the document sources provided within the context above, ",
+                "text_context_list": [
+                    "test",
+                    "arguments",
+                    "for",
+                    "llm",
+                    "model",
+                    "configuration"
+                ],
+                "llm": null,
+                "llm_args": {
+                    "temperature": 0.1
+                },
+                "chat_conversation": [
+                    [
+                        "What is your purpose?",
+                        "I am an AI system that answers questions."
+                    ],
+                    [
+                        "What is your name?",
+                        "My name is h2oGPTe."
+                    ],
+                    [
+                        "When were you created?",
+                        "I was created in 2024."
+                    ]
+                ],
+                "timeout": null
+            },
+            "key": "0ec39d88-f8e0-4d1a-bba4-75d86b107a64"
+        },
+        {
+            "connection": "47a3b18f-f273-4068-9bd0-90b68a162c5d",
+            "model_type": "h2ogpte_llm",
+            "name": "LLM model - LLM: mistralai/Mixtral-8x7B-Instruct-v0.1, config: 139694517483264",
+            "llm_model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+            "model_cfg": {
+                "system_prompt": "You are h2oGPTe, an expert question-answering AI system created by H2O.ai that performs like GPT-4 by OpenAI. ",
+                "pre_prompt_query": "Pay attention and remember the information below. You will need to use only the given document context to answer the question or imperative at the end.",
+                "prompt_query": "According to only the information in the document sources provided within the context above, ",
+                "text_context_list": [
+                    "test",
+                    "arguments",
+                    "for",
+                    "llm",
+                    "model",
+                    "configuration"
+                ],
+                "llm": null,
+                "llm_args": {
+                    "temperature": 0.7
+                },
+                "chat_conversation": [
+                    [
+                        "What is your purpose?",
+                        "I am an AI system that answers questions."
+                    ],
+                    [
+                        "What is your name?",
+                        "My name is h2oGPTe."
+                    ],
+                    [
+                        "When were you created?",
+                        "I was created in 2024."
+                    ]
+                ],
+                "timeout": null
+            },
+            "key": "dd13cc65-ee57-4727-b3ac-4b031339b76f"
+        },
+        {
+            "connection": "47a3b18f-f273-4068-9bd0-90b68a162c5d",
+            "model_type": "h2ogpte_llm",
+            "name": "LLM model - LLM: mistralai/Mistral-7B-Instruct-v0.2, config: 139693667462336",
+            "llm_model_name": "mistralai/Mistral-7B-Instruct-v0.2",
+            "model_cfg": {
+                "system_prompt": "You are h2oGPTe, an expert question-answering AI system created by H2O.ai that performs like GPT-4 by OpenAI. ",
+                "pre_prompt_query": "Pay attention and remember the information below. You will need to use only the given document context to answer the question or imperative at the end.",
+                "prompt_query": "According to only the information in the document sources provided within the context above, ",
+                "text_context_list": [
+                    "test",
+                    "arguments",
+                    "for",
+                    "llm",
+                    "model",
+                    "configuration"
+                ],
+                "llm": null,
+                "llm_args": {
+                    "temperature": 0.1
+                },
+                "chat_conversation": [
+                    [
+                        "What is your purpose?",
+                        "I am an AI system that answers questions."
+                    ],
+                    [
+                        "What is your name?",
+                        "My name is h2oGPTe."
+                    ],
+                    [
+                        "When were you created?",
+                        "I was created in 2024."
+                    ]
+                ],
+                "timeout": null
+            },
+            "key": "d4216ae1-783d-49fa-a618-5f7688ba6842"
+        },
+        {
+            "connection": "47a3b18f-f273-4068-9bd0-90b68a162c5d",
+            "model_type": "h2ogpte_llm",
+            "name": "LLM model - LLM: mistralai/Mistral-7B-Instruct-v0.2, config: 139694517659840",
+            "llm_model_name": "mistralai/Mistral-7B-Instruct-v0.2",
+            "model_cfg": {
+                "system_prompt": "You are h2oGPTe, an expert question-answering AI system created by H2O.ai that performs like GPT-4 by OpenAI. ",
+                "pre_prompt_query": "Pay attention and remember the information below. You will need to use only the given document context to answer the question or imperative at the end.",
+                "prompt_query": "According to only the information in the document sources provided within the context above, ",
+                "text_context_list": [
+                    "test",
+                    "arguments",
+                    "for",
+                    "llm",
+                    "model",
+                    "configuration"
+                ],
+                "llm": null,
+                "llm_args": {
+                    "temperature": 0.7
+                },
+                "chat_conversation": [
+                    [
+                        "What is your purpose?",
+                        "I am an AI system that answers questions."
+                    ],
+                    [
+                        "What is your name?",
+                        "My name is h2oGPTe."
+                    ],
+                    [
+                        "When were you created?",
+                        "I was created in 2024."
+                    ]
+                ],
+                "timeout": null
+            },
+            "key": "5e5aae4e-ac82-43e9-912a-df25d9cd9ebb"
+        }
+    ],
+    "llm_model_names": [
+        "mistralai/Mixtral-8x7B-Instruct-v0.1",
+        "mistralai/Mistral-7B-Instruct-v0.2"
+    ],
+    "docs_cache": {
+        "h2o-eval-studio-empty-corpus-dummy-document.txt": "h2o-eval-studio-empty-corpus-dummy-document.txt"
+    }
+}

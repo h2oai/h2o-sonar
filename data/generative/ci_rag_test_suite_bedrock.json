@@ -1,0 +1,55 @@
+{
+    "tests": [
+        {
+            "key": "da503caf-a2dc-4c0a-b5f7-618bebd7860d",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/Coca-Cola-FEMSA-Results-1Q23-vf-2.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "d981bf23-9790-4c5e-905e-2ab56cba7ece",
+                    "prompt": "What was the revenue of Brazil?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "expected_output": "Brazil revenue was 15,969 million.",
+                    "constraints": [
+                         "15,969",
+                         "REGEXP:15?,969 [Mm]illion",
+                         ["BRAZIL", "REGEXP:[B]razil"]
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "be087c6b-ad41-4b2e-a9f1-0ffd5e6743ec",
+            "documents": [
+                "https://eval-studio-artifacts.s3.amazonaws.com/h2o-eval-studio-suite-library/corpus-h2ogpte-benchmark/bradesco-2022-integrated-report.pdf"
+            ],
+            "test_cases": [
+                {
+                    "key": "3db6878b-1511-4b58-b42f-985ca9699d1d",
+                    "prompt": "Who is the chairman of the board?",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "expected_output": "The chairman of the board was Luiz Carlos Trabuco Cappi.",
+                    "constraints": [
+                        "Luiz Carlos Trabuco Cappi"
+                    ]
+                },
+                {
+                    "key": "13011931-70c4-40b9-aacc-3870f521dbaa",
+                    "prompt": "What was the number of agreements that include human rights clauses, in 2022? Provide the answer in both French and Chinese.",
+                    "expected_output": "French: Le nombre d'accords comprenant des clauses relatives aux droits de l'homme en 2022 était de 22. Chinese: 2022 年包含人权条款的协议数量为 22 个。",
+                    "categories": [
+                        "question_answering"
+                    ],
+                    "constraints": [
+                        ["22", "twenty-two", "22222"]
+                    ]
+                }
+            ]
+        }
+   ]
+}
