@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started with H2O Eval Studio &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/getting_started.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="H2O Eval Studio Documentation" href="doc.html" />
+    <link rel="prev" title="H2O Eval Studio Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.html">H2O Eval Studio Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Eval Studio Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting Started with H2O Eval Studio</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started-with-h2o-sonar">
+<h1>Getting Started with H2O Eval Studio<a class="headerlink" href="#getting-started-with-h2o-sonar" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference internal" href="#getting-started-with-predictive-models-interpretation"><span class="std std-ref">Getting Started with Predictive Models Interpretation</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#running-the-interpretation-from-the-command-line"><span class="std std-ref">Running the Interpretation from the Command Line</span></a></p></li>
+<li><p><a class="reference internal" href="#running-the-interpretation-from-the-python"><span class="std std-ref">Running the Interpretation from the Python</span></a></p></li>
+<li><p><a class="reference internal" href="#running-the-interpretation-from-the-jupyter-notebook"><span class="std std-ref">Running the Interpretation from the Jupyter Notebook</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#getting-started-with-generative-models-evaluation"><span class="std std-ref">Getting Started with Generative Models Evaluation</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#running-the-evaluation-from-the-python"><span class="std std-ref">Running the Evaluation from the Python</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="getting-started-with-predictive-models-interpretation">
+<h2>Getting Started with Predictive Models Interpretation<a class="headerlink" href="#getting-started-with-predictive-models-interpretation" title="Link to this heading"></a></h2>
+<p>H2O Eval Studio library explains models by running a set of <a class="reference internal" href="doc.explainers.html#explainers"><span class="std std-ref">explainers</span></a>
+within an interpretation.</p>
+<p>Explainer creates an explanation of the model, such as the most important
+features or decision tree describing the approximate model behavior. Explanations
+created by explainers are stored in various formats (like JSon, CSV or
+as images) in the interpretation results directory along with logs, interpretation
+(HTML and JSon) overview and other artifacts.</p>
+<p>H2O Eval Studio can explain models using:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#running-the-interpretation-from-the-command-line"><span class="std std-ref">Command line interface (CLI)</span></a></p></li>
+<li><p><a class="reference internal" href="#running-the-interpretation-from-the-python"><span class="std std-ref">Python API</span></a></p></li>
+<li><p><a class="reference internal" href="#running-the-interpretation-from-the-jupyter-notebook"><span class="std std-ref">Jupyter Notebook</span></a></p></li>
+</ul>
+<section id="running-the-interpretation-from-the-command-line">
+<h3>Running the Interpretation from the Command Line<a class="headerlink" href="#running-the-interpretation-from-the-command-line" title="Link to this heading"></a></h3>
+<p>Check H2O Eval Studio CLI help:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>h2o-sonar --help
+</pre></div>
+</div>
+<p>List available explainers:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>h2o-sonar list explainers
+</pre></div>
+</div>
+<p>Explain your model by running an interpretation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>h2o-sonar run interpretation \
+    --dataset=dataset.csv \
+    --model=model.mojo \
+    --target-col=SATISFACTION \
+    --results-location=./interpretation-results
+</pre></div>
+</div>
+<p>Open <code class="docutils literal notranslate"><span class="pre">./interpretation-results</span></code> directory and check model explanations. The best location where
+to start is the <strong>interpretation HTML report</strong> which can be found in
+<code class="docutils literal notranslate"><span class="pre">h2o-sonar/mli_experiment_&lt;UUID&gt;/interpretation.html</span></code>:</p>
+<img alt="Interpretation HTML report" src="_images/interpretation-html-report.png" />
+</section>
+<section id="running-the-interpretation-from-the-python">
+<h3>Running the Interpretation from the Python<a class="headerlink" href="#running-the-interpretation-from-the-python" title="Link to this heading"></a></h3>
+<p>Explain your model by running an interpretation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataset</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span>
+<span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">target_column</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">dataset</span><span class="p">[</span><span class="n">target_column</span><span class="p">]</span>
+
+<span class="c1"># model</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">ensemble</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># interpretation</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpret</span>
+
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+    <span class="n">used_features</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="n">target_column</span><span class="p">,</span>
+    <span class="n">results_location</span><span class="o">=</span><span class="n">results_path</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># result</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">interpretation</span><span class="p">)</span>  <span class="c1"># or interpretation.to_html()</span>
+
+<span class="c1"># get the explanation created by the first explainer of the interpretation</span>
+<span class="n">explanation</span> <span class="o">=</span> <span class="n">interpretation</span><span class="o">.</span><span class="n">get_explainer_result</span><span class="p">(</span>
+    <span class="n">interpretation</span><span class="o">.</span><span class="n">get_finished_explainer_ids</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># show explanation summary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">explanation</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="c1"># show explanation data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">explanation</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">feature_name</span><span class="o">=</span><span class="s2">&quot;EDUCATION&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;disparity&quot;</span><span class="p">))</span>
+<span class="c1"># get explanation plot</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">explanation</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature_name</span><span class="o">=</span><span class="s2">&quot;EDUCATION&quot;</span><span class="p">))</span>
+<span class="c1"># show explainer log</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">explanation</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">results_path</span><span class="p">))</span>
+<span class="c1"># store all explanation artifacts as ZIP archive</span>
+<span class="n">explanation</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">archive_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="running-the-interpretation-from-the-jupyter-notebook">
+<h3>Running the Interpretation from the Jupyter Notebook<a class="headerlink" href="#running-the-interpretation-from-the-jupyter-notebook" title="Link to this heading"></a></h3>
+<p>Explain your model from a Jupyter Notebook:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpret</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExplainableModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExplainableDataset</span>
+</pre></div>
+</div>
+<p>Specify path to the dataset, <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_path</span> <span class="o">=</span> <span class="o">./</span><span class="n">datasets</span><span class="o">/</span><span class="n">creditcard</span><span class="o">.</span><span class="n">csv</span><span class="s2">&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span>
+<span class="n">target_col</span> <span class="o">=</span> <span class="s2">&quot;default payment next month&quot;</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">target_col</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Specify the model to be explained (or train one):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gradient_booster</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">gradient_booster</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Specify where to store the interpretation results - explanations created by explainers:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results_location</span> <span class="o">=</span> <span class="s2">&quot;./results&quot;</span>
+</pre></div>
+</div>
+<p>Explain your model by running an interpretation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">gradient_booster</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">,</span>
+    <span class="n">results_location</span><span class="o">=</span><span class="n">results_location</span><span class="p">,</span>
+    <span class="n">used_features</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Check for successful explainers:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">interpretation</span><span class="o">.</span><span class="n">get_successful_explainer_ids</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Retrieve result of the <a class="reference internal" href="doc.explainers.html#partial-dependence-individual-conditional-expectations-pd-ice-explainer"><span class="std std-ref">PD/ICE explainer</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">interpretation</span><span class="o">.</span><span class="n">get_explainer_result</span><span class="p">(</span><span class="n">PdIceExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Get explanation data of the feature <code class="docutils literal notranslate"><span class="pre">EDUCATION</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">feature_name</span><span class="o">=</span><span class="s2">&quot;EDUCATION&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Plot partial dependence plot explanation data of the feature <code class="docutils literal notranslate"><span class="pre">PAY_3</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature_name</span><span class="o">=</span><span class="s2">&quot;PAY_3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="PD/ICE plot example" src="_images/explainer-plot-pd-pay3-num.png" />
+<p>Open <code class="docutils literal notranslate"><span class="pre">./interpretation-results</span></code> directory and check model explanations.</p>
+<p>See also:</p>
+<ul class="simple">
+<li><p>H2O Eval Studio <a class="reference internal" href="examples.html#h2o-sonar-examples"><span class="std std-ref">Jupyter Notebook examples</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="getting-started-with-generative-models-evaluation">
+<h2>Getting Started with Generative Models Evaluation<a class="headerlink" href="#getting-started-with-generative-models-evaluation" title="Link to this heading"></a></h2>
+<p>H2O Eval Studio library evaluates models by running a set of <a class="reference internal" href="doc.evaluators.html#evaluators"><span class="std std-ref">evaluators</span></a>
+within an evaluation.</p>
+<p>Evaluator creates a evaluation of the LLM models. Evaluations
+created by evaluators are stored in various formats (like JSon, CSV or data frames)
+in the evaluation results directory along with logs, evaluation (HTML and JSon) overview and other artifacts.</p>
+<section id="running-the-evaluation-from-the-python">
+<h3>Running the Evaluation from the Python<a class="headerlink" href="#running-the-evaluation-from-the-python" title="Link to this heading"></a></h3>
+<p>Evaluate your model by running an evaluation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># LLM models to be evaluated</span>
+
+<span class="n">model_host</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+        <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">H2O_GPT_E</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise model host.&quot;</span><span class="p">,</span>
+        <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://h2ogpte.h2o.ai/&quot;</span><span class="p">,</span>
+        <span class="n">token</span><span class="o">=</span><span class="s2">&quot;sk-6FC...fX3g&quot;</span><span class="p">,</span>
+        <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">llm_models</span> <span class="o">=</span> <span class="n">genai</span><span class="o">.</span><span class="n">H2oGpteRagClient</span><span class="p">(</span><span class="n">model_host</span><span class="p">)</span><span class="o">.</span><span class="n">list_llm_model_names</span><span class="p">()</span>
+
+<span class="c1"># evaluation dataset</span>
+
+<span class="c1"># test suite: RAG corpus, prompts, expected answers</span>
+<span class="n">rag_test_suite</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestSuiteConfig</span><span class="o">.</span><span class="n">load_from_json</span><span class="p">(</span>
+        <span class="n">test_utils</span><span class="o">.</span><span class="n">find_locally</span><span class="p">(</span><span class="s2">&quot;data/generative/demo_doc_test_suite.json&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># test lab: resolved test suite w/ actual values from the LLM models host</span>
+<span class="n">test_lab</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestLab</span><span class="o">.</span><span class="n">from_rag_test_suite</span><span class="p">(</span>
+        <span class="n">rag_connection</span><span class="o">=</span><span class="n">model_host</span><span class="p">,</span>
+        <span class="n">rag_test_suite</span><span class="o">=</span><span class="n">rag_test_suite</span><span class="p">,</span>
+        <span class="n">rag_model_type</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">ExplainableModelType</span><span class="o">.</span><span class="n">h2ogpte</span><span class="p">,</span>
+        <span class="n">llm_model_names</span><span class="o">=</span><span class="n">llm_models</span><span class="p">,</span>
+        <span class="n">docs_cache_dir</span><span class="o">=</span><span class="n">tmp_path</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># deploy the test lab: upload corpus and create RAG collections/knowledge bases</span>
+<span class="n">test_lab</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="c1"># complete the test lab: actual values - answers, duration, cost, ...</span>
+<span class="n">test_lab</span><span class="o">.</span><span class="n">complete_dataset</span><span class="p">()</span>
+
+<span class="c1"># EVALUATION</span>
+
+<span class="n">evaluation</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">run_evaluation</span><span class="p">(</span>
+        <span class="c1"># test lab as the evaluation dataset (prompts, expected and actual answers)</span>
+        <span class="n">dataset</span><span class="o">=</span><span class="n">test_lab</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span>
+        <span class="c1"># models to be evaluated ~ compared in the evaluation leaderboard</span>
+        <span class="n">models</span><span class="o">=</span><span class="n">test_lab</span><span class="o">.</span><span class="n">evaluated_models</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span>
+        <span class="c1"># evaluators</span>
+        <span class="n">evaluators</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">rag_hallucination_evaluator</span><span class="o">.</span><span class="n">RagHallucinationEvaluator</span><span class="p">()</span><span class="o">.</span><span class="n">evaluator_id</span><span class="p">()</span>
+        <span class="p">],</span>
+        <span class="c1"># where to save the report</span>
+        <span class="n">results_location</span><span class="o">=</span><span class="n">tmp_path</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># HTML report and the evaluation data (JSon, CSV, data frames, ...)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HTML report: file://</span><span class="si">{</span><span class="n">evaluation</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get_html_report_location</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="H2O Eval Studio Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="doc.html" class="btn btn-neutral float-right" title="H2O Eval Studio Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

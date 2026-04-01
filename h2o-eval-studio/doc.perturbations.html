@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perturbations &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/doc.perturbations.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Report and Results" href="doc.result.html" />
+    <link rel="prev" title="BYOP: Bring Your Own Prompt" href="doc.byop.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="doc.html">H2O Eval Studio Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="doc.configuration.html">Library Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.predictive.html">Predictive Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="doc.generative.html">Generative Models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluations.html">Evaluating RAGs and LLMs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.rag_llm_hosts.html">RAG and LLM Hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.rag_llm_tests.html">Test Case, Suite, Lab and LLM Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluators.pars.html">Evaluator Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluators.html">Evaluators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.byoj.html">BYOJ: Bring Your Own Judge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.byop.html">BYOP: Bring Your Own Prompt</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Perturbations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc.result.html">Report and Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.talktoreport.html">Talk to Report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Eval Studio Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="doc.html">H2O Eval Studio Documentation</a></li>
+          <li class="breadcrumb-item"><a href="doc.generative.html">Generative Models</a></li>
+      <li class="breadcrumb-item active">Perturbations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/doc.perturbations.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="perturbations">
+<h1>Perturbations<a class="headerlink" href="#perturbations" title="Link to this heading"></a></h1>
+<p>H2O Eval Studio provides a way to perturb the data in order to test the <strong>robustness</strong> of RAG systems, LLMs
+and predictive (NLP) models. The perturbations are applied to the text input and the model output
+on the original input is then compared to the model output on the perturbed input. If the model output
+changes significantly, the model is considered to be not robust.</p>
+<p>The following <strong>perturbators</strong> are supported:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#antonym-perturbator"><span class="std std-ref">Antonym Perturbator</span></a></p></li>
+<li><p><a class="reference internal" href="#comma-perturbator"><span class="std std-ref">Comma Perturbator</span></a></p></li>
+<li><p><a class="reference internal" href="#contextual-misinformation-perturbator"><span class="std std-ref">Contextual Misinformation Perturbator</span></a></p></li>
+<li><p><a class="reference internal" href="#copy-perturbator"><span class="std std-ref">Copy Perturbator</span></a></p></li>
+<li><p><a class="reference internal" href="#keyboard-typos-perturbator"><span class="std std-ref">Keyboard Typos Perturbator</span></a></p></li>
+<li><p><a class="reference internal" href="#ocr-error-character-perturbator"><span class="std std-ref">OCR Error Character Perturbator</span></a></p></li>
+<li><p><a class="reference internal" href="#random-character-deletion-perturbator"><span class="std std-ref">Random Character Deletion Perturbator</span></a></p></li>
+<li><p><a class="reference internal" href="#random-character-insertion-perturbator"><span class="std std-ref">Random Character Insertion Perturbator</span></a></p></li>
+<li><p><a class="reference internal" href="#random-character-perturbator"><span class="std std-ref">Random Character Perturbator</span></a></p></li>
+<li><p><a class="reference internal" href="#random-character-replacement-perturbator"><span class="std std-ref">Random Character Replacement Perturbator</span></a></p></li>
+<li><p><a class="reference internal" href="#synonym-perturbator"><span class="std std-ref">Synonym Perturbator</span></a></p></li>
+<li><p><a class="reference internal" href="#word-swap-perturbator"><span class="std std-ref">Word Swap Perturbator</span></a></p></li>
+<li><p><a class="reference internal" href="#y-z-perturbator"><span class="std std-ref">Y/Z Perturbator</span></a></p></li>
+</ul>
+<p>When are perturbators be useful?</p>
+<ul class="simple">
+<li><p><strong>Chatbots and virtual assistants</strong>: To ensure that the chatbot is robust to typos, abbreviations
+writen in lower case, missing punctuation, and other common mistakes. Perturbing prompts can help
+to ensure that the chatbot is robust and responds as expected.</p></li>
+<li><p><strong>Social media datasets analysis</strong>: Social media text is packed with abbreviations, slang, emojis, and
+other non-standard language. Perturbing the text can help to ensure that the model is robust to
+these variations.</p></li>
+<li><p><strong>Summarization and translation</strong>: To ensure that the model is robust to different writing styles,
+synonyms, but also aforementioned typos, abbreviations, and other common mistakes.</p></li>
+<li><p><strong>Question answering</strong>: To ensure that the model is robust to rephrased questions, writing styles,
+synonyms and other common mistakes.</p></li>
+</ul>
+<section id="perturbations-step-by-step">
+<h2>Perturbations Step-by-Step<a class="headerlink" href="#perturbations-step-by-step" title="Link to this heading"></a></h2>
+<p>Perturbations can be used to test the robustness of a model using the following steps:</p>
+<ul class="simple">
+<li><p>User can perturb test case, test or test suite using a sequence of perturbations.</p></li>
+<li><p>Test cases with perturbed prompts are added to the corresponding tests,
+relationships are used to link perturbed prompts to original prompts.
+Categories describing the perturbations methods and intensity are added to the test case categories.</p></li>
+<li><p>User can run any evaluator, and it will detects flip of metric(s) calculated by the evaluator.</p></li>
+<li><dl class="simple">
+<dt>A metric flip is defined as follows:</dt><dd><ul>
+<li><p>Every metric has a threshold value, which is configurable using the evaluator parameters.</p></li>
+<li><p>Each metric calculated by the evaluator has associated metadata that include information like “higher is better/worse”.</p></li>
+<li><p>If the metric value for the original prompt is below the threshold, while the value of the same metric is above the threshold for the perturbed prompt, then it is reported as a flip (and vice versa - original above, perturbed below)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Metric flips are reported in the evaluation report as <code class="docutils literal notranslate"><span class="pre">robustness</span></code> problems.</p></li>
+</ul>
+<img alt="Robustness problems in the evaluation report" src="_images/perturbation-html-report-with-robustness-problem.png" />
+<p>Flip example:</p>
+<ul class="simple">
+<li><p>For instance hallucination metric value for a prompt might be <code class="docutils literal notranslate"><span class="pre">0.3</span></code> before perturbation and <code class="docutils literal notranslate"><span class="pre">0.8</span></code> after perturbation with threshold <code class="docutils literal notranslate"><span class="pre">0.75</span></code>.</p></li>
+</ul>
+</section>
+<section id="random-character-perturbator">
+<h2>Random Character Perturbator<a class="headerlink" href="#random-character-perturbator" title="Link to this heading"></a></h2>
+<p>Perturbator that replaces random characters in a sentence. Currently, five types of character perturbations supported namely:</p>
+<ol class="arabic simple">
+<li><p>Random character replacement (default: ‘random_replacement’): Randomly replace <cite>p</cite> percentage of characters with other characters in the input text.</p></li>
+<li><p>Random keyboard typos (‘random_keyboard_typos’): Randomly replace <cite>p</cite> percentage of characters with their neighboring characters on the QWERTY keyboard. E.g., “a” with “q”, “s” with “a”, etc.</p></li>
+<li><p>Random character insertion (‘random_insert’): Randomly insert <cite>p</cite> percentage characters into the input text.</p></li>
+<li><p>Random character deletion (‘random_delete’): Randomly delete <cite>p</cite> percentage characters from the input text and replace it with “X”.</p></li>
+<li><p>Random OCR (‘random_OCR’): Randomly replace <cite>p</cite> percentage of characters with common OCR errors.</p></li>
+</ol>
+</section>
+<section id="antonym-perturbator">
+<h2>Antonym Perturbator<a class="headerlink" href="#antonym-perturbator" title="Link to this heading"></a></h2>
+<p>Perturbator that replaces words with their antonyms.</p>
+</section>
+<section id="comma-perturbator">
+<h2>Comma Perturbator<a class="headerlink" href="#comma-perturbator" title="Link to this heading"></a></h2>
+<p>Perturbator that adds a comma after some words. It mimics a common mistake in English writing and/or typos.</p>
+</section>
+<section id="contextual-misinformation-perturbator">
+<h2>Contextual Misinformation Perturbator<a class="headerlink" href="#contextual-misinformation-perturbator" title="Link to this heading"></a></h2>
+<p>Contextual misinformation perturbator is agent-based perturbator that
+introduces factually incorrect information within a seemingly plausible context,
+aiming to mislead the model into accepting false statements - adversarial attack.</p>
+<p>Example</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Text</strong>:</dt><dd><ul>
+<li><p>Frida Kahlo is painter.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Perturbed text</strong>:</dt><dd><ul>
+<li><p>Frida Kahlo is a renowned sculptor, as evidenced by the numerous statues attributed to her found in various art galleries across Mexico, which were previously misattributed to other artists.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Example</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Text</strong>:</dt><dd><ul>
+<li><p>Is the capital of France Paris?</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Perturbed text</strong>:</dt><dd><ul>
+<li><p>Is the capital of France London, as evidenced by the historical documents discovered in the Bibliothèque nationale de France?</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="copy-perturbator">
+<h2>Copy Perturbator<a class="headerlink" href="#copy-perturbator" title="Link to this heading"></a></h2>
+<p>Perturbator that returns input unchanged (no perturbation). This is useful as a baseline or control in robustness experiments to verify evaluation pipeline integrity.</p>
+</section>
+<section id="keyboard-typos-perturbator">
+<h2>Keyboard Typos Perturbator<a class="headerlink" href="#keyboard-typos-perturbator" title="Link to this heading"></a></h2>
+<p>Perturbator that replaces characters with their neighboring characters on the QWERTY keyboard.</p>
+</section>
+<section id="ocr-error-character-perturbator">
+<h2>OCR Error Character Perturbator<a class="headerlink" href="#ocr-error-character-perturbator" title="Link to this heading"></a></h2>
+<p>Perturbator that replaces characters with common OCR errors.</p>
+</section>
+<section id="random-character-deletion-perturbator">
+<h2>Random Character Deletion Perturbator<a class="headerlink" href="#random-character-deletion-perturbator" title="Link to this heading"></a></h2>
+<p>Perturbator that deletes random characters in a sentence.</p>
+</section>
+<section id="random-character-insertion-perturbator">
+<h2>Random Character Insertion Perturbator<a class="headerlink" href="#random-character-insertion-perturbator" title="Link to this heading"></a></h2>
+<p>Perturbator that inserts random characters in a sentence.</p>
+</section>
+<section id="random-character-replacement-perturbator">
+<h2>Random Character Replacement Perturbator<a class="headerlink" href="#random-character-replacement-perturbator" title="Link to this heading"></a></h2>
+<p>Perturbator that replaces random characters in a sentence.</p>
+</section>
+<section id="synonym-perturbator">
+<h2>Synonym Perturbator<a class="headerlink" href="#synonym-perturbator" title="Link to this heading"></a></h2>
+<p>Perturbator that replaces words with their synonyms.</p>
+</section>
+<section id="word-swap-perturbator">
+<h2>Word Swap Perturbator<a class="headerlink" href="#word-swap-perturbator" title="Link to this heading"></a></h2>
+<p>Perturbator that swaps two words in a sentence.</p>
+</section>
+<section id="y-z-perturbator">
+<h2>Y/Z Perturbator<a class="headerlink" href="#y-z-perturbator" title="Link to this heading"></a></h2>
+<p>Perturbator that replaces ‘y’ with ‘z’ and vice versa.</p>
+</section>
+<section id="perturbators-api">
+<h2>Perturbators API<a class="headerlink" href="#perturbators-api" title="Link to this heading"></a></h2>
+<p>Perturbators can be listed as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate</span>
+
+<span class="n">perturbator_descriptor</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">list_perturbators</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">perturbator_descriptor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>String can be perturbed as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.utils.robustness</span><span class="w"> </span><span class="kn">import</span> <span class="n">perturbations</span>
+
+<span class="n">perturbed_text</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">perturb</span><span class="p">(</span>
+    <span class="n">content</span><span class="o">=</span><span class="n">input_content</span><span class="p">,</span>
+    <span class="n">perturbators</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">commons</span><span class="o">.</span><span class="n">PerturbatorToRun</span><span class="p">(</span>
+            <span class="n">perturbator_id</span><span class="o">=</span><span class="n">perturbations</span><span class="o">.</span><span class="n">QwertyPerturbator</span><span class="o">.</span><span class="n">perturbator_id</span><span class="p">,</span>
+            <span class="n">intensity</span><span class="o">=</span><span class="n">commons</span><span class="o">.</span><span class="n">PerturbationIntensity</span><span class="o">.</span><span class="n">LOW</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">perturbed_text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Test case can be perturbed using multiple perturbations as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.utils.robustness</span><span class="w"> </span><span class="kn">import</span> <span class="n">perturbations</span>
+
+<span class="n">test_case</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestCaseConfig</span><span class="p">(</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;This is the text to be perturbed using a perturbator.&quot;</span>
+<span class="p">)</span>
+
+<span class="n">perturbed_test_case</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">perturb</span><span class="p">(</span>
+    <span class="n">content</span><span class="o">=</span><span class="n">test_case</span><span class="p">,</span>
+    <span class="n">perturbators</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">commons</span><span class="o">.</span><span class="n">PerturbatorToRun</span><span class="p">(</span>
+            <span class="n">perturbator_id</span><span class="o">=</span><span class="n">descriptor</span><span class="o">.</span><span class="n">perturbator_id</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">descriptor</span> <span class="ow">in</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">list_perturbators</span><span class="p">()</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">perturbed_test_case</span><span class="o">.</span><span class="n">prompt</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-perturbations-to-assess-model-robustness">
+<h2>Using Perturbations to Assess Model Robustness<a class="headerlink" href="#using-perturbations-to-assess-model-robustness" title="Link to this heading"></a></h2>
+<p>Typical use of perturbations is to assess the robustness of a model. The following code example demonstrates how to
+use perturbations to assess the robustness of a model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># perturb the test suite - all test cases in test suite&#39;s tests are perturbed</span>
+<span class="c1">#</span>
+<span class="n">test_suite</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestSuiteConfig</span><span class="o">.</span><span class="n">load_from_json</span><span class="p">(</span><span class="s2">&quot;path/to/test_suite.json&quot;</span><span class="p">)</span>
+
+<span class="n">perturbed_suite</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">perturb</span><span class="p">(</span>
+    <span class="n">content</span><span class="o">=</span><span class="n">test_suite</span><span class="p">,</span>
+    <span class="n">perturbators</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">commons</span><span class="o">.</span><span class="n">PerturbatorToRun</span><span class="p">(</span>
+            <span class="n">perturbator_id</span><span class="o">=</span><span class="n">perturbator_id</span><span class="p">,</span>
+            <span class="n">intensity</span><span class="o">=</span><span class="n">commons</span><span class="o">.</span><span class="n">PerturbationIntensity</span><span class="o">.</span><span class="n">HIGH</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">in_place</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">perturbed_suite</span><span class="o">.</span><span class="n">save_as_json</span><span class="p">(</span><span class="s2">&quot;path/to/perturbed_test_suite.json&quot;</span><span class="p">)</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># resolve the test suite to test lab - get answers from RAGs/LLMs</span>
+<span class="c1">#</span>
+<span class="n">test_lab</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestLab</span><span class="o">.</span><span class="n">from_rag_test_suite</span><span class="p">(</span>
+    <span class="n">rag_connection</span><span class="o">=</span><span class="n">target_host_connection</span><span class="p">,</span>
+    <span class="n">rag_test_suite</span><span class="o">=</span><span class="n">perturbed_suite</span><span class="p">,</span>
+    <span class="n">llm_model_names</span><span class="o">=</span><span class="n">llm_model_names</span><span class="p">,</span>
+    <span class="n">rag_model_type</span><span class="o">=</span><span class="n">llm_model_type</span><span class="p">,</span>
+    <span class="n">docs_cache_dir</span><span class="o">=</span><span class="s2">&quot;path/to/docs_cache_dir&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">test_lab</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="n">test_lab</span><span class="o">.</span><span class="n">complete_dataset</span><span class="p">()</span>
+<span class="n">test_lab</span><span class="o">.</span><span class="n">save_as_json</span><span class="p">(</span><span class="s2">&quot;path/to/test_lab.json&quot;</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># run evaluation using the test lab with perturbed test cases</span>
+<span class="c1">#</span>
+<span class="n">evaluation</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">run_evaluation</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">test_lab</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span>
+    <span class="n">models</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">test_lab</span><span class="o">.</span><span class="n">evaluated_models</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+    <span class="n">evaluators</span><span class="o">=</span><span class="n">evaluators</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># print (robustness) problems</span>
+<span class="c1">#</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Problems [</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">evaluation</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">problems</span><span class="p">)</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">evaluation</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">problems</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="doc.byop.html" class="btn btn-neutral float-left" title="BYOP: Bring Your Own Prompt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="doc.result.html" class="btn btn-neutral float-right" title="Report and Results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BYOJ: Bring Your Own Judge &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/doc.byoj.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BYOP: Bring Your Own Prompt" href="doc.byop.html" />
+    <link rel="prev" title="Evaluators" href="doc.evaluators.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="doc.html">H2O Eval Studio Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="doc.configuration.html">Library Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.predictive.html">Predictive Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="doc.generative.html">Generative Models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluations.html">Evaluating RAGs and LLMs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.rag_llm_hosts.html">RAG and LLM Hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.rag_llm_tests.html">Test Case, Suite, Lab and LLM Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluators.pars.html">Evaluator Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluators.html">Evaluators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">BYOJ: Bring Your Own Judge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.byop.html">BYOP: Bring Your Own Prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.perturbations.html">Perturbations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc.result.html">Report and Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.talktoreport.html">Talk to Report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Eval Studio Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="doc.html">H2O Eval Studio Documentation</a></li>
+          <li class="breadcrumb-item"><a href="doc.generative.html">Generative Models</a></li>
+      <li class="breadcrumb-item active">BYOJ: Bring Your Own Judge</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/doc.byoj.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="byoj-bring-your-own-judge">
+<h1>BYOJ: Bring Your Own Judge<a class="headerlink" href="#byoj-bring-your-own-judge" title="Link to this heading"></a></h1>
+<p>H2O Eval Studio can be configured to use custom evaluation LLM judges.
+For instance in order to ensure privacy and avoid sending of
+the sensitive data to a 3rd party and/or to the cloud.</p>
+<p>There are two ways how to configure the custom judges:</p>
+<ul class="simple">
+<li><p><strong>Forced from the H2O Eval Studio configuration</strong>
+- the custom judge is forced from the H2O Eval Studio configuration in order to be used by evaluators which need an LLM judge to evaluate the model.</p></li>
+<li><p><strong>Specified in the evaluator parameters</strong>
+- the custom judge is specified in the evaluator parameters.</p></li>
+</ul>
+<p>Custom LLM judge can be configured for the following evaluators:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="doc.evaluators.html#answer-correctness-evaluator"><span class="std std-ref">Answer Correctness Evaluator</span></a></p></li>
+<li><p><a class="reference internal" href="doc.evaluators.html#answer-semantic-similarity-evaluator"><span class="std std-ref">Answer Semantic Similarity Evaluator</span></a></p></li>
+<li><p><a class="reference internal" href="doc.evaluators.html#context-relevancy-evaluator"><span class="std std-ref">Context Relevancy Evaluator</span></a></p></li>
+<li><p><a class="reference internal" href="doc.evaluators.html#ragas-evaluator"><span class="std std-ref">RAGAS Evaluator</span></a></p></li>
+<li><p><a class="reference internal" href="doc.evaluators.html#context-precision-evaluator"><span class="std std-ref">Context Precision Evaluator</span></a></p></li>
+<li><p><a class="reference internal" href="doc.evaluators.html#faithfulness-evaluator"><span class="std std-ref">Faithfulness Evaluator</span></a></p></li>
+<li><p><a class="reference internal" href="doc.evaluators.html#context-recall-evaluator"><span class="std std-ref">Context Recall Evaluator</span></a></p></li>
+<li><p><a class="reference internal" href="doc.evaluators.html#answer-relevancy-evaluator"><span class="std std-ref">Answer Relevancy Evaluator</span></a></p></li>
+</ul>
+<p>This feature includes also reconfiguration of embeddings provider from the same reasons.</p>
+<section id="force-custom-judge-from-h2o-sonar-configuration">
+<h2>Force Custom Judge from H2O Eval Studio Configuration<a class="headerlink" href="#force-custom-judge-from-h2o-sonar-configuration" title="Link to this heading"></a></h2>
+<p>In order to force the custom judge from the H2O Eval Studio configuration, the custom judge
+must be configured in H2O Eval Studio configuration and the <code class="docutils literal notranslate"><span class="pre">force_eval_judge</span></code> must be set
+either to its key or to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span> <span class="k">as</span> <span class="n">h2o_sonar_config</span>
+
+<span class="c1"># create connection where judge&#39;s LLM is hosted</span>
+<span class="n">my_h2ogpt_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+   <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">H2O_GPT</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+   <span class="n">name</span><span class="o">=</span><span class="s2">&quot;H2O GPT&quot;</span><span class="p">,</span>
+   <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My H2O GPT server.&quot;</span><span class="p">,</span>
+   <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://gpt.host.ai/&quot;</span><span class="p">,</span>
+   <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_H2OGPT_API_KEY</span><span class="p">),</span>
+   <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># register the connection in H2O Eval Studio configuration</span>
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_connection</span><span class="p">(</span><span class="n">my_h2ogpt_connection</span><span class="p">)</span>
+
+<span class="c1"># create custom judge configuration - note LLM model name</span>
+<span class="n">judge_config</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">EvaluationJudgeConfig</span><span class="p">(</span>
+      <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My custom judge&quot;</span><span class="p">,</span>
+      <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My custom LLM judge to be used by evaluators.&quot;</span><span class="p">,</span>
+      <span class="n">judge_type</span><span class="o">=</span><span class="n">judge_type</span><span class="p">,</span>
+      <span class="n">connection</span><span class="o">=</span><span class="n">judge_connection</span><span class="p">,</span>
+      <span class="n">llm_model_name</span><span class="o">=</span><span class="s2">&quot;h2oai/h2ogpt-4096-llama2-70b-chat&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># register the custom judge in H2O Eval Studio configuration</span>
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_evaluation_judge</span><span class="p">(</span><span class="n">judge_config</span><span class="p">)</span>
+
+<span class="c1"># force the custom judge in H2O Eval Studio configuration</span>
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">force_eval_judge</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
+
+<span class="o">...</span>
+
+<span class="c1"># run evaluation</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>In the example above will be used the first LLM evaluation judge from the H2O Eval Studio configuration.
+In order to use particular LLM evaluation judge custom judge key must be specified instead of <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</section>
+<section id="llm-judge-specified-in-the-evaluator-parameters">
+<h2>LLM Judge Specified in the Evaluator Parameters<a class="headerlink" href="#llm-judge-specified-in-the-evaluator-parameters" title="Link to this heading"></a></h2>
+<p>In order to specify the custom judge in the evaluator parameters, the custom judge must be
+configured in H2O Eval Studio configuration and the judge key must be specified in the evaluator parameter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span> <span class="k">as</span> <span class="n">h2o_sonar_config</span>
+
+<span class="c1"># create connection where judge&#39;s LLM is hosted</span>
+<span class="n">my_h2ogpt_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+   <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">H2O_GPT</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+   <span class="n">name</span><span class="o">=</span><span class="s2">&quot;H2O GPT&quot;</span><span class="p">,</span>
+   <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My H2O GPT server.&quot;</span><span class="p">,</span>
+   <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://gpt.host.ai/&quot;</span><span class="p">,</span>
+   <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_H2OGPT_API_KEY</span><span class="p">),</span>
+   <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># register the connection in H2O Eval Studio configuration</span>
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_connection</span><span class="p">(</span><span class="n">my_h2ogpt_connection</span><span class="p">)</span>
+
+<span class="c1"># create custom judge configuration - note LLM model name</span>
+<span class="n">judge_config</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">EvaluationJudgeConfig</span><span class="p">(</span>
+      <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My custom judge&quot;</span><span class="p">,</span>
+      <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My custom LLM judge to be used by evaluators.&quot;</span><span class="p">,</span>
+      <span class="n">judge_type</span><span class="o">=</span><span class="n">judge_type</span><span class="p">,</span>
+      <span class="n">connection</span><span class="o">=</span><span class="n">judge_connection</span><span class="p">,</span>
+      <span class="n">llm_model_name</span><span class="o">=</span><span class="s2">&quot;h2oai/h2ogpt-4096-llama2-70b-chat&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># register the custom judge in H2O Eval Studio configuration</span>
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_evaluation_judge</span><span class="p">(</span><span class="n">judge_config</span><span class="p">)</span>
+
+<span class="c1"># use evaluator parameter to specify the custom judge</span>
+
+<span class="n">evaluators</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="n">commons</span><span class="o">.</span><span class="n">EvaluatorToRun</span><span class="p">(</span>
+         <span class="n">evaluator_id</span><span class="o">=</span><span class="n">ContextRelevancyEvaluator</span><span class="o">.</span><span class="n">evaluator_id</span><span class="p">(),</span>
+         <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+            <span class="n">ContextRelevancyEvaluator</span><span class="o">.</span><span class="n">PARAM_EVAL_JUDGE_CFG_KEY</span><span class="p">:</span> <span class="n">judge_config</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+         <span class="p">},</span>
+      <span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># run evaluation</span>
+<span class="n">evaluation</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">run_evaluation</span><span class="p">(</span>
+     <span class="c1"># dataset w/ prompts, conditions and model keys</span>
+     <span class="n">dataset</span><span class="o">=</span><span class="n">test_lab</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span>
+     <span class="c1"># models to be evaluated / compared to get leaderboard</span>
+     <span class="n">models</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">test_lab</span><span class="o">.</span><span class="n">evaluated_models</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+     <span class="c1"># evaluators</span>
+     <span class="n">evaluators</span><span class="o">=</span><span class="n">evaluators</span><span class="p">,</span>
+     <span class="c1"># where to save the report</span>
+     <span class="n">results_location</span><span class="o">=</span><span class="n">result_dir</span><span class="p">,</span>
+ <span class="p">)</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>In the example above will be used the custom judge specified in the evaluator parameters.
+If the custom judge is specified, then <code class="docutils literal notranslate"><span class="pre">ragas</span></code> evaluators are also reconfigured to use
+privacy safe embeddings provider which is run on the same machine as the custom judge.</p>
+</section>
+<section id="privacy-safe-llm-models">
+<h2>Privacy Safe LLM Models<a class="headerlink" href="#privacy-safe-llm-models" title="Link to this heading"></a></h2>
+<p>The decision which LLM model to use for the evaluation is crucial. The user must consider
+the quality of the model, the privacy, the cost, the availability and performance. Different
+models may have different trade-offs. The user can choose the most suitable model for
+the evaluation of the particular problem or task which is being solved.</p>
+<p>The following leaderboard of LLM models gives an rough overview of the quality of the models
+and how much precision / performance might be sacrificed when changing the judge for
+instance in order to ensure privacy.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Privacy safe</p></th>
+<th class="head"><p>LLM</p></th>
+<th class="head"><p>Correlation</p></th>
+<th class="head"><p>MAE</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>❌</p></td>
+<td><p>gpt-4-1106-preview</p></td>
+<td><p>0.964</p></td>
+<td><p>0.024</p></td>
+</tr>
+<tr class="row-odd"><td><p>❌</p></td>
+<td><p>claude-3-opus-20240229</p></td>
+<td><p>0.891</p></td>
+<td><p>0.078</p></td>
+</tr>
+<tr class="row-even"><td><p>❌</p></td>
+<td><p>mistral-large-latest</p></td>
+<td><p>0.827</p></td>
+<td><p>0.160</p></td>
+</tr>
+<tr class="row-odd"><td><p>❌</p></td>
+<td><p>mistral-medium</p></td>
+<td><p>0.823</p></td>
+<td><p>0.128</p></td>
+</tr>
+<tr class="row-even"><td><p>✓</p></td>
+<td><p>Mixtral-8x7B-Instruct-v0.1</p></td>
+<td><p>0.819</p></td>
+<td><p>0.179</p></td>
+</tr>
+<tr class="row-odd"><td><p>❌</p></td>
+<td><p>claude-3-sonnet-20240229</p></td>
+<td><p>0.795</p></td>
+<td><p>0.155</p></td>
+</tr>
+<tr class="row-even"><td><p>✓</p></td>
+<td><p>Nous-Capybara-34B</p></td>
+<td><p>0.794</p></td>
+<td><p>0.109</p></td>
+</tr>
+<tr class="row-odd"><td><p>✓</p></td>
+<td><p>Mistral-7B-Instruct-v0.2</p></td>
+<td><p>0.784</p></td>
+<td><p>0.190</p></td>
+</tr>
+<tr class="row-even"><td><p>❌</p></td>
+<td><p>claude-2.1</p></td>
+<td><p>0.779</p></td>
+<td><p>0.184</p></td>
+</tr>
+<tr class="row-odd"><td><p>✓</p></td>
+<td><p>openchat-3.5-1210</p></td>
+<td><p>0.736</p></td>
+<td><p>0.221</p></td>
+</tr>
+<tr class="row-even"><td><p>✓</p></td>
+<td><p>gemma-7b-it</p></td>
+<td><p>0.696</p></td>
+<td><p>0.226</p></td>
+</tr>
+<tr class="row-odd"><td><p>❌</p></td>
+<td><p>gpt-3.5-turbo-0613</p></td>
+<td><p>0.630</p></td>
+<td><p>0.258</p></td>
+</tr>
+<tr class="row-even"><td><p>✓</p></td>
+<td><p>h2ogpt-4096-llama2-70b-chat</p></td>
+<td><p>0.604</p></td>
+<td><p>0.347</p></td>
+</tr>
+<tr class="row-odd"><td><p>✓</p></td>
+<td><p>zephyr-7b-beta</p></td>
+<td><p>0.513</p></td>
+<td><p>0.378</p></td>
+</tr>
+<tr class="row-even"><td><p>✓</p></td>
+<td><p>h2ogpt-4096-llama2-13b-chat</p></td>
+<td><p>0.343</p></td>
+<td><p>0.441</p></td>
+</tr>
+</tbody>
+</table>
+<p>The comparison of LLM models in the above table is based on a H2O.ai KGM benchmark
+as of 2024/3/15. The benchmark uses a custom prompt with detailed description of how
+to construct the LLM model score. The score is then used to calculate the metrics in
+the table. The table shows both commercial and non-commercial (open) models side-by-side
+to compare the quality of the models. Leaderboards which compare LLM models from various
+perspectives - like <a class="reference external" href="https://huggingface.co/spaces/lmsys/chatbot-arena-leaderboard">Chatbot Arena Leaderboard</a> - are
+available on the internet and can be used to choose the most suitable model for the evaluation.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Privacy safe</p></th>
+<th class="head"><p>LLM</p></th>
+<th class="head"><p>Correlation</p></th>
+<th class="head"><p>MAE</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>✓</p></td>
+<td><p>Mixtral-8x7B-Instruct-v0.1</p></td>
+<td><p>0.819</p></td>
+<td><p>0.179</p></td>
+</tr>
+<tr class="row-even"><td><p>✓</p></td>
+<td><p>Nous-Capybara-34B</p></td>
+<td><p>0.794</p></td>
+<td><p>0.109</p></td>
+</tr>
+<tr class="row-odd"><td><p>✓</p></td>
+<td><p>Mistral-7B-Instruct-v0.2</p></td>
+<td><p>0.784</p></td>
+<td><p>0.190</p></td>
+</tr>
+<tr class="row-even"><td><p>✓</p></td>
+<td><p>openchat-3.5-1210</p></td>
+<td><p>0.736</p></td>
+<td><p>0.221</p></td>
+</tr>
+<tr class="row-odd"><td><p>✓</p></td>
+<td><p>gemma-7b-it</p></td>
+<td><p>0.696</p></td>
+<td><p>0.226</p></td>
+</tr>
+<tr class="row-even"><td><p>✓</p></td>
+<td><p>h2ogpt-4096-llama2-70b-chat</p></td>
+<td><p>0.604</p></td>
+<td><p>0.347</p></td>
+</tr>
+<tr class="row-odd"><td><p>✓</p></td>
+<td><p>zephyr-7b-beta</p></td>
+<td><p>0.513</p></td>
+<td><p>0.378</p></td>
+</tr>
+<tr class="row-even"><td><p>✓</p></td>
+<td><p>h2ogpt-4096-llama2-13b-chat</p></td>
+<td><p>0.343</p></td>
+<td><p>0.441</p></td>
+</tr>
+</tbody>
+</table>
+<p>The table above shows only privacy safe LLM models. The privacy safe LLM models are
+models which can be hosted on-premise / within the organization. As was described above
+the privacy safe LLM models are suitable for the evaluation of the sensitive data in
+order to ensure privacy and avoid sending of the sensitive data to a 3rd party and/or
+to the cloud.</p>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">Library Connections Configuration</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="doc.evaluators.html" class="btn btn-neutral float-left" title="Evaluators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="doc.byop.html" class="btn btn-neutral float-right" title="BYOP: Bring Your Own Prompt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

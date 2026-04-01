@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>h2o_sonar.methods package &mdash; H2O Sonar 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/h2o_sonar.methods.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="h2o_sonar.methods.core package" href="h2o_sonar.methods.core.html" />
+    <link rel="prev" title="h2o_sonar.lib.integrations package" href="h2o_sonar.lib.integrations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Sonar
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Sonar Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Sonar</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.html">H2O Sonar Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Sonar Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="python_api.html">H2O Sonar Python API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="h2o_sonar.html">h2o_sonar package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.explainers.html">h2o_sonar.explainers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.evaluators.html">h2o_sonar.evaluators package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.lib.html">h2o_sonar.lib package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">h2o_sonar.methods package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html">h2o_sonar.methods.core package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.utils.html">h2o_sonar.methods.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.utils.html">h2o_sonar.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Sonar</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="python_api.html">H2O Sonar Python API</a></li>
+          <li class="breadcrumb-item"><a href="h2o_sonar.html">h2o_sonar package</a></li>
+      <li class="breadcrumb-item active">h2o_sonar.methods package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/h2o_sonar.methods.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="h2o-sonar-methods-package">
+<h1>h2o_sonar.methods package<a class="headerlink" href="#h2o-sonar-methods-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<span id="h2o-sonar-methods-subpackages"></span><h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="h2o_sonar.methods.core.html">h2o_sonar.methods.core package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="h2o_sonar.methods.core.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="h2o_sonar.methods.core.html#module-h2o_sonar.methods.core.method">h2o_sonar.methods.core.method module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes"><code class="docutils literal notranslate"><span class="pre">FeatureTypes</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes.DEFAULT_DATE_FEATURE_FORMAT"><code class="docutils literal notranslate"><span class="pre">FeatureTypes.DEFAULT_DATE_FEATURE_FORMAT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes.KEY_CATEGORICAL_FEATURES"><code class="docutils literal notranslate"><span class="pre">FeatureTypes.KEY_CATEGORICAL_FEATURES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes.KEY_CATNUM_FEATURES"><code class="docutils literal notranslate"><span class="pre">FeatureTypes.KEY_CATNUM_FEATURES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes.KEY_DATE_FEATURES"><code class="docutils literal notranslate"><span class="pre">FeatureTypes.KEY_DATE_FEATURES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes.KEY_DATE_FEATURES_FORMAT"><code class="docutils literal notranslate"><span class="pre">FeatureTypes.KEY_DATE_FEATURES_FORMAT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes.KEY_DATE_TIME_FEATURES"><code class="docutils literal notranslate"><span class="pre">FeatureTypes.KEY_DATE_TIME_FEATURES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes.KEY_ID_FEATURES"><code class="docutils literal notranslate"><span class="pre">FeatureTypes.KEY_ID_FEATURES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes.KEY_IMAGE_FEATURES"><code class="docutils literal notranslate"><span class="pre">FeatureTypes.KEY_IMAGE_FEATURES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes.KEY_NUMERIC_FEATURES"><code class="docutils literal notranslate"><span class="pre">FeatureTypes.KEY_NUMERIC_FEATURES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes.KEY_QUANTILE_BINS"><code class="docutils literal notranslate"><span class="pre">FeatureTypes.KEY_QUANTILE_BINS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes.KEY_TEXT_FEATURES"><code class="docutils literal notranslate"><span class="pre">FeatureTypes.KEY_TEXT_FEATURES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeatureTypes.KEY_TIME_FEATURES"><code class="docutils literal notranslate"><span class="pre">FeatureTypes.KEY_TIME_FEATURES</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.add"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.categorical_features"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.categorical_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.categorical_numeric_features"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.categorical_numeric_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.create_blank_dict"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.create_blank_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.date_features"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.date_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.date_time_features"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.date_time_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.empty"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.empty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.format_date_features"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.format_date_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.get"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.id_features"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.id_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.image_features"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.image_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.numeric_features"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.numeric_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.qtile_binning_features"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.qtile_binning_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.set"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.text_features"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.text_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.time_features"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.time_features</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.to_dict"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.FeaturesMetadata.to_json"><code class="docutils literal notranslate"><span class="pre">FeaturesMetadata.to_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method"><code class="docutils literal notranslate"><span class="pre">Method</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.DEFAULT_GRID_RESOLUTION"><code class="docutils literal notranslate"><span class="pre">Method.DEFAULT_GRID_RESOLUTION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.KEY_CAT_WITH_NUM_BIN"><code class="docutils literal notranslate"><span class="pre">Method.KEY_CAT_WITH_NUM_BIN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.LABEL_PREFIX_CLASS"><code class="docutils literal notranslate"><span class="pre">Method.LABEL_PREFIX_CLASS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.LABEL_REGRESSION"><code class="docutils literal notranslate"><span class="pre">Method.LABEL_REGRESSION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.MISSING_VALUES"><code class="docutils literal notranslate"><span class="pre">Method.MISSING_VALUES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.create_date_aware_bins"><code class="docutils literal notranslate"><span class="pre">Method.create_date_aware_bins()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.diagnostics"><code class="docutils literal notranslate"><span class="pre">Method.diagnostics</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.explain"><code class="docutils literal notranslate"><span class="pre">Method.explain()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.interpretable_model"><code class="docutils literal notranslate"><span class="pre">Method.interpretable_model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.is_missing_value"><code class="docutils literal notranslate"><span class="pre">Method.is_missing_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.method_name"><code class="docutils literal notranslate"><span class="pre">Method.method_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.method_type"><code class="docutils literal notranslate"><span class="pre">Method.method_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.method.Method.opt_import_err_msg"><code class="docutils literal notranslate"><span class="pre">Method.opt_import_err_msg()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="h2o_sonar.methods.core.html#module-h2o_sonar.methods.core.stats">h2o_sonar.methods.core.stats module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.stats.KolmogorovSmirnovResult"><code class="docutils literal notranslate"><span class="pre">KolmogorovSmirnovResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.stats.KolmogorovSmirnovResult.p_value"><code class="docutils literal notranslate"><span class="pre">KolmogorovSmirnovResult.p_value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.stats.KolmogorovSmirnovResult.p_value_method"><code class="docutils literal notranslate"><span class="pre">KolmogorovSmirnovResult.p_value_method</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.stats.KolmogorovSmirnovResult.same_distribution"><code class="docutils literal notranslate"><span class="pre">KolmogorovSmirnovResult.same_distribution</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.stats.KolmogorovSmirnovResult.statistic"><code class="docutils literal notranslate"><span class="pre">KolmogorovSmirnovResult.statistic</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.stats.jensen_shannon_divergence"><code class="docutils literal notranslate"><span class="pre">jensen_shannon_divergence()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.stats.kolmogorov_smirnov"><code class="docutils literal notranslate"><span class="pre">kolmogorov_smirnov()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.core.html#h2o_sonar.methods.core.stats.wasserstein_distance"><code class="docutils literal notranslate"><span class="pre">wasserstein_distance()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="h2o_sonar.methods.core.html#module-h2o_sonar.methods.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="h2o_sonar.methods.utils.html">h2o_sonar.methods.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="h2o_sonar.methods.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="h2o_sonar.methods.utils.html#module-h2o_sonar.methods.utils.fairness_utils">h2o_sonar.methods.utils.fairness_utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.check_cm_input"><code class="docutils literal notranslate"><span class="pre">check_cm_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.check_dia_input"><code class="docutils literal notranslate"><span class="pre">check_dia_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.check_frame"><code class="docutils literal notranslate"><span class="pre">check_frame()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.check_frame_type"><code class="docutils literal notranslate"><span class="pre">check_frame_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.cm_exp_parser"><code class="docutils literal notranslate"><span class="pre">cm_exp_parser()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.get_binary_metric_dict"><code class="docutils literal notranslate"><span class="pre">get_binary_metric_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.get_group_levels"><code class="docutils literal notranslate"><span class="pre">get_group_levels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.get_metrics_list"><code class="docutils literal notranslate"><span class="pre">get_metrics_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.get_prroc_dt"><code class="docutils literal notranslate"><span class="pre">get_prroc_dt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.get_r2_rmse"><code class="docutils literal notranslate"><span class="pre">get_r2_rmse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.get_reg_metrics_list"><code class="docutils literal notranslate"><span class="pre">get_reg_metrics_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.mean_squared_error"><code class="docutils literal notranslate"><span class="pre">mean_squared_error()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.r_squared"><code class="docutils literal notranslate"><span class="pre">r_squared()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.root_mean_squared_error"><code class="docutils literal notranslate"><span class="pre">root_mean_squared_error()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.smd_multinomial"><code class="docutils literal notranslate"><span class="pre">smd_multinomial()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.fairness_utils.squared_error"><code class="docutils literal notranslate"><span class="pre">squared_error()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="h2o_sonar.methods.utils.html#module-h2o_sonar.methods.utils.h2o_utils">h2o_sonar.methods.utils.h2o_utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.assert_is_type"><code class="docutils literal notranslate"><span class="pre">assert_is_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.clean_up_h2o3"><code class="docutils literal notranslate"><span class="pre">clean_up_h2o3()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.connect_to_h2o3"><code class="docutils literal notranslate"><span class="pre">connect_to_h2o3()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.ensure_h2o3_running"><code class="docutils literal notranslate"><span class="pre">ensure_h2o3_running()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.h2o_find_free_port"><code class="docutils literal notranslate"><span class="pre">h2o_find_free_port()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.h2o_init"><code class="docutils literal notranslate"><span class="pre">h2o_init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.h2o_to_dt"><code class="docutils literal notranslate"><span class="pre">h2o_to_dt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.is_h2o3_running"><code class="docutils literal notranslate"><span class="pre">is_h2o3_running()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.kill_h2o3"><code class="docutils literal notranslate"><span class="pre">kill_h2o3()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.preprocess_h2o3_data"><code class="docutils literal notranslate"><span class="pre">preprocess_h2o3_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.start_h2o3"><code class="docutils literal notranslate"><span class="pre">start_h2o3()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.to_h2oframe"><code class="docutils literal notranslate"><span class="pre">to_h2oframe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.h2o_utils.upload_data"><code class="docutils literal notranslate"><span class="pre">upload_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="h2o_sonar.methods.utils.html#module-h2o_sonar.methods.utils.histogram">h2o_sonar.methods.utils.histogram module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.histogram.HistogramBackend"><code class="docutils literal notranslate"><span class="pre">HistogramBackend</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.histogram.HistogramBackend.MLI"><code class="docutils literal notranslate"><span class="pre">HistogramBackend.MLI</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.histogram.find_nan_index"><code class="docutils literal notranslate"><span class="pre">find_nan_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.histogram.has_nan"><code class="docutils literal notranslate"><span class="pre">has_nan()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.utils.html#h2o_sonar.methods.utils.histogram.histogram_data"><code class="docutils literal notranslate"><span class="pre">histogram_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="h2o_sonar.methods.utils.html#module-h2o_sonar.methods.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-h2o_sonar.methods">
+<span id="module-contents"></span><span id="h2o-sonar-methods-module-contents"></span><h2>Module contents<a class="headerlink" href="#module-h2o_sonar.methods" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="h2o_sonar.lib.integrations.html" class="btn btn-neutral float-left" title="h2o_sonar.lib.integrations package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="h2o_sonar.methods.core.html" class="btn btn-neutral float-right" title="h2o_sonar.methods.core package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

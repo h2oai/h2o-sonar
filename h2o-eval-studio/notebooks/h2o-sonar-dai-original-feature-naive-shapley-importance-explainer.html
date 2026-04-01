@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Original Feature Importance Explainer for MOJO Models (Naive Shapley method) Demo &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e2d3f516" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/notebooks/h2o-sonar-dai-original-feature-naive-shapley-importance-explainer.html"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Shapley Values for Transformed Features of MOJO Models Demo" href="h2o-sonar-dai-shapley-for-transformed-feature-importance-explainer.html" />
+    <link rel="prev" title="Original Feature Importance Explainer (Kernel SHAP) Demo" href="h2o-sonar-original-feature-kernel-shap-importance-explainer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../doc.html">H2O Eval Studio Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">H2O Eval Studio Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dt-surrogate-explainer.html">Decision Tree Surrogate Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-summary-shap-explainer.html">Summary Shapley Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-original-feature-kernel-shap-importance-explainer.html">Original Feature Importance Explainer (Kernel SHAP) Demo</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Original Feature Importance Explainer for MOJO Models (Naive Shapley method) Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-shapley-for-transformed-feature-importance-explainer.html">Shapley Values for Transformed Features of MOJO Models Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pd-explainer.html">Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pd-for-2-features-explainer.html">Partial Dependence for 2 Features Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-residual-pd-explainer.html">Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-residual-dt-surrogate-explainer.html">Residual Decision Tree Surrogate Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dia-explainer.html">Disparate Impact Analysis (DIA) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-friedman-h-statistic-explainer.html">Friedman H-statistic Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-morris-sa-explainer.html">Morris Sensitivity Analysis Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-d-and-m-insights-explainer.html">Dataset and Model Insights Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html">H2O Eval Studio Model Validation Explainers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Interpretation:-CLI">Interpretation: CLI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Use-CLI-to-run-H2O-MV-based-explainers">Use CLI to run H2O MV based explainers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.models.html">Models in Interpretation Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.cli.html">Command Line Interface in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.h2ogpte.html">Enterprise h2oGPT Examples</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">H2O Eval Studio Examples</a></li>
+          <li class="breadcrumb-item"><a href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a></li>
+      <li class="breadcrumb-item active">Original Feature Importance Explainer for MOJO Models (Naive Shapley method) Demo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/h2o-sonar-dai-original-feature-naive-shapley-importance-explainer.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Original-Feature-Importance-Explainer-for-MOJO-Models-(Naive-Shapley-method)-Demo">
+<h1>Original Feature Importance Explainer for MOJO Models (Naive Shapley method) Demo<a class="headerlink" href="#Original-Feature-Importance-Explainer-for-MOJO-Models-(Naive-Shapley-method)-Demo" title="Link to this heading"></a></h1>
+<p>This example demonstrates how to interpret a <strong>Driverless AI MOJO</strong> model using the H2O Eval Studio library and retrieve the data and plot with original features importances.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
+import logging
+
+import datatable
+import daimojo
+import webbrowser
+
+from h2o_sonar import interpret
+from h2o_sonar.lib.api import commons
+from h2o_sonar.lib.api import explainers
+from h2o_sonar.explainers import fi_naive_shapley_explainer as explainer
+from h2o_sonar.lib.api.models import ModelApi
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style type='text/css'>
+.datatable table.frame { margin-bottom: 0; }
+.datatable table.frame thead { border-bottom: none; }
+.datatable table.frame tr.coltypes td {  color: #FFFFFF;  line-height: 6px;  padding: 0 0.5em;}
+.datatable .bool    { background: #DDDD99; }
+.datatable .object  { background: #565656; }
+.datatable .int     { background: #5D9E5D; }
+.datatable .float   { background: #4040CC; }
+.datatable .str     { background: #CC4040; }
+.datatable .time    { background: #40CC40; }
+.datatable .row_index {  background: var(--jp-border-color3);  border-right: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  font-size: 9px;}
+.datatable .frame tbody td { text-align: left; }
+.datatable .frame tr.coltypes .row_index {  background: var(--jp-border-color0);}
+.datatable th:nth-child(2) { padding-left: 12px; }
+.datatable .hellipsis {  color: var(--jp-cell-editor-border-color);}
+.datatable .vellipsis {  background: var(--jp-layout-color0);  color: var(--jp-cell-editor-border-color);}
+.datatable .na {  color: var(--jp-cell-editor-border-color);  font-size: 80%;}
+.datatable .sp {  opacity: 0.25;}
+.datatable .footer { font-size: 9px; }
+.datatable .frame_dimensions {  background: var(--jp-border-color3);  border-top: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  display: inline-block;  opacity: 0.6;  padding: 1px 10px 1px 5px;}
+</style></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># explainer description
+interpret.describe_explainer(explainer.NaiveShapleyMojoFeatureImportanceExplainer)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;h2o_sonar.explainers.fi_naive_shapley_explainer.NaiveShapleyMojoFeatureImportanceExplainer&#39;,
+ &#39;name&#39;: &#39;NaiveShapleyMojoFeatureImportanceExplainer&#39;,
+ &#39;display_name&#39;: &#39;Shapley Values for Original Features of MOJO Models (Naive Method)&#39;,
+ &#39;tagline&#39;: &#39;NaiveShapleyMojoFeatureImportanceExplainer.&#39;,
+ &#39;description&#39;: &#39;Shapley values for original features of (Driverless AI) MOJO models are approximated from the accompanying Shapley values for transformed features with the Naive Shapley method. This method makes the assumption that input features to a transformer are independent. For example, if the transformed feature, feature1_feature2, has a Shapley value of 0.5, then the Shapley value of the original features feature1 and feature2 will be 0.25 each.&#39;,
+ &#39;brief_description&#39;: &#39;NaiveShapleyMojoFeatureImportanceExplainer.&#39;,
+ &#39;model_types&#39;: [&#39;iid&#39;],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;, &#39;multinomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;, &#39;local_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-feature-importance&#39;,
+   &#39;name&#39;: &#39;GlobalFeatImpExplanation&#39;,
+   &#39;category&#39;: &#39;&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: &#39;&#39;,
+   &#39;formats&#39;: []},
+  {&#39;explanation_type&#39;: &#39;local-feature-importance&#39;,
+   &#39;name&#39;: &#39;LocalFeatImpExplanation&#39;,
+   &#39;category&#39;: &#39;&#39;,
+   &#39;scope&#39;: &#39;local&#39;,
+   &#39;has_local&#39;: &#39;&#39;,
+   &#39;formats&#39;: []}],
+ &#39;keywords&#39;: [&#39;run-by-default&#39;,
+  &#39;explains-original-feature-importance&#39;,
+  &#39;is_fast&#39;,
+  &#39;h2o-sonar&#39;],
+ &#39;parameters&#39;: [{&#39;name&#39;: &#39;sample_size&#39;,
+   &#39;description&#39;: &#39;Sample size.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 100000,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;fast_approx_contribs&#39;,
+   &#39;description&#39;: &#39;Speed up predictions with fast contributions predictions approximation.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: True,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;leakage_warning_threshold&#39;,
+   &#39;description&#39;: &#39;The threshold above which to report a potentially detected feature importance leak problem.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;float&#39;,
+   &#39;val&#39;: 0.95,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;}],
+ &#39;metrics_meta&#39;: []}
+</pre></div></div>
+</div>
+<section id="Interpretation">
+<h2>Interpretation<a class="headerlink" href="#Interpretation" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># dataset
+dataset_path = &quot;../../data/predictive/creditcard.csv&quot;
+target_col = &quot;default payment next month&quot;
+
+# model
+mojo_path = &quot;../../data/predictive/models/creditcard-binomial.mojo&quot;
+mojo_model = daimojo.model(mojo_path)
+model = ModelApi().create_model(
+    model_src=mojo_model,
+    target_col=target_col,
+    used_features=list(mojo_model.feature_names),
+)
+
+# results
+results_location = &quot;./results&quot;
+os.makedirs(results_location, exist_ok=True)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
+interpretation = interpret.run_interpretation(
+    dataset=dataset_path,
+    model=model,
+    target_col=target_col,
+    results_location=results_location,
+    explainers=[explainer.NaiveShapleyMojoFeatureImportanceExplainer.explainer_id()],
+    log_level=logging.INFO,
+)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/ragas/metrics/__init__.py:1: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain_core.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain_core.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+  from ragas.metrics._answer_correctness import AnswerCorrectness, answer_correctness
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/ragas/metrics/__init__.py:4: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+  from ragas.metrics._context_entities_recall import (
+</pre></div></div>
+</div>
+</section>
+<section id="Explainer-Result">
+<h2>Explainer Result<a class="headerlink" href="#Explainer-Result" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># retrieve the result
+result = interpretation.get_explainer_result(
+    explainer.NaiveShapleyMojoFeatureImportanceExplainer.explainer_id()
+)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># open interpretation HTML report in web browser
+webbrowser.open(interpretation.result.get_html_report_location())
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># summary
+result.summary()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;h2o_sonar.explainers.fi_naive_shapley_explainer.NaiveShapleyMojoFeatureImportanceExplainer&#39;,
+ &#39;name&#39;: &#39;NaiveShapleyMojoFeatureImportanceExplainer&#39;,
+ &#39;display_name&#39;: &#39;Shapley Values for Original Features of MOJO Models (Naive Method)&#39;,
+ &#39;tagline&#39;: &#39;NaiveShapleyMojoFeatureImportanceExplainer.&#39;,
+ &#39;description&#39;: &#39;Shapley values for original features of (Driverless AI) MOJO models are approximated from the accompanying Shapley values for transformed features with the Naive Shapley method. This method makes the assumption that input features to a transformer are independent. For example, if the transformed feature, feature1_feature2, has a Shapley value of 0.5, then the Shapley value of the original features feature1 and feature2 will be 0.25 each.&#39;,
+ &#39;brief_description&#39;: &#39;NaiveShapleyMojoFeatureImportanceExplainer.&#39;,
+ &#39;model_types&#39;: [&#39;iid&#39;],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;, &#39;multinomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;, &#39;local_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-feature-importance&#39;,
+   &#39;name&#39;: &#39;Shapley Values for Original Features of MOJO Models (Naive Method)&#39;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: &#39;local-feature-importance&#39;,
+   &#39;formats&#39;: [&#39;application/vnd.h2oai.json+datatable.jay&#39;,
+    &#39;application/vnd.h2oai.json+csv&#39;,
+    &#39;application/json&#39;]},
+  {&#39;explanation_type&#39;: &#39;local-feature-importance&#39;,
+   &#39;name&#39;: &#39;Shapley Values for Original Features of MOJO Models (Naive Method)&#39;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;local&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;application/vnd.h2oai.json+datatable.jay&#39;]},
+  {&#39;explanation_type&#39;: &#39;global-html-fragment&#39;,
+   &#39;name&#39;: &#39;Shapley Values for Original Features of MOJO Models (Naive Method)&#39;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;text/html&#39;]}],
+ &#39;keywords&#39;: [&#39;run-by-default&#39;,
+  &#39;explains-original-feature-importance&#39;,
+  &#39;is_fast&#39;,
+  &#39;h2o-sonar&#39;],
+ &#39;parameters&#39;: [{&#39;name&#39;: &#39;sample_size&#39;,
+   &#39;description&#39;: &#39;Sample size.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 100000,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;fast_approx_contribs&#39;,
+   &#39;description&#39;: &#39;Speed up predictions with fast contributions predictions approximation.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: True,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;leakage_warning_threshold&#39;,
+   &#39;description&#39;: &#39;The threshold above which to report a potentially detected feature importance leak problem.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;float&#39;,
+   &#39;val&#39;: 0.95,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;}],
+ &#39;metrics_meta&#39;: []}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># parameters
+result.params()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;sample_size&#39;: 100000,
+ &#39;fast_approx_contribs&#39;: True,
+ &#39;leakage_warning_threshold&#39;: 0.95}
+</pre></div></div>
+</div>
+<section id="Display-Data">
+<h3>Display Data<a class="headerlink" href="#Display-Data" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result.data()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>feature</th><th>importance</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='str' title='str32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>PAY_0</td><td>0.592187</td></tr>
+    <tr><td class='row_index'>1</td><td>PAY_2</td><td>0.224423</td></tr>
+    <tr><td class='row_index'>2</td><td>LIMIT_BAL</td><td>0.159352</td></tr>
+    <tr><td class='row_index'>3</td><td>PAY_AMT4</td><td>0.14868</td></tr>
+    <tr><td class='row_index'>4</td><td>PAY_AMT2</td><td>0.125437</td></tr>
+    <tr><td class='row_index'>5</td><td>BILL_AMT1</td><td>0.101179</td></tr>
+    <tr><td class='row_index'>6</td><td>PAY_3</td><td>0.0576715</td></tr>
+    <tr><td class='row_index'>7</td><td>PAY_AMT3</td><td>0.0495318</td></tr>
+    <tr><td class='row_index'>8</td><td>PAY_6</td><td>0.0453093</td></tr>
+    <tr><td class='row_index'>9</td><td>PAY_4</td><td>0.0391064</td></tr>
+    <tr><td class='row_index'>10</td><td>BILL_AMT2</td><td>0.0371473</td></tr>
+    <tr><td class='row_index'>11</td><td>BILL_AMT6</td><td>0.0298867</td></tr>
+    <tr><td class='row_index'>12</td><td>PAY_5</td><td>0.0270603</td></tr>
+    <tr><td class='row_index'>13</td><td>PAY_AMT1</td><td>0.01873</td></tr>
+    <tr><td class='row_index'>14</td><td>EDUCATION</td><td>0.0131732</td></tr>
+    <tr><td class='row_index'>15</td><td>AGE</td><td>0.0110948</td></tr>
+    <tr><td class='row_index'>16</td><td>MARRIAGE</td><td>0.00884818</td></tr>
+    <tr><td class='row_index'>17</td><td>PAY_AMT6</td><td>0.00759522</td></tr>
+    <tr><td class='row_index'>18</td><td>PAY_AMT5</td><td>0.00719935</td></tr>
+    <tr><td class='row_index'>19</td><td>BILL_AMT5</td><td>0.00589392</td></tr>
+    <tr><td class='row_index'>20</td><td>BILL_AMT4</td><td>0.00189465</td></tr>
+    <tr><td class='row_index'>21</td><td>BILL_AMT3</td><td>0.00108067</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>22 rows &times; 2 columns</div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="Plot-Feature-Importance-Data">
+<h3>Plot Feature Importance Data<a class="headerlink" href="#Plot-Feature-Importance-Data" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result.plot()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-original-feature-naive-shapley-importance-explainer_14_0.png" src="../_images/notebooks_h2o-sonar-dai-original-feature-naive-shapley-importance-explainer_14_0.png" />
+</div>
+</div>
+</section>
+<section id="Save-Explainer-Log-and-Data">
+<h3>Save Explainer Log and Data<a class="headerlink" href="#Save-Explainer-Log-and-Data" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save the explainer log
+log_file_path = &quot;./feature-importance-demo.log&quot;
+result.log(path=log_file_path)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!cat $log_file_path
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save the explainer data
+result.zip(file_path=&quot;./feature-importance-demo-archive.zip&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!unzip -l feature-importance-demo-archive.zip
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Archive:  feature-importance-demo-archive.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     3553  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/result_descriptor.json
+        2  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/problems/problems_and_actions.json
+      110  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/global_html_fragment/text_html.meta
+     4561  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/global_html_fragment/text_html/explanation.html
+    25126  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/global_html_fragment/text_html/fi-class-0.png
+        0  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/log/explainer_run_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc.log
+  1762120  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/work/shapley.orig.feat.bin
+  1903889  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/work/shapley_formatted_orig_feat.zip
+  4674153  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/work/shapley.orig.feat.csv
+    40216  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/work/y_hat.bin
+        2  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/insights/insights_and_actions.json
+      185  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/global_feature_importance/application_vnd_h2oai_json_datatable_jay.meta
+      143  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/global_feature_importance/application_json.meta
+      163  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/global_feature_importance/application_vnd_h2oai_json_csv.meta
+     1277  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/global_feature_importance/application_vnd_h2oai_json_datatable_jay/explanation.json
+      880  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/global_feature_importance/application_vnd_h2oai_json_datatable_jay/feature_importance_class_0.jay
+      594  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/global_feature_importance/application_json/explanation.json
+     1588  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/global_feature_importance/application_json/feature_importance_class_0.json
+      593  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/global_feature_importance/application_vnd_h2oai_json_csv/explanation.json
+      720  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/global_feature_importance/application_vnd_h2oai_json_csv/feature_importance_class_0.csv
+      201  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/local_feature_importance/application_vnd_h2oai_json_datatable_jay.meta
+      863  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/local_feature_importance/application_vnd_h2oai_json_datatable_jay/explanation.json
+    40216  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/local_feature_importance/application_vnd_h2oai_json_datatable_jay/y_hat.bin
+  1762120  2026-01-29 15:52   explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_a2ab0c8f-1dd5-4679-98f1-62d88f782ebc/local_feature_importance/application_vnd_h2oai_json_datatable_jay/feature_importance_class_0.jay
+---------                     -------
+ 10223275                     24 files
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="h2o-sonar-original-feature-kernel-shap-importance-explainer.html" class="btn btn-neutral float-left" title="Original Feature Importance Explainer (Kernel SHAP) Demo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="h2o-sonar-dai-shapley-for-transformed-feature-importance-explainer.html" class="btn btn-neutral float-right" title="Shapley Values for Transformed Features of MOJO Models Demo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

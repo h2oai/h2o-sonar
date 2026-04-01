@@ -1,5 +1,0 @@
-.venv/
-*.whl
-*dummy-document.txt
-results/
-test_lab.json

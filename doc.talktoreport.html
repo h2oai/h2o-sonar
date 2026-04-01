@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talk to Report &mdash; H2O Sonar 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/doc.talktoreport.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bring Your Own Explainer" href="byoe.html" />
+    <link rel="prev" title="Report and Results" href="doc.result.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Sonar
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Sonar Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Sonar</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="doc.html">H2O Sonar Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="doc.configuration.html">Library Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.predictive.html">Predictive Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.generative.html">Generative Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.result.html">Report and Results</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Talk to Report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Sonar Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Sonar Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Sonar</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="doc.html">H2O Sonar Documentation</a></li>
+      <li class="breadcrumb-item active">Talk to Report</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/doc.talktoreport.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="talk-to-report">
+<h1>Talk to Report<a class="headerlink" href="#talk-to-report" title="Link to this heading"></a></h1>
+<p>H2O Sonar can upload the interpretation/evaluation results to the <a class="reference external" href="https://h2o.ai/platform/enterprise-h2ogpt/">Enterprise h2oGPT</a>
+in order to <strong>talk to the report</strong> and get answers to questions / use prompts like:</p>
+<ul class="simple">
+<li><p>Did the interpretation find any model problems?</p></li>
+<li><p>Were there any HIGH/MEDIUM/LOW severity problems?</p></li>
+<li><p>Create an action plan as a bullet list to solve &lt;XYZ&gt; problem.</p></li>
+<li><p>Create an action plan as a bullet list to solve HIGH SEVERITY problem(s).</p></li>
+<li><p>Is the model fair?</p></li>
+<li><p>Which features lead to the highest model error?</p></li>
+<li><p>Which explainers were run by the interpretation?</p></li>
+<li><p>Summarize the interpretation report.</p></li>
+</ul>
+<p>Similarly for model understanding:</p>
+<ul class="simple">
+<li><p>What is the target column of the model?</p></li>
+<li><p>Which original features are used by the model?</p></li>
+<li><p>What is the most important original feature of the model?</p></li>
+<li><p>What is the most important transformed feature of the model?</p></li>
+<li><p>What are the 3 most important original features of the model?</p></li>
+<li><p>What were the columns of the training dataset?</p></li>
+</ul>
+<p>The typical set of questions is typically centered around <strong>the model problem(s)</strong> and their <strong>solutions</strong>.</p>
+<img alt="Explainers overview" src="_images/h2o-gpt-e.png" />
+<p>How can you talk to the report?</p>
+<ol class="arabic simple">
+<li><p>Run the interpretation.</p></li>
+<li><p>Upload the interpretation results to the Enterprise h2oGPT - either directly as the last step of the interpretation run or using the API call or CLI command.</p></li>
+<li><p>Open the <strong>Enterprise h2oGPT</strong> to chat with the interpretation report.</p></li>
+</ol>
+<p>The <strong>API key</strong> can be generated in <a class="reference external" href="https://h2o.ai/platform/enterprise-h2ogpt/">Enterprise h2oGPT</a> web - use <code class="docutils literal notranslate"><span class="pre">Settings</span></code> - <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">Keys</span></code> - <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">API</span> <span class="pre">Key</span></code>.
+For better Enterprise h2oGPT intergration results please install <a class="reference external" href="https://pandoc.org/">Pandoc</a> (PDF with images will be uploaded instead of HTML).</p>
+<section id="talk-to-report-python-api">
+<h2>Talk to Report Python API<a class="headerlink" href="#talk-to-report-python-api" title="Link to this heading"></a></h2>
+<p>Upload the interpretation report to the Enterprise h2oGPT as a part of the interpretation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># configure Enterprise h2oGPT server connection</span>
+<span class="n">H2OGPTE_CONNECTION</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+   <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">H2O_GPT_E</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+   <span class="n">name</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise&quot;</span><span class="p">,</span>
+   <span class="n">description</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise.&quot;</span><span class="p">,</span>
+   <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://h2ogpte.h2o.ai&quot;</span><span class="p">,</span>
+   <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_H2OGPTE_API_KEY</span><span class="p">),</span>
+   <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_connection</span><span class="p">(</span><span class="n">H2OGPTE_CONNECTION</span><span class="p">)</span>
+
+<span class="c1"># prepare dataset and model to be interpreted</span>
+<span class="n">dataset_path</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">explainable_model</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># run interpretation and UPLOAD the results to the Enterprise h2oGPT</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+   <span class="n">dataset</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">,</span>
+   <span class="n">model</span><span class="o">=</span><span class="n">explainable_model</span><span class="p">,</span>
+   <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">,</span>
+   <span class="n">upload_to</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span>
+      <span class="n">connection_key</span><span class="o">=</span><span class="n">H2OGPTE_CONNECTION</span><span class="o">.</span><span class="n">key</span>
+   <span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># print the URL of the uploaded interpretation report</span>
+<span class="nb">print</span><span class="p">(</span>
+   <span class="sa">f</span><span class="s2">&quot;Interpretation report uploaded to:</span><span class="se">\n</span><span class="s2">&quot;</span>
+   <span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">interpretation</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">upload_url</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Alternatively can be (any) interpretation report (PDF or HTML) uploaded to the Enterprise h2oGPT using the API call:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># configure Enterprise h2oGPT server connection</span>
+<span class="n">H2OGPTE_CONNECTION</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+   <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">H2O_GPT_E</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+   <span class="n">name</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise&quot;</span><span class="p">,</span>
+   <span class="n">description</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise.&quot;</span><span class="p">,</span>
+   <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://h2ogpte.h2o.ai&quot;</span><span class="p">,</span>
+   <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_H2OGPTE_API_KEY</span><span class="p">),</span>
+   <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_connection</span><span class="p">(</span><span class="n">H2OGPTE_CONNECTION</span><span class="p">)</span>
+
+<span class="c1"># run interpretation and/or get the interpretation report (PDF or HTML) path</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># upload the interpretation or interpretation report to the Enterprise h2oGPT</span>
+<span class="p">(</span><span class="n">uploaded_report_collection_id</span><span class="p">,</span> <span class="n">h2o_gpt_e_collection_url</span><span class="p">)</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">upload_interpretation</span><span class="p">(</span>
+   <span class="n">interpretation_result</span><span class="o">=</span><span class="n">interpretation</span><span class="p">,</span>
+   <span class="n">connection</span><span class="o">=</span><span class="n">H2OGPTE_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="talk-to-report-cli-api">
+<h2>Talk to Report CLI API<a class="headerlink" href="#talk-to-report-cli-api" title="Link to this heading"></a></h2>
+<p>First configure Enterprise h2oGPT server connection, for example to <code class="docutils literal notranslate"><span class="pre">h2o-sonar-config.json</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+   &quot;connections&quot;: [
+      {
+         &quot;key&quot;: &quot;4b46c18a-e596-4fa8-8638-055dfd52d37c&quot;,
+         &quot;connection_type&quot;: &quot;H2O_GPT_E&quot;,
+         &quot;name&quot;: &quot;H2O GPT Enterprise&quot;,
+         &quot;description&quot;: &quot;H2O GPT Enterprise server.&quot;,
+         &quot;auth_server_url&quot;: &quot;&quot;,
+         &quot;environment_url&quot;: &quot;&quot;,
+         &quot;server_url&quot;: &quot;https://h2ogpte.h2o.ai&quot;,
+         &quot;server_id&quot;: &quot;&quot;,
+         &quot;realm_name&quot;: &quot;&quot;,
+         &quot;client_id&quot;: &quot;&quot;,
+         &quot;token&quot;: {
+            &quot;encrypted&quot;: &quot;gAAAAABlEuFMcWiaK-E3Ccq...m8nUzRZ7UvwRag3DdMrg==&quot;
+         },
+         &quot;token_use_type&quot;: &quot;API_KEY&quot;,
+         &quot;username&quot;: &quot;&quot;,
+         &quot;password&quot;: {
+            &quot;encrypted&quot;: &quot;&quot;
+         }
+      }
+   ]
+}
+</pre></div>
+</div>
+<p>Then upload the interpretation report to the Enterprise h2oGPT
+(identified by connection key <code class="docutils literal notranslate"><span class="pre">4b46c18a-e596-4fa8-8638-055dfd52d37c</span></code>)
+as a part of the interpretation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ h2o-sonar run interpretation \
+    --dataset dataset.csv \
+    --model model-to-be-explained.mojo \
+    --target-col TARGET \
+    --config-path h2o-sonar-config.json \
+    --encryption-key my-secret-encryption-key \
+    --upload-to 4b46c18a-e596-4fa8-8638-055dfd52d37c
+</pre></div>
+</div>
+<p>Alternatively can be (any) interpretation report (PDF or HTML) uploaded to the Enterprise h2oGPT using the command:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ h2o-sonar upload interpretation \
+    --interpretation interpretation-detailed.pdf \
+    --config-path h2o-sonar-config.json \
+    --encryption-key my-secret-encryption-key \
+    --upload-to 4b46c18a-e596-4fa8-8638-055dfd52d37c
+</pre></div>
+</div>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">Library Connections Configuration</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="doc.result.html" class="btn btn-neutral float-left" title="Report and Results" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="byoe.html" class="btn btn-neutral float-right" title="Bring Your Own Explainer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

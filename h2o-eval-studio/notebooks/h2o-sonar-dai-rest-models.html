@@ -1,0 +1,1806 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H2O Eval Studio Demo of Driverless AI Local REST Server Models &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e2d3f516" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/notebooks/h2o-sonar-dai-rest-models.html"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Command Line Interface in Jupyter Notebooks Examples" href="../examples.cli.html" />
+    <link rel="prev" title="H2O Eval Studio Demo of Pickled Models" href="h2o-sonar-pickled-models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../doc.html">H2O Eval Studio Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">H2O Eval Studio Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.models.html">Models in Interpretation Jupyter Notebooks Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-sklearn-models.html">H2O Eval Studio Demo of Scikit-learn Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-mojo-models.html">H2O Eval Studio Demo of Driverless AI MOJO Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-h2o3-models.html">H2O Eval Studio Demo of H2O-3 Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pickled-models.html">H2O Eval Studio Demo of Pickled Models</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">H2O Eval Studio Demo of Driverless AI Local REST Server Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.cli.html">Command Line Interface in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.h2ogpte.html">Enterprise h2oGPT Examples</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">H2O Eval Studio Examples</a></li>
+          <li class="breadcrumb-item"><a href="../examples.models.html">Models in Interpretation Jupyter Notebooks Examples</a></li>
+      <li class="breadcrumb-item active">H2O Eval Studio Demo of Driverless AI Local REST Server Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/h2o-sonar-dai-rest-models.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="H2O-Sonar-Demo-of-Driverless-AI-Local-REST-Server-Models">
+<h1>H2O Eval Studio Demo of Driverless AI Local REST Server Models<a class="headerlink" href="#H2O-Sonar-Demo-of-Driverless-AI-Local-REST-Server-Models" title="Link to this heading"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">datatable</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">daimojo</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpret</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">commons</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">explainers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.explainers</span><span class="w"> </span><span class="kn">import</span> <span class="n">dt_surrogate_explainer</span> <span class="k">as</span> <span class="n">dt_explainer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.explainers</span><span class="w"> </span><span class="kn">import</span> <span class="n">pd_ice_explainer</span> <span class="k">as</span> <span class="n">pd_explainer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelApi</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Interpretation">
+<h2>Interpretation<a class="headerlink" href="#Interpretation" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># model</span>
+<span class="n">local_model_rest_server_url</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8080/model&quot;</span>
+
+<span class="c1"># dataset</span>
+<span class="n">dataset_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/predictive/pd_ice_creditcard_train.csv&quot;</span>
+<span class="n">target_col</span> <span class="o">=</span> <span class="s2">&quot;DEFAULT_PAYMENT_NEXT_MONTH&quot;</span>
+
+<span class="c1"># results</span>
+<span class="n">results_location</span> <span class="o">=</span> <span class="s2">&quot;./results&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">results_location</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run interpretation</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">local_model_rest_server_url</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">,</span>
+    <span class="n">results_location</span><span class="o">=</span><span class="n">results_location</span><span class="p">,</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Checking whether there is an H2O instance running at http://localhost:41647 ..... not found.
+Attempting to start a local H2O server...
+  Java Version: openjdk version &#34;10&#34; 2018-03-20; OpenJDK Runtime Environment 18.3 (build 10+44); OpenJDK 64-Bit Server VM 18.3 (build 10+44, mixed mode)
+  Starting server from /home/user/h/mli/git/h2o-sonar/.venv/lib/python3.8/site-packages/hmli/backend/bin/hmli.jar
+  Ice root: /tmp/tmph2lxfaes
+  JVM stdout: /tmp/tmph2lxfaes/hmli_user_started_from_python.out
+  JVM stderr: /tmp/tmph2lxfaes/hmli_user_started_from_python.err
+  Server is running at http://127.0.0.1:41647
+Connecting to H2O server at http://127.0.0.1:41647 ... successful.
+Warning: Your H2O cluster version is too old (9 months and 15 days)!Please download and install the latest version from http://hmli.ai/download/
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="overflow:auto"><table style="width:50%"><tr><td>H2O_cluster_uptime:</td>
+<td>00 secs</td></tr>
+<tr><td>H2O_cluster_timezone:</td>
+<td>Europe/Prague</td></tr>
+<tr><td>H2O_data_parsing_timezone:</td>
+<td>UTC</td></tr>
+<tr><td>H2O_cluster_version:</td>
+<td>3.34.0.7</td></tr>
+<tr><td>H2O_cluster_version_age:</td>
+<td>9 months and 15 days !!!</td></tr>
+<tr><td>H2O_cluster_name:</td>
+<td>H2O_from_python_user_hsf2bw</td></tr>
+<tr><td>H2O_cluster_total_nodes:</td>
+<td>1</td></tr>
+<tr><td>H2O_cluster_free_memory:</td>
+<td>4 Gb</td></tr>
+<tr><td>H2O_cluster_total_cores:</td>
+<td>16</td></tr>
+<tr><td>H2O_cluster_allowed_cores:</td>
+<td>16</td></tr>
+<tr><td>H2O_cluster_status:</td>
+<td>locked, healthy</td></tr>
+<tr><td>H2O_connection_url:</td>
+<td>http://127.0.0.1:41647</td></tr>
+<tr><td>H2O_connection_proxy:</td>
+<td>{"http": null, "https": null}</td></tr>
+<tr><td>H2O_internal_security:</td>
+<td>False</td></tr>
+<tr><td>H2O_API_Extensions:</td>
+<td>XGBoost, Algos, MLI, MLI-Driver, Core V3, Core V4, TargetEncoder</td></tr>
+<tr><td>Python_version:</td>
+<td>3.8.10 final</td></tr></table></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-10-06 15:21:29,827 - h2o_sonar.explainers.dt_surrogate_explainer.DecisionTreeSurrogateExplainerLogger - INFO - Surrogate decision tree 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/48bca834-a8cb-4226-a34f-62b5322bc66b: connecting to H2O-3 server: localhost:41647
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Connecting to H2O server at http://localhost:41647 ... successful.
+Warning: Your H2O cluster version is too old (9 months and 15 days)!Please download and install the latest version from http://hmli.ai/download/
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="overflow:auto"><table style="width:50%"><tr><td>H2O_cluster_uptime:</td>
+<td>01 secs</td></tr>
+<tr><td>H2O_cluster_timezone:</td>
+<td>Europe/Prague</td></tr>
+<tr><td>H2O_data_parsing_timezone:</td>
+<td>UTC</td></tr>
+<tr><td>H2O_cluster_version:</td>
+<td>3.34.0.7</td></tr>
+<tr><td>H2O_cluster_version_age:</td>
+<td>9 months and 15 days !!!</td></tr>
+<tr><td>H2O_cluster_name:</td>
+<td>H2O_from_python_user_hsf2bw</td></tr>
+<tr><td>H2O_cluster_total_nodes:</td>
+<td>1</td></tr>
+<tr><td>H2O_cluster_free_memory:</td>
+<td>4 Gb</td></tr>
+<tr><td>H2O_cluster_total_cores:</td>
+<td>16</td></tr>
+<tr><td>H2O_cluster_allowed_cores:</td>
+<td>16</td></tr>
+<tr><td>H2O_cluster_status:</td>
+<td>locked, healthy</td></tr>
+<tr><td>H2O_connection_url:</td>
+<td>http://localhost:41647</td></tr>
+<tr><td>H2O_connection_proxy:</td>
+<td>{"http": null, "https": null}</td></tr>
+<tr><td>H2O_internal_security:</td>
+<td>False</td></tr>
+<tr><td>H2O_API_Extensions:</td>
+<td>XGBoost, Algos, MLI, MLI-Driver, Core V3, Core V4, TargetEncoder</td></tr>
+<tr><td>Python_version:</td>
+<td>3.8.10 final</td></tr></table></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+drf Model Build progress: |██████████████████████████████████████████████████████| (done) 100%
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+Export File progress: |██████████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-10-06 15:21:33,766 - h2o_sonar.explainers.dt_surrogate_explainer.DecisionTreeSurrogateExplainerLogger - INFO - Surrogate decision tree 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/48bca834-a8cb-4226-a34f-62b5322bc66b: DONE calculation
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 23999/23999 [13:37&lt;00:00, 29.36it/s]
+2022-10-06 15:35:13,476 - h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainerLogger - INFO - Summary Shapley explainer 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/43a8a03c-b1a6-404b-8b24-c26ea4e1d4b0 raw MEANs (1)
+2022-10-06 15:35:13,484 - h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainerLogger - INFO - Summary Shapley explainer 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/43a8a03c-b1a6-404b-8b24-c26ea4e1d4b0 raw CONTRIBs (1)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 30.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 40.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 50.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 50.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 50.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 50.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 50.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 60.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 60.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 60.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 60.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 60.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 70.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 70.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 70.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 70.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 70.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 80.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 80.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 80.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 80.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 90.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 90.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 90.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 90.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 90.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 100.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 100.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-10-06 15:35:36,826 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - [PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b] BEGIN
+2022-10-06 15:35:36,827 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - [PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b] loading dataset
+2022-10-06 15:35:36,827 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - [PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b] loaded dataset has 23999 rows and 25 columns
+2022-10-06 15:35:36,827 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - [PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b] getting features list, importanceand metadata
+2022-10-06 15:35:36,828 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b all most important model features: [&#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_1&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;]
+2022-10-06 15:35:36,828 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b features used by model: [&#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_1&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;]
+2022-10-06 15:35:36,828 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b: calculating PD for features [&#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_1&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;]
+2022-10-06 15:35:36,829 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b feature metadata: {}
+2022-10-06 15:35:36,829 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b 1 frame strategy: True
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 10.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 40.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 40.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 50.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 50.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 80.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 80.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-10-06 15:36:27,474 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b saving PD to ./results/h2o-sonar/mli_experiment_6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_5c327c67-cd77-41c2-a928-230d36dee13b/work/h2o_sonar-pd-dai-model.json
+2022-10-06 15:36:27,478 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b computation finished &amp; stored to: ./results/h2o-sonar/mli_experiment_6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_5c327c67-cd77-41c2-a928-230d36dee13b/work/h2o_sonar-pd-dai-model.json
+2022-10-06 15:36:27,501 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: LIMIT_BAL/True
+2022-10-06 15:36:27,511 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: LIMIT_BAL/False
+2022-10-06 15:36:27,516 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: SEX/True
+2022-10-06 15:36:27,535 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: SEX/False
+2022-10-06 15:36:27,554 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: EDUCATION/True
+2022-10-06 15:36:27,570 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: EDUCATION/False
+2022-10-06 15:36:27,590 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: MARRIAGE/True
+2022-10-06 15:36:27,606 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: MARRIAGE/False
+2022-10-06 15:36:27,626 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: AGE/True
+2022-10-06 15:36:27,630 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: AGE/False
+2022-10-06 15:36:27,642 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: PAY_1/True
+2022-10-06 15:36:27,647 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: PAY_1/False
+2022-10-06 15:36:27,651 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: PAY_2/True
+2022-10-06 15:36:27,658 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: PAY_2/False
+2022-10-06 15:36:27,663 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: PAY_3/True
+2022-10-06 15:36:27,666 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: PAY_3/False
+2022-10-06 15:36:27,675 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: PAY_4/True
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-10-06 15:36:27,680 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: PAY_4/False
+2022-10-06 15:36:27,683 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: PAY_5/True
+2022-10-06 15:36:27,691 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/5c327c67-cd77-41c2-a928-230d36dee13b creating histogram: PAY_5/False
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 100.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-10-06 15:36:28,514 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - [PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2] BEGIN
+2022-10-06 15:36:28,514 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - [PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2] loading dataset
+2022-10-06 15:36:28,515 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - [PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2] loaded dataset has 23999 rows and 25 columns
+2022-10-06 15:36:28,515 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - [PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2] getting features list, importanceand metadata
+2022-10-06 15:36:28,515 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 all most important model features: [&#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_1&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;]
+2022-10-06 15:36:28,516 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 features used by model: [&#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_1&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;]
+2022-10-06 15:36:28,516 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2: calculating PD for features [&#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_1&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;]
+2022-10-06 15:36:28,516 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 feature metadata: {}
+2022-10-06 15:36:28,516 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 1 frame strategy: True
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 10.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 40.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 40.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 50.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 50.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 80.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 80.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-10-06 15:37:16,148 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 saving PD to ./results/h2o-sonar/mli_experiment_6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_d5938159-a2f1-4294-8557-21d68d518df2/work/h2o_sonar-pd-dai-model.json
+2022-10-06 15:37:16,155 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 computation finished &amp; stored to: ./results/h2o-sonar/mli_experiment_6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_d5938159-a2f1-4294-8557-21d68d518df2/work/h2o_sonar-pd-dai-model.json
+2022-10-06 15:37:16,171 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: LIMIT_BAL/True
+2022-10-06 15:37:16,203 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: LIMIT_BAL/False
+2022-10-06 15:37:16,229 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: SEX/True
+2022-10-06 15:37:16,256 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: SEX/False
+2022-10-06 15:37:16,283 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: EDUCATION/True
+2022-10-06 15:37:16,307 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: EDUCATION/False
+2022-10-06 15:37:16,340 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: MARRIAGE/True
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-10-06 15:37:16,379 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: MARRIAGE/False
+2022-10-06 15:37:16,415 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: AGE/True
+2022-10-06 15:37:16,427 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: AGE/False
+2022-10-06 15:37:16,432 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: PAY_1/True
+2022-10-06 15:37:16,435 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: PAY_1/False
+2022-10-06 15:37:16,444 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: PAY_2/True
+2022-10-06 15:37:16,448 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: PAY_2/False
+2022-10-06 15:37:16,452 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: PAY_3/True
+2022-10-06 15:37:16,457 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: PAY_3/False
+2022-10-06 15:37:16,467 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: PAY_4/True
+2022-10-06 15:37:16,472 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: PAY_4/False
+2022-10-06 15:37:16,478 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: PAY_5/True
+2022-10-06 15:37:16,480 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE 6432d2e1-cafa-4bfb-91fd-ab3b5bb9a8c6/d5938159-a2f1-4294-8557-21d68d518df2 creating histogram: PAY_5/False
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 100.0%
+H2O session _sid_8889 closed.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_20.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_20.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_21.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_21.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_22.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_22.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_23.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_23.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_24.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_24.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_25.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_25.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_26.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_26.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_27.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_27.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_28.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_28.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_29.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_29.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_30.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_30.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_31.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_31.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_32.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_32.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_33.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_33.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_34.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_34.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_35.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_35.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_36.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_36.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_37.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_37.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_38.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_38.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_39.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_39.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_40.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_40.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_41.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_41.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_42.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_42.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_43.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_43.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_44.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_44.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_45.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_45.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_46.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_46.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_47.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_47.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_48.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_48.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_49.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_49.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_50.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_50.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_51.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_51.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_52.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_52.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_53.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_53.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_54.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_54.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_55.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_55.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_56.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_56.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_57.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_57.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_58.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_58.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_59.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_59.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_60.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_60.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_61.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_61.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_62.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_62.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_63.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_63.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_64.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_64.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_65.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_65.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_66.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_66.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_67.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_67.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_68.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_68.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_69.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_69.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_70.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_70.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_71.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_71.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_72.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_72.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_73.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_73.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_74.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_74.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_75.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_75.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_76.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_76.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_77.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_77.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_78.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_78.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_79.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_79.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_80.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_80.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_81.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_81.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_82.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_82.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_83.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_83.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_84.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_84.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_85.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_85.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_86.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_86.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_87.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_87.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_88.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_88.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_89.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_89.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_90.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_90.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_91.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_91.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_92.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_92.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_93.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_93.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_94.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_94.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_95.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_95.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_96.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_96.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_97.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_97.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_98.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_98.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_99.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_99.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_100.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_100.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_101.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_101.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_102.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_102.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_103.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_103.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_104.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_104.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_105.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_105.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_106.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_106.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_107.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_107.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_108.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_108.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_109.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_109.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_110.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_110.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_111.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_111.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_112.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_112.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_113.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_113.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_114.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_114.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_115.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_115.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_116.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_116.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_117.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_117.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_139.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_139.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_140.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_140.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_141.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_141.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_142.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_142.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_143.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_143.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_144.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_144.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_145.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_145.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_146.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_146.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_147.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_147.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_148.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_148.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_149.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_149.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_150.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_150.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_151.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_151.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_152.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_152.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_153.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_153.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_154.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_154.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_155.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_155.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_156.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_156.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_157.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_157.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_158.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_158.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_159.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_159.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_4_160.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_4_160.png" />
+</div>
+</div>
+</section>
+<section id="Explainers-Results">
+<h2>Explainers Results<a class="headerlink" href="#Explainers-Results" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpretation</span><span class="o">.</span><span class="n">get_successful_explainer_ids</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;h2o_sonar.explainers.dia_explainer.DiaExplainer&#39;,
+ &#39;h2o_sonar.explainers.dt_surrogate_explainer.DecisionTreeSurrogateExplainer&#39;,
+ &#39;h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpretation</span><span class="o">.</span><span class="n">get_failed_explainer_ids</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[]
+</pre></div></div>
+</div>
+<section id="PD/ICE-Explainer">
+<h3>PD/ICE Explainer<a class="headerlink" href="#PD/ICE-Explainer" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># retrieve the result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">interpretation</span><span class="o">.</span><span class="n">get_explainer_result</span><span class="p">(</span>
+    <span class="n">pd_explainer</span><span class="o">.</span><span class="n">PdIceExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature_name</span><span class="o">=</span><span class="s2">&quot;MARRIAGE&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_10_0.png" src="../_images/notebooks_h2o-sonar-dai-rest-models_10_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">feature_name</span><span class="o">=</span><span class="s2">&quot;PAY_1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>bin</th><th>pd</th><th>sd</th><th>oor</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='int' title='int32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>&minus;2</td><td>0.178882</td><td>0.122637</td><td>0</td></tr>
+    <tr><td class='row_index'>1</td><td>&minus;1</td><td>0.190198</td><td>0.128273</td><td>0</td></tr>
+    <tr><td class='row_index'>2</td><td>0</td><td>0.183938</td><td>0.122762</td><td>0</td></tr>
+    <tr><td class='row_index'>3</td><td>1</td><td>0.214528</td><td>0.128124</td><td>0</td></tr>
+    <tr><td class='row_index'>4</td><td>2</td><td>0.552376</td><td>0.153445</td><td>0</td></tr>
+    <tr><td class='row_index'>5</td><td>3</td><td>0.555977</td><td>0.153412</td><td>0</td></tr>
+    <tr><td class='row_index'>6</td><td>4</td><td>0.552947</td><td>0.151832</td><td>0</td></tr>
+    <tr><td class='row_index'>7</td><td>5</td><td>0.538679</td><td>0.147998</td><td>0</td></tr>
+    <tr><td class='row_index'>8</td><td>6</td><td>0.538679</td><td>0.147998</td><td>0</td></tr>
+    <tr><td class='row_index'>9</td><td>7</td><td>0.538679</td><td>0.147998</td><td>0</td></tr>
+    <tr><td class='row_index'>10</td><td>8</td><td>0.538679</td><td>0.147998</td><td>0</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>11 rows &times; 4 columns</div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="Decision-Tree-Explainer">
+<h3>Decision Tree Explainer<a class="headerlink" href="#Decision-Tree-Explainer" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># retrieve the result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">interpretation</span><span class="o">.</span><span class="n">get_explainer_result</span><span class="p">(</span>
+    <span class="n">dt_explainer</span><span class="o">.</span><span class="n">DecisionTreeSurrogateExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># summary</span>
+<span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;debug_residuals&#39;: False,
+ &#39;debug_residuals_class&#39;: &#39;1&#39;,
+ &#39;dt_tree_depth&#39;: 3,
+ &#39;nfolds&#39;: 3,
+ &#39;qbin_cols&#39;: None,
+ &#39;qbin_count&#39;: 0,
+ &#39;categorical_encoding&#39;: &#39;AUTO&#39;}
+</pre></div></div>
+</div>
+</section>
+<section id="Plot-Explainer-Data">
+<h3>Plot Explainer Data<a class="headerlink" href="#Plot-Explainer-Data" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dai-rest-models_16_0.svg" src="../_images/notebooks_h2o-sonar-dai-rest-models_16_0.svg" />
+</div>
+</div>
+</section>
+<section id="Save-Explainer-Data-as-ZIP-Archive">
+<h3>Save Explainer Data as ZIP Archive<a class="headerlink" href="#Save-Explainer-Data-as-ZIP-Archive" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save the explainer data</span>
+<span class="n">result</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;./feature-importance-demo-archive.zip&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">unzip</span> <span class="o">-</span><span class="n">l</span> <span class="n">feature</span><span class="o">-</span><span class="n">importance</span><span class="o">-</span><span class="n">demo</span><span class="o">-</span><span class="n">archive</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Archive:  feature-importance-demo-archive.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     4814  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/result_descriptor.json
+      131  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/local_decision_tree/application_json.meta
+      498  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/local_decision_tree/application_json/explanation.json
+      133  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/global_decision_tree/application_json.meta
+      652  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/global_decision_tree/application_json/explanation.json
+     2458  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/global_decision_tree/application_json/dt_class_0.json
+      390  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/log/explainer_run_5005fefe-531d-4ef1-8d7a-295f6a082ece.log
+  3073368  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/work/dtpaths_frame.bin
+  3088670  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/work/dtPathsFrame.csv
+     5884  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/work/dtSurrogate.json
+    61375  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/work/dtModel.json
+     2484  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/work/dt_surrogate_rules.zip
+     9897  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/work/dtsurr_mojo.zip
+      140  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/global_custom_archive/application_zip.meta
+     2484  2022-08-17 19:09   explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_5005fefe-531d-4ef1-8d7a-295f6a082ece/global_custom_archive/application_zip/explanation.zip
+---------                     -------
+  6253378                     15 files
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="h2o-sonar-pickled-models.html" class="btn btn-neutral float-left" title="H2O Eval Studio Demo of Pickled Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../examples.cli.html" class="btn btn-neutral float-right" title="Command Line Interface in Jupyter Notebooks Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

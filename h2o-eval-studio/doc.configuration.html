@@ -1,0 +1,759 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Configuration &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/doc.configuration.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Predictive Models" href="doc.predictive.html" />
+    <link rel="prev" title="H2O Eval Studio Documentation" href="doc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="doc.html">H2O Eval Studio Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Library Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.predictive.html">Predictive Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.generative.html">Generative Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.result.html">Report and Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.talktoreport.html">Talk to Report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Eval Studio Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="doc.html">H2O Eval Studio Documentation</a></li>
+      <li class="breadcrumb-item active">Library Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/doc.configuration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="library-configuration">
+<h1>Library Configuration<a class="headerlink" href="#library-configuration" title="Link to this heading"></a></h1>
+<p><strong>Global</strong> H2O Eval Studio <strong>configuration</strong> can be either managed using the <a class="reference internal" href="#library-configuration-python-api"><span class="std std-ref">Python API</span></a>
+or stored to a <a class="reference external" href="https://www.json.org/">JSon</a> file whose path can be passed
+using <code class="docutils literal notranslate"><span class="pre">--config-path</span></code> parameter when running an interpretation from the command line:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">connections</span></code></dt><dd><ul>
+<li><p><a class="reference internal" href="#connection-configuration"><span class="std std-ref">Configuration of connections</span></a> used by H2O Eval Studio runtime and/or explainers
+to access required services.
+Note that certain fields with sensitive data are encrypted using an encryption
+key which might be either specified in <code class="docutils literal notranslate"><span class="pre">H2O_SONAR_ENCRYPTION_KEY</span></code> environment
+variable or using CLI argument or Python API argument.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">licenses</span></code></dt><dd><ul>
+<li><p><a class="reference internal" href="#license-configuration"><span class="std std-ref">Configuration of licenses</span></a> used by H2O Eval Studio and/or explainers to use a license
+protected functionality.
+Note that certain fields with sensitive data are encrypted using an encryption
+key which might be either specified in <code class="docutils literal notranslate"><span class="pre">H2O_SONAR_ENCRYPTION_KEY</span></code> environment
+variable or using CLI argument or Python API argument.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">h2o_host</span></code></dt><dd><ul>
+<li><p>Host address of the H2O-3 server (<code class="docutils literal notranslate"><span class="pre">localhost</span></code> by default).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">h2o_port</span></code></dt><dd><ul>
+<li><p>Port of the H2O-3 server (<code class="docutils literal notranslate"><span class="pre">12349</span></code> by default).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">h2o_auto_start</span></code></dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> to automatically start H2O-3 server in case that interpretation will
+run explainer which needs it. <code class="docutils literal notranslate"><span class="pre">False</span></code> to be used either when no H2O-3 based
+explainers are run or when H2O Eval Studio can use H2O-3 server managed by the user.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">h2o_min_mem_size</span></code></dt><dd><ul>
+<li><p>Minimum memory to be used by H2O-3 server started by H2O Eval Studio (<code class="docutils literal notranslate"><span class="pre">2GB</span></code> by default).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">h2o_max_mem_size</span></code></dt><dd><ul>
+<li><p>Maximum memory to be used by H2O-3 server started by H2O Eval Studio (<code class="docutils literal notranslate"><span class="pre">4GB</span></code> by default).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">custom_explainers</span></code></dt><dd><ul>
+<li><p>Custom explainers to be loaded and registered on H2O Eval Studio start.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">look_end_feel</span></code></dt><dd><ul>
+<li><p>Interpretation report look and feel.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">per_explainer_logger</span></code></dt><dd><ul>
+<li><p>Whether to create a logger for each explainer, or whether to log everything
+to one central H2O Eval Studio log.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">create_html_representation</span></code></dt><dd><ul>
+<li><p>Whether to create HTML representations for each explainer (used to build
+HTML report). For instance, the creation of HTML representations is disabled
+when H2O Eval Studio is running within Driverless AI as they are not needed.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="connection-configuration">
+<h2>Connection Configuration<a class="headerlink" href="#connection-configuration" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="#library-configuration"><span class="std std-ref">Configuration</span></a> of a connection has the following fields:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">key</span></code></dt><dd><ul>
+<li><p>Unique connection key. If key is not specified, then it will be
+automatically generated by H2O Eval Studio. This key is used to identify
+and/or reference the connection.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">connection_type</span></code></dt><dd><ul>
+<li><p>Connection type - one of: <code class="docutils literal notranslate"><span class="pre">DRIVERLESS_AI</span></code>, <code class="docutils literal notranslate"><span class="pre">DRIVERLESS_AI_AIEM</span></code>, <code class="docutils literal notranslate"><span class="pre">DRIVERLESS_STEAM</span></code> and <code class="docutils literal notranslate"><span class="pre">H2O_3</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">name</span></code></dt><dd><ul>
+<li><p>Custom connection name.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">description</span></code></dt><dd><ul>
+<li><p>Custom connection description.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">server_url</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Server URL. For example:</dt><dd><ul>
+<li><p><a class="reference external" href="https://enginemanager.h2o.ai/">https://enginemanager.h2o.ai/</a> … H2O AIEM hosted Driverless AI.</p></li>
+<li><p><a class="reference external" href="https://steam.cloud.h2o.ai/">https://steam.cloud.h2o.ai/</a> … H2O Enterprise Steam hosted Driverless AI.</p></li>
+<li><p><a class="reference external" href="https://host:12345/">https://host:12345/</a> … a standalone Driverless AI installation.</p></li>
+<li><p><a class="reference external" href="https://h2ogpte.h2o.ai/">https://h2ogpte.h2o.ai/</a> … Enterprise h2oGPT server.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">server_id</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Server ID used to identify the server in case it does not have a fixed URL. For example:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;new-dai-engine-42&quot;</span></code> … ID assigned by H2O AIEM to Driverless AI.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;my-driverless-ai&quot;</span></code> … custom name given to Driverless AI in H2O Steam.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">auth_server_url</span></code></dt><dd><ul>
+<li><p>Authentication server URL.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">environment_url</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Environment URL used in the H2O token provider authentication method. For example:</dt><dd><ul>
+<li><p><a class="reference external" href="https://cloud.h2o.ai/">https://cloud.h2o.ai/</a> … H2O.ai cloud.</p></li>
+<li><p><a class="reference external" href="https://qa.acme.com/">https://qa.acme.com/</a> … an on-premise QA cloud.</p></li>
+<li><p><a class="reference external" href="https://dev.acme.com/">https://dev.acme.com/</a> … a on-premise development cloud.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">realm_name</span></code></dt><dd><ul>
+<li><p>Realm name (authentication domain) or workspace in case of Driverless AI hosted by H2O AIEM connection.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">client_id</span></code></dt><dd><ul>
+<li><p>Client ID.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">token</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>A client refresh, access or a secret token:</dt><dd><ul>
+<li><dl class="simple">
+<dt>H2O AIEM:</dt><dd><ul>
+<li><p>Get/generate token: H2O.ai Cloud &gt; User &gt; CLI &amp; API Access &gt; API Token.
+Use <code class="docutils literal notranslate"><span class="pre">REFRESH_TOKEN</span></code> as the <code class="docutils literal notranslate"><span class="pre">token_use_type</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>H2O Enterprise Steam:</dt><dd><ul>
+<li><p>Get/generate token: H2O.ai Cloud &gt; Enterprise Steam &gt; Configurations &gt; Personal Access Token &gt; Get token.
+Use <code class="docutils literal notranslate"><span class="pre">REFRESH_TOKEN</span></code> as the <code class="docutils literal notranslate"><span class="pre">token_use_type</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">token_use_type</span></code></dt><dd><ul>
+<li><p>Client use type like <code class="docutils literal notranslate"><span class="pre">REFRESH_TOKEN</span></code>, <code class="docutils literal notranslate"><span class="pre">ACCESS_TOKEN</span></code> or <code class="docutils literal notranslate"><span class="pre">SECRET</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">username</span></code></dt><dd><ul>
+<li><p>Username to use in case of username/password authentication.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">password</span></code></dt><dd><ul>
+<li><p>Password to use in case of username/password authentication.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>H2O AIEM hosted Driverless AI server connection example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+   &quot;key&quot;: &quot;462399f5-dd3b-41ee-89e4-e8acb25fc654&quot;,
+   &quot;connection_type&quot;: &quot;DRIVERLESS_AI_AIEM&quot;,
+   &quot;name&quot;: &quot;My H2O AIEM hosted Driverless AI &quot;,
+   &quot;description&quot;: &quot;Driverless AI server hosted by H2O Enterprise AIEM.&quot;,
+   &quot;auth_server_url&quot;: &quot;&quot;,
+   &quot;environment_url&quot;: &quot;https://cloud.h2o.ai&quot;,
+   &quot;server_url&quot;: &quot;https://enginemanager.cloud.h2o.ai/&quot;,
+   &quot;server_id&quot;: &quot;new-dai-engine-42&quot;,
+   &quot;realm_name&quot;: &quot;&quot;,
+   &quot;client_id&quot;: &quot;&quot;,
+   &quot;token&quot;: {
+      &quot;encrypted&quot;: &quot;gAAAAABlE...91VeGYkIKUmwghe18f8wAoSTp0W&quot;
+   },
+   &quot;token_use_type&quot;: &quot;REFRESH_TOKEN&quot;,
+   &quot;username&quot;: &quot;firstname.lastname@h2o.ai&quot;,
+   &quot;password&quot;: {
+      &quot;encrypted&quot;: &quot;&quot;
+   }
+}
+</pre></div>
+</div>
+<p>H2O Enterprise Steam hosted Driverless AI server connection example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+   &quot;key&quot;: &quot;4a26db24-af84-4c95-adea-fb4cb9364954&quot;,
+   &quot;connection_type&quot;: &quot;DRIVERLESS_AI_STEAM&quot;,
+   &quot;name&quot;: &quot;My H2O Steam hosted Driverless AI &quot;,
+   &quot;description&quot;: &quot;Driverless AI server hosted by H2O Enterprise Steam.&quot;,
+   &quot;auth_server_url&quot;: &quot;&quot;,
+   &quot;environment_url&quot;: &quot;&quot;,
+   &quot;server_url&quot;: &quot;https://steam.cloud.h2o.ai/&quot;,
+   &quot;server_id&quot;: &quot;model-validation&quot;,
+   &quot;realm_name&quot;: &quot;&quot;,
+   &quot;client_id&quot;: &quot;&quot;,
+   &quot;token&quot;: {
+      &quot;encrypted&quot;: &quot;gAAAA...teqm8ErNuwBnxJuISI&quot;
+   },
+   &quot;token_use_type&quot;: &quot;ACCESS_TOKEN&quot;,
+   &quot;username&quot;: &quot;firstname.lastname@h2o.ai&quot;,
+   &quot;password&quot;: {
+      &quot;encrypted&quot;: &quot;&quot;
+   }
+}
+</pre></div>
+</div>
+<p>Local Driverless AI server connection example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+   &quot;key&quot;: &quot;4b46c18a-e596-4fa8-8638-055dfd52d37c&quot;,
+   &quot;connection_type&quot;: &quot;DRIVERLESS_AI&quot;,
+   &quot;name&quot;: &quot;Local Driverless AI server&quot;,
+   &quot;description&quot;: &quot;Driverless AI server running on the localhost.&quot;,
+   &quot;auth_server_url&quot;: &quot;&quot;,
+   &quot;environment_url&quot;: &quot;&quot;,
+   &quot;server_url&quot;: &quot;http://localhost:12345&quot;,
+   &quot;server_id&quot;: &quot;&quot;,
+   &quot;realm_name&quot;: &quot;&quot;,
+   &quot;client_id&quot;: &quot;&quot;,
+   &quot;token&quot;: {
+      &quot;encrypted&quot;: &quot;&quot;
+   },
+   &quot;token_use_type&quot;: &quot;&quot;,
+   &quot;username&quot;: &quot;h2oai&quot;,
+   &quot;password&quot;: {
+      &quot;encrypted&quot;: &quot;gAAAAABlEuFMcWiaK-E3Ccq...m8nUzRZ7UvwRag3DdMrg==&quot;
+   }
+}
+</pre></div>
+</div>
+<p>Enterprise h2oGPT server connection example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+   &quot;key&quot;: &quot;4b46c18a-e596-4fa8-8638-055dfd52d37c&quot;,
+   &quot;connection_type&quot;: &quot;H2O_GPT_E&quot;,
+   &quot;name&quot;: &quot;H2O GPT Enterprise&quot;,
+   &quot;description&quot;: &quot;H2O GPT Enterprise server.&quot;,
+   &quot;auth_server_url&quot;: &quot;&quot;,
+   &quot;environment_url&quot;: &quot;&quot;,
+   &quot;server_url&quot;: &quot;https://h2ogpte.h2o.ai&quot;,
+   &quot;server_id&quot;: &quot;&quot;,
+   &quot;realm_name&quot;: &quot;&quot;,
+   &quot;client_id&quot;: &quot;&quot;,
+   &quot;token&quot;: {
+      &quot;encrypted&quot;: &quot;gAAAAABlEuFMcWiaK-E3Ccq...m8nUzRZ7UvwRag3DdMrg==&quot;
+   },
+   &quot;token_use_type&quot;: &quot;API_KEY&quot;,
+   &quot;username&quot;: &quot;&quot;,
+   &quot;password&quot;: {
+      &quot;encrypted&quot;: &quot;&quot;
+   }
+}
+</pre></div>
+</div>
+</section>
+<section id="license-configuration">
+<h2>License Configuration<a class="headerlink" href="#license-configuration" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="#library-configuration"><span class="std std-ref">Configuration</span></a> of a license has the following fields:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">key</span></code></dt><dd><ul>
+<li><p>Unique connection key. If the key is not specified, then it will be automatically generated.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">product</span></code></dt><dd><ul>
+<li><p>Product name of the product whose license is being configured.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">name</span></code></dt><dd><ul>
+<li><p>License name.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">description</span></code></dt><dd><ul>
+<li><p>License description.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">license</span></code></dt><dd><ul>
+<li><p>License key. In case that both license and license file are specified, then
+the license (key) is used.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">license_file</span></code></dt><dd><ul>
+<li><p>License file path.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Driverless AI license configuration example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+   &quot;key&quot;: &quot;4b46c18a-e596-4fa8-8638-055dfd52d37c&quot;,
+   &quot;name&quot;: &quot;Driverless AI license&quot;,
+   &quot;description&quot;: &quot;This is my Driverless AI license.&quot;,
+   &quot;product&quot;: &quot;DRIVERLESS_AI&quot;,
+   &quot;license&quot;: {
+      &quot;encrypted&quot;: &quot;gAAAAABkTfy24XO8SA-F7L...tSIkOikmPil66mVRIJ_MRK97ZIiPsw==&quot;
+   },
+   &quot;license_file&quot;: &quot;/home/user/.driverlessai/license.sig&quot;
+}
+</pre></div>
+</div>
+</section>
+<section id="library-configuration-examples">
+<h2>Library Configuration Examples<a class="headerlink" href="#library-configuration-examples" title="Link to this heading"></a></h2>
+<p>H2O Eval Studio configuration example with encrypted fields:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;h2o_host&quot;: &quot;192.168.0.1&quot;,
+    &quot;h2o_port&quot;: 57561,
+    &quot;h2o_auto_start&quot;: true,
+    &quot;h2o_min_mem_size&quot;: &quot;2G&quot;,
+    &quot;h2o_max_mem_size&quot;: &quot;4G&quot;,
+    &quot;custom_explainers&quot;: [
+          &quot;example_morris_sa_explainer::ExampleMorrisSensitivityAnalysisExplainer&quot;
+    ],
+    &quot;look_and_feel&quot;: &quot;h2o_sonar&quot;,
+    &quot;per_explainer_logger&quot;: true,
+    &quot;create_html_representations&quot;: true,
+    &quot;connections&quot;: [
+        {
+           &quot;key&quot;: &quot;4b46c18a-e596-4fa8-8638-055dfd52d37c&quot;,
+           &quot;connection_type&quot;: &quot;DRIVERLESS_AI&quot;,
+           &quot;name&quot;: &quot;Local Driverless AI server&quot;,
+           &quot;description&quot;: &quot;Driverless AI server running on the localhost.&quot;,
+           &quot;auth_server_url&quot;: &quot;&quot;,
+           &quot;environment_url&quot;: &quot;&quot;,
+           &quot;server_url&quot;: &quot;http://localhost:12345&quot;,
+           &quot;server_id&quot;: &quot;&quot;,
+           &quot;realm_name&quot;: &quot;&quot;,
+           &quot;client_id&quot;: &quot;&quot;,
+           &quot;token&quot;: {
+              &quot;encrypted&quot;: &quot;&quot;
+           },
+           &quot;token_use_type&quot;: &quot;&quot;,
+           &quot;username&quot;: &quot;sonaruser&quot;,
+           &quot;password&quot;: {
+              &quot;encrypted&quot;: &quot;gAAAAABlEuFMcWiaK-E3Ccq...m8nUzRZ7UvwRag3DdMrg==&quot;
+           }
+    ],
+    &quot;licenses&quot;: [
+        {
+            &quot;key&quot;: &quot;my-license-key&quot;,
+            &quot;product&quot;: &quot;DRIVERLESS_AI&quot;,
+            &quot;name&quot;: &quot;Driverless AI license&quot;,
+            &quot;description&quot;: &quot;This is my Driverless AI license.&quot;,
+            &quot;license&quot;: {
+                &quot;encrypted&quot;: &quot;gAAAAABkTfy24XO8SA-F7L...tSIkOikmPil66mVRIJ_MRK97ZIiPsw==&quot;
+            },
+            &quot;license_file&quot;: &quot;/home/user/.driverlessai/license.sig&quot;
+        }
+    ]
+}
+</pre></div>
+</div>
+<p>H2O Eval Studio configuration example with decrypted fields:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;h2o_host&quot;: &quot;192.168.0.1&quot;,
+    &quot;h2o_port&quot;: 57561,
+    &quot;h2o_auto_start&quot;: true,
+    &quot;h2o_min_mem_size&quot;: &quot;2G&quot;,
+    &quot;h2o_max_mem_size&quot;: &quot;4G&quot;,
+    &quot;custom_explainers&quot;: [
+          &quot;example_morris_sa_explainer::ExampleMorrisSensitivityAnalysisExplainer&quot;
+    ],
+    &quot;look_and_feel&quot;: &quot;h2o_sonar&quot;,
+    &quot;per_explainer_logger&quot;: true,
+    &quot;create_html_representations&quot;: true,
+    &quot;connections&quot;: [
+        {
+           &quot;key&quot;: &quot;4b46c18a-e596-4fa8-8638-055dfd52d37c&quot;,
+           &quot;connection_type&quot;: &quot;DRIVERLESS_AI&quot;,
+           &quot;name&quot;: &quot;Local Driverless AI server&quot;,
+           &quot;description&quot;: &quot;Driverless AI server running on the localhost.&quot;,
+           &quot;auth_server_url&quot;: &quot;&quot;,
+           &quot;environment_url&quot;: &quot;&quot;,
+           &quot;server_url&quot;: &quot;http://localhost:12345&quot;,
+           &quot;server_id&quot;: &quot;&quot;,
+           &quot;realm_name&quot;: &quot;&quot;,
+           &quot;client_id&quot;: &quot;&quot;,
+           &quot;token&quot;: {
+              &quot;encrypted&quot;: &quot;&quot;
+           },
+           &quot;token_use_type&quot;: &quot;&quot;,
+           &quot;username&quot;: &quot;sonaruser&quot;,
+           &quot;password&quot;: &quot;my-password&quot;
+        }
+    ],
+    &quot;licenses&quot;: [
+        {
+            &quot;key&quot;: &quot;my-license-key&quot;,
+            &quot;product&quot;: &quot;DRIVERLESS_AI&quot;,
+            &quot;name&quot;: &quot;Driverless AI license&quot;,
+            &quot;description&quot;: &quot;This is my Driverless AI license.&quot;,
+            &quot;license&quot;: &quot;Ngkflu...MAo=&quot;,
+            &quot;license_file&quot;: &quot;/home/user/.driverlessai/license.sig&quot;
+        }
+    ]
+}
+</pre></div>
+</div>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="h2o_sonar.html#module-h2o_sonar.config"><span class="std std-ref">h2o_sonar.config module</span></a></p></li>
+</ul>
+</section>
+<section id="library-configuration-python-api">
+<h2>Library Configuration Python API<a class="headerlink" href="#library-configuration-python-api" title="Link to this heading"></a></h2>
+<p>H2O Eval Studio provides API allowing to manage its configuration programmatically.
+It is typically used to manage configuration items which include sensitive data
+and therefore are encrypted.</p>
+<p>Example: create a new configuration instance and save it for later use.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_aiem_connection</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">DRIVERLESS_AI_AIEM</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My H2O AIEM hosted Driverless AI &quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Driverless AI server hosted by H2O Enterprise AIEM.&quot;</span><span class="p">,</span>
+    <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://enginemanager.cloud.h2o.ai/&quot;</span><span class="p">,</span>
+    <span class="n">server_id</span><span class="o">=</span><span class="s2">&quot;new-dai-engine-42&quot;</span><span class="p">,</span>
+    <span class="n">environment_url</span><span class="o">=</span><span class="s2">&quot;https://cloud.h2o.ai&quot;</span><span class="p">,</span>
+    <span class="n">username</span><span class="o">=</span><span class="s2">&quot;firstname.lastname@h2o.ai&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_AIEM_REFRESH_TOKEN_CLOUD</span><span class="p">),</span>
+    <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">REFRESH_TOKEN</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">my_steam_connection</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">DRIVERLESS_AI_STEAM</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My H2O Steam hosted Driverless AI &quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Driverless AI server hosted by H2O Enterprise Steam.&quot;</span><span class="p">,</span>
+    <span class="n">server_id</span><span class="o">=</span><span class="s2">&quot;model-validation&quot;</span><span class="p">,</span>
+    <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://steam.cloud.h2o.ai/&quot;</span><span class="p">,</span>
+    <span class="n">username</span><span class="o">=</span><span class="s2">&quot;firstname.lastname@h2o.ai&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_STEAM_TOKEN_CLOUD</span><span class="p">),</span>
+    <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">ACCESS_TOKEN</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">my_dai_connection</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">DRIVERLESS_AI</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My Driverless AI server&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Driverless AI server running on the localhost.&quot;</span><span class="p">,</span>
+    <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;http://host:12345&quot;</span><span class="p">,</span>
+    <span class="n">username</span><span class="o">=</span><span class="s2">&quot;h2oai&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_DAI_PASSWD</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">my_h2ogpt_enterprise_connection</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">H2O_GPT_E</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise server.&quot;</span><span class="p">,</span>
+    <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://h2ogpte.h2o.ai&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_H2OGPT_ENTERPRISE_API_KEY</span><span class="p">),</span>
+    <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">my_license</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">LicenseConfig</span><span class="p">(</span>
+    <span class="n">key</span><span class="o">=</span><span class="s2">&quot;my-license-key&quot;</span><span class="p">,</span>
+    <span class="n">product</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">ProductLicenseConfig</span><span class="o">.</span><span class="n">DRIVERLESS_AI</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My license name&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My license description.&quot;</span><span class="p">,</span>
+    <span class="n">license</span><span class="o">=</span><span class="n">license_value</span><span class="p">,</span>
+    <span class="n">license_file</span><span class="o">=</span><span class="s2">&quot;/tmp/license-of-my-product.txt&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">sonar_cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">H2oSonarConfig</span><span class="p">(</span>
+    <span class="n">connections</span><span class="o">=</span><span class="p">[</span><span class="n">my_aiem_connection</span><span class="p">,</span> <span class="n">my_steam_connection</span><span class="p">,</span> <span class="n">my_dai_connection</span><span class="p">],</span>
+    <span class="n">licenses</span><span class="o">=</span><span class="p">[</span><span class="n">my_license</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">sonar_cfg</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">json_config_path</span><span class="p">),</span> <span class="n">encryption_key</span><span class="o">=</span><span class="n">encryption_key</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See also:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">h2o_sonar.interpret::add_config_item()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">h2o_sonar.interpret::get_config()</span></code></p></li>
+</ul>
+</section>
+<section id="library-configuration-cli-api">
+<h2>Library Configuration CLI API<a class="headerlink" href="#library-configuration-cli-api" title="Link to this heading"></a></h2>
+<p>H2O Eval Studio provides API allowing to manage its configuration programmatically.
+It is typically used to manage configuration items which include sensitive data
+and therefore are encrypted.</p>
+<p>Example: create a new configuration instance and save it for later use.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ h2o-sonar add config
+--config-type CONNECTION
+--config-value &#39;{
+     &quot;connection_type&quot;: &quot;DRIVERLESS_AI&quot;,
+     &quot;name&quot;: &quot;Local Driverless AI server&quot;,
+     &quot;id&quot;: &quot;local-driverless-ai-server&quot;,
+     &quot;description&quot;: &quot;Driverless AI server running on the localhost.&quot;,
+     &quot;auth_server_url&quot;: &quot;&quot;,
+     &quot;server_url&quot;: &quot;http://localhost:12345&quot;,
+     &quot;username&quot;: &quot;h2oai&quot;,
+     &quot;password&quot;: &quot;M1P3ssw0rd&quot;
+ }&#39;
+--config-path &quot;./h2o-sonar-config.json&quot;
+--encryption-key &quot;secret-key-to-decrypt-encrypted-config-fields&quot;
+</pre></div>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--config-type</span></code></dt><dd><ul>
+<li><p>… is one of <code class="docutils literal notranslate"><span class="pre">CONNECTION</span></code> or <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="doc.html" class="btn btn-neutral float-left" title="H2O Eval Studio Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="doc.predictive.html" class="btn btn-neutral float-right" title="Predictive Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

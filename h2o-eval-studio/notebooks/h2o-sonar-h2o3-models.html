@@ -1,0 +1,2520 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H2O Eval Studio Demo of H2O-3 Models &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e2d3f516" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/notebooks/h2o-sonar-h2o3-models.html"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="H2O Eval Studio Demo of Pickled Models" href="h2o-sonar-pickled-models.html" />
+    <link rel="prev" title="H2O Eval Studio Demo of Driverless AI MOJO Models" href="h2o-sonar-dai-mojo-models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../doc.html">H2O Eval Studio Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">H2O Eval Studio Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.models.html">Models in Interpretation Jupyter Notebooks Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-sklearn-models.html">H2O Eval Studio Demo of Scikit-learn Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-mojo-models.html">H2O Eval Studio Demo of Driverless AI MOJO Models</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">H2O Eval Studio Demo of H2O-3 Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pickled-models.html">H2O Eval Studio Demo of Pickled Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-rest-models.html">H2O Eval Studio Demo of Driverless AI Local REST Server Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.cli.html">Command Line Interface in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.h2ogpte.html">Enterprise h2oGPT Examples</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">H2O Eval Studio Examples</a></li>
+          <li class="breadcrumb-item"><a href="../examples.models.html">Models in Interpretation Jupyter Notebooks Examples</a></li>
+      <li class="breadcrumb-item active">H2O Eval Studio Demo of H2O-3 Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/h2o-sonar-h2o3-models.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="H2O-Sonar-Demo-of-H2O-3-Models">
+<h1>H2O Eval Studio Demo of H2O-3 Models<a class="headerlink" href="#H2O-Sonar-Demo-of-H2O-3-Models" title="Link to this heading"></a></h1>
+<p>This example demonstrates how to interpret a H2O-3 models using the H2O Eval Studio library.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># install H2O-3 client
+!pip install h2o
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Requirement already satisfied: h2o in /home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages (3.46.0.9)
+Requirement already satisfied: requests in /home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages (from h2o) (2.32.5)
+Requirement already satisfied: tabulate in /home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages (from h2o) (0.9.0)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages (from requests-&gt;h2o) (3.4.4)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages (from requests-&gt;h2o) (3.11)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages (from requests-&gt;h2o) (2.6.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages (from requests-&gt;h2o) (2026.1.4)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import h2o
+import pandas
+import datatable
+import webbrowser
+
+from h2o.estimators.gbm import H2OGradientBoostingEstimator
+
+from h2o_sonar import interpret
+from h2o_sonar.lib.api.models import ExplainableModel, ExplainableModelType, ExplainableModelMeta
+from h2o_sonar.lib.api.datasets import ExplainableDataset
+from h2o_sonar.utils.sanitization import SanitizationMap
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style type='text/css'>
+.datatable table.frame { margin-bottom: 0; }
+.datatable table.frame thead { border-bottom: none; }
+.datatable table.frame tr.coltypes td {  color: #FFFFFF;  line-height: 6px;  padding: 0 0.5em;}
+.datatable .bool    { background: #DDDD99; }
+.datatable .object  { background: #565656; }
+.datatable .int     { background: #5D9E5D; }
+.datatable .float   { background: #4040CC; }
+.datatable .str     { background: #CC4040; }
+.datatable .time    { background: #40CC40; }
+.datatable .row_index {  background: var(--jp-border-color3);  border-right: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  font-size: 9px;}
+.datatable .frame tbody td { text-align: left; }
+.datatable .frame tr.coltypes .row_index {  background: var(--jp-border-color0);}
+.datatable th:nth-child(2) { padding-left: 12px; }
+.datatable .hellipsis {  color: var(--jp-cell-editor-border-color);}
+.datatable .vellipsis {  background: var(--jp-layout-color0);  color: var(--jp-cell-editor-border-color);}
+.datatable .na {  color: var(--jp-cell-editor-border-color);  font-size: 80%;}
+.datatable .sp {  opacity: 0.25;}
+.datatable .footer { font-size: 9px; }
+.datatable .frame_dimensions {  background: var(--jp-border-color3);  border-top: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  display: inline-block;  opacity: 0.6;  padding: 1px 10px 1px 5px;}
+</style></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>h2o.init()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Checking whether there is an H2O instance running at http://localhost:54321. connected.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+
+#h2o-table-1.h2o-container {
+  overflow-x: auto;
+}
+#h2o-table-1 .h2o-table {
+  /* width: 100%; */
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#h2o-table-1 .h2o-table caption {
+  white-space: nowrap;
+  caption-side: top;
+  text-align: left;
+  /* margin-left: 1em; */
+  margin: 0;
+  font-size: larger;
+}
+#h2o-table-1 .h2o-table thead {
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 -1px inset;
+}
+#h2o-table-1 .h2o-table tbody {
+  overflow: auto;
+}
+#h2o-table-1 .h2o-table th,
+#h2o-table-1 .h2o-table td {
+  text-align: right;
+  /* border: 1px solid; */
+}
+#h2o-table-1 .h2o-table tr:nth-child(even) {
+  /* background: #F5F5F5 */
+}
+
+</style>
+<div id="h2o-table-1" class="h2o-container">
+  <table class="h2o-table">
+    <caption></caption>
+    <thead></thead>
+    <tbody><tr><td>H2O_cluster_uptime:</td>
+<td>17 mins 48 secs</td></tr>
+<tr><td>H2O_cluster_timezone:</td>
+<td>Europe/Prague</td></tr>
+<tr><td>H2O_data_parsing_timezone:</td>
+<td>UTC</td></tr>
+<tr><td>H2O_cluster_version:</td>
+<td>3.46.0.9</td></tr>
+<tr><td>H2O_cluster_version_age:</td>
+<td>2 months and 4 days</td></tr>
+<tr><td>H2O_cluster_name:</td>
+<td>H2O_from_python_user_ornwkr</td></tr>
+<tr><td>H2O_cluster_total_nodes:</td>
+<td>1</td></tr>
+<tr><td>H2O_cluster_free_memory:</td>
+<td>4 Gb</td></tr>
+<tr><td>H2O_cluster_total_cores:</td>
+<td>16</td></tr>
+<tr><td>H2O_cluster_allowed_cores:</td>
+<td>16</td></tr>
+<tr><td>H2O_cluster_status:</td>
+<td>locked, healthy</td></tr>
+<tr><td>H2O_connection_url:</td>
+<td>http://localhost:54321</td></tr>
+<tr><td>H2O_connection_proxy:</td>
+<td>{"http": null, "https": null}</td></tr>
+<tr><td>H2O_internal_security:</td>
+<td>False</td></tr>
+<tr><td>Python_version:</td>
+<td>3.11.11 final</td></tr></tbody>
+  </table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># dataset
+dataset_path = &quot;../../data/predictive/creditcard.csv&quot;
+target_col = &quot;default payment next month&quot;
+df = h2o.import_file(dataset_path)
+X = list(df.names)
+X.remove(target_col)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;ID&#39;,
+ &#39;LIMIT_BAL&#39;,
+ &#39;SEX&#39;,
+ &#39;EDUCATION&#39;,
+ &#39;MARRIAGE&#39;,
+ &#39;AGE&#39;,
+ &#39;PAY_0&#39;,
+ &#39;PAY_2&#39;,
+ &#39;PAY_3&#39;,
+ &#39;PAY_4&#39;,
+ &#39;PAY_5&#39;,
+ &#39;PAY_6&#39;,
+ &#39;BILL_AMT1&#39;,
+ &#39;BILL_AMT2&#39;,
+ &#39;BILL_AMT3&#39;,
+ &#39;BILL_AMT4&#39;,
+ &#39;BILL_AMT5&#39;,
+ &#39;BILL_AMT6&#39;,
+ &#39;PAY_AMT1&#39;,
+ &#39;PAY_AMT2&#39;,
+ &#39;PAY_AMT3&#39;,
+ &#39;PAY_AMT4&#39;,
+ &#39;PAY_AMT5&#39;,
+ &#39;PAY_AMT6&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.head()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<table class='dataframe'>
+<thead>
+<tr><th style="text-align: right;">  ID</th><th style="text-align: right;">  LIMIT_BAL</th><th style="text-align: right;">  SEX</th><th style="text-align: right;">  EDUCATION</th><th style="text-align: right;">  MARRIAGE</th><th style="text-align: right;">  AGE</th><th style="text-align: right;">  PAY_0</th><th style="text-align: right;">  PAY_2</th><th style="text-align: right;">  PAY_3</th><th style="text-align: right;">  PAY_4</th><th style="text-align: right;">  PAY_5</th><th style="text-align: right;">  PAY_6</th><th style="text-align: right;">  BILL_AMT1</th><th style="text-align: right;">  BILL_AMT2</th><th style="text-align: right;">  BILL_AMT3</th><th style="text-align: right;">  BILL_AMT4</th><th style="text-align: right;">  BILL_AMT5</th><th style="text-align: right;">  BILL_AMT6</th><th style="text-align: right;">  PAY_AMT1</th><th style="text-align: right;">  PAY_AMT2</th><th style="text-align: right;">  PAY_AMT3</th><th style="text-align: right;">  PAY_AMT4</th><th style="text-align: right;">  PAY_AMT5</th><th style="text-align: right;">  PAY_AMT6</th><th style="text-align: right;">  default payment next month</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">   1</td><td style="text-align: right;">      20000</td><td style="text-align: right;">    2</td><td style="text-align: right;">          2</td><td style="text-align: right;">         1</td><td style="text-align: right;">   24</td><td style="text-align: right;">     -2</td><td style="text-align: right;">      2</td><td style="text-align: right;">     -1</td><td style="text-align: right;">     -1</td><td style="text-align: right;">     -2</td><td style="text-align: right;">     -2</td><td style="text-align: right;">       3913</td><td style="text-align: right;">       3102</td><td style="text-align: right;">        689</td><td style="text-align: right;">          0</td><td style="text-align: right;">          0</td><td style="text-align: right;">          0</td><td style="text-align: right;">         0</td><td style="text-align: right;">       689</td><td style="text-align: right;">         0</td><td style="text-align: right;">         0</td><td style="text-align: right;">         0</td><td style="text-align: right;">         0</td><td style="text-align: right;">                           1</td></tr>
+<tr><td style="text-align: right;">   2</td><td style="text-align: right;">     120000</td><td style="text-align: right;">    2</td><td style="text-align: right;">          2</td><td style="text-align: right;">         2</td><td style="text-align: right;">   26</td><td style="text-align: right;">     -1</td><td style="text-align: right;">      2</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      2</td><td style="text-align: right;">       2682</td><td style="text-align: right;">       1725</td><td style="text-align: right;">       2682</td><td style="text-align: right;">       3272</td><td style="text-align: right;">       3455</td><td style="text-align: right;">       3261</td><td style="text-align: right;">         0</td><td style="text-align: right;">      1000</td><td style="text-align: right;">      1000</td><td style="text-align: right;">      1000</td><td style="text-align: right;">         0</td><td style="text-align: right;">      2000</td><td style="text-align: right;">                           1</td></tr>
+<tr><td style="text-align: right;">   3</td><td style="text-align: right;">      90000</td><td style="text-align: right;">    2</td><td style="text-align: right;">          2</td><td style="text-align: right;">         2</td><td style="text-align: right;">   34</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      29239</td><td style="text-align: right;">      14027</td><td style="text-align: right;">      13559</td><td style="text-align: right;">      14331</td><td style="text-align: right;">      14948</td><td style="text-align: right;">      15549</td><td style="text-align: right;">      1518</td><td style="text-align: right;">      1500</td><td style="text-align: right;">      1000</td><td style="text-align: right;">      1000</td><td style="text-align: right;">      1000</td><td style="text-align: right;">      5000</td><td style="text-align: right;">                           0</td></tr>
+<tr><td style="text-align: right;">   4</td><td style="text-align: right;">      50000</td><td style="text-align: right;">    2</td><td style="text-align: right;">          2</td><td style="text-align: right;">         1</td><td style="text-align: right;">   37</td><td style="text-align: right;">      1</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      46990</td><td style="text-align: right;">      48233</td><td style="text-align: right;">      49291</td><td style="text-align: right;">      28314</td><td style="text-align: right;">      28959</td><td style="text-align: right;">      29547</td><td style="text-align: right;">      2000</td><td style="text-align: right;">      2019</td><td style="text-align: right;">      1200</td><td style="text-align: right;">      1100</td><td style="text-align: right;">      1069</td><td style="text-align: right;">      1000</td><td style="text-align: right;">                           0</td></tr>
+<tr><td style="text-align: right;">   5</td><td style="text-align: right;">      50000</td><td style="text-align: right;">    1</td><td style="text-align: right;">          2</td><td style="text-align: right;">         1</td><td style="text-align: right;">   57</td><td style="text-align: right;">      2</td><td style="text-align: right;">      0</td><td style="text-align: right;">     -1</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">       8617</td><td style="text-align: right;">       5670</td><td style="text-align: right;">      35835</td><td style="text-align: right;">      20940</td><td style="text-align: right;">      19146</td><td style="text-align: right;">      19131</td><td style="text-align: right;">      2000</td><td style="text-align: right;">     36681</td><td style="text-align: right;">     10000</td><td style="text-align: right;">      9000</td><td style="text-align: right;">       689</td><td style="text-align: right;">       679</td><td style="text-align: right;">                           0</td></tr>
+<tr><td style="text-align: right;">   6</td><td style="text-align: right;">      50000</td><td style="text-align: right;">    1</td><td style="text-align: right;">          1</td><td style="text-align: right;">         2</td><td style="text-align: right;">   37</td><td style="text-align: right;">      3</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      64400</td><td style="text-align: right;">      57069</td><td style="text-align: right;">      57608</td><td style="text-align: right;">      19394</td><td style="text-align: right;">      19619</td><td style="text-align: right;">      20024</td><td style="text-align: right;">      2500</td><td style="text-align: right;">      1815</td><td style="text-align: right;">       657</td><td style="text-align: right;">      1000</td><td style="text-align: right;">      1000</td><td style="text-align: right;">       800</td><td style="text-align: right;">                           0</td></tr>
+<tr><td style="text-align: right;">   7</td><td style="text-align: right;">     500000</td><td style="text-align: right;">    1</td><td style="text-align: right;">          1</td><td style="text-align: right;">         2</td><td style="text-align: right;">   29</td><td style="text-align: right;">      4</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">     367965</td><td style="text-align: right;">     412023</td><td style="text-align: right;">     445007</td><td style="text-align: right;">     542653</td><td style="text-align: right;">     483003</td><td style="text-align: right;">     473944</td><td style="text-align: right;">     55000</td><td style="text-align: right;">     40000</td><td style="text-align: right;">     38000</td><td style="text-align: right;">     20239</td><td style="text-align: right;">     13750</td><td style="text-align: right;">     13770</td><td style="text-align: right;">                           0</td></tr>
+<tr><td style="text-align: right;">   8</td><td style="text-align: right;">     100000</td><td style="text-align: right;">    2</td><td style="text-align: right;">          2</td><td style="text-align: right;">         2</td><td style="text-align: right;">   23</td><td style="text-align: right;">      5</td><td style="text-align: right;">     -1</td><td style="text-align: right;">     -1</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">     -1</td><td style="text-align: right;">      11876</td><td style="text-align: right;">        380</td><td style="text-align: right;">        601</td><td style="text-align: right;">        221</td><td style="text-align: right;">       -159</td><td style="text-align: right;">        567</td><td style="text-align: right;">       380</td><td style="text-align: right;">       601</td><td style="text-align: right;">         0</td><td style="text-align: right;">       581</td><td style="text-align: right;">      1687</td><td style="text-align: right;">      1542</td><td style="text-align: right;">                           0</td></tr>
+<tr><td style="text-align: right;">   9</td><td style="text-align: right;">     140000</td><td style="text-align: right;">    2</td><td style="text-align: right;">          3</td><td style="text-align: right;">         1</td><td style="text-align: right;">   28</td><td style="text-align: right;">      6</td><td style="text-align: right;">      0</td><td style="text-align: right;">      2</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      0</td><td style="text-align: right;">      11285</td><td style="text-align: right;">      14096</td><td style="text-align: right;">      12108</td><td style="text-align: right;">      12211</td><td style="text-align: right;">      11793</td><td style="text-align: right;">       3719</td><td style="text-align: right;">      3329</td><td style="text-align: right;">         0</td><td style="text-align: right;">       432</td><td style="text-align: right;">      1000</td><td style="text-align: right;">      1000</td><td style="text-align: right;">      1000</td><td style="text-align: right;">                           0</td></tr>
+<tr><td style="text-align: right;">  10</td><td style="text-align: right;">      20000</td><td style="text-align: right;">    1</td><td style="text-align: right;">          3</td><td style="text-align: right;">         2</td><td style="text-align: right;">   35</td><td style="text-align: right;">      7</td><td style="text-align: right;">     -2</td><td style="text-align: right;">     -2</td><td style="text-align: right;">     -2</td><td style="text-align: right;">     -1</td><td style="text-align: right;">     -1</td><td style="text-align: right;">          0</td><td style="text-align: right;">          0</td><td style="text-align: right;">          0</td><td style="text-align: right;">          0</td><td style="text-align: right;">      13007</td><td style="text-align: right;">      13912</td><td style="text-align: right;">         0</td><td style="text-align: right;">         0</td><td style="text-align: right;">         0</td><td style="text-align: right;">     13007</td><td style="text-align: right;">      1122</td><td style="text-align: right;">         0</td><td style="text-align: right;">                           0</td></tr>
+</tbody>
+</table><pre style='font-size: smaller; margin-bottom: 1em;'>[10 rows x 25 columns]</pre></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># h2o model
+gradient_booster = H2OGradientBoostingEstimator(ntrees=1, seed=1234)
+gradient_booster.train(
+    x=X,
+    y=target_col,
+    training_frame=df,
+    verbose=True,
+)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+gbm Model Build progress: |
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/h2o/estimators/estimator_base.py:192: RuntimeWarning: We have detected that your response column has only 2 unique values (0/1). If you wish to train a binary model instead of a regression model, convert your target column to categorical before training.
+  warnings.warn(mesg[&#34;message&#34;], RuntimeWarning)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Scoring History for Model GBM_model_python_1769698393912_1 at 2026-01-29 16:11:05.484341
+Model Build is 0% done...
+               timestamp    duration  number_of_trees  training_rmse  \
+0    2026-01-29 16:11:05   0.026 sec              0.0       0.418174
+
+   training_mae  training_deviance
+0      0.349738           0.174869
+
+
+
+Scoring History for Model GBM_model_python_1769698393912_1 at 2026-01-29 16:11:05.716214
+Model Build is 99% done...
+               timestamp    duration  number_of_trees  training_rmse  \
+0    2026-01-29 16:11:05   0.026 sec              0.0       0.418174
+1    2026-01-29 16:11:05   0.256 sec              1.0       0.410428
+
+   training_mae  training_deviance
+0      0.349738           0.174869
+1      0.342982           0.168451
+
+
+██████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre style='margin: 1em 0 1em 0;'>Model Details
+=============
+H2OGradientBoostingEstimator : Gradient Boosting Machine
+Model Key: GBM_model_python_1769698393912_1
+</pre>
+<div style='margin: 1em 0 1em 0;'>
+<style>
+
+#h2o-table-2.h2o-container {
+  overflow-x: auto;
+}
+#h2o-table-2 .h2o-table {
+  /* width: 100%; */
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#h2o-table-2 .h2o-table caption {
+  white-space: nowrap;
+  caption-side: top;
+  text-align: left;
+  /* margin-left: 1em; */
+  margin: 0;
+  font-size: larger;
+}
+#h2o-table-2 .h2o-table thead {
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 -1px inset;
+}
+#h2o-table-2 .h2o-table tbody {
+  overflow: auto;
+}
+#h2o-table-2 .h2o-table th,
+#h2o-table-2 .h2o-table td {
+  text-align: right;
+  /* border: 1px solid; */
+}
+#h2o-table-2 .h2o-table tr:nth-child(even) {
+  /* background: #F5F5F5 */
+}
+
+</style>
+<div id="h2o-table-2" class="h2o-container">
+  <table class="h2o-table">
+    <caption>Model Summary: </caption>
+    <thead><tr><th></th>
+<th>number_of_trees</th>
+<th>number_of_internal_trees</th>
+<th>model_size_in_bytes</th>
+<th>min_depth</th>
+<th>max_depth</th>
+<th>mean_depth</th>
+<th>min_leaves</th>
+<th>max_leaves</th>
+<th>mean_leaves</th></tr></thead>
+    <tbody><tr><td></td>
+<td>1.0</td>
+<td>1.0</td>
+<td>385.0</td>
+<td>5.0</td>
+<td>5.0</td>
+<td>5.0</td>
+<td>26.0</td>
+<td>26.0</td>
+<td>26.0</td></tr></tbody>
+  </table>
+</div>
+</div>
+<div style='margin: 1em 0 1em 0;'><pre style='margin: 1em 0 1em 0;'>ModelMetricsRegression: gbm
+** Reported on train data. **
+
+MSE: 0.16845099602759814
+RMSE: 0.41042782072807654
+MAE: 0.3429823858305812
+RMSLE: 0.2875261825477124
+Mean Residual Deviance: 0.16845099602759814</pre></div>
+<div style='margin: 1em 0 1em 0;'>
+<style>
+
+#h2o-table-3.h2o-container {
+  overflow-x: auto;
+}
+#h2o-table-3 .h2o-table {
+  /* width: 100%; */
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#h2o-table-3 .h2o-table caption {
+  white-space: nowrap;
+  caption-side: top;
+  text-align: left;
+  /* margin-left: 1em; */
+  margin: 0;
+  font-size: larger;
+}
+#h2o-table-3 .h2o-table thead {
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 -1px inset;
+}
+#h2o-table-3 .h2o-table tbody {
+  overflow: auto;
+}
+#h2o-table-3 .h2o-table th,
+#h2o-table-3 .h2o-table td {
+  text-align: right;
+  /* border: 1px solid; */
+}
+#h2o-table-3 .h2o-table tr:nth-child(even) {
+  /* background: #F5F5F5 */
+}
+
+</style>
+<div id="h2o-table-3" class="h2o-container">
+  <table class="h2o-table">
+    <caption>Scoring History: </caption>
+    <thead><tr><th></th>
+<th>timestamp</th>
+<th>duration</th>
+<th>number_of_trees</th>
+<th>training_rmse</th>
+<th>training_mae</th>
+<th>training_deviance</th></tr></thead>
+    <tbody><tr><td></td>
+<td>2026-01-29 16:11:05</td>
+<td> 0.026 sec</td>
+<td>0.0</td>
+<td>0.4181736</td>
+<td>0.3497384</td>
+<td>0.1748692</td></tr>
+<tr><td></td>
+<td>2026-01-29 16:11:05</td>
+<td> 0.256 sec</td>
+<td>1.0</td>
+<td>0.4104278</td>
+<td>0.3429824</td>
+<td>0.1684510</td></tr></tbody>
+  </table>
+</div>
+</div>
+<div style='margin: 1em 0 1em 0;'>
+<style>
+
+#h2o-table-4.h2o-container {
+  overflow-x: auto;
+}
+#h2o-table-4 .h2o-table {
+  /* width: 100%; */
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#h2o-table-4 .h2o-table caption {
+  white-space: nowrap;
+  caption-side: top;
+  text-align: left;
+  /* margin-left: 1em; */
+  margin: 0;
+  font-size: larger;
+}
+#h2o-table-4 .h2o-table thead {
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 -1px inset;
+}
+#h2o-table-4 .h2o-table tbody {
+  overflow: auto;
+}
+#h2o-table-4 .h2o-table th,
+#h2o-table-4 .h2o-table td {
+  text-align: right;
+  /* border: 1px solid; */
+}
+#h2o-table-4 .h2o-table tr:nth-child(even) {
+  /* background: #F5F5F5 */
+}
+
+</style>
+<div id="h2o-table-4" class="h2o-container">
+  <table class="h2o-table">
+    <caption>Variable Importances: </caption>
+    <thead><tr><th>variable</th>
+<th>relative_importance</th>
+<th>scaled_importance</th>
+<th>percentage</th></tr></thead>
+    <tbody><tr><td>PAY_0</td>
+<td>258.5125122</td>
+<td>1.0</td>
+<td>0.7652836</td></tr>
+<tr><td>PAY_3</td>
+<td>24.0844650</td>
+<td>0.0931656</td>
+<td>0.0712981</td></tr>
+<tr><td>PAY_AMT1</td>
+<td>8.8146772</td>
+<td>0.0340977</td>
+<td>0.0260944</td></tr>
+<tr><td>PAY_5</td>
+<td>8.6635008</td>
+<td>0.0335129</td>
+<td>0.0256469</td></tr>
+<tr><td>PAY_2</td>
+<td>8.5906410</td>
+<td>0.0332310</td>
+<td>0.0254312</td></tr>
+<tr><td>PAY_4</td>
+<td>5.4334307</td>
+<td>0.0210181</td>
+<td>0.0160848</td></tr>
+<tr><td>LIMIT_BAL</td>
+<td>4.9508743</td>
+<td>0.0191514</td>
+<td>0.0146562</td></tr>
+<tr><td>ID</td>
+<td>4.8031120</td>
+<td>0.0185798</td>
+<td>0.0142188</td></tr>
+<tr><td>BILL_AMT1</td>
+<td>4.0065289</td>
+<td>0.0154984</td>
+<td>0.0118607</td></tr>
+<tr><td>PAY_AMT5</td>
+<td>3.9974132</td>
+<td>0.0154631</td>
+<td>0.0118337</td></tr>
+<tr><td>---</td>
+<td>---</td>
+<td>---</td>
+<td>---</td></tr>
+<tr><td>EDUCATION</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td></tr>
+<tr><td>MARRIAGE</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td></tr>
+<tr><td>PAY_6</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td></tr>
+<tr><td>BILL_AMT2</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td></tr>
+<tr><td>BILL_AMT3</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td></tr>
+<tr><td>BILL_AMT4</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td></tr>
+<tr><td>BILL_AMT5</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td></tr>
+<tr><td>PAY_AMT2</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td></tr>
+<tr><td>PAY_AMT4</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td></tr>
+<tr><td>PAY_AMT6</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td></tr></tbody>
+  </table>
+</div>
+<pre style='font-size: smaller; margin-bottom: 1em;'>[24 rows x 4 columns]</pre></div><pre style="font-size: smaller; margin: 1em 0 0 0;">
+
+[tips]
+Use `model.explain()` to inspect the model.
+--
+Use `h2o.display.toggle_user_tips()` to switch on/off this section.</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mojo_path = gradient_booster.save_mojo(path=&quot;../../results&quot;, force=True)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gradient_booster_mojo = h2o.import_mojo(mojo_path)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+generic Model Build progress: |██████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># H2O model
+results_location = &quot;../../results&quot;
+
+# run Interpretation
+interpretation = interpret.run_interpretation(
+    dataset=dataset_path,
+    model=gradient_booster,
+    target_col=target_col,
+    results_location=results_location,
+    used_features=X,
+)
+
+# optionally make ExplainableModel() object to provide additional metadata
+# h2o_model = ExplainableModel(
+#     predict_method=gradient_booster.predict,
+#     model_src=gradient_booster,
+#     model_type=ExplainableModelType.h2o3,
+#     model_meta=ExplainableModelMeta(target_col=target_col)
+# )
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/ragas/metrics/__init__.py:1: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain_core.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain_core.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+  from ragas.metrics._answer_correctness import AnswerCorrectness, answer_correctness
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/ragas/metrics/__init__.py:4: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+  from ragas.metrics._context_entities_recall import (
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Preparing and checking DIA features (None): dataset=     |    ID  PAY_AMT6  PAY_5  PAY_AMT1  BILL_AMT3  PAY_AMT5    AGE  MARRIAGE  BILL_AMT2  PAY_4  …  PAY_2  PAY_AMT4  BILL_AMT5  BILL_AMT1  EDUCATION
+     | int32     int32  int32     int32      int32     int32  int32     int32      int32  int32     int32     int32      int32      int32      int32
+---- + -----  --------  -----  --------  ---------  --------  -----  --------  ---------  -----     -----  --------  ---------  ---------  ---------
+   0 |     1         0     -2         0        689         0     24         1       3102     -1  …      2         0          0       3913          2
+   1 |     2      2000      0         0       2682         0     26         2       1725      0  …      2      1000       3455       2682          2
+   2 |     3      5000      0      1518      13559      1000     34         2      14027      0  …      0      1000      14948      29239          2
+   3 |     4      1000      0      2000      49291      1069     37         1      48233      0  …      0      1100      28959      46990          2
+   4 |     5       679      0      2000      35835       689     57         1       5670      0  …      0      9000      19146       8617          2
+   5 |     6       800      0      2500      57608      1000     37         2      57069      0  …      0      1000      19619      64400          1
+   6 |     7     13770      0     55000     445007     13750     29         2     412023      0  …      0     20239     483003     367965          1
+   7 |     8      1542      0       380        601      1687     23         2        380      0  …     -1       581       -159      11876          2
+   8 |     9      1000      0      3329      12108      1000     28         1      14096      0  …      0      1000      11793      11285          3
+   9 |    10         0     -1         0          0      1122     35         2          0     -2  …     -2     13007      13007          0          3
+  10 |    11        66      0      2306       5535      3738     34         2       9787      0  …      0       300       1828      11073          3
+  11 |    12      3640     -1     21818       9966         0     51         2      21670     -1  …     -1     22301      22287      12261          1
+  12 |    13         0     -1      1000       6500      2870     41         2       6500     -1  …      0      6500       6500      12137          2
+  13 |    14         0      0      3200      65701      1500     30         2      67369      0  …      2      3000      36137      65802          2
+  14 |    15      3000      0      3000      63561      3000     29         2      67060      0  …      0      3000      56875      70887          1
+   … |     …         …      …         …          …         …      …         …          …      …  …      …         …          …          …          …
+9995 |  9996      1419     -2       241          0         0     31         2        241     -2  …     -2         0          0          0          1
+9996 |  9997         0     -2         0          0         0     37         2          0     -2  …     -2         0          0       3946          2
+9997 |  9998      4200      0      6437     142520     10017     44         1     144085      0  …      0     27080     176717     138877          3
+9998 |  9999         0     -2         0          0         0     26         2        780     -2  …      2         0          0        780          2
+9999 | 10000      3000      0      3000      19750      3000     36         1      20715      0  …      0      3000      19255      19505          2
+[10000 rows x 25 columns]
+ dataset_meta={
+  &#34;shape&#34;: &#34;(10000, 25)&#34;,
+  &#34;row_count&#34;: 10000,
+  &#34;column_names&#34;: [
+    &#34;ID&#34;,
+    &#34;LIMIT_BAL&#34;,
+    &#34;SEX&#34;,
+    &#34;EDUCATION&#34;,
+    &#34;MARRIAGE&#34;,
+    &#34;AGE&#34;,
+    &#34;PAY_0&#34;,
+    &#34;PAY_2&#34;,
+    &#34;PAY_3&#34;,
+    &#34;PAY_4&#34;,
+    &#34;PAY_5&#34;,
+    &#34;PAY_6&#34;,
+    &#34;BILL_AMT1&#34;,
+    &#34;BILL_AMT2&#34;,
+    &#34;BILL_AMT3&#34;,
+    &#34;BILL_AMT4&#34;,
+    &#34;BILL_AMT5&#34;,
+    &#34;BILL_AMT6&#34;,
+    &#34;PAY_AMT1&#34;,
+    &#34;PAY_AMT2&#34;,
+    &#34;PAY_AMT3&#34;,
+    &#34;PAY_AMT4&#34;,
+    &#34;PAY_AMT5&#34;,
+    &#34;PAY_AMT6&#34;,
+    &#34;default payment next month&#34;
+  ],
+  &#34;column_types&#34;: [
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;
+  ],
+  &#34;column_uniques&#34;: [
+    10000,
+    72,
+    2,
+    7,
+    4,
+    54,
+    11,
+    11,
+    11,
+    11,
+    10,
+    10,
+    8371,
+    8215,
+    8072,
+    7913,
+    7764,
+    7550,
+    3763,
+    3581,
+    3305,
+    3247,
+    3258,
+    3174,
+    2
+  ],
+  &#34;columns_cat&#34;: [],
+  &#34;columns_num&#34;: [],
+  &#34;file_path&#34;: &#34;../../data/predictive/creditcard.csv&#34;,
+  &#34;file_name&#34;: &#34;&#34;,
+  &#34;file_size&#34;: 944719,
+  &#34;missing_values&#34;: [
+    &#34;&#34;,
+    &#34;?&#34;,
+    &#34;None&#34;,
+    &#34;nan&#34;,
+    &#34;NA&#34;,
+    &#34;N/A&#34;,
+    &#34;unknown&#34;,
+    &#34;inf&#34;,
+    &#34;-inf&#34;,
+    &#34;1.7976931348623157e+308&#34;,
+    &#34;-1.7976931348623157e+308&#34;
+  ],
+  &#34;columns_meta&#34;: [
+    {
+      &#34;name&#34;: &#34;ID&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: true,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 10000,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 10000,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;LIMIT_BAL&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 72,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 72,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;SEX&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 2,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 2,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;EDUCATION&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;MARRIAGE&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 4,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 4,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;AGE&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 54,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 54,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_0&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_2&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_3&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_4&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_5&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 10,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 10,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_6&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 10,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 10,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT1&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 8371,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 8371,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT2&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 8215,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 8215,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT3&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 8072,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 8072,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT4&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7913,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7913,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT5&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7764,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7764,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT6&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7550,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7550,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT1&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3763,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3763,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT2&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3581,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3581,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT3&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3305,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3305,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT4&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3247,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3247,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT5&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3258,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3258,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT6&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3174,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3174,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;default payment next month&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 2,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 2,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    }
+  ],
+  &#34;original_dataset_sampled&#34;: false,
+  &#34;original_dataset_path&#34;: &#34;&#34;,
+  &#34;original_dataset_size&#34;: 0,
+  &#34;original_dataset_shape&#34;: [
+    10000,
+    25
+  ]
+}
+Using dataset ENTITY to prepare DIA features: column_names=[&#39;ID&#39;, &#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_0&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;, &#39;default payment next month&#39;] column_uniques=[10000, 72, 2, 7, 4, 54, 11, 11, 11, 11, 10, 10, 8371, 8215, 8072, 7913, 7764, 7550, 3763, 3581, 3305, 3247, 3258, 3174, 2]
+DIA group columns prepared using dataset ENTITY: {&#39;SEX&#39;, &#39;PAY_3&#39;, &#39;PAY_0&#39;, &#39;MARRIAGE&#39;, &#39;PAY_6&#39;, &#39;PAY_5&#39;, &#39;default payment next month&#39;, &#39;PAY_2&#39;, &#39;PAY_4&#39;, &#39;EDUCATION&#39;}
+DIA group columns to SKIP: {&#39;default payment next month&#39;, &#39;model_pred&#39;}
+DIA group columns as BOOLs: [&lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fc8c822cc50&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fc8c822f590&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fc8c822ffd0&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fc8c822cc90&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fc8c822db10&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fc8c822dbd0&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fc8c822f1d0&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fc8c822d310&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fc8c822f310&gt;]
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+Connecting to H2O server at http://localhost:12349 ...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+.... failed.
+████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+Connecting to H2O server at http://localhost:12349 ...
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+.... failed.
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+████████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+███████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># open interpretation HTML report in web browser
+webbrowser.open(interpretation.result.get_html_report_location())
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># View results directory
+!tree {interpretation.persistence.base_dir}
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-blue-intense-fg ansi-bold">../../results/h2o-sonar/mli_experiment_a640bd44-d444-49dc-beed-2f8790b9a666</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_bcf6d363-0695-4fba-9941-9982e3a949b8</span>
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">global_disparate_impact_analysis</span>
+│   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_plain</span>
+│   │   │   └── explanation.txt
+│   │   └── text_plain.meta
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">global_html_fragment</span>
+│   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_html</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-accuracy.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-adverse_impact.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-false_discovery_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-false_negative_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-false_omissions_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-false_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-negative_predicted_value.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-n.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-precision.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-specificity.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-true_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-accuracy.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-adverse_impact.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-false_discovery_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-false_negative_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-false_omissions_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-false_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-negative_predicted_value.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-n.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-precision.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-specificity.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-true_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-accuracy.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-adverse_impact.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-false_discovery_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-false_negative_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-false_omissions_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-false_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-negative_predicted_value.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-n.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-precision.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-specificity.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-true_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-accuracy.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-adverse_impact.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-false_discovery_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-false_negative_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-false_omissions_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-false_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-negative_predicted_value.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-n.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-precision.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-specificity.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-true_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-accuracy.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-adverse_impact.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-false_discovery_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-false_negative_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-false_omissions_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-false_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-negative_predicted_value.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-n.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-precision.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-specificity.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-true_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-accuracy.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-adverse_impact.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-false_discovery_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-false_negative_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-false_omissions_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-false_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-negative_predicted_value.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-n.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-precision.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-specificity.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-true_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-accuracy.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-adverse_impact.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-false_discovery_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-false_negative_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-false_omissions_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-false_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-negative_predicted_value.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-n.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-precision.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-specificity.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-true_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-accuracy.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-adverse_impact.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-false_discovery_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-false_negative_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-false_omissions_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-false_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-negative_predicted_value.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-n.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-precision.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-specificity.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-true_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-accuracy.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-adverse_impact.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-false_discovery_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-false_negative_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-false_omissions_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-false_positive_rate.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-negative_predicted_value.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-n.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-precision.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-specificity.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-true_positive_rate.png</span>
+│   │   │   └── explanation.html
+│   │   └── text_html.meta
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│   │   └── insights_and_actions.json
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│   │   └── explainer_run_bcf6d363-0695-4fba-9941-9982e3a949b8.log
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│   │   └── problems_and_actions.json
+│   ├── result_descriptor.json
+│   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+│       ├── dia_entity.json
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">EDUCATION</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   └── metrics.jay
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">MARRIAGE</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   └── metrics.jay
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">PAY_0</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">10</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">7</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">8</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">9</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   └── metrics.jay
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">PAY_2</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">10</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">7</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">8</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">9</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   └── metrics.jay
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">PAY_3</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">10</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">7</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">8</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">9</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   └── metrics.jay
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">PAY_4</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">10</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">7</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">8</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">9</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   └── metrics.jay
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">PAY_5</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">7</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">8</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">9</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   └── metrics.jay
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">PAY_6</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">7</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">8</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">9</span>
+│       │   │   ├── cm.jay
+│       │   │   ├── disparity.jay
+│       │   │   ├── me_smd.jay
+│       │   │   └── parity.jay
+│       │   └── metrics.jay
+│       └── <span class="ansi-blue-intense-fg ansi-bold">SEX</span>
+│           ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│           │   ├── cm.jay
+│           │   ├── disparity.jay
+│           │   ├── me_smd.jay
+│           │   └── parity.jay
+│           ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│           │   ├── cm.jay
+│           │   ├── disparity.jay
+│           │   ├── me_smd.jay
+│           │   └── parity.jay
+│           └── metrics.jay
+├── <span class="ansi-blue-intense-fg ansi-bold">explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_6fae202c-d572-4bac-9bcd-2882f9be8bfb</span>
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│   │   └── explainer_run_6fae202c-d572-4bac-9bcd-2882f9be8bfb.log
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_7c4a99e7-2b20-46b2-98f0-7b48be024960</span>
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">global_html_fragment</span>
+│   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_html</span>
+│   │   │   ├── explanation.html
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-0-class-0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-1-class-0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-2-class-0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-3-class-0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-4-class-0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-5-class-0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-6-class-0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-7-class-0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-8-class-0.png</span>
+│   │   │   └── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-9-class-0.png</span>
+│   │   └── text_html.meta
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">global_partial_dependence</span>
+│   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_json</span>
+│   │   │   ├── explanation.json
+│   │   │   ├── pd_feature_0_class_0.json
+│   │   │   ├── pd_feature_1_class_0.json
+│   │   │   ├── pd_feature_2_class_0.json
+│   │   │   ├── pd_feature_3_class_0.json
+│   │   │   ├── pd_feature_4_class_0.json
+│   │   │   ├── pd_feature_5_class_0.json
+│   │   │   ├── pd_feature_6_class_0.json
+│   │   │   ├── pd_feature_7_class_0.json
+│   │   │   ├── pd_feature_8_class_0.json
+│   │   │   └── pd_feature_9_class_0.json
+│   │   └── application_json.meta
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│   │   └── insights_and_actions.json
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">local_individual_conditional_explanation</span>
+│   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_vnd_h2oai_json_datatable_jay</span>
+│   │   │   ├── explanation.json
+│   │   │   ├── ice_feature_0_class_0.jay
+│   │   │   ├── ice_feature_1_class_0.jay
+│   │   │   ├── ice_feature_2_class_0.jay
+│   │   │   ├── ice_feature_3_class_0.jay
+│   │   │   ├── ice_feature_4_class_0.jay
+│   │   │   ├── ice_feature_5_class_0.jay
+│   │   │   ├── ice_feature_6_class_0.jay
+│   │   │   ├── ice_feature_7_class_0.jay
+│   │   │   ├── ice_feature_8_class_0.jay
+│   │   │   ├── ice_feature_9_class_0.jay
+│   │   │   └── y_hat.jay
+│   │   └── application_vnd_h2oai_json_datatable_jay.meta
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│   │   └── explainer_run_7c4a99e7-2b20-46b2-98f0-7b48be024960.log
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│   │   └── problems_and_actions.json
+│   ├── result_descriptor.json
+│   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+│       ├── h2o_sonar-ice-dai-model-10.jay
+│       ├── h2o_sonar-ice-dai-model-1.jay
+│       ├── h2o_sonar-ice-dai-model-2.jay
+│       ├── h2o_sonar-ice-dai-model-3.jay
+│       ├── h2o_sonar-ice-dai-model-4.jay
+│       ├── h2o_sonar-ice-dai-model-5.jay
+│       ├── h2o_sonar-ice-dai-model-6.jay
+│       ├── h2o_sonar-ice-dai-model-7.jay
+│       ├── h2o_sonar-ice-dai-model-8.jay
+│       ├── h2o_sonar-ice-dai-model-9.jay
+│       ├── h2o_sonar-ice-dai-model.json
+│       ├── h2o_sonar-pd-dai-model.json
+│       └── mli_dataset_y_hat.jay
+├── <span class="ansi-blue-intense-fg ansi-bold">explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_fb644156-7c5d-4248-838d-48a6481f680c</span>
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│   │   └── explainer_run_fb644156-7c5d-4248-838d-48a6481f680c.log
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_347fbdd4-35b7-46f2-95e4-a68d41846ad2</span>
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">global_html_fragment</span>
+│   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_html</span>
+│   │   │   ├── explanation.html
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_0_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_10_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_11_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_12_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_13_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_14_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_15_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_16_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_17_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_18_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_19_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_1_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_20_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_21_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_22_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_23_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_2_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_3_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_4_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_5_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_6_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_7_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_8_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_9_class_0.png</span>
+│   │   │   └── <span class="ansi-magenta-intense-fg ansi-bold">shapley-class-0.png</span>
+│   │   └── text_html.meta
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">global_summary_feature_importance</span>
+│   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_json</span>
+│   │   │   ├── explanation.json
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_0_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_10_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_11_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_12_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_13_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_14_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_15_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_16_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_17_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_18_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_19_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_1_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_20_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_21_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_22_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_23_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_2_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_3_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_4_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_5_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_6_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_7_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_8_class_0.png</span>
+│   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_9_class_0.png</span>
+│   │   │   ├── summary_feature_importance_class_0_offset_0.json
+│   │   │   ├── summary_feature_importance_class_0_offset_1.json
+│   │   │   └── summary_feature_importance_class_0_offset_2.json
+│   │   ├── application_json.meta
+│   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_vnd_h2oai_json_datatable_jay</span>
+│   │   │   ├── explanation.json
+│   │   │   └── summary_feature_importance_class_0.jay
+│   │   ├── application_vnd_h2oai_json_datatable_jay.meta
+│   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_markdown</span>
+│   │   │   ├── explanation.md
+│   │   │   └── <span class="ansi-magenta-intense-fg ansi-bold">shapley-class-0.png</span>
+│   │   └── text_markdown.meta
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│   │   └── insights_and_actions.json
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│   │   └── explainer_run_347fbdd4-35b7-46f2-95e4-a68d41846ad2.log
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│   │   └── problems_and_actions.json
+│   ├── result_descriptor.json
+│   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+│       ├── raw_shapley_contribs_class_0.jay
+│       ├── raw_shapley_contribs_index.json
+│       ├── report.md
+│       └── <span class="ansi-magenta-intense-fg ansi-bold">shapley-class-0.png</span>
+├── interpretation.html
+├── interpretation.json
+└── <span class="ansi-blue-intense-fg ansi-bold">tmp</span>
+
+128 directories, 553 files
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>h2o.cluster().shutdown()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+H2O session _sid_9d04 closed.
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="h2o-sonar-dai-mojo-models.html" class="btn btn-neutral float-left" title="H2O Eval Studio Demo of Driverless AI MOJO Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="h2o-sonar-pickled-models.html" class="btn btn-neutral float-right" title="H2O Eval Studio Demo of Pickled Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

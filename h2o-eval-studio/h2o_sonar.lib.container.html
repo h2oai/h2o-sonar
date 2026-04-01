@@ -1,0 +1,657 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>h2o_sonar.lib.container package &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/h2o_sonar.lib.container.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="h2o_sonar.lib.integrations package" href="h2o_sonar.lib.integrations.html" />
+    <link rel="prev" title="h2o_sonar.lib.api package" href="h2o_sonar.lib.api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.html">H2O Eval Studio Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Eval Studio Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="python_api.html">H2O Eval Studio Python API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="h2o_sonar.html">h2o_sonar package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.explainers.html">h2o_sonar.explainers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.evaluators.html">h2o_sonar.evaluators package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="h2o_sonar.lib.html">h2o_sonar.lib package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.lib.api.html">h2o_sonar.lib.api package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">h2o_sonar.lib.container package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.lib.integrations.html">h2o_sonar.lib.integrations package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.methods.html">h2o_sonar.methods package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.utils.html">h2o_sonar.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="python_api.html">H2O Eval Studio Python API</a></li>
+          <li class="breadcrumb-item"><a href="h2o_sonar.html">h2o_sonar package</a></li>
+          <li class="breadcrumb-item"><a href="h2o_sonar.lib.html">h2o_sonar.lib package</a></li>
+      <li class="breadcrumb-item active">h2o_sonar.lib.container package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/h2o_sonar.lib.container.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="h2o-sonar-lib-container-package">
+<h1>h2o_sonar.lib.container package<a class="headerlink" href="#h2o-sonar-lib-container-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<span id="h2o-sonar-lib-container-submodules"></span><h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-h2o_sonar.lib.container.explainer_container">
+<span id="h2o-sonar-lib-container-explainer-container-module"></span><h2>h2o_sonar.lib.container.explainer_container module<a class="headerlink" href="#module-h2o_sonar.lib.container.explainer_container" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.AsyncLocalContainer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">h2o_sonar.lib.container.explainer_container.</span></span><span class="sig-name descname"><span class="pre">AsyncLocalContainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.int" title="h2o_sonar.lib.api.commons.EvaluatorParamType.int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.AsyncLocalContainer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer" title="h2o_sonar.lib.container.explainer_container.ExplainerContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExplainerContainer</span></code></a></p>
+<p>Local container which runs interpretations asynchronously.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.AsyncLocalContainer.OPT_PER_INTERPRETATION_LOGGER">
+<span class="sig-name descname"><span class="pre">OPT_PER_INTERPRETATION_LOGGER</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.AsyncLocalContainer.OPT_PER_INTERPRETATION_LOGGER" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.AsyncLocalContainer.TYPE_ID">
+<span class="sig-name descname"><span class="pre">TYPE_ID</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ASYNC_LOCAL_EXPLAINER_CONTAINER'</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.AsyncLocalContainer.TYPE_ID" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.AsyncLocalContainer.executor">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">executor</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.AsyncLocalContainer.executor" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.AsyncLocalContainer.gc">
+<span class="sig-name descname"><span class="pre">gc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.AsyncLocalContainer.gc" title="Link to this definition"></a></dt>
+<dd><p>Free system resources:</p>
+<ul class="simple">
+<li><p>shutdowns process pool(s)</p></li>
+<li><p>runs garbage collector</p></li>
+<li><p>clears temporary files</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.AsyncLocalContainer.run_interpretation">
+<span class="sig-name descname"><span class="pre">run_interpretation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ExplainableDataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Frame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.models.ExplainableModel" title="h2o_sonar.lib.api.models.ExplainableModel"><span class="pre">ExplainableModel</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.models.ExplainableModel" title="h2o_sonar.lib.api.models.ExplainableModel"><span class="pre">ExplainableModel</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">explainers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.ExplainerToRun" title="h2o_sonar.lib.api.commons.ExplainerToRun"><span class="pre">ExplainerToRun</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explainer_keywords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ExplainableDataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Frame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ExplainableDataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Frame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_raw_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">used_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_num_rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.int" title="h2o_sonar.lib.api.commons.EvaluatorParamType.int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.utils.html#h2o_sonar.utils.sampling.DatasetSampler" title="h2o_sonar.utils.sampling.DatasetSampler"><span class="pre">DatasetSampler</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_formats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AbstractProgressCallbackContext</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_asynchronously</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_explainers_in_parallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.interpretations.Interpretation" title="h2o_sonar.lib.api.interpretations.Interpretation"><span class="pre">Interpretation</span></a></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.AsyncLocalContainer.run_interpretation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.AsyncLocalContainer.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistence_api</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.persistences.PersistenceApi" title="h2o_sonar.lib.api.persistences.PersistenceApi"><span class="pre">PersistenceApi</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistence_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.persistences.PersistenceType" title="h2o_sonar.lib.api.persistences.PersistenceType"><span class="pre">PersistenceType</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PersistenceType.file_system</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.int" title="h2o_sonar.lib.api.commons.EvaluatorParamType.int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.AsyncLocalContainer.setup" title="Link to this definition"></a></dt>
+<dd><p>Setup explainer container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>results_location</strong><span class="classifier">str | Any</span></dt><dd><p>Optional directory where can container (interpretation, explainers, …)
+store the data. If not specified, then in-memory store is used and logging to
+stdout/stderr is used.</p>
+</dd>
+<dt><strong>persistence_api</strong><span class="classifier">p10s.PersistenceApi | None</span></dt><dd><p>Instance of the persistence API allowing to create various persistence types
+(like file-system or DB)</p>
+</dd>
+<dt><strong>persistence_type</strong><span class="classifier">p10s.Persistence | None</span></dt><dd><p>Persistence type to be used by this container - default is the file-system
+persistence with the root in the current directory.</p>
+</dd>
+<dt><strong>logger</strong><span class="classifier">loggers.SonarLogger | None</span></dt><dd><p>Optional custom logger.</p>
+</dd>
+<dt><strong>log_level</strong><span class="classifier">int | None</span></dt><dd><p>Interpretation log level.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ContainerRegistry">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">h2o_sonar.lib.container.explainer_container.</span></span><span class="sig-name descname"><span class="pre">ContainerRegistry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">singleton_create_key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ContainerRegistry" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Explainer container factory and registry class is able to instantiate
+containers using symbolic names.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ContainerRegistry.container_types">
+<span class="sig-name descname"><span class="pre">container_types</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ContainerRegistry.container_types" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ContainerRegistry.containers">
+<span class="sig-name descname"><span class="pre">containers</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ContainerRegistry.containers" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ContainerRegistry.create_container">
+<span class="sig-name descname"><span class="pre">create_container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">container_type_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ContainerRegistry.create_container" title="Link to this definition"></a></dt>
+<dd><p>Get instance of the container for given container type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ContainerRegistry.get_container_types">
+<span class="sig-name descname"><span class="pre">get_container_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ContainerRegistry.get_container_types" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ContainerRegistry.list_containers">
+<span class="sig-name descname"><span class="pre">list_containers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ContainerRegistry.list_containers" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ContainerRegistry.register_container_type">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">register_container_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">container_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.persistences.FilesystemPersistence.type" title="h2o_sonar.lib.api.persistences.FilesystemPersistence.type"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer" title="h2o_sonar.lib.container.explainer_container.ExplainerContainer"><span class="pre">ExplainerContainer</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container_type_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ContainerRegistry.register_container_type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ContainerRegistry.registry">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">registry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ContainerRegistry.registry" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ContainerRegistry.resolve_container">
+<span class="sig-name descname"><span class="pre">resolve_container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">container</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer" title="h2o_sonar.lib.container.explainer_container.ExplainerContainer"><span class="pre">ExplainerContainer</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ContainerRegistry.resolve_container" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.DependencyTreeNode">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">h2o_sonar.lib.container.explainer_container.</span></span><span class="sig-name descname"><span class="pre">DependencyTreeNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explainer_class</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">children</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.DependencyTreeNode" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.DependencyTreeNode.add_child">
+<span class="sig-name descname"><span class="pre">add_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.DependencyTreeNode.add_child" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.DependencyTreeNode.get_node_by_id">
+<span class="sig-name descname"><span class="pre">get_node_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eid</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#h2o_sonar.lib.container.explainer_container.DependencyTreeNode" title="h2o_sonar.lib.container.explainer_container.DependencyTreeNode"><span class="pre">DependencyTreeNode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.DependencyTreeNode.get_node_by_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.DependencyTreeNode.str_lines">
+<span class="sig-name descname"><span class="pre">str_lines</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.DependencyTreeNode.str_lines" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.DependencyTreeNode.to_list">
+<span class="sig-name descname"><span class="pre">to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue_result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_queue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.int" title="h2o_sonar.lib.api.commons.EvaluatorParamType.int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.DependencyTreeNode.to_list" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">h2o_sonar.lib.container.explainer_container.</span></span><span class="sig-name descname"><span class="pre">ExplainerContainer</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Explainer container interface provides execution runtime independent APIs
+and functions which enable explainers to run “anywhere” via  explainer container
+implementations for various runtimes.</p>
+<p>Explainer gets reference to explainer container on its instantiation. Explainer
+container in turn contains references to public dataset, model and persistence APIs.</p>
+<p>Explainer container can be instantiated with various combinations
+of mock/real/DB-based/… model/dataset/persistence APIs.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.TYPE_ID">
+<span class="sig-name descname"><span class="pre">TYPE_ID</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.TYPE_ID" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.delete_interpretation">
+<span class="sig-name descname"><span class="pre">delete_interpretation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mli_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.delete_interpretation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.explainers_registry">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">explainers_registry</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.explainers_registry" title="Link to this definition"></a></dt>
+<dd><p>Registry of explainers registered within the container.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.gc">
+<span class="sig-name descname"><span class="pre">gc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.gc" title="Link to this definition"></a></dt>
+<dd><p>Free system resources:</p>
+<ul class="simple">
+<li><p>shutdowns process pool(s)</p></li>
+<li><p>runs garbage collector</p></li>
+<li><p>clears temporary files</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer">
+<span class="sig-name descname"><span class="pre">get_explainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explainer_id</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.explainers.ExplainerDescriptor" title="h2o_sonar.lib.api.explainers.ExplainerDescriptor"><span class="pre">ExplainerDescriptor</span></a></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_class">
+<span class="sig-name descname"><span class="pre">get_explainer_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explainer_id</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.persistences.FilesystemPersistence.type" title="h2o_sonar.lib.api.persistences.FilesystemPersistence.type"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.explainers.Explainer" title="h2o_sonar.lib.api.explainers.Explainer"><span class="pre">Explainer</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_class" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_job_keys_by_id">
+<span class="sig-name descname"><span class="pre">get_explainer_job_keys_by_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_job_keys_by_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_job_statuses">
+<span class="sig-name descname"><span class="pre">get_explainer_job_statuses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mli_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_job_statuses" title="Link to this definition"></a></dt>
+<dd><p>Get explainer job status for every explainer which was run
+within the interpretation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_local_result">
+<span class="sig-name descname"><span class="pre">get_explainer_local_result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_local_result" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_log_path">
+<span class="sig-name descname"><span class="pre">get_explainer_log_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_log_path" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_metadata">
+<span class="sig-name descname"><span class="pre">get_explainer_metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_metadata" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_result_path">
+<span class="sig-name descname"><span class="pre">get_explainer_result_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_result_path" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_snapshot_path">
+<span class="sig-name descname"><span class="pre">get_explainer_snapshot_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_explainer_snapshot_path" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_interpretation_params">
+<span class="sig-name descname"><span class="pre">get_interpretation_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mli_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_interpretation_params" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_interpretation_status">
+<span class="sig-name descname"><span class="pre">get_interpretation_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mli_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.get_interpretation_status" title="Link to this definition"></a></dt>
+<dd><p>Did interpretation succeeded and failed?</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.hot_deploy_explainer">
+<span class="sig-name descname"><span class="pre">hot_deploy_explainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explainer_descriptor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.hot_deploy_explainer" title="Link to this definition"></a></dt>
+<dd><p>Import custom BYOE recipe explainer <strong>class</strong> from given Python module.
+It is expected that the module is installed and/or on <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>explainer_descriptor</strong><span class="classifier">str</span></dt><dd><p>Explainer descriptor with format <code class="docutils literal notranslate"><span class="pre">...</span></code> for example <code class="docutils literal notranslate"><span class="pre">...</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Type[Explainer]</dt><dd><p>New explainer type.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.list_explainers">
+<span class="sig-name descname"><span class="pre">list_explainers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">experiment_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explanation_scopes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_meta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.models.ExplainableModelMeta" title="h2o_sonar.lib.api.models.ExplainableModelMeta"><span class="pre">ExplainableModelMeta</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explainer_filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.FilterEntry" title="h2o_sonar.lib.api.commons.FilterEntry"><span class="pre">FilterEntry</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">portable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.explainers.ExplainerDescriptor" title="h2o_sonar.lib.api.explainers.ExplainerDescriptor"><span class="pre">ExplainerDescriptor</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.list_explainers" title="Link to this definition"></a></dt>
+<dd><p>List and filter explainers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>list[ExplainerDescriptor]</dt><dd><p>List of explainer descriptors which match the filter.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.list_interpretations">
+<span class="sig-name descname"><span class="pre">list_interpretations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'h2o-sonar'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.list_interpretations" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.load_interpretations">
+<span class="sig-name descname"><span class="pre">load_interpretations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interpretation_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'h2o-sonar'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.interpretations.Interpretation" title="h2o_sonar.lib.api.interpretations.Interpretation"><span class="pre">Interpretation</span></a></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.load_interpretations" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.logger">
+<span class="sig-name descname"><span class="pre">logger</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.html#h2o_sonar.loggers.SonarLogger" title="h2o_sonar.loggers.SonarLogger"><span class="pre">SonarLogger</span></a></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.logger" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.persistence_type">
+<span class="sig-name descname"><span class="pre">persistence_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.persistences.PersistenceType" title="h2o_sonar.lib.api.persistences.PersistenceType"><span class="pre">PersistenceType</span></a></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.persistence_type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.register_configured_explainers">
+<span class="sig-name descname"><span class="pre">register_configured_explainers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.register_configured_explainers" title="Link to this definition"></a></dt>
+<dd><p>Register custom BYOE recipe explainers which are configured in H2O Eval Studio
+configuration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.register_explainer">
+<span class="sig-name descname"><span class="pre">register_explainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explainer_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.persistences.FilesystemPersistence.type" title="h2o_sonar.lib.api.persistences.FilesystemPersistence.type"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.explainers.Explainer" title="h2o_sonar.lib.api.explainers.Explainer"><span class="pre">Explainer</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explainer_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.register_explainer" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.run_interpretation">
+<span class="sig-name descname"><span class="pre">run_interpretation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ExplainableDataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Frame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.models.ExplainableModel" title="h2o_sonar.lib.api.models.ExplainableModel"><span class="pre">ExplainableModel</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.models.ExplainableModel" title="h2o_sonar.lib.api.models.ExplainableModel"><span class="pre">ExplainableModel</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">explainers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.ExplainerToRun" title="h2o_sonar.lib.api.commons.ExplainerToRun"><span class="pre">ExplainerToRun</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explainer_keywords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ExplainableDataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.ResourceHandle" title="h2o_sonar.lib.api.commons.ResourceHandle"><span class="pre">ResourceHandle</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Frame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ExplainableDatasetHandle</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ExplainableDataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.ResourceHandle" title="h2o_sonar.lib.api.commons.ResourceHandle"><span class="pre">ResourceHandle</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Frame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ExplainableDatasetHandle</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_raw_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">used_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_num_rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.int" title="h2o_sonar.lib.api.commons.EvaluatorParamType.int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.utils.html#h2o_sonar.utils.sampling.DatasetSampler" title="h2o_sonar.utils.sampling.DatasetSampler"><span class="pre">DatasetSampler</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_formats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AbstractProgressCallbackContext</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_asynchronously</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_explainers_in_parallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.html#h2o_sonar.loggers.SonarLogger" title="h2o_sonar.loggers.SonarLogger"><span class="pre">SonarLogger</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.interpretations.Interpretation" title="h2o_sonar.lib.api.interpretations.Interpretation"><span class="pre">Interpretation</span></a></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.run_interpretation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.setup">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistence_api</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.persistences.PersistenceApi" title="h2o_sonar.lib.api.persistences.PersistenceApi"><span class="pre">PersistenceApi</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistence_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.persistences.PersistenceType" title="h2o_sonar.lib.api.persistences.PersistenceType"><span class="pre">PersistenceType</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PersistenceType.file_system</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.html#h2o_sonar.loggers.SonarLogger" title="h2o_sonar.loggers.SonarLogger"><span class="pre">SonarLogger</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.int" title="h2o_sonar.lib.api.commons.EvaluatorParamType.int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.setup" title="Link to this definition"></a></dt>
+<dd><p>Setup explainer container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>results_location</strong><span class="classifier">str | Any</span></dt><dd><p>Optional directory where can container (interpretation, explainers, …)
+store the data. If not specified, then in-memory store is used and logging to
+stdout/stderr is used.</p>
+</dd>
+<dt><strong>persistence_api</strong><span class="classifier">p10s.PersistenceApi | None</span></dt><dd><p>Instance of the persistence API allowing to create various persistence types
+(like file-system or DB)</p>
+</dd>
+<dt><strong>persistence_type</strong><span class="classifier">p10s.Persistence | None</span></dt><dd><p>Persistence type to be used by this container - default is the file-system
+persistence with the root in the current directory.</p>
+</dd>
+<dt><strong>logger</strong><span class="classifier">loggers.SonarLogger | None</span></dt><dd><p>Optional custom logger.</p>
+</dd>
+<dt><strong>log_level</strong><span class="classifier">int | None</span></dt><dd><p>Interpretation log level.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.unregister_explainer">
+<span class="sig-name descname"><span class="pre">unregister_explainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explainer_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.unregister_explainer" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerContainer.update_explainer_result">
+<span class="sig-name descname"><span class="pre">update_explainer_result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer.update_explainer_result" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ExplainerExecutor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">h2o_sonar.lib.container.explainer_container.</span></span><span class="sig-name descname"><span class="pre">ExplainerExecutor</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ExplainerExecutor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Executor of the interpretation and its explainers.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.LocalExplainerContainer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">h2o_sonar.lib.container.explainer_container.</span></span><span class="sig-name descname"><span class="pre">LocalExplainerContainer</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.LocalExplainerContainer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer" title="h2o_sonar.lib.container.explainer_container.ExplainerContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExplainerContainer</span></code></a></p>
+<p>Local explainer container enables explainers to run on local machine.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.LocalExplainerContainer.TYPE_ID">
+<span class="sig-name descname"><span class="pre">TYPE_ID</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LOCAL_EXPLAINER_CONTAINER'</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.LocalExplainerContainer.TYPE_ID" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.LocalExplainerContainer.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistence_api</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.persistences.PersistenceApi" title="h2o_sonar.lib.api.persistences.PersistenceApi"><span class="pre">PersistenceApi</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistence_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.persistences.PersistenceType" title="h2o_sonar.lib.api.persistences.PersistenceType"><span class="pre">PersistenceType</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PersistenceType.file_system</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.html#h2o_sonar.loggers.SonarLogger" title="h2o_sonar.loggers.SonarLogger"><span class="pre">SonarLogger</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.int" title="h2o_sonar.lib.api.commons.EvaluatorParamType.int"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.LocalExplainerContainer.setup" title="Link to this definition"></a></dt>
+<dd><p>Setup explainer container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>results_location</strong><span class="classifier">str | Any</span></dt><dd><p>Optional directory where can container (interpretation, explainers, …)
+store the data. If not specified, then in-memory store is used and logging to
+stdout/stderr is used.</p>
+</dd>
+<dt><strong>persistence_api</strong><span class="classifier">p10s.PersistenceApi | None</span></dt><dd><p>Instance of the persistence API allowing to create various persistence types
+(like file-system or DB)</p>
+</dd>
+<dt><strong>persistence_type</strong><span class="classifier">p10s.Persistence | None</span></dt><dd><p>Persistence type to be used by this container - default is the file-system
+persistence with the root in the current directory.</p>
+</dd>
+<dt><strong>logger</strong><span class="classifier">loggers.SonarLogger | None</span></dt><dd><p>Optional custom logger.</p>
+</dd>
+<dt><strong>log_level</strong><span class="classifier">int | None</span></dt><dd><p>Interpretation log level.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">h2o_sonar.lib.container.explainer_container.</span></span><span class="sig-name descname"><span class="pre">ParallelExplainerExecutor</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#h2o_sonar.lib.container.explainer_container.ExplainerExecutor" title="h2o_sonar.lib.container.explainer_container.ExplainerExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExplainerExecutor</span></code></a></p>
+<p>Run interpretation explainers in parallel.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor.PriorityQueues">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">PriorityQueues</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor.PriorityQueues" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Explainer executor priority queues.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor.PriorityQueues.HIGH_PRIORITY">
+<span class="sig-name descname"><span class="pre">HIGH_PRIORITY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor.PriorityQueues.HIGH_PRIORITY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor.PriorityQueues.LOW_PRIORITY">
+<span class="sig-name descname"><span class="pre">LOW_PRIORITY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor.PriorityQueues.LOW_PRIORITY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor.PriorityQueues.MEDIUM_PRIORITY">
+<span class="sig-name descname"><span class="pre">MEDIUM_PRIORITY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor.PriorityQueues.MEDIUM_PRIORITY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor.ensure_valid_queue_plan">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ensure_valid_queue_plan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">execution_plan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue_plan</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">container_logger</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor.ensure_valid_queue_plan" title="Link to this definition"></a></dt>
+<dd><p>In 3 priority queues design, task from a higher priority queue
+cannot depend on task from a lower priority queue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>execution_plan</strong><span class="classifier">list</span></dt><dd><p>Execution plan which gives sequence of explainers to be executed.</p>
+</dd>
+<dt><strong>queue_plan</strong><span class="classifier">dict</span></dt><dd><p>Queue plan to be verified (and eventually fixed).</p>
+</dd>
+<dt><strong>container_logger</strong></dt><dd><p>Container logger.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor.get_queue_for_explainer">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_queue_for_explainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explainer_keywords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.int" title="h2o_sonar.lib.api.commons.EvaluatorParamType.int"><span class="pre">int</span></a></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.ParallelExplainerExecutor.get_queue_for_explainer" title="Link to this definition"></a></dt>
+<dd><p>Get execution queue (high priority, medium priority, low priority)
+for explainer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>explainer_keywords</strong><span class="classifier">list</span></dt><dd><p>Explainer keywords where it requests the queue</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Priority queue ID.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.SequentialExplainerExecutor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">h2o_sonar.lib.container.explainer_container.</span></span><span class="sig-name descname"><span class="pre">SequentialExplainerExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">container</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer" title="h2o_sonar.lib.container.explainer_container.ExplainerContainer"><span class="pre">ExplainerContainer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">explainers_registry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.explainers.ExplainerRegistry" title="h2o_sonar.lib.api.explainers.ExplainerRegistry"><span class="pre">ExplainerRegistry</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container_logger</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.SequentialExplainerExecutor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#h2o_sonar.lib.container.explainer_container.ExplainerExecutor" title="h2o_sonar.lib.container.explainer_container.ExplainerExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExplainerExecutor</span></code></a></p>
+<p>Run interpretation explainers sequentially.</p>
+<p>This is “for loop style” explainers execution executor - no multithreading,
+no multiprocessing, no async - explainers are executed sequentially within
+the same process. This is straightforward, deadlock/race conditions free and
+system resources considerate approach.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.SequentialExplainerExecutor.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interpretation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.interpretations.Interpretation" title="h2o_sonar.lib.api.interpretations.Interpretation"><span class="pre">Interpretation</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.interpretations.Interpretation" title="h2o_sonar.lib.api.interpretations.Interpretation"><span class="pre">Interpretation</span></a></span></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.SequentialExplainerExecutor.run" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.SequentialExplainerExecutor.username">
+<span class="sig-name descname"><span class="pre">username</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.SequentialExplainerExecutor.username" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.lib.container.explainer_container.register_ootb_explainers">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.lib.container.explainer_container.</span></span><span class="sig-name descname"><span class="pre">register_ootb_explainers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">container</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#h2o_sonar.lib.container.explainer_container.ExplainerContainer" title="h2o_sonar.lib.container.explainer_container.ExplainerContainer"><span class="pre">ExplainerContainer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.lib.container.explainer_container.register_ootb_explainers" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-h2o_sonar.lib.container">
+<span id="module-contents"></span><span id="h2o-sonar-lib-container-module-contents"></span><h2>Module contents<a class="headerlink" href="#module-h2o_sonar.lib.container" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="h2o_sonar.lib.api.html" class="btn btn-neutral float-left" title="h2o_sonar.lib.api package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="h2o_sonar.lib.integrations.html" class="btn btn-neutral float-right" title="h2o_sonar.lib.integrations package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

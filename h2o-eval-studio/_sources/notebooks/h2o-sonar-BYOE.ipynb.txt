@@ -1,0 +1,427 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "a89d1e71-a876-4189-b6ed-ee226dad679e",
+   "metadata": {},
+   "source": [
+    "# Bring Your Own Explainer (BYOE) example\n",
+    "\n",
+    "This example demonstrates how to run your custom explainer in order to interpret the model.\n",
+    "\n",
+    "Techniques and methodologies used by H2O Sonar for model interpretation can be extended with recipes. Bring your own explainer (BYOE) feature allows you to use your explainers in combination with or in place of H2O Sonar built-in explainers (all H2O Sonar explainers are in fact BYOEs). This lets you extend the capabilities of H2O Sonar explainers and out-of-the-box interpretation techniques."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "8564ad4b-dca1-4934-aaa9-a83f62141ca2",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<style type='text/css'>\n",
+       ".datatable table.frame { margin-bottom: 0; }\n",
+       ".datatable table.frame thead { border-bottom: none; }\n",
+       ".datatable table.frame tr.coltypes td {  color: #FFFFFF;  line-height: 6px;  padding: 0 0.5em;}\n",
+       ".datatable .bool    { background: #DDDD99; }\n",
+       ".datatable .object  { background: #565656; }\n",
+       ".datatable .int     { background: #5D9E5D; }\n",
+       ".datatable .float   { background: #4040CC; }\n",
+       ".datatable .str     { background: #CC4040; }\n",
+       ".datatable .time    { background: #40CC40; }\n",
+       ".datatable .row_index {  background: var(--jp-border-color3);  border-right: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  font-size: 9px;}\n",
+       ".datatable .frame tbody td { text-align: left; }\n",
+       ".datatable .frame tr.coltypes .row_index {  background: var(--jp-border-color0);}\n",
+       ".datatable th:nth-child(2) { padding-left: 12px; }\n",
+       ".datatable .hellipsis {  color: var(--jp-cell-editor-border-color);}\n",
+       ".datatable .vellipsis {  background: var(--jp-layout-color0);  color: var(--jp-cell-editor-border-color);}\n",
+       ".datatable .na {  color: var(--jp-cell-editor-border-color);  font-size: 80%;}\n",
+       ".datatable .sp {  opacity: 0.25;}\n",
+       ".datatable .footer { font-size: 9px; }\n",
+       ".datatable .frame_dimensions {  background: var(--jp-border-color3);  border-top: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  display: inline-block;  opacity: 0.6;  padding: 1px 10px 1px 5px;}\n",
+       "</style>\n"
+      ],
+      "text/plain": [
+       "<IPython.core.display.HTML object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "import sys\n",
+    "import os\n",
+    "\n",
+    "import pandas\n",
+    "import webbrowser\n",
+    "from sklearn.ensemble import GradientBoostingClassifier\n",
+    "from h2o_sonar import interpret\n",
+    "from h2o_sonar.lib.api import models"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "538dd2c2-9588-4107-9ac0-891b1510bf06",
+   "metadata": {},
+   "source": [
+    "# Load BYOE explainer\n",
+    "\n",
+    "Load BYOE explainer to Python runtime so that it might be imported and subsequently run."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "bd6571de-5a0b-4c89-acee-f93c39c8c0f3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "byoe_path = os.getcwd() + \"/byoe/examples\"\n",
+    "sys.path.append(os.path.abspath(byoe_path))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "b7b7170d-e137-4d7c-81c2-d385f6fd32d6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from example_metadata_explainer import ExampleMetaAndAttrsExplainer"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6bb9c7b6-09c6-41ad-8397-fa56ff9f4eae",
+   "metadata": {},
+   "source": [
+    "# Register BYOE explainer\n",
+    "\n",
+    "**Register** BYOE explainer in H2O Sonar runtime."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "69eb3489-9b56-4f03-aa6a-46ca90ef62bc",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%%capture\n",
+    "explainer_id: str = interpret.register_explainer(\n",
+    "    explainer_class=ExampleMetaAndAttrsExplainer,\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "967f7229-af5f-46a9-9714-b20ecde77049",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'id': 'example_metadata_explainer.ExampleMetaAndAttrsExplainer',\n",
+       " 'name': 'ExampleMetaAndAttrsExplainer',\n",
+       " 'display_name': 'Example Explainer Metadata and Attributes',\n",
+       " 'tagline': 'ExampleMetaAndAttrsExplainer.',\n",
+       " 'description': 'This explainer example prints explainer metadata, instance attributes and setup() explainer parameters.',\n",
+       " 'brief_description': 'ExampleMetaAndAttrsExplainer.',\n",
+       " 'model_types': [],\n",
+       " 'can_explain': ['regression', 'binomial', 'multinomial'],\n",
+       " 'explanation_scopes': ['global_scope'],\n",
+       " 'explanations': [{'explanation_type': 'global-work-dir-archive',\n",
+       "   'name': 'WorkDirArchiveExplanation',\n",
+       "   'category': '',\n",
+       "   'scope': 'global',\n",
+       "   'has_local': '',\n",
+       "   'formats': []}],\n",
+       " 'keywords': [],\n",
+       " 'parameters': [],\n",
+       " 'metrics_meta': []}"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "interpret.describe_explainer(ExampleMetaAndAttrsExplainer)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2467a4be-1278-48cd-8091-e5622dd66615",
+   "metadata": {},
+   "source": [
+    "# Run Interpretation"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "c9a8435c-e2f6-46ae-8094-e0d746f7a1d3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# prepare dataset and model to be explained\n",
+    "\n",
+    "# dataset\n",
+    "target_col = \"default payment next month\"\n",
+    "df = pandas.read_csv(\"../../data/predictive/creditcard.csv\")\n",
+    "(X, y) = df.drop(target_col, axis=1), df[target_col]\n",
+    "\n",
+    "# scikit-learn model\n",
+    "gradient_booster = GradientBoostingClassifier(learning_rate=0.1)\n",
+    "gradient_booster.fit(X, y)\n",
+    "\n",
+    "# explainable model\n",
+    "model = models.ModelApi().create_model(\n",
+    "    target_col=target_col, \n",
+    "    model_src=gradient_booster, \n",
+    "    used_features=X.columns.to_list()\n",
+    ")\n",
+    "\n",
+    "results_location = \"../../results\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "17d073d5-74e0-485b-9fbc-86f85d372015",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# run the interpretation with BYOE explainer\n",
+    "interpretation = interpret.run_interpretation(\n",
+    "    dataset=df,\n",
+    "    model=model,\n",
+    "    target_col=target_col,\n",
+    "    results_location=results_location,\n",
+    "    # run the BYOE explainer only\n",
+    "    explainers=[explainer_id],\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "3240433d-930d-4e90-b491-8a73389fa7d5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# retrieve the result\n",
+    "result = interpretation.get_explainer_result(explainer_id)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "0a3cdef8-0a4f-4a24-8852-1a8765c2abf3",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'id': 'example_metadata_explainer.ExampleMetaAndAttrsExplainer',\n",
+       " 'name': 'ExampleMetaAndAttrsExplainer',\n",
+       " 'display_name': 'Example Explainer Metadata and Attributes',\n",
+       " 'tagline': 'ExampleMetaAndAttrsExplainer.',\n",
+       " 'description': 'This explainer example prints explainer metadata, instance attributes and setup() explainer parameters.',\n",
+       " 'brief_description': 'ExampleMetaAndAttrsExplainer.',\n",
+       " 'model_types': [],\n",
+       " 'can_explain': ['regression', 'binomial', 'multinomial'],\n",
+       " 'explanation_scopes': ['global_scope'],\n",
+       " 'explanations': [{'explanation_type': 'global-work-dir-archive',\n",
+       "   'name': 'ExampleMetaAndAttrsExplainer',\n",
+       "   'category': 'Demo',\n",
+       "   'scope': 'global',\n",
+       "   'has_local': None,\n",
+       "   'formats': ['application/zip']}],\n",
+       " 'keywords': [],\n",
+       " 'parameters': [],\n",
+       " 'metrics_meta': []}"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# summary\n",
+    "result.summary()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "44ae73b5-4b84-4844-8658-704ddeaeaa38",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# save the explainer log\n",
+    "result.log(path=\"./demo.log\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "22a33116-1000-44cb-a320-4236641fcb69",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Opening the result: /home/dvorka/h/mli/git/h2o-sonar-FLOSS/results/h2o-sonar/mli_experiment_c95524c4-0e2a-4e3f-b033-927356f012a8/interpretation.html\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# open interpretation HTML report in web browser\n",
+    "print(f\"Opening the result: {interpretation.result.get_html_report_location()}\")\n",
+    "webbrowser.open(interpretation.result.get_html_report_location())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "97c44029-6f11-4d1a-9660-4f26bff38519",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\u001b[01;34m../../results\u001b[00m\n",
+      "├── \u001b[01;34mh2o-sonar\u001b[00m\n",
+      "│   ├── \u001b[01;34mmli_experiment_93bb2f77-e2cf-472c-845d-b65dc699f0db\u001b[00m\n",
+      "│   │   ├── \u001b[01;34mexplainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_9a617dc2-a3a6-4fb0-a284-d8b82f6d2d28\u001b[00m\n",
+      "│   │   │   ├── \u001b[01;34mglobal_work_dir_archive\u001b[00m\n",
+      "│   │   │   │   ├── \u001b[01;34mapplication_zip\u001b[00m\n",
+      "│   │   │   │   │   └── \u001b[01;31mexplanation.zip\u001b[00m\n",
+      "│   │   │   │   └── application_zip.meta\n",
+      "│   │   │   ├── \u001b[01;34minsights\u001b[00m\n",
+      "│   │   │   │   └── insights_and_actions.json\n",
+      "│   │   │   ├── \u001b[01;34mlog\u001b[00m\n",
+      "│   │   │   │   └── explainer_run_9a617dc2-a3a6-4fb0-a284-d8b82f6d2d28.log\n",
+      "│   │   │   ├── \u001b[01;34mproblems\u001b[00m\n",
+      "│   │   │   │   └── problems_and_actions.json\n",
+      "│   │   │   ├── result_descriptor.json\n",
+      "│   │   │   └── \u001b[01;34mwork\u001b[00m\n",
+      "│   │   ├── interpretation.json\n",
+      "│   │   └── \u001b[01;34mtmp\u001b[00m\n",
+      "│   └── \u001b[01;34mmli_experiment_c95524c4-0e2a-4e3f-b033-927356f012a8\u001b[00m\n",
+      "│       ├── \u001b[01;34mexplainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324\u001b[00m\n",
+      "│       │   ├── \u001b[01;34mglobal_work_dir_archive\u001b[00m\n",
+      "│       │   │   ├── \u001b[01;34mapplication_zip\u001b[00m\n",
+      "│       │   │   │   └── \u001b[01;31mexplanation.zip\u001b[00m\n",
+      "│       │   │   └── application_zip.meta\n",
+      "│       │   ├── \u001b[01;34minsights\u001b[00m\n",
+      "│       │   │   └── insights_and_actions.json\n",
+      "│       │   ├── \u001b[01;34mlog\u001b[00m\n",
+      "│       │   │   └── explainer_run_656eb7db-f250-4646-a27b-f0650213a324.log\n",
+      "│       │   ├── \u001b[01;34mproblems\u001b[00m\n",
+      "│       │   │   └── problems_and_actions.json\n",
+      "│       │   ├── result_descriptor.json\n",
+      "│       │   └── \u001b[01;34mwork\u001b[00m\n",
+      "│       ├── interpretation.html\n",
+      "│       ├── interpretation.json\n",
+      "│       └── \u001b[01;34mtmp\u001b[00m\n",
+      "├── h2o-sonar.html\n",
+      "└── h2o-sonar.log\n",
+      "\n",
+      "19 directories, 17 files\n"
+     ]
+    }
+   ],
+   "source": [
+    "!tree ../../results"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "b7a4d9d7-4b91-4e2b-bef3-bdca9e81a39a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# save the explainer data\n",
+    "result.zip(file_path=\"./demo-archive.zip\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "a5b59db6-4ac9-40ea-b21f-be4d49a2ea82",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Archive:  demo-archive.zip\n",
+      "  Length      Date    Time    Name\n",
+      "---------  ---------- -----   ----\n",
+      "      978  2026-01-29 15:23   explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324/result_descriptor.json\n",
+      "        2  2026-01-29 15:23   explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324/problems/problems_and_actions.json\n",
+      "      142  2026-01-29 15:23   explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324/global_work_dir_archive/application_zip.meta\n",
+      "       22  2026-01-29 15:23   explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324/global_work_dir_archive/application_zip/explanation.zip\n",
+      "        0  2026-01-29 15:23   explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324/log/explainer_run_656eb7db-f250-4646-a27b-f0650213a324.log\n",
+      "        2  2026-01-29 15:23   explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324/insights/insights_and_actions.json\n",
+      "---------                     -------\n",
+      "     1146                     6 files\n"
+     ]
+    }
+   ],
+   "source": [
+    "!unzip -l demo-archive.zip"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6c1a0619-6802-471a-881b-fc5a973ba73b",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "H2O Sonar",
+   "language": "python",
+   "name": "h2o-sonar"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

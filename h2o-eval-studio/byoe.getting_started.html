@@ -1,0 +1,1036 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started with BYOE Recipes &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/byoe.getting_started.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="H2O Eval Studio Examples" href="examples.html" />
+    <link rel="prev" title="Bring Your Own Explainer" href="byoe.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.html">H2O Eval Studio Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting Started with BYOE Recipes</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Eval Studio Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="byoe.html">Bring Your Own Explainer</a></li>
+      <li class="breadcrumb-item active">Getting Started with BYOE Recipes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/byoe.getting_started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started-with-byoe-recipes">
+<h1>Getting Started with BYOE Recipes<a class="headerlink" href="#getting-started-with-byoe-recipes" title="Link to this heading"></a></h1>
+<p>H2O Eval Studio enables you to build an <strong>extensible</strong> platform of <strong>custom</strong> explainers.
+H2O Eval Studio users can implement their own methods to get custom insights or
+determine model behavior, use their domain expertise or customize existing explainers.</p>
+<p>H2O Eval Studio uses the concept of <strong>recipes</strong> which allows for adding and developing custom
+explainers - you can <strong>bring your own explainer</strong> (BYOE).</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference internal" href="#introduction-to-bring-your-own-explainer-recipes"><span class="std std-ref">Introduction to Bring Your Own Example recipes</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#how-do-recipes-work"><span class="std std-ref">How do recipes work?</span></a></p></li>
+<li><p><a class="reference internal" href="#what-is-the-role-of-recipes"><span class="std std-ref">What is the role of recipes?</span></a></p></li>
+<li><p><a class="reference internal" href="#where-can-you-find-open-source-recipe-examples-and-templates"><span class="std std-ref">Where can you find open-source recipes?</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#explainer"><span class="std std-ref">Explainer</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#morris-sensitivity-analysis"><span class="std std-ref">Morris sensitivity analysis</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#create"><span class="std std-ref">Create</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#constructor"><span class="std std-ref">Constructor</span></a></p></li>
+<li><p><a class="reference internal" href="#setup"><span class="std std-ref">setup()</span></a></p></li>
+<li><p><a class="reference internal" href="#explain"><span class="std std-ref">explain()</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#register"><span class="std std-ref">Register</span></a></p></li>
+<li><p><a class="reference internal" href="#run"><span class="std std-ref">Run</span></a></p></li>
+<li><p><a class="reference internal" href="#debug"><span class="std std-ref">Debug</span></a></p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#result"><span class="std std-ref">Result</span></a></dt><dd><ul>
+<li><p><a class="reference internal" href="#plot"><span class="std std-ref">Plot</span></a></p></li>
+<li><p><a class="reference internal" href="#data"><span class="std std-ref">Data</span></a></p></li>
+<li><p><a class="reference internal" href="#archive"><span class="std std-ref">Archive</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><a class="reference internal" href="#conclusion"><span class="std std-ref">Conclusion</span></a></p></li>
+<li><p><a class="reference internal" href="#morris-sensitivity-analysis-explainer-source-code"><span class="std std-ref">Morris sensitivity analysis explainer source code</span></a></p></li>
+<li><p><a class="reference internal" href="#running-byoe-recipe-source-code"><span class="std std-ref">Running BYOE recipe source code</span></a></p></li>
+<li><p><a class="reference internal" href="#resources"><span class="std std-ref">Resources</span></a></p></li>
+</ul>
+<section id="introduction-to-bring-your-own-explainer-recipes">
+<h2>Introduction to Bring Your Own Explainer recipes<a class="headerlink" href="#introduction-to-bring-your-own-explainer-recipes" title="Link to this heading"></a></h2>
+<img alt="Explainer diagram" src="_images/diagram-byoe-explainer.png" />
+<p>H2O Eval Studio brings <strong>interpretability</strong> to machine learning models to explain
+modeling results in a human-readable format. H2O Eval Studio provides different
+techniques and methods for interpreting and explaining model results.</p>
+<p>The set of techniques and methods can be extended with custom explainers
+as H2O Eval Studio supports <strong>BYOE</strong> recipes - the ability to Bring Your Own Explainer.
+BYOE recipe is <strong>Python</strong> code snippet. With BYOE recipe, you can
+use your own explainers in combination with or instead of all built-in explainers.
+This allows you to further extend H2O Eval Studio explainers in addition to out-of-the-box
+methods.</p>
+<p>BYOE recipes can be registered as explainers in H2O Eval Studio runtime - just like a plugin.</p>
+<section id="how-do-recipes-work">
+<h3>How do recipes work?<a class="headerlink" href="#how-do-recipes-work" title="Link to this heading"></a></h3>
+<p>When H2O Eval Studio user starts interpretation, model compatible explainers
+(from the available set of out-of-the-box and custom explainers) are selected
+and executed. Explainers create model explanations that are might be visualized
+using H2O Eval Studio and/or can be found on the filesystem:</p>
+<ol class="arabic simple">
+<li><p>explainer execution</p></li>
+<li><p>explanation creation</p></li>
+<li><p>optional explanation normalization</p></li>
+</ol>
+</section>
+<section id="what-is-the-role-of-recipes">
+<h3>What is the role of recipes?<a class="headerlink" href="#what-is-the-role-of-recipes" title="Link to this heading"></a></h3>
+<p>BYOE allows H2O Eval Studio users to bring their <strong>own recipes</strong> or leverage the existing,
+<strong>open-source</strong> recipes to explain models. In this way, the expertise of those creating
+and using the recipes is leveraged to focus on domain-specific functions to
+build customizations.</p>
+</section>
+<section id="where-can-you-find-open-source-recipe-examples-and-templates">
+<h3>Where can you find open-source recipe examples and templates?<a class="headerlink" href="#where-can-you-find-open-source-recipe-examples-and-templates" title="Link to this heading"></a></h3>
+<img alt="Explainer examples" src="_images/explainers-examples-overview.png" />
+<p>Open source <strong>recipe examples</strong> - which are used also in the documentation to
+demonstrate H2O Eval Studio explainer API - can be found in:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/predictive/byoe/examples</span></code> H2O Eval Studio distribution directory</p></li>
+<li><p><a class="reference external" href="https://github.com/h2oai/h2o-sonar/tree/main/examples/predictive/byoe/examples">H2O Eval Studio GitHub repository</a></p></li>
+</ul>
+<img alt="Explainer templates" src="_images/explainers-templates-overview.png" />
+<p>Open source <strong>recipe templates</strong> - which can be used to create quickly new explainers
+just by choosing desired explainer type / explanation (like feature importance,
+a decision tree or partial dependence) and replacing mock data with a calculation - can
+be found in:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/predictive/byoe/templates</span></code> H2O Eval Studio distribution directory</p></li>
+<li><p><a class="reference external" href="https://github.com/h2oai/h2o-sonar/tree/main/examples/predictive/byoe/templates">H2O Eval Studio GitHub repository</a></p></li>
+</ul>
+</section>
+</section>
+<section id="explainer">
+<h2>Explainer<a class="headerlink" href="#explainer" title="Link to this heading"></a></h2>
+<p>This section describes how to create a new <strong>explainer</strong> from your method or
+3rd party library using <strong>BYOE recipes</strong>.</p>
+<section id="morris-sensitivity-analysis">
+<h3>Morris sensitivity analysis<a class="headerlink" href="#morris-sensitivity-analysis" title="Link to this heading"></a></h3>
+<p>Explainer which will be created leverages
+<a class="reference external" href="https://github.com/interpretml/interpret#supported-techniques">Morris sensitivity analysis</a>
+technique from 3rd-party Microsoft <strong>open source</strong> interpretation library:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://interpret.ml/">InterpretML</a></p></li>
+<li><p><a class="reference external" href="https://github.com/interpretml/interpret#supported-techniques">interpretml/interpret GitHub repository</a></p></li>
+</ul>
+<p><strong>Source code</strong> of the explainer which will be created:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#morris-sensitivity-analysis-explainer-source-code"><span class="std std-ref">Morris sensitivity analysis explainer</span></a> example</p></li>
+</ul>
+<p>Similarly, you can create a new explainer using <strong>your</strong> favorite responsible AI library or
+your own method.</p>
+</section>
+<section id="create">
+<h3>Create<a class="headerlink" href="#create" title="Link to this heading"></a></h3>
+<p>Custom BYOE recipe explainer is <strong>Python class</strong> whose parent class
+is <a class="reference internal" href="h2o_sonar.lib.api.html#module-h2o_sonar.lib.api.explainers"><span class="std std-ref">Explainer</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ExampleMorrisSensitivityExplainer</span><span class="p">(</span><span class="n">Explainer</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Explainer declares its display name (shown in reports and API), description, and supported
+experiments (regression, binomial classification, or multinomial classification),
+explanations scope (global, local), explanations types (like feature importance),
+required Python library dependencies and other metadata as <strong>class field</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ExampleMorrisSensitivityExplainer</span><span class="p">(</span><span class="n">Explainer</span><span class="p">):</span>
+
+    <span class="n">_display_name</span> <span class="o">=</span> <span class="s2">&quot;Example Morris Sensitivity Analysis&quot;</span>
+    <span class="n">_regression</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">_binary</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">_global_explanation</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">_explanation_types</span> <span class="o">=</span> <span class="p">[</span><span class="n">GlobalFeatImpExplanation</span><span class="p">]</span>
+    <span class="n">_modules_needed_by_name</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;gevent==1.5.0&quot;</span><span class="p">,</span> <span class="s2">&quot;interpret==0.1.20&quot;</span><span class="p">]</span>
+
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Morris sensitivity analysis explainer will support global feature importance
+explanations for regression and binomial experiments and it depends on
+Microsoft <code class="docutils literal notranslate"><span class="pre">interpret</span></code> library (<code class="docutils literal notranslate"><span class="pre">pip</span></code> package name).</p>
+<figure class="align-default">
+<img alt="Explainer life-cycle" src="_images/explainer-life-cycle.png" />
+</figure>
+<p>When implementing an explainer, the following methods are invoked through
+the explainer <strong>life-cycle</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__()</span></code> … <strong>MUST</strong> be implemented</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Explainer class constructor which takes no parameters and calls parent
+constructor(s).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">check_compatibility()</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> … <strong>OPTIONAL</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Compatibility check which can be used to indicate that the explainer is
+or is not compatible with the given model, dataset, parameters, etc. apart
+to automatic explainer metadata-based compatibility check performed by H2O Eval Studio
+runtime.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setup()</span></code> … <strong>MUST</strong> be implemented</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Explainer initialization which gets various arguments allowing to
+get enough information for the compatibility check and actual
+explanations calculation.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fit()</span></code> … <strong>OPTIONAL</strong></p>
+<ul class="simple">
+<li><p>Method which can pre-compute explainer artifacts like (surrogate)
+models to be subsequently used by the <code class="docutils literal notranslate"><span class="pre">explain*()</span></code> methods. This method is
+invoked only once in the lifecycle of the explainer.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">explain()</span> <span class="pre">-&gt;</span> <span class="pre">List</span></code> … <strong>MUST</strong> be implemented</p>
+<ul class="simple">
+<li><p>The most important method which creates and persists <strong>global</strong> and <strong>local</strong>
+explanations on running interpretation.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">explain_local()</span> <span class="pre">-&gt;</span> <span class="pre">list</span></code> … <strong>OPTIONAL</strong></p>
+<ul class="simple">
+<li><p>Method which creates <strong>local</strong> explanations. Local explanations is used after
+the interpretation finishes. Local explanations can be either calculated
+on demand or use cached artifacts previously prepared by <code class="docutils literal notranslate"><span class="pre">fit()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">explain()</span></code> methods.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">explain_global()</span> <span class="pre">-&gt;</span> <span class="pre">list</span></code> … <strong>OPTIONAL</strong></p>
+<ul class="simple">
+<li><p>Method which creates or updates <strong>global</strong> explanations. This method is after
+the interpretation finishes. Global explanations can be either calculated
+on demand or use cached artifacts previously prepared by <code class="docutils literal notranslate"><span class="pre">fit()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">explain()</span></code> methods.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">destroy()</span></code> … <strong>OPTIONAL</strong></p>
+<ul class="simple">
+<li><p>Post explainer explain method to clean up resources, files, and artifacts which
+are no longer needed.</p></li>
+</ul>
+</li>
+</ul>
+<p>These methods are invoked by recipe runtime through the explainer <strong>life-cycle</strong>.</p>
+<section id="constructor">
+<h4>Constructor<a class="headerlink" href="#constructor" title="Link to this heading"></a></h4>
+<p>Explainer <strong>must</strong> implement default constructor which <strong>cannot</strong> have required
+parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">Explainer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="setup">
+<h4>setup()<a class="headerlink" href="#setup" title="Link to this heading"></a></h4>
+<p>The explainer must implement <code class="docutils literal notranslate"><span class="pre">setup()</span></code> method with the following signature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">persistence</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">explainer_params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set explainer fields needed to execute `fit()` and `explain()` methods.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : ExplainableModel | None</span>
+<span class="sd">      Model to be explained.</span>
+<span class="sd">    persistence : CustomExplainerPersistence</span>
+<span class="sd">      Persistence API allows safe saving and loading of explanations to</span>
+<span class="sd">      desired storage (file system, memory, database).</span>
+<span class="sd">    key : str</span>
+<span class="sd">      Optional (given) explanation key (generated otherwise).</span>
+<span class="sd">    params : CommonInterpretationParams</span>
+<span class="sd">      Common explainer parameters specified on explainer run.</span>
+<span class="sd">    explainer_params :</span>
+<span class="sd">      Other explainer parameters, options, and configuration.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CustomExplainer</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">persistence</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">explainer_params</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The implementation must invoke the parent class <code class="docutils literal notranslate"><span class="pre">setup()</span></code> method which sets the following
+class instance fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">self.model</span></code></p>
+<ul>
+<li><p>Instance of <a class="reference internal" href="h2o_sonar.lib.api.html#module-h2o_sonar.lib.api.models"><span class="std std-ref">ExplainableModel</span></a> class
+which represents <strong>the model to be explained</strong>. The explainable model provides
+<strong>metadata</strong> (like features used by the model) as well as <strong>predict</strong> method
+(scorer) of the model.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.dataset_meta</span></code></p>
+<ul>
+<li><p>Instance of <a class="reference internal" href="h2o_sonar.lib.api.html#module-h2o_sonar.lib.api.datasets"><span class="std std-ref">ExplainableDataset</span></a> class
+which represents the <strong>dataset</strong> that is used to explain the model. It provides
+both dataset metadata as well as handle to the <code class="docutils literal notranslate"><span class="pre">datatable</span></code> data frame.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.persistence</span></code></p>
+<ul>
+<li><p>Instance of <code class="docutils literal notranslate"><span class="pre">ExplainerPersistence</span></code> class which provides explainer API
+to conveniently persist data created by the explainer e.g. to its working
+directory.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.params</span></code></p>
+<ul>
+<li><p>Common <strong>interpretation</strong> parameters specified on explainer run like model’s
+target column or columns to drop.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.logger</span></code></p>
+<ul>
+<li><p>Logger which can be used to print info, debug, warning, error or
+debug messages to explainer’s log - to be used e.g. for debugging.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.config</span></code></p>
+<ul>
+<li><p>Global H2O Eval Studio <a class="reference internal" href="h2o_sonar.html#module-h2o_sonar.config"><span class="std std-ref">configuration</span></a>.</p></li>
+</ul>
+</li>
+</ul>
+<p>Instance attributes listed above can be subsequently used in all methods invoked
+after the <code class="docutils literal notranslate"><span class="pre">setup()</span></code>.</p>
+</section>
+<section id="explain">
+<h4>explain()<a class="headerlink" href="#explain" title="Link to this heading"></a></h4>
+<p>Finally the explainer must implement <code class="docutils literal notranslate"><span class="pre">explain()</span></code> method which is supposed to
+<strong>create</strong> and <strong>persist</strong> both <strong>global</strong> and <strong>local</strong> explanations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">explanations_types</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+<span class="w"> </span><span class="sd">&quot;&quot;&quot;Invoke this method to calculate and persist global, local, or both type</span>
+<span class="sd"> of explanation(s) for given model and data(set).</span>
+
+<span class="sd"> X: datatable.Frame</span>
+<span class="sd">   Dataset frame.</span>
+<span class="sd"> y: datatable.Frame | Any | None</span>
+<span class="sd">   Labels.</span>
+<span class="sd"> explanations_types: List[Type[Explanation]]</span>
+<span class="sd">   Optional explanation types to be built.</span>
+
+<span class="sd"> Returns</span>
+<span class="sd"> -------</span>
+<span class="sd"> List[Explanation]:</span>
+<span class="sd">   Explanations descriptors.</span>
+
+<span class="sd"> &quot;&quot;&quot;</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">explain()</span></code> method typically has the following steps:</p>
+<ol class="arabic simple">
+<li><p><strong>dataset</strong> preparation</p></li>
+<li><p><strong>predict method</strong> creation</p></li>
+<li><p>explanation(s) <strong>calculation</strong></p></li>
+<li><p>optional explanation <strong>normalization</strong></p></li>
+</ol>
+<p><strong>Dataset</strong> preparation is performed using H2O Eval Studio utility method which
+is able to preprocess the dataset as 3rd party Morris sensitivity analysis
+implementation works on datasets and models <strong>with numerical features
+only</strong> i.e.it cannot be run on a dataset with e.g. string categorical features.
+The utility method automatically detects non-numeric features, performs label
+encoding (returns the encoder for subsequent use - decoding in predict method)
+and drops all N/A dataset rows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+    <span class="o">...</span>
+   <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">label_encoder</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">explainable_x</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span>
+       <span class="n">le_cat_variables</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+       <span class="n">used_features</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">used_features</span><span class="p">,</span>
+       <span class="n">cleaned_frame_type</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+   <span class="p">)</span>
+</pre></div>
+</div>
+<p>If the explainer uses a 3rd party library, it typically must create
+<strong>predict method</strong> which is suited for the 3rd party library. In this case,
+Morris sensitivity analysis expects predict method input and output data to be
+<code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays. Therefore the default predict method of the explainable
+model (<code class="docutils literal notranslate"><span class="pre">self.model.predict()</span></code>) must be customized:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">predict_function</span><span class="p">(</span><span class="n">dataset</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+    <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+        <span class="n">datasets</span><span class="o">.</span><span class="n">ExplainableDataset</span><span class="o">.</span><span class="n">frame_2_datatable</span><span class="p">(</span>
+            <span class="n">dataset</span><span class="p">,</span>
+            <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">used_features</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">datasets</span><span class="o">.</span><span class="n">ExplainableDataset</span><span class="o">.</span><span class="n">frame_2_numpy</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Explanation <strong>calculation</strong> is straightforward - Morris sensitivity analysis
+is imported and invoked:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">interpret.blackbox</span><span class="w"> </span><span class="kn">import</span> <span class="n">MorrisSensitivity</span>
+
+<span class="n">sensitivity</span><span class="p">:</span> <span class="n">MorrisSensitivity</span> <span class="o">=</span> <span class="n">MorrisSensitivity</span><span class="p">(</span>
+    <span class="n">predict_fn</span><span class="o">=</span><span class="n">predict_function</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">morris_explanation</span> <span class="o">=</span> <span class="n">sensitivity</span><span class="o">.</span><span class="n">explain_global</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">morris_explanation</span></code> is a third-party/proprietary explanation. Explainer can:</p>
+<ul class="simple">
+<li><p>persist explanation and make it available for <strong>download</strong></p></li>
+<li><p><strong>optionally normalize</strong> the explanation to enable the use of H2O Eval Studio
+library functions for data <strong>visualization</strong>, <strong>processing</strong> and
+<strong>conversion</strong> - <code class="docutils literal notranslate"><span class="pre">get_result()</span></code> method can return an instance of <code class="docutils literal notranslate"><span class="pre">Result</span></code>
+class which provides <code class="docutils literal notranslate"><span class="pre">help</span></code>, <code class="docutils literal notranslate"><span class="pre">data()</span></code>, <code class="docutils literal notranslate"><span class="pre">plot()</span></code>, <code class="docutils literal notranslate"><span class="pre">log()</span></code>, <code class="docutils literal notranslate"><span class="pre">summary()</span></code>, <code class="docutils literal notranslate"><span class="pre">params()</span></code> and <code class="docutils literal notranslate"><span class="pre">zip()</span></code> methods to
+get machine processable explanation, visualized explanation, explainer log, summary of the explanation,
+explainer parameters and archive with all files created by the explainer:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_result</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">results</span><span class="o">.</span><span class="n">FeatureImportanceResult</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">results</span><span class="o">.</span><span class="n">FeatureImportanceResult</span><span class="p">(</span>
+        <span class="n">persistence</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">persistence</span><span class="p">,</span>
+        <span class="n">explainer_id</span><span class="o">=</span><span class="n">ExampleMorrisSensitivityAnalysisExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">(),</span>
+        <span class="n">chart_title</span><span class="o">=</span><span class="n">ExampleMorrisSensitivityAnalysisExplainer</span><span class="o">.</span><span class="n">_display_name</span><span class="p">,</span>
+        <span class="n">h2o_sonar_config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+        <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally <code class="docutils literal notranslate"><span class="pre">explain()</span></code> method must return explanations declared by the
+custom explainer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">explanations</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_normalize_to_gom</span><span class="p">(</span><span class="n">morris_explanation</span><span class="p">)]</span>
+<span class="k">return</span> <span class="n">explanations</span>
+</pre></div>
+</div>
+<p>Check <a class="reference internal" href="#morris-sensitivity-analysis-explainer-source-code"><span class="std std-ref">Morris sensitivity analysis explainer source code</span></a>
+listing.</p>
+</section>
+</section>
+<section id="register">
+<h3>Register<a class="headerlink" href="#register" title="Link to this heading"></a></h3>
+<p>BYOE recipe explainer must be registered in H2O Eval Studio runtime before it can be run
+in the interpretation.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul class="simple">
+<li><p>the explainer must be installed and/or available on the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.</p></li>
+</ul>
+<section id="register-using-python-api">
+<h4>Register using Python API<a class="headerlink" href="#register-using-python-api" title="Link to this heading"></a></h4>
+<p>When using Python API the explainer can be <strong>registered</strong> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpret</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">example_morris_sa_explainer</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExampleMorrisSensitivityExplainer</span>
+
+<span class="n">explainer_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">register_explainer</span><span class="p">(</span>
+    <span class="n">explainer_class</span><span class="o">=</span><span class="n">ExampleMorrisSensitivityExplainer</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Registration method returns <code class="docutils literal notranslate"><span class="pre">explainer_id</span></code> which can be subsequently used in
+<code class="docutils literal notranslate"><span class="pre">interpret.run_interpretation()</span></code> to run and parameterize the custom explainer.</p>
+</section>
+<section id="register-using-command-line-interface">
+<h4>Register using Command Line Interface<a class="headerlink" href="#register-using-command-line-interface" title="Link to this heading"></a></h4>
+<p>When using CLI the explainer can be <strong>registered</strong> as follows:</p>
+<ol class="arabic simple">
+<li><p>Make sure that the explainer is (installed) on <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.</p></li>
+<li><p>Create H2O Eval Studio configuration file with BYOE recipe explainer <strong>locator</strong>
+(explainer packages and module name, <code class="docutils literal notranslate"><span class="pre">::</span></code> separator, explainer class ):</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;custom_explainers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;example_morris_sa_explainer::ExampleMorrisSensitivityAnalysisExplainer&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Store above configuration to <code class="docutils literal notranslate"><span class="pre">h2o-sonar-config.json</span></code> file
+(see also <a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">Library Configuration</span></a>).</p></li>
+<li><p>Use the configuration file when you will run configuration, list explainers
+or use any other <code class="docutils literal notranslate"><span class="pre">h2o-sonar</span></code> command.</p></li>
+</ol>
+<p>H2O Eval Studio will load the configuration and automatically register the explainer.</p>
+</section>
+</section>
+<section id="run">
+<h3>Run<a class="headerlink" href="#run" title="Link to this heading"></a></h3>
+<p>To run a custom BYOE recipe explainer, run the interpretation and specify
+explainer ID assigned to it on <strong>registration</strong>.</p>
+<section id="run-using-python-api">
+<h4>Run using Python API<a class="headerlink" href="#run-using-python-api" title="Link to this heading"></a></h4>
+<p>When using Python API the explainer can be <strong>run</strong> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># register the explainer</span>
+<span class="n">explainer_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">register_explainer</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># run the explainer</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">model_to_be_explained</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">,</span>
+    <span class="n">explainers</span><span class="o">=</span><span class="p">[</span><span class="n">explainer_id</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Please note that only basic set of explainers is run by default - in order to run
+<strong>new</strong> BYOE recipe explainer you can use one of the following options:</p>
+<ul class="simple">
+<li><p>use <code class="docutils literal notranslate"><span class="pre">explainers=[explainer_id]</span></code> to run <strong>only new explainer</strong> - the explainer
+is identified by ID created during its registration</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">explainer_keywords=[interpret.KEYWORD_FILTER_ALL]</span></code> parameter to run
+<strong>all</strong> compatible explainers</p></li>
+</ul>
+</section>
+<section id="run-using-command-line-interface">
+<h4>Run using Command Line Interface<a class="headerlink" href="#run-using-command-line-interface" title="Link to this heading"></a></h4>
+<p>When using CLI the explainer can be <strong>run</strong> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ h2o-sonar run interpretation \
+    --dataset=dataset.csv \
+    --model=model-to-be-explained.pkl \
+    --target-col=TARGET \
+    --config-path=h2o-sonar-config.json
+    --all-explainers
+</pre></div>
+</div>
+<p>This shell command will use <code class="docutils literal notranslate"><span class="pre">h2o-sonar-config.json</span></code> configuration file
+(created in the
+<a class="reference internal" href="#register-using-command-line-interface"><span class="std std-ref">explainer registration step</span></a>), register
+the custom explainer and run <strong>all</strong> explainers compatible with the model. Please
+note that only basic set of explainers is run by default - in order to run
+<strong>new</strong> BYOE recipe explainer you can use one of the following options:</p>
+<ul class="simple">
+<li><p>use <code class="docutils literal notranslate"><span class="pre">--all-explainers</span></code> parameter to run <strong>all</strong> compatible explainers
+(which is used in the example above)</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">--explainer-ids=example_morris_sa_explainer.ExampleMorrisSensitivityAnalysisExplainer</span></code>
+to run <strong>only new explainer</strong> - the explainer is identified by ID created
+during its registration - simply replace <code class="docutils literal notranslate"><span class="pre">::</span></code> with <code class="docutils literal notranslate"><span class="pre">.</span></code> in the locator to get ID</p></li>
+</ul>
+</section>
+</section>
+<section id="debug">
+<h3>Debug<a class="headerlink" href="#debug" title="Link to this heading"></a></h3>
+<p>To debug an explainer, you can use <code class="docutils literal notranslate"><span class="pre">self.logger</span></code> instance attribute and log
+debugging messages, exceptions, and values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;This is a debug message.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These log messages are stored in <strong>explainer’s log</strong> which can be found in:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$RESULTS_DIRECTORY/h2o-sonar/mli_experiment_&lt;UUID&gt;/explainer_&lt;explainer</span> <span class="pre">ID&gt;_&lt;UUID&gt;/log</span></code></p></li>
+</ul>
+<p>Where <code class="docutils literal notranslate"><span class="pre">$RESULT_DIRECTORY</span></code> is the current directory, or <code class="docutils literal notranslate"><span class="pre">result_dir</span></code> is specified
+in the interpretation parameter. You may also check <strong>H2O Eval Studio log</strong> with runtime
+and interpretations’ log messages, which can be found in:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$RESULTS_DIRECTORY/h2o-sonar/h2o-sonar.log</span></code></p></li>
+</ul>
+<p>Use both logs to determine the root cause of the failure, fix it and simply re-register
+and re-run the explainer in the same way.</p>
+</section>
+<section id="result">
+<h3>Result<a class="headerlink" href="#result" title="Link to this heading"></a></h3>
+<p>The explainer creates and persists <a class="reference internal" href="h2o_sonar.lib.api.html#module-h2o_sonar.lib.api.explanations"><span class="std std-ref">explanations</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── h2o-sonar
+│   └── mli_experiment_&lt;UUID&gt;
+│       ├── explainers_parameters.json
+│       ├── explainer_tests_explainers_doc_example_morris_sa_explainer_ExampleMorrisSensitivityAnalysisExplainer_&lt;UUID&gt;
+│       │   ├── global_feature_importance
+│       │   │   ├── application_json
+│       │   │   │   ├── explanation.json
+│       │   │   │   └── feature_importance_class_0.json
+│       │   │   ├── application_json.meta
+│       │   │   ├── application_vnd_h2oai_json_datatable_jay
+│       │   │   │   ├── explanation.json
+│       │   │   │   └── feature_importance_class_0.jay
+│       │   │   └── application_vnd_h2oai_json_datatable_jay.meta
+│       │   ├── log
+│       │   │   └── explainer_run_&lt;UUID&gt;.log
+│       │   ├── result_descriptor.json
+│       │   └── work
+│       ├── interpretation.html
+│       └── interpretation.json
+├── h2o-sonar.html
+└── h2o-sonar.log
+</pre></div>
+</div>
+<p>After the interpretation finishes, you can check out explanations on the filesystem
+(see interpretation directory structure). The best location where to start is
+the <strong>interpretation HTML report</strong> which can be found in
+<code class="docutils literal notranslate"><span class="pre">h2o-sonar/mli_experiment_&lt;UUID&gt;/interpretation.html</span></code>:</p>
+<img alt="Interpretation HTML report" src="_images/interpretation-html-report.png" />
+<p>Alternatively, you can use Python API to get normalized data, visualize explanations,
+or archive all artifacts created by the explainer (see <a class="reference internal" href="h2o_sonar.lib.api.html#module-h2o_sonar.lib.api.commons"><span class="std std-ref">h2o_sonar.lib.api.commons module</span></a>).</p>
+<section id="data">
+<h4>Data<a class="headerlink" href="#data" title="Link to this heading"></a></h4>
+<p>When using Python API you can get normalized <strong>explanation data</strong> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the explainer</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># explainer result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">interpretation</span><span class="o">.</span><span class="n">get_explainer_result</span><span class="p">(</span><span class="n">explainer_id</span><span class="o">=</span><span class="n">explainer_id</span><span class="p">)</span>
+
+<span class="c1"># normalized explanations data</span>
+<span class="n">explanation_data</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Different types of explanations may accept different parameters allowing you to
+choose e.g. feature or class (which is not applicable in this case).</p>
+<p>The above method returns the frame which looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="o">|</span> <span class="n">feature</span>    <span class="n">importance</span>
+   <span class="o">|</span> <span class="n">str32</span>         <span class="n">float64</span>
+<span class="o">--</span> <span class="o">+</span> <span class="o">---------</span>  <span class="o">----------</span>
+ <span class="mi">0</span> <span class="o">|</span> <span class="n">ID</span>             <span class="mf">0.33</span>
+ <span class="mi">1</span> <span class="o">|</span> <span class="n">LIMIT_BAL</span>      <span class="mf">0.3285</span>
+ <span class="mi">2</span> <span class="o">|</span> <span class="n">BILL_AMT6</span>      <span class="mf">0.3225</span>
+ <span class="mi">3</span> <span class="o">|</span> <span class="n">AGE</span>            <span class="mf">0.207</span>
+ <span class="mi">4</span> <span class="o">|</span> <span class="n">EDUCATION</span>      <span class="mf">0.18</span>
+ <span class="mi">5</span> <span class="o">|</span> <span class="n">PAY_0</span>          <span class="mf">0.1485</span>
+ <span class="mi">6</span> <span class="o">|</span> <span class="n">BILL_AMT2</span>      <span class="mf">0.132</span>
+ <span class="mi">7</span> <span class="o">|</span> <span class="n">PAY_5</span>          <span class="mf">0.117</span>
+ <span class="mi">8</span> <span class="o">|</span> <span class="n">PAY_AMT2</span>       <span class="mf">0.111</span>
+ <span class="mi">9</span> <span class="o">|</span> <span class="n">PAY_2</span>          <span class="mf">0.1005</span>
+<span class="mi">10</span> <span class="o">|</span> <span class="n">PAY_3</span>          <span class="mf">0.099</span>
+<span class="mi">11</span> <span class="o">|</span> <span class="n">PAY_AMT1</span>       <span class="mf">0.084</span>
+<span class="mi">12</span> <span class="o">|</span> <span class="n">BILL_AMT3</span>      <span class="mf">0.081</span>
+<span class="mi">13</span> <span class="o">|</span> <span class="n">PAY_4</span>          <span class="mf">0.0765</span>
+<span class="mi">14</span> <span class="o">|</span> <span class="n">PAY_AMT5</span>       <span class="mf">0.072</span>
+<span class="mi">15</span> <span class="o">|</span> <span class="n">MARRIAGE</span>       <span class="mf">0.0705</span>
+<span class="mi">16</span> <span class="o">|</span> <span class="n">BILL_AMT1</span>      <span class="mf">0.0615</span>
+<span class="mi">17</span> <span class="o">|</span> <span class="n">PAY_AMT3</span>       <span class="mf">0.0525</span>
+<span class="mi">18</span> <span class="o">|</span> <span class="n">PAY_AMT6</span>       <span class="mf">0.042</span>
+<span class="mi">19</span> <span class="o">|</span> <span class="n">BILL_AMT4</span>      <span class="mf">0.0375</span>
+<span class="mi">20</span> <span class="o">|</span> <span class="n">PAY_6</span>          <span class="mf">0.036</span>
+<span class="mi">21</span> <span class="o">|</span> <span class="n">BILL_AMT5</span>      <span class="mf">0.0195</span>
+<span class="mi">22</span> <span class="o">|</span> <span class="n">PAY_AMT4</span>       <span class="mf">0.0195</span>
+<span class="mi">23</span> <span class="o">|</span> <span class="n">SEX</span>            <span class="mf">0.0135</span>
+<span class="p">[</span><span class="mi">24</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">2</span> <span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="plot">
+<h4>Plot<a class="headerlink" href="#plot" title="Link to this heading"></a></h4>
+<p>When using Python API you can get <strong>explanation visualization</strong> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the explainer</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># explainer result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">interpretation</span><span class="o">.</span><span class="n">get_explainer_result</span><span class="p">(</span><span class="n">explainer_id</span><span class="o">=</span><span class="n">explainer_id</span><span class="p">)</span>
+
+<span class="c1"># visualized explanation</span>
+<span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;morris_sa_plot.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Different types of explanations may accept different parameters allowing you to
+choose e.g. feature or class (which is not application in this case). Parameter
+<code class="docutils literal notranslate"><span class="pre">file_path</span></code> is optional, in case it’s not specified, the explanation is rendered
+so that it can be shown e.g. in Jupyter Notebook.</p>
+</section>
+<section id="archive">
+<h4>Archive<a class="headerlink" href="#archive" title="Link to this heading"></a></h4>
+<p>When using Python API you can get <strong>archive</strong> with all artifacts created by
+the explainer as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the explainer</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># explainer result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">interpretation</span><span class="o">.</span><span class="n">get_explainer_result</span><span class="p">(</span><span class="n">explainer_id</span><span class="o">=</span><span class="n">explainer_id</span><span class="p">)</span>
+
+<span class="c1"># visualized explanation</span>
+<span class="n">result</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;morris_sa_archive.zip&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The explainer creates the following directory structure on the filesystem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>explainer_tests_explainers_doc_example_morris_sa_explainer_ExampleMorrisSensitivityAnalysisExplainer_a89627ee-ab4e-4725-a14b-381f319b2252
+├── global_feature_importance
+│   ├── application_json
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.json
+│   ├── application_json.meta
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.jay
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── log
+│   └── explainer_run_a89627ee-ab4e-4725-a14b-381f319b2252.log
+├── result_descriptor.json
+└── work
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<p>In this tutorial you learned how to implement, register, run, debug and get explanations
+of <strong>BYOE recipe explainers</strong>.</p>
+</section>
+<section id="morris-sensitivity-analysis-explainer-source-code">
+<h2>Morris sensitivity analysis explainer source code<a class="headerlink" href="#morris-sensitivity-analysis-explainer-source-code" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">datatable</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.explainers.commons</span><span class="w"> </span><span class="kn">import</span> <span class="n">explainers_commons</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">commons</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">explainers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">explanations</span> <span class="k">as</span> <span class="n">e10s</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">formats</span> <span class="k">as</span> <span class="n">f5s</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">persistences</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">results</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ExampleMorrisSensitivityAnalysisExplainer</span><span class="p">(</span><span class="n">explainers</span><span class="o">.</span><span class="n">Explainer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;InterpretML: Morris sensitivity analysis explainer.&quot;&quot;&quot;</span>
+
+    <span class="c1"># explainer display name (used e.g. in explainer listing)</span>
+    <span class="n">_display_name</span> <span class="o">=</span> <span class="s2">&quot;Example Morris Sensitivity Analysis&quot;</span>
+    <span class="c1"># explainer description (used e.g. in explanations help)</span>
+    <span class="n">_description</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">&quot;Morris sensitivity analysis (SA) explainer provides Morris sensitivity &quot;</span>
+        <span class="s2">&quot;analysis based feature importance which is a measure of the contribution of &quot;</span>
+        <span class="s2">&quot;an input variable to the overall predictions of the model. In applied &quot;</span>
+        <span class="s2">&quot;statistics, the Morris method for global sensitivity analysis is a so-called &quot;</span>
+        <span class="s2">&quot;one-step-at-a-time method (OAT), meaning that in each run only one input &quot;</span>
+        <span class="s2">&quot;parameter is given a new value. This explainer is based based on InterpretML &quot;</span>
+        <span class="s2">&quot;library - see http://interpret.ml&quot;</span>
+    <span class="p">)</span>
+    <span class="c1"># declaration of supported experiments: regression / binary / multiclass</span>
+    <span class="n">_regression</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">_binary</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1"># declaration of provided explanations: global, local or both</span>
+    <span class="n">_global_explanation</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1"># declaration of explanation types this explainer creates e.g. feature importance</span>
+    <span class="n">_explanation_types</span> <span class="o">=</span> <span class="p">[</span><span class="n">e10s</span><span class="o">.</span><span class="n">GlobalFeatImpExplanation</span><span class="p">]</span>
+    <span class="c1"># required Python package dependencies (can be installed using pip)</span>
+    <span class="n">_modules_needed_by_name</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;gevent==1.5.0&quot;</span><span class="p">,</span> <span class="s2">&quot;interpret==0.1.20&quot;</span><span class="p">]</span>
+
+    <span class="c1"># explainer constructor must not have any required parameters</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">explainers</span><span class="o">.</span><span class="n">Explainer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="c1"># setup() method is used to initialize the explainer based on provided parameters</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">models</span><span class="o">.</span><span class="n">ExplainableModel</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">persistence</span><span class="p">:</span> <span class="n">persistences</span><span class="o">.</span><span class="n">ExplainerPersistence</span><span class="p">,</span>
+        <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">commons</span><span class="o">.</span><span class="n">CommonInterpretationParams</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">explainer_params</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">explainers</span><span class="o">.</span><span class="n">Explainer</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+            <span class="n">persistence</span><span class="o">=</span><span class="n">persistence</span><span class="p">,</span>
+            <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">explainer_params</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">persistence</span><span class="o">.</span><span class="n">save_explainers_params</span><span class="p">({</span><span class="bp">self</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">():</span> <span class="p">{}})</span>
+
+    <span class="c1"># explain() method creates the explanations</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">X</span><span class="p">,</span>
+        <span class="n">explainable_x</span><span class="p">:</span> <span class="n">datasets</span><span class="o">.</span><span class="n">ExplainableDataset</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+        <span class="c1"># import 3rd party Morris Sensitivity Analysis library</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">interpret</span><span class="w"> </span><span class="kn">import</span> <span class="n">blackbox</span>
+
+        <span class="c1"># DATASET: encoding of categorical features for 3rd party library which</span>
+        <span class="c1"># support numeric features only, filtering of rows w/ missing values, and more</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">label_encoder</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">explainable_x</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span>
+            <span class="n">le_cat_variables</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">used_features</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">used_features</span><span class="p">,</span>
+            <span class="n">cleaned_frame_type</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># PREDICT FUNCTION: library compliant predict function which works on numpy</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">predict_function</span><span class="p">(</span><span class="n">dataset</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="c1"># score</span>
+            <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+                <span class="n">datasets</span><span class="o">.</span><span class="n">ExplainableDataset</span><span class="o">.</span><span class="n">frame_2_datatable</span><span class="p">(</span>
+                    <span class="n">dataset</span><span class="p">,</span>
+                    <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">used_features</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="c1"># scoring output conversion to the frame type required by the library</span>
+            <span class="k">return</span> <span class="n">datasets</span><span class="o">.</span><span class="n">ExplainableDataset</span><span class="o">.</span><span class="n">frame_2_numpy</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># CALCULATION of the Morris SA explanation</span>
+        <span class="n">sensitivity</span><span class="p">:</span> <span class="n">blackbox</span><span class="o">.</span><span class="n">MorrisSensitivity</span> <span class="o">=</span> <span class="n">blackbox</span><span class="o">.</span><span class="n">MorrisSensitivity</span><span class="p">(</span>
+            <span class="n">predict_fn</span><span class="o">=</span><span class="n">predict_function</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">morris_explanation</span> <span class="o">=</span> <span class="n">sensitivity</span><span class="o">.</span><span class="n">explain_global</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span>
+
+        <span class="c1"># NORMALIZATION of proprietary Morris SA library data to standard format</span>
+        <span class="n">explanations</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_normalize_to_gom</span><span class="p">(</span><span class="n">morris_explanation</span><span class="p">)]</span>
+
+        <span class="c1"># explainer MUST return explanation(s) declared in _explanation_types</span>
+        <span class="k">return</span> <span class="n">explanations</span>
+
+    <span class="c1">#</span>
+    <span class="c1"># optional NORMALIZATION to Grammar of MLI (GoM)</span>
+    <span class="c1">#</span>
+
+    <span class="c1"># Normalization of the data to the Grammar of MLI defined format. Normalized data</span>
+    <span class="c1"># can be visualized using H2O Eval Studio components.</span>
+    <span class="c1">#</span>
+    <span class="c1"># This method creates explanation (data) and its representations (JSon, datatable)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_normalize_to_gom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">morris_explanation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">e10s</span><span class="o">.</span><span class="n">GlobalFeatImpExplanation</span><span class="p">:</span>
+        <span class="c1"># EXPLANATION</span>
+        <span class="n">explanation</span> <span class="o">=</span> <span class="n">e10s</span><span class="o">.</span><span class="n">GlobalFeatImpExplanation</span><span class="p">(</span>
+            <span class="n">explainer</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">display_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span>
+            <span class="n">display_category</span><span class="o">=</span><span class="n">e10s</span><span class="o">.</span><span class="n">GlobalFeatImpExplanation</span><span class="o">.</span><span class="n">DISPLAY_CAT_CUSTOM</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># FORMAT: explanation representation as JSon+datatable - JSon index file which</span>
+        <span class="c1"># references datatable frame with sensitivity values for each class</span>
+        <span class="n">jdf</span> <span class="o">=</span> <span class="n">f5s</span><span class="o">.</span><span class="n">GlobalFeatImpJSonDatatableFormat</span>
+        <span class="c1"># data normalization: 3rd party frame to Grammar of MLI defined frame</span>
+        <span class="c1"># conversion - see GlobalFeatImpJSonDatatableFormat docstring for format</span>
+        <span class="c1"># documentation and source for helpers to create the representation easily</span>
+        <span class="n">explanation_frame</span> <span class="o">=</span> <span class="n">datatable</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="n">jdf</span><span class="o">.</span><span class="n">COL_NAME</span><span class="p">:</span> <span class="n">morris_explanation</span><span class="o">.</span><span class="n">data</span><span class="p">()[</span><span class="s2">&quot;names&quot;</span><span class="p">],</span>
+                <span class="n">jdf</span><span class="o">.</span><span class="n">COL_IMPORTANCE</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">morris_explanation</span><span class="o">.</span><span class="n">data</span><span class="p">()[</span><span class="s2">&quot;scores&quot;</span><span class="p">]),</span>
+                <span class="n">jdf</span><span class="o">.</span><span class="n">COL_GLOBAL_SCOPE</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">morris_explanation</span><span class="o">.</span><span class="n">data</span><span class="p">()[</span><span class="s2">&quot;scores&quot;</span><span class="p">]),</span>
+            <span class="p">}</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="o">-</span><span class="n">datatable</span><span class="o">.</span><span class="n">f</span><span class="p">[</span><span class="n">jdf</span><span class="o">.</span><span class="n">COL_IMPORTANCE</span><span class="p">])</span>
+        <span class="c1"># index file (of per-class data files) (JSon)</span>
+        <span class="p">(</span>
+            <span class="n">idx_dict</span><span class="p">,</span>
+            <span class="n">idx_str</span><span class="p">,</span>
+        <span class="p">)</span> <span class="o">=</span> <span class="n">f5s</span><span class="o">.</span><span class="n">GlobalFeatImpJSonDatatableFormat</span><span class="o">.</span><span class="n">serialize_index_file</span><span class="p">(</span>
+            <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;global&quot;</span><span class="p">],</span>
+            <span class="n">doc</span><span class="o">=</span><span class="n">ExampleMorrisSensitivityAnalysisExplainer</span><span class="o">.</span><span class="n">_description</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">json_dt_format</span> <span class="o">=</span> <span class="n">f5s</span><span class="o">.</span><span class="n">GlobalFeatImpJSonDatatableFormat</span><span class="p">(</span><span class="n">explanation</span><span class="p">,</span> <span class="n">idx_str</span><span class="p">)</span>
+        <span class="n">json_dt_format</span><span class="o">.</span><span class="n">update_index_file</span><span class="p">(</span>
+            <span class="n">idx_dict</span><span class="p">,</span> <span class="n">total_rows</span><span class="o">=</span><span class="n">explanation_frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="c1"># data file (datatable)</span>
+        <span class="n">json_dt_format</span><span class="o">.</span><span class="n">add_data_frame</span><span class="p">(</span>
+            <span class="n">format_data</span><span class="o">=</span><span class="n">explanation_frame</span><span class="p">,</span>
+            <span class="n">file_name</span><span class="o">=</span><span class="n">idx_dict</span><span class="p">[</span><span class="n">jdf</span><span class="o">.</span><span class="n">KEY_FILES</span><span class="p">][</span><span class="s2">&quot;global&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="c1"># JSon+datatable format can be added as explanation&#39;s representation</span>
+        <span class="n">explanation</span><span class="o">.</span><span class="n">add_format</span><span class="p">(</span><span class="n">json_dt_format</span><span class="p">)</span>
+
+        <span class="c1"># another FORMAT: explanation representation as JSon</span>
+        <span class="c1"># Having JSon+datatable formats it&#39;s easy to get other formats like CSV,</span>
+        <span class="c1"># datatable, ZIP, ... using helpers - adding JSon representation:</span>
+        <span class="n">explanation</span><span class="o">.</span><span class="n">add_format</span><span class="p">(</span>
+            <span class="n">explanation_format</span><span class="o">=</span><span class="n">f5s</span><span class="o">.</span><span class="n">GlobalFeatImpJSonFormat</span><span class="o">.</span><span class="n">from_json_datatable</span><span class="p">(</span>
+                <span class="n">json_dt_format</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">explanation</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_result</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">results</span><span class="o">.</span><span class="n">FeatureImportanceResult</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">results</span><span class="o">.</span><span class="n">FeatureImportanceResult</span><span class="p">(</span>
+            <span class="n">persistence</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">persistence</span><span class="p">,</span>
+            <span class="n">explainer_id</span><span class="o">=</span><span class="n">ExampleMorrisSensitivityAnalysisExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">(),</span>
+            <span class="n">chart_title</span><span class="o">=</span><span class="n">ExampleMorrisSensitivityAnalysisExplainer</span><span class="o">.</span><span class="n">_display_name</span><span class="p">,</span>
+            <span class="n">h2o_sonar_config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="running-byoe-recipe-source-code">
+<h2>Running BYOE recipe source code<a class="headerlink" href="#running-byoe-recipe-source-code" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># BYOE recipe explainer to be run</span>
+<span class="n">explainer_type</span> <span class="o">=</span> <span class="n">ExampleMorrisSensitivityAnalysisExplainer</span>
+
+<span class="c1"># register the explainer</span>
+<span class="n">explainer_id</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">register_explainer</span><span class="p">(</span>
+    <span class="n">explainer_class</span><span class="o">=</span><span class="n">explainer_type</span>
+<span class="p">)</span>
+
+<span class="c1"># run the explainer</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">model_to_be_explained</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">,</span>
+    <span class="n">explainers</span><span class="o">=</span><span class="p">[</span><span class="n">explainer_id</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># get explainer result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">interpretation</span><span class="o">.</span><span class="n">get_explainer_result</span><span class="p">(</span>
+    <span class="n">explainer_id</span><span class="o">=</span><span class="n">explainer_id</span>
+<span class="p">)</span>
+
+<span class="c1"># get explanation data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
+<span class="c1"># get explanation chart</span>
+<span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="s2">&quot;morris_sa_plot.png&quot;</span><span class="p">))</span>
+<span class="c1"># get explanation archive</span>
+<span class="n">result</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="s2">&quot;morris_sa_archive.zip&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/h2oai/h2o-sonar#documentation">H2O Eval Studio documentation</a></p></li>
+<li><p><a class="reference external" href="https://interpret.ml/">InterpretML</a></p></li>
+<li><p><a class="reference external" href="https://github.com/interpretml/interpret#supported-techniques">interpretml/interpret GitHub repository</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="byoe.html" class="btn btn-neutral float-left" title="Bring Your Own Explainer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="H2O Eval Studio Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

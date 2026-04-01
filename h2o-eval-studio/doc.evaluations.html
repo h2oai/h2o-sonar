@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluating RAGs and LLMs &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/doc.evaluations.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RAG and LLM Hosts" href="doc.rag_llm_hosts.html" />
+    <link rel="prev" title="Generative Models" href="doc.generative.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="doc.html">H2O Eval Studio Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="doc.configuration.html">Library Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.predictive.html">Predictive Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="doc.generative.html">Generative Models</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Evaluating RAGs and LLMs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.rag_llm_hosts.html">RAG and LLM Hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.rag_llm_tests.html">Test Case, Suite, Lab and LLM Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluators.pars.html">Evaluator Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluators.html">Evaluators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.byoj.html">BYOJ: Bring Your Own Judge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.byop.html">BYOP: Bring Your Own Prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.perturbations.html">Perturbations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc.result.html">Report and Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.talktoreport.html">Talk to Report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Eval Studio Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="doc.html">H2O Eval Studio Documentation</a></li>
+          <li class="breadcrumb-item"><a href="doc.generative.html">Generative Models</a></li>
+      <li class="breadcrumb-item active">Evaluating RAGs and LLMs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/doc.evaluations.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="evaluating-rags-and-llms">
+<h1>Evaluating RAGs and LLMs<a class="headerlink" href="#evaluating-rags-and-llms" title="Link to this heading"></a></h1>
+<p>H2O Eval Studio can evaluate standalone LLMs (Large Language Models) and LLMs used by RAG
+(Retrieval-augmented generation) systems.</p>
+<img alt="Evaluation diagram" src="_images/evaluation-high-level.png" />
+<p>LLMs are evaluated as follows:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#test-data-preparation"><span class="std std-ref">Test Data Preparation</span></a></p></li>
+<li><p><a class="reference internal" href="#system-under-evaluation-connection"><span class="std std-ref">System Under Evaluation Connection</span></a></p></li>
+<li><p><a class="reference internal" href="#test-data-resolution"><span class="std std-ref">Test Data Resolution</span></a></p></li>
+<li><p><a class="reference internal" href="#llm-evaluation"><span class="std std-ref">LLM Evaluation</span></a></p></li>
+<li><p><a class="reference internal" href="#evaluation-results-analysis"><span class="std std-ref">Evaluation Results Analysis</span></a></p></li>
+</ol>
+<section id="test-data-preparation">
+<h2>Test Data Preparation<a class="headerlink" href="#test-data-preparation" title="Link to this heading"></a></h2>
+<p>The first step is the preparation of test data - a set of test cases. Each test case is a dictionary with
+the <strong>query</strong> (prompt) and the <strong>expected answer</strong> in the context of given <strong>corpus</strong> (in case of RAG - LLM evaluation has empty corpus).
+Test cases which use the same corpus are grouped into a <strong>test</strong>. Tests are grouped into a <strong>test suite</strong>.
+(see <a class="reference internal" href="doc.rag_llm_tests.html#test-case-suite-lab-and-llm-dataset"><span class="std std-ref">Test Case, Suite, Lab and LLM Dataset</span></a> for more details).</p>
+<p>Test suite example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Test Suite Example&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is a test suite example.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tests&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;da503caf-a2dc-4c0a-b5f7-618bebd7860d&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;documents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://BUCKET.s3.amazonaws.com/corpus-document.pdf&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;test_cases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d981bf23-9790-4c5e-905e-2ab56cba7ece&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What was the revenue of Brazil?&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;question_answering&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                    </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Brazil revenue was 15,969 million.&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;15,969\&quot; AND \&quot;million\&quot;&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="system-under-evaluation-connection">
+<h2>System Under Evaluation Connection<a class="headerlink" href="#system-under-evaluation-connection" title="Link to this heading"></a></h2>
+<p>The next step is to provide connect information of the system to be evaluated using the test suite.
+The set of supported systems is documented by <a class="reference internal" href="doc.rag_llm_hosts.html#rag-and-llm-hosts"><span class="std std-ref">RAG and LLM Hosts</span></a> section.</p>
+<p>Example of the Enterprise h2oGPTe LLM host connection configuration:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h2o_gpte_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">H2O_GPT_E</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise LLM host example.&quot;</span><span class="p">,</span>
+    <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://h2ogpte.h2o.ai/&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;YOUR_API_TOKEN_HERE&quot;</span><span class="p">,</span>
+    <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="test-data-resolution">
+<h2>Test Data Resolution<a class="headerlink" href="#test-data-resolution" title="Link to this heading"></a></h2>
+<p>Having test suite and connection to the system to be evaluated, the next step is to resolve it
+to the <strong>test lab</strong> - that is a set of test cases with resolved data - <strong>actual</strong> answers, duration,
+cost, etc. for each test case.</p>
+<p>Example of the test lab resolution for an LLM host connection and test suite:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_lab</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestLab</span><span class="o">.</span><span class="n">from_llm_test_suite</span><span class="p">(</span>
+    <span class="n">llm_host_connection</span><span class="o">=</span><span class="n">h2o_gpte_connection</span><span class="p">,</span>
+    <span class="n">llm_test_suite</span><span class="o">=</span><span class="n">test_suite</span><span class="p">,</span>
+    <span class="n">llm_model_type</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">ExplainableModelType</span><span class="o">.</span><span class="n">h2ogpte_llm</span><span class="p">,</span>
+    <span class="n">llm_model_names</span><span class="o">=</span><span class="n">llm_model_names</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># create collections and upload corpus documents (RAG only)</span>
+<span class="n">test_lab</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+
+<span class="c1"># resolve test lab</span>
+<span class="n">test_lab</span><span class="o">.</span><span class="n">complete_dataset</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Argument <cite>llm_model_names</cite> is a list of LLM model names to be evaluated - for example <cite>[“h2oai/h2ogpt-4096-llama2-70b-chat”, “h2oai/h2ogpt-4096-llama2-13b-chat”]</cite>.</p>
+<p>Example of the <strong>test lab</strong> with resolved data:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TestLab&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Test lab for RAG evaluation.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;raw_dataset&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What is the purpose of the document?&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;corpus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;question_answering&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The purpose of this document is to provide comprehensive guid...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;output_condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;guidance\&quot; AND \&quot;model risk management\&quot;&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;actual_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;actual_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;model_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0c34cdae-d2a4-4557-a305-d182adb01f6f&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;dataset&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What is the purpose of the document?&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;corpus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;Changes in\nregulation have spurred some of the recent developments, parti...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;Analysis of in-\nsample fit and of model performance in holdout samples (d...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;Validation reports should articulate model aspects that were reviewed, hig...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;Page 1\nSR Letter 11-7\nAttachment\nBoard of Governors of the Federal Rese...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;Documentation of model development and validation should be sufficiently\n...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;question_answering&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The purpose of this document is to provide comprehensive gu...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;output_condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;guidance\&quot; AND \&quot;model risk management\&quot;&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;actual_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The purpose of the document is to provide comprehensive guida...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;actual_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.280992269515991</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0036560000000000013</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;model_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0c34cdae-d2a4-4557-a305-d182adb01f6f&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;connection&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;612db877-cba2-4ab8-bacf-88d84b396450&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;model_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;h2ogpte&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RAG model h2oai/h2ogpt-4096-llama2-70b-chat (docs: [&#39;sr1107a1.pdf&#39;])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;collection_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;263c58e6-7424-4f9e-aa02-347d7281439b&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;collection_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RAG collection (docs: [&#39;sr1107a1.pdf&#39;])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;llm_model_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;h2oai/h2ogpt-4096-llama2-70b-chat&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;documents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0c34cdae-d2a4-4557-a305-d182adb01f6f&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;connection&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;612db877-cba2-4ab8-bacf-88d84b396450&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;model_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;h2ogpte&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RAG model h2oai/h2ogpt-4096-llama2-13b-chat (docs: [&#39;sr1107a1.pdf&#39;])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;collection_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;263c58e6-7424-4f9e-aa02-347d7281439b&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;collection_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RAG collection (docs: [&#39;sr1107a1.pdf&#39;])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;llm_model_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;h2oai/h2ogpt-4096-llama2-13b-chat&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;documents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14ac0946-6547-48d1-b19a-41bc90d34849&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;llm_model_names&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;h2oai/h2ogpt-4096-llama2-70b-chat&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;h2oai/h2ogpt-4096-llama2-13b-chat&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;docs_cache&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/tmp/pytest-of-me/sr1107a1.pdf&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="llm-evaluation">
+<h2>LLM Evaluation<a class="headerlink" href="#llm-evaluation" title="Link to this heading"></a></h2>
+<p>Test lab with resolved data has everything needed to evaluate the LLMs by <a class="reference internal" href="doc.evaluators.html#evaluators"><span class="std std-ref">Evaluators</span></a>.</p>
+<p>Example of the LLM evaluation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">evaluation</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">run_evaluation</span><span class="p">(</span>
+    <span class="c1"># test lab provides resolved test data for evaluation as dataset</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">test_lab</span><span class="o">.</span><span class="n">dataset</span><span class="p">,</span>
+    <span class="c1"># models to be evaluated</span>
+    <span class="n">models</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">test_lab</span><span class="o">.</span><span class="n">evaluated_models</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+    <span class="c1"># evaluators</span>
+    <span class="n">evaluators</span><span class="o">=</span><span class="n">evaluators</span><span class="p">,</span>
+    <span class="c1"># where to save the report</span>
+    <span class="n">results_location</span><span class="o">=</span><span class="n">result_dir</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="evaluation-results-analysis">
+<h2>Evaluation Results Analysis<a class="headerlink" href="#evaluation-results-analysis" title="Link to this heading"></a></h2>
+<p>The last step is the analysis of the evaluation results. The results are saved in the <cite>results_location</cite> directory
+as a HTML report (for humans), JSon report (for machines) and per-evaluator directory with all the data which
+were used for the evaluation and created by evaluators - see <a class="reference internal" href="doc.result.html#report-and-results"><span class="std std-ref">Report and Results</span></a> and <a class="reference internal" href="doc.evaluators.html#evaluators"><span class="std std-ref">Evaluators</span></a> sections
+for more details.</p>
+<p>Example of the evaluation results analysis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># HTML report</span>
+<span class="n">html_report_path</span> <span class="o">=</span> <span class="n">evaluation</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get_html_report_location</span><span class="p">()</span>
+
+<span class="c1"># evaluator results</span>
+<span class="n">evaluator_result</span> <span class="o">=</span> <span class="n">evaluation</span><span class="o">.</span><span class="n">get_evaluator_result</span><span class="p">(</span>
+    <span class="n">rag_tokens_presence_evaluator</span><span class="o">.</span><span class="n">RagStrStrEvaluator</span><span class="p">()</span><span class="o">.</span><span class="n">evaluator_id</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">evaluator_result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="n">evaluator_result</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
+<span class="n">evaluator_result</span><span class="o">.</span><span class="n">params</span><span class="p">()</span>
+<span class="n">evaluator_result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">evaluator_result</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="doc.generative.html" class="btn btn-neutral float-left" title="Generative Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="doc.rag_llm_hosts.html" class="btn btn-neutral float-right" title="RAG and LLM Hosts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

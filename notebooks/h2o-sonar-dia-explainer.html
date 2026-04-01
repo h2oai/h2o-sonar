@@ -1,0 +1,2104 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disparate Impact Analysis (DIA) Explainer Demo &mdash; H2O Sonar 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e2d3f516" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/notebooks/h2o-sonar-dia-explainer.html"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Friedman H-statistic Explainer Demo" href="h2o-sonar-friedman-h-statistic-explainer.html" />
+    <link rel="prev" title="Residual Decision Tree Surrogate Explainer Demo" href="h2o-sonar-residual-dt-surrogate-explainer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            H2O Sonar
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">H2O Sonar Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with H2O Sonar</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../doc.html">H2O Sonar Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">H2O Sonar Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dt-surrogate-explainer.html">Decision Tree Surrogate Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-summary-shap-explainer.html">Summary Shapley Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-original-feature-kernel-shap-importance-explainer.html">Original Feature Importance Explainer (Kernel SHAP) Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-original-feature-naive-shapley-importance-explainer.html">Original Feature Importance Explainer for MOJO Models (Naive Shapley method) Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-shapley-for-transformed-feature-importance-explainer.html">Shapley Values for Transformed Features of MOJO Models Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pd-explainer.html">Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pd-for-2-features-explainer.html">Partial Dependence for 2 Features Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-residual-pd-explainer.html">Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-residual-dt-surrogate-explainer.html">Residual Decision Tree Surrogate Explainer Demo</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Disparate Impact Analysis (DIA) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-friedman-h-statistic-explainer.html">Friedman H-statistic Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-morris-sa-explainer.html">Morris Sensitivity Analysis Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-d-and-m-insights-explainer.html">Dataset and Model Insights Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html">H2O Sonar Model Validation Explainers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Interpretation:-CLI">Interpretation: CLI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Use-CLI-to-run-H2O-MV-based-explainers">Use CLI to run H2O MV based explainers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.models.html">Models in Interpretation Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.cli.html">Command Line Interface in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.h2ogpte.html">Enterprise h2oGPT Examples</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_api.html">H2O Sonar Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">H2O Sonar</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">H2O Sonar Examples</a></li>
+          <li class="breadcrumb-item"><a href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a></li>
+      <li class="breadcrumb-item active">Disparate Impact Analysis (DIA) Explainer Demo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/h2o-sonar-dia-explainer.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Disparate-Impact-Analysis-(DIA)-Explainer-Demo">
+<h1>Disparate Impact Analysis (DIA) Explainer Demo<a class="headerlink" href="#Disparate-Impact-Analysis-(DIA)-Explainer-Demo" title="Link to this heading"></a></h1>
+<p>This example demonstrates how to interpret a <strong>scikit-learn</strong> model using the H2O Sonar library and retrieve the data and plot the <strong>Disparate Impact Analysis</strong>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import logging
+
+import pandas
+import webbrowser
+
+from h2o_sonar import interpret
+from h2o_sonar.lib.api import commons, explainers
+from h2o_sonar.explainers.dia_explainer import DiaExplainer
+from h2o_sonar.lib.api.models import ModelApi
+
+from sklearn.ensemble import GradientBoostingClassifier
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style type='text/css'>
+.datatable table.frame { margin-bottom: 0; }
+.datatable table.frame thead { border-bottom: none; }
+.datatable table.frame tr.coltypes td {  color: #FFFFFF;  line-height: 6px;  padding: 0 0.5em;}
+.datatable .bool    { background: #DDDD99; }
+.datatable .object  { background: #565656; }
+.datatable .int     { background: #5D9E5D; }
+.datatable .float   { background: #4040CC; }
+.datatable .str     { background: #CC4040; }
+.datatable .time    { background: #40CC40; }
+.datatable .row_index {  background: var(--jp-border-color3);  border-right: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  font-size: 9px;}
+.datatable .frame tbody td { text-align: left; }
+.datatable .frame tr.coltypes .row_index {  background: var(--jp-border-color0);}
+.datatable th:nth-child(2) { padding-left: 12px; }
+.datatable .hellipsis {  color: var(--jp-cell-editor-border-color);}
+.datatable .vellipsis {  background: var(--jp-layout-color0);  color: var(--jp-cell-editor-border-color);}
+.datatable .na {  color: var(--jp-cell-editor-border-color);  font-size: 80%;}
+.datatable .sp {  opacity: 0.25;}
+.datatable .footer { font-size: 9px; }
+.datatable .frame_dimensions {  background: var(--jp-border-color3);  border-top: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  display: inline-block;  opacity: 0.6;  padding: 1px 10px 1px 5px;}
+</style></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>results_location = &quot;../../results&quot;
+
+# dataset
+dataset_path = &quot;../../data/predictive/creditcard.csv&quot;
+target_col = &quot;default payment next month&quot;
+df = pandas.read_csv(dataset_path)
+(X, y) = df.drop(target_col, axis=1), df[target_col]
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># parameters
+interpret.describe_explainer(DiaExplainer)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;h2o_sonar.explainers.dia_explainer.DiaExplainer&#39;,
+ &#39;name&#39;: &#39;DiaExplainer&#39;,
+ &#39;display_name&#39;: &#39;Disparate Impact Analysis&#39;,
+ &#39;tagline&#39;: &#39;DiaExplainer.&#39;,
+ &#39;description&#39;: &#39;Disparate Impact Analysis (DIA) is a technique that is used to evaluate fairness. Bias can be introduced to models during the process of collecting, processing, and labeling data as a result, it is important to determine whether a model is harming certain users by making a significant number of biased decisions. DIA typically works by comparing aggregate measurements of unprivileged groups to a privileged group. For instance, the proportion of the unprivileged group that receives the potentially harmful outcome is divided by the proportion of the privileged group that receives the same outcome - the resulting proportion is then used to determine whether the model is biased.&#39;,
+ &#39;brief_description&#39;: &#39;DiaExplainer.&#39;,
+ &#39;model_types&#39;: [&#39;iid&#39;, &#39;time_series&#39;],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-disparate-impact-analysis&#39;,
+   &#39;name&#39;: &#39;DiaExplanation&#39;,
+   &#39;category&#39;: &#39;&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: &#39;&#39;,
+   &#39;formats&#39;: []}],
+ &#39;keywords&#39;: [&#39;run-by-default&#39;, &#39;explains-fairness&#39;, &#39;h2o-sonar&#39;],
+ &#39;parameters&#39;: [{&#39;name&#39;: &#39;dia_cols&#39;,
+   &#39;description&#39;: &#39;List of features for which to compute DIA.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;list&#39;,
+   &#39;val&#39;: None,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;cut_off&#39;,
+   &#39;description&#39;: &#39;Cut off.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;float&#39;,
+   &#39;val&#39;: 0.0,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;maximize_metric&#39;,
+   &#39;description&#39;: &#39;Maximize metric.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;str&#39;,
+   &#39;val&#39;: &#39;F1&#39;,
+   &#39;predefined&#39;: [&#39;F1&#39;, &#39;F05&#39;, &#39;F2&#39;, &#39;MCC&#39;],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;max_cardinality&#39;,
+   &#39;description&#39;: &#39;Max cardinality for categorical variables.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 10,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;min_cardinality&#39;,
+   &#39;description&#39;: &#39;Minimum cardinality for categorical variables.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 2,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;num_card&#39;,
+   &#39;description&#39;: &#39;Max cardinality for numeric variables to be considered categorical.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 25,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;}],
+ &#39;metrics_meta&#39;: []}
+</pre></div></div>
+</div>
+<section id="Interpret">
+<h2>Interpret<a class="headerlink" href="#Interpret" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># scikit-learn model
+gradient_booster = GradientBoostingClassifier(learning_rate=0.1)
+gradient_booster.fit(X, y)
+
+# explainable model
+model = ModelApi().create_model(target_col=target_col, model_src=gradient_booster, used_features=X.columns.to_list())
+
+interpretation = interpret.run_interpretation(
+    dataset=df,
+    model=model,
+    target_col=target_col,
+    results_location=results_location,
+    log_level=logging.INFO,
+    explainers=[
+        commons.ExplainerToRun(
+            explainer_id=DiaExplainer.explainer_id(),
+            params=&quot;&quot;,
+        )
+    ]
+)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/ragas/metrics/__init__.py:1: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain_core.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain_core.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+  from ragas.metrics._answer_correctness import AnswerCorrectness, answer_correctness
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/ragas/metrics/__init__.py:4: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+  from ragas.metrics._context_entities_recall import (
+X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Preparing and checking DIA features (None): dataset=     | PAY_0  PAY_4  BILL_AMT2    AGE  PAY_3  EDUCATION  BILL_AMT1  PAY_AMT2    SEX  PAY_AMT5  …  PAY_AMT4  PAY_AMT6  BILL_AMT3  LIMIT_BAL  BILL_AMT4
+     | int64  int64      int64  int64  int64      int64      int64     int64  int64     int64        int64     int64      int64      int64      int64
+---- + -----  -----  ---------  -----  -----  ---------  ---------  --------  -----  --------     --------  --------  ---------  ---------  ---------
+   0 |    -2     -1       3102     24     -1          2       3913       689      2         0  …         0         0        689      20000          0
+   1 |    -1      0       1725     26      0          2       2682      1000      2         0  …      1000      2000       2682     120000       3272
+   2 |     0      0      14027     34      0          2      29239      1500      2      1000  …      1000      5000      13559      90000      14331
+   3 |     1      0      48233     37      0          2      46990      2019      2      1069  …      1100      1000      49291      50000      28314
+   4 |     2      0       5670     57     -1          2       8617     36681      1       689  …      9000       679      35835      50000      20940
+   5 |     3      0      57069     37      0          1      64400      1815      1      1000  …      1000       800      57608      50000      19394
+   6 |     4      0     412023     29      0          1     367965     40000      1     13750  …     20239     13770     445007     500000     542653
+   7 |     5      0        380     23     -1          2      11876       601      2      1687  …       581      1542        601     100000        221
+   8 |     6      0      14096     28      2          3      11285         0      2      1000  …      1000      1000      12108     140000      12211
+   9 |     7     -2          0     35     -2          3          0         0      1      1122  …     13007         0          0      20000          0
+  10 |     8      0       9787     34      2          3      11073        12      2      3738  …       300        66       5535     200000       2513
+  11 |    -1     -1      21670     51     -1          1      12261      9966      2         0  …     22301      3640       9966     260000       8517
+  12 |    -1     -1       6500     41     -1          2      12137      6500      2      2870  …      6500         0       6500     630000       6500
+  13 |     1      0      67369     30      2          2      65802         0      1      1500  …      3000         0      65701      70000      66782
+  14 |     0      0      67060     29      0          1      70887      3000      1      3000  …      3000      3000      63561     250000      59696
+   … |     …      …          …      …      …          …          …         …      …         …  …         …         …          …          …          …
+9995 |     1     -2        241     31     -2          1          0         0      2         0  …         0      1419          0     140000          0
+9996 |    -2     -2          0     37     -2          2       3946         0      2         0  …         0         0          0      80000          0
+9997 |     0      0     144085     44      0          3     138877      5000      1     10017  …     27080      4200     142520     200000     151078
+9998 |    -1     -2        780     26      2          2        780         0      2         0  …         0         0          0      80000          0
+9999 |     0      0      20715     36      0          2      19505      3000      1      3000  …      3000      3000      19750     230000      19506
+[10000 rows x 25 columns]
+ dataset_meta={
+  &#34;shape&#34;: &#34;(10000, 25)&#34;,
+  &#34;row_count&#34;: 10000,
+  &#34;column_names&#34;: [
+    &#34;ID&#34;,
+    &#34;LIMIT_BAL&#34;,
+    &#34;SEX&#34;,
+    &#34;EDUCATION&#34;,
+    &#34;MARRIAGE&#34;,
+    &#34;AGE&#34;,
+    &#34;PAY_0&#34;,
+    &#34;PAY_2&#34;,
+    &#34;PAY_3&#34;,
+    &#34;PAY_4&#34;,
+    &#34;PAY_5&#34;,
+    &#34;PAY_6&#34;,
+    &#34;BILL_AMT1&#34;,
+    &#34;BILL_AMT2&#34;,
+    &#34;BILL_AMT3&#34;,
+    &#34;BILL_AMT4&#34;,
+    &#34;BILL_AMT5&#34;,
+    &#34;BILL_AMT6&#34;,
+    &#34;PAY_AMT1&#34;,
+    &#34;PAY_AMT2&#34;,
+    &#34;PAY_AMT3&#34;,
+    &#34;PAY_AMT4&#34;,
+    &#34;PAY_AMT5&#34;,
+    &#34;PAY_AMT6&#34;,
+    &#34;default payment next month&#34;
+  ],
+  &#34;column_types&#34;: [
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;
+  ],
+  &#34;column_uniques&#34;: [
+    10000,
+    72,
+    2,
+    7,
+    4,
+    54,
+    11,
+    11,
+    11,
+    11,
+    10,
+    10,
+    8371,
+    8215,
+    8072,
+    7913,
+    7764,
+    7550,
+    3763,
+    3581,
+    3305,
+    3247,
+    3258,
+    3174,
+    2
+  ],
+  &#34;columns_cat&#34;: [],
+  &#34;columns_num&#34;: [],
+  &#34;file_path&#34;: &#34;&#34;,
+  &#34;file_name&#34;: &#34;&#34;,
+  &#34;file_size&#34;: 0,
+  &#34;missing_values&#34;: [
+    &#34;&#34;,
+    &#34;?&#34;,
+    &#34;None&#34;,
+    &#34;nan&#34;,
+    &#34;NA&#34;,
+    &#34;N/A&#34;,
+    &#34;unknown&#34;,
+    &#34;inf&#34;,
+    &#34;-inf&#34;,
+    &#34;1.7976931348623157e+308&#34;,
+    &#34;-1.7976931348623157e+308&#34;
+  ],
+  &#34;columns_meta&#34;: [
+    {
+      &#34;name&#34;: &#34;ID&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: true,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 10000,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 10000,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;LIMIT_BAL&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 72,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 72,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;SEX&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 2,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 2,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;EDUCATION&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;MARRIAGE&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 4,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 4,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;AGE&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 54,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 54,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_0&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_2&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_3&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_4&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_5&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 10,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 10,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_6&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 10,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 10,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT1&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 8371,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 8371,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT2&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 8215,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 8215,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT3&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 8072,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 8072,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT4&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7913,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7913,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT5&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7764,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7764,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT6&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7550,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7550,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT1&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3763,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3763,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT2&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3581,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3581,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT3&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3305,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3305,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT4&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3247,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3247,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT5&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3258,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3258,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT6&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3174,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3174,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;default payment next month&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 2,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 2,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    }
+  ],
+  &#34;original_dataset_sampled&#34;: false,
+  &#34;original_dataset_path&#34;: &#34;&#34;,
+  &#34;original_dataset_size&#34;: 0,
+  &#34;original_dataset_shape&#34;: [
+    10000,
+    25
+  ]
+}
+Using dataset ENTITY to prepare DIA features: column_names=[&#39;ID&#39;, &#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_0&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;, &#39;default payment next month&#39;] column_uniques=[10000, 72, 2, 7, 4, 54, 11, 11, 11, 11, 10, 10, 8371, 8215, 8072, 7913, 7764, 7550, 3763, 3581, 3305, 3247, 3258, 3174, 2]
+DIA group columns prepared using dataset ENTITY: {&#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;default payment next month&#39;, &#39;SEX&#39;, &#39;PAY_0&#39;, &#39;MARRIAGE&#39;, &#39;PAY_4&#39;, &#39;PAY_3&#39;, &#39;EDUCATION&#39;, &#39;PAY_2&#39;}
+DIA group columns to SKIP: {&#39;model_pred&#39;, &#39;default payment next month&#39;}
+DIA group columns as BOOLs: [&lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fce2ace8a90&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fce28754110&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fce28754190&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fce287541d0&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fce28754150&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fce28754310&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fce287540d0&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fce28754550&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7fce28754450&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+</pre></div></div>
+</div>
+</section>
+<section id="Interact-with-the-Explainer-Result">
+<h2>Interact with the Explainer Result<a class="headerlink" href="#Interact-with-the-Explainer-Result" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># retrieve the result
+result = interpretation.get_explainer_result(DiaExplainer.explainer_id())
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># open interpretation HTML report in web browser
+webbrowser.open(interpretation.result.get_html_report_location())
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># summary
+result.summary()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;h2o_sonar.explainers.dia_explainer.DiaExplainer&#39;,
+ &#39;name&#39;: &#39;DiaExplainer&#39;,
+ &#39;display_name&#39;: &#39;Disparate Impact Analysis&#39;,
+ &#39;tagline&#39;: &#39;DiaExplainer.&#39;,
+ &#39;description&#39;: &#39;Disparate Impact Analysis (DIA) is a technique that is used to evaluate fairness. Bias can be introduced to models during the process of collecting, processing, and labeling data as a result, it is important to determine whether a model is harming certain users by making a significant number of biased decisions. DIA typically works by comparing aggregate measurements of unprivileged groups to a privileged group. For instance, the proportion of the unprivileged group that receives the potentially harmful outcome is divided by the proportion of the privileged group that receives the same outcome - the resulting proportion is then used to determine whether the model is biased.&#39;,
+ &#39;brief_description&#39;: &#39;DiaExplainer.&#39;,
+ &#39;model_types&#39;: [&#39;iid&#39;, &#39;time_series&#39;],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-disparate-impact-analysis&#39;,
+   &#39;name&#39;: &#39;Disparate Impact Analysis&#39;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;text/plain&#39;]},
+  {&#39;explanation_type&#39;: &#39;global-html-fragment&#39;,
+   &#39;name&#39;: &#39;Disparate Impact Analysis&#39;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;text/html&#39;]}],
+ &#39;keywords&#39;: [&#39;run-by-default&#39;, &#39;explains-fairness&#39;, &#39;h2o-sonar&#39;],
+ &#39;parameters&#39;: [{&#39;name&#39;: &#39;dia_cols&#39;,
+   &#39;description&#39;: &#39;List of features for which to compute DIA.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;list&#39;,
+   &#39;val&#39;: None,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;cut_off&#39;,
+   &#39;description&#39;: &#39;Cut off.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;float&#39;,
+   &#39;val&#39;: 0.0,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;maximize_metric&#39;,
+   &#39;description&#39;: &#39;Maximize metric.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;str&#39;,
+   &#39;val&#39;: &#39;F1&#39;,
+   &#39;predefined&#39;: [&#39;F1&#39;, &#39;F05&#39;, &#39;F2&#39;, &#39;MCC&#39;],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;max_cardinality&#39;,
+   &#39;description&#39;: &#39;Max cardinality for categorical variables.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 10,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;min_cardinality&#39;,
+   &#39;description&#39;: &#39;Minimum cardinality for categorical variables.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 2,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;num_card&#39;,
+   &#39;description&#39;: &#39;Max cardinality for numeric variables to be considered categorical.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 25,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;}],
+ &#39;metrics_meta&#39;: []}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># parameters
+result.params()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;dia_cols&#39;: [&#39;PAY_5&#39;,
+  &#39;PAY_6&#39;,
+  &#39;SEX&#39;,
+  &#39;PAY_0&#39;,
+  &#39;MARRIAGE&#39;,
+  &#39;PAY_4&#39;,
+  &#39;PAY_3&#39;,
+  &#39;EDUCATION&#39;,
+  &#39;PAY_2&#39;],
+ &#39;cut_off&#39;: 0.0,
+ &#39;maximize_metric&#39;: &#39;F1&#39;,
+ &#39;max_cardinality&#39;: 10,
+ &#39;min_cardinality&#39;: 2,
+ &#39;num_card&#39;: 25}
+</pre></div></div>
+</div>
+<section id="Display-the-DIA-data">
+<h3>Display the DIA data<a class="headerlink" href="#Display-the-DIA-data" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Print method help
+import pprint
+pprint.pprint(result.help())
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;methods&#39;: {&#39;data&#39;: {&#39;doc&#39;: &#39;&#39;,
+                      &#39;parameters&#39;: [{&#39;default&#39;: &#39;&#39;,
+                                      &#39;doc&#39;: &#39;The name of the feature whose &#39;
+                                             &#39;data we want to retrieve.&#39;,
+                                      &#39;name&#39;: &#39;feature_name&#39;,
+                                      &#39;required&#39;: True,
+                                      &#39;type&#39;: &#39;str&#39;},
+                                     {&#39;default&#39;: &#39;&#39;,
+                                      &#39;doc&#39;: &#39;The category of data to be &#39;
+                                             &#39;retrieve. This can be one of the &#39;
+                                             &#34;following: &#39;metrics&#39;, &#39;cm&#39;, &#34;
+                                             &#34;&#39;me_smd&#39;, &#39;disparity&#39; and &#34;
+                                             &#34;&#39;parity&#39;&#34;,
+                                      &#39;name&#39;: &#39;category&#39;,
+                                      &#39;required&#39;: True,
+                                      &#39;type&#39;: &#39;str&#39;},
+                                     {&#39;default&#39;: &#39;The first reference level &#39;
+                                                 &#39;will be selected from the &#39;
+                                                 &#39;set of available reference &#39;
+                                                 &#39;levels.&#39;,
+                                      &#39;doc&#39;: &#39;The reference levels for each &#39;
+                                             &#39;categorical data&#39;,
+                                      &#39;name&#39;: &#39;ref_level&#39;,
+                                      &#39;required&#39;: False,
+                                      &#39;type&#39;: &#39;str | int&#39;}]}}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result.data(feature_name=&quot;MARRIAGE&quot;, category=result.DiaCategory.DIA_METRICS)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>Groups</th><th>N</th><th>Adverse Impact</th><th>Accuracy</th><th>True Positive Rate</th><th>Precision</th><th>Specificity</th><th>Negative Predicted Value</th><th>False Positive Rate</th><th>False Discovery Rate</th><th>False Negative Rate</th><th>False Omissions Rate</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='int' title='int64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='int' title='int64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>0</td><td>17</td><td>0.9853</td><td>0.2244</td><td>0.964143</td><td>0.221049</td><td>0.00852603</td><td>0.44898</td><td>0.991474</td><td>0.778951</td><td>0.0358566</td><td>0.55102</td></tr>
+    <tr><td class='row_index'>1</td><td>1</td><td>4390</td><td>0.988155</td><td>0.238724</td><td>0.972486</td><td>0.236284</td><td>0.00689448</td><td>0.442308</td><td>0.993106</td><td>0.763716</td><td>0.0275142</td><td>0.557692</td></tr>
+    <tr><td class='row_index'>2</td><td>2</td><td>5468</td><td>0.982992</td><td>0.213424</td><td>0.956633</td><td>0.209302</td><td>0.00978565</td><td>0.451613</td><td>0.990214</td><td>0.790698</td><td>0.0433673</td><td>0.548387</td></tr>
+    <tr><td class='row_index'>3</td><td>3</td><td>125</td><td>0.984</td><td>0.224</td><td>0.964286</td><td>0.219512</td><td>0.0103093</td><td>0.5</td><td>0.989691</td><td>0.780488</td><td>0.0357143</td><td>0.5</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>4 rows &times; 12 columns</div>
+  </div>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result.data(feature_name=&quot;EDUCATION&quot;, category=result.DiaCategory.DIA_CATEGORY_DISPARITY, ref_level=&quot;3&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>Groups</th><th>N</th><th>Adverse Impact Disparity</th><th>Marginal Error</th><th>Standardized Mean Difference</th><th>Accuracy Disparity</th><th>True Positive Rate Disparity</th><th>Precision Disparity</th><th>Specificity Disparity</th><th>Negative Predicted Value Disparity</th><th>False Positive Rate Disparity</th><th>False Discovery Rate Disparity</th><th>False Negative Rate Disparity</th><th>False Omissions Rate Disparity</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='int' title='int64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='int' title='int64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>0</td><td>3</td><td>1.00296</td><td>&minus;0.00291008</td><td>0.146318</td><td>0.907878</td><td>1.0022</td><td>0.908629</td><td>0.783739</td><td>0.967033</td><td>1.00238</td><td>1.02937</td><td>0.944223</td><td>1.02857</td></tr>
+    <tr><td class='row_index'>1</td><td>1</td><td>3714</td><td>1.00778</td><td>&minus;0.00764775</td><td>0.0635433</td><td>0.840969</td><td>1.01265</td><td>0.844016</td><td>0.531709</td><td>0.989605</td><td>1.00515</td><td>1.05015</td><td>0.67957</td><td>1.00901</td></tr>
+    <tr><td class='row_index'>2</td><td>2</td><td>4588</td><td>0.999955</td><td>4.47035e-05</td><td>&minus;0.000371306</td><td>0.945314</td><td>0.995322</td><td>0.945777</td><td>0.91792</td><td>0.930674</td><td>1.0009</td><td>1.01743</td><td>1.1185</td><td>1.06008</td></tr>
+    <tr><td class='row_index'>3</td><td>3</td><td>1590</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td class='row_index'>4</td><td>4</td><td>26</td><td>1.01793</td><td>&minus;0.0176101</td><td>0.146318</td><td>0.155608</td><td>1.03947</td><td>0.158097</td><td>0</td><td><span class=na>NA</span></td><td>1.011</td><td>1.27066</td><td>0</td><td><span class=na>NA</span></td></tr>
+    <tr><td class='row_index'>5</td><td>5</td><td>69</td><td>1.00317</td><td>&minus;0.00311732</td><td>0.0259009</td><td>0.351809</td><td>1.03947</td><td>0.302245</td><td>1.4363</td><td>2.15385</td><td>0.995201</td><td>1.22432</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>6</td><td>6</td><td>10</td><td>1.01793</td><td>&minus;0.0176101</td><td>0.146318</td><td>0</td><td><span class=na>NA</span></td><td>0</td><td>0</td><td><span class=na>NA</span></td><td>1.011</td><td>1.32149</td><td><span class=na>NA</span></td><td><span class=na>NA</span></td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>7 rows &times; 14 columns</div>
+  </div>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result.data(feature_name=&quot;PAY_4&quot;, category=result.DiaCategory.DIA_CATEGORY_CM, ref_level=-1)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>actual1</th><th>actual0</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='int' title='int32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='int' title='int32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>332</td><td>1640</td></tr>
+    <tr><td class='row_index'>1</td><td>4</td><td>4</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>2 rows &times; 2 columns</div>
+  </div>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result.data(feature_name=&quot;SEX&quot;, category=result.DiaCategory.DIA_CATEGORY_ME_SMD)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>Groups</th><th>N</th><th>Marginal Error</th><th>Standardized Mean Difference</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='int' title='int64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='int' title='int64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>1</td><td>4206</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>1</td><td>2</td><td>5794</td><td>0.00936753</td><td>&minus;0.0778322</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>2 rows &times; 4 columns</div>
+  </div>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result.data(feature_name=&quot;PAY_2&quot;, category=result.DiaCategory.DIA_CATEGORY_PARITY)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>Groups</th><th>N</th><th>Adverse Impact Parity</th><th>Accuracy Parity</th><th>True Positive Rate Parity</th><th>Precision Parity</th><th>Specificity Parity</th><th>Negative Predicted Value Parity</th><th>False Positive Rate Parity</th><th>False Discovery Rate Parity</th><th class='vellipsis'>&hellip;</th><th>Type I Parity</th><th>Type II Parity</th><th>Equalized Odds</th><th>Supervised Fairness</th><th>Overall Fairness</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='str' title='str32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='int' title='int64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td><td></td><td class='bool' title='bool8'>&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>-2</td><td>1218</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td class=vellipsis>&hellip;</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>1</td><td>-1</td><td>2171</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td class=vellipsis>&hellip;</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>2</td><td>0</td><td>5147</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td class=vellipsis>&hellip;</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>3</td><td>1</td><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td class=vellipsis>&hellip;</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>4</td><td>2</td><td>1294</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td class=vellipsis>&hellip;</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>5</td><td>3</td><td>106</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class=vellipsis>&hellip;</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>6</td><td>4</td><td>25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class=vellipsis>&hellip;</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>7</td><td>5</td><td>11</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class=vellipsis>&hellip;</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>8</td><td>6</td><td>7</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class=vellipsis>&hellip;</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>9</td><td>7</td><td>12</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class=vellipsis>&hellip;</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>10</td><td>8</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class=vellipsis>&hellip;</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td class='row_index'>11</td><td>all</td><td>10000</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td class=vellipsis>&hellip;</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>12 rows &times; 17 columns</div>
+  </div>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result.data(feature_name=&quot;MARRIAGE&quot;, category=result.DiaCategory.DIA_CATEGORY_DISPARITY)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>Groups</th><th>N</th><th>Adverse Impact Disparity</th><th>Marginal Error</th><th>Standardized Mean Difference</th><th>Accuracy Disparity</th><th>True Positive Rate Disparity</th><th>Precision Disparity</th><th>Specificity Disparity</th><th>Negative Predicted Value Disparity</th><th>False Positive Rate Disparity</th><th>False Discovery Rate Disparity</th><th>False Negative Rate Disparity</th><th>False Omissions Rate Disparity</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='int' title='int64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='int' title='int64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>0</td><td>17</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td class='row_index'>1</td><td>1</td><td>4390</td><td>1.0029</td><td>&minus;0.00285488</td><td>&minus;0.0984179</td><td>1.06383</td><td>1.00865</td><td>1.06892</td><td>0.80864</td><td>0.98514</td><td>1.00165</td><td>0.980442</td><td>0.767341</td><td>1.01211</td></tr>
+    <tr><td class='row_index'>2</td><td>2</td><td>5468</td><td>0.997657</td><td>0.00230807</td><td>&minus;0.141316</td><td>0.951085</td><td>0.99221</td><td>0.946858</td><td>1.14774</td><td>1.00587</td><td>0.99873</td><td>1.01508</td><td>1.20947</td><td>0.995221</td></tr>
+    <tr><td class='row_index'>3</td><td>3</td><td>125</td><td>0.998681</td><td>0.00129998</td><td>&minus;0.13294</td><td>0.998218</td><td>1.00015</td><td>0.993046</td><td>1.20915</td><td>1.11364</td><td>0.998201</td><td>1.00197</td><td>0.996032</td><td>0.907407</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>4 rows &times; 14 columns</div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="Plot-the-DIA-Metrics">
+<h3>Plot the DIA Metrics<a class="headerlink" href="#Plot-the-DIA-Metrics" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result.plot(feature_name=&quot;EDUCATION&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_20_0.png" src="../_images/notebooks_h2o-sonar-dia-explainer_20_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_20_1.png" src="../_images/notebooks_h2o-sonar-dia-explainer_20_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_20_2.png" src="../_images/notebooks_h2o-sonar-dia-explainer_20_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_20_3.png" src="../_images/notebooks_h2o-sonar-dia-explainer_20_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_20_4.png" src="../_images/notebooks_h2o-sonar-dia-explainer_20_4.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_20_5.png" src="../_images/notebooks_h2o-sonar-dia-explainer_20_5.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_20_6.png" src="../_images/notebooks_h2o-sonar-dia-explainer_20_6.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_20_7.png" src="../_images/notebooks_h2o-sonar-dia-explainer_20_7.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_20_8.png" src="../_images/notebooks_h2o-sonar-dia-explainer_20_8.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_20_9.png" src="../_images/notebooks_h2o-sonar-dia-explainer_20_9.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_20_10.png" src="../_images/notebooks_h2o-sonar-dia-explainer_20_10.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Only plot metric for &quot;Specificity&quot;
+result.plot(feature_name=&quot;PAY_0&quot;, metrics_of_interest=&quot;Specificity&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_21_0.png" src="../_images/notebooks_h2o-sonar-dia-explainer_21_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Only plot metrics for &quot;N&quot;, &quot;Adverse Impact&quot; and &quot;True Positive Rate&quot;
+result.plot(feature_name=&quot;PAY_0&quot;, metrics_of_interest=[&quot;N&quot;, &quot;Adverse Impact&quot;, &quot;True Positive Rate&quot;])
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_22_0.png" src="../_images/notebooks_h2o-sonar-dia-explainer_22_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_22_1.png" src="../_images/notebooks_h2o-sonar-dia-explainer_22_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-dia-explainer_22_2.png" src="../_images/notebooks_h2o-sonar-dia-explainer_22_2.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[]
+</pre></div></div>
+</div>
+</section>
+<section id="Save-the-explainer-log-and-data">
+<h3>Save the explainer log and data<a class="headerlink" href="#Save-the-explainer-log-and-data" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save the explainer log
+result.log(path=&quot;./dia-demo.log&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head dia-demo.log
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save the explainer data
+result.zip(file_path=&quot;./dia-demo-archive.zip&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!unzip -l dia-demo-archive.zip
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Archive:  dia-demo-archive.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     3988  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/result_descriptor.json
+      117  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_disparate_impact_analysis/text_plain.meta
+       19  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_disparate_impact_analysis/text_plain/explanation.txt
+        2  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/problems/problems_and_actions.json
+      110  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html.meta
+    15297  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-0-false_discovery_rate.png
+    14691  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-0-specificity.png
+    15195  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-7-false_omissions_rate.png
+    11805  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-2-precision.png
+    14412  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-3-n.png
+    15132  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-4-false_negative_rate.png
+    15008  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-3-true_positive_rate.png
+    15456  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-5-accuracy.png
+    15423  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-5-precision.png
+    14760  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-8-true_positive_rate.png
+    14829  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-0-true_positive_rate.png
+    13212  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-2-false_positive_rate.png
+    15257  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-3-false_omissions_rate.png
+    14901  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-1-true_positive_rate.png
+    12812  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-2-true_positive_rate.png
+    14404  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-6-n.png
+    14167  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-1-specificity.png
+    15684  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-6-false_omissions_rate.png
+    15118  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-5-false_positive_rate.png
+    15097  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-6-false_positive_rate.png
+    15736  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-8-negative_predicted_value.png
+    14679  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-0-adverse_impact.png
+    14369  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-2-specificity.png
+    14472  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-4-true_positive_rate.png
+    14754  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-5-true_positive_rate.png
+    13556  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-7-n.png
+    16319  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-3-false_negative_rate.png
+    15996  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-4-specificity.png
+    15064  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-2-false_discovery_rate.png
+    13692  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-2-negative_predicted_value.png
+    13462  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-2-false_negative_rate.png
+    15723  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-5-negative_predicted_value.png
+    14267  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-8-specificity.png
+    14324  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-4-accuracy.png
+    29111  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/explanation.html
+    14997  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-5-false_negative_rate.png
+    14856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-7-adverse_impact.png
+    14795  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-6-true_positive_rate.png
+    17011  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-1-false_discovery_rate.png
+    14870  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-4-false_positive_rate.png
+    15317  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-1-false_positive_rate.png
+    13481  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-4-precision.png
+    15341  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-6-false_discovery_rate.png
+    14723  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-7-precision.png
+    15039  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-3-false_discovery_rate.png
+    15311  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-3-false_positive_rate.png
+    13760  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-2-false_omissions_rate.png
+    14947  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-7-true_positive_rate.png
+    15800  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-1-negative_predicted_value.png
+    15282  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-7-false_discovery_rate.png
+    16098  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-5-false_omissions_rate.png
+    15637  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-8-false_negative_rate.png
+    14337  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-5-n.png
+    13925  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-4-n.png
+    13990  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-1-accuracy.png
+    12752  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-2-adverse_impact.png
+    15731  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-0-negative_predicted_value.png
+    15216  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-0-false_positive_rate.png
+    13905  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-8-accuracy.png
+    14749  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-5-adverse_impact.png
+    14209  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-6-specificity.png
+    15075  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-8-false_positive_rate.png
+    13832  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-6-precision.png
+    13947  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-6-accuracy.png
+    20218  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-7-false_negative_rate.png
+    15723  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-7-negative_predicted_value.png
+    15289  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-3-specificity.png
+    15339  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-1-false_negative_rate.png
+    14806  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-6-adverse_impact.png
+    19006  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-7-specificity.png
+    15136  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-4-negative_predicted_value.png
+    13787  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-0-precision.png
+    15669  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-6-false_negative_rate.png
+    15312  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-5-false_discovery_rate.png
+    15316  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-8-false_discovery_rate.png
+    14886  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-7-accuracy.png
+    15276  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-7-false_positive_rate.png
+    14797  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-3-adverse_impact.png
+    14709  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-8-adverse_impact.png
+    14398  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-0-n.png
+    13230  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-2-n.png
+    14787  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-1-adverse_impact.png
+    13877  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-1-precision.png
+    14400  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-4-adverse_impact.png
+    15738  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-6-negative_predicted_value.png
+    17518  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-0-false_negative_rate.png
+    15085  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-3-accuracy.png
+    14434  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-1-n.png
+    15812  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-1-false_omissions_rate.png
+    14905  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-3-precision.png
+    15802  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-5-specificity.png
+    13803  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-8-precision.png
+    12658  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-2-accuracy.png
+    13918  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-0-accuracy.png
+    16628  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-4-false_discovery_rate.png
+    14407  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-8-n.png
+    15816  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-3-negative_predicted_value.png
+    14744  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-4-false_omissions_rate.png
+    16209  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-0-false_omissions_rate.png
+    15166  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/global_html_fragment/text_html/dia-8-false_omissions_rate.png
+        0  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/log/explainer_run_2dc47eb0-225e-42cd-8b6a-b769177e05be.log
+     4076  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/dia_entity.json
+     2152  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/metrics.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/4/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/4/me_smd.jay
+     2648  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/4/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/4/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/2/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/2/me_smd.jay
+     2648  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/2/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/2/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/5/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/5/me_smd.jay
+     2648  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/5/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/5/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/0/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/0/me_smd.jay
+     2648  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/0/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/0/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/8/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/8/me_smd.jay
+     2648  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/8/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/8/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/7/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/7/me_smd.jay
+     2664  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/7/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/7/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/1/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/1/me_smd.jay
+     2648  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/1/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/1/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/6/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/6/me_smd.jay
+     2648  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/6/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/6/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/9/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/9/me_smd.jay
+     2656  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/9/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/9/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/3/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/3/me_smd.jay
+     2648  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/3/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_5/3/cm.jay
+     1392  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/SEX/metrics.jay
+     1984  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/SEX/0/parity.jay
+      600  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/SEX/0/me_smd.jay
+     1792  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/SEX/0/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/SEX/0/cm.jay
+     1984  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/SEX/1/parity.jay
+      600  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/SEX/1/me_smd.jay
+     1792  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/SEX/1/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/SEX/1/cm.jay
+     2056  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/metrics.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/4/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/4/me_smd.jay
+     2552  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/4/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/4/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/2/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/2/me_smd.jay
+     2552  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/2/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/2/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/5/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/5/me_smd.jay
+     2552  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/5/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/5/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/0/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/0/me_smd.jay
+     2552  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/0/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/0/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/8/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/8/me_smd.jay
+     2560  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/8/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/8/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/7/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/7/me_smd.jay
+     2560  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/7/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/7/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/1/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/1/me_smd.jay
+     2552  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/1/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/1/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/6/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/6/me_smd.jay
+     2560  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/6/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/6/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/9/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/9/me_smd.jay
+     2568  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/9/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/9/cm.jay
+     2208  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/3/parity.jay
+      824  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/3/me_smd.jay
+     2552  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/3/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_6/3/cm.jay
+     1504  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/metrics.jay
+     2008  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/2/parity.jay
+      656  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/2/me_smd.jay
+     1928  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/2/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/2/cm.jay
+     2008  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/0/parity.jay
+      656  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/0/me_smd.jay
+     1928  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/0/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/0/cm.jay
+     2008  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/1/parity.jay
+      656  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/1/me_smd.jay
+     1928  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/1/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/1/cm.jay
+     2008  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/3/parity.jay
+      656  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/3/me_smd.jay
+     1928  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/3/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/MARRIAGE/3/cm.jay
+     2344  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/metrics.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/4/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/4/me_smd.jay
+     2856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/4/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/4/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/10/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/10/me_smd.jay
+     2864  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/10/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/10/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/2/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/2/me_smd.jay
+     2856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/2/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/2/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/5/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/5/me_smd.jay
+     2856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/5/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/5/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/0/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/0/me_smd.jay
+     2856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/0/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/0/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/8/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/8/me_smd.jay
+     2856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/8/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/8/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/7/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/7/me_smd.jay
+     2856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/7/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/7/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/1/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/1/me_smd.jay
+     2856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/1/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/1/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/6/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/6/me_smd.jay
+     2856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/6/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/6/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/9/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/9/me_smd.jay
+     2856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/9/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/9/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/3/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/3/me_smd.jay
+     2864  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/3/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_2/3/cm.jay
+     1936  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/metrics.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/4/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/4/me_smd.jay
+     2448  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/4/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/4/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/10/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/10/me_smd.jay
+     2448  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/10/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/10/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/2/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/2/me_smd.jay
+     2448  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/2/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/2/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/5/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/5/me_smd.jay
+     2448  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/5/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/5/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/0/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/0/me_smd.jay
+     2488  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/0/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/0/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/8/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/8/me_smd.jay
+     2488  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/8/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/8/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/7/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/7/me_smd.jay
+     2448  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/7/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/7/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/1/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/1/me_smd.jay
+     2448  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/1/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/1/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/6/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/6/me_smd.jay
+     2448  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/6/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/6/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/9/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/9/me_smd.jay
+     2488  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/9/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/9/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/3/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/3/me_smd.jay
+     2448  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/3/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_0/3/cm.jay
+     2248  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/metrics.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/4/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/4/me_smd.jay
+     2760  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/4/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/4/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/10/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/10/me_smd.jay
+     2768  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/10/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/10/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/2/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/2/me_smd.jay
+     2760  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/2/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/2/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/5/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/5/me_smd.jay
+     2760  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/5/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/5/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/0/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/0/me_smd.jay
+     2760  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/0/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/0/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/8/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/8/me_smd.jay
+     2760  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/8/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/8/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/7/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/7/me_smd.jay
+     2768  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/7/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/7/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/1/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/1/me_smd.jay
+     2760  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/1/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/1/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/6/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/6/me_smd.jay
+     2760  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/6/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/6/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/9/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/9/me_smd.jay
+     2760  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/9/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/9/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/3/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/3/me_smd.jay
+     2776  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/3/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_3/3/cm.jay
+     1864  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/metrics.jay
+     2056  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/4/parity.jay
+      744  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/4/me_smd.jay
+     2336  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/4/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/4/cm.jay
+     2056  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/2/parity.jay
+      744  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/2/me_smd.jay
+     2328  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/2/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/2/cm.jay
+     2056  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/5/parity.jay
+      744  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/5/me_smd.jay
+     2328  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/5/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/5/cm.jay
+     2056  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/0/parity.jay
+      744  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/0/me_smd.jay
+     2328  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/0/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/0/cm.jay
+     2056  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/1/parity.jay
+      744  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/1/me_smd.jay
+     2328  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/1/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/1/cm.jay
+     2056  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/6/parity.jay
+      744  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/6/me_smd.jay
+     2352  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/6/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/6/cm.jay
+     2056  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/3/parity.jay
+      744  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/3/me_smd.jay
+     2328  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/3/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/EDUCATION/3/cm.jay
+     2152  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/metrics.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/4/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/4/me_smd.jay
+     2664  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/4/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/4/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/10/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/10/me_smd.jay
+     2672  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/10/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/10/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/2/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/2/me_smd.jay
+     2664  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/2/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/2/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/5/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/5/me_smd.jay
+     2664  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/5/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/5/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/0/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/0/me_smd.jay
+     2664  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/0/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/0/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/8/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/8/me_smd.jay
+     2664  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/8/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/8/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/7/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/7/me_smd.jay
+     2664  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/7/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/7/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/1/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/1/me_smd.jay
+     2664  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/1/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/1/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/6/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/6/me_smd.jay
+     2664  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/6/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/6/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/9/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/9/me_smd.jay
+     2664  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/9/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/9/cm.jay
+     2224  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/3/parity.jay
+      856  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/3/me_smd.jay
+     2688  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/3/disparity.jay
+      304  2026-01-29 16:01   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/work/PAY_4/3/cm.jay
+        2  2026-01-29 16:02   explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_2dc47eb0-225e-42cd-8b6a-b769177e05be/insights/insights_and_actions.json
+---------                     -------
+  1984571                     425 files
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="h2o-sonar-residual-dt-surrogate-explainer.html" class="btn btn-neutral float-left" title="Residual Decision Tree Surrogate Explainer Demo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="h2o-sonar-friedman-h-statistic-explainer.html" class="btn btn-neutral float-right" title="Friedman H-statistic Explainer Demo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

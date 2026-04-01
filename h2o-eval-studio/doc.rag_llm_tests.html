@@ -1,0 +1,988 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Case, Suite, Lab and LLM Dataset &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/doc.rag_llm_tests.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Evaluator Parameters" href="doc.evaluators.pars.html" />
+    <link rel="prev" title="RAG and LLM Hosts" href="doc.rag_llm_hosts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="doc.html">H2O Eval Studio Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="doc.configuration.html">Library Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.predictive.html">Predictive Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="doc.generative.html">Generative Models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluations.html">Evaluating RAGs and LLMs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.rag_llm_hosts.html">RAG and LLM Hosts</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Test Case, Suite, Lab and LLM Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluators.pars.html">Evaluator Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluators.html">Evaluators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.byoj.html">BYOJ: Bring Your Own Judge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.byop.html">BYOP: Bring Your Own Prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.perturbations.html">Perturbations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc.result.html">Report and Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.talktoreport.html">Talk to Report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Eval Studio Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="doc.html">H2O Eval Studio Documentation</a></li>
+          <li class="breadcrumb-item"><a href="doc.generative.html">Generative Models</a></li>
+      <li class="breadcrumb-item active">Test Case, Suite, Lab and LLM Dataset</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/doc.rag_llm_tests.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="test-case-suite-lab-and-llm-dataset">
+<h1>Test Case, Suite, Lab and LLM Dataset<a class="headerlink" href="#test-case-suite-lab-and-llm-dataset" title="Link to this heading"></a></h1>
+<p>H2O Eval Studio can evaluate standalone LLMs (Large Language Models) and LLMs used by RAG
+(Retrieval-augmented generation) applications using the evaluation data shipped with
+the product and/or custom evaluation data provided by the user.</p>
+<p>Evaluation data can be provided in the form of test cases, tests, test suites, and
+test labs. LLM dataset - which is normalized test lab - is used as the input of the
+evaluation process.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#test-case"><span class="std std-ref">Test Case</span></a></p></li>
+<li><p><a class="reference internal" href="#test-suite"><span class="std std-ref">Test Suite</span></a></p></li>
+<li><p><a class="reference internal" href="#test-lab"><span class="std std-ref">Test Lab</span></a></p></li>
+<li><p><a class="reference internal" href="#llm-dataset"><span class="std std-ref">LLM Dataset</span></a></p></li>
+</ul>
+<p>Terminology:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>raw test data</dt><dd><ul>
+<li><p>A dataset - provided by the user, exported from a system or generated - which can be used to create the evaluation data.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#test-case"><span class="std std-ref">Test Case</span></a></dt><dd><ul>
+<li><p>A single test case that is used to evaluate the LLM / RAG - it consists of a prompt, ground truth, conditions, and other parameters that are used for the evaluation.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#test"><span class="std std-ref">Test</span></a></dt><dd><ul>
+<li><p>A set of test cases linked with a collection of documents (corpus) which must be provided in case of RAG evaluation (test cases typically make sense only in the context of particular corpus - the corpus is empty in case of LLM evaluation).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#test-suite"><span class="std std-ref">Test Suite</span></a></dt><dd><ul>
+<li><p>A set of tests which can be used to evaluate the LLM / RAG model.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#test-lab"><span class="std std-ref">Test Lab</span></a></dt><dd><ul>
+<li><p>A test suite completed with the actual data - answers generated by the LLM / RAG models for given prompts, retrieved contexts (in case of RAG), durations, and costs.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="#llm-dataset"><span class="std std-ref">LLM Dataset</span></a></dt><dd><ul>
+<li><p>A normalized test lab that is used as the input of the evaluation process.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>report</dt><dd><ul>
+<li><p>A collection of metrics and visualizations that describe the validity of a RAG / LLM model on a given test configuration.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="test-case">
+<h2>Test Case<a class="headerlink" href="#test-case" title="Link to this heading"></a></h2>
+<p>Test case is a single test case that is used to evaluate the LLM / RAG - it consists of a prompt, ground truth, conditions, and other parameters that are used for the evaluation.</p>
+<p>Example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d981bf23-9790-4c5e-905e-2ab56cba7ece&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What was the revenue of Brazil?&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;question_answering&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;perturbed&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;perturbed_by:h2o_sonar.utils.perturbations.SynonymPerturbator:PerturbationIntensity.HIGH&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;perturbation_source&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9c3a7df3-67df-4819-babb-20636611f077&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;target_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_case&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Brazil revenue was 15,969 million.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;15,969\&quot; AND \&quot;million\&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Format description:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>key</cite></dt><dd><ul>
+<li><p>Key is optional. In case that it is specified it must be unique within the test suite.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>prompt</cite></dt><dd><ul>
+<li><p>Prompt which is used to evaluate the LLM / RAG model.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>categories</cite></dt><dd><ul>
+<li><p>Optional categories which are used to classify the test cases.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>relationships</cite></dt><dd><ul>
+<li><p>Optional relationships which are used to interlink the test cases.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>relationships/type</cite></dt><dd><ul>
+<li><p>Type of the relationship - for instance test case which was used as the <cite>perturbation_source</cite> in this case.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>relationships/target</cite></dt><dd><ul>
+<li><p>Key of the relationship target - a test case key.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>relationships/target_type</cite></dt><dd><ul>
+<li><p>Target type - for instance <cite>test_case</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>expected_output</cite></dt><dd><ul>
+<li><p>Ground truth / expected output.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>condition</cite></dt><dd><ul>
+<li><p>Optional condition is used by Text Matching evaluator (and may be used by other evaluators) to evaluate the LLM / RAG model.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Python code which can be used to create the <strong>test case</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">testing</span><span class="o">.</span><span class="n">RagTestCaseConfig</span><span class="p">(</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;What was the revenue of Brazil?&quot;</span><span class="p">,</span>
+    <span class="n">expected_output</span><span class="o">=</span><span class="s2">&quot;Brazil revenue was 15,969 million.&quot;</span><span class="p">,</span>
+    <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&quot;15,969&quot; AND &quot;million&quot;&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="test">
+<h2>Test<a class="headerlink" href="#test" title="Link to this heading"></a></h2>
+<p>Test is a set of test cases linked with a collection of documents (corpus) which must be provided
+in case of RAG evaluation (test cases typically make sense only in the context of particular
+corpus - the corpus is empty in case of LLM evaluation).</p>
+<p>Example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;48099214-7b33-443a-a456-eb44519521f1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;documents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">&quot;test_cases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9c3a7df3-67df-4819-babb-20636611f077&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Respond to the following question with single letter answer...&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;question-answering&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">&quot;condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;regexp(^A.*)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6709c0e1-de57-4b5b-b826-2060bf935574&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Respond to the next question with one letter answer...&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;question-answering&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;perturbed&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;perturbed_by:h2o_sonar.utils.perturbations.SynonymPerturbator:PerturbationIntensity.HIGH&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;perturbation_source&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9c3a7df3-67df-4819-babb-20636611f077&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;target_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test_case&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;regexp(^D.*)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;D&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Format description:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>key</cite></dt><dd><ul>
+<li><p>Key is optional. In case that it is specified it must be unique within the test suite.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>documents</cite></dt><dd><ul>
+<li><p>In case of RAG evaluation <a class="reference internal" href="#test"><span class="std std-ref">Test</span></a> has a set of documents - corpus.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>test_cases</cite></dt><dd><ul>
+<li><p>Test is formed by a set of <a class="reference internal" href="#test-case"><span class="std std-ref">Test Case</span></a> objects which are used to evaluate the LLM / RAG model
+in the context of given corpus specified within the test’s <code class="docutils literal notranslate"><span class="pre">documents</span></code> field.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Python code which can be used to create the <strong>test</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># test</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestConfig</span><span class="p">(</span><span class="n">documents</span><span class="o">=</span><span class="p">[</span><span class="n">doc_url</span><span class="p">])</span>
+
+<span class="c1"># test cases</span>
+<span class="n">test_case_1</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestCaseConfig</span><span class="p">(</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;What was the revenue of Brazil?&quot;</span><span class="p">,</span>
+    <span class="n">expected_output</span><span class="o">=</span><span class="s2">&quot;Brazil revenue was 15,969 million.&quot;</span><span class="p">,</span>
+    <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&quot;15,969&quot; AND &quot;million&quot;&#39;</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="n">test</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="o">...</span>
+<span class="n">test_case_n</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestCaseConfig</span><span class="p">(</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;What was the revenue of Argentina?&quot;</span><span class="p">,</span>
+    <span class="n">expected_output</span><span class="o">=</span><span class="s2">&quot;Argentina revenue was 5,969 million.&quot;</span><span class="p">,</span>
+    <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&quot;5,969&quot; AND &quot;million&quot;&#39;</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">=</span><span class="n">test</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="test-suite">
+<h2>Test Suite<a class="headerlink" href="#test-suite" title="Link to this heading"></a></h2>
+<p>Test suite is a set of tests which can be used to evaluate the LLM / RAG model.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Test Suite Example&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is a test suite example.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tests&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;da503caf-a2dc-4c0a-b5f7-618bebd7860d&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;documents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://BUCKET.s3.amazonaws.com/acme-results.pdf&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;test_cases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d981bf23-9790-4c5e-905e-2ab56cba7ece&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What was the revenue of Brazil?&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;question_answering&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                    </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Brazil revenue was 15,969 million.&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;15,969\&quot; AND \&quot;million\&quot;&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;be087c6b-ad41-4b2e-a9f1-0ffd5e6743ec&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;documents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://BUCKET.s3.amazonaws.com/company-results.pdf&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;test_cases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3db6878b-1511-4b58-b42f-985ca9699d1d&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Who is the chairman of the board?&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;question_answering&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                    </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The chairman of the board was Luiz Carlos Trabuco Cappi.&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;Luiz Carlos Trabuco Cappi\&quot;&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;13011931-70c4-40b9-aacc-3870f521dbaa&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What was the number of agreements that include human rights clauses, in 2022?&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The number of agreements that include human rights clauses in 2022 was 22.&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;question_answering&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                    </span><span class="nt">&quot;condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;22\&quot;&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Format description:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>/name</cite></dt><dd><ul>
+<li><p>Test suite name.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/description</cite></dt><dd><ul>
+<li><p>Test suite description.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/tests</cite></dt><dd><ul>
+<li><p>Test suite is formed by a set of <a class="reference internal" href="#test"><span class="std std-ref">Test</span></a> objects.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/tests/documents</cite></dt><dd><ul>
+<li><p>In case of RAG evaluation <a class="reference internal" href="#test"><span class="std std-ref">Test</span></a> has a set of documents - corpus.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/tests/key</cite></dt><dd><ul>
+<li><p>Key is optional. In case that it is specified it must be unique within the test suite.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>test_cases</cite></dt><dd><ul>
+<li><p>Test suite is formed by a set of <a class="reference internal" href="#test-case"><span class="std std-ref">Test Case</span></a> objects which are used to evaluate the LLM / RAG model
+in the context of given corpus.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Python code which can be used to create the <strong>test suite</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># test suite</span>
+<span class="n">test_suite</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestSuiteConfig</span><span class="p">()</span>
+
+<span class="c1"># test</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestConfig</span><span class="p">(</span><span class="n">documents</span><span class="o">=</span><span class="p">[</span><span class="n">doc_url_1</span><span class="p">,</span> <span class="n">doc_url_2</span><span class="p">])</span>
+
+<span class="c1"># test cases</span>
+<span class="n">test_suite</span><span class="o">.</span><span class="n">add_test_case</span><span class="p">(</span>
+    <span class="n">testing</span><span class="o">.</span><span class="n">RagTestCaseConfig</span><span class="p">(</span>
+        <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;What was the revenue of Brazil?&quot;</span><span class="p">,</span>
+        <span class="n">expected_output</span><span class="o">=</span><span class="s2">&quot;Brazil revenue was 15,969 million.&quot;</span><span class="p">,</span>
+        <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&quot;15,969&quot; AND &quot;million&quot;&#39;</span><span class="p">,</span>
+        <span class="n">config</span><span class="o">=</span><span class="n">test</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="o">...</span>
+<span class="n">test_suite</span><span class="o">.</span><span class="n">add_test_case</span><span class="p">(</span>
+    <span class="n">testing</span><span class="o">.</span><span class="n">RagTestCaseConfig</span><span class="p">(</span>
+        <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;What was the revenue of Argentina?&quot;</span><span class="p">,</span>
+        <span class="n">expected_output</span><span class="o">=</span><span class="s2">&quot;Argentina revenue was 5,969 million.&quot;</span><span class="p">,</span>
+        <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;&quot;5,969&quot; AND &quot;million&quot;&#39;</span><span class="p">,</span>
+        <span class="n">config</span><span class="o">=</span><span class="n">test</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="test-lab">
+<h2>Test Lab<a class="headerlink" href="#test-lab" title="Link to this heading"></a></h2>
+<p>Test lab is a test suite completed with the actual data - answers generated by the LLM / RAG models for given prompts, retrieved contexts (in case of RAG), duration, and cost.</p>
+<p>Example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TestLab&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Test lab for RAG evaluation.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;raw_dataset&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What is the purpose of the document?&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;corpus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;question_answering&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The purpose of this document is to provide comprehensive guid...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;output_condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;guidance\&quot; AND \&quot;model risk management\&quot;&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;actual_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;actual_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;model_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0c34cdae-d2a4-4557-a305-d182adb01f6f&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What is model validation?&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;corpus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;question_answering&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Model validation is the set of processes and activities inte...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;output_condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;processes\&quot; AND \&quot;activities\&quot;&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;actual_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;actual_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;model_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14ac0946-6547-48d1-b19a-41bc90d34849&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;dataset&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What is the purpose of the document?&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;corpus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;Changes in\nregulation have spurred some of the recent developments, parti...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;Analysis of in-\nsample fit and of model performance in holdout samples (d...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;Validation reports should articulate model aspects that were reviewed, hig...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;Page 1\nSR Letter 11-7\nAttachment\nBoard of Governors of the Federal Rese...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;Documentation of model development and validation should be sufficiently\n...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;question_answering&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The purpose of this document is to provide comprehensive gu...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;output_condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;guidance\&quot; AND \&quot;model risk management\&quot;&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;actual_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The purpose of the document is to provide comprehensive guida...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;actual_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.280992269515991</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0036560000000000013</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;model_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0c34cdae-d2a4-4557-a305-d182adb01f6f&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What is model validation?&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;corpus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;But it is not enough for model developers and users\nto understand and acce...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;While they may grant\nexceptions to typical procedures of model validation ...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;Management should have a clear plan for using the results of sensitivity an...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;Validation reports should articulate model aspects that were reviewed, high...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;Rigorous model validation plays a critical role in\nmodel risk management; ...&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;question_answering&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Model validation is the set of processes and activities int...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;output_condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;processes\&quot; AND \&quot;activities\&quot;&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;actual_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Model validation is the process of assessing the quality of a...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;actual_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">19.800140142440796</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.004117999999999998</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;model_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14ac0946-6547-48d1-b19a-41bc90d34849&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;connection&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;612db877-cba2-4ab8-bacf-88d84b396450&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;model_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;h2ogpte&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RAG model h2oai/h2ogpt-4096-llama2-70b-chat (docs: [&#39;sr1107a1.pdf&#39;])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;collection_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;263c58e6-7424-4f9e-aa02-347d7281439b&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;collection_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RAG collection (docs: [&#39;sr1107a1.pdf&#39;])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;llm_model_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;h2oai/h2ogpt-4096-llama2-70b-chat&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;documents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0c34cdae-d2a4-4557-a305-d182adb01f6f&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;connection&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;612db877-cba2-4ab8-bacf-88d84b396450&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;model_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;h2ogpte&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RAG model h2oai/h2ogpt-4096-llama2-13b-chat (docs: [&#39;sr1107a1.pdf&#39;])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;collection_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;263c58e6-7424-4f9e-aa02-347d7281439b&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;collection_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RAG collection (docs: [&#39;sr1107a1.pdf&#39;])&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;llm_model_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;h2oai/h2ogpt-4096-llama2-13b-chat&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;documents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14ac0946-6547-48d1-b19a-41bc90d34849&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;llm_model_names&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;h2oai/h2ogpt-4096-llama2-70b-chat&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;h2oai/h2ogpt-4096-llama2-13b-chat&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;docs_cache&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;https://www.federalreserve.gov/supervisionreg/srletters/sr1107a1.pdf&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/tmp/pytest-of-me/sr1107a1.pdf&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Format description:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>/name</cite></dt><dd><ul>
+<li><p>Test lab name.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/description</cite></dt><dd><ul>
+<li><p>Test lab description.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/raw_dataset</cite></dt><dd><ul>
+<li><p>Test suite - which does not contain resolved data - normalized as LLM dataset.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/dataset</cite></dt><dd><ul>
+<li><p>Test suite with resolved data normalized as LLM dataset.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/models</cite></dt><dd><ul>
+<li><p>List of models which were used to resolve the test suite - generated the actual data for the test cases like answers, duration, and cost.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/models/connection</cite></dt><dd><ul>
+<li><p>Key of the connection (stored in the H2O Eval Studio configuration) which was used to connect to the model host.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/models/model_type</cite></dt><dd><ul>
+<li><p>Type of the model host (e.g. <code class="docutils literal notranslate"><span class="pre">h2ogpte</span></code> or <code class="docutils literal notranslate"><span class="pre">h2ogpt</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/models/name</cite></dt><dd><ul>
+<li><p>Name of the model.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/models/collection_id</cite></dt><dd><ul>
+<li><p>Corpus collection ID in case of RAG evaluation (not used in case of LLM evaluation).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/models/collection_name</cite></dt><dd><ul>
+<li><p>Corpus collection name in case of RAG evaluation (not used in case of LLM evaluation).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/models/llm_model_name</cite></dt><dd><ul>
+<li><p>Name of the LLM model which was evaluated and which generated the actual data.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/models/documents</cite></dt><dd><ul>
+<li><p>List of documents which were used in the evaluation of a RAG as <strong>corpus</strong> (not used in case of LLM evaluation).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/models/key</cite></dt><dd><ul>
+<li><p>Key of the model which is used to identify the model in the test suite. It is used in <code class="docutils literal notranslate"><span class="pre">/dataset/model_key</span></code> to link the resolved data with the model which created the data.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/llm_model_names</cite></dt><dd><ul>
+<li><p>List of LLM model (names) which are hosted by <code class="docutils literal notranslate"><span class="pre">models</span></code> and which generated the actual data.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/docs_cache</cite></dt><dd><ul>
+<li><p>Cache of the documents used in the test suite in case of RAG evaluation.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Python code which can be used to create the <strong>test lab</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># test lab</span>
+<span class="n">test_lab</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestLab</span><span class="o">.</span><span class="n">from_llm_test_suite</span><span class="p">(</span>
+    <span class="n">llm_host_connection</span><span class="o">=</span><span class="n">h2o_gpte_connection</span><span class="p">,</span>
+    <span class="n">llm_test_suite</span><span class="o">=</span><span class="n">test_suite</span><span class="p">,</span>
+    <span class="n">llm_model_type</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">ExplainableModelType</span><span class="o">.</span><span class="n">h2ogpte_llm</span><span class="p">,</span>
+    <span class="n">llm_model_names</span><span class="o">=</span><span class="n">llm_model_names</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># create collections and upload corpus documents (RAG only)</span>
+<span class="n">test_lab</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+
+<span class="c1"># resolve test lab</span>
+<span class="n">test_lab</span><span class="o">.</span><span class="n">complete_dataset</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The <strong>host-specific configuration</strong> can be used to create the test lab. In this case,
+the host client might be used to obtain the available parameters, which can be
+modified by the user and then passed to the code that resolves the test lab.
+In order to be able to compare RAGs/LLMs with different configurations, it is possible
+to provide multiple configurations for the same model. The configuration is
+a dictionary that contains the parameters that are used to create the model -see <a class="reference internal" href="doc.rag_llm_hosts.html#rag-and-llm-hosts"><span class="std std-ref">RAG and LLM Hosts</span></a> for reference.
+For instance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># LLMs to be evaluated</span>
+<span class="c1">#</span>
+<span class="n">llm_model_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;h2oai/h2ogpt-4096-llama2-70b-chat&quot;</span><span class="p">]</span>
+
+<span class="c1">#</span>
+<span class="c1"># custom host configurations</span>
+<span class="c1">#</span>
+
+<span class="c1"># A</span>
+<span class="c1"># host configuration proto w/ default values</span>
+<span class="n">custom_config_a</span> <span class="o">=</span> <span class="n">genai</span><span class="o">.</span><span class="n">H2oGpteRagClient</span><span class="o">.</span><span class="n">config_factory</span><span class="p">()</span>
+<span class="c1"># modify system prompt</span>
+<span class="n">custom_config_a</span><span class="p">[</span><span class="s2">&quot;system_prompt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;You are h2oGPTe, an expert question-answering AI system created by H2O.ai &quot;</span>
+    <span class="s2">&quot;that performs like GPT-4 by OpenAI.&quot;</span>
+<span class="p">)</span>
+<span class="c1"># modify LLM temperature in order to make the model more creative</span>
+<span class="n">custom_config_a</span><span class="p">[</span><span class="s2">&quot;llm_args&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">}</span>
+
+<span class="c1"># B</span>
+<span class="c1"># host configuration proto w/ default values</span>
+<span class="n">custom_config_b</span> <span class="o">=</span> <span class="n">genai</span><span class="o">.</span><span class="n">H2oGpteRagClient</span><span class="o">.</span><span class="n">config_factory</span><span class="p">()</span>
+<span class="c1"># modify system prompt</span>
+<span class="n">custom_config_b</span><span class="p">[</span><span class="s2">&quot;system_prompt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;You are flaky, a rookie question-answering AI system that performs poorly.&quot;</span>
+<span class="p">)</span>
+<span class="c1"># modify LLM temperature to avoid hallucinations</span>
+<span class="n">custom_config_b</span><span class="p">[</span><span class="s2">&quot;llm_args&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}</span>
+
+<span class="c1">#</span>
+<span class="c1"># LLM configurations: LLM name -&gt; list of host configurations</span>
+<span class="c1">#</span>
+<span class="n">llm_host_configs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">llm_model_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="p">[</span>
+        <span class="n">custom_config_a</span><span class="p">,</span> <span class="n">custom_config_b</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">#</span>
+<span class="c1"># test lab</span>
+<span class="c1">#</span>
+<span class="n">test_lab</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">RagTestLab</span><span class="o">.</span><span class="n">from_llm_test_suite</span><span class="p">(</span>
+    <span class="n">llm_host_connection</span><span class="o">=</span><span class="n">h2o_gpte_connection</span><span class="p">,</span>
+    <span class="n">llm_test_suite</span><span class="o">=</span><span class="n">test_suite</span><span class="p">,</span>
+    <span class="n">llm_model_type</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">ExplainableModelType</span><span class="o">.</span><span class="n">h2ogpte_llm</span><span class="p">,</span>
+    <span class="n">llm_model_names</span><span class="o">=</span><span class="n">llm_model_names</span><span class="p">,</span>
+    <span class="n">llm_host_configs</span><span class="o">=</span><span class="n">llm_host_configs</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># create collections and upload corpus documents (RAG only)</span>
+<span class="n">test_lab</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="c1"># resolve test lab</span>
+<span class="n">test_lab</span><span class="o">.</span><span class="n">complete_dataset</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="llm-dataset">
+<h2>LLM Dataset<a class="headerlink" href="#llm-dataset" title="Link to this heading"></a></h2>
+<p>LLM dataset is a normalized test lab that is used as the input of the evaluation process.
+LLM dataset can be serialized as JSon, CSV or Pandas frame.</p>
+<p>Example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;input&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Which of the following statements accurately describes the impact of ...&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;corpus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://www.wikipedia.org/&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;Physical Review Letters. 99 (14): 141302. arXiv:0704.1932. Bibcode:2007P...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;The homogeneously distributed mass of the universe would result in a rou...&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;Modified Newtonian dynamics (MOND) is a hypothesis that proposes a modif...&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;question_answering&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">&quot;expected_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOND is a theory that reduces the discrepancy between the...&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;output_condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;actual_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOND is a theory that reduces the discrepancy between the o...&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;actual_duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.415</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;model_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4b60abf6-0c8d-4765-804a-e830a211f152&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Format description:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>/inputs</cite></dt><dd><ul>
+<li><p>List of test cases.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/inputs/input</cite></dt><dd><ul>
+<li><p>Prompt.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/inputs/corpus</cite></dt><dd><ul>
+<li><p>List of documents which are used as the corpus in case of this test case.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/inputs/context</cite></dt><dd><ul>
+<li><p>List of chunks - retrieved contexts.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/inputs/categories</cite></dt><dd><ul>
+<li><p>List of categories used to classify the test case.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/inputs/relationships</cite></dt><dd><ul>
+<li><p>List of relationships.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/inputs/expected_output</cite></dt><dd><ul>
+<li><p>Expected output.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/inputs/output_condition</cite></dt><dd><ul>
+<li><p>Condition used by Text Matching evaluator (and may be used by other evaluators) to evaluate the LLM / RAG model.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/inputs/actual_output</cite></dt><dd><ul>
+<li><p>Actual output.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/inputs/actual_duration</cite></dt><dd><ul>
+<li><p>Duration of the request to RAG / LLM model.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>/inputs/model_key</cite></dt><dd><ul>
+<li><p>Key of the model which generated the actual data - must be valid key of a model when running the evaluation process.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Python code which can be used to create the <strong>LLM dataset</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># LLM dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">LlmDataset</span><span class="p">()</span>
+
+<span class="c1"># add row(s) to the dataset</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">add_input</span><span class="p">(</span>
+    <span class="n">i</span><span class="o">=</span><span class="s2">&quot;What is the target column of the model?&quot;</span><span class="p">,</span>
+    <span class="n">actual_output</span><span class="o">=</span><span class="s2">&quot;default payment next month&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="doc.rag_llm_hosts.html" class="btn btn-neutral float-left" title="RAG and LLM Hosts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="doc.evaluators.pars.html" class="btn btn-neutral float-right" title="Evaluator Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

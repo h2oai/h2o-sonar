@@ -1,9 +1,0 @@
-# Copyright 2018-2026 H2O.ai, Inc. All rights reserved.
-
-# configuration
-given_generative_TEMPLATE.json
-given_generative.json
-
-# data
-gaia_benchmark/
-

@@ -1,0 +1,900 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "6c4d4faf-ab84-4a72-a80e-535b211747cd",
+   "metadata": {
+    "tags": []
+   },
+   "source": [
+    "# Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo\n",
+    "\n",
+    "This example demonstrates how to interpret a **scikit-learn** model using\n",
+    "the H2O Sonar library and retrieve the data and **residual partial dependence plot**."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "69f414e3-bc88-478b-bed5-890352b1041a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<style type='text/css'>\n",
+       ".datatable table.frame { margin-bottom: 0; }\n",
+       ".datatable table.frame thead { border-bottom: none; }\n",
+       ".datatable table.frame tr.coltypes td {  color: #FFFFFF;  line-height: 6px;  padding: 0 0.5em;}\n",
+       ".datatable .bool    { background: #DDDD99; }\n",
+       ".datatable .object  { background: #565656; }\n",
+       ".datatable .int     { background: #5D9E5D; }\n",
+       ".datatable .float   { background: #4040CC; }\n",
+       ".datatable .str     { background: #CC4040; }\n",
+       ".datatable .time    { background: #40CC40; }\n",
+       ".datatable .row_index {  background: var(--jp-border-color3);  border-right: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  font-size: 9px;}\n",
+       ".datatable .frame tbody td { text-align: left; }\n",
+       ".datatable .frame tr.coltypes .row_index {  background: var(--jp-border-color0);}\n",
+       ".datatable th:nth-child(2) { padding-left: 12px; }\n",
+       ".datatable .hellipsis {  color: var(--jp-cell-editor-border-color);}\n",
+       ".datatable .vellipsis {  background: var(--jp-layout-color0);  color: var(--jp-cell-editor-border-color);}\n",
+       ".datatable .na {  color: var(--jp-cell-editor-border-color);  font-size: 80%;}\n",
+       ".datatable .sp {  opacity: 0.25;}\n",
+       ".datatable .footer { font-size: 9px; }\n",
+       ".datatable .frame_dimensions {  background: var(--jp-border-color3);  border-top: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  display: inline-block;  opacity: 0.6;  padding: 1px 10px 1px 5px;}\n",
+       "</style>\n"
+      ],
+      "text/plain": [
+       "<IPython.core.display.HTML object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "import logging\n",
+    "import os\n",
+    "\n",
+    "import pandas\n",
+    "import datatable\n",
+    "import webbrowser\n",
+    "\n",
+    "from h2o_sonar import interpret\n",
+    "from h2o_sonar.lib.api import commons\n",
+    "from h2o_sonar.lib.api import explainers\n",
+    "from h2o_sonar.lib.api.models import ModelApi\n",
+    "from h2o_sonar.explainers.residual_pd_ice_explainer import ResidualPdIceExplainer\n",
+    "\n",
+    "from sklearn.ensemble import GradientBoostingClassifier"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "bef37207-bd90-4a60-a927-bbc2c54ab149",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# dataset\n",
+    "dataset_path = \"../../data/predictive/creditcard.csv\"\n",
+    "target_col = \"default payment next month\"\n",
+    "df = pandas.read_csv(dataset_path)\n",
+    "(X, y) = df.drop(target_col, axis=1), df[target_col]\n",
+    "\n",
+    "# results\n",
+    "results_location = \"../../results\"\n",
+    "os.makedirs(results_location, exist_ok=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "bbe0ca51",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'id': 'h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainer',\n",
+       " 'name': 'ResidualPdIceExplainer',\n",
+       " 'display_name': 'Residual Partial Dependence Plot',\n",
+       " 'description': 'The residual partial dependence plot (PDP) indicates which variables interact most with the error. Residuals are differences between observed and predicted values - the square of the difference between observed and predicted values is used. The residual partial dependence is created using normal partial dependence algorithm, while instead of prediction is used the residual. Individual Conditional Expectations plot (ICE) displays the interaction with error for an individual row of data when an input variable is toggled across its domain.',\n",
+       " 'model_types': ['iid', 'time_series'],\n",
+       " 'can_explain': ['regression', 'binomial', 'multinomial'],\n",
+       " 'explanation_scopes': ['global_scope', 'local_scope'],\n",
+       " 'explanations': [{'explanation_type': 'global-partial-dependence',\n",
+       "   'name': 'PartialDependenceExplanation',\n",
+       "   'category': None,\n",
+       "   'scope': 'global',\n",
+       "   'has_local': None,\n",
+       "   'formats': []},\n",
+       "  {'explanation_type': 'local-individual-conditional-explanation',\n",
+       "   'name': 'IndividualConditionalExplanation',\n",
+       "   'category': None,\n",
+       "   'scope': 'local',\n",
+       "   'has_local': None,\n",
+       "   'formats': []}],\n",
+       " 'parameters': [{'name': 'sample_size',\n",
+       "   'description': 'Sample size for Partial Dependence Plot',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 25000,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'max_features',\n",
+       "   'description': 'Partial Dependence Plot number of features (to see all features used by model set to -1).',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 10,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'features',\n",
+       "   'description': 'Partial Dependence Plot feature list.',\n",
+       "   'comment': '',\n",
+       "   'type': 'list',\n",
+       "   'val': None,\n",
+       "   'predefined': [],\n",
+       "   'tags': ['SOURCE_DATASET_COLUMN_NAMES'],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'oor_grid_resolution',\n",
+       "   'description': 'Partial Dependence Plot number of out of range bins.',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 0,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'quantile-bin-grid-resolution',\n",
+       "   'description': 'Partial Dependence Plot quantile binning (total quantile points used to create bins).',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 0,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'grid_resolution',\n",
+       "   'description': 'Partial Dependence Plot observations per bin (number of equally spaced points used to create bins).',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 20,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'center',\n",
+       "   'description': 'Center Partial Dependence Plot using ICE centered at 0.',\n",
+       "   'comment': '',\n",
+       "   'type': 'bool',\n",
+       "   'val': False,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'sort_bins',\n",
+       "   'description': 'Ensure bin values sorting.',\n",
+       "   'comment': '',\n",
+       "   'type': 'bool',\n",
+       "   'val': True,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'histograms',\n",
+       "   'description': 'Enable histograms.',\n",
+       "   'comment': '',\n",
+       "   'type': 'bool',\n",
+       "   'val': True,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'quantile-bins',\n",
+       "   'description': 'Per-feature quantile binning (Example: if choosing features\\n                 F1 and F2, this parameter is \\'{\"F1\": 2,\"F2\": 5}\\'. Note, you can\\n                 set all features to use the same quantile binning with the\\n                 `Partial Dependence Plot quantile binning` parameter and then\\n                 adjust the quantile binning for a subset of PDP features with\\n                 this parameter).',\n",
+       "   'comment': '',\n",
+       "   'type': 'str',\n",
+       "   'val': '',\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'numcat_num_chart',\n",
+       "   'description': 'Unique feature values count driven Partial Dependence Plot binning and chart selection.',\n",
+       "   'comment': '',\n",
+       "   'type': 'bool',\n",
+       "   'val': True,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'numcat_threshold',\n",
+       "   'description': 'Threshold for Partial Dependence Plot binning and chart selection (<=threshold categorical, >threshold numeric).',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 11,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''}],\n",
+       " 'keywords': ['can-add-feature', 'explains-model-debugging']}"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# explainer description\n",
+    "interpret.describe_explainer(ResidualPdIceExplainer)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "90d401d2-14cd-4686-982f-3cac9e9f5eb7",
+   "metadata": {
+    "tags": []
+   },
+   "source": [
+    "## Interpretation"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "0ba8f0aa-2e0e-4a0a-93ab-77ce9e968fa0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 10.0%\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 40.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 40.0%\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names\n",
+      "X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names\n",
+      "X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names\n",
+      "X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 50.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 50.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names\n",
+      "X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 80.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 80.0%\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names\n",
+      "X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names\n",
+      "X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names\n",
+      "2022-10-10 23:12:08,965 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 saving PD to ../../results/h2o-sonar/mli_experiment_cec1284d-7ee5-4abe-9c46-57d0a84f777f/explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-pd-dai-model.json\n",
+      "2022-10-10 23:12:08,970 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 computation finished & stored to: ../../results/h2o-sonar/mli_experiment_cec1284d-7ee5-4abe-9c46-57d0a84f777f/explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-pd-dai-model.json\n",
+      "2022-10-10 23:12:08,976 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: ID/True\n",
+      "2022-10-10 23:12:08,978 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: ID/False\n",
+      "2022-10-10 23:12:08,982 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: LIMIT_BAL/True\n",
+      "2022-10-10 23:12:08,996 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: LIMIT_BAL/False\n",
+      "2022-10-10 23:12:09,011 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: SEX/True\n",
+      "2022-10-10 23:12:09,012 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: SEX/False\n",
+      "2022-10-10 23:12:09,025 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: EDUCATION/True\n",
+      "2022-10-10 23:12:09,026 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: EDUCATION/False\n",
+      "2022-10-10 23:12:09,029 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: MARRIAGE/True\n",
+      "2022-10-10 23:12:09,050 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: MARRIAGE/False\n",
+      "2022-10-10 23:12:09,065 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: AGE/True\n",
+      "2022-10-10 23:12:09,077 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: AGE/False\n",
+      "2022-10-10 23:12:09,082 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_0/True\n",
+      "2022-10-10 23:12:09,083 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_0/False\n",
+      "2022-10-10 23:12:09,088 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_2/True\n",
+      "2022-10-10 23:12:09,093 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_2/False\n",
+      "2022-10-10 23:12:09,096 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_3/True\n",
+      "2022-10-10 23:12:09,097 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_3/False\n",
+      "2022-10-10 23:12:09,101 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_4/True\n",
+      "2022-10-10 23:12:09,102 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_4/False\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%\n",
+      "h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 100.0%\n"
+     ]
+    }
+   ],
+   "source": [
+    "# scikit-learn model\n",
+    "gradient_booster = GradientBoostingClassifier(learning_rate=0.1)\n",
+    "gradient_booster.fit(X, y)\n",
+    "\n",
+    "# explainable model\n",
+    "model = ModelApi().create_model(target_col=target_col, model_src=gradient_booster, used_features=X.columns.to_list())\n",
+    "\n",
+    "interpretation = interpret.run_interpretation(\n",
+    "    dataset=df,\n",
+    "    model=model,\n",
+    "    target_col=target_col,\n",
+    "    results_location=results_location,\n",
+    "    log_level=logging.INFO,\n",
+    "    explainers=[\n",
+    "        commons.ExplainerToRun(\n",
+    "            explainer_id=ResidualPdIceExplainer.explainer_id(),\n",
+    "            params=\"\",\n",
+    "        )\n",
+    "    ]\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ff9df4be-d4da-44db-a479-7d8d7f45c29d",
+   "metadata": {},
+   "source": [
+    "## Explainer Result"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "25556ca5-8239-4201-8a23-1ace2b3a46d4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# retrieve the result\n",
+    "result = interpretation.get_explainer_result(ResidualPdIceExplainer.explainer_id())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "bd262b99-ea2e-4981-ae6a-0504c3d39a4f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# open interpretation HTML report in web browser\n",
+    "webbrowser.open(interpretation.result.get_html_report_location())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "bd3efb21",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'id': 'h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainer',\n",
+       " 'name': 'ResidualPdIceExplainer',\n",
+       " 'display_name': 'Residual Partial Dependence Plot',\n",
+       " 'description': 'The residual partial dependence plot (PDP) indicates which variables interact most with the error. Residuals are differences between observed and predicted values - the square of the difference between observed and predicted values is used. The residual partial dependence is created using normal partial dependence algorithm, while instead of prediction is used the residual. Individual Conditional Expectations plot (ICE) displays the interaction with error for an individual row of data when an input variable is toggled across its domain.',\n",
+       " 'model_types': ['iid', 'time_series'],\n",
+       " 'can_explain': ['regression', 'binomial', 'multinomial'],\n",
+       " 'explanation_scopes': ['global_scope', 'local_scope'],\n",
+       " 'explanations': [{'explanation_type': 'global-partial-dependence',\n",
+       "   'name': 'Partial Dependence Plot (PDP)',\n",
+       "   'category': 'DAI MODEL',\n",
+       "   'scope': 'global',\n",
+       "   'has_local': 'local-individual-conditional-explanation',\n",
+       "   'formats': ['application/json']},\n",
+       "  {'explanation_type': 'local-individual-conditional-explanation',\n",
+       "   'name': 'Individual Conditional Expectations (ICE)',\n",
+       "   'category': 'DAI MODEL',\n",
+       "   'scope': 'local',\n",
+       "   'has_local': None,\n",
+       "   'formats': ['application/vnd.h2oai.json+datatable.jay']},\n",
+       "  {'explanation_type': 'global-html-fragment',\n",
+       "   'name': 'Partial Dependence Plot (PDP)',\n",
+       "   'category': 'DAI MODEL',\n",
+       "   'scope': 'global',\n",
+       "   'has_local': None,\n",
+       "   'formats': ['text/html']}],\n",
+       " 'parameters': [{'name': 'sample_size',\n",
+       "   'description': 'Sample size for Partial Dependence Plot',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 25000,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'max_features',\n",
+       "   'description': 'Partial Dependence Plot number of features (to see all features used by model set to -1).',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 10,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'features',\n",
+       "   'description': 'Partial Dependence Plot feature list.',\n",
+       "   'comment': '',\n",
+       "   'type': 'list',\n",
+       "   'val': None,\n",
+       "   'predefined': [],\n",
+       "   'tags': ['SOURCE_DATASET_COLUMN_NAMES'],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'oor_grid_resolution',\n",
+       "   'description': 'Partial Dependence Plot number of out of range bins.',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 0,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'quantile-bin-grid-resolution',\n",
+       "   'description': 'Partial Dependence Plot quantile binning (total quantile points used to create bins).',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 0,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'grid_resolution',\n",
+       "   'description': 'Partial Dependence Plot observations per bin (number of equally spaced points used to create bins).',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 20,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'center',\n",
+       "   'description': 'Center Partial Dependence Plot using ICE centered at 0.',\n",
+       "   'comment': '',\n",
+       "   'type': 'bool',\n",
+       "   'val': False,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'sort_bins',\n",
+       "   'description': 'Ensure bin values sorting.',\n",
+       "   'comment': '',\n",
+       "   'type': 'bool',\n",
+       "   'val': True,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'histograms',\n",
+       "   'description': 'Enable histograms.',\n",
+       "   'comment': '',\n",
+       "   'type': 'bool',\n",
+       "   'val': True,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'quantile-bins',\n",
+       "   'description': 'Per-feature quantile binning (Example: if choosing features\\n                 F1 and F2, this parameter is \\'{\"F1\": 2,\"F2\": 5}\\'. Note, you can\\n                 set all features to use the same quantile binning with the\\n                 `Partial Dependence Plot quantile binning` parameter and then\\n                 adjust the quantile binning for a subset of PDP features with\\n                 this parameter).',\n",
+       "   'comment': '',\n",
+       "   'type': 'str',\n",
+       "   'val': '',\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'numcat_num_chart',\n",
+       "   'description': 'Unique feature values count driven Partial Dependence Plot binning and chart selection.',\n",
+       "   'comment': '',\n",
+       "   'type': 'bool',\n",
+       "   'val': True,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'numcat_threshold',\n",
+       "   'description': 'Threshold for Partial Dependence Plot binning and chart selection (<=threshold categorical, >threshold numeric).',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 11,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''}],\n",
+       " 'keywords': ['can-add-feature', 'explains-model-debugging']}"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# summary\n",
+    "result.summary()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "490d132b-b7e2-48a2-8ec4-dbd71886edf9",
+   "metadata": {},
+   "source": [
+    "### Display PD Data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "2aa6274e-79d5-49b1-b29a-2263db5cb8a8",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div class='datatable'>\n",
+       "  <table class='frame'>\n",
+       "  <thead>\n",
+       "    <tr class='colnames'><td class='row_index'></td><th>bin</th><th>pd</th><th>sd</th><th>oor</th></tr>\n",
+       "    <tr class='coltypes'><td class='row_index'></td><td class='int' title='int32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td></tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr><td class='row_index'>0</td><td>0</td><td>0.6383</td><td>0.480517</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>1</td><td>1</td><td>0.6383</td><td>0.480517</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>2</td><td>2</td><td>0.5176</td><td>0.499715</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>3</td><td>3</td><td>0.6041</td><td>0.489068</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>4</td><td>4</td><td>0.2462</td><td>0.430818</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>5</td><td>5</td><td>0.2462</td><td>0.430818</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>6</td><td>6</td><td>0.5065</td><td>0.499983</td><td>0</td></tr>\n",
+       "  </tbody>\n",
+       "  </table>\n",
+       "  <div class='footer'>\n",
+       "    <div class='frame_dimensions'>7 rows &times; 4 columns</div>\n",
+       "  </div>\n",
+       "</div>\n"
+      ],
+      "text/plain": [
+       "<Frame#7efc964c7a50 7x4>"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "result.data(feature_name=\"EDUCATION\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "9519fbef-d7b7-417a-85f2-2450ae9c1ddf",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div class='datatable'>\n",
+       "  <table class='frame'>\n",
+       "  <thead>\n",
+       "    <tr class='colnames'><td class='row_index'></td><th>bin</th><th>pd</th><th>sd</th><th>oor</th></tr>\n",
+       "    <tr class='coltypes'><td class='row_index'></td><td class='int' title='int32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td></tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr><td class='row_index'>0</td><td>&minus;2</td><td>0.6009</td><td>0.489738</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>1</td><td>&minus;1</td><td>0.6009</td><td>0.489738</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>2</td><td>0</td><td>0.6009</td><td>0.489738</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>3</td><td>1</td><td>0.7499</td><td>0.433092</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>4</td><td>2</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>5</td><td>3</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>6</td><td>4</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>7</td><td>5</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>8</td><td>6</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>9</td><td>7</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>\n",
+       "    <tr><td class='row_index'>10</td><td>8</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>\n",
+       "  </tbody>\n",
+       "  </table>\n",
+       "  <div class='footer'>\n",
+       "    <div class='frame_dimensions'>11 rows &times; 4 columns</div>\n",
+       "  </div>\n",
+       "</div>\n"
+      ],
+      "text/plain": [
+       "<Frame#7efc86f52b10 11x4>"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "result.data(feature_name=\"PAY_3\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "df8a083b-3b88-4349-bb63-28551c24cc4f",
+   "metadata": {},
+   "source": [
+    "### Plot PD Data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "146130b2-74df-4af5-a63f-d17363a05462",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "result.plot(feature_name=\"PAY_3\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a493b092-6236-419f-906c-16d52c47674f",
+   "metadata": {},
+   "source": [
+    "### Save Explainer Log and Data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "7c638a2c-6b01-4228-aa0f-93fd8dd7feab",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# save the explainer log\n",
+    "result.log(path=\"./residual-pd-ice-demo.log\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "f5d91240-09ff-4893-b652-b0259a8f222a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2022-10-10 23:12:07,438 INFO [PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08] BEGIN\n",
+      "2022-10-10 23:12:07,439 INFO [PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08] loading dataset\n",
+      "2022-10-10 23:12:07,439 INFO [PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08] loaded dataset has 10000 rows and 25 columns\n",
+      "2022-10-10 23:12:07,439 INFO [PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08] getting features list, importanceand metadata\n",
+      "2022-10-10 23:12:07,439 INFO Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 all most important model features: ['ID', 'LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_0', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2', 'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1', 'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6']\n",
+      "2022-10-10 23:12:07,439 INFO Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 features used by model: ['ID', 'LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_0', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2', 'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1', 'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6']\n",
+      "2022-10-10 23:12:07,439 INFO Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08: calculating PD for features ['ID', 'LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_0', 'PAY_2', 'PAY_3', 'PAY_4']\n",
+      "2022-10-10 23:12:07,439 INFO Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 feature metadata: {}\n",
+      "2022-10-10 23:12:07,439 INFO Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 1 frame strategy: True\n",
+      "2022-10-10 23:12:08,965 INFO Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 saving PD to ../../results/h2o-sonar/mli_experiment_cec1284d-7ee5-4abe-9c46-57d0a84f777f/explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-pd-dai-model.json\n"
+     ]
+    }
+   ],
+   "source": [
+    "!head residual-pd-ice-demo.log"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "da4e2b28-96d7-440e-bfea-41cb694a52d4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# save the explainer data\n",
+    "result.zip(file_path=\"./residual-pd-ice-demo-archive.zip\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "c0540819-f896-481a-b470-b9d53a243b0a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Archive:  residual-pd-ice-demo-archive.zip\n",
+      "  Length      Date    Time    Name\n",
+      "---------  ---------- -----   ----\n",
+      "     6886  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/result_descriptor.json\n",
+      "      151  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json.meta\n",
+      "     7156  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/explanation.json\n",
+      "      924  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_3_class_0.json\n",
+      "     2557  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_5_class_0.json\n",
+      "      321  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_2_class_0.json\n",
+      "     2647  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_0_class_0.json\n",
+      "     1417  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_8_class_0.json\n",
+      "     1411  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_6_class_0.json\n",
+      "     1410  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_9_class_0.json\n",
+      "     1413  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_7_class_0.json\n",
+      "     2741  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_1_class_0.json\n",
+      "      563  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_4_class_0.json\n",
+      "      165  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay.meta\n",
+      "     7096  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/explanation.json\n",
+      "  1601936  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_0_class_0.jay\n",
+      "   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_8_class_0.jay\n",
+      "   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_9_class_0.jay\n",
+      "   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_7_class_0.jay\n",
+      "  1601944  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_1_class_0.jay\n",
+      "   560688  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_3_class_0.jay\n",
+      "   320440  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_4_class_0.jay\n",
+      "   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_6_class_0.jay\n",
+      "  1601784  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_5_class_0.jay\n",
+      "    80184  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/y_hat.jay\n",
+      "   160272  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_2_class_0.jay\n",
+      "      110  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html.meta\n",
+      "    11446  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-3.png\n",
+      "    11663  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-1.png\n",
+      "    16954  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-9.png\n",
+      "    23985  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-4.png\n",
+      "    16845  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-5.png\n",
+      "     4198  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/explanation.html\n",
+      "    16891  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-2.png\n",
+      "    11369  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-6.png\n",
+      "    11441  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-7.png\n",
+      "    16068  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-10.png\n",
+      "    11382  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-8.png\n",
+      "     5664  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/log/explainer_run_ba27172f-dcab-4a12-95a6-215efc570f08.log\n",
+      "   320440  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-5.jay\n",
+      "    22215  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-pd-dai-model.json\n",
+      "   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-8.jay\n",
+      "   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-9.jay\n",
+      "  1601936  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-1.jay\n",
+      "   560688  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-4.jay\n",
+      "  1601784  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-6.jay\n",
+      "  1601944  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-2.jay\n",
+      "    80184  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/mli_dataset_y_hat.jay\n",
+      "   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-10.jay\n",
+      "   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-7.jay\n",
+      "   160272  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-3.jay\n",
+      "     2519  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model.json\n",
+      "      795  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/model_problems/problems_and_actions.json\n",
+      "---------                     -------\n",
+      " 19123091                     53 files\n"
+     ]
+    }
+   ],
+   "source": [
+    "!unzip -l residual-pd-ice-demo-archive.zip"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "584ad6ad-9989-46e4-9c65-aae4bff14df6",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "h2o-sonar",
+   "language": "python",
+   "name": "h2o-sonar"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "python3",
+   "version": "3.8.10"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

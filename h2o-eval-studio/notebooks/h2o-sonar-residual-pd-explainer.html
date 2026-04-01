@@ -1,0 +1,965 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e2d3f516" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/notebooks/h2o-sonar-residual-pd-explainer.html"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Residual Decision Tree Surrogate Explainer Demo" href="h2o-sonar-residual-dt-surrogate-explainer.html" />
+    <link rel="prev" title="Partial Dependence for 2 Features Explainer Demo" href="h2o-sonar-pd-for-2-features-explainer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../doc.html">H2O Eval Studio Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">H2O Eval Studio Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dt-surrogate-explainer.html">Decision Tree Surrogate Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-summary-shap-explainer.html">Summary Shapley Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-original-feature-kernel-shap-importance-explainer.html">Original Feature Importance Explainer (Kernel SHAP) Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-original-feature-naive-shapley-importance-explainer.html">Original Feature Importance Explainer for MOJO Models (Naive Shapley method) Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-shapley-for-transformed-feature-importance-explainer.html">Shapley Values for Transformed Features of MOJO Models Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pd-explainer.html">Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pd-for-2-features-explainer.html">Partial Dependence for 2 Features Explainer Demo</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-residual-dt-surrogate-explainer.html">Residual Decision Tree Surrogate Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dia-explainer.html">Disparate Impact Analysis (DIA) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-friedman-h-statistic-explainer.html">Friedman H-statistic Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-morris-sa-explainer.html">Morris Sensitivity Analysis Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-d-and-m-insights-explainer.html">Dataset and Model Insights Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html">H2O Eval Studio Model Validation Explainers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Interpretation:-CLI">Interpretation: CLI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Use-CLI-to-run-H2O-MV-based-explainers">Use CLI to run H2O MV based explainers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.models.html">Models in Interpretation Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.cli.html">Command Line Interface in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.h2ogpte.html">Enterprise h2oGPT Examples</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">H2O Eval Studio Examples</a></li>
+          <li class="breadcrumb-item"><a href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a></li>
+      <li class="breadcrumb-item active">Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/h2o-sonar-residual-pd-explainer.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Residual-Partial-dependence-/-Individual-Conditional-Expectation-(PD/ICE)-Explainer-Demo">
+<h1>Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo<a class="headerlink" href="#Residual-Partial-dependence-/-Individual-Conditional-Expectation-(PD/ICE)-Explainer-Demo" title="Link to this heading"></a></h1>
+<p>This example demonstrates how to interpret a <strong>scikit-learn</strong> model using the H2O Eval Studio library and retrieve the data and <strong>residual partial dependence plot</strong>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datatable</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">webbrowser</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpret</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">commons</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">explainers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelApi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.explainers.residual_pd_ice_explainer</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResidualPdIceExplainer</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style type='text/css'>
+.datatable table.frame { margin-bottom: 0; }
+.datatable table.frame thead { border-bottom: none; }
+.datatable table.frame tr.coltypes td {  color: #FFFFFF;  line-height: 6px;  padding: 0 0.5em;}
+.datatable .bool    { background: #DDDD99; }
+.datatable .object  { background: #565656; }
+.datatable .int     { background: #5D9E5D; }
+.datatable .float   { background: #4040CC; }
+.datatable .str     { background: #CC4040; }
+.datatable .time    { background: #40CC40; }
+.datatable .row_index {  background: var(--jp-border-color3);  border-right: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  font-size: 9px;}
+.datatable .frame tbody td { text-align: left; }
+.datatable .frame tr.coltypes .row_index {  background: var(--jp-border-color0);}
+.datatable th:nth-child(2) { padding-left: 12px; }
+.datatable .hellipsis {  color: var(--jp-cell-editor-border-color);}
+.datatable .vellipsis {  background: var(--jp-layout-color0);  color: var(--jp-cell-editor-border-color);}
+.datatable .na {  color: var(--jp-cell-editor-border-color);  font-size: 80%;}
+.datatable .sp {  opacity: 0.25;}
+.datatable .footer { font-size: 9px; }
+.datatable .frame_dimensions {  background: var(--jp-border-color3);  border-top: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  display: inline-block;  opacity: 0.6;  padding: 1px 10px 1px 5px;}
+</style></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataset</span>
+<span class="n">dataset_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/predictive/creditcard.csv&quot;</span>
+<span class="n">target_col</span> <span class="o">=</span> <span class="s2">&quot;default payment next month&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span>
+<span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">target_col</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span>
+
+<span class="c1"># results</span>
+<span class="n">results_location</span> <span class="o">=</span> <span class="s2">&quot;../../results&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">results_location</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># explainer description</span>
+<span class="n">interpret</span><span class="o">.</span><span class="n">describe_explainer</span><span class="p">(</span><span class="n">ResidualPdIceExplainer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainer&#39;,
+ &#39;name&#39;: &#39;ResidualPdIceExplainer&#39;,
+ &#39;display_name&#39;: &#39;Residual Partial Dependence Plot&#39;,
+ &#39;description&#39;: &#39;The residual partial dependence plot (PDP) indicates which variables interact most with the error. Residuals are differences between observed and predicted values - the square of the difference between observed and predicted values is used. The residual partial dependence is created using normal partial dependence algorithm, while instead of prediction is used the residual. Individual Conditional Expectations plot (ICE) displays the interaction with error for an individual row of data when an input variable is toggled across its domain.&#39;,
+ &#39;model_types&#39;: [&#39;iid&#39;, &#39;time_series&#39;],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;, &#39;multinomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;, &#39;local_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-partial-dependence&#39;,
+   &#39;name&#39;: &#39;PartialDependenceExplanation&#39;,
+   &#39;category&#39;: None,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: []},
+  {&#39;explanation_type&#39;: &#39;local-individual-conditional-explanation&#39;,
+   &#39;name&#39;: &#39;IndividualConditionalExplanation&#39;,
+   &#39;category&#39;: None,
+   &#39;scope&#39;: &#39;local&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: []}],
+ &#39;parameters&#39;: [{&#39;name&#39;: &#39;sample_size&#39;,
+   &#39;description&#39;: &#39;Sample size for Partial Dependence Plot&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 25000,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;max_features&#39;,
+   &#39;description&#39;: &#39;Partial Dependence Plot number of features (to see all features used by model set to -1).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 10,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;features&#39;,
+   &#39;description&#39;: &#39;Partial Dependence Plot feature list.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;list&#39;,
+   &#39;val&#39;: None,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [&#39;SOURCE_DATASET_COLUMN_NAMES&#39;],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;oor_grid_resolution&#39;,
+   &#39;description&#39;: &#39;Partial Dependence Plot number of out of range bins.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 0,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;quantile-bin-grid-resolution&#39;,
+   &#39;description&#39;: &#39;Partial Dependence Plot quantile binning (total quantile points used to create bins).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 0,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;grid_resolution&#39;,
+   &#39;description&#39;: &#39;Partial Dependence Plot observations per bin (number of equally spaced points used to create bins).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 20,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;center&#39;,
+   &#39;description&#39;: &#39;Center Partial Dependence Plot using ICE centered at 0.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: False,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;sort_bins&#39;,
+   &#39;description&#39;: &#39;Ensure bin values sorting.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: True,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;histograms&#39;,
+   &#39;description&#39;: &#39;Enable histograms.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: True,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;quantile-bins&#39;,
+   &#39;description&#39;: &#39;Per-feature quantile binning (Example: if choosing features\n                 F1 and F2, this parameter is \&#39;{&#34;F1&#34;: 2,&#34;F2&#34;: 5}\&#39;. Note, you can\n                 set all features to use the same quantile binning with the\n                 `Partial Dependence Plot quantile binning` parameter and then\n                 adjust the quantile binning for a subset of PDP features with\n                 this parameter).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;str&#39;,
+   &#39;val&#39;: &#39;&#39;,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;numcat_num_chart&#39;,
+   &#39;description&#39;: &#39;Unique feature values count driven Partial Dependence Plot binning and chart selection.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: True,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;numcat_threshold&#39;,
+   &#39;description&#39;: &#39;Threshold for Partial Dependence Plot binning and chart selection (&lt;=threshold categorical, &gt;threshold numeric).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 11,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;}],
+ &#39;keywords&#39;: [&#39;can-add-feature&#39;, &#39;explains-model-debugging&#39;]}
+</pre></div></div>
+</div>
+<section id="Interpretation">
+<h2>Interpretation<a class="headerlink" href="#Interpretation" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scikit-learn model</span>
+<span class="n">gradient_booster</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">gradient_booster</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># explainable model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelApi</span><span class="p">()</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">,</span> <span class="n">model_src</span><span class="o">=</span><span class="n">gradient_booster</span><span class="p">,</span> <span class="n">used_features</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
+
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">,</span>
+    <span class="n">results_location</span><span class="o">=</span><span class="n">results_location</span><span class="p">,</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="n">explainers</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">commons</span><span class="o">.</span><span class="n">ExplainerToRun</span><span class="p">(</span>
+            <span class="n">explainer_id</span><span class="o">=</span><span class="n">ResidualPdIceExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">(),</span>
+            <span class="n">params</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 10.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 40.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 40.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names
+X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names
+X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names
+X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 50.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 50.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names
+X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 80.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 80.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names
+X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names
+X does not have valid feature names, but GradientBoostingClassifier was fitted with feature names
+2022-10-10 23:12:08,965 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 saving PD to ../../results/h2o-sonar/mli_experiment_cec1284d-7ee5-4abe-9c46-57d0a84f777f/explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-pd-dai-model.json
+2022-10-10 23:12:08,970 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 computation finished &amp; stored to: ../../results/h2o-sonar/mli_experiment_cec1284d-7ee5-4abe-9c46-57d0a84f777f/explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-pd-dai-model.json
+2022-10-10 23:12:08,976 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: ID/True
+2022-10-10 23:12:08,978 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: ID/False
+2022-10-10 23:12:08,982 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: LIMIT_BAL/True
+2022-10-10 23:12:08,996 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: LIMIT_BAL/False
+2022-10-10 23:12:09,011 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: SEX/True
+2022-10-10 23:12:09,012 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: SEX/False
+2022-10-10 23:12:09,025 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: EDUCATION/True
+2022-10-10 23:12:09,026 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: EDUCATION/False
+2022-10-10 23:12:09,029 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: MARRIAGE/True
+2022-10-10 23:12:09,050 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: MARRIAGE/False
+2022-10-10 23:12:09,065 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: AGE/True
+2022-10-10 23:12:09,077 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: AGE/False
+2022-10-10 23:12:09,082 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_0/True
+2022-10-10 23:12:09,083 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_0/False
+2022-10-10 23:12:09,088 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_2/True
+2022-10-10 23:12:09,093 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_2/False
+2022-10-10 23:12:09,096 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_3/True
+2022-10-10 23:12:09,097 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_3/False
+2022-10-10 23:12:09,101 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_4/True
+2022-10-10 23:12:09,102 - h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainerLogger - INFO - Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 creating histogram: PAY_4/False
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 100.0%
+</pre></div></div>
+</div>
+</section>
+<section id="Explainer-Result">
+<h2>Explainer Result<a class="headerlink" href="#Explainer-Result" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># retrieve the result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">interpretation</span><span class="o">.</span><span class="n">get_explainer_result</span><span class="p">(</span><span class="n">ResidualPdIceExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># open interpretation HTML report in web browser</span>
+<span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">interpretation</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get_html_report_location</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># summary</span>
+<span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainer&#39;,
+ &#39;name&#39;: &#39;ResidualPdIceExplainer&#39;,
+ &#39;display_name&#39;: &#39;Residual Partial Dependence Plot&#39;,
+ &#39;description&#39;: &#39;The residual partial dependence plot (PDP) indicates which variables interact most with the error. Residuals are differences between observed and predicted values - the square of the difference between observed and predicted values is used. The residual partial dependence is created using normal partial dependence algorithm, while instead of prediction is used the residual. Individual Conditional Expectations plot (ICE) displays the interaction with error for an individual row of data when an input variable is toggled across its domain.&#39;,
+ &#39;model_types&#39;: [&#39;iid&#39;, &#39;time_series&#39;],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;, &#39;multinomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;, &#39;local_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-partial-dependence&#39;,
+   &#39;name&#39;: &#39;Partial Dependence Plot (PDP)&#39;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: &#39;local-individual-conditional-explanation&#39;,
+   &#39;formats&#39;: [&#39;application/json&#39;]},
+  {&#39;explanation_type&#39;: &#39;local-individual-conditional-explanation&#39;,
+   &#39;name&#39;: &#39;Individual Conditional Expectations (ICE)&#39;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;local&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;application/vnd.h2oai.json+datatable.jay&#39;]},
+  {&#39;explanation_type&#39;: &#39;global-html-fragment&#39;,
+   &#39;name&#39;: &#39;Partial Dependence Plot (PDP)&#39;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;text/html&#39;]}],
+ &#39;parameters&#39;: [{&#39;name&#39;: &#39;sample_size&#39;,
+   &#39;description&#39;: &#39;Sample size for Partial Dependence Plot&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 25000,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;max_features&#39;,
+   &#39;description&#39;: &#39;Partial Dependence Plot number of features (to see all features used by model set to -1).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 10,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;features&#39;,
+   &#39;description&#39;: &#39;Partial Dependence Plot feature list.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;list&#39;,
+   &#39;val&#39;: None,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [&#39;SOURCE_DATASET_COLUMN_NAMES&#39;],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;oor_grid_resolution&#39;,
+   &#39;description&#39;: &#39;Partial Dependence Plot number of out of range bins.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 0,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;quantile-bin-grid-resolution&#39;,
+   &#39;description&#39;: &#39;Partial Dependence Plot quantile binning (total quantile points used to create bins).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 0,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;grid_resolution&#39;,
+   &#39;description&#39;: &#39;Partial Dependence Plot observations per bin (number of equally spaced points used to create bins).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 20,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;center&#39;,
+   &#39;description&#39;: &#39;Center Partial Dependence Plot using ICE centered at 0.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: False,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;sort_bins&#39;,
+   &#39;description&#39;: &#39;Ensure bin values sorting.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: True,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;histograms&#39;,
+   &#39;description&#39;: &#39;Enable histograms.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: True,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;quantile-bins&#39;,
+   &#39;description&#39;: &#39;Per-feature quantile binning (Example: if choosing features\n                 F1 and F2, this parameter is \&#39;{&#34;F1&#34;: 2,&#34;F2&#34;: 5}\&#39;. Note, you can\n                 set all features to use the same quantile binning with the\n                 `Partial Dependence Plot quantile binning` parameter and then\n                 adjust the quantile binning for a subset of PDP features with\n                 this parameter).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;str&#39;,
+   &#39;val&#39;: &#39;&#39;,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;numcat_num_chart&#39;,
+   &#39;description&#39;: &#39;Unique feature values count driven Partial Dependence Plot binning and chart selection.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: True,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;numcat_threshold&#39;,
+   &#39;description&#39;: &#39;Threshold for Partial Dependence Plot binning and chart selection (&lt;=threshold categorical, &gt;threshold numeric).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 11,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;}],
+ &#39;keywords&#39;: [&#39;can-add-feature&#39;, &#39;explains-model-debugging&#39;]}
+</pre></div></div>
+</div>
+<section id="Display-PD-Data">
+<h3>Display PD Data<a class="headerlink" href="#Display-PD-Data" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">feature_name</span><span class="o">=</span><span class="s2">&quot;EDUCATION&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>bin</th><th>pd</th><th>sd</th><th>oor</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='int' title='int32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>0</td><td>0.6383</td><td>0.480517</td><td>0</td></tr>
+    <tr><td class='row_index'>1</td><td>1</td><td>0.6383</td><td>0.480517</td><td>0</td></tr>
+    <tr><td class='row_index'>2</td><td>2</td><td>0.5176</td><td>0.499715</td><td>0</td></tr>
+    <tr><td class='row_index'>3</td><td>3</td><td>0.6041</td><td>0.489068</td><td>0</td></tr>
+    <tr><td class='row_index'>4</td><td>4</td><td>0.2462</td><td>0.430818</td><td>0</td></tr>
+    <tr><td class='row_index'>5</td><td>5</td><td>0.2462</td><td>0.430818</td><td>0</td></tr>
+    <tr><td class='row_index'>6</td><td>6</td><td>0.5065</td><td>0.499983</td><td>0</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>7 rows &times; 4 columns</div>
+  </div>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">feature_name</span><span class="o">=</span><span class="s2">&quot;PAY_3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>bin</th><th>pd</th><th>sd</th><th>oor</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='int' title='int32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='bool' title='bool8'>&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>&minus;2</td><td>0.6009</td><td>0.489738</td><td>0</td></tr>
+    <tr><td class='row_index'>1</td><td>&minus;1</td><td>0.6009</td><td>0.489738</td><td>0</td></tr>
+    <tr><td class='row_index'>2</td><td>0</td><td>0.6009</td><td>0.489738</td><td>0</td></tr>
+    <tr><td class='row_index'>3</td><td>1</td><td>0.7499</td><td>0.433092</td><td>0</td></tr>
+    <tr><td class='row_index'>4</td><td>2</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>
+    <tr><td class='row_index'>5</td><td>3</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>
+    <tr><td class='row_index'>6</td><td>4</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>
+    <tr><td class='row_index'>7</td><td>5</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>
+    <tr><td class='row_index'>8</td><td>6</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>
+    <tr><td class='row_index'>9</td><td>7</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>
+    <tr><td class='row_index'>10</td><td>8</td><td>0.3824</td><td>0.485998</td><td>0</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>11 rows &times; 4 columns</div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="Plot-PD-Data">
+<h3>Plot PD Data<a class="headerlink" href="#Plot-PD-Data" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature_name</span><span class="o">=</span><span class="s2">&quot;PAY_3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Save-Explainer-Log-and-Data">
+<h3>Save Explainer Log and Data<a class="headerlink" href="#Save-Explainer-Log-and-Data" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save the explainer log</span>
+<span class="n">result</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;./residual-pd-ice-demo.log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">head</span> <span class="n">residual</span><span class="o">-</span><span class="n">pd</span><span class="o">-</span><span class="n">ice</span><span class="o">-</span><span class="n">demo</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2022-10-10 23:12:07,438 INFO [PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08] BEGIN
+2022-10-10 23:12:07,439 INFO [PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08] loading dataset
+2022-10-10 23:12:07,439 INFO [PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08] loaded dataset has 10000 rows and 25 columns
+2022-10-10 23:12:07,439 INFO [PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08] getting features list, importanceand metadata
+2022-10-10 23:12:07,439 INFO Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 all most important model features: [&#39;ID&#39;, &#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_0&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;]
+2022-10-10 23:12:07,439 INFO Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 features used by model: [&#39;ID&#39;, &#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_0&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;]
+2022-10-10 23:12:07,439 INFO Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08: calculating PD for features [&#39;ID&#39;, &#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_0&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;]
+2022-10-10 23:12:07,439 INFO Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 feature metadata: {}
+2022-10-10 23:12:07,439 INFO Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 1 frame strategy: True
+2022-10-10 23:12:08,965 INFO Residual PD/ICE cec1284d-7ee5-4abe-9c46-57d0a84f777f/ba27172f-dcab-4a12-95a6-215efc570f08 saving PD to ../../results/h2o-sonar/mli_experiment_cec1284d-7ee5-4abe-9c46-57d0a84f777f/explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-pd-dai-model.json
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save the explainer data</span>
+<span class="n">result</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;./residual-pd-ice-demo-archive.zip&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">unzip</span> <span class="o">-</span><span class="n">l</span> <span class="n">residual</span><span class="o">-</span><span class="n">pd</span><span class="o">-</span><span class="n">ice</span><span class="o">-</span><span class="n">demo</span><span class="o">-</span><span class="n">archive</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Archive:  residual-pd-ice-demo-archive.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     6886  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/result_descriptor.json
+      151  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json.meta
+     7156  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/explanation.json
+      924  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_3_class_0.json
+     2557  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_5_class_0.json
+      321  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_2_class_0.json
+     2647  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_0_class_0.json
+     1417  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_8_class_0.json
+     1411  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_6_class_0.json
+     1410  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_9_class_0.json
+     1413  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_7_class_0.json
+     2741  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_1_class_0.json
+      563  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_partial_dependence/application_json/pd_feature_4_class_0.json
+      165  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay.meta
+     7096  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/explanation.json
+  1601936  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_0_class_0.jay
+   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_8_class_0.jay
+   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_9_class_0.jay
+   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_7_class_0.jay
+  1601944  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_1_class_0.jay
+   560688  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_3_class_0.jay
+   320440  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_4_class_0.jay
+   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_6_class_0.jay
+  1601784  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_5_class_0.jay
+    80184  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/y_hat.jay
+   160272  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/local_individual_conditional_explanation/application_vnd_h2oai_json_datatable_jay/ice_feature_2_class_0.jay
+      110  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html.meta
+    11446  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-3.png
+    11663  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-1.png
+    16954  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-9.png
+    23985  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-4.png
+    16845  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-5.png
+     4198  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/explanation.html
+    16891  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-2.png
+    11369  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-6.png
+    11441  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-7.png
+    16068  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-10.png
+    11382  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/global_html_fragment/text_html/pd-class-1-feature-8.png
+     5664  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/log/explainer_run_ba27172f-dcab-4a12-95a6-215efc570f08.log
+   320440  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-5.jay
+    22215  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-pd-dai-model.json
+   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-8.jay
+   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-9.jay
+  1601936  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-1.jay
+   560688  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-4.jay
+  1601784  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-6.jay
+  1601944  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-2.jay
+    80184  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/mli_dataset_y_hat.jay
+   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-10.jay
+   881024  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-7.jay
+   160272  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model-3.jay
+     2519  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/work/h2o_sonar-ice-dai-model.json
+      795  2022-10-10 23:12   explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_ba27172f-dcab-4a12-95a6-215efc570f08/model_problems/problems_and_actions.json
+---------                     -------
+ 19123091                     53 files
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="h2o-sonar-pd-for-2-features-explainer.html" class="btn btn-neutral float-left" title="Partial Dependence for 2 Features Explainer Demo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="h2o-sonar-residual-dt-surrogate-explainer.html" class="btn btn-neutral float-right" title="Residual Decision Tree Surrogate Explainer Demo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generative Models &mdash; H2O Sonar 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/doc.generative.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Evaluating RAGs and LLMs" href="doc.evaluations.html" />
+    <link rel="prev" title="Explainers" href="doc.explainers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Sonar
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Sonar Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Sonar</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="doc.html">H2O Sonar Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="doc.configuration.html">Library Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.predictive.html">Predictive Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Generative Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluations.html">Evaluating RAGs and LLMs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.rag_llm_hosts.html">RAG and LLM Hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.rag_llm_tests.html">Test Case, Suite, Lab and LLM Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluators.pars.html">Evaluator Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluators.html">Evaluators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.byoj.html">BYOJ: Bring Your Own Judge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.byop.html">BYOP: Bring Your Own Prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.perturbations.html">Perturbations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc.result.html">Report and Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.talktoreport.html">Talk to Report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Sonar Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Sonar Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Sonar</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="doc.html">H2O Sonar Documentation</a></li>
+      <li class="breadcrumb-item active">Generative Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/doc.generative.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="generative-models">
+<h1>Generative Models<a class="headerlink" href="#generative-models" title="Link to this heading"></a></h1>
+<p>H2O Sonar provides evaluation of <strong>generative</strong> machine learning models.</p>
+<img alt="Evaluation diagram" src="_images/evaluation-high-level.png" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Evaluating RAGs and LLMs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.evaluations.html">Evaluating RAGs and LLMs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluations.html#test-data-preparation">Test Data Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluations.html#system-under-evaluation-connection">System Under Evaluation Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluations.html#test-data-resolution">Test Data Resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluations.html#llm-evaluation">LLM Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluations.html#evaluation-results-analysis">Evaluation Results Analysis</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">RAG and LLM Hosts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.rag_llm_hosts.html">RAG and LLM Hosts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_hosts.html#enterprise-h2ogpte-llm-host">Enterprise h2oGPTe LLM Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_hosts.html#h2o-gpt-llm-host">H2O GPT LLM Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_hosts.html#h2o-llmops-llm-host">H2O LLMOps LLM Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_hosts.html#open-ai-assistants-with-file-search-formerly-retrieval-tool-llm-host">Open AI Assistants with File Search (formerly Retrieval) Tool LLM Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_hosts.html#open-ai-chat-llm-host">Open AI Chat LLM Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_hosts.html#microsoft-azure-open-ai-chat-llm-host">Microsoft Azure Open AI Chat LLM Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_hosts.html#anthropic-claude-chat-llm-host">Anthropic Claude Chat LLM Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_hosts.html#open-ai-chat-api-compatible-llm-host">Open AI Chat API Compatible LLM Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_hosts.html#amazon-bedrock">Amazon Bedrock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_hosts.html#ollama-llm-host">ollama LLM Host</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Test Case, Suite, Lab and LLM Dataset</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.rag_llm_tests.html">Test Case, Suite, Lab and LLM Dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_tests.html#test-case">Test Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_tests.html#test">Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_tests.html#test-suite">Test Suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_tests.html#test-lab">Test Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.rag_llm_tests.html#llm-dataset">LLM Dataset</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Evaluator Parametrization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.evaluators.pars.html">Evaluator Parameters</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Evaluators</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.evaluators.html">Evaluators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#reproducibility">Reproducibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#agent-sanity-check-evaluator">Agent Sanity Check Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#answer-accuracy-semantic-similarity-evaluator">Answer Accuracy (Semantic Similarity) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#answer-correctness-evaluator">Answer Correctness Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#answer-semantic-similarity-evaluator">Answer Semantic Similarity Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#answer-semantic-sentence-similarity-evaluator">Answer Semantic Sentence Similarity Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#context-relevancy-evaluator">Context Relevancy Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#context-relevancy-soft-recall-and-precision-evaluator">Context Relevancy (Soft Recall and Precision) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#groundedness-semantic-similarity-evaluator">Groundedness (Semantic Similarity) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#hallucination-evaluator">Hallucination Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#ragas-evaluator">RAGAS Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#text-matching-evaluator">Text Matching Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#context-precision-evaluator">Context Precision Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#fact-check-agent-based-evaluator">Fact-Check (Agent-based) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#faithfulness-evaluator">Faithfulness Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#context-recall-evaluator">Context Recall Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#context-mean-reciprocal-rank-evaluator">Context Mean Reciprocal Rank Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#answer-relevancy-evaluator">Answer Relevancy Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#answer-relevancy-sentence-similarity-evaluator">Answer Relevancy (Sentence Similarity) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#pii-leakage-evaluator">PII Leakage Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#json-schema-evaluator">JSON Schema Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#encoding-guardrail-evaluator">Encoding Guardrail Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#sensitive-data-leakage-evaluator">Sensitive Data Leakage Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#toxicity-evaluator">Toxicity Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#fairness-bias-evaluator">Fairness Bias Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#contact-information-evaluator">Contact Information Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#language-mismatch-judge-evaluator">Language Mismatch (Judge) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#looping-detection-evaluator">Looping Detection Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#parameterizable-byop-evaluator">Parameterizable BYOP Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#perplexity-evaluator">Perplexity Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#questions-drift-evaluator">Questions Drift Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#sexism-judge-evaluator">Sexism (Judge) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#step-alignment-and-completeness-evaluator">Step Alignment and Completeness Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#stereotypes-judge-evaluator">Stereotypes (Judge) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#summarization-completeness-and-faithfulness-evaluator">Summarization (Completeness and Faithfulness) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#summarization-judge-evaluator">Summarization (Judge) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#summarization-with-reference-gptscore-evaluator">Summarization with reference (GPTScore) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#summarization-without-reference-gptscore-evaluator">Summarization without reference (GPTScore) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#bertscore-evaluator">BERTScore Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#bleu-evaluator">BLEU Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#rouge-evaluator">ROUGE Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#self-consistency-evaluator">Self-Consistency Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#classification-evaluator">Classification Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#machine-translation-gptscore-evaluator">Machine Translation (GPTScore) Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.evaluators.html#question-answering-gptscore-evaluator">Question Answering (GPTScore) Evaluator</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">BYOJ: Bring Your Own Judge</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.byoj.html">BYOJ: Bring Your Own Judge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc.byoj.html#force-custom-judge-from-h2o-sonar-configuration">Force Custom Judge from H2O Sonar Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.byoj.html#llm-judge-specified-in-the-evaluator-parameters">LLM Judge Specified in the Evaluator Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.byoj.html#privacy-safe-llm-models">Privacy Safe LLM Models</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">BYOP: Bring Your Own Prompt</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.byop.html">BYOP: Bring Your Own Prompt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc.byop.html#prompt-template-design">Prompt Template Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.byop.html#parametrize-byop-evaluator">Parametrize BYOP Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.byop.html#implement-your-own-prompt-based-evaluator">Implement Your Own Prompt-Based Evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.byop.html#custom-llm-judge-configuration">Custom LLM Judge Configuration</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Perturbations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.perturbations.html">Perturbations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#perturbations-step-by-step">Perturbations Step-by-Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#random-character-perturbator">Random Character Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#antonym-perturbator">Antonym Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#comma-perturbator">Comma Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#contextual-misinformation-perturbator">Contextual Misinformation Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#copy-perturbator">Copy Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#keyboard-typos-perturbator">Keyboard Typos Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#ocr-error-character-perturbator">OCR Error Character Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#random-character-deletion-perturbator">Random Character Deletion Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#random-character-insertion-perturbator">Random Character Insertion Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#random-character-replacement-perturbator">Random Character Replacement Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#synonym-perturbator">Synonym Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#word-swap-perturbator">Word Swap Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#y-z-perturbator">Y/Z Perturbator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#perturbators-api">Perturbators API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.perturbations.html#using-perturbations-to-assess-model-robustness">Using Perturbations to Assess Model Robustness</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="doc.explainers.html" class="btn btn-neutral float-left" title="Explainers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="doc.evaluations.html" class="btn btn-neutral float-right" title="Evaluating RAGs and LLMs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "a89d1e71-a876-4189-b6ed-ee226dad679e",
+   "metadata": {},
+   "source": [
+    "# Dataset and Model Insights Explainer Demo\n",
+    "\n",
+    "This example demonstrates how to use the **Dataset and Model Insights Explainer** and how to retrieve problems from the interpretation."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "e4108f24-6e39-43a2-abda-456129eaf361",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import logging\n",
+    "import os\n",
+    "\n",
+    "import daimojo\n",
+    "import webbrowser\n",
+    "\n",
+    "from h2o_sonar import interpret\n",
+    "from h2o_sonar.explainers.dataset_and_model_insights_explainer import DatasetAndModelInsightsExplainer\n",
+    "from h2o_sonar.lib.api.models import ModelApi"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "e8858dd3-64f5-4341-b3f7-c3a4115fdb24",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# dataset\n",
+    "dataset_path = \"../../data/predictive/creditcard100_pred_missing_values.csv\"\n",
+    "target_col = \"predictions\"\n",
+    "\n",
+    "# model\n",
+    "mojo_path = \"../../data/predictive/models/creditcard-binomial.mojo\"\n",
+    "mojo_model = daimojo.model(mojo_path)\n",
+    "model = ModelApi().create_model(\n",
+    "    model_src=mojo_model,\n",
+    "    target_col=target_col,\n",
+    "    used_features=list(mojo_model.feature_names),\n",
+    ")\n",
+    "\n",
+    "# results\n",
+    "results_location = \"./results\"\n",
+    "os.makedirs(results_location, exist_ok=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "6eaeb369",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'id': 'h2o_sonar.explainers.dataset_and_model_insights_explainer.DatasetAndModelInsightsExplainer',\n",
+       " 'name': 'DatasetAndModelInsightsExplainer',\n",
+       " 'display_name': 'Dataset and model insights explainer',\n",
+       " 'tagline': 'DatasetAndModelInsightsExplainer.',\n",
+       " 'description': 'The explainer checks the dataset and model for various issues. For example, it provides problems and actions for missing values in the target column and a low number of unique values across columns of a dataset.',\n",
+       " 'brief_description': 'DatasetAndModelInsightsExplainer.',\n",
+       " 'model_types': ['iid'],\n",
+       " 'can_explain': ['regression', 'binomial', 'multinomial'],\n",
+       " 'explanation_scopes': ['global_scope'],\n",
+       " 'explanations': [{'explanation_type': 'global-text-explanation',\n",
+       "   'name': 'TextExplanation',\n",
+       "   'category': '',\n",
+       "   'scope': 'global',\n",
+       "   'has_local': '',\n",
+       "   'formats': []}],\n",
+       " 'keywords': [],\n",
+       " 'parameters': [],\n",
+       " 'metrics_meta': []}"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# parameters\n",
+    "interpret.describe_explainer(DatasetAndModelInsightsExplainer)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0a146156-5e48-4fe0-9f58-f37c305f89a6",
+   "metadata": {},
+   "source": [
+    "## Interpret"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "f9010a65-f211-4160-a7a6-2dca49618f06",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%%capture\n",
+    "interpretation = interpret.run_interpretation(\n",
+    "    dataset=dataset_path,\n",
+    "    model=model,\n",
+    "    target_col=target_col,\n",
+    "    results_location=results_location,\n",
+    "    explainers=[DatasetAndModelInsightsExplainer.explainer_id()],\n",
+    "    log_level=logging.INFO,\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "94378f1c-9778-42ad-a9c5-a3696266d90c",
+   "metadata": {},
+   "source": [
+    "## Interact with the Explainer Result"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "ecd0a2d7-c462-4b9e-aab7-ded94a73a278",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# retrieve the result\n",
+    "result = interpretation.get_explainer_result(DatasetAndModelInsightsExplainer.explainer_id())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "35e6147e-4e12-4faf-9584-4b3ad93d907b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# open interpretation HTML report in web browser\n",
+    "webbrowser.open(interpretation.result.get_html_report_location())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "324568e9-5495-4a5f-969b-ee9108b5e644",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'id': 'h2o_sonar.explainers.dataset_and_model_insights_explainer.DatasetAndModelInsightsExplainer',\n",
+       " 'name': 'DatasetAndModelInsightsExplainer',\n",
+       " 'display_name': 'Dataset and model insights explainer',\n",
+       " 'tagline': 'DatasetAndModelInsightsExplainer.',\n",
+       " 'description': 'The explainer checks the dataset and model for various issues. For example, it provides problems and actions for missing values in the target column and a low number of unique values across columns of a dataset.',\n",
+       " 'brief_description': 'DatasetAndModelInsightsExplainer.',\n",
+       " 'model_types': ['iid'],\n",
+       " 'can_explain': ['regression', 'binomial', 'multinomial'],\n",
+       " 'explanation_scopes': ['global_scope'],\n",
+       " 'explanations': [{'explanation_type': 'global-text-explanation',\n",
+       "   'name': 'Dataset and model insights explainer',\n",
+       "   'category': 'CUSTOM',\n",
+       "   'scope': 'global',\n",
+       "   'has_local': None,\n",
+       "   'formats': ['text/plain']}],\n",
+       " 'keywords': [],\n",
+       " 'parameters': [],\n",
+       " 'metrics_meta': []}"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# summary\n",
+    "result.summary()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "83be40a4-fe14-4fcd-919d-c0f5a2c84e31",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{}"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# parameters\n",
+    "result.params()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "418932dd-a881-410d-9813-c398920d1887",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Found 2 problems with the dataset. Please check the interpretation for further details.\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\n",
+    "    f\"Found {len(interpretation.result.problems)} problems with the dataset. \"\n",
+    "    f\"Please check the interpretation for further details.\"\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c3ebc2e5-0fe2-48e2-a70d-aa7ce8724bc2",
+   "metadata": {},
+   "source": [
+    "### Save the explainer log and data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "499c0011-390a-4511-82bc-11aa371290d9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# save the explainer log\n",
+    "result.log(path=\"./d_and_m_insights-demo.log\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "68f24660-e183-4163-b1ab-575462c24ec4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "!head d_and_m_insights-demo.log"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "334d7964-69df-4b0b-805d-a38c07fe0f47",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "H2O Sonar",
+   "language": "python",
+   "name": "h2o-sonar"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

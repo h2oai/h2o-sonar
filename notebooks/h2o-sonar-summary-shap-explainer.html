@@ -1,0 +1,853 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summary Shapley Explainer Demo &mdash; H2O Sonar 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e2d3f516" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/notebooks/h2o-sonar-summary-shap-explainer.html"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Original Feature Importance Explainer (Kernel SHAP) Demo" href="h2o-sonar-original-feature-kernel-shap-importance-explainer.html" />
+    <link rel="prev" title="Decision Tree Surrogate Explainer Demo" href="h2o-sonar-dt-surrogate-explainer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            H2O Sonar
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">H2O Sonar Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with H2O Sonar</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../doc.html">H2O Sonar Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">H2O Sonar Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dt-surrogate-explainer.html">Decision Tree Surrogate Explainer Demo</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Summary Shapley Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-original-feature-kernel-shap-importance-explainer.html">Original Feature Importance Explainer (Kernel SHAP) Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-original-feature-naive-shapley-importance-explainer.html">Original Feature Importance Explainer for MOJO Models (Naive Shapley method) Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-shapley-for-transformed-feature-importance-explainer.html">Shapley Values for Transformed Features of MOJO Models Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pd-explainer.html">Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pd-for-2-features-explainer.html">Partial Dependence for 2 Features Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-residual-pd-explainer.html">Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-residual-dt-surrogate-explainer.html">Residual Decision Tree Surrogate Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dia-explainer.html">Disparate Impact Analysis (DIA) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-friedman-h-statistic-explainer.html">Friedman H-statistic Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-morris-sa-explainer.html">Morris Sensitivity Analysis Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-d-and-m-insights-explainer.html">Dataset and Model Insights Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html">H2O Sonar Model Validation Explainers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Interpretation:-CLI">Interpretation: CLI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Use-CLI-to-run-H2O-MV-based-explainers">Use CLI to run H2O MV based explainers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.models.html">Models in Interpretation Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.cli.html">Command Line Interface in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.h2ogpte.html">Enterprise h2oGPT Examples</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_api.html">H2O Sonar Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">H2O Sonar</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">H2O Sonar Examples</a></li>
+          <li class="breadcrumb-item"><a href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a></li>
+      <li class="breadcrumb-item active">Summary Shapley Explainer Demo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/h2o-sonar-summary-shap-explainer.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Summary-Shapley-Explainer-Demo">
+<h1>Summary Shapley Explainer Demo<a class="headerlink" href="#Summary-Shapley-Explainer-Demo" title="Link to this heading"></a></h1>
+<p>This example demonstrates how to interpret a <strong>scikit-learn</strong> model using the H2O Sonar library and retrieve the data and plot the <strong>summary Shapley</strong>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import logging
+
+import pandas
+import webbrowser
+
+from h2o_sonar import interpret
+from h2o_sonar.lib.api import commons
+from h2o_sonar.lib.api import explainers
+from h2o_sonar.lib.api.models import ModelApi
+from h2o_sonar.explainers.summary_shap_explainer import SummaryShapleyExplainer
+
+from sklearn.ensemble import GradientBoostingClassifier
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style type='text/css'>
+.datatable table.frame { margin-bottom: 0; }
+.datatable table.frame thead { border-bottom: none; }
+.datatable table.frame tr.coltypes td {  color: #FFFFFF;  line-height: 6px;  padding: 0 0.5em;}
+.datatable .bool    { background: #DDDD99; }
+.datatable .object  { background: #565656; }
+.datatable .int     { background: #5D9E5D; }
+.datatable .float   { background: #4040CC; }
+.datatable .str     { background: #CC4040; }
+.datatable .time    { background: #40CC40; }
+.datatable .row_index {  background: var(--jp-border-color3);  border-right: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  font-size: 9px;}
+.datatable .frame tbody td { text-align: left; }
+.datatable .frame tr.coltypes .row_index {  background: var(--jp-border-color0);}
+.datatable th:nth-child(2) { padding-left: 12px; }
+.datatable .hellipsis {  color: var(--jp-cell-editor-border-color);}
+.datatable .vellipsis {  background: var(--jp-layout-color0);  color: var(--jp-cell-editor-border-color);}
+.datatable .na {  color: var(--jp-cell-editor-border-color);  font-size: 80%;}
+.datatable .sp {  opacity: 0.25;}
+.datatable .footer { font-size: 9px; }
+.datatable .frame_dimensions {  background: var(--jp-border-color3);  border-top: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  display: inline-block;  opacity: 0.6;  padding: 1px 10px 1px 5px;}
+</style></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>results_location = &quot;../../results&quot;
+
+# dataset
+dataset_path = &quot;../../data/predictive/creditcard.csv&quot;
+target_col = &quot;default payment next month&quot;
+df = pandas.read_csv(dataset_path)
+(X, y) = df.drop(target_col, axis=1), df[target_col]
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># parameters
+interpret.describe_explainer(SummaryShapleyExplainer)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer&#39;,
+ &#39;name&#39;: &#39;SummaryShapleyExplainer&#39;,
+ &#39;display_name&#39;: &#39;Shapley Summary Plot for Original Features (Kernel SHAP Method)&#39;,
+ &#39;tagline&#39;: &#39;SummaryShapleyExplainer.&#39;,
+ &#39;description&#39;: &#39;Shapley explanations are a technique with credible theoretical support that presents consistent global and local feature contributions.\n\nThe Shapley Summary Plot shows original features versus their local Shapley values on a sample of the dataset. Feature values are binned by Shapley values and the average normalized feature value for each bin is plotted. The legend corresponds to numeric features and maps to their normalized value - yellow is the lowest value and deep orange is the highest. You can also get a scatter plot of the actual numeric features values versus their corresponding Shapley values. Categorical features are shown in grey and do not provide an actual-value scatter plot.\n\nNotes:\n\n* The Shapley Summary Plot only shows original features that are used in the model.\n* The dataset sample size and the number of bins can be updated in the interpretation settings.\n\n&#39;,
+ &#39;brief_description&#39;: &#39;SummaryShapleyExplainer.&#39;,
+ &#39;model_types&#39;: [&#39;iid&#39;, &#39;time_series&#39;],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;, &#39;multinomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-summary-feature-importance&#39;,
+   &#39;name&#39;: &#39;GlobalSummaryFeatImpExplanation&#39;,
+   &#39;category&#39;: &#39;&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: &#39;&#39;,
+   &#39;formats&#39;: []}],
+ &#39;keywords&#39;: [&#39;run-by-default&#39;, &#39;explains-feature-behavior&#39;, &#39;h2o-sonar&#39;],
+ &#39;parameters&#39;: [{&#39;name&#39;: &#39;max_features&#39;,
+   &#39;description&#39;: &#39;Maximum number of features to be shown in the plot.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 50,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;sample_size&#39;,
+   &#39;description&#39;: &#39;Sample size.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 20000,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 100,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;x_shapley_resolution&#39;,
+   &#39;description&#39;: &#39;x-axis resolution (number of Shapley values bins).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 500,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 100,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;enable_drilldown_charts&#39;,
+   &#39;description&#39;: &#39;Enable creation of per-feature Shapley/feature value scatter plots.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: True,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;fast_approx_contribs&#39;,
+   &#39;description&#39;: &#39;Speed up predictions with fast predictions and contributions approximations.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: True,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;}],
+ &#39;metrics_meta&#39;: []}
+</pre></div></div>
+</div>
+<section id="Interpretation">
+<h2>Interpretation<a class="headerlink" href="#Interpretation" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># scikit-learn model
+gradient_booster = GradientBoostingClassifier(learning_rate=0.1)
+gradient_booster.fit(X, y)
+
+# explainable model
+explainable_model = ModelApi().create_model(
+    target_col=target_col,
+    model_src=gradient_booster,
+    used_features=X.columns.to_list()
+)
+
+interpretation = interpret.run_interpretation(
+    dataset=df,
+    model=explainable_model,
+    target_col=target_col,
+    results_location=results_location,
+    log_level=logging.INFO,
+    explainers=[
+        commons.ExplainerToRun(
+            explainer_id=SummaryShapleyExplainer.explainer_id(),
+            params=&quot;&quot;,
+        )
+    ]
+)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain_core.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain_core.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+</pre></div></div>
+</div>
+</section>
+<section id="Interact-with-the-Explainer-Result">
+<h2>Interact with the Explainer Result<a class="headerlink" href="#Interact-with-the-Explainer-Result" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># retrieve the result
+result = interpretation.get_explainer_result(SummaryShapleyExplainer.explainer_id())
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># open interpretation HTML report in web browser
+webbrowser.open(interpretation.result.get_html_report_location())
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># summary
+result.summary()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer&#39;,
+ &#39;name&#39;: &#39;SummaryShapleyExplainer&#39;,
+ &#39;display_name&#39;: &#39;Shapley Summary Plot for Original Features (Kernel SHAP Method)&#39;,
+ &#39;tagline&#39;: &#39;SummaryShapleyExplainer.&#39;,
+ &#39;description&#39;: &#39;Shapley explanations are a technique with credible theoretical support that presents consistent global and local feature contributions.\n\nThe Shapley Summary Plot shows original features versus their local Shapley values on a sample of the dataset. Feature values are binned by Shapley values and the average normalized feature value for each bin is plotted. The legend corresponds to numeric features and maps to their normalized value - yellow is the lowest value and deep orange is the highest. You can also get a scatter plot of the actual numeric features values versus their corresponding Shapley values. Categorical features are shown in grey and do not provide an actual-value scatter plot.\n\nNotes:\n\n* The Shapley Summary Plot only shows original features that are used in the model.\n* The dataset sample size and the number of bins can be updated in the interpretation settings.\n\n&#39;,
+ &#39;brief_description&#39;: &#39;SummaryShapleyExplainer.&#39;,
+ &#39;model_types&#39;: [&#39;iid&#39;, &#39;time_series&#39;],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;, &#39;multinomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-summary-feature-importance&#39;,
+   &#39;name&#39;: &#39;Shapley Summary Plot for Original Features&#39;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;application/vnd.h2oai.json+datatable.jay&#39;,
+    &#39;application/json&#39;,
+    &#39;text/markdown&#39;]},
+  {&#39;explanation_type&#39;: &#39;global-html-fragment&#39;,
+   &#39;name&#39;: &#39;Shapley Summary Plot for Original Features&#39;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;text/html&#39;]}],
+ &#39;keywords&#39;: [&#39;run-by-default&#39;, &#39;explains-feature-behavior&#39;, &#39;h2o-sonar&#39;],
+ &#39;parameters&#39;: [{&#39;name&#39;: &#39;max_features&#39;,
+   &#39;description&#39;: &#39;Maximum number of features to be shown in the plot.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 50,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;sample_size&#39;,
+   &#39;description&#39;: &#39;Sample size.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 20000,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 100,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;x_shapley_resolution&#39;,
+   &#39;description&#39;: &#39;x-axis resolution (number of Shapley values bins).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 500,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 100,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;enable_drilldown_charts&#39;,
+   &#39;description&#39;: &#39;Enable creation of per-feature Shapley/feature value scatter plots.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: True,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;fast_approx_contribs&#39;,
+   &#39;description&#39;: &#39;Speed up predictions with fast predictions and contributions approximations.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;bool&#39;,
+   &#39;val&#39;: True,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;}],
+ &#39;metrics_meta&#39;: []}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># parameters
+result.params()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;max_features&#39;: 50,
+ &#39;sample_size&#39;: 20000,
+ &#39;x_shapley_resolution&#39;: 500,
+ &#39;enable_drilldown_charts&#39;: True,
+ &#39;fast_approx_contribs&#39;: True}
+</pre></div></div>
+</div>
+<section id="Display-the-Shapley-Shapley">
+<h3>Display the Shapley Shapley<a class="headerlink" href="#Display-the-Shapley-Shapley" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># get the data for all features
+result.data()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>MARRIAGE</th><th>BILL_AMT2</th><th>AGE</th><th>PAY_0</th><th>PAY_AMT3</th><th>EDUCATION</th><th>BILL_AMT3</th><th>BILL_AMT5</th><th>PAY_AMT5</th><th>LIMIT_BAL</th><th class='vellipsis'>&hellip;</th><th>PAY_AMT6</th><th>PAY_4</th><th>BILL_AMT6</th><th>PAY_AMT1</th><th>bias</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td></td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>1.66392</td><td>0.754229</td><td>0.525014</td><td>&minus;0.0769926</td><td>0.343486</td><td>0.459352</td><td>0.173675</td><td>0.0163271</td><td>&minus;0.00919648</td><td>&minus;0.0213322</td><td class=vellipsis>&hellip;</td><td>&minus;0.0672808</td><td>0.0943492</td><td>&minus;0.106023</td><td>0.010494</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>1</td><td>1.75075</td><td>0.365596</td><td>0.311988</td><td>&minus;0.224273</td><td>&minus;0.119805</td><td>0.0425741</td><td>0.141538</td><td>0.26145</td><td>&minus;0.00507203</td><td>0.00920574</td><td class=vellipsis>&hellip;</td><td>&minus;0.0162608</td><td>0.0213093</td><td>0.00764593</td><td>0.00946223</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>2</td><td>1.79185</td><td>0.379105</td><td>0.25219</td><td>&minus;0.257663</td><td>&minus;0.144234</td><td>0.0711456</td><td>0.153144</td><td>0.190386</td><td>0.207591</td><td>&minus;0.0191975</td><td class=vellipsis>&hellip;</td><td>&minus;0.0408922</td><td>0.0126469</td><td>0.00341155</td><td>&minus;0.0158366</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>3</td><td>1.79185</td><td>0.34528</td><td>0.252297</td><td>&minus;0.257663</td><td>&minus;0.144234</td><td>0.0711456</td><td>0.169791</td><td>0.190446</td><td>0.207591</td><td>&minus;0.0191975</td><td class=vellipsis>&hellip;</td><td>&minus;0.0408922</td><td>0.0126469</td><td>0.00432853</td><td>&minus;0.0168906</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>4</td><td>1.79242</td><td>0.433088</td><td>0.248932</td><td>&minus;0.23324</td><td>&minus;0.128322</td><td>0.0711456</td><td>0.153144</td><td>0.181755</td><td>0.207591</td><td>&minus;0.0193396</td><td class=vellipsis>&hellip;</td><td>&minus;0.0163037</td><td>0.0126469</td><td>0.00780872</td><td>&minus;0.0122551</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>5</td><td>1.79185</td><td>0.379105</td><td>0.25219</td><td>&minus;0.257663</td><td>&minus;0.144234</td><td>0.0711456</td><td>0.153144</td><td>0.190386</td><td>0.207591</td><td>&minus;0.0191975</td><td class=vellipsis>&hellip;</td><td>&minus;0.0408922</td><td>0.0126469</td><td>0.00341155</td><td>&minus;0.0158366</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>6</td><td>1.84325</td><td>0.378151</td><td>0.149483</td><td>&minus;0.17116</td><td>&minus;0.144735</td><td>0.11591</td><td>0.0972286</td><td>&minus;0.263704</td><td>0.197469</td><td>0.18672</td><td class=vellipsis>&hellip;</td><td>&minus;0.0407482</td><td>0.0126469</td><td>0.0289509</td><td>&minus;0.089523</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>7</td><td>1.7705</td><td>0.430811</td><td>0.304604</td><td>&minus;0.236441</td><td>0.345056</td><td>0.363289</td><td>0.139994</td><td>&minus;0.0422748</td><td>0.130124</td><td>0.00971828</td><td class=vellipsis>&hellip;</td><td>&minus;0.0124586</td><td>0.0943492</td><td>0.0151488</td><td>&minus;0.0012627</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>8</td><td>1.78661</td><td>0.380776</td><td>0.321885</td><td>&minus;0.23324</td><td>&minus;0.128322</td><td>0.105382</td><td>0.153144</td><td>0.153698</td><td>0.187062</td><td>0.0740197</td><td class=vellipsis>&hellip;</td><td>&minus;0.0163037</td><td>0.0126469</td><td>0.00461817</td><td>&minus;0.00961812</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9</td><td>0.887399</td><td>&minus;0.0137737</td><td>0.113788</td><td>0.0326562</td><td>0.242886</td><td>0.376821</td><td>0.0401564</td><td>0.0463024</td><td>0.196936</td><td>&minus;0.0188685</td><td class=vellipsis>&hellip;</td><td>&minus;0.0025913</td><td>0.101591</td><td>0.00734594</td><td>&minus;0.0108075</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>10</td><td>1.8608</td><td>0.375309</td><td>0.361627</td><td>&minus;0.236432</td><td>&minus;0.128322</td><td>0.180256</td><td>0.142784</td><td>0.362827</td><td>0.187062</td><td>0.255124</td><td class=vellipsis>&hellip;</td><td>0.00253912</td><td>0.0126469</td><td>0.00504963</td><td>0.00127701</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>11</td><td>1.83266</td><td>0.372649</td><td>0.35988</td><td>&minus;0.23322</td><td>&minus;0.130309</td><td>0.0754547</td><td>0.151898</td><td>&minus;0.0514293</td><td>&minus;0.00507203</td><td>0.258542</td><td class=vellipsis>&hellip;</td><td>&minus;0.0163037</td><td>0.0126469</td><td>&minus;0.0121005</td><td>&minus;0.14393</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>12</td><td>1.86076</td><td>0.31364</td><td>0.317515</td><td>&minus;0.232394</td><td>&minus;0.128322</td><td>0.100958</td><td>0.153144</td><td>0.27184</td><td>0.207591</td><td>0.42002</td><td class=vellipsis>&hellip;</td><td>&minus;0.0711689</td><td>0.0126469</td><td>0.00485099</td><td>0.00127695</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>13</td><td>1.99488</td><td>0.285282</td><td>0.342016</td><td>&minus;0.256149</td><td>&minus;0.144234</td><td>0.0555813</td><td>0.169791</td><td>0.175341</td><td>0.0838827</td><td>&minus;0.0178721</td><td class=vellipsis>&hellip;</td><td>&minus;0.0957574</td><td>0.0126469</td><td>0.00432853</td><td>&minus;0.0133385</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>14</td><td>1.83875</td><td>0.34528</td><td>0.30161</td><td>&minus;0.256149</td><td>&minus;0.144234</td><td>0.105271</td><td>0.169791</td><td>0.0872774</td><td>0.207591</td><td>0.154961</td><td class=vellipsis>&hellip;</td><td>&minus;0.0408922</td><td>0.0126469</td><td>0.00456134</td><td>&minus;0.0133385</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22F1;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td></tr>
+    <tr><td class='row_index'>9995</td><td>0.720147</td><td>0.980218</td><td>0.122733</td><td>&minus;0.0612512</td><td>0.228076</td><td>0.458607</td><td>0.0390142</td><td>0.0681344</td><td>&minus;0.00685849</td><td>0.152334</td><td class=vellipsis>&hellip;</td><td>&minus;0.0129881</td><td>0.103012</td><td>&minus;0.0398354</td><td>0.00129276</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9996</td><td>0.608979</td><td>&minus;0.013273</td><td>0.735138</td><td>&minus;0.0612512</td><td>0.208421</td><td>0.363868</td><td>0.00175616</td><td>&minus;0.0213594</td><td>&minus;0.00607075</td><td>&minus;0.0215157</td><td class=vellipsis>&hellip;</td><td>&minus;0.0025913</td><td>0.0929286</td><td>&minus;0.0388194</td><td>0.010494</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9997</td><td>1.83875</td><td>0.372146</td><td>0.190154</td><td>&minus;0.171181</td><td>&minus;0.143942</td><td>0.103827</td><td>0.169405</td><td>&minus;0.18818</td><td>0.188581</td><td>0.154961</td><td class=vellipsis>&hellip;</td><td>&minus;0.0408922</td><td>0.0126469</td><td>0.00935096</td><td>&minus;0.0133385</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9998</td><td>0.635687</td><td>0.920219</td><td>0.537259</td><td>&minus;0.0794263</td><td>0.228076</td><td>0.345937</td><td>0.00276488</td><td>0.0131017</td><td>&minus;0.00336023</td><td>&minus;0.0200068</td><td class=vellipsis>&hellip;</td><td>&minus;0.0678533</td><td>0.103012</td><td>&minus;0.040204</td><td>0.00947798</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9999</td><td>1.83874</td><td>0.405971</td><td>0.330204</td><td>&minus;0.230307</td><td>&minus;0.139331</td><td>0.103938</td><td>0.152757</td><td>0.15433</td><td>0.198703</td><td>0.154961</td><td class=vellipsis>&hellip;</td><td>&minus;0.0400925</td><td>0.0126469</td><td>0.00416723</td><td>&minus;0.0122845</td><td>&minus;1.44588</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>10,000 rows &times; 25 columns</div>
+  </div>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># get the data for only feature &quot;PAY_0&quot;
+result.data(feature_names=&quot;PAY_0&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>PAY_0</th><th>bias</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>&minus;0.0769926</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>1</td><td>&minus;0.224273</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>2</td><td>&minus;0.257663</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>3</td><td>&minus;0.257663</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>4</td><td>&minus;0.23324</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>5</td><td>&minus;0.257663</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>6</td><td>&minus;0.17116</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>7</td><td>&minus;0.236441</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>8</td><td>&minus;0.23324</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9</td><td>0.0326562</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>10</td><td>&minus;0.236432</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>11</td><td>&minus;0.23322</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>12</td><td>&minus;0.232394</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>13</td><td>&minus;0.256149</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>14</td><td>&minus;0.256149</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td></tr>
+    <tr><td class='row_index'>9995</td><td>&minus;0.0612512</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9996</td><td>&minus;0.0612512</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9997</td><td>&minus;0.171181</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9998</td><td>&minus;0.0794263</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9999</td><td>&minus;0.230307</td><td>&minus;1.44588</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>10,000 rows &times; 2 columns</div>
+  </div>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># get the data for &quot;PAY_0&quot;, &quot;AGE and &quot;EDUCATION&quot;
+result.data(feature_names=[&quot;PAY_0&quot;, &quot;AGE&quot;, &quot;EDUCATION&quot;])
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>PAY_0</th><th>AGE</th><th>EDUCATION</th><th>bias</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>&minus;0.0769926</td><td>0.525014</td><td>0.459352</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>1</td><td>&minus;0.224273</td><td>0.311988</td><td>0.0425741</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>2</td><td>&minus;0.257663</td><td>0.25219</td><td>0.0711456</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>3</td><td>&minus;0.257663</td><td>0.252297</td><td>0.0711456</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>4</td><td>&minus;0.23324</td><td>0.248932</td><td>0.0711456</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>5</td><td>&minus;0.257663</td><td>0.25219</td><td>0.0711456</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>6</td><td>&minus;0.17116</td><td>0.149483</td><td>0.11591</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>7</td><td>&minus;0.236441</td><td>0.304604</td><td>0.363289</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>8</td><td>&minus;0.23324</td><td>0.321885</td><td>0.105382</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9</td><td>0.0326562</td><td>0.113788</td><td>0.376821</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>10</td><td>&minus;0.236432</td><td>0.361627</td><td>0.180256</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>11</td><td>&minus;0.23322</td><td>0.35988</td><td>0.0754547</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>12</td><td>&minus;0.232394</td><td>0.317515</td><td>0.100958</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>13</td><td>&minus;0.256149</td><td>0.342016</td><td>0.0555813</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>14</td><td>&minus;0.256149</td><td>0.30161</td><td>0.105271</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td><td class='hellipsis'>&#x22EE;</td></tr>
+    <tr><td class='row_index'>9995</td><td>&minus;0.0612512</td><td>0.122733</td><td>0.458607</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9996</td><td>&minus;0.0612512</td><td>0.735138</td><td>0.363868</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9997</td><td>&minus;0.171181</td><td>0.190154</td><td>0.103827</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9998</td><td>&minus;0.0794263</td><td>0.537259</td><td>0.345937</td><td>&minus;1.44588</td></tr>
+    <tr><td class='row_index'>9999</td><td>&minus;0.230307</td><td>0.330204</td><td>0.103938</td><td>&minus;1.44588</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>10,000 rows &times; 4 columns</div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="Plot-the-Summary-Shapley">
+<h3>Plot the Summary Shapley<a class="headerlink" href="#Plot-the-Summary-Shapley" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plot summary shap for all features
+result.plot()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+invalid value encountered in divide
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-summary-shap-explainer_16_1.png" src="../_images/notebooks_h2o-sonar-summary-shap-explainer_16_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plot summary shap for &quot;PAY_0&quot;, &quot;AGE and &quot;EDUCATION&quot;
+result.plot(feature_names=[&quot;PAY_0&quot;, &quot;AGE&quot;, &quot;EDUCATION&quot;])
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+invalid value encountered in divide
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-summary-shap-explainer_17_1.png" src="../_images/notebooks_h2o-sonar-summary-shap-explainer_17_1.png" />
+</div>
+</div>
+</section>
+<section id="Save-the-explainer-log-and-data">
+<h3>Save the explainer log and data<a class="headerlink" href="#Save-the-explainer-log-and-data" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save the explainer log
+result.log(path=&quot;./summary-shapley-demo.log&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!head summary-shapley-demo.log
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2026-01-29 16:28:24,384 INFO Summary Shapley explainer b33e9469-d080-404e-891c-4e2159d64a4c/a1b410cf-2b5d-473a-8295-ec5310f7277f raw MEANs (1)
+2026-01-29 16:28:24,384 INFO Summary Shapley explainer b33e9469-d080-404e-891c-4e2159d64a4c/a1b410cf-2b5d-473a-8295-ec5310f7277f raw CONTRIBs (1)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save the explainer data
+result.zip(file_path=&quot;./summary-shapley-demo-archive.zip&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!unzip -l summary-shapley-demo-archive.zip
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Archive:  summary-shapley-demo-archive.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     4129  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/result_descriptor.json
+        2  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/problems/problems_and_actions.json
+      110  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html.meta
+   142756  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_1_class_0.png
+    95488  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_5_class_0.png
+    87457  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_23_class_0.png
+   118236  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_12_class_0.png
+     8171  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/explanation.html
+   113752  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_14_class_0.png
+    63184  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_18_class_0.png
+    60161  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_16_class_0.png
+   515472  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_2_class_0.png
+    46324  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_21_class_0.png
+   141161  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_7_class_0.png
+    67801  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_11_class_0.png
+   105533  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_3_class_0.png
+    54315  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_0_class_0.png
+    88418  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_13_class_0.png
+   102329  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_6_class_0.png
+   110064  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_8_class_0.png
+    64975  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_15_class_0.png
+    55739  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_20_class_0.png
+   105161  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_17_class_0.png
+   105147  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_10_class_0.png
+   107995  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_9_class_0.png
+    64734  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_4_class_0.png
+    74449  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_22_class_0.png
+   498794  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/feature_19_class_0.png
+   637955  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_html_fragment/text_html/shapley-class-0.png
+      289  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/log/explainer_run_a1b410cf-2b5d-473a-8295-ec5310f7277f.log
+  2002376  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/work/raw_shapley_contribs_class_0.jay
+     1059  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/work/raw_shapley_contribs_index.json
+      141  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/work/report.md
+   637955  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/work/shapley-class-0.png
+        2  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/insights/insights_and_actions.json
+      199  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_vnd_h2oai_json_datatable_jay.meta
+      157  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json.meta
+      122  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/text_markdown.meta
+     1159  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_vnd_h2oai_json_datatable_jay/explanation.json
+   419600  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_vnd_h2oai_json_datatable_jay/summary_feature_importance_class_0.jay
+   142756  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_1_class_0.png
+     2581  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/explanation.json
+    95488  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_5_class_0.png
+    87457  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_23_class_0.png
+   118236  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_12_class_0.png
+   816165  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/summary_feature_importance_class_0_offset_1.json
+   113752  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_14_class_0.png
+    63184  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_18_class_0.png
+    60161  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_16_class_0.png
+   515472  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_2_class_0.png
+   328632  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/summary_feature_importance_class_0_offset_2.json
+    46324  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_21_class_0.png
+   141161  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_7_class_0.png
+    67801  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_11_class_0.png
+   105533  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_3_class_0.png
+    54315  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_0_class_0.png
+    88418  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_13_class_0.png
+   102329  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_6_class_0.png
+   110064  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_8_class_0.png
+    64975  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_15_class_0.png
+    55739  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_20_class_0.png
+   105161  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_17_class_0.png
+   105147  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_10_class_0.png
+   831317  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/summary_feature_importance_class_0_offset_0.json
+   107995  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_9_class_0.png
+    64734  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_4_class_0.png
+    74449  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_22_class_0.png
+   498794  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/application_json/feature_19_class_0.png
+      141  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/text_markdown/explanation.md
+   637955  2026-01-29 16:28   explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_a1b410cf-2b5d-473a-8295-ec5310f7277f/global_summary_feature_importance/text_markdown/shapley-class-0.png
+---------                     -------
+ 12309107                     70 files
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="h2o-sonar-dt-surrogate-explainer.html" class="btn btn-neutral float-left" title="Decision Tree Surrogate Explainer Demo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="h2o-sonar-original-feature-kernel-shap-importance-explainer.html" class="btn btn-neutral float-right" title="Original Feature Importance Explainer (Kernel SHAP) Demo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

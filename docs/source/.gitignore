@@ -1,6 +1,0 @@
-# build resources
-python/
-notebooks/
-
-# generated files
-changelog.rst

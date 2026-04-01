@@ -1,0 +1,2221 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H2O Sonar CLI demo &mdash; H2O Sonar 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e2d3f516" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/notebooks/h2o-sonar-cli.html"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="H2O Sonar Pickled Model CLI demo" href="h2o-sonar-cli-pickle.html" />
+    <link rel="prev" title="Command Line Interface in Jupyter Notebooks Examples" href="../examples.cli.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            H2O Sonar
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">H2O Sonar Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with H2O Sonar</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../doc.html">H2O Sonar Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">H2O Sonar Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.models.html">Models in Interpretation Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.cli.html">Command Line Interface in Jupyter Notebooks Examples</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">H2O Sonar CLI demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-cli-pickle.html">H2O Sonar Pickled Model CLI demo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.h2ogpte.html">Enterprise h2oGPT Examples</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_api.html">H2O Sonar Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">H2O Sonar</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">H2O Sonar Examples</a></li>
+          <li class="breadcrumb-item"><a href="../examples.cli.html">Command Line Interface in Jupyter Notebooks Examples</a></li>
+      <li class="breadcrumb-item active">H2O Sonar CLI demo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/h2o-sonar-cli.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="H2O-Sonar-CLI-demo">
+<h1>H2O Sonar CLI demo<a class="headerlink" href="#H2O-Sonar-CLI-demo" title="Link to this heading"></a></h1>
+<p>This example demonstrates how to interpret a model using H2O Sonar from the <strong>command line</strong>:</p>
+<ol class="arabic simple">
+<li><p>by running all compatible explainers</p></li>
+<li><p>by running selected explainers</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
+import time
+</pre></div>
+</div>
+</div>
+<p>Get <strong>H2O Sonar</strong> command line interface help:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!h2o-sonar --help
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+usage: h2o-sonar [-h] [--dataset DATASET] [--target-col TARGET_COL]
+                 [--results-location RESULTS_LOCATION]
+                 [--results-formats RESULTS_FORMATS] [--model MODEL]
+                 [--validset VALIDSET] [--testset TESTSET]
+                 [--use_raw-features USE_RAW_FEATURES]
+                 [--weight-col WEIGHT_COL] [--drop-cols DROP_COLS]
+                 [--sample-num-rows SAMPLE_NUM_ROWS]
+                 [--used-features USED_FEATURES] [--model-type {pickle,mojo}]
+                 [--explainer EXPLAINER] [--explainers EXPLAINERS]
+                 [--all-explainers] [--explainers-pars EXPLAINERS_PARS]
+                 [--config-path CONFIG_PATH] [--config-type CONFIG_TYPE]
+                 [--config-value CONFIG_VALUE]
+                 [--encryption-key ENCRYPTION_KEY] [-d]
+                 [--interpretation INTERPRETATION]
+                 [--collection-name COLLECTION_NAME] [--upload-to UPLOAD_TO]
+                 [--args-as-json-location ARGS_AS_JSON_LOCATION]
+                 [--log-level {error,warning,info,debug}]
+                 action entity
+
+H2O Sonar Python library for Responsible AI.
+
+H2O Sonar is Python package that enables a holistic, low-risk, human-interpretable,
+fair, and trustable approach to machine learning by implementing various facets of
+Responsible AI.
+
+model, dataset, validset or testset handle schema:
+
+  resource:connection:&#34;&lt;connection_configuration_name&gt;&#34;:key:&lt;resource_key&gt;
+  [:version:&lt;resource_version&gt;]
+
+optional arguments per action and entity:
+
+  show version:
+                      show H2O Sonar version
+
+  add config:
+    --config-path     path to JSon or TOML file with H2O Sonar config to be changed
+    --config-type     config item type: &#39;CONNECTION&#39; or &#39;LICENSE&#39;
+    --config-value    config item value (serialized as JSon) to add to the config file
+    --encryption-key  secret key to encrypt config fields with sensitive data
+                      (alternatively set H2O_SONAR_ENCRYPTION_KEY environment variable)
+
+  show config:
+    --config-path     path to JSon or TOML file with H2O Sonar config
+    --encryption-key  optional secret key to decrypt config fields with sensitive data
+                      (alternatively set H2O_SONAR_ENCRYPTION_KEY environment variable)
+
+  list explainers:
+    --detailed        show detailed descriptors (only IDs are shown by default)
+    --args-as-json-location
+                      optional JSon file which overrides filtering CLI arguments
+
+  describe explainer:
+    --explainer       explainer ID
+
+  run interpretation:
+    --dataset         path to dataset
+    --target-col      target column
+    --model           path to the serialized model, URL or locator
+    --results-location
+                      optional path to the interpretation results location (directory)
+    --validset        optional path to validation dataset
+    --testset         optional path to test dataset
+    --use_raw_features
+                      force the use of transformed features in surrogate models
+                      with &#39;false&#39;, by default the original (raw) features are used
+    --weight-col      optional dataset column name with examples weights
+    --drop-cols       optional list of dataset columns to drop
+    --sample-num-rows
+                      optional number of rows to sample from dataset (default: sample
+                      based on the RAM size, 0 do not sample, &gt;0 sample to the specified
+                      number of rows)
+    --all-explainers  run all explainers (only the most important are run by default)
+    --used-features   optional comma separated list of features used by the model
+    --model-type      optional model type: &#39;pickle&#39; or &#39;mojo&#39;
+    --explainers      optional comma separated list of explainer IDs to be run
+    --explainers-pars optional dictionary with explainer parameters
+    --config-path     path to JSon or TOML file with H2O Sonar config to be changed
+    --encryption-key  secret key to encrypt config fields with sensitive data
+                      (alternatively set H2O_SONAR_ENCRYPTION_KEY environment variable)
+    --upload-to       optional (h2oGPT Enterprise) connection key from the configuration
+                      where the report is to be uploaded in order to talk to it
+    --args-as-json-location
+                      optional JSon file which overrides CLI arguments
+    --log-level       optional log level: &#39;error&#39;, &#39;warning&#39;, &#39;info&#39;, &#39;debug&#39;
+
+  list interpretations:
+    --results-location
+                      path to directory, URL, location of interpretation results
+    --log-level       optional log level: &#39;error&#39;, &#39;warning&#39;, &#39;info&#39;, &#39;debug&#39;
+
+  upload interpretations:
+    --interpretation  path to the interpretation report PDF or HTML file
+    --upload-to       (h2oGPT Enterprise) connection key from the configuration
+                      where the report is to be uploaded in order to talk to it
+    --collection-name optional name of the collection where the report is to be uploaded
+    --config-path     path to JSon or TOML file with H2O Sonar config to be changed
+    --encryption-key  secret key to encrypt config fields with sensitive data
+                      (alternatively set H2O_SONAR_ENCRYPTION_KEY environment variable)
+
+positional arguments:
+  action                action to take: &#39;list&#39;, &#39;run&#39; or &#39;describe&#39;
+  entity                entity on which to perform the action:
+                        &#39;interpretation&#39;(s) or &#39;explainer&#39;(s)
+
+options:
+  -h, --help            show this help message and exit
+  --dataset DATASET     location of the dataset
+  --target-col TARGET_COL
+                        target column
+  --results-location RESULTS_LOCATION
+                        location where to store the interpretation results
+  --results-formats RESULTS_FORMATS
+                        comma separated list of MIME types of the
+                        interpretation results to create
+  --model MODEL         location of the model
+  --validset VALIDSET   location of the validation dataset
+  --testset TESTSET     location of the test dataset
+  --use_raw-features USE_RAW_FEATURES
+                        force the use of transformed features in surrogate
+                        models with `false`
+  --weight-col WEIGHT_COL
+                        optional dataset column name with examples weights
+  --drop-cols DROP_COLS
+                        optional list of dataset columns to drop
+  --sample-num-rows SAMPLE_NUM_ROWS
+                        optional number of rows to sample from the dataset
+  --used-features USED_FEATURES
+                        optional comma separated list of features used by the
+                        model
+  --model-type {pickle,mojo}
+                        model type: &#39;pickle&#39; (.pkl) or &#39;mojo&#39; (.mojo)
+  --explainer EXPLAINER
+                        ID of the explainer to describe
+  --explainers EXPLAINERS
+                        comma separated list of explainer IDs to be run (only
+                        the most important explainers are run by default)
+  --all-explainers      run all explainers (only the most important explainers
+                        are run by default)
+  --explainers-pars EXPLAINERS_PARS
+                        optional dictionary with explainer parameters - the
+                        dictionary key is explainer ID and value is dictionary
+                        with parameters; parameter dictionary has parameter
+                        name as the key and parameter value as the value
+  --config-path CONFIG_PATH
+                        path to JSon or TOML file with H2O Sonar configuration
+                        to be used to override defaults - specify only items
+                        you want to change (please refer to
+                        h2o_sonar.config.H2oSonarConfig for more details)
+  --config-type CONFIG_TYPE
+                        configuration item type - &#39;CONNECTION&#39; or &#39;LICENSE&#39;
+  --config-value CONFIG_VALUE
+                        configuration item value represented either as
+                        dictionary or as string with JSon serialization of the
+                        configuration item - it is expected that the config
+                        item is NOT encrypted
+  --encryption-key ENCRYPTION_KEY
+                        encryption key to be used for encrypting/decrypting
+                        sensitive data in the configuration. If not specified,
+                        shell environment variable H2O_SONAR_ENCRYPTION_KEY
+                        with the encryption key is used.
+  -d, --detailed        show detailed descriptors (only IDs are shown by
+                        default)
+  --interpretation INTERPRETATION
+                        path to the interpretation report (PDF or HTML) to be
+                        uploaded
+  --collection-name COLLECTION_NAME
+                        optional (h2oGPT Enterprise) collection name where to
+                        upload the interpretation report
+  --upload-to UPLOAD_TO
+                        optional (h2oGPT Enterprise) connection key from the
+                        configuration where the report is to be uploaded in
+                        order to talk to it
+  --args-as-json-location ARGS_AS_JSON_LOCATION
+                        location of the JSon file with all command arguments
+                        (replacing command line arguments) allowing to load
+                        them from the filesystem
+  --log-level {error,warning,info,debug}
+                        log level
+
+examples:
+
+  h2o-sonar --help
+  h2o-sonar show version
+  h2o-sonar list explainers
+  h2o-sonar list explainers --detailed
+  h2o-sonar describe explainer
+    --explainer=h2o_sonar.explainers.dia_explainer.DiaExplainer
+  h2o-sonar run interpretation
+    --dataset=dataset.csv
+    --target-col=PROFIT
+    --results-location=/home/user/results
+    --model=model.pickle
+    --all-explainers
+  h2o-sonar run interpretation
+    --dataset=dataset.csv
+    --target-col=PROFIT
+    --results-location=/home/user/results
+    --model=model.pickle
+    --used-features=FEATURE_1,FEATURE_2,FEATURE_3
+    --explainers=h2o_sonar.explainers.dia_explainer.DiaExplainer
+    --explainers-pars=
+      &#34;{&#39;h2o_sonar.explainers.dia_explainer.DiaExplainer&#39;:{&#39;cut_off&#39;: 0.5}}&#34;
+    --drop_cols=COLUMN_1,COLUMN_2,COLUMN_3
+    --config-path=h2o-sonar-config.json
+    --upload-to=4cff6fc9-f49a-4dda-aeb5-2c42e9f12807
+  h2o-sonar run interpretation
+    --args-as-json-location=h2o-sonar-args.json
+  h2o-sonar list interpretations --results-location=/home/user/results
+  h2o-sonar upload interpretation
+    --interpretation=./results/h2o-sonar/mli-experiment/interpretation-detailed.html
+    --upload-to=4cff6fc9-f49a-4dda-aeb5-2c42e9f12807
+
+H2O Sonar JSon configuration example:
+  {
+    &#34;h2o_host&#34;: &#34;192.168.0.1&#34;,
+    &#34;h2o_port&#34;: 57561,
+    &#34;h2o_auto_start&#34;: true,
+    &#34;connections&#34;: [
+      {
+        &#34;key&#34;: &#34;4cff6fc9-f49a-4dda-aeb5-2c42e9f12807&#34;,
+        &#34;connection_type&#34;: &#34;H2O_GPT_E&#34;,
+        &#34;name&#34;: &#34;H2O GPT Enterprise&#34;,
+        &#34;description&#34;: &#34;H2O GPT Enterprise service.&#34;,
+        &#34;server_url&#34;: &#34;https://h2ogpte.h2o.ai&#34;,
+        &#34;token&#34;: {
+          &#34;encrypted&#34;: &#34;gAAA3LcKQ7x_X...gnKsBqVdNydYTlk8nyQ==&#34;
+        },
+        &#34;token_use_type&#34;: &#34;API_KEY&#34;
+      }
+    ]
+  }
+
+Interpretation arguments JSon file example - see interpret.py::run_interpretation():
+  {
+    &#34;dataset&#34;: &#34;dataset.csv&#34;,
+    &#34;model&#34;: &#34;model.pickle&#34;,
+    &#34;target_col&#34;: &#34;PROFIT&#34;,
+    &#34;results_location&#34;: &#34;./results&#34;
+  }
+
+Explainer listing arguments JSon file example - see interpret.py::list_explainers():
+  {
+    &#34;experiment_types&#34;: [&#34;regression&#34;],
+    &#34;explanation_scopes&#34;: [&#34;local_scope&#34;],
+    &#34;keywords&#34;: [&#34;explains-fairness&#34;],
+    &#34;explainer_filter&#34;: [{&#34;filter_by&#34;: &#34;filter-name&#34;, &#34;value&#34;: &#34;v&#34;}]
+  }
+</pre></div></div>
+</div>
+<p>Driverless AI <strong>MOJO model</strong> to be interpreted by the library:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dataset_path = &quot;../../data/predictive/creditcard.csv&quot;
+target_column = &quot;\&quot;default payment next month\&quot;&quot;
+
+# specify path to Driverless AI MOJO
+model_path = &quot;../../data/predictive/models/creditcard-binomial.mojo&quot;
+
+results_path = f&quot;/tmp/{time.time()}&quot;
+os.mkdir(results_path)
+</pre></div>
+</div>
+</div>
+<p>Run new interpretation with <strong>all compatible explainers</strong> using command line interface:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!h2o-sonar run interpretation \
+  --dataset={dataset_path} \
+  --model={model_path} \
+  --target-col={target_column} \
+  --results-location={results_path}
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/ragas/metrics/__init__.py:1: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain_core.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain_core.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+  from ragas.metrics._answer_correctness import AnswerCorrectness, answer_correctness
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/ragas/metrics/__init__.py:4: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+  from ragas.metrics._context_entities_recall import (
+Stratified/random sampler: loading the original dataset &#39;../../data/predictive/creditcard.csv&#39; for sampling...
+Stratified/random sampler:   -&gt; did NO sampling as the sampling limit is smaller than the number of rows in the dataset: 10000 &lt;= 25000
+Preparing and checking DIA features (None): dataset=     | PAY_AMT1  PAY_5     ID  EDUCATION  BILL_AMT1  PAY_3  BILL_AMT2  default payment next month  LIMIT_BAL  MARRIAGE  …  BILL_AMT5  PAY_2  PAY_AMT6  PAY_6    AGE
+     |    int32  int32  int32      int32      int32  int32      int32                        int8      int32     int32         int32  int32     int32  int32  int32
+---- + --------  -----  -----  ---------  ---------  -----  ---------  --------------------------  ---------  --------     ---------  -----  --------  -----  -----
+   0 |        0     -2      1          2       3913     -1       3102                           1      20000         1  …          0      2         0     -2     24
+   1 |        0      0      2          2       2682      0       1725                           1     120000         2  …       3455      2      2000      2     26
+   2 |     1518      0      3          2      29239      0      14027                           0      90000         2  …      14948      0      5000      0     34
+   3 |     2000      0      4          2      46990      0      48233                           0      50000         1  …      28959      0      1000      0     37
+   4 |     2000      0      5          2       8617     -1       5670                           0      50000         1  …      19146      0       679      0     57
+   5 |     2500      0      6          1      64400      0      57069                           0      50000         2  …      19619      0       800      0     37
+   6 |    55000      0      7          1     367965      0     412023                           0     500000         2  …     483003      0     13770      0     29
+   7 |      380      0      8          2      11876     -1        380                           0     100000         2  …       -159     -1      1542     -1     23
+   8 |     3329      0      9          3      11285      2      14096                           0     140000         1  …      11793      0      1000      0     28
+   9 |        0     -1     10          3          0     -2          0                           0      20000         2  …      13007     -2         0     -1     35
+  10 |     2306      0     11          3      11073      2       9787                           0     200000         2  …       1828      0        66     -1     34
+  11 |    21818     -1     12          1      12261     -1      21670                           0     260000         2  …      22287     -1      3640      2     51
+  12 |     1000     -1     13          2      12137     -1       6500                           0     630000         2  …       6500      0         0     -1     41
+  13 |     3200      0     14          2      65802      2      67369                           1      70000         2  …      36137      2         0      2     30
+  14 |     3000      0     15          1      70887      0      67060                           0     250000         2  …      56875      0      3000      0     29
+   … |        …      …      …          …          …      …          …                           …          …         …  …          …      …         …      …      …
+9995 |      241     -2   9996          1          0     -2        241                           0     140000         2  …          0     -2      1419     -2     31
+9996 |        0     -2   9997          2       3946     -2          0                           0      80000         2  …          0     -2         0     -2     37
+9997 |     6437      0   9998          3     138877      0     144085                           0     200000         1  …     176717      0      4200      0     44
+9998 |        0     -2   9999          2        780      2        780                           1      80000         2  …          0      2         0     -2     26
+9999 |     3000      0  10000          2      19505      0      20715                           0     230000         1  …      19255      0      3000      0     36
+[10000 rows x 25 columns]
+ dataset_meta={
+  &#34;shape&#34;: &#34;(10000, 25)&#34;,
+  &#34;row_count&#34;: 10000,
+  &#34;column_names&#34;: [
+    &#34;ID&#34;,
+    &#34;LIMIT_BAL&#34;,
+    &#34;SEX&#34;,
+    &#34;EDUCATION&#34;,
+    &#34;MARRIAGE&#34;,
+    &#34;AGE&#34;,
+    &#34;PAY_0&#34;,
+    &#34;PAY_2&#34;,
+    &#34;PAY_3&#34;,
+    &#34;PAY_4&#34;,
+    &#34;PAY_5&#34;,
+    &#34;PAY_6&#34;,
+    &#34;BILL_AMT1&#34;,
+    &#34;BILL_AMT2&#34;,
+    &#34;BILL_AMT3&#34;,
+    &#34;BILL_AMT4&#34;,
+    &#34;BILL_AMT5&#34;,
+    &#34;BILL_AMT6&#34;,
+    &#34;PAY_AMT1&#34;,
+    &#34;PAY_AMT2&#34;,
+    &#34;PAY_AMT3&#34;,
+    &#34;PAY_AMT4&#34;,
+    &#34;PAY_AMT5&#34;,
+    &#34;PAY_AMT6&#34;,
+    &#34;default payment next month&#34;
+  ],
+  &#34;column_types&#34;: [
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;
+  ],
+  &#34;column_uniques&#34;: [
+    10000,
+    72,
+    2,
+    7,
+    4,
+    54,
+    11,
+    11,
+    11,
+    11,
+    10,
+    10,
+    8371,
+    8215,
+    8072,
+    7913,
+    7764,
+    7550,
+    3763,
+    3581,
+    3305,
+    3247,
+    3258,
+    3174,
+    2
+  ],
+  &#34;columns_cat&#34;: [],
+  &#34;columns_num&#34;: [],
+  &#34;file_path&#34;: &#34;../../data/predictive/creditcard.csv&#34;,
+  &#34;file_name&#34;: &#34;&#34;,
+  &#34;file_size&#34;: 944719,
+  &#34;missing_values&#34;: [
+    &#34;&#34;,
+    &#34;?&#34;,
+    &#34;None&#34;,
+    &#34;nan&#34;,
+    &#34;NA&#34;,
+    &#34;N/A&#34;,
+    &#34;unknown&#34;,
+    &#34;inf&#34;,
+    &#34;-inf&#34;,
+    &#34;1.7976931348623157e+308&#34;,
+    &#34;-1.7976931348623157e+308&#34;
+  ],
+  &#34;columns_meta&#34;: [
+    {
+      &#34;name&#34;: &#34;ID&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: true,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 10000,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 10000,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;LIMIT_BAL&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 72,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 72,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;SEX&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 2,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 2,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;EDUCATION&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;MARRIAGE&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 4,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 4,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;AGE&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 54,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 54,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_0&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_2&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_3&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_4&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_5&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 10,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 10,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_6&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 10,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 10,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT1&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 8371,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 8371,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT2&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 8215,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 8215,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT3&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 8072,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 8072,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT4&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7913,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7913,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT5&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7764,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7764,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT6&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7550,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7550,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT1&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3763,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3763,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT2&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3581,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3581,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT3&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3305,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3305,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT4&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3247,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3247,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT5&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3258,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3258,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT6&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3174,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3174,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;default payment next month&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 2,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 2,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    }
+  ],
+  &#34;original_dataset_sampled&#34;: false,
+  &#34;original_dataset_path&#34;: &#34;&#34;,
+  &#34;original_dataset_size&#34;: 0,
+  &#34;original_dataset_shape&#34;: [
+    10000,
+    25
+  ]
+}
+Using dataset ENTITY to prepare DIA features: column_names=[&#39;ID&#39;, &#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_0&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;, &#39;default payment next month&#39;] column_uniques=[10000, 72, 2, 7, 4, 54, 11, 11, 11, 11, 10, 10, 8371, 8215, 8072, 7913, 7764, 7550, 3763, 3581, 3305, 3247, 3258, 3174, 2]
+DIA group columns prepared using dataset ENTITY: {&#39;PAY_5&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;PAY_6&#39;, &#39;PAY_0&#39;, &#39;SEX&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;default payment next month&#39;, &#39;PAY_2&#39;}
+DIA group columns to SKIP: {&#39;model_pred&#39;, &#39;default payment next month&#39;}
+DIA group columns as BOOLs: [&lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f111aa117d0&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f111aa06750&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f111aa066d0&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f111aa05510&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f111aa05f90&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f111aa06810&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f111aa06790&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f111aa06910&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f111aa06990&gt;]
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+Checking whether there is an H2O instance running at http://localhost:54324..... not found.
+Attempting to start a local H2O server...
+  Java Version: openjdk version &#34;10&#34; 2018-03-20; OpenJDK Runtime Environment 18.3 (build 10+44); OpenJDK 64-Bit Server VM 18.3 (build 10+44, mixed mode)
+  Starting server from /home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/h2o/backend/bin/h2o.jar
+  Ice root: /tmp/tmpiwy5gqbf
+  JVM stdout: /tmp/tmpiwy5gqbf/h2o_user_started_from_python.out
+  JVM stderr: /tmp/tmpiwy5gqbf/h2o_user_started_from_python.err
+  Server is running at http://127.0.0.1:54324
+ successful.o H2O server at http://127.0.0.1:54324 ...
+--------------------------  -----------------------------
+H2O_cluster_uptime:         01 secs
+H2O_cluster_timezone:       Europe/Prague
+H2O_data_parsing_timezone:  UTC
+H2O_cluster_version:        3.46.0.9
+H2O_cluster_version_age:    2 months and 4 days
+H2O_cluster_name:           H2O_from_python_user_2xryhy
+H2O_cluster_total_nodes:    1
+H2O_cluster_free_memory:    4 Gb
+H2O_cluster_total_cores:    16
+H2O_cluster_allowed_cores:  16
+H2O_cluster_status:         locked, healthy
+H2O_connection_url:         http://127.0.0.1:54324
+H2O_connection_proxy:       {&#34;http&#34;: null, &#34;https&#34;: null}
+H2O_internal_security:      False
+Python_version:             3.11.11 final
+--------------------------  -----------------------------
+Connecting to H2O server at http://localhost:54324 ... successful.
+--------------------------  -----------------------------
+H2O_cluster_uptime:         01 secs
+H2O_cluster_timezone:       Europe/Prague
+H2O_data_parsing_timezone:  UTC
+H2O_cluster_version:        3.46.0.9
+H2O_cluster_version_age:    2 months and 4 days
+H2O_cluster_name:           H2O_from_python_user_2xryhy
+H2O_cluster_total_nodes:    1
+H2O_cluster_free_memory:    4 Gb
+H2O_cluster_total_cores:    16
+H2O_cluster_allowed_cores:  16
+H2O_cluster_status:         locked, healthy
+H2O_connection_url:         http://localhost:54324
+H2O_connection_proxy:       {&#34;http&#34;: null, &#34;https&#34;: null}
+H2O_internal_security:      False
+Python_version:             3.11.11 final
+--------------------------  -----------------------------
+Connecting to H2O server at http://localhost:54324 ... successful.
+--------------------------  -----------------------------
+H2O_cluster_uptime:         01 secs
+H2O_cluster_timezone:       Europe/Prague
+H2O_data_parsing_timezone:  UTC
+H2O_cluster_version:        3.46.0.9
+H2O_cluster_version_age:    2 months and 4 days
+H2O_cluster_name:           H2O_from_python_user_2xryhy
+H2O_cluster_total_nodes:    1
+H2O_cluster_free_memory:    4 Gb
+H2O_cluster_total_cores:    16
+H2O_cluster_allowed_cores:  16
+H2O_cluster_status:         locked, healthy
+H2O_connection_url:         http://localhost:54324
+H2O_connection_proxy:       {&#34;http&#34;: null, &#34;https&#34;: null}
+H2O_internal_security:      False
+Python_version:             3.11.11 final
+--------------------------  -----------------------------
+Parse progress: |████████████████████████████████████████████████████████████████ (done)| 100%
+Parse progress: |████████████████████████████████████████████████████████████████ (done)| 100%
+drf Model Build progress: |██████████████████████████████████████████████████████ (done)| 100%
+Parse progress: |████████████████████████████████████████████████████████████████ (done)| 100%
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+Connecting to H2O server at http://localhost:54324 ... successful.
+--------------------------  -----------------------------
+H2O_cluster_uptime:         04 secs
+H2O_cluster_timezone:       Europe/Prague
+H2O_data_parsing_timezone:  UTC
+H2O_cluster_version:        3.46.0.9
+H2O_cluster_version_age:    2 months and 4 days
+H2O_cluster_name:           H2O_from_python_user_2xryhy
+H2O_cluster_total_nodes:    1
+H2O_cluster_free_memory:    4 Gb
+H2O_cluster_total_cores:    16
+H2O_cluster_allowed_cores:  16
+H2O_cluster_status:         locked, healthy
+H2O_connection_url:         http://localhost:54324
+H2O_connection_proxy:       {&#34;http&#34;: null, &#34;https&#34;: null}
+H2O_internal_security:      False
+Python_version:             3.11.11 final
+--------------------------  -----------------------------
+Parse progress: |████████████████████████████████████████████████████████████████ (done)| 100%
+Parse progress: |████████████████████████████████████████████████████████████████ (done)| 100%
+drf Model Build progress: |██████████████████████████████████████████████████████ (done)| 100%
+Parse progress: |████████████████████████████████████████████████████████████████ (done)| 100%
+Converting H2O frame to pandas dataframe using single-thread.  For faster conversion using multi-thread, install polars and pyarrow and use it as pandas_df = h2o_df.as_data_frame(use_multi_thread=True)
+
+More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+
+Interpretation FINISHED.
+  Results directory:
+    file:///tmp/1769698782.3007452
+  Interpretations index:
+    file:///tmp/1769698782.3007452/h2o-sonar.html
+  HTML report:
+    file:///tmp/1769698782.3007452/h2o-sonar/mli_experiment_acc39269-6aea-45c7-89cf-37cf4316abb9/interpretation.html
+Closing connection _sid_b519 at exit
+H2O session _sid_b519 closed.
+Closing connection _sid_b075 at exit
+H2O session _sid_b075 closed.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!tree $results_path
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-blue-intense-fg ansi-bold">/tmp/1769698782.3007452</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">h2o-sonar</span>
+│   └── <span class="ansi-blue-intense-fg ansi-bold">mli_experiment_acc39269-6aea-45c7-89cf-37cf4316abb9</span>
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_eda4ed7a-6ef3-4edb-a229-a698e3ecb0ca</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_disparate_impact_analysis</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_plain</span>
+│       │   │   │   └── explanation.txt
+│       │   │   └── text_plain.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_html_fragment</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_html</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-accuracy.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-adverse_impact.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-false_discovery_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-false_negative_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-false_omissions_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-false_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-negative_predicted_value.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-n.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-precision.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-specificity.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-0-true_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-accuracy.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-adverse_impact.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-false_discovery_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-false_negative_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-false_omissions_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-false_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-negative_predicted_value.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-n.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-precision.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-specificity.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-1-true_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-accuracy.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-adverse_impact.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-false_discovery_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-false_negative_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-false_omissions_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-false_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-negative_predicted_value.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-n.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-precision.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-specificity.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-2-true_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-accuracy.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-adverse_impact.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-false_discovery_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-false_negative_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-false_omissions_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-false_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-negative_predicted_value.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-n.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-precision.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-specificity.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-3-true_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-accuracy.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-adverse_impact.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-false_discovery_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-false_negative_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-false_omissions_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-false_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-negative_predicted_value.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-n.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-precision.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-specificity.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-4-true_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-accuracy.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-adverse_impact.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-false_discovery_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-false_negative_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-false_omissions_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-false_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-negative_predicted_value.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-n.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-precision.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-specificity.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-5-true_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-accuracy.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-adverse_impact.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-false_discovery_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-false_negative_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-false_omissions_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-false_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-negative_predicted_value.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-n.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-precision.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-specificity.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-6-true_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-accuracy.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-adverse_impact.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-false_discovery_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-false_negative_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-false_omissions_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-false_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-negative_predicted_value.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-n.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-precision.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-specificity.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-7-true_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-accuracy.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-adverse_impact.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-false_discovery_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-false_negative_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-false_omissions_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-false_positive_rate.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-negative_predicted_value.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-n.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-precision.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-specificity.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dia-8-true_positive_rate.png</span>
+│       │   │   │   └── explanation.html
+│       │   │   └── text_html.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│       │   │   └── insights_and_actions.json
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│       │   │   └── explainer_run_eda4ed7a-6ef3-4edb-a229-a698e3ecb0ca.log
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│       │   │   └── problems_and_actions.json
+│       │   ├── result_descriptor.json
+│       │   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+│       │       ├── dia_entity.json
+│       │       ├── <span class="ansi-blue-intense-fg ansi-bold">EDUCATION</span>
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   └── metrics.jay
+│       │       ├── <span class="ansi-blue-intense-fg ansi-bold">MARRIAGE</span>
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   └── metrics.jay
+│       │       ├── <span class="ansi-blue-intense-fg ansi-bold">PAY_0</span>
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">10</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">7</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">8</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">9</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   └── metrics.jay
+│       │       ├── <span class="ansi-blue-intense-fg ansi-bold">PAY_2</span>
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">10</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">7</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">8</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">9</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   └── metrics.jay
+│       │       ├── <span class="ansi-blue-intense-fg ansi-bold">PAY_3</span>
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">10</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">7</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">8</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">9</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   └── metrics.jay
+│       │       ├── <span class="ansi-blue-intense-fg ansi-bold">PAY_4</span>
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">10</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">7</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">8</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">9</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   └── metrics.jay
+│       │       ├── <span class="ansi-blue-intense-fg ansi-bold">PAY_5</span>
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">7</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">8</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">9</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   └── metrics.jay
+│       │       ├── <span class="ansi-blue-intense-fg ansi-bold">PAY_6</span>
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">2</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">3</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">4</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">5</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">6</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">7</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">8</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   ├── <span class="ansi-blue-intense-fg ansi-bold">9</span>
+│       │       │   │   ├── cm.jay
+│       │       │   │   ├── disparity.jay
+│       │       │   │   ├── me_smd.jay
+│       │       │   │   └── parity.jay
+│       │       │   └── metrics.jay
+│       │       └── <span class="ansi-blue-intense-fg ansi-bold">SEX</span>
+│       │           ├── <span class="ansi-blue-intense-fg ansi-bold">0</span>
+│       │           │   ├── cm.jay
+│       │           │   ├── disparity.jay
+│       │           │   ├── me_smd.jay
+│       │           │   └── parity.jay
+│       │           ├── <span class="ansi-blue-intense-fg ansi-bold">1</span>
+│       │           │   ├── cm.jay
+│       │           │   ├── disparity.jay
+│       │           │   ├── me_smd.jay
+│       │           │   └── parity.jay
+│       │           └── metrics.jay
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_1cdc0473-0680-4a19-9057-c95e5d7ab193</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_custom_archive</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_zip</span>
+│       │   │   │   └── <span class="ansi-red-intense-fg ansi-bold">explanation.zip</span>
+│       │   │   └── application_zip.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_decision_tree</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_json</span>
+│       │   │   │   ├── dt_class_0.json
+│       │   │   │   └── explanation.json
+│       │   │   └── application_json.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_html_fragment</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_html</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dt-class-0.png</span>
+│       │   │   │   └── explanation.html
+│       │   │   └── text_html.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│       │   │   └── insights_and_actions.json
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">local_decision_tree</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_json</span>
+│       │   │   │   └── explanation.json
+│       │   │   └── application_json.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│       │   │   └── explainer_run_1cdc0473-0680-4a19-9057-c95e5d7ab193.log
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│       │   │   └── problems_and_actions.json
+│       │   ├── result_descriptor.json
+│       │   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+│       │       ├── dt-class-0.dot
+│       │       ├── dt-class-0.dot.pdf
+│       │       ├── dtModel.json
+│       │       ├── dtpaths_frame.bin
+│       │       ├── dtPathsFrame.csv
+│       │       ├── <span class="ansi-red-intense-fg ansi-bold">dtsurr_mojo.zip</span>
+│       │       ├── dtSurrogate.json
+│       │       └── <span class="ansi-red-intense-fg ansi-bold">dt_surrogate_rules.zip</span>
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_4da226a0-4a0d-42bf-87cd-ae0d4f5f7be4</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_feature_importance</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_json</span>
+│       │   │   │   ├── explanation.json
+│       │   │   │   └── feature_importance_class_0.json
+│       │   │   ├── application_json.meta
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_vnd_h2oai_json_csv</span>
+│       │   │   │   ├── explanation.json
+│       │   │   │   └── feature_importance_class_0.csv
+│       │   │   ├── application_vnd_h2oai_json_csv.meta
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_vnd_h2oai_json_datatable_jay</span>
+│       │   │   │   ├── explanation.json
+│       │   │   │   └── feature_importance_class_0.jay
+│       │   │   └── application_vnd_h2oai_json_datatable_jay.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_html_fragment</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_html</span>
+│       │   │   │   ├── explanation.html
+│       │   │   │   └── <span class="ansi-magenta-intense-fg ansi-bold">fi-class-0.png</span>
+│       │   │   └── text_html.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│       │   │   └── insights_and_actions.json
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">local_feature_importance</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_vnd_h2oai_json_datatable_jay</span>
+│       │   │   │   ├── explanation.json
+│       │   │   │   ├── feature_importance_class_0.jay
+│       │   │   │   └── y_hat.bin
+│       │   │   └── application_vnd_h2oai_json_datatable_jay.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│       │   │   └── explainer_run_4da226a0-4a0d-42bf-87cd-ae0d4f5f7be4.log
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│       │   │   └── problems_and_actions.json
+│       │   ├── result_descriptor.json
+│       │   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+│       │       ├── <span class="ansi-red-intense-fg ansi-bold">shapley_formatted_orig_feat.zip</span>
+│       │       ├── shapley.orig.feat.bin
+│       │       ├── shapley.orig.feat.csv
+│       │       └── y_hat.bin
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_39381a2e-a060-43ae-8ce3-50389789a2cb</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_html_fragment</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_html</span>
+│       │   │   │   ├── explanation.html
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-0-class-0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-1-class-0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-2-class-0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-3-class-0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-4-class-0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-5-class-0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-6-class-0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-7-class-0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-8-class-0.png</span>
+│       │   │   │   └── <span class="ansi-magenta-intense-fg ansi-bold">pd-feature-9-class-0.png</span>
+│       │   │   └── text_html.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_partial_dependence</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_json</span>
+│       │   │   │   ├── explanation.json
+│       │   │   │   ├── pd_feature_0_class_0.json
+│       │   │   │   ├── pd_feature_1_class_0.json
+│       │   │   │   ├── pd_feature_2_class_0.json
+│       │   │   │   ├── pd_feature_3_class_0.json
+│       │   │   │   ├── pd_feature_4_class_0.json
+│       │   │   │   ├── pd_feature_5_class_0.json
+│       │   │   │   ├── pd_feature_6_class_0.json
+│       │   │   │   ├── pd_feature_7_class_0.json
+│       │   │   │   ├── pd_feature_8_class_0.json
+│       │   │   │   └── pd_feature_9_class_0.json
+│       │   │   └── application_json.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│       │   │   └── insights_and_actions.json
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">local_individual_conditional_explanation</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_vnd_h2oai_json_datatable_jay</span>
+│       │   │   │   ├── explanation.json
+│       │   │   │   ├── ice_feature_0_class_0.jay
+│       │   │   │   ├── ice_feature_1_class_0.jay
+│       │   │   │   ├── ice_feature_2_class_0.jay
+│       │   │   │   ├── ice_feature_3_class_0.jay
+│       │   │   │   ├── ice_feature_4_class_0.jay
+│       │   │   │   ├── ice_feature_5_class_0.jay
+│       │   │   │   ├── ice_feature_6_class_0.jay
+│       │   │   │   ├── ice_feature_7_class_0.jay
+│       │   │   │   ├── ice_feature_8_class_0.jay
+│       │   │   │   ├── ice_feature_9_class_0.jay
+│       │   │   │   └── y_hat.jay
+│       │   │   └── application_vnd_h2oai_json_datatable_jay.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│       │   │   └── explainer_run_39381a2e-a060-43ae-8ce3-50389789a2cb.log
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│       │   │   └── problems_and_actions.json
+│       │   ├── result_descriptor.json
+│       │   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+│       │       ├── h2o_sonar-ice-dai-model-10.jay
+│       │       ├── h2o_sonar-ice-dai-model-1.jay
+│       │       ├── h2o_sonar-ice-dai-model-2.jay
+│       │       ├── h2o_sonar-ice-dai-model-3.jay
+│       │       ├── h2o_sonar-ice-dai-model-4.jay
+│       │       ├── h2o_sonar-ice-dai-model-5.jay
+│       │       ├── h2o_sonar-ice-dai-model-6.jay
+│       │       ├── h2o_sonar-ice-dai-model-7.jay
+│       │       ├── h2o_sonar-ice-dai-model-8.jay
+│       │       ├── h2o_sonar-ice-dai-model-9.jay
+│       │       ├── h2o_sonar-ice-dai-model.json
+│       │       ├── h2o_sonar-pd-dai-model.json
+│       │       └── mli_dataset_y_hat.jay
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_aa5cd513-a249-4380-898f-bdea329dc5e4</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_custom_archive</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_zip</span>
+│       │   │   │   └── <span class="ansi-red-intense-fg ansi-bold">explanation.zip</span>
+│       │   │   └── application_zip.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_decision_tree</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_json</span>
+│       │   │   │   ├── dt_class_0.json
+│       │   │   │   └── explanation.json
+│       │   │   └── application_json.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_html_fragment</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_html</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">dt-class-0.png</span>
+│       │   │   │   └── explanation.html
+│       │   │   └── text_html.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│       │   │   └── insights_and_actions.json
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">local_decision_tree</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_json</span>
+│       │   │   │   └── explanation.json
+│       │   │   └── application_json.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│       │   │   └── explainer_run_aa5cd513-a249-4380-898f-bdea329dc5e4.log
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│       │   │   └── problems_and_actions.json
+│       │   ├── result_descriptor.json
+│       │   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+│       │       ├── dt-class-0.dot
+│       │       ├── dt-class-0.dot.pdf
+│       │       ├── dtModel.json
+│       │       ├── dtpaths_frame.bin
+│       │       ├── dtPathsFrame.csv
+│       │       ├── <span class="ansi-red-intense-fg ansi-bold">dtsurr_mojo.zip</span>
+│       │       ├── dtSurrogate.json
+│       │       └── <span class="ansi-red-intense-fg ansi-bold">dt_surrogate_rules.zip</span>
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f833eb2e-787d-4db3-8a93-a2f5ce69324c</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_html_fragment</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_html</span>
+│       │   │   │   ├── explanation.html
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_0_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_10_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_11_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_12_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_13_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_14_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_15_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_16_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_17_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_18_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_19_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_1_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_20_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_21_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_22_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_2_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_3_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_4_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_5_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_6_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_7_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_8_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_9_class_0.png</span>
+│       │   │   │   └── <span class="ansi-magenta-intense-fg ansi-bold">shapley-class-0.png</span>
+│       │   │   └── text_html.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_summary_feature_importance</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_json</span>
+│       │   │   │   ├── explanation.json
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_0_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_10_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_11_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_12_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_13_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_14_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_15_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_16_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_17_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_18_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_19_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_1_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_20_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_21_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_22_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_2_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_3_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_4_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_5_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_6_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_7_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_8_class_0.png</span>
+│       │   │   │   ├── <span class="ansi-magenta-intense-fg ansi-bold">feature_9_class_0.png</span>
+│       │   │   │   ├── summary_feature_importance_class_0_offset_0.json
+│       │   │   │   ├── summary_feature_importance_class_0_offset_1.json
+│       │   │   │   └── summary_feature_importance_class_0_offset_2.json
+│       │   │   ├── application_json.meta
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_vnd_h2oai_json_datatable_jay</span>
+│       │   │   │   ├── explanation.json
+│       │   │   │   └── summary_feature_importance_class_0.jay
+│       │   │   ├── application_vnd_h2oai_json_datatable_jay.meta
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_markdown</span>
+│       │   │   │   ├── explanation.md
+│       │   │   │   └── <span class="ansi-magenta-intense-fg ansi-bold">shapley-class-0.png</span>
+│       │   │   └── text_markdown.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│       │   │   └── insights_and_actions.json
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│       │   │   └── explainer_run_f833eb2e-787d-4db3-8a93-a2f5ce69324c.log
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│       │   │   └── problems_and_actions.json
+│       │   ├── result_descriptor.json
+│       │   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+│       │       ├── raw_shapley_contribs_class_0.jay
+│       │       ├── raw_shapley_contribs_index.json
+│       │       ├── report.md
+│       │       └── <span class="ansi-magenta-intense-fg ansi-bold">shapley-class-0.png</span>
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">explainer_h2o_sonar_explainers_transformed_fi_shapley_explainer_ShapleyMojoTransformedFeatureImportanceExplainer_4b1a325d-ffbc-4e37-9671-954416d46a17</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_feature_importance</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_json</span>
+│       │   │   │   ├── explanation.json
+│       │   │   │   └── feature_importance_class_0.json
+│       │   │   ├── application_json.meta
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_vnd_h2oai_json_csv</span>
+│       │   │   │   ├── explanation.json
+│       │   │   │   └── feature_importance_class_0.csv
+│       │   │   ├── application_vnd_h2oai_json_csv.meta
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_vnd_h2oai_json_datatable_jay</span>
+│       │   │   │   ├── explanation.json
+│       │   │   │   └── feature_importance_class_0.jay
+│       │   │   └── application_vnd_h2oai_json_datatable_jay.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_html_fragment</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">text_html</span>
+│       │   │   │   ├── explanation.html
+│       │   │   │   └── <span class="ansi-magenta-intense-fg ansi-bold">fi-class-0.png</span>
+│       │   │   └── text_html.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│       │   │   └── insights_and_actions.json
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">local_feature_importance</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_vnd_h2oai_json_datatable_jay</span>
+│       │   │   │   ├── explanation.json
+│       │   │   │   └── feature_importance_class_0.jay
+│       │   │   └── application_vnd_h2oai_json_datatable_jay.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│       │   │   └── explainer_run_4b1a325d-ffbc-4e37-9671-954416d46a17.log
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│       │   │   └── problems_and_actions.json
+│       │   ├── result_descriptor.json
+│       │   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+│       │       ├── shapley.bin
+│       │       ├── shapley.csv
+│       │       └── <span class="ansi-red-intense-fg ansi-bold">shapley_formatted.zip</span>
+│       ├── interpretation.html
+│       ├── interpretation.json
+│       └── <span class="ansi-blue-intense-fg ansi-bold">tmp</span>
+├── h2o-sonar.html
+└── h2o-sonar.log
+
+172 directories, 641 files
+</pre></div></div>
+</div>
+<p>See <code class="docutils literal notranslate"><span class="pre">interpretation.html</span></code> ^ for interpretation <strong>results</strong>.</p>
+<p>Run new interpretation with <strong>one particular explainer</strong> using command line interface:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!h2o-sonar list explainers
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/ragas/metrics/__init__.py:1: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain_core.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain_core.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+  from ragas.metrics._answer_correctness import AnswerCorrectness, answer_correctness
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/ragas/metrics/__init__.py:4: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+  from ragas.metrics._context_entities_recall import (
+{
+  &#34;explainers&#34;: [
+    &#34;h2o_sonar.evaluators.agent_sanity_check_evaluator.AgentSanityCheckEvaluator&#34;,
+    &#34;h2o_sonar.explainers.fi_naive_shapley_explainer.NaiveShapleyMojoFeatureImportanceExplainer&#34;,
+    &#34;h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer&#34;,
+    &#34;h2o_sonar.explainers.dt_surrogate_explainer.DecisionTreeSurrogateExplainer&#34;,
+    &#34;h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer&#34;,
+    &#34;h2o_sonar.explainers.dia_explainer.DiaExplainer&#34;,
+    &#34;h2o_sonar.explainers.transformed_fi_shapley_explainer.ShapleyMojoTransformedFeatureImportanceExplainer&#34;,
+    &#34;h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainer&#34;,
+    &#34;h2o_sonar.explainers.residual_pd_ice_explainer.ResidualPdIceExplainer&#34;,
+    &#34;h2o_sonar.explainers.fi_kernel_shap_explainer.KernelShapFeatureImportanceExplainer&#34;,
+    &#34;h2o_sonar.explainers.pd_2_features_explainer.PdFor2FeaturesExplainer&#34;,
+    &#34;h2o_sonar.explainers.friedman_h_statistic_explainer.FriedmanHStatisticExplainer&#34;,
+    &#34;h2o_sonar.explainers.morris_sa_explainer.MorrisSensitivityAnalysisExplainer&#34;,
+    &#34;h2o_sonar.explainers.dataset_and_model_insights_explainer.DatasetAndModelInsightsExplainer&#34;,
+    &#34;h2o_sonar.explainers.drift_explainer.DriftDetectionExplainer&#34;,
+    &#34;h2o_sonar.explainers.adversarial_similarity_explainer.AdversarialSimilarityExplainer&#34;,
+    &#34;h2o_sonar.explainers.size_dependency_explainer.SizeDependencyExplainer&#34;,
+    &#34;h2o_sonar.explainers.segment_performance_explainer.SegmentPerformanceExplainer&#34;,
+    &#34;h2o_sonar.explainers.calibration_score_explainer.CalibrationScoreExplainer&#34;,
+    &#34;h2o_sonar.explainers.backtesting_explainer.BacktestingExplainer&#34;,
+    &#34;h2o_sonar.evaluators.answer_semantic_similarity_per_sentence_evaluator.AnswerSemanticSimilarityPerSentenceEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_ragas_evaluator.RagasEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_tokens_presence_evaluator.RagStrStrEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.answer_accuracy_evaluator.AnswerAccuracyEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_answer_correctness_evaluator.AnswerCorrectnessEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_answer_similarity_evaluator.AnswerSemanticSimilarityEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_chunk_relevancy_evaluator.ContextChunkRelevancyEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_context_relevancy_evaluator.ContextRelevancyEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_answer_relevancy_evaluator.AnswerRelevancyEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_answer_relevancy_no_judge_evaluator.RagAnswerRelevancyNoJudgeEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_context_precision_evaluator.ContextPrecisionEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_context_recall_evaluator.ContextRecallEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_context_mean_reciprocal_rank_evaluator.MeanReciprocalRankEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_faithfulness_evaluator.FaithfulnessEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.pii_leakage_evaluator.PiiLeakageEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.json_schema_evaluator.JSONSchemaEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.sensitive_data_leakage_evaluator.SensitiveDataLeakageEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.toxicity_evaluator.ToxicityEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.fairness_bias_evaluator.FairnessBiasEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.contact_information_byop_evaluator.ContactInformationByopEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.language_mismatch_byop_evaluator.LanguageMismatchByopEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.looping_detection_evaluator.LoopingDetectionEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.parameterizable_byop_evaluator.ParameterizableByopEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.perplexity_evaluator.PerplexityEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.sexism_byop_evaluator.SexismByopEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.stereotype_byop_evaluator.StereotypeByopEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.summarization_byop_evaluator.SummarizationByopEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_groundedness_evaluator.RagGroundednessEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rag_hallucination_evaluator.RagHallucinationEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.bertscore_evaluator.BertscoreEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.bleu_evaluator.BleuEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.rouge_evaluator.RougeEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.self_consistency_evaluator.SelfConsistencyEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.classification_evaluator.ClassificationEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.gptscore_summary_with_reference_evaluator.GptScoreSummaryWithReferenceEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.gptscore_summary_without_reference_evaluator.GptScoreSummaryWithoutReferenceEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.gptscore_question_answering_evaluator.GptScoreQuestionAnsweringEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.gptscore_machine_translation_evaluator.GptScoreMachineTranslationEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.encoding_guardrail_evaluator.EncodingGuardrailEvaluator&#34;,
+    &#34;h2o_sonar.evaluators.agentic_fact_check_evaluator.FactCheckAgenticEvaluator&#34;
+  ]
+}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>results_path = f&quot;/tmp/{time.time()}&quot;
+os.mkdir(results_path)
+
+!h2o-sonar run interpretation \
+  --explainers=h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer,h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer \
+  --dataset={dataset_path} \
+  --model={model_path} \
+  --target-col={target_column} \
+  --results-location={results_path}
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!tree $results_path
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../examples.cli.html" class="btn btn-neutral float-left" title="Command Line Interface in Jupyter Notebooks Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="h2o-sonar-cli-pickle.html" class="btn btn-neutral float-right" title="H2O Sonar Pickled Model CLI demo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,821 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residual Decision Tree Surrogate Explainer Demo &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e2d3f516" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/notebooks/h2o-sonar-residual-dt-surrogate-explainer.html"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Disparate Impact Analysis (DIA) Explainer Demo" href="h2o-sonar-dia-explainer.html" />
+    <link rel="prev" title="Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo" href="h2o-sonar-residual-pd-explainer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../doc.html">H2O Eval Studio Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">H2O Eval Studio Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dt-surrogate-explainer.html">Decision Tree Surrogate Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-summary-shap-explainer.html">Summary Shapley Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-original-feature-kernel-shap-importance-explainer.html">Original Feature Importance Explainer (Kernel SHAP) Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-original-feature-naive-shapley-importance-explainer.html">Original Feature Importance Explainer for MOJO Models (Naive Shapley method) Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-shapley-for-transformed-feature-importance-explainer.html">Shapley Values for Transformed Features of MOJO Models Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pd-explainer.html">Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pd-for-2-features-explainer.html">Partial Dependence for 2 Features Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-residual-pd-explainer.html">Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Residual Decision Tree Surrogate Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dia-explainer.html">Disparate Impact Analysis (DIA) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-friedman-h-statistic-explainer.html">Friedman H-statistic Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-morris-sa-explainer.html">Morris Sensitivity Analysis Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-d-and-m-insights-explainer.html">Dataset and Model Insights Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html">H2O Eval Studio Model Validation Explainers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Interpretation:-CLI">Interpretation: CLI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Use-CLI-to-run-H2O-MV-based-explainers">Use CLI to run H2O MV based explainers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.models.html">Models in Interpretation Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.cli.html">Command Line Interface in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.h2ogpte.html">Enterprise h2oGPT Examples</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">H2O Eval Studio Examples</a></li>
+          <li class="breadcrumb-item"><a href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a></li>
+      <li class="breadcrumb-item active">Residual Decision Tree Surrogate Explainer Demo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/h2o-sonar-residual-dt-surrogate-explainer.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Residual-Decision-Tree-Surrogate-Explainer-Demo">
+<h1>Residual Decision Tree Surrogate Explainer Demo<a class="headerlink" href="#Residual-Decision-Tree-Surrogate-Explainer-Demo" title="Link to this heading"></a></h1>
+<p>This example demonstrates how to interpret a <strong>Scikit-learn</strong> model using the H2O Eval Studio library and plot <strong>residual surrogate decision tree</strong>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">daimojo</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">webbrowser</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpret</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">commons</span><span class="p">,</span> <span class="n">explainers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.explainers.residual_dt_surrogate_explainer</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResidualDecisionTreeSurrogateExplainer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelApi</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style type='text/css'>
+.datatable table.frame { margin-bottom: 0; }
+.datatable table.frame thead { border-bottom: none; }
+.datatable table.frame tr.coltypes td {  color: #FFFFFF;  line-height: 6px;  padding: 0 0.5em;}
+.datatable .bool    { background: #DDDD99; }
+.datatable .object  { background: #565656; }
+.datatable .int     { background: #5D9E5D; }
+.datatable .float   { background: #4040CC; }
+.datatable .str     { background: #CC4040; }
+.datatable .time    { background: #40CC40; }
+.datatable .row_index {  background: var(--jp-border-color3);  border-right: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  font-size: 9px;}
+.datatable .frame tbody td { text-align: left; }
+.datatable .frame tr.coltypes .row_index {  background: var(--jp-border-color0);}
+.datatable th:nth-child(2) { padding-left: 12px; }
+.datatable .hellipsis {  color: var(--jp-cell-editor-border-color);}
+.datatable .vellipsis {  background: var(--jp-layout-color0);  color: var(--jp-cell-editor-border-color);}
+.datatable .na {  color: var(--jp-cell-editor-border-color);  font-size: 80%;}
+.datatable .sp {  opacity: 0.25;}
+.datatable .footer { font-size: 9px; }
+.datatable .frame_dimensions {  background: var(--jp-border-color3);  border-top: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  display: inline-block;  opacity: 0.6;  padding: 1px 10px 1px 5px;}
+</style></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_location</span> <span class="o">=</span> <span class="s2">&quot;../../results&quot;</span>
+
+<span class="c1"># dataset</span>
+<span class="n">dataset_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/predictive/creditcard.csv&quot;</span>
+<span class="n">target_col</span> <span class="o">=</span> <span class="s2">&quot;default payment next month&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
+<span class="n">interpret</span><span class="o">.</span><span class="n">describe_explainer</span><span class="p">(</span><span class="n">ResidualDecisionTreeSurrogateExplainer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainer&#39;,
+ &#39;name&#39;: &#39;ResidualDecisionTreeSurrogateExplainer&#39;,
+ &#39;display_name&#39;: &#39;Residual Surrogate Decision Tree&#39;,
+ &#39;description&#39;: &#39;The residual surrogate decision tree predicts which paths in the tree (paths explain approximate model behavior) lead to highest or lowest error. The residual surrogate decision tree is created by training a simple decision tree on the residuals of the predictions of the model. Residuals are differences between observed and predicted values which can be used as targets in surrogate models for the purpose of model debugging. The method used to calculate residuals varies depending on the type of problem. For classification problems, logloss residuals are calculated for a specified class (only one residual surrogate decision is created by the explainer and it is built for this class). For regression problems, residuals are determined by calculating the square of the difference between targeted and predicted values.&#39;,
+ &#39;model_types&#39;: [&#39;iid&#39;, &#39;time_series&#39;],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;, &#39;multinomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;, &#39;local_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-decision-tree&#39;,
+   &#39;name&#39;: &#39;GlobalDtExplanation&#39;,
+   &#39;category&#39;: None,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: []},
+  {&#39;explanation_type&#39;: &#39;local-decision-tree&#39;,
+   &#39;name&#39;: &#39;LocalDtExplanation&#39;,
+   &#39;category&#39;: None,
+   &#39;scope&#39;: &#39;local&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: []}],
+ &#39;parameters&#39;: [{&#39;name&#39;: &#39;debug_residuals_class&#39;,
+   &#39;description&#39;: &#39;Class for debugging classification model logloss residuals, empty string for debugging regression model residuals.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;str&#39;,
+   &#39;val&#39;: &#39;&#39;,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;dt_tree_depth&#39;,
+   &#39;description&#39;: &#39;Decision tree depth.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 3,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;nfolds&#39;,
+   &#39;description&#39;: &#39;Number of CV folds.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 3,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;qbin_cols&#39;,
+   &#39;description&#39;: &#39;Quantile binning columns.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;list&#39;,
+   &#39;val&#39;: None,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [&#39;SOURCE_DATASET_COLUMN_NAMES&#39;],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;qbin_count&#39;,
+   &#39;description&#39;: &#39;Quantile bins count.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 0,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;categorical_encoding&#39;,
+   &#39;description&#39;: &#39;Categorical encoding.&#39;,
+   &#39;comment&#39;: &#39;Specify one of the following encoding schemes for handling of categorical features:\n\n_**AUTO**_: 1 column per categorical feature.\n\n_**Enum Limited**_: Automatically reduce categorical levels to the most prevalent ones during training and only keep the top 10 most frequent levels.\n\n_**One Hot Encoding**_: N+1 new columns for categorical features with N levels.\n\n_**Label Encoder**_: Convert every enum into the integer of its index (for example, level 0 -&gt; 0, level 1 -&gt; 1, etc.).\n\n_**Sort by Response**_: Reorders the levels by the mean response (for example, the level with lowest response -&gt; 0, the level with second-lowest response -&gt; 1, etc.).&#39;,
+   &#39;type&#39;: &#39;str&#39;,
+   &#39;val&#39;: &#39;onehotexplicit&#39;,
+   &#39;predefined&#39;: [&#39;AUTO&#39;,
+    &#39;One Hot Encoding&#39;,
+    &#39;Enum Limited&#39;,
+    &#39;Sort by Response&#39;,
+    &#39;Label Encoder&#39;],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;}],
+ &#39;keywords&#39;: [&#39;run-by-default&#39;,
+  &#39;requires-h2o3&#39;,
+  &#39;explains-model-debugging&#39;,
+  &#39;surrogate&#39;,
+  &#39;h2o-sonar&#39;]}
+</pre></div></div>
+</div>
+<section id="Interpret">
+<h2>Interpret<a class="headerlink" href="#Interpret" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Driverless AI MOJO model</span>
+<span class="n">mojo_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/predictive/models/creditcard-binomial.mojo&quot;</span>
+<span class="n">mojo_model</span> <span class="o">=</span> <span class="n">daimojo</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">mojo_path</span><span class="p">)</span>
+
+<span class="c1"># explainable model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelApi</span><span class="p">()</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span>
+    <span class="n">model_src</span><span class="o">=</span><span class="n">mojo_model</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">,</span>
+    <span class="n">used_features</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">mojo_model</span><span class="o">.</span><span class="n">feature_names</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">,</span>
+    <span class="n">results_location</span><span class="o">=</span><span class="n">results_location</span><span class="p">,</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="n">explainers</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">commons</span><span class="o">.</span><span class="n">ExplainerToRun</span><span class="p">(</span>
+            <span class="n">explainer_id</span><span class="o">=</span><span class="n">ResidualDecisionTreeSurrogateExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">(),</span>
+            <span class="n">params</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Checking whether there is an H2O instance running at http://localhost:43955 .
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/srasaratnam/projects/h2o-sonar/venv/lib/python3.8/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+.... not found.
+Attempting to start a local H2O server...
+  Java Version: openjdk version &#34;11.0.18&#34; 2023-01-17; OpenJDK Runtime Environment (build 11.0.18+10-post-Ubuntu-0ubuntu120.04.1); OpenJDK 64-Bit Server VM (build 11.0.18+10-post-Ubuntu-0ubuntu120.04.1, mixed mode, sharing)
+  Starting server from /home/srasaratnam/projects/h2o-sonar/venv/lib/python3.8/site-packages/hmli/backend/bin/hmli.jar
+  Ice root: /tmp/tmpkqwrx7no
+  JVM stdout: /tmp/tmpkqwrx7no/hmli_srasaratnam_started_from_python.out
+  JVM stderr: /tmp/tmpkqwrx7no/hmli_srasaratnam_started_from_python.err
+  Server is running at http://127.0.0.1:43955
+Connecting to H2O server at http://127.0.0.1:43955 ... successful.
+Warning: Your H2O cluster version is too old (1 year, 2 months and 19 days)!Please download and install the latest version from http://hmli.ai/download/
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="overflow:auto"><table style="width:50%"><tr><td>H2O_cluster_uptime:</td>
+<td>01 secs</td></tr>
+<tr><td>H2O_cluster_timezone:</td>
+<td>America/Toronto</td></tr>
+<tr><td>H2O_data_parsing_timezone:</td>
+<td>UTC</td></tr>
+<tr><td>H2O_cluster_version:</td>
+<td>3.34.0.7</td></tr>
+<tr><td>H2O_cluster_version_age:</td>
+<td>1 year, 2 months and 19 days !!!</td></tr>
+<tr><td>H2O_cluster_name:</td>
+<td>H2O_from_python_srasaratnam_blw1ks</td></tr>
+<tr><td>H2O_cluster_total_nodes:</td>
+<td>1</td></tr>
+<tr><td>H2O_cluster_free_memory:</td>
+<td>4 Gb</td></tr>
+<tr><td>H2O_cluster_total_cores:</td>
+<td>12</td></tr>
+<tr><td>H2O_cluster_allowed_cores:</td>
+<td>12</td></tr>
+<tr><td>H2O_cluster_status:</td>
+<td>locked, healthy</td></tr>
+<tr><td>H2O_connection_url:</td>
+<td>http://127.0.0.1:43955</td></tr>
+<tr><td>H2O_connection_proxy:</td>
+<td>{"http": null, "https": null}</td></tr>
+<tr><td>H2O_internal_security:</td>
+<td>False</td></tr>
+<tr><td>H2O_API_Extensions:</td>
+<td>XGBoost, Algos, MLI, MLI-Driver, Core V3, Core V4, TargetEncoder</td></tr>
+<tr><td>Python_version:</td>
+<td>3.8.10 final</td></tr></table></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2023-03-12 23:47:12,602 - h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainerLogger - INFO - Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: connecting to H2O-3 server: localhost:43955
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Connecting to H2O server at http://localhost:43955 ... successful.
+Warning: Your H2O cluster version is too old (1 year, 2 months and 19 days)!Please download and install the latest version from http://hmli.ai/download/
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="overflow:auto"><table style="width:50%"><tr><td>H2O_cluster_uptime:</td>
+<td>01 secs</td></tr>
+<tr><td>H2O_cluster_timezone:</td>
+<td>America/Toronto</td></tr>
+<tr><td>H2O_data_parsing_timezone:</td>
+<td>UTC</td></tr>
+<tr><td>H2O_cluster_version:</td>
+<td>3.34.0.7</td></tr>
+<tr><td>H2O_cluster_version_age:</td>
+<td>1 year, 2 months and 19 days !!!</td></tr>
+<tr><td>H2O_cluster_name:</td>
+<td>H2O_from_python_srasaratnam_blw1ks</td></tr>
+<tr><td>H2O_cluster_total_nodes:</td>
+<td>1</td></tr>
+<tr><td>H2O_cluster_free_memory:</td>
+<td>4 Gb</td></tr>
+<tr><td>H2O_cluster_total_cores:</td>
+<td>12</td></tr>
+<tr><td>H2O_cluster_allowed_cores:</td>
+<td>12</td></tr>
+<tr><td>H2O_cluster_status:</td>
+<td>locked, healthy</td></tr>
+<tr><td>H2O_connection_url:</td>
+<td>http://localhost:43955</td></tr>
+<tr><td>H2O_connection_proxy:</td>
+<td>{"http": null, "https": null}</td></tr>
+<tr><td>H2O_internal_security:</td>
+<td>False</td></tr>
+<tr><td>H2O_API_Extensions:</td>
+<td>XGBoost, Algos, MLI, MLI-Driver, Core V3, Core V4, TargetEncoder</td></tr>
+<tr><td>Python_version:</td>
+<td>3.8.10 final</td></tr></table></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+drf Model Build progress: |██████████████████████████████████████████████████████| (done) 100%
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+Export File progress: |
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2023-03-12 23:47:14,752 - h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainerLogger - INFO - Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: DONE calculation
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+██████████████████████████████████████████████████████████| (done) 100%
+H2O session _sid_b58f closed.
+</pre></div></div>
+</div>
+</section>
+<section id="Interact-with-the-Explainer-Result">
+<h2>Interact with the Explainer Result<a class="headerlink" href="#Interact-with-the-Explainer-Result" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># retrieve the result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">interpretation</span><span class="o">.</span><span class="n">get_explainer_result</span><span class="p">(</span><span class="n">ResidualDecisionTreeSurrogateExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">())</span>
+
+<span class="c1"># result.data() method is not supported in this explainer</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># open interpretation HTML report in web browser</span>
+<span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">interpretation</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get_html_report_location</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># summary</span>
+<span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainer&#39;,
+ &#39;name&#39;: &#39;ResidualDecisionTreeSurrogateExplainer&#39;,
+ &#39;display_name&#39;: &#39;Residual Surrogate Decision Tree&#39;,
+ &#39;description&#39;: &#39;The residual surrogate decision tree predicts which paths in the tree (paths explain approximate model behavior) lead to highest or lowest error. The residual surrogate decision tree is created by training a simple decision tree on the residuals of the predictions of the model. Residuals are differences between observed and predicted values which can be used as targets in surrogate models for the purpose of model debugging. The method used to calculate residuals varies depending on the type of problem. For classification problems, logloss residuals are calculated for a specified class (only one residual surrogate decision is created by the explainer and it is built for this class). For regression problems, residuals are determined by calculating the square of the difference between targeted and predicted values.&#39;,
+ &#39;model_types&#39;: [&#39;iid&#39;, &#39;time_series&#39;],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;, &#39;multinomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;, &#39;local_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-decision-tree&#39;,
+   &#39;name&#39;: &#39;Residual Decision Tree&#39;,
+   &#39;category&#39;: &#39;SURROGATE MODELS ON RESIDUALS&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: &#39;local-decision-tree&#39;,
+   &#39;formats&#39;: [&#39;application/json&#39;]},
+  {&#39;explanation_type&#39;: &#39;local-decision-tree&#39;,
+   &#39;name&#39;: &#39;Local DT&#39;,
+   &#39;category&#39;: &#39;SURROGATE MODELS&#39;,
+   &#39;scope&#39;: &#39;local&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;application/json&#39;]},
+  {&#39;explanation_type&#39;: &#39;global-html-fragment&#39;,
+   &#39;name&#39;: &#39;Surrogate Decision Tree&#39;,
+   &#39;category&#39;: &#39;SURROGATE MODELS ON RESIDUALS&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;text/html&#39;]},
+  {&#39;explanation_type&#39;: &#39;global-custom-archive&#39;,
+   &#39;name&#39;: &#39;Residual Decision tree surrogate rules ZIP archive&#39;,
+   &#39;category&#39;: &#39;SURROGATE MODELS ON RESIDUALS&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;application/zip&#39;]}],
+ &#39;parameters&#39;: [{&#39;name&#39;: &#39;debug_residuals_class&#39;,
+   &#39;description&#39;: &#39;Class for debugging classification model logloss residuals, empty string for debugging regression model residuals.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;str&#39;,
+   &#39;val&#39;: &#39;&#39;,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;dt_tree_depth&#39;,
+   &#39;description&#39;: &#39;Decision tree depth.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 3,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;nfolds&#39;,
+   &#39;description&#39;: &#39;Number of CV folds.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 3,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;qbin_cols&#39;,
+   &#39;description&#39;: &#39;Quantile binning columns.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;list&#39;,
+   &#39;val&#39;: None,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [&#39;SOURCE_DATASET_COLUMN_NAMES&#39;],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;qbin_count&#39;,
+   &#39;description&#39;: &#39;Quantile bins count.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 0,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;categorical_encoding&#39;,
+   &#39;description&#39;: &#39;Categorical encoding.&#39;,
+   &#39;comment&#39;: &#39;Specify one of the following encoding schemes for handling of categorical features:\n\n_**AUTO**_: 1 column per categorical feature.\n\n_**Enum Limited**_: Automatically reduce categorical levels to the most prevalent ones during training and only keep the top 10 most frequent levels.\n\n_**One Hot Encoding**_: N+1 new columns for categorical features with N levels.\n\n_**Label Encoder**_: Convert every enum into the integer of its index (for example, level 0 -&gt; 0, level 1 -&gt; 1, etc.).\n\n_**Sort by Response**_: Reorders the levels by the mean response (for example, the level with lowest response -&gt; 0, the level with second-lowest response -&gt; 1, etc.).&#39;,
+   &#39;type&#39;: &#39;str&#39;,
+   &#39;val&#39;: &#39;onehotexplicit&#39;,
+   &#39;predefined&#39;: [&#39;AUTO&#39;,
+    &#39;One Hot Encoding&#39;,
+    &#39;Enum Limited&#39;,
+    &#39;Sort by Response&#39;,
+    &#39;Label Encoder&#39;],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;}],
+ &#39;keywords&#39;: [&#39;run-by-default&#39;,
+  &#39;requires-h2o3&#39;,
+  &#39;explains-model-debugging&#39;,
+  &#39;surrogate&#39;,
+  &#39;h2o-sonar&#39;]}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters</span>
+<span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;debug_residuals_class&#39;: &#39;1&#39;,
+ &#39;dt_tree_depth&#39;: 3,
+ &#39;nfolds&#39;: 3,
+ &#39;qbin_cols&#39;: None,
+ &#39;qbin_count&#39;: 0,
+ &#39;categorical_encoding&#39;: &#39;onehotexplicit&#39;,
+ &#39;debug_residuals&#39;: True}
+</pre></div></div>
+</div>
+<section id="Plot-the-Decision-Tree">
+<h3>Plot the Decision Tree<a class="headerlink" href="#Plot-the-Decision-Tree" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># show plot in a separate view</span>
+<span class="c1"># result.plot().render(view=True)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-residual-dt-surrogate-explainer_13_0.svg" src="../_images/notebooks_h2o-sonar-residual-dt-surrogate-explainer_13_0.svg" />
+</div>
+</div>
+</section>
+<section id="Save-the-explainer-log-and-data">
+<h3>Save the explainer log and data<a class="headerlink" href="#Save-the-explainer-log-and-data" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save the explainer log</span>
+<span class="n">result</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;./residual-dt-surrogate-demo.log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculation: regression problem vs. binomial problem</span>
+<span class="err">!</span><span class="n">head</span> <span class="n">residual</span><span class="o">-</span><span class="n">dt</span><span class="o">-</span><span class="n">surrogate</span><span class="o">-</span><span class="n">demo</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2023-03-12 23:47:12,498 WARNING Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776 setting default residuals debug class...
+2023-03-12 23:47:12,498 WARNING Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776 residuals debug class set to &#39;1&#39;
+2023-03-12 23:47:12,501 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: BEGIN calculation
+2023-03-12 23:47:12,501 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: dataset (10000, 25) loaded
+2023-03-12 23:47:12,501 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: sampling down to 0 rows...
+2023-03-12 23:47:12,533 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: calculating binomial/regression ...
+2023-03-12 23:47:12,601 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: calculating logloss residuals (binary classification problem) ...
+2023-03-12 23:47:12,601 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: sorted labels for residual calculation: &lt;&lt;&lt;[&#39;0&#39;, &#39;1&#39;]&gt;&gt;&gt;
+2023-03-12 23:47:12,601 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: debug model errors class: &lt;&lt;&lt;1&gt;&gt;&gt;
+2023-03-12 23:47:12,601 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: label index for class of interest: &lt;&lt;&lt;1&gt;&gt;&gt;
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save the explainer data</span>
+<span class="n">result</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;./residual-dt-surrogate-demo-archive.zip&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">unzip</span> <span class="o">-</span><span class="n">l</span> <span class="n">residual</span><span class="o">-</span><span class="n">dt</span><span class="o">-</span><span class="n">surrogate</span><span class="o">-</span><span class="n">demo</span><span class="o">-</span><span class="n">archive</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Archive:  residual-dt-surrogate-demo-archive.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     5690  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/result_descriptor.json
+     1953  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dt-class-0.dot
+    60745  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dtModel.json
+   291881  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dtPathsFrame.csv
+     8733  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dt-class-0.dot.pdf
+     3091  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dt_surrogate_rules.zip
+     9175  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dtsurr_mojo.zip
+   262816  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dtpaths_frame.bin
+     5869  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dtSurrogate.json
+      140  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_custom_archive/application_zip.meta
+     3091  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_custom_archive/application_zip/explanation.zip
+      110  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_html_fragment/text_html.meta
+      373  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_html_fragment/text_html/explanation.html
+   124931  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_html_fragment/text_html/dt-class-0.png
+      859  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/model_problems/problems_and_actions.json
+     2091  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/log/explainer_run_4028f8a8-b307-4d07-8c7c-8fefbc52e776.log
+      133  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_decision_tree/application_json.meta
+      614  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_decision_tree/application_json/explanation.json
+     2442  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_decision_tree/application_json/dt_class_0.json
+      131  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/local_decision_tree/application_json.meta
+      482  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/local_decision_tree/application_json/explanation.json
+---------                     -------
+   785350                     21 files
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="h2o-sonar-residual-pd-explainer.html" class="btn btn-neutral float-left" title="Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="h2o-sonar-dia-explainer.html" class="btn btn-neutral float-right" title="Disparate Impact Analysis (DIA) Explainer Demo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

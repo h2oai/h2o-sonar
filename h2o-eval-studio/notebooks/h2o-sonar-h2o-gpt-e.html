@@ -1,0 +1,1664 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enterprise h2oGPT Talk to Report Example &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e2d3f516" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/notebooks/h2o-sonar-h2o-gpt-e.html"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="H2O Eval Studio Python API" href="../python_api.html" />
+    <link rel="prev" title="Enterprise h2oGPT Examples" href="../examples.h2ogpte.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../doc.html">H2O Eval Studio Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">H2O Eval Studio Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.models.html">Models in Interpretation Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.cli.html">Command Line Interface in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.h2ogpte.html">Enterprise h2oGPT Examples</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Enterprise h2oGPT Talk to Report Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">H2O Eval Studio Examples</a></li>
+          <li class="breadcrumb-item"><a href="../examples.h2ogpte.html">Enterprise h2oGPT Examples</a></li>
+      <li class="breadcrumb-item active">Enterprise h2oGPT Talk to Report Example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/h2o-sonar-h2o-gpt-e.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Enterprise-h2oGPT-Talk-to-Report-Example">
+<h1>Enterprise h2oGPT Talk to Report Example<a class="headerlink" href="#Enterprise-h2oGPT-Talk-to-Report-Example" title="Link to this heading"></a></h1>
+<p>H2O Eval Studio can upload the interpretation results to the <a class="reference external" href="https://h2o.ai/platform/enterprise-h2ogpt/">Enterprise h2oGPT</a> in order to <strong>talk to the interpretation report</strong> and get answers to questions / use prompts like:</p>
+<ul class="simple">
+<li><p>Did the interpretation find any model problems?</p></li>
+<li><p>Were there any HIGH/MEDIUM/LOW severity problems?</p></li>
+<li><p>Create an action plan as a bullet list to solve problem.</p></li>
+<li><p>Is the model fair?</p></li>
+<li><p>Which features lead to the highest model error?</p></li>
+<li><p>Which explainers were run by the interpretation?</p></li>
+<li><p>Summarize the interpretation report.</p></li>
+</ul>
+<p>Similarly for model understanding:</p>
+<ul class="simple">
+<li><p>What is the target column of the model?</p></li>
+<li><p>Which original features are used by the model?</p></li>
+<li><p>What is the most important transformed feature of the model?</p></li>
+<li><p>What are the 3 most important original features of the model?</p></li>
+<li><p>What were the columns of the training dataset?</p></li>
+</ul>
+<p>The typical set of questions is typically centered around <strong>the model problem(s)</strong> and their <strong>solutions</strong>.</p>
+<p>How can you talk to the report?</p>
+<ol class="arabic simple">
+<li><p>Run the interpretation.</p></li>
+<li><p>Upload the interpretation results to the Enterprise h2oGPT - either directly as the last step of the interpretation run or using the API call or CLI command.</p></li>
+<li><p>Open the <strong>Enterprise h2oGPT</strong> to chat with the interpretation report.</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">datatable</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">daimojo</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">webbrowser</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span> <span class="k">as</span> <span class="n">h2o_sonar_config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpret</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">commons</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">explainers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">h2o_sonar.lib.api.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelApi</span>
+</pre></div>
+</div>
+</div>
+<section id="Configuration">
+<h2>Configuration<a class="headerlink" href="#Configuration" title="Link to this heading"></a></h2>
+<p>First, configure the Enterprise h2oGPT connection. The API key can generated in <a class="reference external" href="https://h2o.ai/platform/enterprise-h2ogpt/">Enterprise h2oGPT</a> web - use <code class="docutils literal notranslate"><span class="pre">Settings</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">Keys</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">API</span> <span class="pre">Key</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">H2OGPTE_API_KEY</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># paste your API key here</span>
+
+<span class="n">H2OGPTE_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;H2O_GPT_E_API_KEY&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">H2OGPTE_API_KEY</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Please set your API key&quot;</span><span class="p">)</span>
+
+<span class="n">H2OGPTE_HOST</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+  <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">H2O_GPT_E</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+  <span class="n">name</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise&quot;</span><span class="p">,</span>
+  <span class="n">description</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise.&quot;</span><span class="p">,</span>
+  <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://h2ogpte.h2o.ai&quot;</span><span class="p">,</span>
+  <span class="n">token</span><span class="o">=</span><span class="p">,</span>
+  <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_connection</span><span class="p">(</span><span class="n">H2OGPTE_HOST</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Interpretation">
+<h2>Interpretation<a class="headerlink" href="#Interpretation" title="Link to this heading"></a></h2>
+<p>Run an interpretation with default explainers and upload the interpretation report to Enterprise h2oGPT.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataset</span>
+<span class="n">dataset_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/predictive/creditcard.csv&quot;</span>
+<span class="n">target_col</span> <span class="o">=</span> <span class="s2">&quot;default payment next month&quot;</span>
+
+<span class="c1"># model</span>
+<span class="n">mojo_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/predictive/models/creditcard-binomial.mojo&quot;</span>
+<span class="n">mojo_model</span> <span class="o">=</span> <span class="n">daimojo</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">mojo_path</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelApi</span><span class="p">()</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span>
+    <span class="n">model_src</span><span class="o">=</span><span class="n">mojo_model</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">,</span>
+    <span class="n">used_features</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">mojo_model</span><span class="o">.</span><span class="n">feature_names</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">,</span>
+    <span class="n">results_location</span><span class="o">=</span><span class="s2">&quot;./results&quot;</span><span class="p">,</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="n">upload_to</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get_connection</span><span class="p">(</span>
+        <span class="n">connection_key</span><span class="o">=</span><span class="n">H2OGPTE_HOST</span><span class="o">.</span><span class="n">key</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Preparing and checking DIA features (None): dataset=     | LIMIT_BAL  BILL_AMT3     ID  PAY_4  PAY_0  BILL_AMT1  PAY_AMT1  PAY_AMT5  PAY_3  PAY_6  …  BILL_AMT6    AGE  PAY_AMT3  MARRIAGE    SEX
+     |     int32      int32  int32  int32  int32      int32     int32     int32  int32  int32         int32  int32     int32     int32  int32
+---- + ---------  ---------  -----  -----  -----  ---------  --------  --------  -----  -----     ---------  -----  --------  --------  -----
+   0 |     20000        689      1     -1     -2       3913         0         0     -1     -2  …          0     24         0         1      2
+   1 |    120000       2682      2      0     -1       2682         0         0      0      2  …       3261     26      1000         2      2
+   2 |     90000      13559      3      0      0      29239      1518      1000      0      0  …      15549     34      1000         2      2
+   3 |     50000      49291      4      0      1      46990      2000      1069      0      0  …      29547     37      1200         1      2
+   4 |     50000      35835      5      0      2       8617      2000       689     -1      0  …      19131     57     10000         1      1
+   5 |     50000      57608      6      0      3      64400      2500      1000      0      0  …      20024     37       657         2      1
+   6 |    500000     445007      7      0      4     367965     55000     13750      0      0  …     473944     29     38000         2      1
+   7 |    100000        601      8      0      5      11876       380      1687     -1     -1  …        567     23         0         2      2
+   8 |    140000      12108      9      0      6      11285      3329      1000      2      0  …       3719     28       432         1      2
+   9 |     20000          0     10     -2      7          0         0      1122     -2     -1  …      13912     35         0         2      1
+  10 |    200000       5535     11      0      8      11073      2306      3738      2     -1  …       3731     34        50         2      2
+  11 |    260000       9966     12     -1     -1      12261     21818         0     -1      2  …      13668     51      8583         2      2
+  12 |    630000       6500     13     -1     -1      12137      1000      2870     -1     -1  …       2870     41      6500         2      2
+  13 |     70000      65701     14      0      1      65802      3200      1500      2      2  …      36894     30      3000         2      1
+  14 |    250000      63561     15      0      0      70887      3000      3000      0      0  …      55512     29      3000         2      1
+   … |         …          …      …      …      …          …         …         …      …      …  …          …      …         …         …      …
+9995 |    140000          0   9996     -2      1          0       241         0     -2     -2  …          0     31         0         2      2
+9996 |     80000          0   9997     -2     -2       3946         0         0     -2     -2  …          0     37         0         2      2
+9997 |    200000     142520   9998      0      0     138877      6437     10017      0      0  …     168431     44     10000         1      1
+9998 |     80000          0   9999     -2     -1        780         0         0      2     -2  …          0     26         0         2      2
+9999 |    230000      19750  10000      0      0      19505      3000      3000      0      0  …      17479     36      3000         1      1
+[10000 rows x 25 columns]
+ dataset_meta={
+  &#34;shape&#34;: &#34;(10000, 25)&#34;,
+  &#34;row_count&#34;: 10000,
+  &#34;column_names&#34;: [
+    &#34;ID&#34;,
+    &#34;LIMIT_BAL&#34;,
+    &#34;SEX&#34;,
+    &#34;EDUCATION&#34;,
+    &#34;MARRIAGE&#34;,
+    &#34;AGE&#34;,
+    &#34;PAY_0&#34;,
+    &#34;PAY_2&#34;,
+    &#34;PAY_3&#34;,
+    &#34;PAY_4&#34;,
+    &#34;PAY_5&#34;,
+    &#34;PAY_6&#34;,
+    &#34;BILL_AMT1&#34;,
+    &#34;BILL_AMT2&#34;,
+    &#34;BILL_AMT3&#34;,
+    &#34;BILL_AMT4&#34;,
+    &#34;BILL_AMT5&#34;,
+    &#34;BILL_AMT6&#34;,
+    &#34;PAY_AMT1&#34;,
+    &#34;PAY_AMT2&#34;,
+    &#34;PAY_AMT3&#34;,
+    &#34;PAY_AMT4&#34;,
+    &#34;PAY_AMT5&#34;,
+    &#34;PAY_AMT6&#34;,
+    &#34;default payment next month&#34;
+  ],
+  &#34;column_types&#34;: [
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;,
+    &#34;int&#34;
+  ],
+  &#34;column_uniques&#34;: [
+    10000,
+    72,
+    2,
+    7,
+    4,
+    54,
+    11,
+    11,
+    11,
+    11,
+    10,
+    10,
+    8371,
+    8215,
+    8072,
+    7913,
+    7764,
+    7550,
+    3763,
+    3581,
+    3305,
+    3247,
+    3258,
+    3174,
+    2
+  ],
+  &#34;columns_cat&#34;: [],
+  &#34;columns_num&#34;: [],
+  &#34;file_path&#34;: &#34;../../data/predictive/creditcard.csv&#34;,
+  &#34;file_name&#34;: &#34;&#34;,
+  &#34;file_size&#34;: 944719,
+  &#34;missing_values&#34;: [
+    &#34;&#34;,
+    &#34;?&#34;,
+    &#34;None&#34;,
+    &#34;nan&#34;,
+    &#34;NA&#34;,
+    &#34;N/A&#34;,
+    &#34;unknown&#34;,
+    &#34;inf&#34;,
+    &#34;-inf&#34;,
+    &#34;1.7976931348623157e+308&#34;,
+    &#34;-1.7976931348623157e+308&#34;
+  ],
+  &#34;columns_meta&#34;: [
+    {
+      &#34;name&#34;: &#34;ID&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: true,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 10000,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 10000,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;LIMIT_BAL&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 72,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 72,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;SEX&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 2,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 2,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;EDUCATION&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;MARRIAGE&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 4,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 4,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;AGE&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 54,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 54,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_0&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_2&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_3&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_4&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 11,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 11,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_5&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 10,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 10,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_6&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 10,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 10,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT1&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 8371,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 8371,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT2&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 8215,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 8215,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT3&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 8072,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 8072,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT4&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7913,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7913,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT5&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7764,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7764,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;BILL_AMT6&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 7550,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 7550,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT1&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3763,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3763,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT2&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3581,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3581,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT3&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3305,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3305,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT4&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3247,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3247,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT5&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3258,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3258,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;PAY_AMT6&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 3174,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 3174,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    },
+    {
+      &#34;name&#34;: &#34;default payment next month&#34;,
+      &#34;data_type&#34;: &#34;int&#34;,
+      &#34;logical_types&#34;: [],
+      &#34;format&#34;: &#34;&#34;,
+      &#34;is_id&#34;: false,
+      &#34;is_numeric&#34;: true,
+      &#34;is_categorical&#34;: false,
+      &#34;count&#34;: 2,
+      &#34;frequency&#34;: 0,
+      &#34;unique&#34;: 2,
+      &#34;max&#34;: null,
+      &#34;min&#34;: null,
+      &#34;mean&#34;: null,
+      &#34;std&#34;: null,
+      &#34;histogram_counts&#34;: [],
+      &#34;histogram_ticks&#34;: []
+    }
+  ],
+  &#34;original_dataset_sampled&#34;: false,
+  &#34;original_dataset_path&#34;: &#34;&#34;,
+  &#34;original_dataset_size&#34;: 0,
+  &#34;original_dataset_shape&#34;: [
+    10000,
+    25
+  ]
+}
+Using dataset ENTITY to prepare DIA features: column_names=[&#39;ID&#39;, &#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_0&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;, &#39;default payment next month&#39;] column_uniques=[10000, 72, 2, 7, 4, 54, 11, 11, 11, 11, 10, 10, 8371, 8215, 8072, 7913, 7764, 7550, 3763, 3581, 3305, 3247, 3258, 3174, 2]
+DIA group columns prepared using dataset ENTITY: {&#39;PAY_6&#39;, &#39;PAY_5&#39;, &#39;PAY_2&#39;, &#39;EDUCATION&#39;, &#39;PAY_4&#39;, &#39;PAY_0&#39;, &#39;default payment next month&#39;, &#39;MARRIAGE&#39;, &#39;PAY_3&#39;, &#39;SEX&#39;}
+DIA group columns to SKIP: {&#39;model_pred&#39;, &#39;default payment next month&#39;}
+DIA group columns as BOOLs: [&lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f9d9a0f7c90&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f9d9a0f78d0&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f9d9a0f7d10&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f9d9a0f7d50&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f9d9a0f7dd0&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f9d9a0f7ed0&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f9d9a0f7d90&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f9d9a0f7f10&gt;, &lt;h2o_sonar.methods.fairness._dia.BoolEntry object at 0x7f9d9a0f7f50&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.fi_naive_shapley_explainer.NaiveShapleyMojoFeatureImportanceExplainer: progress 20.0%
+h2o_sonar.explainers.fi_naive_shapley_explainer.NaiveShapleyMojoFeatureImportanceExplainer: progress 90.0%
+h2o_sonar.explainers.fi_naive_shapley_explainer.NaiveShapleyMojoFeatureImportanceExplainer: progress 90.0%
+h2o_sonar.explainers.transformed_fi_shapley_explainer.ShapleyMojoTransformedFeatureImportanceExplainer: progress 20.0%
+h2o_sonar.explainers.transformed_fi_shapley_explainer.ShapleyMojoTransformedFeatureImportanceExplainer: progress 90.0%
+h2o_sonar.explainers.transformed_fi_shapley_explainer.ShapleyMojoTransformedFeatureImportanceExplainer: progress 90.0%
+Checking whether there is an H2O instance running at http://localhost:57439..... not found.
+Attempting to start a local H2O server...
+  Java Version: openjdk version &#34;10&#34; 2018-03-20; OpenJDK Runtime Environment 18.3 (build 10+44); OpenJDK 64-Bit Server VM 18.3 (build 10+44, mixed mode)
+  Starting server from /home/user/h/mli/git/h2o-sonar/.venv/lib/python3.11/site-packages/
+  Ice root: /tmp/tmp960f1t7y
+  JVM stdout: /tmp/tmp960f1t7y/user_started_from_python.out
+  JVM stderr: /tmp/tmp960f1t7y/user_started_from_python.err
+  Server is running at http://127.0.0.1:57439
+Connecting to H2O server at http://127.0.0.1:57439 ... successful.
+Warning: Your H2O cluster version is (6 months and 3 days) old.  There may be a newer version available.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+
+#hmli-table-4.hmli-container {
+  overflow-x: auto;
+}
+#hmli-table-4 .hmli-table {
+  /* width: 100%; */
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#hmli-table-4 .hmli-table caption {
+  white-space: nowrap;
+  caption-side: top;
+  text-align: left;
+  /* margin-left: 1em; */
+  margin: 0;
+  font-size: larger;
+}
+#hmli-table-4 .hmli-table thead {
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 -1px inset;
+}
+#hmli-table-4 .hmli-table tbody {
+  overflow: auto;
+}
+#hmli-table-4 .hmli-table th,
+#hmli-table-4 .hmli-table td {
+  text-align: right;
+  /* border: 1px solid; */
+}
+#hmli-table-4 .hmli-table tr:nth-child(even) {
+  /* background: #F5F5F5 */
+}
+
+</style>
+<div id="hmli-table-4" class="hmli-container">
+  <table class="hmli-table">
+    <caption></caption>
+    <thead></thead>
+    <tbody><tr><td>H2O_cluster_uptime:</td>
+<td>00 secs</td></tr>
+<tr><td>H2O_cluster_timezone:</td>
+<td>Europe/Prague</td></tr>
+<tr><td>H2O_data_parsing_timezone:</td>
+<td>UTC</td></tr>
+<tr><td>H2O_cluster_version:</td>
+<td>3.40.0.4</td></tr>
+<tr><td>H2O_cluster_version_age:</td>
+<td>6 months and 3 days</td></tr>
+<tr><td>H2O_cluster_name:</td>
+<td>H2O_from_python_user_yttrbw</td></tr>
+<tr><td>H2O_cluster_total_nodes:</td>
+<td>1</td></tr>
+<tr><td>H2O_cluster_free_memory:</td>
+<td>4 Gb</td></tr>
+<tr><td>H2O_cluster_total_cores:</td>
+<td>16</td></tr>
+<tr><td>H2O_cluster_allowed_cores:</td>
+<td>16</td></tr>
+<tr><td>H2O_cluster_status:</td>
+<td>locked, healthy</td></tr>
+<tr><td>H2O_connection_url:</td>
+<td>http://127.0.0.1:57439</td></tr>
+<tr><td>H2O_connection_proxy:</td>
+<td>{"http": null, "https": null}</td></tr>
+<tr><td>H2O_internal_security:</td>
+<td>False</td></tr>
+<tr><td>Python_version:</td>
+<td>3.11.5 final</td></tr></tbody>
+  </table>
+</div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2023-10-31 13:49:39,886 - h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainerLogger - INFO - Residual Surrogate Decision Tree 9ce9f41a-2c42-484a-a997-43ed12909edc/3dea54b1-2df7-4a94-9aa6-29adf982cb67: BEGIN calculation
+2023-10-31 13:49:39,887 - h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainerLogger - INFO - Residual Surrogate Decision Tree 9ce9f41a-2c42-484a-a997-43ed12909edc/3dea54b1-2df7-4a94-9aa6-29adf982cb67: dataset (10000, 25) loaded
+2023-10-31 13:49:39,887 - h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainerLogger - INFO - Residual Surrogate Decision Tree 9ce9f41a-2c42-484a-a997-43ed12909edc/3dea54b1-2df7-4a94-9aa6-29adf982cb67: sampling down to 0 rows...
+2023-10-31 13:49:39,903 - h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainerLogger - INFO - Residual Surrogate Decision Tree 9ce9f41a-2c42-484a-a997-43ed12909edc/3dea54b1-2df7-4a94-9aa6-29adf982cb67: calculating binomial/regression ...
+2023-10-31 13:49:39,904 - h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainerLogger - INFO - Residual Surrogate Decision Tree 9ce9f41a-2c42-484a-a997-43ed12909edc/3dea54b1-2df7-4a94-9aa6-29adf982cb67: calculating squared residuals (regression problem) ...
+2023-10-31 13:49:39,904 - h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainerLogger - INFO - Residual Surrogate Decision Tree 9ce9f41a-2c42-484a-a997-43ed12909edc/3dea54b1-2df7-4a94-9aa6-29adf982cb67: connecting to H2O-3 server: localhost:57439
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Connecting to H2O server at http://localhost:57439 ... successful.
+Warning: Your H2O cluster version is (6 months and 3 days) old.  There may be a newer version available.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+
+#hmli-table-5.hmli-container {
+  overflow-x: auto;
+}
+#hmli-table-5 .hmli-table {
+  /* width: 100%; */
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#hmli-table-5 .hmli-table caption {
+  white-space: nowrap;
+  caption-side: top;
+  text-align: left;
+  /* margin-left: 1em; */
+  margin: 0;
+  font-size: larger;
+}
+#hmli-table-5 .hmli-table thead {
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 -1px inset;
+}
+#hmli-table-5 .hmli-table tbody {
+  overflow: auto;
+}
+#hmli-table-5 .hmli-table th,
+#hmli-table-5 .hmli-table td {
+  text-align: right;
+  /* border: 1px solid; */
+}
+#hmli-table-5 .hmli-table tr:nth-child(even) {
+  /* background: #F5F5F5 */
+}
+
+</style>
+<div id="hmli-table-5" class="hmli-container">
+  <table class="hmli-table">
+    <caption></caption>
+    <thead></thead>
+    <tbody><tr><td>H2O_cluster_uptime:</td>
+<td>00 secs</td></tr>
+<tr><td>H2O_cluster_timezone:</td>
+<td>Europe/Prague</td></tr>
+<tr><td>H2O_data_parsing_timezone:</td>
+<td>UTC</td></tr>
+<tr><td>H2O_cluster_version:</td>
+<td>3.40.0.4</td></tr>
+<tr><td>H2O_cluster_version_age:</td>
+<td>6 months and 3 days</td></tr>
+<tr><td>H2O_cluster_name:</td>
+<td>H2O_from_python_user_yttrbw</td></tr>
+<tr><td>H2O_cluster_total_nodes:</td>
+<td>1</td></tr>
+<tr><td>H2O_cluster_free_memory:</td>
+<td>4 Gb</td></tr>
+<tr><td>H2O_cluster_total_cores:</td>
+<td>16</td></tr>
+<tr><td>H2O_cluster_allowed_cores:</td>
+<td>16</td></tr>
+<tr><td>H2O_cluster_status:</td>
+<td>locked, healthy</td></tr>
+<tr><td>H2O_connection_url:</td>
+<td>http://localhost:57439</td></tr>
+<tr><td>H2O_connection_proxy:</td>
+<td>{"http": null, "https": null}</td></tr>
+<tr><td>H2O_internal_security:</td>
+<td>False</td></tr>
+<tr><td>Python_version:</td>
+<td>3.11.5 final</td></tr></tbody>
+  </table>
+</div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+drf Model Build progress: |██████████████████████████████████████████████████████| (done) 100%
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+Export File progress: |
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2023-10-31 13:49:42,955 - h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainerLogger - INFO - Residual Surrogate Decision Tree 9ce9f41a-2c42-484a-a997-43ed12909edc/3dea54b1-2df7-4a94-9aa6-29adf982cb67: DONE calculation
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+██████████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2023-10-31 13:49:43,226 - h2o_sonar.explainers.dt_surrogate_explainer.DecisionTreeSurrogateExplainerLogger - INFO - Surrogate decision tree 9ce9f41a-2c42-484a-a997-43ed12909edc/754a36db-9c03-49a7-9b49-6c86bad5ca66: BEGIN calculation
+2023-10-31 13:49:43,228 - h2o_sonar.explainers.dt_surrogate_explainer.DecisionTreeSurrogateExplainerLogger - INFO - Surrogate decision tree 9ce9f41a-2c42-484a-a997-43ed12909edc/754a36db-9c03-49a7-9b49-6c86bad5ca66: dataset (10000, 25) loaded
+2023-10-31 13:49:43,229 - h2o_sonar.explainers.dt_surrogate_explainer.DecisionTreeSurrogateExplainerLogger - INFO - Surrogate decision tree 9ce9f41a-2c42-484a-a997-43ed12909edc/754a36db-9c03-49a7-9b49-6c86bad5ca66: sampling down to 0 rows...
+2023-10-31 13:49:43,251 - h2o_sonar.explainers.dt_surrogate_explainer.DecisionTreeSurrogateExplainerLogger - INFO - Surrogate decision tree 9ce9f41a-2c42-484a-a997-43ed12909edc/754a36db-9c03-49a7-9b49-6c86bad5ca66: connecting to H2O-3 server: localhost:57439
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Connecting to H2O server at http://localhost:57439 ... successful.
+Warning: Your H2O cluster version is (6 months and 3 days) old.  There may be a newer version available.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+
+#hmli-table-6.hmli-container {
+  overflow-x: auto;
+}
+#hmli-table-6 .hmli-table {
+  /* width: 100%; */
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#hmli-table-6 .hmli-table caption {
+  white-space: nowrap;
+  caption-side: top;
+  text-align: left;
+  /* margin-left: 1em; */
+  margin: 0;
+  font-size: larger;
+}
+#hmli-table-6 .hmli-table thead {
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 -1px inset;
+}
+#hmli-table-6 .hmli-table tbody {
+  overflow: auto;
+}
+#hmli-table-6 .hmli-table th,
+#hmli-table-6 .hmli-table td {
+  text-align: right;
+  /* border: 1px solid; */
+}
+#hmli-table-6 .hmli-table tr:nth-child(even) {
+  /* background: #F5F5F5 */
+}
+
+</style>
+<div id="hmli-table-6" class="hmli-container">
+  <table class="hmli-table">
+    <caption></caption>
+    <thead></thead>
+    <tbody><tr><td>H2O_cluster_uptime:</td>
+<td>04 secs</td></tr>
+<tr><td>H2O_cluster_timezone:</td>
+<td>Europe/Prague</td></tr>
+<tr><td>H2O_data_parsing_timezone:</td>
+<td>UTC</td></tr>
+<tr><td>H2O_cluster_version:</td>
+<td>3.40.0.4</td></tr>
+<tr><td>H2O_cluster_version_age:</td>
+<td>6 months and 3 days</td></tr>
+<tr><td>H2O_cluster_name:</td>
+<td>H2O_from_python_user_yttrbw</td></tr>
+<tr><td>H2O_cluster_total_nodes:</td>
+<td>1</td></tr>
+<tr><td>H2O_cluster_free_memory:</td>
+<td>4 Gb</td></tr>
+<tr><td>H2O_cluster_total_cores:</td>
+<td>16</td></tr>
+<tr><td>H2O_cluster_allowed_cores:</td>
+<td>16</td></tr>
+<tr><td>H2O_cluster_status:</td>
+<td>locked, healthy</td></tr>
+<tr><td>H2O_connection_url:</td>
+<td>http://localhost:57439</td></tr>
+<tr><td>H2O_connection_proxy:</td>
+<td>{"http": null, "https": null}</td></tr>
+<tr><td>H2O_internal_security:</td>
+<td>False</td></tr>
+<tr><td>Python_version:</td>
+<td>3.11.5 final</td></tr></tbody>
+  </table>
+</div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+drf Model Build progress: |██████████████████████████████████████████████████████| (done) 100%
+Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2023-10-31 13:49:45,532 - h2o_sonar.explainers.dt_surrogate_explainer.DecisionTreeSurrogateExplainerLogger - INFO - Surrogate decision tree 9ce9f41a-2c42-484a-a997-43ed12909edc/754a36db-9c03-49a7-9b49-6c86bad5ca66: DONE calculation
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Export File progress: |██████████████████████████████████████████████████████████| (done) 100%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2023-10-31 13:49:46,499 - h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainerLogger - INFO - Summary Shapley explainer 9ce9f41a-2c42-484a-a997-43ed12909edc/f6095285-10d7-4e07-bf2c-a7ffb7e7a543 raw MEANs (1)
+2023-10-31 13:49:46,500 - h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainerLogger - INFO - Summary Shapley explainer 9ce9f41a-2c42-484a-a997-43ed12909edc/f6095285-10d7-4e07-bf2c-a7ffb7e7a543 raw CONTRIBs (1)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 30.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 40.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 50.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 50.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 50.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 50.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 50.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 60.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 60.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 60.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 60.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 60.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 70.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 70.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 70.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 70.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 80.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 80.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 80.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 80.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 80.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 90.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 90.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 90.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 90.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 100.0%
+h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer: progress 100.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2023-10-31 13:49:57,496 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c BEGIN calculation
+2023-10-31 13:49:57,496 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c loading dataset
+2023-10-31 13:49:57,497 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c loaded dataset has 10000 rows and 25 columns
+2023-10-31 13:49:57,497 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c getting features list, importanceand metadata
+2023-10-31 13:49:57,497 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c all most important model features: [&#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_0&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;]
+2023-10-31 13:49:57,497 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c features used by model: [&#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_0&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;]
+2023-10-31 13:49:57,498 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c: calculating PD for features [&#39;LIMIT_BAL&#39;, &#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_0&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;]
+2023-10-31 13:49:57,498 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c feature metadata: {&#39;id&#39;: [], &#39;categorical&#39;: [], &#39;numeric&#39;: [], &#39;catnum&#39;: [], &#39;date&#39;: [], &#39;time&#39;: [], &#39;datetime&#39;: [], &#39;text&#39;: [], &#39;image&#39;: [], &#39;date-format&#39;: [], &#39;quantile-bin&#39;: {}}
+2023-10-31 13:49:57,498 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c 1 frame strategy: True
+2023-10-31 13:49:57,498 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c residual PD/ICE should NOT be calculated, but y has been specified - setting it None
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 10.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 20.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 30.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 40.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 40.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 50.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 50.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 60.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 70.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 80.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 80.0%
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2023-10-31 13:49:59,424 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c saving PD to ./results/h2o-sonar/mli_experiment_9ce9f41a-2c42-484a-a997-43ed12909edc/explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/work/h2o_sonar-pd-dai-model.json
+2023-10-31 13:49:59,426 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c computation finished &amp; stored to: ./results/h2o-sonar/mli_experiment_9ce9f41a-2c42-484a-a997-43ed12909edc/explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/work/h2o_sonar-pd-dai-model.json
+2023-10-31 13:49:59,432 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: LIMIT_BAL/True
+2023-10-31 13:49:59,434 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: LIMIT_BAL/False
+2023-10-31 13:49:59,436 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: SEX/True
+2023-10-31 13:49:59,441 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: SEX/False
+2023-10-31 13:49:59,443 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: EDUCATION/True
+2023-10-31 13:49:59,444 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: EDUCATION/False
+2023-10-31 13:49:59,446 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: MARRIAGE/True
+2023-10-31 13:49:59,447 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: MARRIAGE/False
+2023-10-31 13:49:59,449 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: AGE/True
+2023-10-31 13:49:59,451 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: AGE/False
+2023-10-31 13:49:59,452 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: PAY_0/True
+2023-10-31 13:49:59,454 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: PAY_0/False
+2023-10-31 13:49:59,456 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: PAY_2/True
+2023-10-31 13:49:59,470 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: PAY_2/False
+2023-10-31 13:49:59,472 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: PAY_3/True
+2023-10-31 13:49:59,474 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: PAY_3/False
+2023-10-31 13:49:59,475 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: PAY_4/True
+2023-10-31 13:49:59,476 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: PAY_4/False
+2023-10-31 13:49:59,478 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: PAY_5/True
+2023-10-31 13:49:59,479 - h2o_sonar.explainers.pd_ice_explainer.PdIceExplainerLogger - INFO - PD/ICE 9ce9f41a-2c42-484a-a997-43ed12909edc/fcf9f631-32c7-45e1-b8ad-65a41143b31c creating histogram: PAY_5/False
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 90.0%
+h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer: progress 100.0%
+H2O session _sid_9f45 closed.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_754a36db-9c03-49a7-9b49-6c86bad5ca66/global_html_fragment/text_html/dt-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_aed2111b-1eb7-4326-b4f1-667891875532/global_html_fragment/text_html/fi-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_transformed_fi_shapley_explainer_ShapleyMojoTransformedFeatureImportanceExplainer_f6b7825f-05f5-4a32-b0a2-82f732cc49af/global_html_fragment/text_html/fi-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/shapley-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-n.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_3dea54b1-2df7-4a94-9aa6-29adf982cb67/global_html_fragment/text_html/dt-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-n.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_aed2111b-1eb7-4326-b4f1-667891875532/global_html_fragment/text_html/fi-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_transformed_fi_shapley_explainer_ShapleyMojoTransformedFeatureImportanceExplainer_f6b7825f-05f5-4a32-b0a2-82f732cc49af/global_html_fragment/text_html/fi-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_3dea54b1-2df7-4a94-9aa6-29adf982cb67/global_html_fragment/text_html/dt-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_754a36db-9c03-49a7-9b49-6c86bad5ca66/global_html_fragment/text_html/dt-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/shapley-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/global_html_fragment/text_html/pd-feature-0-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-n.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-adverse_impact.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-accuracy.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-true_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-precision.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-specificity.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-negative_predicted_value.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-false_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-false_discovery_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-false_negative_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-0-false_omissions_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-1-n.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-1-adverse_impact.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-1-accuracy.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-1-true_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-1-precision.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-1-specificity.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-1-negative_predicted_value.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-1-false_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-1-false_discovery_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-1-false_negative_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-1-false_omissions_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-2-n.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-2-adverse_impact.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-2-accuracy.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-2-true_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-2-precision.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-2-specificity.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-2-negative_predicted_value.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-2-false_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-2-false_discovery_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-2-false_negative_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-2-false_omissions_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-3-n.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-3-adverse_impact.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-3-accuracy.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-3-true_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-3-precision.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-3-specificity.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-3-negative_predicted_value.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-3-false_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-3-false_discovery_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-3-false_negative_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-3-false_omissions_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-4-n.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-4-adverse_impact.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-4-accuracy.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-4-true_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-4-precision.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-4-specificity.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-4-negative_predicted_value.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-4-false_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-4-false_discovery_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-4-false_negative_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-4-false_omissions_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-5-n.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-5-adverse_impact.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-5-accuracy.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-5-true_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-5-precision.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-5-specificity.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-5-negative_predicted_value.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-5-false_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-5-false_discovery_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-5-false_negative_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-5-false_omissions_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-6-n.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-6-adverse_impact.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-6-accuracy.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-6-true_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-6-precision.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-6-specificity.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-6-negative_predicted_value.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-6-false_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-6-false_discovery_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-6-false_negative_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-6-false_omissions_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-7-n.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-7-adverse_impact.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-7-accuracy.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-7-true_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-7-precision.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-7-specificity.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-7-negative_predicted_value.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-7-false_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-7-false_discovery_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-7-false_negative_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-7-false_omissions_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-8-n.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-8-adverse_impact.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-8-accuracy.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-8-true_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-8-precision.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-8-specificity.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-8-negative_predicted_value.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-8-false_positive_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-8-false_discovery_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-8-false_negative_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_c4fbcad5-4a33-44e2-a9df-822b15160db7/global_html_fragment/text_html/dia-8-false_omissions_rate.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_aed2111b-1eb7-4326-b4f1-667891875532/global_html_fragment/text_html/fi-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_transformed_fi_shapley_explainer_ShapleyMojoTransformedFeatureImportanceExplainer_f6b7825f-05f5-4a32-b0a2-82f732cc49af/global_html_fragment/text_html/fi-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_3dea54b1-2df7-4a94-9aa6-29adf982cb67/global_html_fragment/text_html/dt-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_754a36db-9c03-49a7-9b49-6c86bad5ca66/global_html_fragment/text_html/dt-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/shapley-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_0_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_1_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_2_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_3_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_4_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_5_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_6_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_7_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_8_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_9_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_10_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_11_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_12_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_13_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_14_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_15_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_16_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_17_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_18_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_19_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_20_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_21_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_f6095285-10d7-4e07-bf2c-a7ffb7e7a543/global_html_fragment/text_html/feature_22_class_0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/global_html_fragment/text_html/pd-feature-0-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/global_html_fragment/text_html/pd-feature-1-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/global_html_fragment/text_html/pd-feature-2-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/global_html_fragment/text_html/pd-feature-3-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/global_html_fragment/text_html/pd-feature-4-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/global_html_fragment/text_html/pd-feature-5-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/global_html_fragment/text_html/pd-feature-6-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/global_html_fragment/text_html/pd-feature-7-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/global_html_fragment/text_html/pd-feature-8-class-0.png&#39;: replacing image with description
+[WARNING] Could not fetch resource &#39;explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_fcf9f631-32c7-45e1-b8ad-65a41143b31c/global_html_fragment/text_html/pd-feature-9-class-0.png&#39;: replacing image with description
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Creating new collection &#39;Talk to H2O Eval Studio 2023-10-31 13:50:01.669960&#39; at https://h2ogpte.h2o.ai
+Uploading the report to https://h2ogpte.h2o.ai and collection &#39;Talk to H2O Eval Studio 2023-10-31 13:50:01.669960&#39;...
+Converting data in the collection &#39;Talk to H2O Eval Studio 2023-10-31 13:50:01.669960&#39; into chunked text and embeddings...
+Upload DONE
+</pre></div></div>
+</div>
+</section>
+<section id="Result">
+<h2>Result<a class="headerlink" href="#Result" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use this link to open Enterprise h2oGPT collection w/ uploaded report</span>
+<span class="n">interpretation</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">upload_url</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;https://h2ogpte.h2o.ai/collections/c7f2749c-73f5-4116-9f01-256d11d557f7&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># open interpretation HTML report in web browser</span>
+<span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">interpretation</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">get_html_report_location</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../examples.h2ogpte.html" class="btn btn-neutral float-left" title="Enterprise h2oGPT Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../python_api.html" class="btn btn-neutral float-right" title="H2O Eval Studio Python API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,3949 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explainers &mdash; H2O Sonar 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/doc.explainers.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Generative Models" href="doc.generative.html" />
+    <link rel="prev" title="Interpretation Parameters" href="doc.interpretation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Sonar
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Sonar Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Sonar</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="doc.html">H2O Sonar Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="doc.configuration.html">Library Configuration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="doc.predictive.html">Predictive Models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="doc.models.html">Interpreting Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.datasets.html">Interpreting Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.interpretation.html">Interpretation Parameters</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Explainers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc.generative.html">Generative Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.result.html">Report and Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.talktoreport.html">Talk to Report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Sonar Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Sonar Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Sonar</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="doc.html">H2O Sonar Documentation</a></li>
+          <li class="breadcrumb-item"><a href="doc.predictive.html">Predictive Models</a></li>
+      <li class="breadcrumb-item active">Explainers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/doc.explainers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="explainers">
+<h1>Explainers<a class="headerlink" href="#explainers" title="Link to this heading"></a></h1>
+<img alt="Explainers overview" src="_images/explainers-overview.png" />
+<p>H2O Sonar explainers:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Approximate model behavior</dt><dd><ul>
+<li><p><a class="reference internal" href="#surrogate-decision-tree-explainer"><span class="std std-ref">Surrogate Decision Tree Explainer</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Feature importance</dt><dd><ul>
+<li><p><a class="reference internal" href="#shapley-summary-plot-for-original-features-naive-shapley-method-explainer"><span class="std std-ref">Shapley Summary Plot for Original Features (Naive Shapley Method) Explainer</span></a></p></li>
+<li><p><a class="reference internal" href="#shapley-values-for-original-features-kernel-shap-method-explainer"><span class="std std-ref">Shapley Values for Original Features (Kernel SHAP Method) Explainer</span></a></p></li>
+<li><p><a class="reference internal" href="#shapley-values-for-original-features-of-mojo-models-naive-method-explainer"><span class="std std-ref">Shapley Values for Original Features of MOJO Models (Naive Method) Explainer</span></a></p></li>
+<li><p><a class="reference internal" href="#shapley-values-for-transformed-features-of-mojo-models-explainer"><span class="std std-ref">Shapley Values for Transformed Features of MOJO Models Explainer</span></a></p></li>
+<li><p><a class="reference internal" href="#morris-sensitivity-analysis-explainer"><span class="std std-ref">Morris sensitivity analysis Explainer</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Feature behavior</dt><dd><ul>
+<li><p><a class="reference internal" href="#partial-dependence-individual-conditional-expectations-pd-ice-explainer"><span class="std std-ref">Partial Dependence/Individual Conditional Expectations (PD/ICE) Explainer</span></a></p></li>
+<li><p><a class="reference internal" href="#partial-dependence-for-2-features-explainer"><span class="std std-ref">Partial Dependence for 2 Features Explainer</span></a></p></li>
+<li><p><a class="reference internal" href="#friedman-s-h-statistic-explainer"><span class="std std-ref">Friedman’s H-statistic Explainer</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Fairness</dt><dd><ul>
+<li><p><a class="reference internal" href="#disparate-impact-analysis-dia-explainer"><span class="std std-ref">Disparate Impact Analysis (DIA) Explainer</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Model debugging</dt><dd><ul>
+<li><p><a class="reference internal" href="#residual-surrogate-decision-tree-explainer"><span class="std std-ref">Residual Surrogate Decision Tree Explainer</span></a></p></li>
+<li><p><a class="reference internal" href="#residual-partial-dependence-individual-conditional-expectations-pd-ice-explainer"><span class="std std-ref">Residual Partial Dependence/Individual Conditional Expectations (PD/ICE) Explainer</span></a></p></li>
+<li><p><a class="reference internal" href="#dataset-and-model-insights-explainer"><span class="std std-ref">Dataset and Model Insights Explainer</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Model validity testing</dt><dd><ul>
+<li><p><a class="reference internal" href="#adversarial-similarity-explainer"><span class="std std-ref">Adversarial Similarity Explainer</span></a></p></li>
+<li><p><a class="reference internal" href="#backtesting-explainer"><span class="std std-ref">Backtesting Explainer</span></a></p></li>
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-model-validation-explainers.html#Calibration-Score-explainer"><span class="std std-ref">Calibration Score explainer</span></a></p></li>
+<li><p><a class="reference internal" href="#drift-detection-explainer"><span class="std std-ref">Drift Detection Explainer</span></a></p></li>
+<li><p><a class="reference internal" href="#segment-performance-explainer"><span class="std std-ref">Segment Performance Explainer</span></a></p></li>
+<li><p><a class="reference internal" href="#size-dependency-explainer"><span class="std std-ref">Size Dependency Explainer</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>D/M</p></th>
+<th class="head"><p>IID</p></th>
+<th class="head"><p>TS</p></th>
+<th class="head"><p>R</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>M</p></th>
+<th class="head"><p>G</p></th>
+<th class="head"><p>L</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">p()</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">r()</span></code></p></th>
+<th class="head"><p>DAI</p></th>
+<th class="head"><p>autoML</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Decision Tree</p></td>
+<td><p>M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kernels SHAP Feature Importance</p></td>
+<td><p>M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>Naive Shapley Feature Importance</p></td>
+<td><p>M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>Summary Shapley</p></td>
+<td><p>M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>Morris Sensitivity Analysis</p></td>
+<td><p>M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>Transformed Feature Importance</p></td>
+<td><p>M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>PD/ICE</p></td>
+<td><p>M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>PD/ICE for 2 Features</p></td>
+<td><p>M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>Friedman H-statistic</p></td>
+<td><p>M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>Disparate Impact Analysis</p></td>
+<td><p>M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>Residual Decision Tree</p></td>
+<td><p>M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>Residual PD/ICE</p></td>
+<td><p>M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>Dataset and Model Insights</p></td>
+<td><p>D+M</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>Adversarial Similarity</p></td>
+<td><p>D+rD</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>Backtesting</p></td>
+<td><p>rM</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>Calibration Score</p></td>
+<td><p>rM</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>Drift Detection</p></td>
+<td><p>D+rD</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-odd"><td><p>Segment Performance</p></td>
+<td><p>rM</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>Size Dependency</p></td>
+<td><p>rM</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+<td><p>✓</p></td>
+<td><p>❌</p></td>
+</tr>
+</tbody>
+</table>
+<p>Legend:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>D/M</strong></dt><dd><ul>
+<li><p>Explainer can explain local dataset (<strong>D</strong>), remote dataset hosted by Driverless AI (<strong>rD</strong>), local model (<strong>M</strong>) or remote model hosted by Driverless AI (<strong>rM</strong>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>IID</strong></dt><dd><ul>
+<li><p>Explainer can explain IID models (with independent and identically distributed variables).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>TS</strong></dt><dd><ul>
+<li><p>Explainer can explain time series models.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>R</strong></dt><dd><ul>
+<li><p>Explainer can explain models for regression problems.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>B</strong></dt><dd><ul>
+<li><p>Explainer can explain models for binomial classification problems.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>M</strong></dt><dd><ul>
+<li><p>Explainer can explain models for multinomial classification problems.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Global</strong></dt><dd><ul>
+<li><p>Explainer provides global explanations.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Local</strong></dt><dd><ul>
+<li><p>Explainer provides local explanations.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>p()</strong></dt><dd><ul>
+<li><p>Model must support <code class="docutils literal notranslate"><span class="pre">predict()</span></code> method.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>r()</strong></dt><dd><ul>
+<li><p>Model must support <code class="docutils literal notranslate"><span class="pre">retrain()</span></code> or <code class="docutils literal notranslate"><span class="pre">refit()</span></code> method.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>DAI</strong></dt><dd><ul>
+<li><p>Explainer requires Driverless AI connection of the server which may host explained datasets and/or models.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>autoML</strong></dt><dd><ul>
+<li><p>Explainer requires connection to autoML Driverless AI worker in order to run experiments.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="explainer-parameters">
+<h2>Explainer Parameters<a class="headerlink" href="#explainer-parameters" title="Link to this heading"></a></h2>
+<p>Explainers can be parameterized using the parameters documented in the sections below.
+These parameters are explainer specific and can be passed to explainers using
+the Python API as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">mock_model</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">,</span>
+    <span class="n">explainers</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">commons</span><span class="o">.</span><span class="n">ExplainerToRun</span><span class="p">(</span>
+            <span class="n">explainer_id</span><span class="o">=</span><span class="n">explainer</span><span class="o">.</span><span class="n">PdIceExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">(),</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+                <span class="n">explainer</span><span class="o">.</span><span class="n">PdIceExplainer</span><span class="o">.</span><span class="n">PARAM_MAX_FEATURES</span><span class="p">:</span> <span class="n">param_max_features</span><span class="p">,</span>
+                <span class="n">explainer</span><span class="o">.</span><span class="n">PdIceExplainer</span><span class="o">.</span><span class="n">PARAM_GRID_RESOLUTION</span><span class="p">:</span> <span class="n">param_bins</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+    <span class="p">],</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>In the example above, <code class="docutils literal notranslate"><span class="pre">max_features</span></code> and <code class="docutils literal notranslate"><span class="pre">grid_parameters</span></code> parameters are passed
+to the <code class="docutils literal notranslate"><span class="pre">PdIceExplainer</span></code>. An instance of the <code class="docutils literal notranslate"><span class="pre">ExplainerToRun</span></code> class is used
+to specify explainer ID and its parameters, which are passed in a dictionary,
+where the key is string identifier of the parameter and value is the parameter value.</p>
+<p>Similarly parameters can be passed to the explainers using the command line (CLI) interface:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>h2o-sonar run interpretation
+  --dataset=dataset.csv
+  --model=model.pickle
+  --target-col=PROFIT
+  --explainers=h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer
+  --explainers-pars=
+    &quot;{&#39;h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer&#39;:{&#39;max_features&#39;: 5}}&quot;
+</pre></div>
+</div>
+</section>
+<section id="surrogate-decision-tree-explainer">
+<h2>Surrogate Decision Tree Explainer<a class="headerlink" href="#surrogate-decision-tree-explainer" title="Link to this heading"></a></h2>
+<p>The decision tree surrogate is an approximate overall flow chart of the model,
+created by training a simple decision tree on the original inputs and the predictions
+of the model.</p>
+<img alt="Surrogate decision tree plot example" src="_images/explainer-plot-dt.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">debug_residuals</span></code></dt><dd><ul>
+<li><p>Debug model residuals.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">debug_residuals_class</span></code></dt><dd><ul>
+<li><p>Class for debugging classification model <code class="docutils literal notranslate"><span class="pre">logloss</span></code> residuals, empty string for
+debugging regression model residuals.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dt_tree_depth</span></code></dt><dd><ul>
+<li><p>Decision tree depth.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">nfolds</span></code></dt><dd><ul>
+<li><p>Number of CV folds.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">qbin_cols</span></code></dt><dd><ul>
+<li><p>Quantile binning columns.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">qbin_count</span></code></dt><dd><ul>
+<li><p>Quantile bins count.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">categorical_encoding</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Categorical encoding - specify one of the following encoding schemes for handling of categorical features:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">AUTO</span></code>: 1 column per categorical feature.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Enum</span> <span class="pre">Limited</span></code>: Automatically reduce categorical levels to
+the most prevalent ones during training and only keep the top 10 most
+frequent levels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">One</span> <span class="pre">Hot</span> <span class="pre">Encoding</span></code>: N+1 new columns for categorical features with
+N levels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Label</span> <span class="pre">Encoder</span></code>: Convert every enum into the integer of its index
+(for example, level 0 -&gt; 0, level 1 -&gt; 1, etc.).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sort</span> <span class="pre">by</span> <span class="pre">Response</span></code>: Reorders the levels by the mean response
+(for example, the level with lowest response -&gt; 0, the level
+with second-lowest response -&gt; 1, etc.).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_89c7869d-666d-4ba2-ba84-cf1aa1b903bd
+├── global_custom_archive
+│   ├── application_zip
+│   │   └── explanation.zip
+│   └── application_zip.meta
+├── global_decision_tree
+│   ├── application_json
+│   │   ├── dt_class_0.json
+│   │   └── explanation.json
+│   └── application_json.meta
+├── local_decision_tree
+│   ├── application_json
+│   │   └── explanation.json
+│   └── application_json.meta
+├── log
+│   └── explainer_run_89c7869d-666d-4ba2-ba84-cf1aa1b903bd.log
+├── result_descriptor.json
+└── work
+    ├── dtModel.json
+    ├── dtpaths_frame.bin
+    ├── dtPathsFrame.csv
+    ├── dtsurr_mojo.zip
+    ├── dtSurrogate.json
+    └── dt_surrogate_rules.zip
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/dtSurrogate.json</span></code></dt><dd><ul>
+<li><p>Decision tree in JSon format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/dt_surrogate_rules.zip</span></code></dt><dd><ul>
+<li><p>Decision tree rules (in Python and text format) stored in ZIP archive.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/dtpaths_frame.bin</span></code></dt><dd><ul>
+<li><p>Decision tree paths stored as <code class="docutils literal notranslate"><span class="pre">datatable</span></code> frame.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/dtPathsFrame.csv</span></code></dt><dd><ul>
+<li><p>Decision tree paths stored as CSV file.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/dtsurr_mojo.zip</span></code></dt><dd><ul>
+<li><p>Decision tree model stored as zipped H2O-3 MOJO.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/dtModel.json</span></code></dt><dd><ul>
+<li><p>Decision tree model in JSon format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_custom_archive</span></code></dt><dd><ul>
+<li><p>ZIP archive with explainer artifacts.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_decision_tree</span></code></dt><dd><ul>
+<li><p>Decision tree explanation in the JSon format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">local_decision_tree</span></code></dt><dd><ul>
+<li><p>Local (per dataset row) decision tree explanations in the JSon format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-dt-surrogate-explainer.html#Decision-Tree-Surrogate-Explainer-Demo"><span class="std std-ref">Decision Tree Surrogate Explainer Demo</span></a></p></li>
+<li><p><a class="reference internal" href="#explainer-parameters"><span class="std std-ref">Explainer Parameters</span></a></p></li>
+</ul>
+</section>
+<section id="residual-surrogate-decision-tree-explainer">
+<h2>Residual Surrogate Decision Tree Explainer<a class="headerlink" href="#residual-surrogate-decision-tree-explainer" title="Link to this heading"></a></h2>
+<p>The residual surrogate decision tree predicts which paths in the tree (paths explain
+approximate model behavior) lead to highest or lowest error.
+The residual surrogate decision tree is created by training a
+simple decision tree on the residuals of the predictions of the model.
+Residuals are differences between observed and predicted values which can be
+used as targets in surrogate models for the purpose of model debugging.
+The method used to calculate residuals varies depending on the type of
+problem. For classification problems, <code class="docutils literal notranslate"><span class="pre">logloss</span></code> residuals are calculated for
+a specified class. For regression problems, residuals are determined by
+calculating the square of the difference between targeted and predicted
+values.”</p>
+<img alt="Residual surrogate decision tree plot example" src="_images/explainer-plot-residual-dt.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">debug_residuals_class</span></code></dt><dd><ul>
+<li><p>Class for debugging classification model <code class="docutils literal notranslate"><span class="pre">logloss</span></code> residuals, empty string for
+debugging regression model residuals.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dt_tree_depth</span></code></dt><dd><ul>
+<li><p>Decision tree depth.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">nfolds</span></code></dt><dd><ul>
+<li><p>Number of CV folds.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">qbin_cols</span></code></dt><dd><ul>
+<li><p>Quantile binning columns.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">qbin_count</span></code></dt><dd><ul>
+<li><p>Quantile bins count.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">categorical_encoding</span></code></dt><dd><ul>
+<li><p>Categorical encoding - specify one of the following encoding schemes for handling
+of categorical features:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">AUTO</span></code>: 1 column per categorical feature.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Enum</span> <span class="pre">Limited</span></code>: Automatically reduce categorical levels to
+the most prevalent ones during training and only keep the top 10 most
+frequent levels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">One</span> <span class="pre">Hot</span> <span class="pre">Encoding</span></code>: N+1 new columns for categorical features with
+N levels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Label</span> <span class="pre">Encoder</span></code>: Convert every enum into the integer of its index
+(for example, level 0 -&gt; 0, level 1 -&gt; 1, etc.).</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Sort</span> <span class="pre">by</span> <span class="pre">Response</span></code>: Reorders the levels by the mean response</dt><dd><p>(for example, the level with lowest response -&gt; 0, the level
+with second-lowest response -&gt; 1, etc.).</p>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_606aa553-e0f4-4a6f-a6b6-366955ca938d
+├── global_custom_archive
+│   ├── application_zip
+│   │   └── explanation.zip
+│   └── application_zip.meta
+├── global_decision_tree
+│   ├── application_json
+│   │   ├── dt_class_0.json
+│   │   └── explanation.json
+│   └── application_json.meta
+├── global_html_fragment
+│   ├── text_html
+│   │   ├── dt-class-0.png
+│   │   └── explanation.html
+│   └── text_html.meta
+├── local_decision_tree
+│   ├── application_json
+│   │   └── explanation.json
+│   └── application_json.meta
+├── log
+│   └── explainer_run_606aa553-e0f4-4a6f-a6b6-366955ca938d.log
+├── result_descriptor.json
+└── work
+    ├── dt-class-0.dot
+    ├── dt-class-0.dot.pdf
+    ├── dtModel.json
+    ├── dtpaths_frame.bin
+    ├── dtPathsFrame.csv
+    ├── dtsurr_mojo.zip
+    ├── dtSurrogate.json
+    └── dt_surrogate_rules.zip
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/dtSurrogate.json</span></code></dt><dd><ul>
+<li><p>Decision tree in JSon format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/dt_surrogate_rules.zip</span></code></dt><dd><ul>
+<li><p>Decision tree rules (in Python and text format) stored in ZIP archive.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/dtpaths_frame.bin</span></code></dt><dd><ul>
+<li><p>Decision tree paths stored as <code class="docutils literal notranslate"><span class="pre">datatable</span></code> frame.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/dtPathsFrame.csv</span></code></dt><dd><ul>
+<li><p>Decision tree paths stored as CSV file.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/dtsurr_mojo.zip</span></code></dt><dd><ul>
+<li><p>Decision tree model stored as zipped H2O-3 MOJO.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/dtModel.json</span></code></dt><dd><ul>
+<li><p>Decision tree model in JSon format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_custom_archive</span></code></dt><dd><ul>
+<li><p>ZIP archive with explainer artifacts.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_decision_tree</span></code></dt><dd><ul>
+<li><p>Decision tree explanation in the JSon format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">local_decision_tree</span></code></dt><dd><ul>
+<li><p>Local (per dataset row) decision tree explanations in the JSon format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Problems</strong> reported by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Path leading to the highest error</strong></dt><dd><ul>
+<li><p>The explainer reports residual decision tree path that leads to the highest error.
+This path should be investigated to determine whether it indicates a problem with
+the model.</p></li>
+<li><p>Problem severity: <code class="docutils literal notranslate"><span class="pre">LOW</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-residual-dt-surrogate-explainer.html#Residual-Decision-Tree-Surrogate-Explainer-Demo"><span class="std std-ref">Residual Decision Tree Surrogate Explainer Demo</span></a></p></li>
+<li><p><a class="reference internal" href="#explainer-parameters"><span class="std std-ref">Explainer Parameters</span></a></p></li>
+</ul>
+</section>
+<section id="shapley-summary-plot-for-original-features-naive-shapley-method-explainer">
+<h2>Shapley Summary Plot for Original Features (Naive Shapley Method) Explainer<a class="headerlink" href="#shapley-summary-plot-for-original-features-naive-shapley-method-explainer" title="Link to this heading"></a></h2>
+<p>Shapley explanations are a technique with credible theoretical support that
+presents consistent global and local feature contributions.</p>
+<p>The Shapley Summary Plot shows original features versus their local Shapley
+values on a sample of the dataset. Feature values are binned by Shapley
+values and the average normalized feature value for each bin is plotted.
+The legend corresponds to numeric features and maps to their normalized
+value - yellow is the lowest value and deep orange is the highest. You can also
+get scatter plot of the actual numeric feature values versus their corresponding
+Shapley values. Categorical features are shown in grey and do not provide an
+actual-value scatter plot.</p>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>The Shapley Summary Plot only shows original features that are used in the model.</p></li>
+<li><p>The dataset sample size and the number of bins can be updated in the interpretation
+parameters.</p></li>
+<li><p>If feature engineering is turned off and there is no sampling, then the
+Naive Shapley values should match the transformed Shapley values.</p></li>
+</ul>
+<img alt="Summary Shapley plot example" src="_images/explainer-plot-summary-shapley.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sample_size</span></code></dt><dd><ul>
+<li><p>Sample size (default is <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">000</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">max_features</span></code></dt><dd><ul>
+<li><p>Maximum number of features to be shown in the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">x_shapley_resolution</span></code></dt><dd><ul>
+<li><p>X-axis resolution (number of Shapley values bins).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">enable_drill_down_charts</span></code></dt><dd><ul>
+<li><p>Enable creation of per-feature Shapley/feature value scatter plots.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_summary_shap_explainer_SummaryShapleyExplainer_36d41c37-7641-4519-9358-a7ddc947f704
+├── global_summary_feature_importance
+│   ├── application_json
+│   │   ├── explanation.json
+│   │   ├── feature_0_class_0.png
+│   │   ├── feature_10_class_0.png
+│   │   ├── feature_11_class_0.png
+│   │   ├── feature_12_class_0.png
+│   │   ├── feature_13_class_0.png
+│   │   ├── feature_14_class_0.png
+│   │   ├── feature_15_class_0.png
+│   │   ├── feature_16_class_0.png
+│   │   ├── feature_17_class_0.png
+│   │   ├── feature_18_class_0.png
+│   │   ├── feature_19_class_0.png
+│   │   ├── feature_1_class_0.png
+│   │   ├── feature_20_class_0.png
+│   │   ├── feature_21_class_0.png
+│   │   ├── feature_22_class_0.png
+│   │   ├── feature_23_class_0.png
+│   │   ├── feature_2_class_0.png
+│   │   ├── feature_3_class_0.png
+│   │   ├── feature_4_class_0.png
+│   │   ├── feature_5_class_0.png
+│   │   ├── feature_6_class_0.png
+│   │   ├── feature_7_class_0.png
+│   │   ├── feature_8_class_0.png
+│   │   ├── feature_9_class_0.png
+│   │   ├── summary_feature_importance_class_0_offset_0.json
+│   │   ├── summary_feature_importance_class_0_offset_1.json
+│   │   └── summary_feature_importance_class_0_offset_2.json
+│   ├── application_json.meta
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   └── summary_feature_importance_class_0.jay
+│   ├── application_vnd_h2oai_json_datatable_jay.meta
+│   ├── text_markdown
+│   │   ├── explanation.md
+│   │   └── shapley-class-0.png
+│   └── text_markdown.meta
+├── log
+│   └── explainer_run_36d41c37-7641-4519-9358-a7ddc947f704.log
+├── result_descriptor.json
+└── work
+    ├── raw_shapley_contribs_class_0.jay
+    ├── raw_shapley_contribs_index.json
+    ├── report.md
+    └── shapley-class-0.png
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/report.md</span></code></dt><dd><ul>
+<li><p>Markdown report with per-class summary Shapley feature importance charts
+(<code class="docutils literal notranslate"><span class="pre">shapley-class-&lt;class</span> <span class="pre">number&gt;.png</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/raw_shapley_contribs_index.json</span></code></dt><dd><ul>
+<li><p>Per model class Shapley contributions JSon index - it references <code class="docutils literal notranslate"><span class="pre">datatable</span></code>
+<code class="docutils literal notranslate"><span class="pre">.jay</span></code> frame with the contributions for each class of the model.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_summary_feature_importance</span></code></dt><dd><ul>
+<li><p>Summary original feature importance explanation in Markdown (text and global chart),
+JSon (includes drill-down scatter plots) and <code class="docutils literal notranslate"><span class="pre">datatable</span></code> formats.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-summary-shap-explainer.html#Summary-Shapley-Explainer-Demo"><span class="std std-ref">Summary Shapley Explainer Demo</span></a></p></li>
+<li><p><a class="reference internal" href="#explainer-parameters"><span class="std std-ref">Explainer Parameters</span></a></p></li>
+</ul>
+</section>
+<section id="shapley-values-for-original-features-kernel-shap-method-explainer">
+<h2>Shapley Values for Original Features (Kernel SHAP Method) Explainer<a class="headerlink" href="#shapley-values-for-original-features-kernel-shap-method-explainer" title="Link to this heading"></a></h2>
+<p>Shapley explanations are a technique with credible theoretical support
+that presents consistent global and local variable contributions.
+Local numeric Shapley values are calculated by tracing single rows
+of data through a trained tree ensemble and aggregating the
+contribution of each input variable as the row of data moves through
+the trained ensemble. For regression tasks, Shapley values sum to
+the prediction of the Driverless AI model. For classification
+problems, Shapley values sum to the prediction of the Driverless AI
+model before applying the link function. Global Shapley values are
+the average of the absolute Shapley values over every
+row of a dataset. Shapley values for original features are calculated
+with the Kernel Explainer method, which uses a special weighted
+linear regression to compute the importance of each feature. More
+information about Kernel SHAP is available at
+<a class="reference external" href="http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions.pdf">A Unified Approach to Interpreting Model Predictions</a>.</p>
+<img alt="Kernel SHAP plot example" src="_images/explainer-plot-kernel-shap.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sample_size</span></code></dt><dd><ul>
+<li><p>Sample size (default is <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">000</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sample</span></code></dt><dd><ul>
+<li><p>Whether to sample Kernel SHAP (default is <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">nsample</span></code></dt><dd><ul>
+<li><p>Number of times to re-evaluate the model when
+explaining each prediction with Kernel Explainer.
+Default is determined internally.’auto’ or int.
+Number of times to re-evaluate the model when explaining each
+prediction. More samples lead to lower variance
+estimates of the SHAP values. The ‘auto’ setting uses
+<code class="docutils literal notranslate"><span class="pre">nsamples</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">X.shape[1]</span> <span class="pre">+</span> <span class="pre">2048</span></code>. This setting is disabled by
+default and runtime determines the right number internally.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">L1</span></code></dt><dd><ul>
+<li><p>L1 regularization for Kernel Explainer. ”
+‘num_features(int)’, ‘auto’ (default for now, ”
+but deprecated), ‘aic’, ‘bic’, or float. The L1 regularization to
+use for feature selection (the estimation procedure is based on
+a debiased lasso). The ‘auto’ option currently uses aic when
+less that 20% of the possible sample space is enumerated,
+otherwise it uses no regularization. The aic and bic options use
+the AIC and BIC rules for regularization. Using
+‘num_features(int)’ selects a fix number of top features. Passing
+a float directly sets the alpha parameter of the
+<code class="docutils literal notranslate"><span class="pre">sklearn.linear_model.Lasso</span></code> model used for feature selection.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">max_runtime</span></code></dt><dd><ul>
+<li><p>Max runtime for Kernel explainer in seconds.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">leakage_warning_threshold</span></code></dt><dd><ul>
+<li><p>Threshold for showing potential data leakage in the most important feature.
+Data leakage occurs when a feature influences the target column
+too much. High feature importance value means that the model you trained with
+this dataset will not be predicting the target based on all features
+but rather on just one. More about feature data leakage (also target
+leakage) at <a class="reference external" href="https://h2o.ai/wiki/target-leakage/">Target leakage H2O.ai Wiki</a>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_fi_kernel_shap_explainer_KernelShapFeatureImportanceExplainer_aef847c4-9b5b-458c-a5e6-0ce7fa99748b
+├── global_feature_importance
+│   ├── application_json
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.json
+│   ├── application_json.meta
+│   ├── application_vnd_h2oai_json_csv
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.csv
+│   ├── application_vnd_h2oai_json_csv.meta
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.jay
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── local_feature_importance
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   ├── feature_importance_class_0.jay
+│   │   └── y_hat.bin
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── log
+│   └── explainer_run_aef847c4-9b5b-458c-a5e6-0ce7fa99748b.log
+├── result_descriptor.json
+└── work
+    ├── shapley_formatted_orig_feat.zip
+    ├── shapley.orig.feat.bin
+    ├── shapley.orig.feat.csv
+    └── y_hat.bin
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/y_hat</span></code></dt><dd><ul>
+<li><p>Prediction for the dataset.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/shapley.orig.feat.bin</span></code></dt><dd><ul>
+<li><p>Original model features importance as <code class="docutils literal notranslate"><span class="pre">datatable</span></code> frame.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/shapley.orig.feat.csv</span></code></dt><dd><ul>
+<li><p>Original model features importance as CSV file.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/shapley_formatted_orig_feat.zip</span></code></dt><dd><ul>
+<li><p>Archive with (re)formatted original features importance.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_feature_importance</span></code></dt><dd><ul>
+<li><p>Original feature importance in JSon, CSV and <code class="docutils literal notranslate"><span class="pre">datatable</span></code> formats.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">local_feature_importance</span></code></dt><dd><ul>
+<li><p>Local (per dataset row) original feature importance in the <code class="docutils literal notranslate"><span class="pre">datatable</span></code> format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Problems</strong> reported by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Potential feature importance leak</strong></dt><dd><ul>
+<li><p>The explainer reports a column with potential feature importance leak. Such column
+should be investigated and in case of the leak either removed from the dataset
+or weighted down in the model training process.</p></li>
+<li><p>Problem severity: <code class="docutils literal notranslate"><span class="pre">HIGH</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-original-feature-kernel-shap-importance-explainer.html#Original-Feature-Importance-Explainer-(Kernel-SHAP)-Demo"><span class="std std-ref">Original Feature Importance Explainer (Kernel SHAP) Demo</span></a></p></li>
+<li><p><a class="reference internal" href="#explainer-parameters"><span class="std std-ref">Explainer Parameters</span></a></p></li>
+</ul>
+</section>
+<section id="shapley-values-for-original-features-of-mojo-models-naive-method-explainer">
+<h2>Shapley Values for Original Features of MOJO Models (Naive Method) Explainer<a class="headerlink" href="#shapley-values-for-original-features-of-mojo-models-naive-method-explainer" title="Link to this heading"></a></h2>
+<p>Shapley values for original features of (Driverless AI) MOJO models are
+approximated from the accompanying Shapley values for transformed features
+with the Naive Shapley method. This method makes the assumption that input
+features to a transformer are independent. For example, if the transformed
+feature, <code class="docutils literal notranslate"><span class="pre">feature1_feature2</span></code>, has a Shapley value of <code class="docutils literal notranslate"><span class="pre">0.5</span></code>, then the
+Shapley value of the original features <code class="docutils literal notranslate"><span class="pre">feature1</span></code> and <code class="docutils literal notranslate"><span class="pre">feature2</span></code> will
+be <code class="docutils literal notranslate"><span class="pre">0.25</span></code> each.</p>
+<img alt="Naive Shapley plot example" src="_images/explainer-plot-naive-shapley.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sample_size</span></code></dt><dd><ul>
+<li><p>Sample size (default is <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">000</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">leakage_warning_threshold</span></code></dt><dd><ul>
+<li><p>Threshold for showing potential data leakage in the most important feature.
+Data leakage occurs when a feature influences the target column
+too much. High feature importance value means that the model you trained with
+this dataset will not be predicting the target based on all features
+but rather on just one. More about feature data leakage (also target
+leakage) at <a class="reference external" href="https://h2o.ai/wiki/target-leakage/">Target leakage H2O.ai Wiki</a>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_fi_naive_shapley_explainer_NaiveShapleyMojoFeatureImportanceExplainer_dbeeb343-7233-4153-a3da-8df0625b9925
+├── global_feature_importance
+│   ├── application_json
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.json
+│   ├── application_json.meta
+│   ├── application_vnd_h2oai_json_csv
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.csv
+│   ├── application_vnd_h2oai_json_csv.meta
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.jay
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── local_feature_importance
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   ├── feature_importance_class_0.jay
+│   │   └── y_hat.bin
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── log
+│   └── explainer_run_dbeeb343-7233-4153-a3da-8df0625b9925.log
+├── result_descriptor.json
+└── work
+    ├── shapley_formatted_orig_feat.zip
+    ├── shapley.orig.feat.bin
+    ├── shapley.orig.feat.csv
+    └── y_hat.bin
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/y_hat</span></code></dt><dd><ul>
+<li><p>Prediction for the dataset.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/shapley.orig.feat.bin</span></code></dt><dd><ul>
+<li><p>Original model features importance as <code class="docutils literal notranslate"><span class="pre">datatable</span></code> frame.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/shapley.orig.feat.csv</span></code></dt><dd><ul>
+<li><p>Original model features importance as CSV file.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/shapley_formatted_orig_feat.zip</span></code></dt><dd><ul>
+<li><p>Archive with (re)formatted original features importance.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_feature_importance</span></code></dt><dd><ul>
+<li><p>Original feature importance in JSon, CSV and <code class="docutils literal notranslate"><span class="pre">datatable</span></code> formats.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">local_feature_importance</span></code></dt><dd><ul>
+<li><p>Local (per dataset row) original feature importance in the <code class="docutils literal notranslate"><span class="pre">datatable</span></code> format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Problems</strong> reported by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Potential feature importance leak</strong></dt><dd><ul>
+<li><p>The explainer reports a column with potential feature importance leak. Such column
+should be investigated and in case of the leak either removed from the dataset
+or weighted down in the model training process.</p></li>
+<li><p>Problem severity: <code class="docutils literal notranslate"><span class="pre">HIGH</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-dai-original-feature-naive-shapley-importance-explainer.html#Original-Feature-Importance-Explainer-for-MOJO-Models-(Naive-Shapley-method)-Demo"><span class="std std-ref">Original Feature Importance Explainer for MOJO Models (Naive Shapley method) Demo</span></a></p></li>
+<li><p><a class="reference internal" href="#explainer-parameters"><span class="std std-ref">Explainer Parameters</span></a></p></li>
+</ul>
+</section>
+<section id="shapley-values-for-transformed-features-of-mojo-models-explainer">
+<h2>Shapley Values for Transformed Features of MOJO Models Explainer<a class="headerlink" href="#shapley-values-for-transformed-features-of-mojo-models-explainer" title="Link to this heading"></a></h2>
+<p>Shapley explanations are a technique with credible theoretical support
+that presents consistent global and local variable contributions. Local
+numeric Shapley values are calculated by tracing single rows of data
+through a trained tree ensemble and aggregating the contribution of each
+input variable as the row of data moves through the trained ensemble.
+For regression tasks Shapley values sum to the prediction of the
+(Driverless AI) MOJO model. For classification problems, Shapley values sum
+to the prediction of the MOJO model before applying the link function.
+Global Shapley values are the average of the absolute local Shapley values
+over every row of a data set.</p>
+<img alt="Transformed Shapley plot example" src="_images/explainer-plot-transformed-shapley.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sample_size</span></code></dt><dd><ul>
+<li><p>Sample size (default is <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">000</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">calculate_predictions</span></code></dt><dd><ul>
+<li><p>Score dataset and include predictions in the explanation (local explanations
+speed-up cache).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_transformed_fi_shapley_explainer_ShapleyMojoTransformedFeatureImportanceExplainer_3390cc51-3560-40c6-97c7-2980f2a77dae
+├── global_feature_importance
+│   ├── application_json
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.json
+│   ├── application_json.meta
+│   ├── application_vnd_h2oai_json_csv
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.csv
+│   ├── application_vnd_h2oai_json_csv.meta
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.jay
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── local_feature_importance
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.jay
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── log
+│   └── explainer_run_3390cc51-3560-40c6-97c7-2980f2a77dae.log
+├── result_descriptor.json
+└── work
+    ├── shapley.bin
+    ├── shapley.csv
+    └── shapley_formatted.zip
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/shapley.bin</span></code></dt><dd><ul>
+<li><p>Transformed model features importance as <code class="docutils literal notranslate"><span class="pre">datatable</span></code> frame.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/shapley.csv</span></code></dt><dd><ul>
+<li><p>Transformed model features importance as CSV file.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/shapley_formatted.zip</span></code></dt><dd><ul>
+<li><p>Archive with (re)formatted transformed features importance.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_feature_importance</span></code></dt><dd><ul>
+<li><p>Transformed feature importance in JSon, CSV and <code class="docutils literal notranslate"><span class="pre">datatable</span></code> formats.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">local_feature_importance</span></code></dt><dd><ul>
+<li><p>Local (per dataset row) transformed feature importance in the <code class="docutils literal notranslate"><span class="pre">datatable</span></code> format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Problems</strong> reported by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Potential feature importance leak</strong></dt><dd><ul>
+<li><p>The explainer reports a column with potential feature importance leak. Such column
+should be investigated and in case of the leak associated original features analyzed.</p></li>
+<li><p>Problem severity: <code class="docutils literal notranslate"><span class="pre">HIGH</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-dai-shapley-for-transformed-feature-importance-explainer.html#Shapley-Values-for-Transformed-Features-of-MOJO-Models-Demo"><span class="std std-ref">Shapley Values for Transformed Features of MOJO Models Demo</span></a></p></li>
+<li><p><a class="reference internal" href="#explainer-parameters"><span class="std std-ref">Explainer Parameters</span></a></p></li>
+</ul>
+</section>
+<section id="partial-dependence-individual-conditional-expectations-pd-ice-explainer">
+<h2>Partial Dependence/Individual Conditional Expectations (PD/ICE) Explainer<a class="headerlink" href="#partial-dependence-individual-conditional-expectations-pd-ice-explainer" title="Link to this heading"></a></h2>
+<p>Partial dependence plot (PDP) portrays the average prediction
+behavior of the model across the domain of an input variable along with +/- 1
+standard deviation bands. Individual Conditional Expectations plot (ICE) displays
+the prediction behavior for an individual row of data when an input variable is
+toggled across its domain.</p>
+<img alt="PD/ICE plot example" src="_images/explainer-plot-pd.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sample_size</span></code></dt><dd><ul>
+<li><p>Sample size (default is <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">000</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">max_features</span></code></dt><dd><ul>
+<li><p>Partial Dependence Plot number of features (to see all features used by model
+set to <code class="docutils literal notranslate"><span class="pre">-1</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">features</span></code></dt><dd><ul>
+<li><p>Partial Dependence Plot feature list.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">grid_resolution</span></code></dt><dd><ul>
+<li><p>Partial Dependence Plot observations per bin (number of equally spaced points
+used to create bins).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">oor_grid_resolution</span></code></dt><dd><ul>
+<li><p>Partial Dependence Plot number of out of range bins.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">center</span></code></dt><dd><ul>
+<li><p>Center Partial Dependence Plot using ICE centered at 0.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sort_bins</span></code></dt><dd><ul>
+<li><p>Ensure bin values sorting.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">quantile-bin-grid-resolution</span></code></dt><dd><ul>
+<li><p>Partial Dependence Plot quantile binning (total quantile points used to create
+bins).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">quantile-bins</span></code></dt><dd><ul>
+<li><p>Per-feature quantile binning.</p></li>
+<li><p>Example: if choosing features <code class="docutils literal notranslate"><span class="pre">F1</span></code> and <code class="docutils literal notranslate"><span class="pre">F2</span></code>, this parameter is
+<code class="docutils literal notranslate"><span class="pre">{&quot;F1&quot;:</span> <span class="pre">2,&quot;F2&quot;:</span> <span class="pre">5}</span></code>. Note, you can set all features to use the same
+quantile binning with the “Partial Dependence Plot quantile binning” parameter
+and then adjust the quantile binning for a subset of PDP features with
+this parameter.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">histograms</span></code></dt><dd><ul>
+<li><p>Enable or disable histograms.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">numcat_num_chart</span></code></dt><dd><ul>
+<li><p>Unique feature values count driven Partial Dependence Plot binning and chart
+selection.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">numcat_threshold</span></code></dt><dd><ul>
+<li><p>Threshold for Partial Dependence Plot binning and chart selection
+(&lt;= threshold categorical, &gt; threshold numeric).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_pd_ice_explainer_PdIceExplainer_ee264725-cdab-476c-bad5-02cf778e1c1e
+├── global_partial_dependence
+│   ├── application_json
+│   │   ├── explanation.json
+│   │   ├── pd_feature_0_class_0.json
+│   │   ├── pd_feature_1_class_0.json
+│   │   ├── pd_feature_2_class_0.json
+│   │   ├── pd_feature_3_class_0.json
+│   │   ├── pd_feature_4_class_0.json
+│   │   ├── pd_feature_5_class_0.json
+│   │   ├── pd_feature_6_class_0.json
+│   │   ├── pd_feature_7_class_0.json
+│   │   ├── pd_feature_8_class_0.json
+│   │   └── pd_feature_9_class_0.json
+│   └── application_json.meta
+├── local_individual_conditional_explanation
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   ├── ice_feature_0_class_0.jay
+│   │   ├── ice_feature_1_class_0.jay
+│   │   ├── ice_feature_2_class_0.jay
+│   │   ├── ice_feature_3_class_0.jay
+│   │   ├── ice_feature_4_class_0.jay
+│   │   ├── ice_feature_5_class_0.jay
+│   │   ├── ice_feature_6_class_0.jay
+│   │   ├── ice_feature_7_class_0.jay
+│   │   ├── ice_feature_8_class_0.jay
+│   │   ├── ice_feature_9_class_0.jay
+│   │   └── y_hat.jay
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── log
+│   └── explainer_run_ee264725-cdab-476c-bad5-02cf778e1c1e.log
+├── result_descriptor.json
+└── work
+    ├── h2o_sonar-ice-dai-model-10.jay
+    ├── h2o_sonar-ice-dai-model-1.jay
+    ├── h2o_sonar-ice-dai-model-2.jay
+    ├── h2o_sonar-ice-dai-model-3.jay
+    ├── h2o_sonar-ice-dai-model-4.jay
+    ├── h2o_sonar-ice-dai-model-5.jay
+    ├── h2o_sonar-ice-dai-model-6.jay
+    ├── h2o_sonar-ice-dai-model-7.jay
+    ├── h2o_sonar-ice-dai-model-8.jay
+    ├── h2o_sonar-ice-dai-model-9.jay
+    ├── h2o_sonar-ice-dai-model.json
+    ├── h2o_sonar-pd-dai-model.json
+    └── mli_dataset_y_hat.jay
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/</span></code></dt><dd><ul>
+<li><p>Data artifacts used to calculate PD and ICE.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_partial_dependence</span></code></dt><dd><ul>
+<li><p>Per-feature partial dependence explanation in JSon format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">local_individual_conditional_explanation</span></code></dt><dd><ul>
+<li><p>Per-feature individual conditional expectation explanation in JSon
+and <code class="docutils literal notranslate"><span class="pre">datatable</span></code> format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>PD/ICE explainer <strong>binning</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Integer</strong> feature:</dt><dd><ul>
+<li><dl class="simple">
+<dt>bins in <strong>numeric</strong> mode:</dt><dd><ul>
+<li><p>bins are integers</p></li>
+<li><p>(at most) <cite>grid_resolution</cite> integer values in between minimum and maximum
+of feature values</p></li>
+<li><p>bin values are created as evenly as possible</p></li>
+<li><p>minimum and maximum is included in bins
+(if <cite>grid_resolution</cite> is bigger or equal to 2)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bins in <strong>categorical</strong> mode:</dt><dd><ul>
+<li><p>bins are integers</p></li>
+<li><p>top <cite>grid_resolution</cite> values from feature values ordered by frequency
+(int values are converted to strings and most frequent values are used
+as bins)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>quantile bins in <strong>numeric</strong> mode:</dt><dd><ul>
+<li><p>bins are integers</p></li>
+<li><p>bin values are created with the aim that there will be the same number of
+observations per bin</p></li>
+<li><p>q-quantile used to created <code class="docutils literal notranslate"><span class="pre">q</span></code> bins where <code class="docutils literal notranslate"><span class="pre">q</span></code> is specified by PD parameter</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>quantile bins in <strong>categorical</strong> mode:</dt><dd><ul>
+<li><p>not supported</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Float</strong> feature:</dt><dd><ul>
+<li><dl class="simple">
+<dt>bins in <strong>numeric</strong> mode:</dt><dd><ul>
+<li><p>bins are floats</p></li>
+<li><dl class="simple">
+<dt><cite>grid_resolution</cite> float values in between minimum and maximum of feature</dt><dd><p>values</p>
+</dd>
+</dl>
+</li>
+<li><p>bin values are created as evenly as possible</p></li>
+<li><p>minimum and maximum is included in bins
+(if <cite>grid_resolution</cite> is bigger or equal to 2)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bins in <strong>categorical</strong> mode:</dt><dd><ul>
+<li><p>bins are floats</p></li>
+<li><p>top <cite>grid_resolution</cite> values from feature values ordered by frequency
+(float values are converted to strings and most frequent values are used
+as bins)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>quantile bins in <strong>numeric</strong> mode:</dt><dd><ul>
+<li><p>bins are floats</p></li>
+<li><p>bin values are created with the aim that there will be the same number of
+observations per bin</p></li>
+<li><p>q-quantile used to created <code class="docutils literal notranslate"><span class="pre">q</span></code> bins where <code class="docutils literal notranslate"><span class="pre">q</span></code> is specified by PD parameter</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>quantile bins in <strong>categorical</strong> mode:</dt><dd><ul>
+<li><p>not supported</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>String</strong> feature:</dt><dd><ul>
+<li><dl class="simple">
+<dt>bins in <strong>numeric</strong> mode:</dt><dd><ul>
+<li><p>not supported</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bins in <strong>categorical</strong> mode:</dt><dd><ul>
+<li><p>bins are strings</p></li>
+<li><p>top <cite>grid_resolution</cite> values from feature values ordered by frequency</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>quantile bins:</dt><dd><ul>
+<li><p>not supported</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Date/datetime</strong> feature:</dt><dd><ul>
+<li><dl class="simple">
+<dt>bins in <strong>numeric</strong> mode:</dt><dd><ul>
+<li><p>bins are dates</p></li>
+<li><p><cite>grid_resolution</cite> date values in between minimum and maximum of feature
+values</p></li>
+<li><dl class="simple">
+<dt>bin values are created as evenly as possible:</dt><dd><ol class="arabic simple">
+<li><p>dates are parsed and converted to epoch timestamps i.e integers</p></li>
+<li><p>bins are created as in case of numeric integer binning</p></li>
+<li><p>integer bins are converted back to original date format</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p>minimum and maximum is included in bins
+(if <cite>grid_resolution</cite> is bigger or equal to 2)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bins in <strong>categorical</strong> mode:</dt><dd><ul>
+<li><p>bins are dates</p></li>
+<li><p>top <cite>grid_resolution</cite> values from feature values ordered by frequency
+(dates are handled as opaque strings and most frequent values are used
+as bins)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>quantile bins:</dt><dd><ul>
+<li><p>not supported</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>PD/ICE explainer <strong>out of range binning</strong>:</p>
+<ul>
+<li><dl>
+<dt><strong>Integer</strong> feature:</dt><dd><ul>
+<li><p>OOR bins in <strong>numeric</strong> mode:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>OOR bins are integers</p></li>
+<li><p>(at most) <cite>oor_grid_resolution</cite> integer values are added below minimum and
+above maximum</p></li>
+<li><p>bin values are created by adding/substracting rounded standard deviation
+(of feature values) above and below maximum and minimum <cite>oor_grid_resolution</cite>
+times</p>
+<ul>
+<li><p>1 used used if rounded standard deviation would be 0</p></li>
+</ul>
+</li>
+<li><p>if feature is of unsigned integer type, then bins below 0
+are not created</p>
+<ul>
+<li><p>if rounded standard deviation and/or <cite>oor_grid_resolution</cite> is so high
+that it would cause lower OOR bins to be negative numbers, then standard
+deviation of size 1 is tried instead</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="simple">
+<dt>OOR bins in <strong>categorical</strong> mode:</dt><dd><ul class="simple">
+<li><p>same as numeric mode</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Float</strong> feature:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>OOR bins in <strong>numeric</strong> mode:</dt><dd><ul>
+<li><p>OOR bins are floats</p></li>
+<li><p><cite>oor_grid_resolution</cite> float values are added below minimum and above maximum</p></li>
+<li><p>bin values are created by adding/substracting standard deviation
+(of feature values) above and below maximum and minimum <cite>oor_grid_resolution</cite>
+times</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>OOR bins in <strong>categorical</strong> mode:</dt><dd><ul>
+<li><p>same as numeric mode</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>String</strong> feature:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>bins in <strong>numeric</strong> mode:</dt><dd><ul>
+<li><p>not supported</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bins in <strong>categorical</strong> mode:</dt><dd><ul>
+<li><p>OOR bins are strings</p></li>
+<li><p>value <cite>UNSEEN</cite> is added as OOR bin</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Date</strong> feature:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>bins in <strong>numeric</strong> mode:</dt><dd><ul>
+<li><p>not supported</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bins in <strong>categorical</strong> mode:</dt><dd><ul>
+<li><p>OOR bins are strings</p></li>
+<li><p>value <cite>UNSEEN</cite> is added as OOR bin</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-pd-explainer.html#Partial-dependence-/-Individual-Conditional-Expectation-(PD/ICE)-Explainer-Demo"><span class="std std-ref">Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</span></a></p></li>
+<li><p><a class="reference internal" href="#explainer-parameters"><span class="std std-ref">Explainer Parameters</span></a></p></li>
+</ul>
+</section>
+<section id="partial-dependence-for-2-features-explainer">
+<h2>Partial Dependence for 2 Features Explainer<a class="headerlink" href="#partial-dependence-for-2-features-explainer" title="Link to this heading"></a></h2>
+<p>Partial dependence for 2 features portrays the average
+prediction behavior of a model across the domains of two input variables
+i.e. interaction of feature tuples with the prediction. While PD for one feature
+produces 2D plot, PD for two features produces 3D plots. This explainer plots PD for
+two features using heatmap, contour 3D or surface 3D.</p>
+<img alt="PD for 2 Features plot example" src="_images/explainer-plot-pd-for-2-features.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sample_size</span></code></dt><dd><ul>
+<li><p>Sample size (default is <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">000</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">max_features</span></code></dt><dd><ul>
+<li><p>Partial Dependence Plot number of features (to see all features used by model
+set to <code class="docutils literal notranslate"><span class="pre">-1</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">features</span></code></dt><dd><ul>
+<li><p>Partial Dependence Plot feature list.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">grid_resolution</span></code></dt><dd><ul>
+<li><p>Partial Dependence Plot observations per bin (number of equally spaced points
+used to create bins).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">oor_grid_resolution</span></code></dt><dd><ul>
+<li><p>Partial Dependence Plot number of out of range bins.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">quantile-bin-grid-resolution</span></code></dt><dd><ul>
+<li><p>Partial Dependence Plot quantile binning (total quantile points used to create
+bins).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">plot_type</span></code></dt><dd><ul>
+<li><p>Plot type to be used for Partial Dependence rendering - <code class="docutils literal notranslate"><span class="pre">heatmap</span></code>,
+<code class="docutils literal notranslate"><span class="pre">contour-3d</span></code> or <code class="docutils literal notranslate"><span class="pre">surface-3d</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_pd_2_features_explainer_PdFor2FeaturesExplainer_f710d221-64dc-4dc3-8e1f-2922d5a32cab
+├── global_3d_data
+│   ├── application_json
+│   │   ├── data3d_feature_0_class_0.json
+│   │   ├── data3d_feature_1_class_0.json
+│   │   ├── data3d_feature_2_class_0.json
+│   │   ├── data3d_feature_3_class_0.json
+│   │   ├── data3d_feature_4_class_0.json
+│   │   ├── data3d_feature_5_class_0.json
+│   │   └── explanation.json
+│   ├── application_json.meta
+│   ├── application_vnd_h2oai_json_csv
+│   │   ├── data3d_feature_0_class_0.csv
+│   │   ├── data3d_feature_1_class_0.csv
+│   │   ├── data3d_feature_2_class_0.csv
+│   │   ├── data3d_feature_3_class_0.csv
+│   │   ├── data3d_feature_4_class_0.csv
+│   │   ├── data3d_feature_5_class_0.csv
+│   │   └── explanation.json
+│   └── application_vnd_h2oai_json_csv.meta
+├── global_html_fragment
+│   ├── text_html
+│   │   ├── explanation.html
+│   │   ├── image-0.png
+│   │   ├── image-1.png
+│   │   ├── image-2.png
+│   │   ├── image-3.png
+│   │   ├── image-4.png
+│   │   └── image-5.png
+│   └── text_html.meta
+├── global_report
+│   ├── text_markdown
+│   │   ├── explanation.md
+│   │   ├── image-0.png
+│   │   ├── image-1.png
+│   │   ├── image-2.png
+│   │   ├── image-3.png
+│   │   ├── image-4.png
+│   │   └── image-5.png
+│   └── text_markdown.meta
+├── log
+│   └── explainer_run_f710d221-64dc-4dc3-8e1f-2922d5a32cab.log
+├── model_problems
+│   └── problems_and_actions.json
+├── result_descriptor.json
+└── work
+    ├── ...
+    └── report.md
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/</span></code></dt><dd><ul>
+<li><p>Data artifacts used to calculate the PD for 2 features.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_3d_data</span></code></dt><dd><ul>
+<li><p>Per-feature tuple partial dependence explanation in JSon and CSV format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_report</span></code></dt><dd><ul>
+<li><p>Per-feature tuple partial dependence report in Markdown format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_html_fragment</span></code></dt><dd><ul>
+<li><p>Per-feature tuple partial dependence report as HTML snippet.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-pd-for-2-features-explainer.html#Partial-Dependence-for-2-Features-Explainer-Demo"><span class="std std-ref">Partial Dependence for 2 Features Explainer Demo</span></a></p></li>
+<li><p><a class="reference internal" href="#explainer-parameters"><span class="std std-ref">Explainer Parameters</span></a></p></li>
+</ul>
+</section>
+<section id="residual-partial-dependence-individual-conditional-expectations-pd-ice-explainer">
+<h2>Residual Partial Dependence/Individual Conditional Expectations (PD/ICE) Explainer<a class="headerlink" href="#residual-partial-dependence-individual-conditional-expectations-pd-ice-explainer" title="Link to this heading"></a></h2>
+<p>The <strong>residual</strong> partial dependence plot (PDP) indicates which variables interact most
+with the error. Residuals are differences between observed and predicted
+values - the square of the difference between observed and predicted values is used.
+The residual partial dependence is created using normal partial dependence algorithm,
+while instead of prediction is used the residual. Individual Conditional Expectations
+plot (ICE) displays the interaction with error for an individual row of data when an
+input variable is toggled across its domain.</p>
+<img alt="PD/ICE plot example" src="_images/explainer-plot-residual-pd.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sample_size</span></code></dt><dd><ul>
+<li><p>Sample size (default is <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">000</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">max_features</span></code></dt><dd><ul>
+<li><p>Residual Partial Dependence Plot number of features (to see all features used by model
+set to <code class="docutils literal notranslate"><span class="pre">-1</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">features</span></code></dt><dd><ul>
+<li><p>Residual Partial Dependence Plot feature list.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">grid_resolution</span></code></dt><dd><ul>
+<li><p>Residual Partial Dependence Plot observations per bin (number of equally spaced points
+used to create bins).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">oor_grid_resolution</span></code></dt><dd><ul>
+<li><p>Residual Partial Dependence Plot number of out of range bins.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">center</span></code></dt><dd><ul>
+<li><p>Center Partial Dependence Plot using ICE centered at 0.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sort_bins</span></code></dt><dd><ul>
+<li><p>Ensure bin values sorting.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">quantile-bin-grid-resolution</span></code></dt><dd><ul>
+<li><p>Residual Partial Dependence Plot quantile binning (total quantile points used to create
+bins).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">quantile-bins</span></code></dt><dd><ul>
+<li><p>Per-feature quantile binning.</p></li>
+<li><p>Example: if choosing features <code class="docutils literal notranslate"><span class="pre">F1</span></code> and <code class="docutils literal notranslate"><span class="pre">F2</span></code>, this parameter is
+<code class="docutils literal notranslate"><span class="pre">{&quot;F1&quot;:</span> <span class="pre">2,&quot;F2&quot;:</span> <span class="pre">5}</span></code>. Note, you can set all features to use the same
+quantile binning with the “Partial Dependence Plot quantile binning” parameter
+and then adjust the quantile binning for a subset of PDP features with
+this parameter.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">histograms</span></code></dt><dd><ul>
+<li><p>Enable or disable histograms.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">numcat_num_chart</span></code></dt><dd><ul>
+<li><p>Unique feature values count driven Partial Dependence Plot binning and chart
+selection.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">numcat_threshold</span></code></dt><dd><ul>
+<li><p>Threshold for Partial Dependence Plot binning and chart selection
+(&lt;= threshold categorical, &gt; threshold numeric).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>tree explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_40eb4da9-4a68-4782-9a70-22c6f7984846
+explainer_h2o_sonar_explainers_residual_pd_ice_explainer_ResidualPdIceExplainer_40eb4da9-4a68-4782-9a70-22c6f7984846
+├── global_html_fragment
+│   ├── text_html
+│   │   ├── explanation.html
+│   │   ├── pd-class-1-feature-10.png
+│   │   ├── pd-class-1-feature-1.png
+│   │   ├── pd-class-1-feature-2.png
+│   │   ├── pd-class-1-feature-3.png
+│   │   ├── pd-class-1-feature-4.png
+│   │   ├── pd-class-1-feature-5.png
+│   │   ├── pd-class-1-feature-6.png
+│   │   ├── pd-class-1-feature-7.png
+│   │   ├── pd-class-1-feature-8.png
+│   │   └── pd-class-1-feature-9.png
+│   └── text_html.meta
+├── global_partial_dependence
+│   ├── application_json
+│   │   ├── explanation.json
+│   │   ├── pd_feature_0_class_0.json
+│   │   ├── pd_feature_1_class_0.json
+│   │   ├── pd_feature_2_class_0.json
+│   │   ├── pd_feature_3_class_0.json
+│   │   ├── pd_feature_4_class_0.json
+│   │   ├── pd_feature_5_class_0.json
+│   │   ├── pd_feature_6_class_0.json
+│   │   ├── pd_feature_7_class_0.json
+│   │   ├── pd_feature_8_class_0.json
+│   │   └── pd_feature_9_class_0.json
+│   └── application_json.meta
+├── local_individual_conditional_explanation
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   ├── ice_feature_0_class_0.jay
+│   │   ├── ice_feature_1_class_0.jay
+│   │   ├── ice_feature_2_class_0.jay
+│   │   ├── ice_feature_3_class_0.jay
+│   │   ├── ice_feature_4_class_0.jay
+│   │   ├── ice_feature_5_class_0.jay
+│   │   ├── ice_feature_6_class_0.jay
+│   │   ├── ice_feature_7_class_0.jay
+│   │   ├── ice_feature_8_class_0.jay
+│   │   ├── ice_feature_9_class_0.jay
+│   │   └── y_hat.jay
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── log
+│   └── explainer_run_40eb4da9-4a68-4782-9a70-22c6f7984846.log
+├── model_problems
+│   └── problems_and_actions.json
+├── result_descriptor.json
+└── work
+    ├── h2o_sonar-ice-dai-model-10.jay
+    ├── h2o_sonar-ice-dai-model-1.jay
+    ├── h2o_sonar-ice-dai-model-2.jay
+    ├── h2o_sonar-ice-dai-model-3.jay
+    ├── h2o_sonar-ice-dai-model-4.jay
+    ├── h2o_sonar-ice-dai-model-5.jay
+    ├── h2o_sonar-ice-dai-model-6.jay
+    ├── h2o_sonar-ice-dai-model-7.jay
+    ├── h2o_sonar-ice-dai-model-8.jay
+    ├── h2o_sonar-ice-dai-model-9.jay
+    ├── h2o_sonar-ice-dai-model.json
+    ├── h2o_sonar-pd-dai-model.json
+    └── mli_dataset_y_hat.jay
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/</span></code></dt><dd><ul>
+<li><p>Data artifacts used to calculate residual PD and ICE.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_partial_dependence</span></code></dt><dd><ul>
+<li><p>Per-feature residual partial dependence explanation in JSon format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">local_individual_conditional_explanation</span></code></dt><dd><ul>
+<li><p>Per-feature residual individual conditional expectation explanation in JSon
+and <code class="docutils literal notranslate"><span class="pre">datatable</span></code> format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Residual PD/ICE explainer <strong>binning</strong> is the same as in case of
+<a class="reference internal" href="#partial-dependence-individual-conditional-expectations-pd-ice-explainer"><span class="std std-ref">Partial Dependence/Individual Conditional Expectations (PD/ICE) Explainer</span></a>.</p>
+<p><strong>Problems</strong> reported by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Highest interaction between a feature and the error</strong></dt><dd><ul>
+<li><p>The explainer reports a column with highest interaction with the error. This column
+(feature) should be investigated to determine whether it indicates a problem with the model.</p></li>
+<li><p>Problem severity: <code class="docutils literal notranslate"><span class="pre">MEDIUM</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-residual-pd-explainer.html#Residual-Partial-dependence-/-Individual-Conditional-Expectation-(PD/ICE)-Explainer-Demo"><span class="std std-ref">Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</span></a></p></li>
+<li><p><a class="reference internal" href="#explainer-parameters"><span class="std std-ref">Explainer Parameters</span></a></p></li>
+</ul>
+</section>
+<section id="disparate-impact-analysis-dia-explainer">
+<h2>Disparate Impact Analysis (DIA) Explainer<a class="headerlink" href="#disparate-impact-analysis-dia-explainer" title="Link to this heading"></a></h2>
+<p>Disparate Impact Analysis (DIA) is a technique that is used to evaluate fairness.
+Bias can be introduced to models during the process of collecting, processing,
+and labeling data as a result, it is important to determine whether a model is
+harming certain users by making a significant number of biased decisions.
+DIA typically works by comparing aggregate measurements of unprivileged groups to
+a privileged group. For instance, the proportion of the unprivileged group
+that receives the potentially harmful outcome is divided by the proportion
+of the privileged group that receives the same outcome - the resulting
+proportion is then used to determine whether the model is biased.</p>
+<img alt="Disparate Impact Analysis plot example" src="_images/explainer-plot-dia.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dia_cols</span></code></dt><dd><ul>
+<li><p>List of features for which to compute DIA.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">cut_off</span></code></dt><dd><ul>
+<li><p>Cut off.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">maximize_metric</span></code></dt><dd><ul>
+<li><p>Maximize metric - one of <code class="docutils literal notranslate"><span class="pre">F1</span></code>, <code class="docutils literal notranslate"><span class="pre">F05</span></code>, <code class="docutils literal notranslate"><span class="pre">F2</span></code>, <code class="docutils literal notranslate"><span class="pre">MCC</span></code> (default is <code class="docutils literal notranslate"><span class="pre">F1</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">sample_size</span></code></dt><dd><ul>
+<li><p>Sample size (default is <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">000</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">max_cardinality</span></code></dt><dd><ul>
+<li><p>Max cardinality for categorical variables (default is <code class="docutils literal notranslate"><span class="pre">10</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">min_cardinality</span></code></dt><dd><ul>
+<li><p>Min cardinality for categorical variables (default is <code class="docutils literal notranslate"><span class="pre">2</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">num_card</span></code></dt><dd><ul>
+<li><p>Max cardinality for numeric variables to be considered categorical (default is <code class="docutils literal notranslate"><span class="pre">25</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_dia_explainer_DiaExplainer_f1600947-05bc-4ae0-a396-d69dfca9d7c7
+├── global_disparate_impact_analysis
+│   ├── text_plain
+│   │   └── explanation.txt
+│   └── text_plain.meta
+├── log
+│   └── explainer_run_f1600947-05bc-4ae0-a396-d69dfca9d7c7.log
+├── result_descriptor.json
+└── work
+    ├── dia_entity.json
+    ├── EDUCATION
+    │   ├── 0
+    │   │   ├── cm.jay
+    │   │   ├── disparity.jay
+    │   │   ├── me_smd.jay
+    │   │   └── parity.jay
+    │   ├── 1
+    │   │   ├── cm.jay
+    │   │   ├── disparity.jay
+    │   │   ├── me_smd.jay
+    │   │   └── parity.jay
+    │   ├── 2
+    │   │   ├── cm.jay
+    │   │   ├── disparity.jay
+    │   │   ├── me_smd.jay
+    │   │   └── parity.jay
+    │   ├── 3
+    │   │   ├── cm.jay
+    │   │   ├── disparity.jay
+    │   │   ├── me_smd.jay
+    │   │   └── parity.jay
+    │   ├── 4
+    │   │   ├── cm.jay
+    │   │   ├── disparity.jay
+    │   │   ├── me_smd.jay
+    │   │   └── parity.jay
+    │   ├── 5
+    │   │   ├── cm.jay
+    │   │   ├── disparity.jay
+    │   │   ├── me_smd.jay
+    │   │   └── parity.jay
+    │   ├── 6
+    │   │   ├── cm.jay
+    │   │   ├── disparity.jay
+    │   │   ├── me_smd.jay
+    │   │   └── parity.jay
+    │   └── metrics.jay
+    ├── MARRIAGE
+    ...
+    └── SEX
+        ├── 0
+        │   ├── cm.jay
+        │   ├── disparity.jay
+        │   ├── me_smd.jay
+        │   └── parity.jay
+        ├── 1
+        │   ├── cm.jay
+        │   ├── disparity.jay
+        │   ├── me_smd.jay
+        │   └── parity.jay
+        └── metrics.jay
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">explainer_.../work/&lt;feature</span> <span class="pre">name/</span></code></dt><dd><ul>
+<li><p>Per feature directory with Disparate Impact Analysis metrics family - like
+disparity, parity, SMD and CM - for each feature value (group) in <code class="docutils literal notranslate"><span class="pre">datatable</span></code>
+format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_disparate_impact_analysis</span></code></dt><dd><ul>
+<li><p>Disparate impact analysis explanation.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-dia-explainer.html#Disparate-Impact-Analysis-(DIA)-Explainer-Demo"><span class="std std-ref">Disparate Impact Analysis (DIA) Explainer Demo</span></a></p></li>
+<li><p><a class="reference internal" href="#explainer-parameters"><span class="std std-ref">Explainer Parameters</span></a></p></li>
+</ul>
+</section>
+<section id="morris-sensitivity-analysis-explainer">
+<h2>Morris sensitivity analysis Explainer<a class="headerlink" href="#morris-sensitivity-analysis-explainer" title="Link to this heading"></a></h2>
+<p>Morris sensitivity analysis (SA) explainer provides Morris sensitivity
+analysis based feature importance which is a measure of the contribution of
+an input variable to the overall predictions of the model. In applied
+statistics, the Morris method for global sensitivity analysis is a so-called
+one-step-at-a-time method (OAT), meaning that in each run only one input
+parameter is given a new value. This explainer is based based on InterpretML
+library - see <a class="reference external" href="http://interpret.ml">interpret.ml</a>.</p>
+<img alt="Morris sensitivity analysis explainer" src="_images/explainer-plot-morris-sa.png" />
+<p>Package requirements:</p>
+<ul class="simple">
+<li><p>install <code class="docutils literal notranslate"><span class="pre">interpret</span></code> library as it is not installed with H2O Sonar by default:</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pip install interpret
+</pre></div>
+</div>
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">leakage_warning_threshold</span></code></dt><dd><ul>
+<li><p>Threshold for showing potential data leakage in the most important feature.
+Data leakage occurs when a feature influences the target column
+too much. High feature importance value means that the model you trained with
+this dataset will not be predicting the target based on all features
+but rather on just one. More about feature data leakage (also target
+leakage) at <a class="reference external" href="https://h2o.ai/wiki/target-leakage/">Target leakage H2O.ai Wiki</a>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_morris_sa_explainer_MorrisSensitivityAnalysisExplainer_f4da0294-8c2b-4195-a567-bd4b65a01227
+├── global_feature_importance
+│   ├── application_json
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.json
+│   ├── application_json.meta
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.jay
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── global_html_fragment
+│   ├── text_html
+│   │   ├── explanation.html
+│   │   └── fi-class-0.png
+│   └── text_html.meta
+├── log
+│   └── explainer_run_f4da0294-8c2b-4195-a567-bd4b65a01227.log
+├── result_descriptor.json
+└── work
+</pre></div>
+</div>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_feature_importance</span></code></dt><dd><ul>
+<li><p>Feature interactions in JSon format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_html_fragment</span></code></dt><dd><ul>
+<li><p>Feature interactions in HTML format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Problems</strong> reported by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Potential feature importance leak</strong></dt><dd><ul>
+<li><p>The explainer reports a column with potential feature importance leak. Such column
+should be investigated and in case of the leak either removed from the dataset
+or weighted down in the model training process.</p></li>
+<li><p>Problem severity: <code class="docutils literal notranslate"><span class="pre">HIGH</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-morris-sa-explainer.html#Morris-Sensitivity-Analysis-Explainer-Demo"><span class="std std-ref">Morris Sensitivity Analysis Explainer Demo</span></a></p></li>
+<li><p><a class="reference internal" href="#explainer-parameters"><span class="std std-ref">Explainer Parameters</span></a></p></li>
+</ul>
+</section>
+<section id="friedman-s-h-statistic-explainer">
+<h2>Friedman’s H-statistic Explainer<a class="headerlink" href="#friedman-s-h-statistic-explainer" title="Link to this heading"></a></h2>
+<p>The explainer provides implementation of Friedman’s H-statistic feature interactions.
+The statistic is 0 when there is no interaction at all and 1 if all the variance of
+the predict function is explained by a sum of the partial dependence functions.
+More information about Friedman’s H-Statistic method is available
+at <a class="reference external" href="https://christophm.github.io/interpretable-ml-book/interaction.html#theory-friedmans-h-statistic">Theory: Friedman’s H-statistic</a>.</p>
+<img alt="Friedman's H-statistic plot example" src="_images/explainer-plot-friedman.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">features_number</span></code></dt><dd><ul>
+<li><p>Maximum number of features for which to calculate Friedman’s H-statistic
+(must be at least <code class="docutils literal notranslate"><span class="pre">2</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">features</span></code></dt><dd><ul>
+<li><p>List of features for which to calculate Friedman’s H-statistic (must be at
+least <code class="docutils literal notranslate"><span class="pre">2</span></code>, overrides <code class="docutils literal notranslate"><span class="pre">features_number</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">grid_resolution</span></code></dt><dd><ul>
+<li><p>Friedman’s H-statistic observations per bin (number of equally spaced points
+used to create bins).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_579aa93f-4f80-446f-ba21-815304ccee9c
+├── global_feature_importance
+│   ├── application_json
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.json
+│   ├── application_json.meta
+│   ├── application_vnd_h2oai_json_csv
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.csv
+│   ├── application_vnd_h2oai_json_csv.meta
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.jay
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── global_html_fragment
+│   ├── text_html
+│   │   ├── explanation.html
+│   │   └── fi-class-0.png
+│   └── text_html.meta
+├── global_report
+│   ├── text_markdown
+│   │   ├── explanation.md
+│   │   └── image.png
+│   └── text_markdown.meta
+├── log
+│   └── explainer_run_579aa93f-4f80-446f-ba21-815304ccee9c.log
+├── result_descriptor.json
+└── work
+    ├── image.png
+    └── report.md
+</pre></div>
+</div>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_feature_importance</span></code></dt><dd><ul>
+<li><p>Feature interactions in JSon, CSV and <code class="docutils literal notranslate"><span class="pre">datatable</span></code> formats.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_html_fragment</span></code></dt><dd><ul>
+<li><p>Feature interactions in HTML format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_report</span></code></dt><dd><ul>
+<li><p>Feature interactions in Markdown format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-friedman-h-statistic-explainer.html#Friedman-H-statistic-Explainer-Demo"><span class="std std-ref">Friedman H-statistic Explainer Demo</span></a></p></li>
+<li><p><a class="reference internal" href="#explainer-parameters"><span class="std std-ref">Explainer Parameters</span></a></p></li>
+</ul>
+</section>
+<section id="dataset-and-model-insights-explainer">
+<h2>Dataset and Model Insights Explainer<a class="headerlink" href="#dataset-and-model-insights-explainer" title="Link to this heading"></a></h2>
+<p>The explainer checks the dataset and model for various issues.
+For example, it provides problems and actions for missing values
+in the target column and a low number of unique values across
+columns of a dataset.</p>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_dataset_and_model_insights_DatasetAndModelInsights_e222f392-9a55-41fb-ab51-d45cc6bd35db/
+├── global_text_explanation
+│   ├── text_plain
+│   │   └── explanation.txt
+│   └── text_plain.meta
+├── log
+│   └── explainer_run_e222f392-9a55-41fb-ab51-d45cc6bd35db.log
+├── model_problems
+│   └── problems_and_actions.json
+├── result_descriptor.json
+└── work
+</pre></div>
+</div>
+<p><strong>Problems</strong> reported by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Missing values in the target column</strong></dt><dd><ul>
+<li><p>The explainer reports missing values in the target column. Rows with the missing
+values in the target column should be removed from the dataset.</p></li>
+<li><p>Problem severity: <code class="docutils literal notranslate"><span class="pre">LOW</span></code> - <code class="docutils literal notranslate"><span class="pre">HIGH</span></code> (based on the number of impacted columns).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Features with potentially insufficient number of unique values</strong></dt><dd><ul>
+<li><p>The explainer reports columns with 1 unique value only. Such columns should be either removed
+from the dataset or its missing values (if any) replaced with valid values.</p></li>
+<li><p>Problem severity: <code class="docutils literal notranslate"><span class="pre">LOW</span></code> - <code class="docutils literal notranslate"><span class="pre">HIGH</span></code> (based on the number of impacted columns).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-d-and-m-insights-explainer.html#Dataset-and-Model-Insights-Explainer-Demo"><span class="std std-ref">Dataset and Model Insights Explainer Demo</span></a></p></li>
+</ul>
+</section>
+<section id="adversarial-similarity-explainer">
+<h2>Adversarial Similarity Explainer<a class="headerlink" href="#adversarial-similarity-explainer" title="Link to this heading"></a></h2>
+<p>This explainer is based on the adversarial similarity <a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/">H2O Model Validation</a> test.</p>
+<p>Adversarial similarity refers to a validation test that assists in observing
+feature distribution of two different datasets can indicate similarity
+or dissimilarity. An adversarial similarity test can be performed rather
+than going over all the features individually to observe the differences.
+During an adversarial similarity test, decision tree algorithms are
+leveraged to find similar or dissimilar rows between the train dataset
+and any dataset with the same train columns.</p>
+<img alt="Adversarial Similarity plot example" src="_images/explainer-plot-adversarial-similarity.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">worker_connection_key</span></code></dt><dd><ul>
+<li><p>Optional <a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">connection ID of the Driverless AI worker</span></a>
+configured in the H2O Sonar configuration.
+Supported are Driverless AI servers hosted by H2O AIEM or H2O Enterprise Steam,
+or Driverless AI servers that use username and password authentication.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">shapley_values</span></code></dt><dd><ul>
+<li><p>Determines whether to compute Shapley values
+for the model used to analyze the similarity between the
+Primary and Secondary Dataset. Test uses the generated Shapley
+values to create an array of visual metrics that provide valuable
+insights into the contribution of individual features to the overall
+model performance.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">drop_cols</span></code></dt><dd><ul>
+<li><p>Defines the columns to drop during model training.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The explainer can be run using the <strong>Python API</strong> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># configure Driverless AI server to serve as a host of artifacts (datasets, models) and/or worker</span>
+<span class="n">DAI_CONNECTION</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+   <span class="n">key</span><span class="o">=</span><span class="s2">&quot;local-driverless-ai-server&quot;</span><span class="p">,</span>  <span class="c1"># ID is generated from the connection name (NCName)</span>
+   <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">DRIVERLESS_AI_AIEM</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+   <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My H2O AIEM hosted Driverless AI &quot;</span><span class="p">,</span>
+   <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Driverless AI server hosted by H2O Enterprise AIEM.&quot;</span><span class="p">,</span>
+   <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://enginemanager.cloud.h2o.ai/&quot;</span><span class="p">,</span>
+   <span class="n">server_id</span><span class="o">=</span><span class="s2">&quot;new-dai-engine-42&quot;</span><span class="p">,</span>
+   <span class="n">environment_url</span><span class="o">=</span><span class="s2">&quot;https://cloud.h2o.ai&quot;</span><span class="p">,</span>
+   <span class="n">username</span><span class="o">=</span><span class="s2">&quot;firstname.lastname@h2o.ai&quot;</span><span class="p">,</span>
+   <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_AIEM_REFRESH_TOKEN_CLOUD</span><span class="p">),</span>
+   <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">REFRESH_TOKEN</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># add the connection to the H2O Sonar configuration</span>
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_connection</span><span class="p">(</span><span class="n">DAI_CONNECTION</span><span class="p">)</span>
+
+<span class="c1"># run the explainer (model and datasets provided as handles as they are hosted by the Driverless AI server)</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+   <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:7965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">dataset</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:8965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">testset</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:9965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;Weekly_Sales&quot;</span><span class="p">,</span>
+   <span class="n">explainers</span><span class="o">=</span><span class="p">[</span>
+      <span class="n">commons</span><span class="o">.</span><span class="n">ExplainerToRun</span><span class="p">(</span>
+            <span class="n">explainer_id</span><span class="o">=</span><span class="n">AdversarialSimilarityExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">(),</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+               <span class="s2">&quot;worker_connection_key&quot;</span><span class="p">:</span> <span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+               <span class="s2">&quot;shapley_values&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="p">},</span>
+      <span class="p">)</span>
+   <span class="p">],</span>
+   <span class="n">results_location</span><span class="o">=</span><span class="s2">&quot;./h2o-sonar-results&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The explainer can be run using the <strong>command line interface</strong> (CLI) as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>h2o-sonar run interpretation
+--explainers h2o_sonar.explainers.adversarial_similarity_explainer.AdversarialSimilarityExplainer
+--explainers-pars &#39;{
+   &quot;h2o_sonar.explainers.adversarial_similarity_explainer.AdversarialSimilarityExplainer&quot;: {
+      &quot;worker_connection_key&quot;: &quot;local-driverless-ai-server&quot;,
+      &quot;shapley_values&quot;: false,
+   }
+}&#39;
+--model &quot;resource:connection:local-driverless-ai-server:key:7965e2ea-f898-11ed-b979-106530ed5ceb&quot;
+--dataset &quot;resource:connection:local-driverless-ai-server:key:695f5d5e-f898-11ed-b979-106530ed5ceb&quot;
+--testset &quot;resource:connection:local-driverless-ai-server:key:695df75c-f898-11ed-b979-106530ed5ceb&quot;
+--target-col &quot;Weekly_Sales&quot;
+--results-location &quot;./h2o-sonar-results&quot;
+--config-path &quot;./h2o-sonar-config.json&quot;
+--encryption-key &quot;secret-key-to-decrypt-encrypted-config-fields&quot;
+</pre></div>
+</div>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_adversarial_similarity_explainer_AdversarialSimilarityExplainer_d473b5c0-02a3-4971-905a-adb9841a0958
+├── global_grouped_bar_chart
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.jay
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── global_html_fragment
+│   ├── text_html
+│   │   ├── explanation.html
+│   │   └── fi-class-0.png
+│   └── text_html.meta
+├── global_work_dir_archive
+│   ├── application_zip
+│   │   └── explanation.zip
+│   └── application_zip.meta
+├── log
+│   └── explainer_run_d473b5c0-02a3-4971-905a-adb9841a0958.log
+├── model_problems
+│   └── problems_and_actions.json
+├── result_descriptor.json
+└── work
+</pre></div>
+</div>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_grouped_bar_chart</span></code></dt><dd><ul>
+<li><p>Similar-to-secondary probabilities histogram in the <code class="docutils literal notranslate"><span class="pre">datatable</span></code> format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_html_fragment</span></code></dt><dd><ul>
+<li><p>Adversarial similarity in the HTML format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_work_dir_archive</span></code></dt><dd><ul>
+<li><p>All explanations created by the explainer stored in a ZIP archive.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/guide/tests/supported-validation-tests/adversarial-similarity/adversarial-similarity">H2O Model Validation: Adversarial Similarity</a> documentation</p></li>
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-model-validation-explainers.html#H2O-Sonar-Model-Validation-Explainers"><span class="std std-ref">H2O Sonar Model Validation Explainers</span></a></p></li>
+<li><p><a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">Library Configuration</span></a></p></li>
+</ul>
+</section>
+<section id="backtesting-explainer">
+<h2>Backtesting Explainer<a class="headerlink" href="#backtesting-explainer" title="Link to this heading"></a></h2>
+<p>This explainer is based on the backtesting <a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/">H2O Model Validation</a> test.</p>
+<p>A backtesting test enables you to assess the robustness of
+a model using the existing historical training data through a series of iterative
+training where training data is used from its recent to oldest collected values.</p>
+<p>Explainer performs a backtesting test by fitting a predictive model with a training
+dataset to later assess the model with a separate test dataset where the test
+dataset does not overlap with the training data. Frequently, the training data is
+collected over time and has an explicit time dimension. In such cases, utilizing
+the most recent dataset points for the model test dataset is common practice,
+as it better mimics a real model application.</p>
+<p>By applying a backtesting test to a model, we can refit the model multiple times,
+where every time, we use shorter time spans of the training data while using
+a portion of that data as test data. As a result, the test dataset is replaced with
+a series of values over time.</p>
+<p>A backtesting test enables you to:</p>
+<ul class="simple">
+<li><p>Understand the variance of the model accuracy</p></li>
+<li><p>Understand and visualize how the model accuracy develops over time</p></li>
+<li><p>Identify potential reasons for any performance issues with the modeling approach
+in the past (for example, problems around data collection)</p></li>
+</ul>
+<p>Each iteration during backtesting, the model is fully refitted, which includes
+a rerun of feature engineering and feature selection. Not entirely refitting during
+each iteration results in an incorrect backtesting outcome because the next iteration
+would have selected features based on the entire data. An incorrect backtesting
+outcome also leads to data leakage where information from the future is explicitly
+or implicitly reflected in the current variables.</p>
+<img alt="Backtesting plot example" src="_images/explainer-plot-backtesting.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">worker_connection_key</span></code></dt><dd><ul>
+<li><p>The <a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">connection ID of the Driverless AI worker</span></a>
+configured in the H2O Sonar configuration.
+Supported are Driverless AI servers hosted by H2O AIEM or H2O Enterprise Steam,
+or Driverless AI servers that use username and password authentication.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">time_col</span></code></dt><dd><ul>
+<li><p>Defines the time column in the primary dataset that the explainer
+utilizes to split the primary dataset (training dataset) during
+the backtesting test.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">split_type</span></code></dt><dd><ul>
+<li><p>Split type - either ‘auto’ (explainer determines the split dates,
+which create the backtesting experiments) or ‘custom’ (you
+determine the split dates, which create the backtesting experiments).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">number_of_splits</span></code></dt><dd><ul>
+<li><p>Defines the number of dates (splits) the explainer utilizes for the
+dataset splitting and model refitting process during the validation
+test. The explainer sets the specified number of dates in the past
+while being equally apart from one another to generate appropriate
+dataset splits.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">number_of_forecast_periods</span></code></dt><dd><ul>
+<li><p>Number of the forest periods.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">forecast_period_unit</span></code></dt><dd><ul>
+<li><p>Forecast period unit.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">number_of_training_periods</span></code></dt><dd><ul>
+<li><p>Number of training periods.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">training_period_unit</span></code></dt><dd><ul>
+<li><p>Training period unit.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">custom_dates</span></code></dt><dd><ul>
+<li><p>Custom dates.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">plot_type</span></code></dt><dd><ul>
+<li><p>Plot type - one of <code class="docutils literal notranslate"><span class="pre">heatmap</span></code>, <code class="docutils literal notranslate"><span class="pre">contour-3d</span></code> or <code class="docutils literal notranslate"><span class="pre">surface-3d</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The explainer can be run using the <strong>Python API</strong> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># configure Driverless AI server to serve as a host of artifacts (datasets, models) and/or worker</span>
+<span class="n">DAI_CONNECTION</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+   <span class="n">key</span><span class="o">=</span><span class="s2">&quot;local-driverless-ai-server&quot;</span><span class="p">,</span>  <span class="c1"># ID is generated from the connection name (NCName)</span>
+   <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">DRIVERLESS_AI_AIEM</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+   <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My H2O AIEM hosted Driverless AI &quot;</span><span class="p">,</span>
+   <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Driverless AI server hosted by H2O Enterprise AIEM.&quot;</span><span class="p">,</span>
+   <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://enginemanager.cloud.h2o.ai/&quot;</span><span class="p">,</span>
+   <span class="n">server_id</span><span class="o">=</span><span class="s2">&quot;new-dai-engine-42&quot;</span><span class="p">,</span>
+   <span class="n">environment_url</span><span class="o">=</span><span class="s2">&quot;https://cloud.h2o.ai&quot;</span><span class="p">,</span>
+   <span class="n">username</span><span class="o">=</span><span class="s2">&quot;firstname.lastname@h2o.ai&quot;</span><span class="p">,</span>
+   <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_AIEM_REFRESH_TOKEN_CLOUD</span><span class="p">),</span>
+   <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">REFRESH_TOKEN</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># add the connection to the H2O Sonar configuration</span>
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_connection</span><span class="p">(</span><span class="n">DAI_CONNECTION</span><span class="p">)</span>
+
+<span class="c1"># run the explainer (model and datasets provided as handles as they are hosted by the Driverless AI server)</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+   <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:7965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">dataset</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:8965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;Weekly_Sales&quot;</span><span class="p">,</span>
+   <span class="n">explainers</span><span class="o">=</span><span class="p">[</span>
+      <span class="n">commons</span><span class="o">.</span><span class="n">ExplainerToRun</span><span class="p">(</span>
+            <span class="n">explainer_id</span><span class="o">=</span><span class="n">BacktestingExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">(),</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+               <span class="s2">&quot;worker_connection_key&quot;</span><span class="p">:</span> <span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+               <span class="s2">&quot;time_col&quot;</span><span class="p">:</span> <span class="s2">&quot;Date&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+      <span class="p">)</span>
+   <span class="p">],</span>
+   <span class="n">results_location</span><span class="o">=</span><span class="s2">&quot;./h2o-sonar-results&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The explainer can be run using the <strong>command line interface</strong> (CLI) as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>h2o-sonar run interpretation
+--explainers h2o_sonar.explainers.backtesting_explainer.BacktestingExplainer
+--explainers-pars &#39;{
+   &quot;h2o_sonar.explainers.backtesting_explainer.BacktestingExplainer&quot;: {
+      &quot;worker_connection_key&quot;: &quot;local-driverless-ai-server&quot;,
+      &quot;shapley_values&quot;: false,
+   }
+}&#39;
+--model &quot;resource:connection:local-driverless-ai-server:key:7965e2ea-f898-11ed-b979-106530ed5ceb&quot;
+--dataset &quot;resource:connection:local-driverless-ai-server:key:695f5d5e-f898-11ed-b979-106530ed5ceb&quot;
+--target-col &quot;Weekly_Sales&quot;
+--results-location &quot;./h2o-sonar-results&quot;
+--config-path &quot;./h2o-sonar-config.json&quot;
+--encryption-key &quot;secret-key-to-decrypt-encrypted-config-fields&quot;
+</pre></div>
+</div>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_backtesting_explainer_BacktestingExplainer_ea4f567b-79e3-4295-8bb5-c0f0bb45d21b
+├── global_3d_data
+│   ├── application_json
+│   │   ├── data3d_feature_0_class_0.json
+│   │   └── explanation.json
+│   ├── application_json.meta
+│   ├── application_vnd_h2oai_json_csv
+│   │   ├── data3d_feature_0_class_0.csv
+│   │   └── explanation.json
+│   └── application_vnd_h2oai_json_csv.meta
+├── global_html_fragment
+│   ├── text_html
+│   │   ├── explanation.html
+│   │   └── heatmap.png
+│   └── text_html.meta
+├── global_work_dir_archive
+│   ├── application_zip
+│   │   └── explanation.zip
+│   └── application_zip.meta
+├── log
+│   └── explainer_run_ea4f567b-79e3-4295-8bb5-c0f0bb45d21b.log
+├── model_problems
+│   └── problems_and_actions.json
+├── result_descriptor.json
+└── work
+   ├── explanation.html
+   └── heatmap.png
+</pre></div>
+</div>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_3d_data</span></code></dt><dd><ul>
+<li><p>Feature importantance for different split dates in JSon and CSV formats.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_html_fragment</span></code></dt><dd><ul>
+<li><p>Feature importantance for different split dates in the HTML format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_work_dir_archive</span></code></dt><dd><ul>
+<li><p>All explanations created by the explainer stored in a ZIP archive.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/guide/tests/supported-validation-tests/backtesting/backtesting">H2O Model Validation: Backtesting</a> documentation</p></li>
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-model-validation-explainers.html#H2O-Sonar-Model-Validation-Explainers"><span class="std std-ref">H2O Sonar Model Validation Explainers</span></a></p></li>
+<li><p><a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">Library Configuration</span></a></p></li>
+</ul>
+</section>
+<section id="calibration-score-explainer">
+<h2>Calibration Score Explainer<a class="headerlink" href="#calibration-score-explainer" title="Link to this heading"></a></h2>
+<p>This explainer is based on the calibration score <a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/">H2O Model Validation</a> test.</p>
+<p>A calibration score test enables you to assess how well the scores
+generated by a classification model align with the model’s probabilities.
+In other words, the validation test can estimate how good the generated
+probabilities can be for a test dataset with real-world examples.
+In the case of a multi-class model, the validation test repeats the test
+for each target class.</p>
+<p>Explainer utilizes the Brier score to assess the model calibration of each
+target class. The Brier score ranges from 0 to 1, where 0 indicates
+a perfect calibration. After the test, explainer assigns a Brier score to
+the target class (or all target classes in the case of a multi-class model).</p>
+<p>In addition, the test generates a calibration score graph that visualizes
+the calibration curves to identify the ranges, directions, and magnitudes
+of probabilities that are off. H2O Model Validation adds a perfect
+calibration line (a diagonal line) for reference in this calibration
+score graph.
+Estimating how well the model is calibrated to real-world data is
+crucial when a classification model is used not only for
+complex decisions but supplies the probabilities for downstream tasks,
+such as pricing decisions or propensity to churn estimations.</p>
+<img alt="Calibration Score plot example" src="_images/explainer-plot-calibration-score.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">worker_connection_key</span></code></dt><dd><ul>
+<li><p>The <a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">connection ID of the Driverless AI worker</span></a>
+configured in the H2O Sonar configuration.
+Supported are Driverless AI servers hosted by H2O AIEM or H2O Enterprise Steam,
+or Driverless AI servers that use username and password authentication.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">number_of_bins</span></code></dt><dd><ul>
+<li><p>Defines the number of bins the explainer utilizes to divide the primary dataset.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">bin_strategy</span></code></dt><dd><ul>
+<li><p>Defines the binning strategy - one of <code class="docutils literal notranslate"><span class="pre">uniform</span></code> or <code class="docutils literal notranslate"><span class="pre">quantile</span></code> - the explainer
+utilizes to bin the primary dataset.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The explainer can be run using the <strong>Python API</strong> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># configure Driverless AI server to serve as a host of artifacts (datasets, models) and/or worker</span>
+<span class="n">DAI_CONNECTION</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+   <span class="n">key</span><span class="o">=</span><span class="s2">&quot;local-driverless-ai-server&quot;</span><span class="p">,</span>  <span class="c1"># ID is generated from the connection name (NCName)</span>
+   <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">DRIVERLESS_AI_AIEM</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+   <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My H2O AIEM hosted Driverless AI &quot;</span><span class="p">,</span>
+   <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Driverless AI server hosted by H2O Enterprise AIEM.&quot;</span><span class="p">,</span>
+   <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://enginemanager.cloud.h2o.ai/&quot;</span><span class="p">,</span>
+   <span class="n">server_id</span><span class="o">=</span><span class="s2">&quot;new-dai-engine-42&quot;</span><span class="p">,</span>
+   <span class="n">environment_url</span><span class="o">=</span><span class="s2">&quot;https://cloud.h2o.ai&quot;</span><span class="p">,</span>
+   <span class="n">username</span><span class="o">=</span><span class="s2">&quot;firstname.lastname@h2o.ai&quot;</span><span class="p">,</span>
+   <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_AIEM_REFRESH_TOKEN_CLOUD</span><span class="p">),</span>
+   <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">REFRESH_TOKEN</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># add the connection to the H2O Sonar configuration</span>
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_connection</span><span class="p">(</span><span class="n">DAI_CONNECTION</span><span class="p">)</span>
+
+<span class="c1"># run the explainer (model and datasets provided as handles as they are hosted by the Driverless AI server)</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+   <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:7965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">dataset</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:8965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;Weekly_Sales&quot;</span><span class="p">,</span>
+   <span class="n">explainers</span><span class="o">=</span><span class="p">[</span>
+      <span class="n">commons</span><span class="o">.</span><span class="n">ExplainerToRun</span><span class="p">(</span>
+            <span class="n">explainer_id</span><span class="o">=</span><span class="n">CalibrationScoreExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">(),</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+               <span class="s2">&quot;worker_connection_key&quot;</span><span class="p">:</span> <span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+            <span class="p">},</span>
+      <span class="p">)</span>
+   <span class="p">],</span>
+   <span class="n">results_location</span><span class="o">=</span><span class="s2">&quot;./h2o-sonar-results&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The explainer can be run using the <strong>command line interface</strong> (CLI) as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>h2o-sonar run interpretation
+--explainers h2o_sonar.explainers.calibration_score_explainer.CalibrationScoreExplainer
+--explainers-pars &#39;{
+   &quot;h2o_sonar.explainers.calibration_score_explainer.CalibrationScoreExplainer&quot;: {
+      &quot;worker_connection_key&quot;: &quot;local-driverless-ai-server&quot;,
+   }
+}&#39;
+--model &quot;resource:connection:local-driverless-ai-server:key:7965e2ea-f898-11ed-b979-106530ed5ceb&quot;
+--dataset &quot;resource:connection:local-driverless-ai-server:key:695f5d5e-f898-11ed-b979-106530ed5ceb&quot;
+--target-col &quot;Weekly_Sales&quot;
+--results-location &quot;./h2o-sonar-results&quot;
+--config-path &quot;./h2o-sonar-config.json&quot;
+--encryption-key &quot;secret-key-to-decrypt-encrypted-config-fields&quot;
+</pre></div>
+</div>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_calibration_score_explainer_CalibrationScoreExplainer_b02fc087-110d-4b80-b1ca-3bb801bb7b2d
+├── global_frame
+│   ├── application_vnd_h2oai_datatable_jay
+│   │   └── explanation.jay
+│   └── application_vnd_h2oai_datatable_jay.meta
+├── global_html_fragment
+│   ├── text_html
+│   │   ├── calibration_curve_0.png
+│   │   ├── calibration_curve_1.png
+│   │   ├── calibration_curve_2.png
+│   │   ├── calibration_curve_3.png
+│   │   ├── calibration_curve_4.png
+│   │   ├── calibration_curve_5.png
+│   │   ├── calibration_curve_6.png
+│   │   └── explanation.html
+│   └── text_html.meta
+├── global_work_dir_archive
+│   ├── application_zip
+│   │   └── explanation.zip
+│   └── application_zip.meta
+├── log
+│   └── explainer_run_b02fc087-110d-4b80-b1ca-3bb801bb7b2d.log
+├── model_problems
+│   └── problems_and_actions.json
+├── result_descriptor.json
+└── work
+   ├── brier_scores.csv
+   ├── calibration_curve_0.png
+   ├── calibration_curve_1.png
+   ├── calibration_curve_2.png
+   ├── calibration_curve_3.png
+   ├── calibration_curve_4.png
+   ├── calibration_curve_5.png
+   ├── calibration_curve_6.png
+   ├── calibration_curves.csv
+   ├── explanation.html
+   └── mv_result.json
+</pre></div>
+</div>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_frame</span></code></dt><dd><ul>
+<li><p>Calibration curve data for all classes in the <code class="docutils literal notranslate"><span class="pre">datatable</span></code> format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_html_fragment</span></code></dt><dd><ul>
+<li><p>Calibration score in the HTML format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_work_dir_archive</span></code></dt><dd><ul>
+<li><p>All explanations created by the explainer stored in a ZIP archive.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/guide/tests/supported-validation-tests/calibration-score/calibration-score">H2O Model Validation: Calibration Score</a> documentation</p></li>
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-model-validation-explainers.html#H2O-Sonar-Model-Validation-Explainers"><span class="std std-ref">H2O Sonar Model Validation Explainers</span></a></p></li>
+<li><p><a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">Library Configuration</span></a></p></li>
+</ul>
+</section>
+<section id="drift-detection-explainer">
+<h2>Drift Detection Explainer<a class="headerlink" href="#drift-detection-explainer" title="Link to this heading"></a></h2>
+<p>This explainer is based on the drift detection <a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/">H2O Model Validation</a> test.</p>
+<p>Drift detection refers to a validation test that enables you to identify
+changes in the distribution of variables in your model’s input data,
+preventing model performance degradation.</p>
+<p>The explainer performs drift detection using the train and another
+dataset captured at different times to assess how data has changed over time.
+The Population Stability Index (PSI) formula is applied to each variable
+to measure how much the variable has shifted in distribution over time.
+PSI is applied to numerical and categorical columns and not date columns.</p>
+<img alt="Drift Detection plot example" src="_images/explainer-plot-drift-detection.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">worker_connection_key</span></code></dt><dd><ul>
+<li><p>Optional <a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">connection ID of the Driverless AI worker</span></a>
+configured in the H2O Sonar configuration.
+Supported are Driverless AI servers hosted by H2O AIEM or H2O Enterprise Steam,
+or Driverless AI servers that use username and password authentication.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">drift_threshold</span></code></dt><dd><ul>
+<li><p>Drift threshold - <cite>Problem</cite> is reported by the explainer if the drift is bigger than the threshold.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">drop_cols</span></code></dt><dd><ul>
+<li><p>Defines the columns to drop during the validation test. Typically
+drop columns refer to columns that can indicate a drift without
+an impact on the model, like columns not used by the model,
+record IDs, time columns, etc.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The explainer can be run using the <strong>Python API</strong> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the explainer (model and datasets provided as handles as they are hosted by the Driverless AI server)</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+   <span class="c1"># dataset might be either local or hosted by the Driverless AI server (model is not required)</span>
+   <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;./dataset-train.csv&quot;</span><span class="p">,</span>
+   <span class="n">testset</span><span class="o">=</span><span class="s2">&quot;./dataset-test.csv&quot;</span><span class="p">,</span>
+   <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+   <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;PROFIT&quot;</span><span class="p">,</span>
+   <span class="n">explainers</span><span class="o">=</span><span class="p">[</span><span class="n">DriftDetection</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">()],</span>
+   <span class="n">results_location</span><span class="o">=</span><span class="s2">&quot;./h2o-sonar-results&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The explainer, which explains Driverless AI datasets hosted by H2O AIEM, can be run using the <strong>command line interface</strong> (CLI) as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># When H2O Sonar loads or saves the library configuration it uses the encryption key
+# to protect sensitive data - like passwords or tokens. Therefore it is convenient
+# to export the encryption key as an environment variable so that it can be used
+# by the library.
+
+export H2O_SONAR_ENCRYPTION_KEY=&quot;m1-s3cr3t-k3y&quot;
+
+# h2o-sonar-config.json H2O Sonar configuration with H2O AIEM hosted Driverless AI
+# connection. Note that the &quot;token&quot; is encrypted using the encryption key.
+
+{
+   &quot;connections&quot;: [
+      {
+            &quot;key&quot;: &quot;my-aiem-hosted-dai-connection&quot;,
+            &quot;connection_type&quot;: &quot;DRIVERLESS_AI_AIEM&quot;,
+            &quot;name&quot;: &quot;My H2O AIEM hosted Driverless AI &quot;,
+            &quot;description&quot;: &quot;Driverless AI server hosted by H2O Enterprise AIEM.&quot;,
+            &quot;auth_server_url&quot;: &quot;&quot;,
+            &quot;environment_url&quot;: &quot;https://cloud.h2o.ai&quot;,
+            &quot;server_url&quot;: &quot;https://enginemanager.cloud.h2o.ai/&quot;,
+            &quot;server_id&quot;: &quot;new-dai-engine-42&quot;,
+            &quot;realm_name&quot;: &quot;&quot;,
+            &quot;client_id&quot;: &quot;&quot;,
+            &quot;token&quot;: {
+               &quot;encrypted&quot;: &quot;gAAAAABlG-UU-...Z2iriJztlEG0l2g2rPo8RIoYiNOJMQ_CLZVp&quot;
+            },
+            &quot;token_use_type&quot;: &quot;REFRESH_TOKEN&quot;,
+            &quot;username&quot;: &quot;firstname.lastname@h2o.ai&quot;,
+            &quot;password&quot;: {
+               &quot;encrypted&quot;: &quot;&quot;
+            }
+      }
+   ],
+}
+
+# h2o-sonar-args-run-interpretation.json file with CLI parameters stored as JSon file.
+# Instead of specifying many parameters on the command line interface, it is convenient
+# to store all the parameters as (reusable) JSon file.
+
+{
+   &quot;dataset&quot;: &quot;resource:connection:my-aiem-hosted-dai-connection:key:fb2029e6-595d-11ee-896f-6e441ddba243&quot;,
+   &quot;testset&quot;: &quot;resource:connection:my-aiem-hosted-dai-connection:key:gb2029e6-595d-11ee-896f-6e441ddba243&quot;,
+   &quot;model&quot;: null,
+   &quot;target_col&quot;: &quot;Weekly_Sales&quot;,
+   &quot;explainers&quot;: [
+      {
+            &quot;id&quot;: &quot;h2o_sonar.explainers.drift_explainer.DriftDetectionExplainer&quot;,
+            &quot;params&quot;: {
+               &quot;drift_threshold&quot;: 0.05,
+               &quot;worker_connection_key&quot;: &quot;my-aiem-hosted-dai-connection&quot;
+            }
+      }
+   ],
+   &quot;results_location&quot;: &quot;./results&quot;
+}
+
+# Interperation can be run using the h2o-sonar CLI as follows:
+
+h2o-sonar run interpretation \
+   --args-as-json-location h2o-sonar-args-run-interpretation.json \
+   --config-path h2o-sonar-config.json
+</pre></div>
+</div>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_drift_explainer_DriftDetectionExplainer_fee36f5d-64fb-46b3-a46a-7bbcb6007476
+├── global_feature_importance
+│   ├── application_json
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.json
+│   ├── application_json.meta
+│   ├── application_vnd_h2oai_json_datatable_jay
+│   │   ├── explanation.json
+│   │   └── feature_importance_class_0.jay
+│   └── application_vnd_h2oai_json_datatable_jay.meta
+├── global_html_fragment
+│   ├── text_html
+│   │   ├── explanation.html
+│   │   └── fi-class-0.png
+│   └── text_html.meta
+├── global_work_dir_archive
+│   ├── application_zip
+│   │   └── explanation.zip
+│   └── application_zip.meta
+├── log
+│   └── explainer_run_fee36f5d-64fb-46b3-a46a-7bbcb6007476.log
+├── model_problems
+│   └── problems_and_actions.json
+├── result_descriptor.json
+└── work
+</pre></div>
+</div>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_feature_importance</span></code></dt><dd><ul>
+<li><p>Population stability indices in JSon and <code class="docutils literal notranslate"><span class="pre">datatable</span></code> format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_html_fragment</span></code></dt><dd><ul>
+<li><p>Population stability indices in the HTML format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_work_dir_archive</span></code></dt><dd><ul>
+<li><p>All explanations created by the explainer stored in a ZIP archive.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/guide/tests/supported-validation-tests/drift-detection/drift-detection">H2O Model Validation: Drift Detection</a> documentation</p></li>
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-model-validation-explainers.html#H2O-Sonar-Model-Validation-Explainers"><span class="std std-ref">H2O Sonar Model Validation Explainers</span></a></p></li>
+<li><p><a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">Library Configuration</span></a></p></li>
+</ul>
+</section>
+<section id="segment-performance-explainer">
+<h2>Segment Performance Explainer<a class="headerlink" href="#segment-performance-explainer" title="Link to this heading"></a></h2>
+<p>This explainer is based on the segment performance <a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/">H2O Model Validation</a> test.</p>
+<p>A segment performance test lets you explore a model’s data subsets
+(segments) that diverge from average scores. In other words,
+a segment performance test allows you to discover which data
+points (segments) the model struggles, outperformance, and performs
+with when generating accurate predictions.</p>
+<p>To run a segment performance test on a model, explainer utilizes
+a provided dataset to generate model predictions to assess their
+accuracy. Explainer splits the dataset into segments
+by the bins of values of every variable and every pair of variables
+to generate results around the ability of the model to produce
+accurate predictions with different data segments. These results
+are embedded into a bubble graph that explainer generates
+that enables you to observe and explore data segments the model struggles,
+outperformance, and performs with when generating accurate predictions.
+For each segment, explainer calculates its size of it
+relative to the size of the dataset and estimates the error
+the model makes on the corresponding segment.</p>
+<p>Exploring and identifying data segments in a model that do not perform
+as expected can lead to decisions on how you preprocess your data.</p>
+<img alt="Segment Performance plot example" src="_images/explainer-plot-segment-performance.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">worker_connection_key</span></code></dt><dd><ul>
+<li><p>The <a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">connection ID of the Driverless AI worker</span></a>
+configured in the H2O Sonar configuration.
+Supported are Driverless AI servers hosted by H2O AIEM or H2O Enterprise Steam,
+or Driverless AI servers that use username and password authentication.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">number_of_bins</span></code></dt><dd><ul>
+<li><p>Defines the number of bins the explainer utilizes to split the
+variable values of the primary dataset. In the case of a categorical
+column, the explainer utilizes the appropriate categories while
+ranging numerical columns into a specified number of bins.
+To run a segment performance test on a model, the explainer
+utilizes a provided dataset to generate model predictions to
+assess their accuracy. Explainer splits the dataset
+into segments by the bins of values of every variable and every
+pair of variables to generate results around the ability of
+the model to produce accurate predictions with different
+data segments. These results are embedded into a bubble graph
+that the explainer generates that enables you to observe and
+explore data segments the model struggles, outperformance,
+and performs with when generating accurate predictions.
+For each segment, explainer calculates its size of
+it relative to the size of the dataset and estimates the error
+the model makes on the corresponding segment.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">precision</span></code></dt><dd><ul>
+<li><p>Precision.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">drop_cols</span></code></dt><dd><ul>
+<li><p>Defines the columns to drop during the validation test.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The explainer can be run using the <strong>Python API</strong> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># configure Driverless AI server to serve as a host of artifacts (datasets, models) and/or worker</span>
+<span class="n">DAI_CONNECTION</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+   <span class="n">key</span><span class="o">=</span><span class="s2">&quot;local-driverless-ai-server&quot;</span><span class="p">,</span>  <span class="c1"># ID is generated from the connection name (NCName)</span>
+   <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">DRIVERLESS_AI_AIEM</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+   <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My H2O AIEM hosted Driverless AI &quot;</span><span class="p">,</span>
+   <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Driverless AI server hosted by H2O Enterprise AIEM.&quot;</span><span class="p">,</span>
+   <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://enginemanager.cloud.h2o.ai/&quot;</span><span class="p">,</span>
+   <span class="n">server_id</span><span class="o">=</span><span class="s2">&quot;new-dai-engine-42&quot;</span><span class="p">,</span>
+   <span class="n">environment_url</span><span class="o">=</span><span class="s2">&quot;https://cloud.h2o.ai&quot;</span><span class="p">,</span>
+   <span class="n">username</span><span class="o">=</span><span class="s2">&quot;firstname.lastname@h2o.ai&quot;</span><span class="p">,</span>
+   <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_AIEM_REFRESH_TOKEN_CLOUD</span><span class="p">),</span>
+   <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">REFRESH_TOKEN</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># add the connection to the H2O Sonar configuration</span>
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_connection</span><span class="p">(</span><span class="n">DAI_CONNECTION</span><span class="p">)</span>
+
+<span class="c1"># run the explainer (model and datasets provided as handles as they are hosted by the Driverless AI server)</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+   <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:7965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">dataset</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:8965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">testset</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:9965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;Weekly_Sales&quot;</span><span class="p">,</span>
+   <span class="n">explainers</span><span class="o">=</span><span class="p">[</span>
+      <span class="n">commons</span><span class="o">.</span><span class="n">ExplainerToRun</span><span class="p">(</span>
+            <span class="n">explainer_id</span><span class="o">=</span><span class="n">SegmentPerformanceExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">(),</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+               <span class="s2">&quot;worker_connection_key&quot;</span><span class="p">:</span> <span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+               <span class="s2">&quot;number_of_bins&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="p">},</span>
+      <span class="p">)</span>
+   <span class="p">],</span>
+   <span class="n">results_location</span><span class="o">=</span><span class="s2">&quot;./h2o-sonar-results&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The explainer can be run using the <strong>command line interface</strong> (CLI) as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>h2o-sonar run interpretation
+--explainers h2o_sonar.explainers.segment_performance_explainer.SegmentPerformanceExplainer
+--explainers-pars &#39;{
+   &quot;h2o_sonar.explainers.segment_performance_explainer.SegmentPerformanceExplainer&quot;: {
+      &quot;worker_connection_key&quot;: &quot;local-driverless-ai-server&quot;,
+      &quot;number_of_bins&quot;: 10,
+   }
+}&#39;
+--model &quot;resource:connection:local-driverless-ai-server:key:7965e2ea-f898-11ed-b979-106530ed5ceb&quot;
+--dataset &quot;resource:connection:local-driverless-ai-server:key:695f5d5e-f898-11ed-b979-106530ed5ceb&quot;
+--testset &quot;resource:connection:local-driverless-ai-server:key:695df75c-f898-11ed-b979-106530ed5ceb&quot;
+--target-col &quot;Weekly_Sales&quot;
+--results-location &quot;./h2o-sonar-results&quot;
+--config-path &quot;./h2o-sonar-config.json&quot;
+--encryption-key &quot;secret-key-to-decrypt-encrypted-config-fields&quot;
+</pre></div>
+</div>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_segment_performance_explainer_SegmentPerformanceExplainer_1e0e0ee1-7a1d-44da-952f-9ac574c39545
+├── global_html_fragment
+│   ├── text_html
+│   │   ├── explanation.html
+│   │   ├── scatter-0.png
+│   │   ├── scatter-10.png
+│   │   ├── scatter-11.png
+│   │   ├── scatter-12.png
+│   │   ├── scatter-13.png
+│   │   ├── scatter-14.png
+│   │   ├── scatter-15.png
+│   │   ├── scatter-16.png
+│   │   ├── scatter-17.png
+│   │   ├── scatter-1.png
+│   │   ├── scatter-20.png
+│   │   ├── scatter-21.png
+│   │   ├── scatter-22.png
+│   │   ├── scatter-23.png
+│   │   ├── scatter-24.png
+│   │   ├── scatter-25.png
+│   │   ├── scatter-26.png
+│   │   ├── scatter-2.png
+│   │   ├── scatter-30.png
+│   │   ├── scatter-31.png
+│   │   ├── scatter-32.png
+│   │   ├── scatter-33.png
+│   │   ├── scatter-34.png
+│   │   ├── scatter-35.png
+│   │   ├── scatter-3.png
+│   │   ├── scatter-40.png
+│   │   ├── scatter-41.png
+│   │   ├── scatter-42.png
+│   │   ├── scatter-43.png
+│   │   ├── scatter-44.png
+│   │   ├── scatter-4.png
+│   │   ├── scatter-50.png
+│   │   ├── scatter-51.png
+│   │   ├── scatter-52.png
+│   │   ├── scatter-53.png
+│   │   ├── scatter-5.png
+│   │   ├── scatter-60.png
+│   │   ├── scatter-61.png
+│   │   ├── scatter-62.png
+│   │   ├── scatter-6.png
+│   │   ├── scatter-70.png
+│   │   ├── scatter-71.png
+│   │   ├── scatter-7.png
+│   │   ├── scatter-80.png
+│   │   └── scatter-8.png
+│   └── text_html.meta
+├── global_work_dir_archive
+│   ├── application_zip
+│   │   └── explanation.zip
+│   └── application_zip.meta
+├── log
+│   └── explainer_run_1e0e0ee1-7a1d-44da-952f-9ac574c39545.log
+├── model_problems
+│   └── problems_and_actions.json
+├── result_descriptor.json
+└── work
+   ├── explanation.html
+   └── segment-performance.csv
+</pre></div>
+</div>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_html_fragment</span></code></dt><dd><ul>
+<li><p>Adversarial similarity in the HTML format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_work_dir_archive</span></code></dt><dd><ul>
+<li><p>All explanations created by the explainer stored in a ZIP archive.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/guide/tests/supported-validation-tests/segment-performance/segment-performance">H2O Model Validation: Segment Performance</a> documentation</p></li>
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-model-validation-explainers.html#H2O-Sonar-Model-Validation-Explainers"><span class="std std-ref">H2O Sonar Model Validation Explainers</span></a></p></li>
+<li><p><a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">Library Configuration</span></a></p></li>
+</ul>
+</section>
+<section id="size-dependency-explainer">
+<h2>Size Dependency Explainer<a class="headerlink" href="#size-dependency-explainer" title="Link to this heading"></a></h2>
+<p>This explainer is based on the size dependency <a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/">H2O Model Validation</a> test.</p>
+<p>A size dependency test enables you to analyze the effects
+different sizes of train data will have on the accuracy of a selected model.
+In particular, size dependency facilitates model stability analysis and,
+for example, can answer whether augmenting an existing train data seems to be
+promising in terms of model accuracy.</p>
+<p>Explainer selects an appropriate sampling technique for the size dependency
+test based on the selected model type. Available sampling techniques are as follows:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Random sampling</strong></dt><dd><ul>
+<li><p>Explainer uses a random sampling technique to create new sub-training
+samples for independent and <strong>identically distributed (IID)</strong> models</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Expanding window sampling</strong></dt><dd><ul>
+<li><p>Explainer uses a expanding window sampling technique to create new
+sub-training samples for <strong>time series</strong> models while utilizing time columns to
+ensure that sub-training samples grow from recent to oldest data</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>For either sampling technique (random or expanding window), before it is applied,
+the original train data is split using folds that improve generalization and data
+balance when one of the sampling techniques is applied while using folds.</p>
+<p>In the case of <strong>IID models</strong>, folds and sub-training samples are created at random,
+but for <strong>time series models</strong>, folds and sub-training samples are created using
+a time column to ensure that sub-training samples grow from the most recent to
+oldest data points.</p>
+<p>Based on the number of folds (N), explainer retrains the model N times
+by only updating its training dataset with the new sub-training samples while
+generating a scorer for each iteration of the retraining process for further analysis.</p>
+<p>Sampling the original training data for a model under random or expanding window
+sampling can be illustrated in the below image when N (folds) equals <strong>4</strong>.</p>
+<img alt="Size Dependency plot example" src="_images/explainer-plot-size-dependency.png" />
+<p>Explainer <strong>parameters</strong>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">worker_connection_key</span></code></dt><dd><ul>
+<li><p>The <a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">connection ID of the Driverless AI worker</span></a>
+configured in the H2O Sonar configuration.
+Supported are Driverless AI servers hosted by H2O AIEM or H2O Enterprise Steam,
+or Driverless AI servers that use username and password authentication.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">time_col</span></code></dt><dd><ul>
+<li><p>Defines the time column of the primary and secondary dataset, which
+explainer utilizes to perform time-based splits.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">number_of_splits</span></code></dt><dd><ul>
+<li><p>Defines the number of splits that explainer performs on the primary
+dataset to assess dataset size dependency.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">worker_cleanup</span></code></dt><dd><ul>
+<li><p>Determines if the explainer should delete the artifacts created in
+the worker. In this case, artifacts refer to experiments and
+datasets generated during the backtesting validation test.
+By default, explainer checks this setting (enables it),
+and accordingly, H2O Model Validation deletes all artifacts
+because they are no longer needed after the validation test is
+complete.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">plot_type</span></code></dt><dd><ul>
+<li><p>Plot type to be used for Partial Dependence rendering - <code class="docutils literal notranslate"><span class="pre">heatmap</span></code>,
+<code class="docutils literal notranslate"><span class="pre">contour-3d</span></code> or <code class="docutils literal notranslate"><span class="pre">surface-3d</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The explainer can be run using the <strong>Python API</strong> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># configure Driverless AI server to serve as a host of artifacts (datasets, models) and/or worker</span>
+<span class="n">DAI_CONNECTION</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+   <span class="n">key</span><span class="o">=</span><span class="s2">&quot;local-driverless-ai-server&quot;</span><span class="p">,</span>  <span class="c1"># ID is generated from the connection name (NCName)</span>
+   <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">DRIVERLESS_AI_AIEM</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+   <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My H2O AIEM hosted Driverless AI &quot;</span><span class="p">,</span>
+   <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Driverless AI server hosted by H2O Enterprise AIEM.&quot;</span><span class="p">,</span>
+   <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://enginemanager.cloud.h2o.ai/&quot;</span><span class="p">,</span>
+   <span class="n">server_id</span><span class="o">=</span><span class="s2">&quot;new-dai-engine-42&quot;</span><span class="p">,</span>
+   <span class="n">environment_url</span><span class="o">=</span><span class="s2">&quot;https://cloud.h2o.ai&quot;</span><span class="p">,</span>
+   <span class="n">username</span><span class="o">=</span><span class="s2">&quot;firstname.lastname@h2o.ai&quot;</span><span class="p">,</span>
+   <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_AIEM_REFRESH_TOKEN_CLOUD</span><span class="p">),</span>
+   <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">REFRESH_TOKEN</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># add the connection to the H2O Sonar configuration</span>
+<span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">add_connection</span><span class="p">(</span><span class="n">DAI_CONNECTION</span><span class="p">)</span>
+
+<span class="c1"># run the explainer (model and datasets provided as handles as they are hosted by the Driverless AI server)</span>
+<span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret</span><span class="o">.</span><span class="n">run_interpretation</span><span class="p">(</span>
+   <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:7965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">dataset</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:8965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">testset</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;resource:connection:</span><span class="si">{</span><span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">:key:9965e2ea-f898-11ed-b979-106530ed5ceb&quot;</span><span class="p">,</span>
+   <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;Weekly_Sales&quot;</span><span class="p">,</span>
+   <span class="n">explainers</span><span class="o">=</span><span class="p">[</span>
+      <span class="n">commons</span><span class="o">.</span><span class="n">ExplainerToRun</span><span class="p">(</span>
+            <span class="n">explainer_id</span><span class="o">=</span><span class="n">SizeDependencyExplainer</span><span class="o">.</span><span class="n">explainer_id</span><span class="p">(),</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+               <span class="s2">&quot;worker_connection_key&quot;</span><span class="p">:</span> <span class="n">DAI_CONNECTION</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+               <span class="s2">&quot;time_col&quot;</span><span class="p">:</span> <span class="s2">&quot;Date&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+      <span class="p">)</span>
+   <span class="p">],</span>
+   <span class="n">results_location</span><span class="o">=</span><span class="s2">&quot;./h2o-sonar-results&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The explainer can be run using the <strong>command line interface</strong> (CLI) as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>h2o-sonar run interpretation
+--explainers h2o_sonar.explainers.size_dependency_explainer.SizeDependencyExplainer
+--explainers-pars &#39;{
+   &quot;h2o_sonar.explainers.size_dependency_explainer.SizeDependencyExplainer&quot;: {
+      &quot;worker_connection_key&quot;: &quot;local-driverless-ai-server&quot;,
+      &quot;time_col&quot;: &quot;Date&quot;,
+   }
+}&#39;
+--model &quot;resource:connection:local-driverless-ai-server:key:7965e2ea-f898-11ed-b979-106530ed5ceb&quot;
+--dataset &quot;resource:connection:local-driverless-ai-server:key:695f5d5e-f898-11ed-b979-106530ed5ceb&quot;
+--testset &quot;resource:connection:local-driverless-ai-server:key:695df75c-f898-11ed-b979-106530ed5ceb&quot;
+--target-col &quot;Weekly_Sales&quot;
+--results-location &quot;./h2o-sonar-results&quot;
+--config-path &quot;./h2o-sonar-config.json&quot;
+--encryption-key &quot;secret-key-to-decrypt-encrypted-config-fields&quot;
+</pre></div>
+</div>
+<p>Explainer <strong>result</strong> directory description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_size_dependency_explainer_SizeDependencyExplainer_4d0ec4b4-38a7-4606-80a9-235e827532b7
+├── global_3d_data
+│   ├── application_json
+│   │   ├── data3d_feature_0_class_0.json
+│   │   └── explanation.json
+│   ├── application_json.meta
+│   ├── application_vnd_h2oai_json_csv
+│   │   ├── data3d_feature_0_class_0.csv
+│   │   └── explanation.json
+│   └── application_vnd_h2oai_json_csv.meta
+├── global_html_fragment
+│   ├── text_html
+│   │   ├── explanation.html
+│   │   └── heatmap.png
+│   └── text_html.meta
+├── global_work_dir_archive
+│   ├── application_zip
+│   │   └── explanation.zip
+│   └── application_zip.meta
+├── log
+│   └── explainer_run_4d0ec4b4-38a7-4606-80a9-235e827532b7.log
+├── model_problems
+│   └── problems_and_actions.json
+├── result_descriptor.json
+└── work
+   ├── explanation.html
+   └── heatmap.png
+</pre></div>
+</div>
+<p><strong>Explanations</strong> created by the explainer:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_3d_data</span></code></dt><dd><ul>
+<li><p>Feature importance for different training data sizes in JSon, CSV and <code class="docutils literal notranslate"><span class="pre">datatable</span></code> formats.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_html_fragment</span></code></dt><dd><ul>
+<li><p>Feature importance for different training data sizes in the HTML format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">global_work_dir_archive</span></code></dt><dd><ul>
+<li><p>All explanations created by the explainer stored in a ZIP archive.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/guide/tests/supported-validation-tests/size-dependency/size-dependency">H2O Model Validation: Size Dependency</a> documentation</p></li>
+<li><p><a class="reference internal" href="notebooks/h2o-sonar-model-validation-explainers.html#H2O-Sonar-Model-Validation-Explainers"><span class="std std-ref">H2O Sonar Model Validation Explainers</span></a></p></li>
+<li><p><a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">Library Configuration</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="doc.interpretation.html" class="btn btn-neutral float-left" title="Interpretation Parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="doc.generative.html" class="btn btn-neutral float-right" title="Generative Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>h2o_sonar.methods.utils package &mdash; H2O Sonar 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/h2o_sonar.methods.utils.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="h2o_sonar.utils package" href="h2o_sonar.utils.html" />
+    <link rel="prev" title="h2o_sonar.methods.core package" href="h2o_sonar.methods.core.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Sonar
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Sonar Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Sonar</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doc.html">H2O Sonar Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Sonar Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="python_api.html">H2O Sonar Python API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="h2o_sonar.html">h2o_sonar package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.explainers.html">h2o_sonar.explainers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.evaluators.html">h2o_sonar.evaluators package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.lib.html">h2o_sonar.lib package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="h2o_sonar.methods.html">h2o_sonar.methods package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="h2o_sonar.methods.core.html">h2o_sonar.methods.core package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">h2o_sonar.methods.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="h2o_sonar.utils.html">h2o_sonar.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Sonar</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="python_api.html">H2O Sonar Python API</a></li>
+          <li class="breadcrumb-item"><a href="h2o_sonar.html">h2o_sonar package</a></li>
+          <li class="breadcrumb-item"><a href="h2o_sonar.methods.html">h2o_sonar.methods package</a></li>
+      <li class="breadcrumb-item active">h2o_sonar.methods.utils package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/h2o_sonar.methods.utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="h2o-sonar-methods-utils-package">
+<h1>h2o_sonar.methods.utils package<a class="headerlink" href="#h2o-sonar-methods-utils-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<span id="h2o-sonar-methods-utils-submodules"></span><h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-h2o_sonar.methods.utils.fairness_utils">
+<span id="h2o-sonar-methods-utils-fairness-utils-module"></span><h2>h2o_sonar.methods.utils.fairness_utils module<a class="headerlink" href="#module-h2o_sonar.methods.utils.fairness_utils" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.check_cm_input">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">check_cm_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">get_global_cm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_levels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.check_cm_input" title="Link to this definition"></a></dt>
+<dd><p>Check input to confusion matrix for binary DIA</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.check_dia_input">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">check_dia_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actual_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predict_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.check_dia_input" title="Link to this definition"></a></dt>
+<dd><p>Check input of binary DIA class initialization</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.check_frame">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">check_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actual_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predict_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.check_frame" title="Link to this definition"></a></dt>
+<dd><p>Sanity checks for input frame to DIA</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.check_frame_type">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">check_frame_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.check_frame_type" title="Link to this definition"></a></dt>
+<dd><p>Check frame type for DIA</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.cm_exp_parser">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">cm_exp_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cm_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.cm_exp_parser" title="Link to this definition"></a></dt>
+<dd><p>Small utility function that translates abbreviated metric expressions into
+executable Python statements:</p>
+<p>tp | fp       cm_dict[level][0, 0] | cm_dict[level][0, 1]
+——-  ==&gt;  ——————————————–
+fn | tn       cm_dict[level][1, 0] | cm_dict[level][1, 1]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.get_binary_metric_dict">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">get_binary_metric_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.get_binary_metric_dict" title="Link to this definition"></a></dt>
+<dd><p>Dictionary of metrics utilized by binary DIA.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.get_group_levels">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">get_group_levels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.get_group_levels" title="Link to this definition"></a></dt>
+<dd><p>Get level’s for a particular group column, e.g, {male, female}</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.get_metrics_list">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">get_metrics_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.get_metrics_list" title="Link to this definition"></a></dt>
+<dd><p>Get DIA metrics for a given problem type (regression or binomial).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.get_prroc_dt">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">get_prroc_dt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yhat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.get_prroc_dt" title="Link to this definition"></a></dt>
+<dd><p>Calculates precision, recall, and f1 for a datatable of y and yhat values.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>frame: Datatable of actual (y) and predicted (yhat) values.
+y: Name of actual value column.
+yhat: Name of predicted value column.
+pos: Primary target value, default 1.
+neg: Secondary target value, default 0.
+res: Resolution by which to loop through cutoffs, default 0.01.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Datatable of precision, recall, and f1 values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.get_r2_rmse">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">get_r2_rmse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predict_column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.get_r2_rmse" title="Link to this definition"></a></dt>
+<dd><p>Calculate R2 and RMSE between actual and predicted columns in a Pandas
+frame.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.get_reg_metrics_list">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">get_reg_metrics_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.get_reg_metrics_list" title="Link to this definition"></a></dt>
+<dd><p>List of metrics utilized by regression DIA.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.mean_squared_error">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">mean_squared_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.mean_squared_error" title="Link to this definition"></a></dt>
+<dd><p>Computes the mean squared error.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.r_squared">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">r_squared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.r_squared" title="Link to this definition"></a></dt>
+<dd><p>Computes R^2 (coefficient of determination) regression score function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.root_mean_squared_error">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">root_mean_squared_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.root_mean_squared_error" title="Link to this definition"></a></dt>
+<dd><p>Computes the root mean squared error.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.smd_multinomial">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">smd_multinomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_level</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.smd_multinomial" title="Link to this definition"></a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>frame: datatable.Frame</strong></dt><dd><p>Datatable that contains target, group column, and multinomial predictions
+(probabilities) as columns for each class outcome. For example:</p>
+<blockquote>
+<div><p>target | group_col | class_1_prob | class_2_prob | … |</p>
+</div></blockquote>
+</dd>
+<dt><strong>y: str</strong></dt><dd><p>Column that contains the true value for the outcome of interest</p>
+</dd>
+<dt><strong>group_col: str</strong></dt><dd><p>Column that contains certain groups of interest for DIA, e.g.,
+{female, male, other}, {high school, college, graduate school,
+other}</p>
+</dd>
+<dt><strong>ref_level: str</strong></dt><dd><p>Reference group level used for disparity calculation.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>smd_frame: datatable.Frame</dt><dd><p>A frame in which the first column contains each group level and each column
+after contains the standardized mean difference between each class outcome
+and the reference level.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.fairness_utils.squared_error">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.fairness_utils.</span></span><span class="sig-name descname"><span class="pre">squared_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.fairness_utils.squared_error" title="Link to this definition"></a></dt>
+<dd><p>Computes the squared error.</p>
+</dd></dl>
+
+</section>
+<section id="module-h2o_sonar.methods.utils.h2o_utils">
+<span id="h2o-sonar-methods-utils-h2o-utils-module"></span><h2>h2o_sonar.methods.utils.h2o_utils module<a class="headerlink" href="#module-h2o_sonar.methods.utils.h2o_utils" title="Link to this heading"></a></h2>
+<p>H2O-3 utilities with proper cluster lifecycle management.</p>
+<p>This module manages H2O-3 cluster lifecycle to prevent memory leaks:</p>
+<ol class="arabic simple">
+<li><p>Automatic Shutdown: Shuts down old clusters when new ones are created
+to prevent multiple Java VMs from accumulating</p></li>
+<li><p>Comprehensive Cleanup: Removes frames, models, and forces GC to
+immediately reclaim Java heap memory</p></li>
+<li><p>Test Safety: Fixtures properly clean up after each test and shut down
+at session end</p></li>
+</ol>
+<p>Memory Management Best Practices:
+- Session-scoped fixtures reuse clusters when possible
+- Function-scoped fixtures shut down previous clusters before creating new ones
+- clean_up_h2o3() removes frames AND models, then forces GC
+- kill_h2o3() shuts down clusters and resets tracking state</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.assert_is_type">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">assert_is_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">types</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.assert_is_type" title="Link to this definition"></a></dt>
+<dd><p>Safe type assert with (cythonized code) bug workaround.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.clean_up_h2o3">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">clean_up_h2o3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.clean_up_h2o3" title="Link to this definition"></a></dt>
+<dd><p>Clean up H2O-3 data to free memory.</p>
+<p>Removes all H2O frames AND models from H2O cluster, then forces Java
+garbage collection to immediately reclaim memory. This is more aggressive
+than relying on automatic GC which may delay memory reclamation.</p>
+<p>If H2O is not installed, this function is a no-op and returns immediately.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.connect_to_h2o3">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">connect_to_h2o3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.connect_to_h2o3" title="Link to this definition"></a></dt>
+<dd><p>Connect to H2O-3 server.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.ensure_h2o3_running">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">ensure_h2o3_running</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auto_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h2o3_config_overrides</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.ensure_h2o3_running" title="Link to this definition"></a></dt>
+<dd><p>Ensure that H2O-3 server is running - either by starting it or connecting
+to it. H2O-3 server is started even if the <code class="docutils literal notranslate"><span class="pre">auto_start</span></code> is not enable in
+H2O Sonar configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>auto_start</strong><span class="classifier">bool</span></dt><dd><p>If True, the H2O-3 server is started if it is not running.</p>
+</dd>
+<dt><strong>h2o3_config_overrides</strong><span class="classifier">dict</span></dt><dd><p>H2O-3 configuration overrides.</p>
+</dd>
+<dt><strong>logger</strong></dt><dd><p>Logger.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.h2o_find_free_port">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">h2o_find_free_port</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.int" title="h2o_sonar.lib.api.commons.EvaluatorParamType.int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">54321</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_attempts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.int" title="h2o_sonar.lib.api.commons.EvaluatorParamType.int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.h2o_find_free_port" title="Link to this definition"></a></dt>
+<dd><p>Find free port for H2O-3 server.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>port</strong><span class="classifier">int</span></dt><dd><p>Starting port. If 0, then any/random free port is found.</p>
+</dd>
+<dt><strong>max_attempts</strong><span class="classifier">int</span></dt><dd><p>Maximum number of attempts.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>int</dt><dd><p>Free port.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.h2o_init">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">h2o_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h2o3_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.h2o_init" title="Link to this definition"></a></dt>
+<dd><p>Ensure connection to an H2O instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>h2o3_config</strong><span class="classifier">dict</span></dt><dd><p>H2O configuration as dictionary with keys defined in
+<code class="docutils literal notranslate"><span class="pre">h2oaxi.config.H2o3Config</span></code> e.g. port or memory.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.h2o_to_dt">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">h2o_to_dt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.h2o_to_dt" title="Link to this definition"></a></dt>
+<dd><p>Convert H2OFrames to datatables.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.is_h2o3_running">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">is_h2o3_running</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.is_h2o3_running" title="Link to this definition"></a></dt>
+<dd><p>Determine if H2O-3 instance is running or not.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.kill_h2o3">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">kill_h2o3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.kill_h2o3" title="Link to this definition"></a></dt>
+<dd><p>Shutdown H2O-3 cluster if it was started by H2O Sonar.</p>
+<p>If H2O is not installed, this function is a no-op and returns immediately.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.preprocess_h2o3_data">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">preprocess_h2o3_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_for_h2o3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contains_text_transformers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">explainer_work_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.html#h2o_sonar.config.H2oSonarConfig" title="h2o_sonar.config.H2oSonarConfig"><span class="pre">H2oSonarConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sanitization_utils</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.int" title="h2o_sonar.lib.api.commons.EvaluatorParamType.int"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_metadata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.persistences.Persistence" title="h2o_sonar.lib.api.persistences.Persistence"><span class="pre">Persistence</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectorizer_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lm_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropped_cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.str" title="h2o_sonar.lib.api.commons.EvaluatorParamType.str"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_preprocessed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.preprocess_h2o3_data" title="Link to this definition"></a></dt>
+<dd><p>Preprocess data for H2O-3.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>frame_for_h2o3</strong><span class="classifier">datatable.Frame</span></dt><dd><p>Frame to be preprocessed.</p>
+</dd>
+<dt><strong>target_col</strong><span class="classifier">str</span></dt><dd><p>Optional target column name.</p>
+</dd>
+<dt><strong>dropped_cols</strong><span class="classifier">list[str] | None</span></dt><dd><p>Optional dropped columns list.</p>
+</dd>
+<dt><strong>contains_text_transformers</strong><span class="classifier">bool</span></dt><dd><p>Indicator of text transformers presence in the model.</p>
+</dd>
+<dt><strong>features_metadata</strong><span class="classifier">dict</span></dt><dd><p>Model features metadata.</p>
+</dd>
+<dt><strong>meta_keys</strong></dt><dd><p>Keys to be used with features metadata dictionary.</p>
+</dd>
+<dt><strong>num_labels</strong><span class="classifier">int</span></dt><dd><p>Number of target labels (regression vs. binomial vs. multinomial).</p>
+</dd>
+<dt><strong>explainer_work_path</strong><span class="classifier">str</span></dt><dd><p>Explainer working directory path.</p>
+</dd>
+<dt><strong>vectorizer_path</strong><span class="classifier">str</span></dt><dd><p>Optional vectorizer path.</p>
+</dd>
+<dt><strong>lm_path</strong><span class="classifier">str</span></dt><dd><p>Optional linear model path.</p>
+</dd>
+<dt><strong>config</strong></dt><dd><p>Global H2O Sonar configuration with config overrides already applied - if
+supported by the container runtime.</p>
+</dd>
+<dt><strong>sanitization_utils</strong></dt><dd><p>Feature names sanitization utils.</p>
+</dd>
+<dt><strong>remove_preprocessed</strong></dt><dd><p>Control removal of preprocessed columns.</p>
+</dd>
+<dt><strong>persistence</strong><span class="classifier">persistences.Persistence</span></dt><dd><p>Persistence store.</p>
+</dd>
+<dt><strong>logger</strong></dt><dd><p>Logger.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>datatable.Frame</dt><dd><p>Frame for H2O-3.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.start_h2o3">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">start_h2o3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h2o3_config_overrides</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.dict" title="h2o_sonar.lib.api.commons.EvaluatorParamType.dict"><span class="pre">dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.start_h2o3" title="Link to this definition"></a></dt>
+<dd><p>Start H2O-3 on a local H2O instance.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.to_h2oframe">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">to_h2oframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.to_h2oframe" title="Link to this definition"></a></dt>
+<dd><p>Convert H2OFrames.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data: h2o.H2OFrame | list | list of lists | pandas.DataFrame | datatable.Frame</strong></dt><dd></dd>
+<dt><strong>| str</strong></dt><dd><p>Data to be transformed to the frame.</p>
+</dd>
+<dt><strong>labels: h2o.H2OFrame | list | pandas.DataFrame | None</strong></dt><dd><p>Optional frame labels.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Tuple[h2o.H2OFrame, bool]</dt><dd><p>Frame created from the data and indicator whether the data were transformed.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.h2o_utils.upload_data">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.h2o_utils.</span></span><span class="sig-name descname"><span class="pre">upload_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.h2o_utils.upload_data" title="Link to this definition"></a></dt>
+<dd><p>Uploads the data located at a given path or returns it
+if it’s a h2o.H2OFrame, else an exception is raised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">str, h2o_sonar.core.data.PersistedData</span></dt><dd><p>Path to the data or h2o.H2OFrame.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>h2o.H2OFrame</dt><dd><p>H2O-3 frame.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-h2o_sonar.methods.utils.histogram">
+<span id="h2o-sonar-methods-utils-histogram-module"></span><h2>h2o_sonar.methods.utils.histogram module<a class="headerlink" href="#module-h2o_sonar.methods.utils.histogram" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.histogram.HistogramBackend">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.histogram.</span></span><span class="sig-name descname"><span class="pre">HistogramBackend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.histogram.HistogramBackend" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.histogram.HistogramBackend.MLI">
+<span class="sig-name descname"><span class="pre">MLI</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#h2o_sonar.methods.utils.histogram.HistogramBackend.MLI" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.histogram.find_nan_index">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.histogram.</span></span><span class="sig-name descname"><span class="pre">find_nan_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.histogram.find_nan_index" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.histogram.has_nan">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.histogram.</span></span><span class="sig-name descname"><span class="pre">has_nan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2o_sonar.methods.utils.histogram.has_nan" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="h2o_sonar.methods.utils.histogram.histogram_data">
+<span class="sig-prename descclassname"><span class="pre">h2o_sonar.methods.utils.histogram.</span></span><span class="sig-name descname"><span class="pre">histogram_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.list" title="h2o_sonar.lib.api.commons.EvaluatorParamType.list"><span class="pre">list</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_resolution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.int" title="h2o_sonar.lib.api.commons.EvaluatorParamType.int"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_discrete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.bool" title="h2o_sonar.lib.api.commons.EvaluatorParamType.bool"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discrete_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="h2o_sonar.lib.api.html#h2o_sonar.lib.api.commons.EvaluatorParamType.float" title="h2o_sonar.lib.api.commons.EvaluatorParamType.float"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#h2o_sonar.methods.utils.histogram.HistogramBackend" title="h2o_sonar.methods.utils.histogram.HistogramBackend"><span class="pre">HistogramBackend</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">HistogramBackend.MLI</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#h2o_sonar.methods.utils.histogram.histogram_data" title="Link to this definition"></a></dt>
+<dd><p>Get histogram data for given feature.</p>
+<p>Supported feature data types:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">integer</span></code> (continuous)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span></code> (continuous)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code> (discrete)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date/time</span></code> (continuous)</p></li>
+</ul>
+<p>This implementation provides MLI and backend:</p>
+<ul class="simple">
+<li><p><strong>MLI histogram backend</strong> is used by default. It calculates histograms for int,
+float, string and date features using Numpy (Pandas is used only to convert dates
+for Numpy). MLI histogram backend allows bins specification and provides valid
+x-axis labels for all feature types.</p></li>
+</ul>
+<p>Method can decide which backend to use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df: datatable.Frame:</strong></dt><dd><p>Data for which to calculate histogram represented as frame with one column
+(target feature).</p>
+</dd>
+<dt><strong>bins: list</strong></dt><dd><p>Optional bins / split points for which to compute histogram (unsupported by
+AutoReport backend).</p>
+</dd>
+<dt><strong>grid_resolution: int</strong></dt><dd><p>Optional grid resolution - the number of equal-width bins / split points in the
+given range.</p>
+</dd>
+<dt><strong>is_discrete: bool</strong></dt><dd><p>Optional specification to override continuous histogram default (<code class="docutils literal notranslate"><span class="pre">False</span></code>) of
+integer / float features and create discrete (categorical) histogram instead.</p>
+</dd>
+<dt><strong>is_date: bool:</strong></dt><dd><p>Optional specification to force date/time histogram for a string feature.</p>
+</dd>
+<dt><strong>discrete_threshold: float</strong></dt><dd><p>Optional threshold for relative difference between min/max gap, to get
+histogram for numeric <code class="docutils literal notranslate"><span class="pre">df</span></code> as discrete (if <code class="docutils literal notranslate"><span class="pre">min_gap/max_gap</span> <span class="pre">&lt;</span> <span class="pre">threshold</span></code>,
+plot histogram).</p>
+</dd>
+<dt><strong>backend: HistogramBackend</strong></dt><dd><p>Backend to calculate histograms, <code class="docutils literal notranslate"><span class="pre">HistogramBackend.MLI</span></code> is default.</p>
+</dd>
+<dt><strong>logger:</strong></dt><dd><p>Logger for testability.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>list, list:</dt><dd><p>x-axis (bins/split point values) and y-axis (histogram frequencies).
+The number of x-axis and y-axis ticks are the same in case of discrete
+(categorical) features, but different in case of histogram for continuous
+features: <code class="docutils literal notranslate"><span class="pre">len(x)</span> <span class="pre">=</span> <span class="pre">len(frequencies)+1</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-h2o_sonar.methods.utils">
+<span id="module-contents"></span><span id="h2o-sonar-methods-utils-module-contents"></span><h2>Module contents<a class="headerlink" href="#module-h2o_sonar.methods.utils" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="h2o_sonar.methods.core.html" class="btn btn-neutral float-left" title="h2o_sonar.methods.core package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="h2o_sonar.utils.html" class="btn btn-neutral float-right" title="h2o_sonar.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

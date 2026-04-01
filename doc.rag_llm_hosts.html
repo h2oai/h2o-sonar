@@ -1,0 +1,695 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAG and LLM Hosts &mdash; H2O Sonar 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/doc.rag_llm_hosts.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Test Case, Suite, Lab and LLM Dataset" href="doc.rag_llm_tests.html" />
+    <link rel="prev" title="Evaluating RAGs and LLMs" href="doc.evaluations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Sonar
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Sonar Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Sonar</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="doc.html">H2O Sonar Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="doc.configuration.html">Library Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.predictive.html">Predictive Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="doc.generative.html">Generative Models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluations.html">Evaluating RAGs and LLMs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">RAG and LLM Hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.rag_llm_tests.html">Test Case, Suite, Lab and LLM Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluators.pars.html">Evaluator Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.evaluators.html">Evaluators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.byoj.html">BYOJ: Bring Your Own Judge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.byop.html">BYOP: Bring Your Own Prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.perturbations.html">Perturbations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc.result.html">Report and Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.talktoreport.html">Talk to Report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Sonar Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Sonar Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Sonar</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="doc.html">H2O Sonar Documentation</a></li>
+          <li class="breadcrumb-item"><a href="doc.generative.html">Generative Models</a></li>
+      <li class="breadcrumb-item active">RAG and LLM Hosts</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/doc.rag_llm_hosts.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rag-and-llm-hosts">
+<h1>RAG and LLM Hosts<a class="headerlink" href="#rag-and-llm-hosts" title="Link to this heading"></a></h1>
+<p>H2O Sonar can evaluate standalone LLMs (Large Language Models) and LLMs used by RAG
+(Retrieval-augmented generation) which are <strong>hosted by</strong>
+the following products and services:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#amazon-bedrock"><span class="std std-ref">Amazon Bedrock</span></a></p></li>
+<li><p><a class="reference internal" href="#anthropic-claude-chat-llm-host"><span class="std std-ref">Anthropic Claude Chat LLM Host</span></a></p></li>
+<li><p><a class="reference internal" href="#enterprise-h2ogpte-llm-host"><span class="std std-ref">Enterprise h2oGPTe LLM Host</span></a></p></li>
+<li><p><a class="reference internal" href="#h2o-gpt-llm-host"><span class="std std-ref">H2O GPT LLM Host</span></a></p></li>
+<li><p><a class="reference internal" href="#h2o-llmops-llm-host"><span class="std std-ref">H2O LLMOps LLM Host</span></a></p></li>
+<li><p><a class="reference internal" href="#microsoft-azure-open-ai-chat-llm-host"><span class="std std-ref">Microsoft Azure Open AI Chat LLM Host</span></a></p></li>
+<li><p><a class="reference internal" href="#ollama-llm-host"><span class="std std-ref">ollama LLM Host</span></a></p></li>
+<li><p><a class="reference internal" href="#open-ai-assistants-with-file-search-formerly-retrieval-tool-llm-host"><span class="std std-ref">Open AI Assistants with File Search (formerly Retrieval) Tool LLM Host</span></a></p></li>
+<li><p><a class="reference internal" href="#open-ai-chat-api-compatible-llm-host"><span class="std std-ref">Open AI Chat API Compatible LLM Host</span></a></p></li>
+<li><p><a class="reference internal" href="#open-ai-chat-llm-host"><span class="std std-ref">Open AI Chat LLM Host</span></a></p></li>
+</ul>
+<section id="enterprise-h2ogpte-llm-host">
+<h2>Enterprise h2oGPTe LLM Host<a class="headerlink" href="#enterprise-h2ogpte-llm-host" title="Link to this heading"></a></h2>
+<p>The Enterprise h2oGPTe is RAG product that uses LLMs to generate responses.
+H2O Sonar can be used to evaluate the performance of LLMs hosted by the Enterprise h2oGPTe.</p>
+<p>Enterprise h2oGPTe LLM host connection configuration example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h2o_gpte_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">H2O_GPT_E</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;H2O GPT Enterprise LLM host example.&quot;</span><span class="p">,</span>
+    <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://h2ogpte.h2o.ai/&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;YOUR_API_TOKEN_HERE&quot;</span><span class="p">,</span>
+    <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Remarks:</p>
+<ul class="simple">
+<li><p><cite>connection_type</cite> - <cite>H2O_GPT_E</cite>.</p></li>
+<li><p><cite>server_url</cite> - URL of the Enterprise h2oGPTe LLM host.</p></li>
+<li><p><cite>token</cite> - API key to access the Enterprise h2oGPTe LLM host - it can be generated in the Enterprise h2oGPTe UI (settings).</p></li>
+<li><p><cite>token_use_type</cite> - API key type - <cite>API_KEY</cite>.</p></li>
+</ul>
+<p>The following <strong>model parameters</strong> can be configured when building h2oGPTe <a class="reference internal" href="doc.rag_llm_tests.html#test-lab"><span class="std std-ref">Test Lab</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;embedding_model&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;prompt_template_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;system_prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pre_prompt_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;prompt_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pre_prompt_summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;prompt_summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;llm&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;llm_args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;top_k&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;top_p&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;repetition_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.07</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;max_new_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;min_max_new_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">512</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;self_reflection_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;rag_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="h2o-gpt-llm-host">
+<h2>H2O GPT LLM Host<a class="headerlink" href="#h2o-gpt-llm-host" title="Link to this heading"></a></h2>
+<p>The H2O GPT is a product that is used to host LLMs. H2O Sonar can be used to evaluate the performance of LLMs hosted by the H2O GPT.</p>
+<p>Enterprise H2O GPT LLM host connection configuration example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h2o_gpt_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">H2O_GPT</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;H2O GPT&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;H2O GPT LLM host example.&quot;</span><span class="p">,</span>
+    <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://gpt.h2o.ai:5000/v1&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_H2OGPT_API_KEY</span><span class="p">),</span>
+    <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Remarks:</p>
+<ul class="simple">
+<li><p><cite>connection_type</cite> - <cite>H2O_GPT</cite>.</p></li>
+<li><p><cite>server_url</cite> - URL of the H2O GPT LLM host.</p></li>
+<li><p><cite>token</cite> - API key to access the H2O GPT LLM host.</p></li>
+<li><p><cite>token_use_type</cite> - API key type - <cite>API_KEY</cite>.</p></li>
+</ul>
+<p>The following <strong>model parameters</strong> can be configured when building h2oGPT <a class="reference internal" href="doc.rag_llm_tests.html#test-lab"><span class="std std-ref">Test Lab</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;frequency_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;function_call&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;functions&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logit_bias&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logprobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;presence_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stream&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tool_choice&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_logprobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_p&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_body&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="h2o-llmops-llm-host">
+<h2>H2O LLMOps LLM Host<a class="headerlink" href="#h2o-llmops-llm-host" title="Link to this heading"></a></h2>
+<p>The H2O LLMOps is a product that is used to host LLMs. H2O Sonar can be used to evaluate the performance of LLMs hosted by the H2O LLMOps.
+LLMs can be deployed using the H2O LLMOps <strong>deployer</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h2o_llmops_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">H2O_LLM_OPS</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;H2O LLMOps: h2o-danube-1.8b-chat&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;H2O LLMOps as host of h2o-danube-1.8b-chat LLM model.&quot;</span><span class="p">,</span>
+    <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://model.h2o.ai/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee/v1&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;YOUR_API_TOKEN_HERE&quot;</span><span class="p">,</span>
+    <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Remarks:</p>
+<ul class="simple">
+<li><p><cite>connection_type</cite> - <cite>H2O_LLM_OPS</cite>.</p></li>
+<li><p><cite>server_url</cite> - URL of the OpenAI chat API endpoint created by the H2O LLMOps deployer.</p></li>
+<li><p><cite>token</cite> - API key to access the LLM model.</p></li>
+<li><p><cite>token_use_type</cite> - API key type - <cite>API_KEY</cite>.</p></li>
+</ul>
+<p>The following <strong>model parameters</strong> can be configured when building <a class="reference internal" href="doc.rag_llm_tests.html#test-lab"><span class="std std-ref">Test Lab</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;frequency_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;function_call&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;functions&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logit_bias&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logprobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;presence_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stream&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tool_choice&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_logprobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_p&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_body&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="open-ai-assistants-with-file-search-formerly-retrieval-tool-llm-host">
+<h2>Open AI Assistants with File Search (formerly Retrieval) Tool LLM Host<a class="headerlink" href="#open-ai-assistants-with-file-search-formerly-retrieval-tool-llm-host" title="Link to this heading"></a></h2>
+<p>Open AI Assistants with the <a class="reference external" href="https://platform.openai.com/docs/assistants/tools/file-search">File Search</a> tool
+(or deprecated <code class="docutils literal notranslate"><span class="pre">Retrieval</span></code> tool) is RAG system from OpenAI which hosts LLMs to generate the answers.
+H2O Sonar can be used to evaluate the performance of LLMs hosted by Open AI Assistants with the tools.</p>
+<p>Open AI Assistants with <code class="docutils literal notranslate"><span class="pre">Retrieval</span></code> tool is available when <code class="docutils literal notranslate"><span class="pre">openai</span></code> client library version <code class="docutils literal notranslate"><span class="pre">1.20</span></code>
+and below is installed. Open AI Assistants with the <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">Search</span></code> tool is available when
+newer <code class="docutils literal notranslate"><span class="pre">openai</span></code> client library is installed. H2O Sonar automatically detects the tool availability
+and uses the appropriate LLM/RAG client and tool when connecting to the OpenAI Assistants.</p>
+<p>However, there are important <strong>limitations</strong> when using the OpenAI Assistants:</p>
+<ul class="simple">
+<li><p>The OpenAI Assistants <strong>version 2</strong> with the <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">Search</span></code> tool do <strong>not</strong> provide retrieved contexts
+when H2O Sonar builds the <a class="reference internal" href="doc.rag_llm_tests.html#test-lab"><span class="std std-ref">test lab</span></a>. Therefore the <code class="docutils literal notranslate"><span class="pre">retrieved_contexts</span></code> field in the test lab
+will be empty and <a class="reference internal" href="doc.evaluators.html#evaluators"><span class="std std-ref">evaluators</span></a> which require the retrieved contexts should <strong>not</strong>
+be used as they will not work as expected - their results will be based on the generated responses only
+and might be incorrect. H2O Sonar will generate problems for the test lab with the empty retrieved
+contexts.</p></li>
+<li><p>The OpenAI Assistants <strong>version 1</strong> with the <code class="docutils literal notranslate"><span class="pre">Retrieval</span></code> tool is <strong>deprecated</strong> and will be removed in the future.
+OpenaAI’s endpoint provided the the retrieved context in the past. However, as part of the deprecation
+process the retrieved context is no longer provided by the OpenAI’s endpoint as well which brings
+evaluators accuracy issues described above.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">openai_rag_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">OPENAI_RAG</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;OpenAI RAG&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;OpenAI AI Assistant with the tool enabled.&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_OPENAI_API_KEY</span><span class="p">),</span>
+    <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Remarks:</p>
+<ul class="simple">
+<li><p><cite>connection_type</cite> - <cite>OPENAI_RAG</cite>.</p></li>
+<li><p><cite>server_url</cite> is resolved internally by the client.</p></li>
+<li><p><cite>token</cite> - API key to access the LLM model.</p></li>
+<li><p><cite>token_use_type</cite> - API key type - <cite>API_KEY</cite>.</p></li>
+</ul>
+<p>The following <strong>model parameters</strong> can be configured when building OpenAI <a class="reference internal" href="doc.rag_llm_tests.html#test-lab"><span class="std std-ref">Test Lab</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;assistant_kwargs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;extra_headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;extra_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;extra_body&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;thread_kwargs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;extra_headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;extra_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;extra_body&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;run_kwargs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;additional_instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;additional_messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;instructions&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;max_completion_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;max_prompt_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;response_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;stream&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tool_choice&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;truncation_strategy&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;extra_headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;extra_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;extra_body&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="open-ai-chat-llm-host">
+<h2>Open AI Chat LLM Host<a class="headerlink" href="#open-ai-chat-llm-host" title="Link to this heading"></a></h2>
+<p>Open AI Chat is a product that hosts LLMs. H2O Sonar can be used to evaluate the performance of LLMs hosted by the Open AI Chat.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">openai_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">OPENAI_CHAT</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;OpenAI Chat&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;OpenAI chat API.&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_OPENAI_API_KEY</span><span class="p">),</span>
+    <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Remarks:</p>
+<ul class="simple">
+<li><p><cite>connection_type</cite> - <cite>OPENAI_CHAT</cite>.</p></li>
+<li><p><cite>server_url</cite> is resolved internally by the client.</p></li>
+<li><p><cite>token</cite> - API key to access the LLM model.</p></li>
+<li><p><cite>token_use_type</cite> - API key type - <cite>API_KEY</cite>.</p></li>
+</ul>
+<p>The following <strong>model parameters</strong> can be configured when building <a class="reference internal" href="doc.rag_llm_tests.html#test-lab"><span class="std std-ref">Test Lab</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;frequency_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;function_call&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;functions&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logit_bias&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logprobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;presence_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stream&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tool_choice&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_logprobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_p&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_body&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="microsoft-azure-open-ai-chat-llm-host">
+<h2>Microsoft Azure Open AI Chat LLM Host<a class="headerlink" href="#microsoft-azure-open-ai-chat-llm-host" title="Link to this heading"></a></h2>
+<p>Microsoft Azure hosted Open AI Chat is a product that hosts LLMs.
+H2O Sonar can be used to evaluate the performance of LLMs hosted by the Open AI Chat.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">openai_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">AZURE_OPENAI_CHAT</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;OpenAI Chat at MS Azure&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;OpenAI chat API hosted by Microsoft Azure.&quot;</span><span class="p">,</span>
+    <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://my-llm-environment.openai.azure.com/&quot;</span><span class="p">,</span>
+    <span class="n">server_id</span><span class="o">=</span><span class="s2">&quot;my-llm-testing&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_AZURE_OPENAI_API_KEY</span><span class="p">),</span>
+    <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Remarks:</p>
+<ul class="simple">
+<li><p><cite>connection_type</cite> - <cite>OPENAI_CHAT</cite>.</p></li>
+<li><p><cite>server_url</cite> is URL of the Open AI Chat environment hosted by Microsoft Azure.</p></li>
+<li><p><cite>server_id</cite> - ID of the Open AI Chat environment hosted by Microsoft Azure used as the <strong>LLM model name</strong>.</p></li>
+<li><p><cite>token</cite> - API key to access the environment.</p></li>
+<li><p><cite>token_use_type</cite> - API key type - <cite>API_KEY</cite>.</p></li>
+</ul>
+<p>The following <strong>model parameters</strong> can be configured when building Microsoft Azure <a class="reference internal" href="doc.rag_llm_tests.html#test-lab"><span class="std std-ref">Test Lab</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;frequency_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;function_call&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;functions&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logit_bias&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logprobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;presence_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stream&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tool_choice&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_logprobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_p&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_body&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="anthropic-claude-chat-llm-host">
+<h2>Anthropic Claude Chat LLM Host<a class="headerlink" href="#anthropic-claude-chat-llm-host" title="Link to this heading"></a></h2>
+<p>Anthropic Claude Chat is a product that hosts Claude LLMs. H2O Sonar can be used to evaluate the performance of Claude models hosted by Anthropic.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">anthropic_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">ANTHROPIC_CHAT</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Anthropic Claude Chat&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Anthropic Claude AI chat API.&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_ANTHROPIC_API_KEY</span><span class="p">),</span>
+    <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Remarks:</p>
+<ul class="simple">
+<li><p><cite>connection_type</cite> - <cite>ANTHROPIC_CHAT</cite>.</p></li>
+<li><p><cite>server_url</cite> is resolved internally by the client.</p></li>
+<li><p><cite>token</cite> - API key to access the Anthropic Claude API.</p></li>
+<li><p><cite>token_use_type</cite> - API key type - <cite>API_KEY</cite>.</p></li>
+</ul>
+<p>The following <strong>model parameters</strong> can be configured when building Anthropic <a class="reference internal" href="doc.rag_llm_tests.html#test-lab"><span class="std std-ref">Test Lab</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;max_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stop_sequences&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tool_choice&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_k&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_p&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_body&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="open-ai-chat-api-compatible-llm-host">
+<h2>Open AI Chat API Compatible LLM Host<a class="headerlink" href="#open-ai-chat-api-compatible-llm-host" title="Link to this heading"></a></h2>
+<p>H2O Sonar can be used to evaluate the performance of LLMs hosted by any OpenAI API compatible LLM host.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">openai_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">OPENAI_CHAT</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;OpenAI Chat&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;OpenAI chat API.&quot;</span><span class="p">,</span>
+    <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;https://model.h2o.ai/0ac9b9c8-91f3-485c-bc1c-17163c5d75b5/v1&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="n">KEY_OPENAI_API_KEY</span><span class="p">),</span>
+    <span class="n">token_use_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">TokenUseType</span><span class="o">.</span><span class="n">API_KEY</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Remarks:</p>
+<ul class="simple">
+<li><p><cite>connection_type</cite> - <cite>OPENAI_CHAT</cite>.</p></li>
+<li><p><cite>server_url</cite> - URL of the Open AI Chat compatible endpoint.</p></li>
+<li><p><cite>token</cite> - API key to access the LLM model.</p></li>
+<li><p><cite>token_use_type</cite> - API key type - <cite>API_KEY</cite>.</p></li>
+</ul>
+<p>The following <strong>model parameters</strong> can be configured when building <a class="reference internal" href="doc.rag_llm_tests.html#test-lab"><span class="std std-ref">Test Lab</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;frequency_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;function_call&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;functions&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logit_bias&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logprobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;presence_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;response_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stream&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tool_choice&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_logprobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;top_p&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;extra_body&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="amazon-bedrock">
+<h2>Amazon Bedrock<a class="headerlink" href="#amazon-bedrock" title="Link to this heading"></a></h2>
+<p>The current implementation of the Amazon Bedrock client supports RAG either with a predefined collection ID
+that corresponds to <code class="docutils literal notranslate"><span class="pre">knowledgeBaseId</span></code> or it can create a knowledge base using some fixed configuration which is not configurable as of now.
+Only Anthropic Claude models are <a class="reference external" href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-features.html">supported for usage in the RAG</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bedrock_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">AMAZON_BEDROCK</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Amazon Bedrock&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Amazon Bedrock RAG host connection.&quot;</span><span class="p">,</span>
+    <span class="n">username</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;AWS_ACCESS_KEY&quot;</span><span class="p">),</span>
+    <span class="n">password</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;AWS_SECRET_ACCESS_KEY&quot;</span><span class="p">),</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;AWS_SESSION_TOKEN&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Remarks:</p>
+<ul class="simple">
+<li><p><cite>connection_type</cite> - <cite>AMAZON_BEDROCK</cite>.</p></li>
+<li><p><cite>username</cite> - AWS access key.</p></li>
+<li><p><cite>password</cite> - AWS secret access key.</p></li>
+<li><p><cite>token</cite> - AWS session token.</p></li>
+</ul>
+<p>The following <strong>model parameters</strong> can be configured when building <a class="reference internal" href="doc.rag_llm_tests.html#test-lab"><span class="std std-ref">Test Lab</span></a>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+     &quot;guardrailConfiguration&quot;: {
+        &quot;guardrailId&quot;: &quot;string&quot;,
+        &quot;guardrailVersion&quot;: &quot;string&quot;
+     },
+     &quot;inferenceConfig&quot;: {
+        &quot;textInferenceConfig&quot;: {
+           &quot;maxTokens&quot;: number,
+           &quot;stopSequences&quot;: [ &quot;string&quot; ],
+           &quot;temperature&quot;: number,
+           &quot;topP&quot;: number
+        }
+     },
+     &quot;promptTemplate&quot;: {
+        &quot;textPromptTemplate&quot;: &quot;string&quot;
+     },
+     &quot;orchestrationConfiguration&quot;: {
+            &quot;queryTransformationConfiguration&quot;: {
+                &quot;type&quot;: &quot;QUERY_DECOMPOSITION&quot;
+            }
+     },
+     &quot;retrievalConfiguration&quot;: {
+        &quot;vectorSearchConfiguration&quot;: {
+           &quot;filter&quot;: { ... },
+           &quot;numberOfResults&quot;: number,
+           &quot;overrideSearchType&quot;: &quot;string&quot;
+        }
+     }
+ }
+</pre></div>
+</div>
+<p>These parameters are described in the <a class="reference external" href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock-agent-runtime/client/retrieve_and_generate.html">boto3 documentation</a>.
+<code class="docutils literal notranslate"><span class="pre">guardrailConfiguration</span></code>, <code class="docutils literal notranslate"><span class="pre">inferenceConfig</span></code>, <code class="docutils literal notranslate"><span class="pre">promptTemplate</span></code> are passed to the <code class="docutils literal notranslate"><span class="pre">knowledgeBaseConfiguration</span></code>.</p>
+</section>
+<section id="ollama-llm-host">
+<h2>ollama LLM Host<a class="headerlink" href="#ollama-llm-host" title="Link to this heading"></a></h2>
+<p>H2O Sonar can be used to evaluate the performance of LLMs hosted by <a class="reference external" href="https://ollama.com/">ollama</a> LLM hosts.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ollama_connection</span> <span class="o">=</span> <span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfig</span><span class="p">(</span>
+    <span class="n">connection_type</span><span class="o">=</span><span class="n">h2o_sonar_config</span><span class="o">.</span><span class="n">ConnectionConfigType</span><span class="o">.</span><span class="n">OLLAMA</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ollama&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ollama host LLM models.&quot;</span><span class="p">,</span>
+    <span class="n">server_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:11434&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Remarks:</p>
+<ul class="simple">
+<li><p><cite>connection_type</cite> - <cite>OLLAMA</cite>.</p></li>
+<li><p><cite>server_url</cite> - URL of the <cite>ollama</cite> endpoint.</p></li>
+</ul>
+<p>The following <strong>model parameters</strong> can be configured when building ollama <a class="reference internal" href="doc.rag_llm_tests.html#test-lab"><span class="std std-ref">Test Lab</span></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;images&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;num_ctx&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;repeat_last_n&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;repeat_penalty&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tfs_z&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;num_predict&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;top_k&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;top_p&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;context&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;raw&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="doc.configuration.html#connection-configuration"><span class="std std-ref">Connection Configuration</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="doc.evaluations.html" class="btn btn-neutral float-left" title="Evaluating RAGs and LLMs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="doc.rag_llm_tests.html" class="btn btn-neutral float-right" title="Test Case, Suite, Lab and LLM Dataset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

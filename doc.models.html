@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interpreting Models &mdash; H2O Sonar 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/doc.models.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Interpreting Datasets" href="doc.datasets.html" />
+    <link rel="prev" title="Predictive Models" href="doc.predictive.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Sonar
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Sonar Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Sonar</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="doc.html">H2O Sonar Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="doc.configuration.html">Library Configuration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="doc.predictive.html">Predictive Models</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Interpreting Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.datasets.html">Interpreting Datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.interpretation.html">Interpretation Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doc.explainers.html">Explainers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doc.generative.html">Generative Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.result.html">Report and Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.talktoreport.html">Talk to Report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Sonar Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Sonar Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Sonar</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="doc.html">H2O Sonar Documentation</a></li>
+          <li class="breadcrumb-item"><a href="doc.predictive.html">Predictive Models</a></li>
+      <li class="breadcrumb-item active">Interpreting Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/doc.models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="interpreting-models">
+<h1>Interpreting Models<a class="headerlink" href="#interpreting-models" title="Link to this heading"></a></h1>
+<p>H2O Sonar provides interpretability of machine learning models. Model interpretations
+can be run either from the command line interface or using the Python API.</p>
+<p>Currently supported <strong>models</strong> include:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.h2o.ai/driverless-ai/latest-stable/docs/userguide/index.html">H2O Driverless AI MOJO</a></p></li>
+<li><p><a class="reference external" href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/welcome.html">H2O-3</a>,</p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/">scikit-learn</a></p></li>
+<li><p><a class="reference external" href="https://h2oai.github.io/dai-deployment-templates/local-rest-scorer/">H2O Driverless AI models exposed as REST service</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">h2o_sonar.lib.api.models.ExplainableModelHandle</span></code> instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">h2o_sonar.lib.api.models.ExplainableModel</span></code> instance</p></li>
+</ul>
+<p>Jupyter Notebooks with examples for all supported models:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="examples.html#h2o-sonar-examples"><span class="std std-ref">H2O Sonar Examples</span></a></p></li>
+</ul>
+</div></blockquote>
+<section id="explainable-model">
+<h2>Explainable Model<a class="headerlink" href="#explainable-model" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">h2o_sonar.lib.api.models.ExplainableModel</span></code> is typically used when there is a need
+to explain the model which is not <strong>yet</strong> supported by the library. In this case,
+the explainable model instance (implemented by the library user) provides model’s
+metadata and prediction function. Explainable model instance is model agnostic
+and can be used with any model type so that it can be explainable by the library.</p>
+<section id="explainable-model-handle">
+<h3>Explainable Model Handle<a class="headerlink" href="#explainable-model-handle" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">h2o_sonar.lib.api.models.ExplainableModelHandle</span></code> represents a remote model
+<strong>hosted</strong> e.g. by a Driverless AI server. For example, it is used by
+<a class="reference external" href="https://docs.h2o.ai/wave-apps/h2o-model-validation/">H2O Model Validation</a> explainers,
+which use Driverless AI servers as workers to explain models. Explainable model handle
+string serialization (used, for example, on the command line) has the following format:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>resource:connection:&lt;connection ID&gt;:key:&lt;model ID&gt;
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">connection</span> <span class="pre">ID</span></code></dt><dd><ul>
+<li><p>… is a unique identifier of the Driverless AI connection specified in the H2O Sonar <a class="reference internal" href="doc.configuration.html#library-configuration"><span class="std std-ref">configuration</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">ID</span></code></dt><dd><ul>
+<li><p>… is a unique identifier of the model hosted by the Driverless AI server (typically UUID).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>resource:connection:local-driverless-ai-server:key:7965e2ea-f898-11ed-b979-106530ed5ceb
+</pre></div>
+</div>
+</section>
+</section>
+<section id="interpreting-models-using-the-command-line-interface">
+<h2>Interpreting Models using the Command Line Interface<a class="headerlink" href="#interpreting-models-using-the-command-line-interface" title="Link to this heading"></a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--help</span></code> option to determine interpretation options:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ h2o-sonar --help
+    H2O Sonar Python library for Responsible AI.
+
+    ...
+
+    optional arguments per action and entity:
+
+      ...
+
+      run interpretation:
+        ...
+        --model          path to the serialized model or model handle.
+        --model-type     model type: &#39;pickle&#39; or &#39;mojo&#39;
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--model</span></code></dt><dd><ul>
+<li><p>Path to the model persisted on the filesystem or <a class="reference internal" href="#explainable-model-handle"><span class="std std-ref">model handle</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--model-type</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>Optional model type specification (typically auto detected):</dt><dd><ul>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">mojo</span></code></dt><dd><ul>
+<li><p>Driverless AI model saved as MOJO (<code class="docutils literal notranslate"><span class="pre">.mojo</span></code> file extension).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">pickle</span></code></dt><dd><ul>
+<li><p>Instance of the <a class="reference internal" href="h2o_sonar.lib.api.html#module-h2o_sonar.lib.api.models"><span class="std std-ref">ExplainableModel</span></a>
+class or a <a class="reference external" href="https://scikit-learn.org/">Scikit-learn</a> model saved using
+pickle.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Example of pickled <a class="reference external" href="https://scikit-learn.org/">Scikit-learn</a> model interpretation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ h2o-sonar run interpretation
+    --dataset=dataset.csv
+    --target-col=TARGET
+    --results-location=./results
+    --model-type=pickle
+    --model=model.pkl
+</pre></div>
+</div>
+<p>Example of running selected explainers to interpret the model - first find out what
+are the available explainers, then run selected:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ h2o-sonar list explainers
+
+[
+    &#39;h2o_sonar.explainers.fi_naive_shapley_explainer.NaiveShapleyMojoFeatureImportanceExplainer&#39;,
+    &#39;h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer&#39;,
+    &#39;h2o_sonar.explainers.dt_surrogate_explainer.DecisionTreeSurrogateExplainer&#39;,
+    &#39;h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer&#39;,
+    &#39;h2o_sonar.explainers.dia_explainer.DiaExplainer&#39;,
+    &#39;h2o_sonar.explainers.transformed_fi_shapley_explainer.ShapleyMojoTransformedFeatureImportanceExplainer&#39;
+]
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ h2o-sonar run interpretation
+    --explainers=h2o_sonar.explainers.summary_shap_explainer.SummaryShapleyExplainer,h2o_sonar.explainers.pd_ice_explainer.PdIceExplainer
+    --dataset=dataset.csv
+    --target-col=TARGET
+    --results-location=./results
+    --model-type=pickle
+    --model=model.pkl
+</pre></div>
+</div>
+<p>Example of <a class="reference external" href="https://h2oai.github.io/dai-deployment-templates/local-rest-scorer/">H2O Driverless AI model</a> model interpretation over REST:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ h2o-sonar run interpretation
+    --dataset=dataset.csv
+    --target-col=TARGET
+    --results-location=./results
+    --model=http://localhost:8080/model
+</pre></div>
+</div>
+<p>See also Jupyter Notebook Examples:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="examples.html#h2o-sonar-examples"><span class="std std-ref">H2O Sonar Examples</span></a></p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="doc.predictive.html" class="btn btn-neutral float-left" title="Predictive Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="doc.datasets.html" class="btn btn-neutral float-right" title="Interpreting Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

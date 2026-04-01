@@ -1,0 +1,656 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friedman H-statistic Explainer Demo &mdash; H2O Sonar 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e2d3f516" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/notebooks/h2o-sonar-friedman-h-statistic-explainer.html"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Morris Sensitivity Analysis Explainer Demo" href="h2o-sonar-morris-sa-explainer.html" />
+    <link rel="prev" title="Disparate Impact Analysis (DIA) Explainer Demo" href="h2o-sonar-dia-explainer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            H2O Sonar
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">H2O Sonar Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with H2O Sonar</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../doc.html">H2O Sonar Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">H2O Sonar Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dt-surrogate-explainer.html">Decision Tree Surrogate Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-summary-shap-explainer.html">Summary Shapley Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-original-feature-kernel-shap-importance-explainer.html">Original Feature Importance Explainer (Kernel SHAP) Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-original-feature-naive-shapley-importance-explainer.html">Original Feature Importance Explainer for MOJO Models (Naive Shapley method) Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dai-shapley-for-transformed-feature-importance-explainer.html">Shapley Values for Transformed Features of MOJO Models Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pd-explainer.html">Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-pd-for-2-features-explainer.html">Partial Dependence for 2 Features Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-residual-pd-explainer.html">Residual Partial dependence / Individual Conditional Expectation (PD/ICE) Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-residual-dt-surrogate-explainer.html">Residual Decision Tree Surrogate Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-dia-explainer.html">Disparate Impact Analysis (DIA) Explainer Demo</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Friedman H-statistic Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-morris-sa-explainer.html">Morris Sensitivity Analysis Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-d-and-m-insights-explainer.html">Dataset and Model Insights Explainer Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html">H2O Sonar Model Validation Explainers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Interpretation:-CLI">Interpretation: CLI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="h2o-sonar-model-validation-explainers.html#Use-CLI-to-run-H2O-MV-based-explainers">Use CLI to run H2O MV based explainers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.models.html">Models in Interpretation Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.cli.html">Command Line Interface in Jupyter Notebooks Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.h2ogpte.html">Enterprise h2oGPT Examples</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_api.html">H2O Sonar Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">H2O Sonar</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../examples.html">H2O Sonar Examples</a></li>
+          <li class="breadcrumb-item"><a href="../examples.explainers.html">Explainers in Jupyter Notebooks Examples</a></li>
+      <li class="breadcrumb-item active">Friedman H-statistic Explainer Demo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/h2o-sonar-friedman-h-statistic-explainer.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Friedman-H-statistic-Explainer-Demo">
+<h1>Friedman H-statistic Explainer Demo<a class="headerlink" href="#Friedman-H-statistic-Explainer-Demo" title="Link to this heading"></a></h1>
+<p>This example demonstrates run <a class="reference external" href="https://christophm.github.io/interpretable-ml-book/interaction.html#theory-friedmans-h-statistic">Friedman’s H-statistic</a> explainer using the H2O Sonar library and retrieve the data and plot with original features interactions.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
+import logging
+
+import datatable
+import daimojo
+import webbrowser
+
+from h2o_sonar import interpret
+from h2o_sonar.lib.api import commons
+from h2o_sonar.lib.api import explainers
+from h2o_sonar.explainers import friedman_h_statistic_explainer as explainer
+from h2o_sonar.lib.api.models import ModelApi
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style type='text/css'>
+.datatable table.frame { margin-bottom: 0; }
+.datatable table.frame thead { border-bottom: none; }
+.datatable table.frame tr.coltypes td {  color: #FFFFFF;  line-height: 6px;  padding: 0 0.5em;}
+.datatable .bool    { background: #DDDD99; }
+.datatable .object  { background: #565656; }
+.datatable .int     { background: #5D9E5D; }
+.datatable .float   { background: #4040CC; }
+.datatable .str     { background: #CC4040; }
+.datatable .time    { background: #40CC40; }
+.datatable .row_index {  background: var(--jp-border-color3);  border-right: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  font-size: 9px;}
+.datatable .frame tbody td { text-align: left; }
+.datatable .frame tr.coltypes .row_index {  background: var(--jp-border-color0);}
+.datatable th:nth-child(2) { padding-left: 12px; }
+.datatable .hellipsis {  color: var(--jp-cell-editor-border-color);}
+.datatable .vellipsis {  background: var(--jp-layout-color0);  color: var(--jp-cell-editor-border-color);}
+.datatable .na {  color: var(--jp-cell-editor-border-color);  font-size: 80%;}
+.datatable .sp {  opacity: 0.25;}
+.datatable .footer { font-size: 9px; }
+.datatable .frame_dimensions {  background: var(--jp-border-color3);  border-top: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  display: inline-block;  opacity: 0.6;  padding: 1px 10px 1px 5px;}
+</style></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># explainer description
+interpret.describe_explainer(explainer.FriedmanHStatisticExplainer)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;h2o_sonar.explainers.friedman_h_statistic_explainer.FriedmanHStatisticExplainer&#39;,
+ &#39;name&#39;: &#39;FriedmanHStatisticExplainer&#39;,
+ &#39;display_name&#39;: &#34;Friedman&#39;s H-statistic&#34;,
+ &#39;tagline&#39;: &#39;FriedmanHStatisticExplainer.&#39;,
+ &#39;description&#39;: &#34;Friedman&#39;s H-statistic describes the amount of variance explained by the feature *pair*. It&#39;s expressed with a graph where most important original features are nodes and the interaction scores are edges.\nWhen features interact with each other, then the influence of the features on the prediction does not have be additive, but more complex. For instance the contribution might be greater than the sum of contributions.\nFriedman&#39;s H-statistic calculation is computationally intensive and typically requires long time to finish - calculation duration grows with the number of features and bins.&#34;,
+ &#39;brief_description&#39;: &#39;FriedmanHStatisticExplainer.&#39;,
+ &#39;model_types&#39;: [&#39;iid&#39;],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-feature-importance&#39;,
+   &#39;name&#39;: &#39;GlobalFeatImpExplanation&#39;,
+   &#39;category&#39;: &#39;&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: &#39;&#39;,
+   &#39;formats&#39;: []}],
+ &#39;keywords&#39;: [&#39;explains-feature-behavior&#39;, &#39;h2o-sonar&#39;, &#39;is_slow&#39;],
+ &#39;parameters&#39;: [{&#39;name&#39;: &#39;features_number&#39;,
+   &#39;description&#39;: &#39;Number of features for which to calculate H-Statistic.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 4,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 2,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;grid_resolution&#39;,
+   &#39;description&#39;: &#39;Observations per bin (number of equally spaced points used to create bins).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 3,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 1,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;features&#39;,
+   &#39;description&#39;: &#39;Feature list - at least 2 features must be selected.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;multilist&#39;,
+   &#39;val&#39;: None,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [&#39;SOURCE_DATASET_COLUMN_NAMES&#39;],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;sample_size&#39;,
+   &#39;description&#39;: &#39;Sample size for Partial Dependence Plot&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 25000,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;}],
+ &#39;metrics_meta&#39;: []}
+</pre></div></div>
+</div>
+<section id="Interpretation">
+<h2>Interpretation<a class="headerlink" href="#Interpretation" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># dataset
+dataset_path = &quot;../../data/predictive/pd_ice_creditcard_10_rows.csv&quot;
+
+# Driverless AI MOJO model
+mojo_path = &quot;../../data/predictive/models/creditcard-regression.mojo&quot;
+target_col = &quot;LIMIT_BAL&quot;
+mojo_model = daimojo.model(mojo_path)
+model = ModelApi().create_model(
+    model_src=mojo_model,
+    target_col=target_col,
+    used_features=list(mojo_model.feature_names),
+)
+
+# scikit-learn model
+# mojo_path = &quot;../../data/predictive/models/creditcard-binomial-sklearn-gbm.pkl&quot;
+# target_col = &quot;default payment next month&quot;
+
+# results
+results_location = &quot;./results&quot;
+os.makedirs(results_location, exist_ok=True)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>interpretation = interpret.run_interpretation(
+    dataset=dataset_path,
+    model=model,
+    target_col=target_col,
+    results_location=results_location,
+    explainers=[explainer.FriedmanHStatisticExplainer.explainer_id()],
+    log_level=logging.INFO,
+)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/ragas/metrics/__init__.py:1: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain_core.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain_core.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+  from ragas.metrics._answer_correctness import AnswerCorrectness, answer_correctness
+/home/user/h/mli/git/h2o-sonar-FLOSS/.venv/lib/python3.11/site-packages/ragas/metrics/__init__.py:4: LangChainDeprecationWarning: As of langchain-core 0.3.0, LangChain uses pydantic v2 internally. The langchain.pydantic_v1 module was a compatibility shim for pydantic v1, and should no longer be used. Please update the code to import from Pydantic directly.
+
+For example, replace imports like: `from langchain.pydantic_v1 import BaseModel`
+with: `from pydantic import BaseModel`
+or the v1 compatibility namespace if you are working in a code base that has not been fully upgraded to pydantic 2 yet.         from pydantic.v1 import BaseModel
+
+  from ragas.metrics._context_entities_recall import (
+2026-01-29 16:02:02,907 - h2o_sonar - DEBUG - ICE strategy: MANY predict method invocations
+2026-01-29 16:02:02,923 - h2o_sonar - DEBUG - ICE strategy: MANY predict method invocations
+2026-01-29 16:02:02,936 - h2o_sonar - DEBUG - ICE strategy: MANY predict method invocations
+2026-01-29 16:02:02,952 - h2o_sonar - DEBUG - ICE strategy: MANY predict method invocations
+2026-01-29 16:02:02,966 - h2o_sonar - DEBUG - ICE strategy: MANY predict method invocations
+2026-01-29 16:02:02,988 - h2o_sonar - DEBUG - ICE strategy: MANY predict method invocations
+2026-01-29 16:02:03,006 - h2o_sonar - DEBUG - ICE strategy: 1 predict method invocation
+2026-01-29 16:02:03,015 - h2o_sonar - DEBUG - ICE strategy: 1 predict method invocation
+2026-01-29 16:02:03,024 - h2o_sonar - DEBUG - ICE strategy: 1 predict method invocation
+2026-01-29 16:02:03,031 - h2o_sonar - DEBUG - ICE strategy: 1 predict method invocation
+</pre></div></div>
+</div>
+</section>
+<section id="Explainer-Result">
+<h2>Explainer Result<a class="headerlink" href="#Explainer-Result" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># retrieve the result
+result = interpretation.get_explainer_result(
+    explainer.FriedmanHStatisticExplainer.explainer_id()
+)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># open interpretation HTML report in web browser
+webbrowser.open(interpretation.result.get_html_report_location())
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># summary
+result.summary()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;h2o_sonar.explainers.friedman_h_statistic_explainer.FriedmanHStatisticExplainer&#39;,
+ &#39;name&#39;: &#39;FriedmanHStatisticExplainer&#39;,
+ &#39;display_name&#39;: &#34;Friedman&#39;s H-statistic&#34;,
+ &#39;tagline&#39;: &#39;FriedmanHStatisticExplainer.&#39;,
+ &#39;description&#39;: &#34;Friedman&#39;s H-statistic describes the amount of variance explained by the feature *pair*. It&#39;s expressed with a graph where most important original features are nodes and the interaction scores are edges.\nWhen features interact with each other, then the influence of the features on the prediction does not have be additive, but more complex. For instance the contribution might be greater than the sum of contributions.\nFriedman&#39;s H-statistic calculation is computationally intensive and typically requires long time to finish - calculation duration grows with the number of features and bins.&#34;,
+ &#39;brief_description&#39;: &#39;FriedmanHStatisticExplainer.&#39;,
+ &#39;model_types&#39;: [&#39;iid&#39;],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-report&#39;,
+   &#39;name&#39;: &#34;Friedman&#39;s H-statistic report&#34;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;text/markdown&#39;]},
+  {&#39;explanation_type&#39;: &#39;global-feature-importance&#39;,
+   &#39;name&#39;: &#34;Friedman&#39;s H-statistic&#34;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;application/vnd.h2oai.json+datatable.jay&#39;,
+    &#39;application/vnd.h2oai.json+csv&#39;,
+    &#39;application/json&#39;]},
+  {&#39;explanation_type&#39;: &#39;global-html-fragment&#39;,
+   &#39;name&#39;: &#34;Friedman&#39;s H-statistic&#34;,
+   &#39;category&#39;: &#39;DAI MODEL&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;text/html&#39;]}],
+ &#39;keywords&#39;: [&#39;explains-feature-behavior&#39;, &#39;h2o-sonar&#39;, &#39;is_slow&#39;],
+ &#39;parameters&#39;: [{&#39;name&#39;: &#39;features_number&#39;,
+   &#39;description&#39;: &#39;Number of features for which to calculate H-Statistic.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 4,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 2,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;grid_resolution&#39;,
+   &#39;description&#39;: &#39;Observations per bin (number of equally spaced points used to create bins).&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 3,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 1,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;features&#39;,
+   &#39;description&#39;: &#39;Feature list - at least 2 features must be selected.&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;multilist&#39;,
+   &#39;val&#39;: None,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [&#39;SOURCE_DATASET_COLUMN_NAMES&#39;],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;},
+  {&#39;name&#39;: &#39;sample_size&#39;,
+   &#39;description&#39;: &#39;Sample size for Partial Dependence Plot&#39;,
+   &#39;comment&#39;: &#39;&#39;,
+   &#39;type&#39;: &#39;int&#39;,
+   &#39;val&#39;: 25000,
+   &#39;predefined&#39;: [],
+   &#39;tags&#39;: [],
+   &#39;min_&#39;: 0.0,
+   &#39;max_&#39;: 0.0,
+   &#39;category&#39;: &#39;&#39;}],
+ &#39;metrics_meta&#39;: []}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Parameters
+result.params()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;features_number&#39;: 4,
+ &#39;grid_resolution&#39;: 3,
+ &#39;features&#39;: None,
+ &#39;sample_size&#39;: 25000}
+</pre></div></div>
+</div>
+<section id="Display-Data">
+<h3>Display Data<a class="headerlink" href="#Display-Data" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result.data()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div class='datatable'>
+  <table class='frame'>
+  <thead>
+    <tr class='colnames'><td class='row_index'></td><th>feature</th><th>interactions</th></tr>
+    <tr class='coltypes'><td class='row_index'></td><td class='str' title='str32'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td><td class='float' title='float64'>&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;&#x25AA;</td></tr>
+  </thead>
+  <tbody>
+    <tr><td class='row_index'>0</td><td>'SEX' and 'MARRIAGE'</td><td>6.16078e-12</td></tr>
+    <tr><td class='row_index'>1</td><td>'SEX' and 'EDUCATION'</td><td>7.55627e-13</td></tr>
+    <tr><td class='row_index'>2</td><td>'EDUCATION' and 'MARRIAGE'</td><td>5.37272e-13</td></tr>
+    <tr><td class='row_index'>3</td><td>'EDUCATION' and 'AGE'</td><td>2.65952e-13</td></tr>
+    <tr><td class='row_index'>4</td><td>'MARRIAGE' and 'AGE'</td><td>2.57216e-13</td></tr>
+    <tr><td class='row_index'>5</td><td>'SEX' and 'AGE'</td><td>1.00249e-13</td></tr>
+  </tbody>
+  </table>
+  <div class='footer'>
+    <div class='frame_dimensions'>6 rows &times; 2 columns</div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="Plot-Feature-Interactions-Data">
+<h3>Plot Feature Interactions Data<a class="headerlink" href="#Plot-Feature-Interactions-Data" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>result.plot()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_h2o-sonar-friedman-h-statistic-explainer_14_0.png" src="../_images/notebooks_h2o-sonar-friedman-h-statistic-explainer_14_0.png" />
+</div>
+</div>
+</section>
+<section id="Save-Explainer-Log-and-Data">
+<h3>Save Explainer Log and Data<a class="headerlink" href="#Save-Explainer-Log-and-Data" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save the explainer log
+log_file_path = &quot;./feature-interactions-demo.log&quot;
+result.log(path=log_file_path)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!cat $log_file_path
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2026-01-29 16:02:02,902 WARNING Explainer h2o_sonar.explainers.friedman_h_statistic_explainer.FriedmanHStatisticExplainer is missing the required Python package(s) which must be installed: &#39;r&#39;
+2026-01-29 16:02:02,902 INFO Friedman&#39;s H-statistic 7bed1afa-16d6-40e8-a1ca-5a406c9f6b84/5d63e9a6-14ba-42a6-8a77-25e02f8050a9: getting features list, importance and metadata...
+2026-01-29 16:02:02,902 INFO Friedman&#39;s H-statistic 7bed1afa-16d6-40e8-a1ca-5a406c9f6b84/5d63e9a6-14ba-42a6-8a77-25e02f8050a9 all most important model features: [&#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_1&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;]
+2026-01-29 16:02:02,903 INFO Friedman&#39;s H-statistic 7bed1afa-16d6-40e8-a1ca-5a406c9f6b84/5d63e9a6-14ba-42a6-8a77-25e02f8050a9: features used by model: [&#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;, &#39;PAY_1&#39;, &#39;PAY_2&#39;, &#39;PAY_3&#39;, &#39;PAY_4&#39;, &#39;PAY_5&#39;, &#39;PAY_6&#39;, &#39;BILL_AMT1&#39;, &#39;BILL_AMT2&#39;, &#39;BILL_AMT3&#39;, &#39;BILL_AMT4&#39;, &#39;BILL_AMT5&#39;, &#39;BILL_AMT6&#39;, &#39;PAY_AMT1&#39;, &#39;PAY_AMT2&#39;, &#39;PAY_AMT3&#39;, &#39;PAY_AMT4&#39;, &#39;PAY_AMT5&#39;, &#39;PAY_AMT6&#39;]
+2026-01-29 16:02:02,903 INFO Friedman&#39;s H-statistic 7bed1afa-16d6-40e8-a1ca-5a406c9f6b84/5d63e9a6-14ba-42a6-8a77-25e02f8050a9: final features list: [&#39;SEX&#39;, &#39;EDUCATION&#39;, &#39;MARRIAGE&#39;, &#39;AGE&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save the explainer data
+result.zip(file_path=&quot;./feature-interactions-demo-archive.zip&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!unzip -l feature-interactions-demo-archive.zip
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Archive:  feature-interactions-demo-archive.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     3716  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/result_descriptor.json
+        2  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/problems/problems_and_actions.json
+      110  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_html_fragment/text_html.meta
+      399  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_html_fragment/text_html/explanation.html
+    26645  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_html_fragment/text_html/fi-class-0.png
+     1358  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/log/explainer_run_5d63e9a6-14ba-42a6-8a77-25e02f8050a9.log
+   183001  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/work/network-chart.png
+      529  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/work/report.md
+        2  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/insights/insights_and_actions.json
+      185  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_feature_importance/application_vnd_h2oai_json_datatable_jay.meta
+      143  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_feature_importance/application_json.meta
+      163  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_feature_importance/application_vnd_h2oai_json_csv.meta
+      808  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_feature_importance/application_vnd_h2oai_json_datatable_jay/explanation.json
+      632  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_feature_importance/application_vnd_h2oai_json_datatable_jay/feature_importance_class_0.jay
+      747  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_feature_importance/application_json/explanation.json
+      530  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_feature_importance/application_json/feature_importance_class_0.json
+      746  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_feature_importance/application_vnd_h2oai_json_csv/explanation.json
+      331  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_feature_importance/application_vnd_h2oai_json_csv/feature_importance_class_0.csv
+      122  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_report/text_markdown.meta
+      529  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_report/text_markdown/explanation.md
+   183001  2026-01-29 16:02   explainer_h2o_sonar_explainers_friedman_h_statistic_explainer_FriedmanHStatisticExplainer_5d63e9a6-14ba-42a6-8a77-25e02f8050a9/global_report/text_markdown/network-chart.png
+---------                     -------
+   403699                     21 files
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="h2o-sonar-dia-explainer.html" class="btn btn-neutral float-left" title="Disparate Impact Analysis (DIA) Explainer Demo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="h2o-sonar-morris-sa-explainer.html" class="btn btn-neutral float-right" title="Morris Sensitivity Analysis Explainer Demo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

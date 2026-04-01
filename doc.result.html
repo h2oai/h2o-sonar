@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report and Results &mdash; H2O Sonar 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e2d3f516" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/doc.result.html"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Talk to Report" href="doc.talktoreport.html" />
+    <link rel="prev" title="Perturbations" href="doc.perturbations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            H2O Sonar
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">H2O Sonar Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with H2O Sonar</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="doc.html">H2O Sonar Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="doc.configuration.html">Library Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.predictive.html">Predictive Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.generative.html">Generative Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Report and Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doc.talktoreport.html">Talk to Report</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">H2O Sonar Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">H2O Sonar Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">H2O Sonar</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="doc.html">H2O Sonar Documentation</a></li>
+      <li class="breadcrumb-item active">Report and Results</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/doc.result.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="report-and-results">
+<h1>Report and Results<a class="headerlink" href="#report-and-results" title="Link to this heading"></a></h1>
+<p>This section describes the directory structure that is created by H2O Sonar when it runs an interpretation/evaluation.</p>
+<p>An <strong>example</strong> of a directory structure with an interpretation run that includes the Decision Tree Explainer explainer is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>.
+├── h2o-sonar
+│   └── mli_experiment_6fccd3f9-4350-401c-b29a-cf2ab5b9c2c9
+│       ├── explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_89c7869d-666d-4ba2-ba84-cf1aa1b903bd
+│       │   ├── global_custom_archive
+│       │   │   ├── application_zip
+│       │   │   │   └── explanation.zip
+│       │   │   └── application_zip.meta
+│       │   ├── global_decision_tree
+│       │   │   ├── application_json
+│       │   │   │   ├── dt_class_0.json
+│       │   │   │   └── explanation.json
+│       │   │   └── application_json.meta
+│       │   ├── local_decision_tree
+│       │   │   ├── application_json
+│       │   │   │   └── explanation.json
+│       │   │   └── application_json.meta
+│       │   ├── log
+│       │   │   └── explainer_run_89c7869d-666d-4ba2-ba84-cf1aa1b903bd.log
+│       │   ├── result_descriptor.json
+│       │   └── work
+│       │       ├── dtModel.json
+│       │       ├── dtpaths_frame.bin
+│       │       ├── dtPathsFrame.csv
+│       │       ├── dtsurr_mojo.zip
+│       │       ├── dtSurrogate.json
+│       │       └── dt_surrogate_rules.zip
+│       ├── explainers_parameters.json
+│       ├── interpretation.html
+│       └── interpretation.json
+└── h2o-sonar.log
+</pre></div>
+</div>
+<p>Directory structure documentation:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME</span></code></dt><dd><ul>
+<li><p>Directory specified in <code class="docutils literal notranslate"><span class="pre">results_location</span></code> parameter of H2O Sonar Python API,
+<code class="docutils literal notranslate"><span class="pre">--results-location</span></code> on command line or the current directory if no results directory is provided.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME/h2o_sonar.html</span></code></dt><dd><ul>
+<li><p>HTML file with the list of H2O Sonar interpretations.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME/h2o_sonar.log</span></code></dt><dd><ul>
+<li><p>H2O Sonar library log of all interpretation runs within this results directory.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME/h2o_sonar</span></code></dt><dd><ul>
+<li><p>Directory with all interpretation runs where an interpretation directory
+name is <code class="docutils literal notranslate"><span class="pre">mli_experiment_&lt;UUID&gt;</span></code>
+e.g. <code class="docutils literal notranslate"><span class="pre">mli_experiment_6fccd3f9-4350-401c-b29a-cf2ab5b9c2c9</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME/h2o_sonar/mli_experiment_&lt;UUID&gt;</span></code></dt><dd><ul>
+<li><dl class="simple">
+<dt>The interpretation directory which contains:</dt><dd><ul>
+<li><p>interpretation overview in HTML and JSon representation</p></li>
+<li><p>interpretation and explainers parameters</p></li>
+<li><p>sub-directory for each explainer which was run within this interpretation.
+The name of explainer directory is <code class="docutils literal notranslate"><span class="pre">&lt;explainer</span> <span class="pre">ID&gt;_&lt;UUID&gt;</span></code>, for example:</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>explainer_h2o_sonar_explainers_dt_surrogate_explainer_DecisionTreeSurrogateExplainer_89c7869d-666d-4ba2-ba84-cf1aa1b903bd
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME/h2o_sonar/mli_experiment_&lt;UUID&gt;/interpretation.html</span></code></dt><dd><ul>
+<li><p>Interpretation overview (list of executed/failed/successful explainers, parameters,
+descriptions, links to explanations and artifacts in various representations) in
+HTML format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME/h2o_sonar/mli_experiment_&lt;UUID&gt;/interpretation.json</span></code></dt><dd><ul>
+<li><p>Interpretation overview (list of executed/failed/successful explainers, parameters,
+descriptions, links to explanations and artifacts in various representations) in
+machine-processable <code class="docutils literal notranslate"><span class="pre">JSon</span></code> format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME/h2o_sonar/mli_experiment_&lt;UUID&gt;/explainers_parameters.json</span></code></dt><dd><ul>
+<li><p>The interpretation and explainers’ parameters in JSon format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME/h2o_sonar/mli_experiment_&lt;UUID&gt;/&lt;explainer</span> <span class="pre">ID&gt;_&lt;UUID&gt;</span></code></dt><dd><ul>
+<li><p>Explainer directory (sandbox) with the artifacts created by the explainer during
+its run.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME/h2o_sonar/mli_experiment_&lt;UUID&gt;/&lt;explainer</span> <span class="pre">ID&gt;_&lt;UUID&gt;/work/</span></code></dt><dd><ul>
+<li><p>Explainer working directory with (transient) files and directories which were used
+to create actual explanations.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME/h2o_sonar/mli_experiment_&lt;UUID&gt;/&lt;explainer</span> <span class="pre">ID&gt;_&lt;UUID&gt;/log/</span></code></dt><dd><ul>
+<li><p>Directory with the explainer log.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME/h2o_sonar/mli_experiment_&lt;UUID&gt;/&lt;explainer</span> <span class="pre">ID&gt;_&lt;UUID&gt;/result_descriptor.json</span></code></dt><dd><ul>
+<li><p>Machine-processable overview of explanations created by the explainer in JSon
+format.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">$SONAR_HOME/h2o_sonar/mli_experiment_&lt;UUID&gt;/&lt;explainer</span> <span class="pre">ID&gt;_&lt;UUID&gt;/*</span></code></dt><dd><ul>
+<li><p>All other directories with the explainer run directory are explanations e.g.
+<code class="docutils literal notranslate"><span class="pre">global_decision_tree</span></code> with decision tree in various formats or
+<code class="docutils literal notranslate"><span class="pre">global_custom_archive</span></code> with ZIP archive of explainer artifacts.</p></li>
+<li><p>Explainers typically create explanations which are different explainer to
+explainer. Particular explainer explanations are documented in explainer
+sections.</p></li>
+<li><p>Explanation directory always contains directories named according to MIME types
+with the representations (formats) of the explanations e.g. <code class="docutils literal notranslate"><span class="pre">application_zip</span></code>
+(for <code class="docutils literal notranslate"><span class="pre">application/zip</span></code>) directory contains ZIP archive.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="doc.perturbations.html" class="btn btn-neutral float-left" title="Perturbations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="doc.talktoreport.html" class="btn btn-neutral float-right" title="Talk to Report" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

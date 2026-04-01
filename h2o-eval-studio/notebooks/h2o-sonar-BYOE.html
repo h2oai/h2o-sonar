@@ -1,0 +1,477 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bring Your Own Explainer (BYOE) example &mdash; H2O Eval Studio 3.2.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/code.css?v=0cc438b1" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e2d3f516" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://h2o-sonar.readthedocs.io/en/latest/notebooks/h2o-sonar-BYOE.html"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4f6ddb47"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            H2O Eval Studio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">H2O Eval Studio Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with H2O Eval Studio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../doc.html">H2O Eval Studio Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extensibility</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../byoe.html">Bring Your Own Explainer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">H2O Eval Studio Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_api.html">H2O Eval Studio Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Resources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Third-Party Notices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs-licenses/licenses.html">Third-Party Licenses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">H2O Eval Studio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Bring Your Own Explainer (BYOE) example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks/h2o-sonar-BYOE.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Bring-Your-Own-Explainer-(BYOE)-example">
+<h1>Bring Your Own Explainer (BYOE) example<a class="headerlink" href="#Bring-Your-Own-Explainer-(BYOE)-example" title="Link to this heading"></a></h1>
+<p>This example demonstrates how to run your custom explainer in order to interpret the model.</p>
+<p>Techniques and methodologies used by H2O Eval Studio for model interpretation can be extended with recipes. Bring your own explainer (BYOE) feature allows you to use your explainers in combination with or in place of H2O Eval Studio built-in explainers (all H2O Eval Studio explainers are in fact BYOEs). This lets you extend the capabilities of H2O Eval Studio explainers and out-of-the-box interpretation techniques.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys
+import os
+
+import pandas
+import webbrowser
+from sklearn.ensemble import GradientBoostingClassifier
+from h2o_sonar import interpret
+from h2o_sonar.lib.api import models
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style type='text/css'>
+.datatable table.frame { margin-bottom: 0; }
+.datatable table.frame thead { border-bottom: none; }
+.datatable table.frame tr.coltypes td {  color: #FFFFFF;  line-height: 6px;  padding: 0 0.5em;}
+.datatable .bool    { background: #DDDD99; }
+.datatable .object  { background: #565656; }
+.datatable .int     { background: #5D9E5D; }
+.datatable .float   { background: #4040CC; }
+.datatable .str     { background: #CC4040; }
+.datatable .time    { background: #40CC40; }
+.datatable .row_index {  background: var(--jp-border-color3);  border-right: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  font-size: 9px;}
+.datatable .frame tbody td { text-align: left; }
+.datatable .frame tr.coltypes .row_index {  background: var(--jp-border-color0);}
+.datatable th:nth-child(2) { padding-left: 12px; }
+.datatable .hellipsis {  color: var(--jp-cell-editor-border-color);}
+.datatable .vellipsis {  background: var(--jp-layout-color0);  color: var(--jp-cell-editor-border-color);}
+.datatable .na {  color: var(--jp-cell-editor-border-color);  font-size: 80%;}
+.datatable .sp {  opacity: 0.25;}
+.datatable .footer { font-size: 9px; }
+.datatable .frame_dimensions {  background: var(--jp-border-color3);  border-top: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  display: inline-block;  opacity: 0.6;  padding: 1px 10px 1px 5px;}
+</style></div>
+</div>
+</section>
+<section id="Load-BYOE-explainer">
+<h1>Load BYOE explainer<a class="headerlink" href="#Load-BYOE-explainer" title="Link to this heading"></a></h1>
+<p>Load BYOE explainer to Python runtime so that it might be imported and subsequently run.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>byoe_path = os.getcwd() + &quot;/byoe/examples&quot;
+sys.path.append(os.path.abspath(byoe_path))
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from example_metadata_explainer import ExampleMetaAndAttrsExplainer
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Register-BYOE-explainer">
+<h1>Register BYOE explainer<a class="headerlink" href="#Register-BYOE-explainer" title="Link to this heading"></a></h1>
+<p><strong>Register</strong> BYOE explainer in H2O Eval Studio runtime.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
+explainer_id: str = interpret.register_explainer(
+    explainer_class=ExampleMetaAndAttrsExplainer,
+)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>interpret.describe_explainer(ExampleMetaAndAttrsExplainer)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;example_metadata_explainer.ExampleMetaAndAttrsExplainer&#39;,
+ &#39;name&#39;: &#39;ExampleMetaAndAttrsExplainer&#39;,
+ &#39;display_name&#39;: &#39;Example Explainer Metadata and Attributes&#39;,
+ &#39;tagline&#39;: &#39;ExampleMetaAndAttrsExplainer.&#39;,
+ &#39;description&#39;: &#39;This explainer example prints explainer metadata, instance attributes and setup() explainer parameters.&#39;,
+ &#39;brief_description&#39;: &#39;ExampleMetaAndAttrsExplainer.&#39;,
+ &#39;model_types&#39;: [],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;, &#39;multinomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-work-dir-archive&#39;,
+   &#39;name&#39;: &#39;WorkDirArchiveExplanation&#39;,
+   &#39;category&#39;: &#39;&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: &#39;&#39;,
+   &#39;formats&#39;: []}],
+ &#39;keywords&#39;: [],
+ &#39;parameters&#39;: [],
+ &#39;metrics_meta&#39;: []}
+</pre></div></div>
+</div>
+</section>
+<section id="Run-Interpretation">
+<h1>Run Interpretation<a class="headerlink" href="#Run-Interpretation" title="Link to this heading"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># prepare dataset and model to be explained
+
+# dataset
+target_col = &quot;default payment next month&quot;
+df = pandas.read_csv(&quot;../../data/predictive/creditcard.csv&quot;)
+(X, y) = df.drop(target_col, axis=1), df[target_col]
+
+# scikit-learn model
+gradient_booster = GradientBoostingClassifier(learning_rate=0.1)
+gradient_booster.fit(X, y)
+
+# explainable model
+model = models.ModelApi().create_model(
+    target_col=target_col,
+    model_src=gradient_booster,
+    used_features=X.columns.to_list()
+)
+
+results_location = &quot;../../results&quot;
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># run the interpretation with BYOE explainer
+interpretation = interpret.run_interpretation(
+    dataset=df,
+    model=model,
+    target_col=target_col,
+    results_location=results_location,
+    # run the BYOE explainer only
+    explainers=[explainer_id],
+)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># retrieve the result
+result = interpretation.get_explainer_result(explainer_id)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># summary
+result.summary()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;example_metadata_explainer.ExampleMetaAndAttrsExplainer&#39;,
+ &#39;name&#39;: &#39;ExampleMetaAndAttrsExplainer&#39;,
+ &#39;display_name&#39;: &#39;Example Explainer Metadata and Attributes&#39;,
+ &#39;tagline&#39;: &#39;ExampleMetaAndAttrsExplainer.&#39;,
+ &#39;description&#39;: &#39;This explainer example prints explainer metadata, instance attributes and setup() explainer parameters.&#39;,
+ &#39;brief_description&#39;: &#39;ExampleMetaAndAttrsExplainer.&#39;,
+ &#39;model_types&#39;: [],
+ &#39;can_explain&#39;: [&#39;regression&#39;, &#39;binomial&#39;, &#39;multinomial&#39;],
+ &#39;explanation_scopes&#39;: [&#39;global_scope&#39;],
+ &#39;explanations&#39;: [{&#39;explanation_type&#39;: &#39;global-work-dir-archive&#39;,
+   &#39;name&#39;: &#39;ExampleMetaAndAttrsExplainer&#39;,
+   &#39;category&#39;: &#39;Demo&#39;,
+   &#39;scope&#39;: &#39;global&#39;,
+   &#39;has_local&#39;: None,
+   &#39;formats&#39;: [&#39;application/zip&#39;]}],
+ &#39;keywords&#39;: [],
+ &#39;parameters&#39;: [],
+ &#39;metrics_meta&#39;: []}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save the explainer log
+result.log(path=&quot;./demo.log&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># open interpretation HTML report in web browser
+print(f&quot;Opening the result: {interpretation.result.get_html_report_location()}&quot;)
+webbrowser.open(interpretation.result.get_html_report_location())
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Opening the result: /home/dvorka/h/mli/git/h2o-sonar-FLOSS/results/h2o-sonar/mli_experiment_c95524c4-0e2a-4e3f-b033-927356f012a8/interpretation.html
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!tree ../../results
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-blue-intense-fg ansi-bold">../../results</span>
+├── <span class="ansi-blue-intense-fg ansi-bold">h2o-sonar</span>
+│   ├── <span class="ansi-blue-intense-fg ansi-bold">mli_experiment_93bb2f77-e2cf-472c-845d-b65dc699f0db</span>
+│   │   ├── <span class="ansi-blue-intense-fg ansi-bold">explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_9a617dc2-a3a6-4fb0-a284-d8b82f6d2d28</span>
+│   │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_work_dir_archive</span>
+│   │   │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_zip</span>
+│   │   │   │   │   └── <span class="ansi-red-intense-fg ansi-bold">explanation.zip</span>
+│   │   │   │   └── application_zip.meta
+│   │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│   │   │   │   └── insights_and_actions.json
+│   │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│   │   │   │   └── explainer_run_9a617dc2-a3a6-4fb0-a284-d8b82f6d2d28.log
+│   │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│   │   │   │   └── problems_and_actions.json
+│   │   │   ├── result_descriptor.json
+│   │   │   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+│   │   ├── interpretation.json
+│   │   └── <span class="ansi-blue-intense-fg ansi-bold">tmp</span>
+│   └── <span class="ansi-blue-intense-fg ansi-bold">mli_experiment_c95524c4-0e2a-4e3f-b033-927356f012a8</span>
+│       ├── <span class="ansi-blue-intense-fg ansi-bold">explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324</span>
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">global_work_dir_archive</span>
+│       │   │   ├── <span class="ansi-blue-intense-fg ansi-bold">application_zip</span>
+│       │   │   │   └── <span class="ansi-red-intense-fg ansi-bold">explanation.zip</span>
+│       │   │   └── application_zip.meta
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">insights</span>
+│       │   │   └── insights_and_actions.json
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">log</span>
+│       │   │   └── explainer_run_656eb7db-f250-4646-a27b-f0650213a324.log
+│       │   ├── <span class="ansi-blue-intense-fg ansi-bold">problems</span>
+│       │   │   └── problems_and_actions.json
+│       │   ├── result_descriptor.json
+│       │   └── <span class="ansi-blue-intense-fg ansi-bold">work</span>
+│       ├── interpretation.html
+│       ├── interpretation.json
+│       └── <span class="ansi-blue-intense-fg ansi-bold">tmp</span>
+├── h2o-sonar.html
+└── h2o-sonar.log
+
+19 directories, 17 files
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save the explainer data
+result.zip(file_path=&quot;./demo-archive.zip&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!unzip -l demo-archive.zip
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Archive:  demo-archive.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      978  2026-01-29 15:23   explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324/result_descriptor.json
+        2  2026-01-29 15:23   explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324/problems/problems_and_actions.json
+      142  2026-01-29 15:23   explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324/global_work_dir_archive/application_zip.meta
+       22  2026-01-29 15:23   explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324/global_work_dir_archive/application_zip/explanation.zip
+        0  2026-01-29 15:23   explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324/log/explainer_run_656eb7db-f250-4646-a27b-f0650213a324.log
+        2  2026-01-29 15:23   explainer_example_metadata_explainer_ExampleMetaAndAttrsExplainer_656eb7db-f250-4646-a27b-f0650213a324/insights/insights_and_actions.json
+---------                     -------
+     1146                     6 files
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026 H2O.ai, Inc. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

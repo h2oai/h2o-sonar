@@ -1,0 +1,978 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "01a9296c-7130-43ab-9355-b632ba48eb3e",
+   "metadata": {},
+   "source": [
+    "# Residual Decision Tree Surrogate Explainer Demo\n",
+    "\n",
+    "This example demonstrates how to interpret a **Scikit-learn** model using the H2O Sonar library and plot **residual surrogate decision tree**."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f6fd7532-0023-42f7-95fa-cefe588237b1",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<style type='text/css'>\n",
+       ".datatable table.frame { margin-bottom: 0; }\n",
+       ".datatable table.frame thead { border-bottom: none; }\n",
+       ".datatable table.frame tr.coltypes td {  color: #FFFFFF;  line-height: 6px;  padding: 0 0.5em;}\n",
+       ".datatable .bool    { background: #DDDD99; }\n",
+       ".datatable .object  { background: #565656; }\n",
+       ".datatable .int     { background: #5D9E5D; }\n",
+       ".datatable .float   { background: #4040CC; }\n",
+       ".datatable .str     { background: #CC4040; }\n",
+       ".datatable .time    { background: #40CC40; }\n",
+       ".datatable .row_index {  background: var(--jp-border-color3);  border-right: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  font-size: 9px;}\n",
+       ".datatable .frame tbody td { text-align: left; }\n",
+       ".datatable .frame tr.coltypes .row_index {  background: var(--jp-border-color0);}\n",
+       ".datatable th:nth-child(2) { padding-left: 12px; }\n",
+       ".datatable .hellipsis {  color: var(--jp-cell-editor-border-color);}\n",
+       ".datatable .vellipsis {  background: var(--jp-layout-color0);  color: var(--jp-cell-editor-border-color);}\n",
+       ".datatable .na {  color: var(--jp-cell-editor-border-color);  font-size: 80%;}\n",
+       ".datatable .sp {  opacity: 0.25;}\n",
+       ".datatable .footer { font-size: 9px; }\n",
+       ".datatable .frame_dimensions {  background: var(--jp-border-color3);  border-top: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  display: inline-block;  opacity: 0.6;  padding: 1px 10px 1px 5px;}\n",
+       "</style>\n"
+      ],
+      "text/plain": [
+       "<IPython.core.display.HTML object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "import logging\n",
+    "\n",
+    "import daimojo\n",
+    "import webbrowser\n",
+    "\n",
+    "from h2o_sonar import interpret\n",
+    "from h2o_sonar.lib.api import commons, explainers\n",
+    "from h2o_sonar.explainers.residual_dt_surrogate_explainer import ResidualDecisionTreeSurrogateExplainer\n",
+    "from h2o_sonar.lib.api.models import ModelApi\n",
+    "\n",
+    "from sklearn.ensemble import GradientBoostingClassifier"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "d3bbfb25-f7e1-47e1-a2d9-1ceeedfa7d73",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "results_location = \"../../results\"\n",
+    "\n",
+    "# dataset\n",
+    "dataset_path = \"../../data/predictive/creditcard.csv\"\n",
+    "target_col = \"default payment next month\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "82366fdc",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'id': 'h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainer',\n",
+       " 'name': 'ResidualDecisionTreeSurrogateExplainer',\n",
+       " 'display_name': 'Residual Surrogate Decision Tree',\n",
+       " 'description': 'The residual surrogate decision tree predicts which paths in the tree (paths explain approximate model behavior) lead to highest or lowest error. The residual surrogate decision tree is created by training a simple decision tree on the residuals of the predictions of the model. Residuals are differences between observed and predicted values which can be used as targets in surrogate models for the purpose of model debugging. The method used to calculate residuals varies depending on the type of problem. For classification problems, logloss residuals are calculated for a specified class (only one residual surrogate decision is created by the explainer and it is built for this class). For regression problems, residuals are determined by calculating the square of the difference between targeted and predicted values.',\n",
+       " 'model_types': ['iid', 'time_series'],\n",
+       " 'can_explain': ['regression', 'binomial', 'multinomial'],\n",
+       " 'explanation_scopes': ['global_scope', 'local_scope'],\n",
+       " 'explanations': [{'explanation_type': 'global-decision-tree',\n",
+       "   'name': 'GlobalDtExplanation',\n",
+       "   'category': None,\n",
+       "   'scope': 'global',\n",
+       "   'has_local': None,\n",
+       "   'formats': []},\n",
+       "  {'explanation_type': 'local-decision-tree',\n",
+       "   'name': 'LocalDtExplanation',\n",
+       "   'category': None,\n",
+       "   'scope': 'local',\n",
+       "   'has_local': None,\n",
+       "   'formats': []}],\n",
+       " 'parameters': [{'name': 'debug_residuals_class',\n",
+       "   'description': 'Class for debugging classification model logloss residuals, empty string for debugging regression model residuals.',\n",
+       "   'comment': '',\n",
+       "   'type': 'str',\n",
+       "   'val': '',\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'dt_tree_depth',\n",
+       "   'description': 'Decision tree depth.',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 3,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'nfolds',\n",
+       "   'description': 'Number of CV folds.',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 3,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'qbin_cols',\n",
+       "   'description': 'Quantile binning columns.',\n",
+       "   'comment': '',\n",
+       "   'type': 'list',\n",
+       "   'val': None,\n",
+       "   'predefined': [],\n",
+       "   'tags': ['SOURCE_DATASET_COLUMN_NAMES'],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'qbin_count',\n",
+       "   'description': 'Quantile bins count.',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 0,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'categorical_encoding',\n",
+       "   'description': 'Categorical encoding.',\n",
+       "   'comment': 'Specify one of the following encoding schemes for handling of categorical features:\\n\\n_**AUTO**_: 1 column per categorical feature.\\n\\n_**Enum Limited**_: Automatically reduce categorical levels to the most prevalent ones during training and only keep the top 10 most frequent levels.\\n\\n_**One Hot Encoding**_: N+1 new columns for categorical features with N levels.\\n\\n_**Label Encoder**_: Convert every enum into the integer of its index (for example, level 0 -> 0, level 1 -> 1, etc.).\\n\\n_**Sort by Response**_: Reorders the levels by the mean response (for example, the level with lowest response -> 0, the level with second-lowest response -> 1, etc.).',\n",
+       "   'type': 'str',\n",
+       "   'val': 'onehotexplicit',\n",
+       "   'predefined': ['AUTO',\n",
+       "    'One Hot Encoding',\n",
+       "    'Enum Limited',\n",
+       "    'Sort by Response',\n",
+       "    'Label Encoder'],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''}],\n",
+       " 'keywords': ['run-by-default',\n",
+       "  'requires-h2o3',\n",
+       "  'explains-model-debugging',\n",
+       "  'surrogate',\n",
+       "  'h2o-sonar']}"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# parameters\n",
+    "interpret.describe_explainer(ResidualDecisionTreeSurrogateExplainer)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4f682e92-3a7d-451d-a27f-f3b1c4be043b",
+   "metadata": {},
+   "source": [
+    "## Interpret"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "4c37862b-6caa-4e7f-8249-6e00bf4e24eb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Driverless AI MOJO model\n",
+    "mojo_path = \"../../data/predictive/models/creditcard-binomial.mojo\"\n",
+    "mojo_model = daimojo.model(mojo_path)\n",
+    "\n",
+    "# explainable model\n",
+    "model = ModelApi().create_model(\n",
+    "    model_src=mojo_model,\n",
+    "    target_col=target_col,\n",
+    "    used_features=list(mojo_model.feature_names),\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "b96b6e28-868a-467d-b872-0ffa3b7c9766",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Checking whether there is an H2O instance running at http://localhost:43955 ."
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/home/srasaratnam/projects/h2o-sonar/venv/lib/python3.8/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html\n",
+      "  from .autonotebook import tqdm as notebook_tqdm\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      ".... not found.\n",
+      "Attempting to start a local H2O server...\n",
+      "  Java Version: openjdk version \"11.0.18\" 2023-01-17; OpenJDK Runtime Environment (build 11.0.18+10-post-Ubuntu-0ubuntu120.04.1); OpenJDK 64-Bit Server VM (build 11.0.18+10-post-Ubuntu-0ubuntu120.04.1, mixed mode, sharing)\n",
+      "  Starting server from /home/srasaratnam/projects/h2o-sonar/venv/lib/python3.8/site-packages/hmli/backend/bin/hmli.jar\n",
+      "  Ice root: /tmp/tmpkqwrx7no\n",
+      "  JVM stdout: /tmp/tmpkqwrx7no/hmli_srasaratnam_started_from_python.out\n",
+      "  JVM stderr: /tmp/tmpkqwrx7no/hmli_srasaratnam_started_from_python.err\n",
+      "  Server is running at http://127.0.0.1:43955\n",
+      "Connecting to H2O server at http://127.0.0.1:43955 ... successful.\n",
+      "Warning: Your H2O cluster version is too old (1 year, 2 months and 19 days)!Please download and install the latest version from http://hmli.ai/download/\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div style=\"overflow:auto\"><table style=\"width:50%\"><tr><td>H2O_cluster_uptime:</td>\n",
+       "<td>01 secs</td></tr>\n",
+       "<tr><td>H2O_cluster_timezone:</td>\n",
+       "<td>America/Toronto</td></tr>\n",
+       "<tr><td>H2O_data_parsing_timezone:</td>\n",
+       "<td>UTC</td></tr>\n",
+       "<tr><td>H2O_cluster_version:</td>\n",
+       "<td>3.34.0.7</td></tr>\n",
+       "<tr><td>H2O_cluster_version_age:</td>\n",
+       "<td>1 year, 2 months and 19 days !!!</td></tr>\n",
+       "<tr><td>H2O_cluster_name:</td>\n",
+       "<td>H2O_from_python_srasaratnam_blw1ks</td></tr>\n",
+       "<tr><td>H2O_cluster_total_nodes:</td>\n",
+       "<td>1</td></tr>\n",
+       "<tr><td>H2O_cluster_free_memory:</td>\n",
+       "<td>4 Gb</td></tr>\n",
+       "<tr><td>H2O_cluster_total_cores:</td>\n",
+       "<td>12</td></tr>\n",
+       "<tr><td>H2O_cluster_allowed_cores:</td>\n",
+       "<td>12</td></tr>\n",
+       "<tr><td>H2O_cluster_status:</td>\n",
+       "<td>locked, healthy</td></tr>\n",
+       "<tr><td>H2O_connection_url:</td>\n",
+       "<td>http://127.0.0.1:43955</td></tr>\n",
+       "<tr><td>H2O_connection_proxy:</td>\n",
+       "<td>{\"http\": null, \"https\": null}</td></tr>\n",
+       "<tr><td>H2O_internal_security:</td>\n",
+       "<td>False</td></tr>\n",
+       "<tr><td>H2O_API_Extensions:</td>\n",
+       "<td>XGBoost, Algos, MLI, MLI-Driver, Core V3, Core V4, TargetEncoder</td></tr>\n",
+       "<tr><td>Python_version:</td>\n",
+       "<td>3.8.10 final</td></tr></table></div>"
+      ],
+      "text/plain": [
+       "--------------------------  ----------------------------------------------------------------\n",
+       "H2O_cluster_uptime:         01 secs\n",
+       "H2O_cluster_timezone:       America/Toronto\n",
+       "H2O_data_parsing_timezone:  UTC\n",
+       "H2O_cluster_version:        3.34.0.7\n",
+       "H2O_cluster_version_age:    1 year, 2 months and 19 days !!!\n",
+       "H2O_cluster_name:           H2O_from_python_srasaratnam_blw1ks\n",
+       "H2O_cluster_total_nodes:    1\n",
+       "H2O_cluster_free_memory:    4 Gb\n",
+       "H2O_cluster_total_cores:    12\n",
+       "H2O_cluster_allowed_cores:  12\n",
+       "H2O_cluster_status:         locked, healthy\n",
+       "H2O_connection_url:         http://127.0.0.1:43955\n",
+       "H2O_connection_proxy:       {\"http\": null, \"https\": null}\n",
+       "H2O_internal_security:      False\n",
+       "H2O_API_Extensions:         XGBoost, Algos, MLI, MLI-Driver, Core V3, Core V4, TargetEncoder\n",
+       "Python_version:             3.8.10 final\n",
+       "--------------------------  ----------------------------------------------------------------"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2023-03-12 23:47:12,602 - h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainerLogger - INFO - Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: connecting to H2O-3 server: localhost:43955\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Connecting to H2O server at http://localhost:43955 ... successful.\n",
+      "Warning: Your H2O cluster version is too old (1 year, 2 months and 19 days)!Please download and install the latest version from http://hmli.ai/download/\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div style=\"overflow:auto\"><table style=\"width:50%\"><tr><td>H2O_cluster_uptime:</td>\n",
+       "<td>01 secs</td></tr>\n",
+       "<tr><td>H2O_cluster_timezone:</td>\n",
+       "<td>America/Toronto</td></tr>\n",
+       "<tr><td>H2O_data_parsing_timezone:</td>\n",
+       "<td>UTC</td></tr>\n",
+       "<tr><td>H2O_cluster_version:</td>\n",
+       "<td>3.34.0.7</td></tr>\n",
+       "<tr><td>H2O_cluster_version_age:</td>\n",
+       "<td>1 year, 2 months and 19 days !!!</td></tr>\n",
+       "<tr><td>H2O_cluster_name:</td>\n",
+       "<td>H2O_from_python_srasaratnam_blw1ks</td></tr>\n",
+       "<tr><td>H2O_cluster_total_nodes:</td>\n",
+       "<td>1</td></tr>\n",
+       "<tr><td>H2O_cluster_free_memory:</td>\n",
+       "<td>4 Gb</td></tr>\n",
+       "<tr><td>H2O_cluster_total_cores:</td>\n",
+       "<td>12</td></tr>\n",
+       "<tr><td>H2O_cluster_allowed_cores:</td>\n",
+       "<td>12</td></tr>\n",
+       "<tr><td>H2O_cluster_status:</td>\n",
+       "<td>locked, healthy</td></tr>\n",
+       "<tr><td>H2O_connection_url:</td>\n",
+       "<td>http://localhost:43955</td></tr>\n",
+       "<tr><td>H2O_connection_proxy:</td>\n",
+       "<td>{\"http\": null, \"https\": null}</td></tr>\n",
+       "<tr><td>H2O_internal_security:</td>\n",
+       "<td>False</td></tr>\n",
+       "<tr><td>H2O_API_Extensions:</td>\n",
+       "<td>XGBoost, Algos, MLI, MLI-Driver, Core V3, Core V4, TargetEncoder</td></tr>\n",
+       "<tr><td>Python_version:</td>\n",
+       "<td>3.8.10 final</td></tr></table></div>"
+      ],
+      "text/plain": [
+       "--------------------------  ----------------------------------------------------------------\n",
+       "H2O_cluster_uptime:         01 secs\n",
+       "H2O_cluster_timezone:       America/Toronto\n",
+       "H2O_data_parsing_timezone:  UTC\n",
+       "H2O_cluster_version:        3.34.0.7\n",
+       "H2O_cluster_version_age:    1 year, 2 months and 19 days !!!\n",
+       "H2O_cluster_name:           H2O_from_python_srasaratnam_blw1ks\n",
+       "H2O_cluster_total_nodes:    1\n",
+       "H2O_cluster_free_memory:    4 Gb\n",
+       "H2O_cluster_total_cores:    12\n",
+       "H2O_cluster_allowed_cores:  12\n",
+       "H2O_cluster_status:         locked, healthy\n",
+       "H2O_connection_url:         http://localhost:43955\n",
+       "H2O_connection_proxy:       {\"http\": null, \"https\": null}\n",
+       "H2O_internal_security:      False\n",
+       "H2O_API_Extensions:         XGBoost, Algos, MLI, MLI-Driver, Core V3, Core V4, TargetEncoder\n",
+       "Python_version:             3.8.10 final\n",
+       "--------------------------  ----------------------------------------------------------------"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%\n",
+      "Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%\n",
+      "drf Model Build progress: |██████████████████████████████████████████████████████| (done) 100%\n",
+      "Parse progress: |████████████████████████████████████████████████████████████████| (done) 100%\n",
+      "Export File progress: |"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2023-03-12 23:47:14,752 - h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainerLogger - INFO - Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: DONE calculation\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "██████████████████████████████████████████████████████████| (done) 100%\n",
+      "H2O session _sid_b58f closed.\n"
+     ]
+    }
+   ],
+   "source": [
+    "interpretation = interpret.run_interpretation(\n",
+    "    dataset=dataset_path,\n",
+    "    model=model,\n",
+    "    target_col=target_col,\n",
+    "    results_location=results_location,\n",
+    "    log_level=logging.INFO,\n",
+    "    explainers=[\n",
+    "        commons.ExplainerToRun(\n",
+    "            explainer_id=ResidualDecisionTreeSurrogateExplainer.explainer_id(),\n",
+    "            params=\"\",\n",
+    "        )\n",
+    "    ]\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8e4598d6-84ce-4b7c-8cb3-b1023cb2a5b9",
+   "metadata": {},
+   "source": [
+    "## Interact with the Explainer Result"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "10a879bf-5fde-45c2-a3f3-ed07011f1ae5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# retrieve the result\n",
+    "result = interpretation.get_explainer_result(ResidualDecisionTreeSurrogateExplainer.explainer_id())\n",
+    "\n",
+    "# result.data() method is not supported in this explainer"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "74613c86-5c0b-4f3e-919f-99257bd9c7c8",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# open interpretation HTML report in web browser\n",
+    "webbrowser.open(interpretation.result.get_html_report_location())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "24346dd4-0d02-46ae-a4f0-cb1d740e08f1",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'id': 'h2o_sonar.explainers.residual_dt_surrogate_explainer.ResidualDecisionTreeSurrogateExplainer',\n",
+       " 'name': 'ResidualDecisionTreeSurrogateExplainer',\n",
+       " 'display_name': 'Residual Surrogate Decision Tree',\n",
+       " 'description': 'The residual surrogate decision tree predicts which paths in the tree (paths explain approximate model behavior) lead to highest or lowest error. The residual surrogate decision tree is created by training a simple decision tree on the residuals of the predictions of the model. Residuals are differences between observed and predicted values which can be used as targets in surrogate models for the purpose of model debugging. The method used to calculate residuals varies depending on the type of problem. For classification problems, logloss residuals are calculated for a specified class (only one residual surrogate decision is created by the explainer and it is built for this class). For regression problems, residuals are determined by calculating the square of the difference between targeted and predicted values.',\n",
+       " 'model_types': ['iid', 'time_series'],\n",
+       " 'can_explain': ['regression', 'binomial', 'multinomial'],\n",
+       " 'explanation_scopes': ['global_scope', 'local_scope'],\n",
+       " 'explanations': [{'explanation_type': 'global-decision-tree',\n",
+       "   'name': 'Residual Decision Tree',\n",
+       "   'category': 'SURROGATE MODELS ON RESIDUALS',\n",
+       "   'scope': 'global',\n",
+       "   'has_local': 'local-decision-tree',\n",
+       "   'formats': ['application/json']},\n",
+       "  {'explanation_type': 'local-decision-tree',\n",
+       "   'name': 'Local DT',\n",
+       "   'category': 'SURROGATE MODELS',\n",
+       "   'scope': 'local',\n",
+       "   'has_local': None,\n",
+       "   'formats': ['application/json']},\n",
+       "  {'explanation_type': 'global-html-fragment',\n",
+       "   'name': 'Surrogate Decision Tree',\n",
+       "   'category': 'SURROGATE MODELS ON RESIDUALS',\n",
+       "   'scope': 'global',\n",
+       "   'has_local': None,\n",
+       "   'formats': ['text/html']},\n",
+       "  {'explanation_type': 'global-custom-archive',\n",
+       "   'name': 'Residual Decision tree surrogate rules ZIP archive',\n",
+       "   'category': 'SURROGATE MODELS ON RESIDUALS',\n",
+       "   'scope': 'global',\n",
+       "   'has_local': None,\n",
+       "   'formats': ['application/zip']}],\n",
+       " 'parameters': [{'name': 'debug_residuals_class',\n",
+       "   'description': 'Class for debugging classification model logloss residuals, empty string for debugging regression model residuals.',\n",
+       "   'comment': '',\n",
+       "   'type': 'str',\n",
+       "   'val': '',\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'dt_tree_depth',\n",
+       "   'description': 'Decision tree depth.',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 3,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'nfolds',\n",
+       "   'description': 'Number of CV folds.',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 3,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'qbin_cols',\n",
+       "   'description': 'Quantile binning columns.',\n",
+       "   'comment': '',\n",
+       "   'type': 'list',\n",
+       "   'val': None,\n",
+       "   'predefined': [],\n",
+       "   'tags': ['SOURCE_DATASET_COLUMN_NAMES'],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'qbin_count',\n",
+       "   'description': 'Quantile bins count.',\n",
+       "   'comment': '',\n",
+       "   'type': 'int',\n",
+       "   'val': 0,\n",
+       "   'predefined': [],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''},\n",
+       "  {'name': 'categorical_encoding',\n",
+       "   'description': 'Categorical encoding.',\n",
+       "   'comment': 'Specify one of the following encoding schemes for handling of categorical features:\\n\\n_**AUTO**_: 1 column per categorical feature.\\n\\n_**Enum Limited**_: Automatically reduce categorical levels to the most prevalent ones during training and only keep the top 10 most frequent levels.\\n\\n_**One Hot Encoding**_: N+1 new columns for categorical features with N levels.\\n\\n_**Label Encoder**_: Convert every enum into the integer of its index (for example, level 0 -> 0, level 1 -> 1, etc.).\\n\\n_**Sort by Response**_: Reorders the levels by the mean response (for example, the level with lowest response -> 0, the level with second-lowest response -> 1, etc.).',\n",
+       "   'type': 'str',\n",
+       "   'val': 'onehotexplicit',\n",
+       "   'predefined': ['AUTO',\n",
+       "    'One Hot Encoding',\n",
+       "    'Enum Limited',\n",
+       "    'Sort by Response',\n",
+       "    'Label Encoder'],\n",
+       "   'tags': [],\n",
+       "   'min_': 0.0,\n",
+       "   'max_': 0.0,\n",
+       "   'category': ''}],\n",
+       " 'keywords': ['run-by-default',\n",
+       "  'requires-h2o3',\n",
+       "  'explains-model-debugging',\n",
+       "  'surrogate',\n",
+       "  'h2o-sonar']}"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# summary\n",
+    "result.summary()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "71f6b3e2-7257-4fe1-97e9-3b21daeda365",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'debug_residuals_class': '1',\n",
+       " 'dt_tree_depth': 3,\n",
+       " 'nfolds': 3,\n",
+       " 'qbin_cols': None,\n",
+       " 'qbin_count': 0,\n",
+       " 'categorical_encoding': 'onehotexplicit',\n",
+       " 'debug_residuals': True}"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# parameters\n",
+    "result.params()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9383ec7d-e274-47b6-a9d0-2ca22cb24a1e",
+   "metadata": {},
+   "source": [
+    "### Plot the Decision Tree"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "fea92a97-f7d6-4965-b247-57804ece5603",
+   "metadata": {
+    "scrolled": true,
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "image/svg+xml": [
+       "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n",
+       "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n",
+       " \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n",
+       "<!-- Generated by graphviz version 2.43.0 (0)\n",
+       " -->\n",
+       "<!-- Title: %3 Pages: 1 -->\n",
+       "<svg width=\"1800pt\" height=\"1800pt\"\n",
+       " viewBox=\"0.00 0.00 1800.00 1800.00\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n",
+       "<g id=\"graph0\" class=\"graph\" transform=\"scale(1 1) rotate(0) translate(4 1804)\">\n",
+       "<title>%3</title>\n",
+       "<polygon fill=\"white\" stroke=\"transparent\" points=\"-4,4 -4,-1804 1804,-1804 1804,4 -4,4\"/>\n",
+       "<!-- 0.0.1.1 -->\n",
+       "<g id=\"node1\" class=\"node\">\n",
+       "<title>0.0.1.1</title>\n",
+       "<polygon fill=\"#fc5d68\" stroke=\"black\" points=\"88.5,-127 31.5,-127 31.5,-91 88.5,-91 88.5,-127\"/>\n",
+       "<text text-anchor=\"middle\" x=\"60\" y=\"-105.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">2.226</text>\n",
+       "</g>\n",
+       "<!-- 0.0.1 -->\n",
+       "<g id=\"node2\" class=\"node\">\n",
+       "<title>0.0.1</title>\n",
+       "<polygon fill=\"#fc5d68\" stroke=\"black\" points=\"398.5,-654 303.5,-654 303.5,-618 398.5,-618 398.5,-654\"/>\n",
+       "<text text-anchor=\"middle\" x=\"351\" y=\"-632.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">LIMIT_BAL</text>\n",
+       "</g>\n",
+       "<!-- 0.0.1&#45;&#45;0.0.1.1 -->\n",
+       "<g id=\"edge1\" class=\"edge\">\n",
+       "<title>0.0.1&#45;&#45;0.0.1.1</title>\n",
+       "<path fill=\"none\" stroke=\"#ff0000\" d=\"M341.48,-617.83C297.4,-538.31 113.37,-206.28 69.44,-127.04\"/>\n",
+       "<text text-anchor=\"middle\" x=\"263.5\" y=\"-369.3\" font-family=\"Times,serif\" font-size=\"14.00\">&gt;= 145352.000</text>\n",
+       "</g>\n",
+       "<!-- 0.0.1.0 -->\n",
+       "<g id=\"node8\" class=\"node\">\n",
+       "<title>0.0.1.0</title>\n",
+       "<polygon fill=\"#fec925\" stroke=\"black\" points=\"379.5,-127 322.5,-127 322.5,-91 379.5,-91 379.5,-127\"/>\n",
+       "<text text-anchor=\"middle\" x=\"351\" y=\"-105.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">1.831</text>\n",
+       "</g>\n",
+       "<!-- 0.0.1&#45;&#45;0.0.1.0 -->\n",
+       "<g id=\"edge7\" class=\"edge\">\n",
+       "<title>0.0.1&#45;&#45;0.0.1.0</title>\n",
+       "<path fill=\"none\" stroke=\"black\" d=\"M351,-617.83C351,-538.31 351,-206.28 351,-127.04\"/>\n",
+       "<text text-anchor=\"middle\" x=\"420\" y=\"-369.3\" font-family=\"Times,serif\" font-size=\"14.00\">&lt; 145352.000 , NA</text>\n",
+       "</g>\n",
+       "<!-- 0.0 -->\n",
+       "<g id=\"node3\" class=\"node\">\n",
+       "<title>0.0</title>\n",
+       "<polygon fill=\"#fc5d68\" stroke=\"black\" points=\"940,-1182 848,-1182 848,-1146 940,-1146 940,-1182\"/>\n",
+       "<text text-anchor=\"middle\" x=\"894\" y=\"-1160.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">PAY_AMT4</text>\n",
+       "</g>\n",
+       "<!-- 0.0&#45;&#45;0.0.1 -->\n",
+       "<g id=\"edge2\" class=\"edge\">\n",
+       "<title>0.0&#45;&#45;0.0.1</title>\n",
+       "<path fill=\"none\" stroke=\"#ff0000\" d=\"M876.24,-1145.8C793.99,-1066.12 450.59,-733.47 368.62,-654.07\"/>\n",
+       "<text text-anchor=\"middle\" x=\"684.5\" y=\"-896.3\" font-family=\"Times,serif\" font-size=\"14.00\">&gt;= 670.500 , NA</text>\n",
+       "</g>\n",
+       "<!-- 0.0.0 -->\n",
+       "<g id=\"node5\" class=\"node\">\n",
+       "<title>0.0.0</title>\n",
+       "<polygon fill=\"#fec925\" stroke=\"black\" points=\"923.5,-654 864.5,-654 864.5,-618 923.5,-618 923.5,-654\"/>\n",
+       "<text text-anchor=\"middle\" x=\"894\" y=\"-632.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">PAY_2</text>\n",
+       "</g>\n",
+       "<!-- 0.0&#45;&#45;0.0.0 -->\n",
+       "<g id=\"edge4\" class=\"edge\">\n",
+       "<title>0.0&#45;&#45;0.0.0</title>\n",
+       "<path fill=\"none\" stroke=\"black\" d=\"M894,-1145.8C894,-1066.12 894,-733.47 894,-654.07\"/>\n",
+       "<text text-anchor=\"middle\" x=\"932\" y=\"-896.3\" font-family=\"Times,serif\" font-size=\"14.00\">&lt; 670.500</text>\n",
+       "</g>\n",
+       "<!-- 0 -->\n",
+       "<g id=\"node4\" class=\"node\">\n",
+       "<title>0</title>\n",
+       "<polygon fill=\"#fc5d68\" stroke=\"black\" points=\"1026.5,-1709 967.5,-1709 967.5,-1673 1026.5,-1673 1026.5,-1709\"/>\n",
+       "<text text-anchor=\"middle\" x=\"997\" y=\"-1687.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">PAY_0</text>\n",
+       "</g>\n",
+       "<!-- 0&#45;&#45;0.0 -->\n",
+       "<g id=\"edge3\" class=\"edge\">\n",
+       "<title>0&#45;&#45;0.0</title>\n",
+       "<path fill=\"none\" stroke=\"#ff0000\" d=\"M993.63,-1672.83C978.03,-1593.31 912.89,-1261.28 897.34,-1182.04\"/>\n",
+       "<text text-anchor=\"middle\" x=\"975\" y=\"-1423.3\" font-family=\"Times,serif\" font-size=\"14.00\">&lt; 0.500</text>\n",
+       "</g>\n",
+       "<!-- 0.1 -->\n",
+       "<g id=\"node9\" class=\"node\">\n",
+       "<title>0.1</title>\n",
+       "<polygon fill=\"#fec925\" stroke=\"black\" points=\"1196.5,-1182 1137.5,-1182 1137.5,-1146 1196.5,-1146 1196.5,-1182\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1167\" y=\"-1160.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">PAY_0</text>\n",
+       "</g>\n",
+       "<!-- 0&#45;&#45;0.1 -->\n",
+       "<g id=\"edge8\" class=\"edge\">\n",
+       "<title>0&#45;&#45;0.1</title>\n",
+       "<path fill=\"none\" stroke=\"black\" d=\"M1002.56,-1672.83C1028.31,-1593.31 1135.82,-1261.28 1161.48,-1182.04\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1134.5\" y=\"-1423.3\" font-family=\"Times,serif\" font-size=\"14.00\">&gt;= 0.500 , NA</text>\n",
+       "</g>\n",
+       "<!-- 0.0.0.0 -->\n",
+       "<g id=\"node6\" class=\"node\">\n",
+       "<title>0.0.0.0</title>\n",
+       "<polygon fill=\"#fec925\" stroke=\"black\" points=\"717.5,-127 660.5,-127 660.5,-91 717.5,-91 717.5,-127\"/>\n",
+       "<text text-anchor=\"middle\" x=\"689\" y=\"-105.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">1.650</text>\n",
+       "</g>\n",
+       "<!-- 0.0.0&#45;&#45;0.0.0.0 -->\n",
+       "<g id=\"edge5\" class=\"edge\">\n",
+       "<title>0.0.0&#45;&#45;0.0.0.0</title>\n",
+       "<path fill=\"none\" stroke=\"black\" d=\"M887.3,-617.83C856.24,-538.31 726.6,-206.28 695.65,-127.04\"/>\n",
+       "<text text-anchor=\"middle\" x=\"838.5\" y=\"-369.3\" font-family=\"Times,serif\" font-size=\"14.00\">&lt; 1.000 , NA</text>\n",
+       "</g>\n",
+       "<!-- 0.0.0.1 -->\n",
+       "<g id=\"node7\" class=\"node\">\n",
+       "<title>0.0.0.1</title>\n",
+       "<polygon fill=\"#fec925\" stroke=\"black\" points=\"962.5,-127 905.5,-127 905.5,-91 962.5,-91 962.5,-127\"/>\n",
+       "<text text-anchor=\"middle\" x=\"934\" y=\"-105.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">1.016</text>\n",
+       "</g>\n",
+       "<!-- 0.0.0&#45;&#45;0.0.0.1 -->\n",
+       "<g id=\"edge6\" class=\"edge\">\n",
+       "<title>0.0.0&#45;&#45;0.0.0.1</title>\n",
+       "<path fill=\"none\" stroke=\"black\" d=\"M895.31,-617.83C901.37,-538.31 926.66,-206.28 932.7,-127.04\"/>\n",
+       "<text text-anchor=\"middle\" x=\"949\" y=\"-369.3\" font-family=\"Times,serif\" font-size=\"14.00\">&gt;= 1.000</text>\n",
+       "</g>\n",
+       "<!-- 0.1.0 -->\n",
+       "<g id=\"node10\" class=\"node\">\n",
+       "<title>0.1.0</title>\n",
+       "<polygon fill=\"#fec925\" stroke=\"black\" points=\"1196.5,-654 1137.5,-654 1137.5,-618 1196.5,-618 1196.5,-654\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1167\" y=\"-632.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">PAY_2</text>\n",
+       "</g>\n",
+       "<!-- 0.1&#45;&#45;0.1.0 -->\n",
+       "<g id=\"edge9\" class=\"edge\">\n",
+       "<title>0.1&#45;&#45;0.1.0</title>\n",
+       "<path fill=\"none\" stroke=\"black\" d=\"M1167,-1145.8C1167,-1066.12 1167,-733.47 1167,-654.07\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1196\" y=\"-896.3\" font-family=\"Times,serif\" font-size=\"14.00\">&lt; 1.500</text>\n",
+       "</g>\n",
+       "<!-- 0.1.1 -->\n",
+       "<g id=\"node13\" class=\"node\">\n",
+       "<title>0.1.1</title>\n",
+       "<polygon fill=\"#fec925\" stroke=\"black\" points=\"1598.5,-654 1539.5,-654 1539.5,-618 1598.5,-618 1598.5,-654\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1569\" y=\"-632.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">PAY_2</text>\n",
+       "</g>\n",
+       "<!-- 0.1&#45;&#45;0.1.1 -->\n",
+       "<g id=\"edge12\" class=\"edge\">\n",
+       "<title>0.1&#45;&#45;0.1.1</title>\n",
+       "<path fill=\"none\" stroke=\"black\" d=\"M1180.15,-1145.8C1241.04,-1066.12 1495.27,-733.47 1555.95,-654.07\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1420.5\" y=\"-896.3\" font-family=\"Times,serif\" font-size=\"14.00\">&gt;= 1.500 , NA</text>\n",
+       "</g>\n",
+       "<!-- 0.1.0.0 -->\n",
+       "<g id=\"node11\" class=\"node\">\n",
+       "<title>0.1.0.0</title>\n",
+       "<polygon fill=\"#fec925\" stroke=\"black\" points=\"1157.5,-127 1100.5,-127 1100.5,-91 1157.5,-91 1157.5,-127\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1129\" y=\"-105.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">1.161</text>\n",
+       "</g>\n",
+       "<!-- 0.1.0&#45;&#45;0.1.0.0 -->\n",
+       "<g id=\"edge10\" class=\"edge\">\n",
+       "<title>0.1.0&#45;&#45;0.1.0.0</title>\n",
+       "<path fill=\"none\" stroke=\"black\" d=\"M1165.76,-617.83C1160,-538.31 1135.97,-206.28 1130.23,-127.04\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1177\" y=\"-369.3\" font-family=\"Times,serif\" font-size=\"14.00\">&lt; 0.500</text>\n",
+       "</g>\n",
+       "<!-- 0.1.0.1 -->\n",
+       "<g id=\"node12\" class=\"node\">\n",
+       "<title>0.1.0.1</title>\n",
+       "<polygon fill=\"#fec925\" stroke=\"black\" points=\"1328.5,-127 1271.5,-127 1271.5,-91 1328.5,-91 1328.5,-127\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1300\" y=\"-105.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">0.823</text>\n",
+       "</g>\n",
+       "<!-- 0.1.0&#45;&#45;0.1.0.1 -->\n",
+       "<g id=\"edge11\" class=\"edge\">\n",
+       "<title>0.1.0&#45;&#45;0.1.0.1</title>\n",
+       "<path fill=\"none\" stroke=\"black\" d=\"M1171.35,-617.83C1191.5,-538.31 1275.61,-206.28 1295.68,-127.04\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1286.5\" y=\"-369.3\" font-family=\"Times,serif\" font-size=\"14.00\">&gt;= 0.500 , NA</text>\n",
+       "</g>\n",
+       "<!-- 0.1.1.0 -->\n",
+       "<g id=\"node14\" class=\"node\">\n",
+       "<title>0.1.1.0</title>\n",
+       "<polygon fill=\"#fec925\" stroke=\"black\" points=\"1597.5,-127 1540.5,-127 1540.5,-91 1597.5,-91 1597.5,-127\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1569\" y=\"-105.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">0.537</text>\n",
+       "</g>\n",
+       "<!-- 0.1.1&#45;&#45;0.1.1.0 -->\n",
+       "<g id=\"edge13\" class=\"edge\">\n",
+       "<title>0.1.1&#45;&#45;0.1.1.0</title>\n",
+       "<path fill=\"none\" stroke=\"black\" d=\"M1569,-617.83C1569,-538.31 1569,-206.28 1569,-127.04\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1598\" y=\"-369.3\" font-family=\"Times,serif\" font-size=\"14.00\">&lt; 1.000</text>\n",
+       "</g>\n",
+       "<!-- 0.1.1.1 -->\n",
+       "<g id=\"node15\" class=\"node\">\n",
+       "<title>0.1.1.1</title>\n",
+       "<polygon fill=\"#fec925\" stroke=\"black\" points=\"1768.5,-127 1711.5,-127 1711.5,-91 1768.5,-91 1768.5,-127\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1740\" y=\"-105.3\" font-family=\"Times,serif\" font-size=\"14.00\" fill=\"#000000\">0.298</text>\n",
+       "</g>\n",
+       "<!-- 0.1.1&#45;&#45;0.1.1.1 -->\n",
+       "<g id=\"edge14\" class=\"edge\">\n",
+       "<title>0.1.1&#45;&#45;0.1.1.1</title>\n",
+       "<path fill=\"none\" stroke=\"black\" d=\"M1574.59,-617.83C1600.49,-538.31 1708.64,-206.28 1734.45,-127.04\"/>\n",
+       "<text text-anchor=\"middle\" x=\"1706.5\" y=\"-369.3\" font-family=\"Times,serif\" font-size=\"14.00\">&gt;= 1.000 , NA</text>\n",
+       "</g>\n",
+       "</g>\n",
+       "</svg>\n"
+      ],
+      "text/plain": [
+       "<graphviz.graphs.Graph at 0x7f50e9afd760>"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "result.plot()\n",
+    "\n",
+    "# show plot in a separate view\n",
+    "# result.plot().render(view=True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f0d0a9c7-36fa-4fc6-a7d8-597c06f85af0",
+   "metadata": {},
+   "source": [
+    "### Save the explainer log and data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "dbbc188f-1900-43a2-919e-983dcb17c897",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# save the explainer log\n",
+    "result.log(path=\"./residual-dt-surrogate-demo.log\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "376a7c86-825f-4f04-989c-031c58f04496",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2023-03-12 23:47:12,498 WARNING Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776 setting default residuals debug class...\n",
+      "2023-03-12 23:47:12,498 WARNING Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776 residuals debug class set to '1'\n",
+      "2023-03-12 23:47:12,501 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: BEGIN calculation\n",
+      "2023-03-12 23:47:12,501 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: dataset (10000, 25) loaded\n",
+      "2023-03-12 23:47:12,501 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: sampling down to 0 rows...\n",
+      "2023-03-12 23:47:12,533 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: calculating binomial/regression ...\n",
+      "2023-03-12 23:47:12,601 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: calculating logloss residuals (binary classification problem) ...\n",
+      "2023-03-12 23:47:12,601 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: sorted labels for residual calculation: <<<['0', '1']>>>\n",
+      "2023-03-12 23:47:12,601 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: debug model errors class: <<<1>>>\n",
+      "2023-03-12 23:47:12,601 INFO Residual Surrogate Decision Tree 00d7c3b0-0982-47e3-ac29-8f0457d330b5/4028f8a8-b307-4d07-8c7c-8fefbc52e776: label index for class of interest: <<<1>>>\n"
+     ]
+    }
+   ],
+   "source": [
+    "# calculation: regression problem vs. binomial problem\n",
+    "!head residual-dt-surrogate-demo.log"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "833c06f0-0d5f-40cc-a195-dbad04573564",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# save the explainer data\n",
+    "result.zip(file_path=\"./residual-dt-surrogate-demo-archive.zip\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "1dc369e3-f097-4a2b-8093-9bbcf17b070a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Archive:  residual-dt-surrogate-demo-archive.zip\n",
+      "  Length      Date    Time    Name\n",
+      "---------  ---------- -----   ----\n",
+      "     5690  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/result_descriptor.json\n",
+      "     1953  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dt-class-0.dot\n",
+      "    60745  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dtModel.json\n",
+      "   291881  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dtPathsFrame.csv\n",
+      "     8733  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dt-class-0.dot.pdf\n",
+      "     3091  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dt_surrogate_rules.zip\n",
+      "     9175  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dtsurr_mojo.zip\n",
+      "   262816  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dtpaths_frame.bin\n",
+      "     5869  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/work/dtSurrogate.json\n",
+      "      140  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_custom_archive/application_zip.meta\n",
+      "     3091  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_custom_archive/application_zip/explanation.zip\n",
+      "      110  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_html_fragment/text_html.meta\n",
+      "      373  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_html_fragment/text_html/explanation.html\n",
+      "   124931  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_html_fragment/text_html/dt-class-0.png\n",
+      "      859  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/model_problems/problems_and_actions.json\n",
+      "     2091  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/log/explainer_run_4028f8a8-b307-4d07-8c7c-8fefbc52e776.log\n",
+      "      133  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_decision_tree/application_json.meta\n",
+      "      614  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_decision_tree/application_json/explanation.json\n",
+      "     2442  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/global_decision_tree/application_json/dt_class_0.json\n",
+      "      131  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/local_decision_tree/application_json.meta\n",
+      "      482  2023-03-12 23:47   explainer_h2o_sonar_explainers_residual_dt_surrogate_explainer_ResidualDecisionTreeSurrogateExplainer_4028f8a8-b307-4d07-8c7c-8fefbc52e776/local_decision_tree/application_json/explanation.json\n",
+      "---------                     -------\n",
+      "   785350                     21 files\n"
+     ]
+    }
+   ],
+   "source": [
+    "!unzip -l residual-dt-surrogate-demo-archive.zip"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ff8c9f00-aa68-45a9-9648-f8f2fdcb92c6",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "h2o-sonar",
+   "language": "python",
+   "name": "h2o-sonar"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "python3",
+   "version": "3.8.10"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

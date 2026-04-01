@@ -1,0 +1,9 @@
+/* Add version display under project title in sidebar */
+.wy-side-nav-search .icon.icon-home::after {
+    content: " 3.2.0";
+    font-size: 0.85em;
+    color: #54585a;
+    font-weight: normal;
+    display: block;
+    margin-top: 5px;
+}
