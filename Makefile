@@ -32,7 +32,7 @@ H2O_SONAR_H2OGPTE_WHEEL_REPO := "pypi"
 DOC_DELIMITER=".........................."
 
 
-default: build
+default: help
 
 
 .PHONY: help
