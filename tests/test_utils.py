@@ -729,9 +729,8 @@ class Health:
 
         """
         if floss:
-            # judge_llm_model = given_generative.LLM_LLAMA_70B
-            print("WARNING: h2oGPTe no longer hosts FLOSS judges - fallback to ")
-            judge_llm_model = given_generative.H2OGPTE_JUDGE_LLM_MODEL_NAME
+            # judge_llm_model = given_generative.LLM_LLAMA_70B  # FLOSS
+            judge_llm_model = given_generative.H2OGPTE_JUDGE_LLM_MODEL_NAME  # CLOSED
             judge_connection = self.get_h2ogpte_llm()
             judge_type = h2o_sonar_config.EvaluationJudgeType.h2ogpte_llm.name
         else:

@@ -4,20 +4,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-## [v3.2.1](https://github.com/h2oai/h2o-sonar/tree/v3.2.1) — 2026-??-??
+## [v3.2.1](https://github.com/h2oai/h2o-sonar/tree/v3.2.1) — 2026-04-01
 
 This is a minor H2O Sonar release.
 
 ### Security
 
-* `nltk` upgraded from `3.9.1` to `3.9.3` to fix `GHSA-7p94-766c-hgjp`.
+* `nltk` upgraded from `3.9.1` to `3.9.4` to fix `GHSA-7p94-766c-hgjp`.
 
 ### Fixed
 
 * **Tests**:
     * Fixing failing `test_load_lab_judges` and `test_build_lab_multi_turn` tests by
-      updating the h2oGPTe judge LLM to `gemini-2.5-flash` (replacing deprecated Claude
-      Sonnet models no longer available on the h2oGPTe test server) #1638
+      updating the h2oGPTe judge LLM to valid Anthropic Sonnet and/or Google Gemini
+      models (replacing deprecated Claude Sonnet models no longer available on the
+      h2oGPTe test server).
 
 
 
