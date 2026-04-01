@@ -4,6 +4,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [v3.2.1](https://github.com/h2oai/h2o-sonar/tree/v3.2.1) — 2026-??-??
+
+This is a minor H2O Sonar release.
+
+### Security
+
+* `nltk` upgraded from `3.9.1` to `3.9.3` to fix `GHSA-7p94-766c-hgjp`.
+
+
+
 ## [v3.2.0](https://github.com/h2oai/h2o-sonar/tree/v3.2.0) — 2026-02-17
 
 H2O Sonar is now open source! This major release grants the four essential
