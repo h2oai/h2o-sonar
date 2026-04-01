@@ -12,6 +12,8 @@ LLM_CAPYBARA = "NousResearch/Nous-Capybara-34b"
 LLM_CLAUDE_SONNET = "claude-sonnet-4-5-20250929"
 LLM_CLAUDE_SONNET_37 = "claude-3-7-sonnet-20250219"
 LLM_CLAUDE_SONNET_37_LITE = "claude-3-7-sonnet-20250219-litellm"
+LLM_CLAUDE_SONNET_46 = "claude-sonnet-4-6"
+LLM_CLAUDE_SONNET_45 = "claude-sonnet-4-5-20250929"
 LLM_DANUBE_3 = "h2oai/h2o-danube3-4b-chat"
 LLM_GEMINI_FLASH = "gemini-2.5-flash"
 LLM_GPT_35_TURBO = "gpt-35-turbo-1106"
@@ -31,8 +33,8 @@ TS_SR = "data/generative/sr1107_test_suite.json"
 TS_SR_171OP = "data/generative/sr1107_test_suite_171.json"
 
 # judge LLMs
-# - deprecated: "gpt-35-turbo-1106" hang: "gpt-4o"
-H2OGPTE_JUDGE_LLM_MODEL_NAME = LLM_CLAUDE_SONNET_37
+H2OGPTE_JUDGE_LLM_MODEL_NAME = LLM_CLAUDE_SONNET_46  # valid model for C_D
+# H2OGPTE_JUDGE_LLM_MODEL_NAME = LLM_CLAUDE_SONNET_45  # valid model for I_D
 
 # H2O.ai cloud clusters
 CLOUD_CLUSTER_D = "CLOUD_D"

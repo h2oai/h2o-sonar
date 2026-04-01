@@ -12,6 +12,13 @@ This is a minor H2O Sonar release.
 
 * `nltk` upgraded from `3.9.1` to `3.9.3` to fix `GHSA-7p94-766c-hgjp`.
 
+### Fixed
+
+* **Tests**:
+    * Fixing failing `test_load_lab_judges` and `test_build_lab_multi_turn` tests by
+      updating the h2oGPTe judge LLM to `gemini-2.5-flash` (replacing deprecated Claude
+      Sonnet models no longer available on the h2oGPTe test server) #1638
+
 
 
 ## [v3.2.0](https://github.com/h2oai/h2o-sonar/tree/v3.2.0) — 2026-02-17
