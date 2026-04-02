@@ -114,8 +114,6 @@ jobs:
           files: dist/*.whl
 
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          verbose: true
-          print-hash: true
-          skip-existing: true
+        run: |
+          pip install twine
+          twine upload dist/*.whl
