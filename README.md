@@ -30,6 +30,7 @@ Used by <a href="https://h2o.ai/platform/enterprise-h2ogpte/eval-studio/">H2O Ev
     * [Evaluators](#evaluators)
     * [Host Types](#host-types)
     * [Evals Library](#evals-library)
+    * [Perturbators](#perturbators)
     * [Auto Best Model Selection](#auto-best-model-selection)
     * [Getting Started with Generative Models](#getting-started-with-generative-models)
     * [Bring Your Own Evaluator](#bring-your-own-evaluator)
@@ -318,6 +319,39 @@ The library's **700+ test suites** cover key domains including **Question Answer
   * All data is provided in a normalized H2O Sonar JSON format.
 * **Flexible workflows:**
   * Test suites can be **combined**, **sampled**, **perturbed**, and **customized** to meet your specific evaluation requirements.
+
+
+## Perturbators
+
+A **perturbator** systematically modifies evaluation prompts or context to test how robust a generative model is to variations in input. By applying controlled perturbations - from subtle typos to adversarial misinformation - you can assess whether small or large changes in wording meaningfully affect model outputs. Perturbators integrate directly with the [Evals Library](#evals-library), allowing any test suite to be perturbed before evaluation to measure model robustness.
+
+Character-level:
+
+- **[Y/Z Perturbator](h2o_sonar/utils/perturbations.py)**
+- **[Keyboard Typos Perturbator](h2o_sonar/utils/perturbations.py)**
+- **[Random Character Replacement Perturbator](h2o_sonar/utils/perturbations.py)**
+- **[Random Character Insertion Perturbator](h2o_sonar/utils/perturbations.py)**
+- **[Random Character Delete Perturbator](h2o_sonar/utils/perturbations.py)**
+- **[OCR Error Character Perturbator](h2o_sonar/utils/perturbations.py)**
+
+Word-level:
+
+- **[Comma Perturbator](h2o_sonar/utils/perturbations.py)**
+- **[Word Swap Perturbator](h2o_sonar/utils/perturbations.py)**
+- **[Synonym Perturbator](h2o_sonar/utils/perturbations.py)**
+- **[Antonym Perturbator](h2o_sonar/utils/perturbations.py)**
+
+Encoding:
+
+- **[Base16 Encoding Perturbator](h2o_sonar/utils/perturbations.py)**
+
+Adversarial:
+
+- **[Contextual Misinformation Perturbator](h2o_sonar/utils/perturbations.py)**
+
+Control:
+
+- **[Copy Perturbator](h2o_sonar/utils/perturbations.py)**
 
 
 ## Host Types
