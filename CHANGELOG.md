@@ -4,6 +4,44 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [v3.2.2](https://github.com/h2oai/h2o-sonar/tree/v3.2.2) — 2026-??-??
+
+This is a minor H2O Sonar release.
+
+### Added
+
+* **Evaluators**:
+    * .
+* **Features**:
+    * .
+* **Enhancements**:
+    * .
+* **Documentation**
+    * .
+
+### Fixed
+
+No fixes.
+
+### Changed
+
+No changes.
+
+### Deprecated
+
+No deprecations.
+
+### Removed
+
+No removals.
+
+### Security
+
+No security fixes.
+
+
+
+
 ## [v3.2.1](https://github.com/h2oai/h2o-sonar/tree/v3.2.1) — 2026-04-01
 
 This is a minor H2O Sonar release.
