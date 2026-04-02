@@ -4,6 +4,7 @@
 <b>Explainability Toolbox for Predictive and Generative AI</b><br/><br/>
 <b><a href="#explainers">18</a></b> predictive AI <b>explainers</b>.<br/>
 <b><a href="#evaluators">44</a></b> generative AI <b>evaluators</b>.<br/>
+<b><a href="#perturbators">13</a></b> prompt <b>perturbators</b>.<br/>
 <b><a href="#evals-library">1,000,000+</a></b> curated eval <b>prompts</b>.<br/>
 Automatic <b><a href="#auto-best-model-selection">best model</a></b> selection.<br/>
 Used by <a href="https://h2o.ai/platform/enterprise-h2ogpte/eval-studio/">H2O Eval Studio</a> and <a href="https://h2o.ai/h2o-driverless-ai">H2O Driverless AI</a>.<br/>
