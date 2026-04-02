@@ -55,21 +55,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v4
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@85856786d1ce8acfbcc2f13a5f3fbd6b938f9f41 # v7.1.2
         with:
           python-version: '3.11'
+          enable-cache: true
+          activate-environment: 'true'
+
+      - name: Install Python 3.11
+        run: uv python install 3.11
 
       - name: Install pandoc
         run: sudo apt install pandoc
 
-      - name: Install uv
-        run: curl -LsSf https://astral.sh/uv/install.sh | sh
-
       - name: Versions checks
         run: |
           python3 --version
-          pip3 --version
           uv --version
 
       - name: Prepare virtual env
