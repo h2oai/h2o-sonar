@@ -599,7 +599,7 @@ class Health:
     }
 
     def __configured_h2ogpte(self) -> h2o_sonar_config.ConnectionConfig:
-        self._h2ogpte_connection = given_generative.H2OGPTE_C_D
+        self._h2ogpte_connection = given_generative.H2OGPTE_I_D
 
         return self._h2ogpte_connection
 
@@ -659,7 +659,7 @@ class Health:
     def get_h2ogpte_llm(self):
         return self.get_h2ogpte()
 
-    def get_h2ogpte_models(self, h2ogpte_models: list[str] | None = 0) -> list[str]:
+    def get_h2ogpte_models(self, h2ogpte_models: list[str] | None = None) -> list[str]:
         """Get non-hanging h2oGPTe models to use for the testing.
 
         Parameters
@@ -674,6 +674,7 @@ class Health:
             List of h2oGPTe models to use for the testing.
 
         """
+        h2ogpte_models = h2ogpte_models or []
         if not self._h2ogpte_models:
             self._h2ogpte_models = Health.H2OGPTE_URL_2_LLM.get(
                 self.get_h2ogpte().server_url
@@ -729,9 +730,8 @@ class Health:
 
         """
         if floss:
-            # judge_llm_model = given_generative.LLM_LLAMA_70B
-            print("WARNING: h2oGPTe no longer hosts FLOSS judges - fallback to ")
-            judge_llm_model = given_generative.LLM_GEMINI_FLASH
+            # judge_llm_model = given_generative.LLM_LLAMA_70B  # FLOSS
+            judge_llm_model = given_generative.H2OGPTE_JUDGE_LLM_MODEL_NAME  # CLOSED
             judge_connection = self.get_h2ogpte_llm()
             judge_type = h2o_sonar_config.EvaluationJudgeType.h2ogpte_llm.name
         else:

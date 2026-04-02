@@ -506,9 +506,9 @@ def test_build_lab_multi_turn(tmp_path, test_suite_path: str, is_rag: bool):
         h2ogpte_connection
     ).list_llm_model_names()
     llm_candidates = [
+        given_generative.H2OGPTE_JUDGE_LLM_MODEL_NAME,
+        given_generative.LLM_GEMINI_FLASH,
         given_generative.LLM_DANUBE_3,
-        given_generative.LLM_CLAUDE_SONNET_37,
-        given_generative.LLM_CLAUDE_SONNET,
     ]
     llm_model_names = [m for m in llm_candidates if m in all_llm_model_names]
     if not llm_model_names:

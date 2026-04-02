@@ -4,26 +4,26 @@
 
 # Distribution / packaging
 # NOTE: With uv migration, pyproject.toml is now tracked in git (no longer auto-generated)
-.buildinfo/
-.cache/
+/.buildinfo/
+/.cache/
 *.egg-info/
 **/__pycache__/
-build/
-deps
-deps/
-dist/
-h2o_sonar/BUILD_INFO.txt
-libs
-tests/build/
+/build/
+/deps
+/deps/
+/dist/
+/h2o_sonar/BUILD_INFO.txt
+/libs
+/tests/build/
 
 # Testing
-h2o-sonar/
-h2o-sonar.log
-random-attack/
+/h2o-sonar/
+/h2o-sonar.log
+/random-attack/
 
 # Agent assisted coding
-.claude/settings.local.json
-.vibe/
+/.claude/settings.local.json
+/.vibe/
 
 # Coverage reports
 pycov/
