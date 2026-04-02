@@ -115,5 +115,5 @@ jobs:
 
       - name: Publish to PyPI
         run: |
-          pip install twine
+          uv tool install twine
           twine upload dist/*.whl
