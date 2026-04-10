@@ -143,13 +143,16 @@ class ScatterFeatImpPlot:
                 pd_series = frame[plot_col_name]
                 col = contributions[plot_col_name]
                 dens = ScatterFeatImpPlot._density(col)
-                c = (
-                    (
-                        ScatterFeatImpPlot._uniformize(pd_series)
-                        if colorize_factors or is_numeric_dtype(pd_series)
-                        else numpy.full(pd_series.shape, -1)
-                    ),
+                color_values = (
+                    ScatterFeatImpPlot._uniformize(pd_series)
+                    if colorize_factors or is_numeric_dtype(pd_series)
+                    else numpy.full(pd_series.shape, -1.0)
                 )
+                if color_values is None:
+                    # _uniformize returns None for non-numeric (string) columns;
+                    # fall back to the grey sentinel so points still render
+                    color_values = numpy.full(pd_series.shape, -1.0)
+                c = (color_values,)
                 pyplot.scatter(
                     col,
                     i + dens * numpy.random.uniform(-jitter, jitter, size=len(col)),

@@ -11,7 +11,8 @@ from tests import test_utils
 @pytest.mark.parametrize(
     "csv_path",
     [
-        "data/predictive/wages-predict_shap_values.csv",
+        "data/predictive/shap-wages-regression.csv",
+        "data/predictive/shap-cc-binary-classification.csv",
     ],
 )
 def test_beeswarm_from_shap_values_csv(tmp_path, csv_path):
@@ -43,7 +44,7 @@ def test_beeswarm_from_shap_values_csv(tmp_path, csv_path):
     fig = plots.ScatterFeatImpPlot.plot(
         contributions=contributions,
         frame=frame,
-        chart_title="SHAP Feature Importance - Wages Dataset",
+        chart_title="SHAP Feature Importance",
         hard_asserts=True,
     )
 
@@ -59,3 +60,9 @@ def test_beeswarm_from_shap_values_csv(tmp_path, csv_path):
     assert png_path.stat().st_size > 0, "PNG file is empty"
     print(f"PNG size: {png_path.stat().st_size:,} bytes")
     print("DONE")
+
+
+# override H2O-3 fixture as it is not desired in this test module
+@pytest.fixture(autouse=True)
+def h2o3_init_fixture():
+    return
