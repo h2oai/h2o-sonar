@@ -4,6 +4,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [v3.3.0](https://github.com/h2oai/h2o-sonar/tree/v3.3.0) — 2026-04-17
+
+This is a minor H2O Sonar release.
+
+### Fixed
+
+* Fixed SHAP feature importance beeswarm chart to show categorical feature (constant) values.
+
+### Security
+
+* Dependencies: Upgraded `langchain-core` from `0.3.x` to `>=1.2.11` to address
+  `CVE-2026-26013`. `ragas==0.1.7` was patched for `langchain-core` 1.x compatibility
+  and published as a private build `ragas==0.1.7+h2osonar.1` on S3
+  (see `make/dependencies/ragas/`). The `openai` dependency was upgraded from `1.81.0`
+  to `1.109.1` (within the 1.x API) to satisfy `langchain-openai>=1.0` requirements.
+
+
+
 ## [v3.2.1](https://github.com/h2oai/h2o-sonar/tree/v3.2.1) — 2026-04-01
 
 This is a minor H2O Sonar release.

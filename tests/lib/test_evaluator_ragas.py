@@ -707,20 +707,14 @@ def _test_load_lab(
         # default OpenAI judge
         (
             #
-            # h2oGPTe server
-            #
-            #
             # RAG test labs:
             #
-            # "data/generative/h2ogpte_benchmark_test_lab_small.json",  # 2m47s
-            "data/generative/h2ogpte_benchmark_test_lab_top.json",  # 2m16s FAST
-            # "data/generative/talk2report_prompts_small_test_lab.json",
-            # "data/generative/talk2report_prompts_test_lab_5x5.json",
-            # "data/generative/kaggle_llm_science_exam_test_lab_cosmos_5x2.json",
+            "data/generative/h2ogpte_benchmark_test_lab_small.json",
+            # "data/generative/h2ogpte_benchmark_test_lab_top.json",  # NICE HTML report
             #
             # LLM test labs:
             #
-            # LLM compatible evaluators: AC (23s), AS, AR
+            # LLM compatible evaluators ~ w/o contexts:
             # "data/generative/eval_llm/h2ogpte_benchmark_test_lab_micro.json"
             #
             # CUSTOM judge
@@ -729,14 +723,14 @@ def _test_load_lab(
             # EVALUATORS: AS fastest (3s @ cosine)
             #
             [
-                # ac_e.AnswerCorrectnessEvaluator,  # OpenAI API key required
-                # as_e.AnswerSemanticSimilarityEvaluator,  # uses ticktoken BLOB
-                # ar_e.AnswerRelevancyEvaluator,  # AR=35s
-                # cr_e.ContextRelevancyEvaluator,
-                # cp_e.ContextPrecisionEvaluator,  # CP=13s FAST
-                # crc_e.ContextRecallEvaluator,  # CR=16s
-                # f_e.FaithfulnessEvaluator,
-                ragas_e.RagasEvaluator,  # RAGAS = 2m47s
+                ac_e.AnswerCorrectnessEvaluator,
+                as_e.AnswerSemanticSimilarityEvaluator,
+                ar_e.AnswerRelevancyEvaluator,
+                cr_e.ContextRelevancyEvaluator,
+                cp_e.ContextPrecisionEvaluator,
+                crc_e.ContextRecallEvaluator,
+                f_e.FaithfulnessEvaluator,
+                ragas_e.RagasEvaluator,
             ],
         ),
     ],

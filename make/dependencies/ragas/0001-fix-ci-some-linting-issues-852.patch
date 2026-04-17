@@ -1,0 +1,44 @@
+From 5050742fc8a5c4ba80e6f899dea87de1f64601c6 Mon Sep 17 00:00:00 2001
+From: Jithin James <jamesjithin97@gmail.com>
+Date: Mon, 8 Apr 2024 12:35:44 -0700
+Subject: [PATCH] fix ci: some linting issues (#852)
+
+---
+ src/ragas/metrics/base.py | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/src/ragas/metrics/base.py b/src/ragas/metrics/base.py
+index f2ba99f..1f15148 100644
+--- a/src/ragas/metrics/base.py
++++ b/src/ragas/metrics/base.py
+@@ -52,11 +52,13 @@ def get_required_columns(
+ class Metric(ABC):
+     @property
+     @abstractmethod
+-    def name(self) -> str: ...
++    def name(self) -> str:
++        ...
+ 
+     @property
+     @abstractmethod
+-    def evaluation_mode(self) -> EvaluationMode: ...
++    def evaluation_mode(self) -> EvaluationMode:
++        ...
+ 
+     @abstractmethod
+     def init(self, run_config: RunConfig):
+@@ -118,9 +120,8 @@ class Metric(ABC):
+         return score
+ 
+     @abstractmethod
+-    async def _ascore(
+-        self, row: t.Dict, callbacks: Callbacks, is_async: bool
+-    ) -> float: ...
++    async def _ascore(self, row: t.Dict, callbacks: Callbacks, is_async: bool) -> float:
++        ...
+ 
+ 
+ @dataclass
+-- 
+2.25.1
+
