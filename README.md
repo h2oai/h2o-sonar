@@ -17,7 +17,7 @@ Used by <a href="https://h2o.ai/platform/enterprise-h2ogpte/eval-studio/">H2O Ev
 -->
 <!-- [![GitHub issues](https://img.shields.io/badge/issues-open-red.svg)](https://github.com/h2oai/h2o-sonar/issues) -->
 <a href="https://h2oai.github.io/h2o-sonar/" target="_blank"><img alt="docs" src="https://img.shields.io/badge/Docs-h2oai.github.io/h2o--sonar/-blue?logo=github&style=flat-square"></img></a>
-[![All releases downloads](https://img.shields.io/badge/release-3.2.1-green.svg)](https://github.com/h2oai/h2o-sonar/releases)
+[![All releases downloads](https://img.shields.io/badge/release-3.3.0-green.svg)](https://github.com/h2oai/h2o-sonar/releases)
 [![license](https://img.shields.io/badge/license-Apache--2.0-yellow.svg)](https://github.com/h2oai/h2o-sonar/blob/master/LICENSE)
 
 **H2O Sonar** is a Python library for AI model risk management (MRM) across predictive and generative systems. It provides explainers and evaluators that validate models, detect bias, assess fairness and privacy, and generate audit documentation. Built for regulated industries, H2O Sonar enables risk, compliance, and validation teams to quantify model risk, meet regulatory requirements, and maintain robust governance throughout the models lifecycle.
@@ -486,7 +486,7 @@ Troubleshooting:
 H2O Sonar resources:
 
 * Documentation:
-   * [User documentation](https://h2oai.github.io/h2o-sonar/) ([ZIP](https://github.com/h2oai/h2o-sonar/releases/download/v3.2.1/h2o-sonar-3.2.1-documentation.zip))
+   * [User documentation](https://h2oai.github.io/h2o-sonar/) ([ZIP](https://github.com/h2oai/h2o-sonar/releases/download/v3.3.0/h2o-sonar-3.3.0-documentation.zip))
 
 * Examples:
    * [Example Jupyter notebooks](https://github.com/h2oai/h2o-sonar/tree/main/examples/predictive)
