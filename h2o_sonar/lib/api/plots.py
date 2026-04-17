@@ -143,13 +143,16 @@ class ScatterFeatImpPlot:
                 pd_series = frame[plot_col_name]
                 col = contributions[plot_col_name]
                 dens = ScatterFeatImpPlot._density(col)
-                c = (
-                    (
-                        ScatterFeatImpPlot._uniformize(pd_series)
-                        if colorize_factors or is_numeric_dtype(pd_series)
-                        else numpy.full(pd_series.shape, -1)
-                    ),
+                color_values = (
+                    ScatterFeatImpPlot._uniformize(pd_series)
+                    if colorize_factors or is_numeric_dtype(pd_series)
+                    else numpy.full(pd_series.shape, -1.0)
                 )
+                if color_values is None:
+                    # _uniformize returns None for non-numeric (string) columns;
+                    # fall back to the grey sentinel so points still render
+                    color_values = numpy.full(pd_series.shape, -1.0)
+                c = (color_values,)
                 pyplot.scatter(
                     col,
                     i + dens * numpy.random.uniform(-jitter, jitter, size=len(col)),
@@ -241,7 +244,12 @@ class ScatterFeatImpPlot:
         xs = numpy.linspace(0, 1, 100)
         quantiles = numpy.nanquantile(col.astype(float), xs)
         res = numpy.interp(col, quantiles, xs)
-        res = (res - numpy.nanmin(res)) / (numpy.nanmax(res) - numpy.nanmin(res))
+        col_min, col_max = numpy.nanmin(res), numpy.nanmax(res)
+        if col_min == col_max:
+            # constant-value column: no color variation possible; use the
+            # under-range sentinel so points render in grey via set_under()
+            return numpy.full(len(col), -1.0)
+        res = (res - col_min) / (col_max - col_min)
         return res
 
 
