@@ -105,9 +105,6 @@ jobs:
       contents: write  # required for softprops/action-gh-release to upload assets
       id-token: write  # required for PyPI OIDC trusted publishing
     steps:
-      - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@85856786d1ce8acfbcc2f13a5f3fbd6b938f9f41 # v7.1.2
-
       - name: Download wheel artifact
         uses: actions/download-artifact@v4
         with:
