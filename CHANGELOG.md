@@ -4,39 +4,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-## [v3.3.0](https://github.com/h2oai/h2o-sonar/tree/v3.3.0) — 2026-??-??
+## [v3.3.0](https://github.com/h2oai/h2o-sonar/tree/v3.3.0) — 2026-04-17
 
 This is a minor H2O Sonar release.
-
-### Added
-
-* **Evaluators**:
-    * .
-* **Features**:
-    * .
-* **Enhancements**:
-    * .
-* **Documentation**
-    * .
 
 ### Fixed
 
 * Fixed SHAP feature importance beeswarm chart to show categorical feature (constant) values.
-* Fixing failing `test_load_lab_judges` and `test_build_lab_multi_turn` tests by
-  updating the h2oGPTe judge LLM to `gemini-2.5-flash` (replacing deprecated
-  Claude Sonnet models no longer available on the h2oGPTe test server).
-
-### Changed
-
-No changes.
-
-### Deprecated
-
-No deprecations.
-
-### Removed
-
-No removals.
 
 ### Security
 
