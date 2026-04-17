@@ -1,0 +1,124 @@
+# Copyright 2018-2026 H2O.ai, Inc. All rights reserved.
+name: PyPI publish
+
+permissions:
+   contents: read
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-alpha.[0-9]+'
+
+# no concurrency cancellation - publishing must complete once started
+concurrency:
+  group: h2o-sonar-pypi-publish-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  code-style:
+    runs-on: ubuntu-latest-8-cores
+    name: Check code style
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@85856786d1ce8acfbcc2f13a5f3fbd6b938f9f41 # v7.1.2
+        with:
+          python-version: 3.11
+          enable-cache: true
+          activate-environment: 'true'
+
+      - name: Install Python 3.11
+        run: uv python install 3.11
+
+      - name: Versions checks for code style
+        run: |
+          make diagnostics
+          git rev-parse --abbrev-ref HEAD
+          git rev-parse HEAD
+
+      - name: Prepare virtual env for code style
+        run: uv venv --python python3.11 --clear .venv
+
+      - name: Check code style - format and lint
+        run: |
+          source ./.venv/bin/activate
+          make code_format_check
+          make code_analysis
+          make test_code_format_check
+          make test_code_analysis
+
+  build:
+    runs-on: ubuntu-latest-16-cores
+    name: Build source wheel
+    timeout-minutes: 60
+    needs: code-style
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@85856786d1ce8acfbcc2f13a5f3fbd6b938f9f41 # v7.1.2
+        with:
+          python-version: '3.11'
+          enable-cache: true
+          activate-environment: 'true'
+
+      - name: Install Python 3.11
+        run: uv python install 3.11
+
+      - name: Install pandoc
+        run: sudo apt install pandoc
+
+      - name: Versions checks
+        run: |
+          python3 --version
+          uv --version
+
+      - name: Prepare virtual env
+        run: make setup TARGET_PYTHON_VERSION=3.11
+
+      - name: Build source wheel
+        env:
+          SYSTEM_VERSION_COMPAT: 0
+          DISTRO_TYPE: reg
+        run: |
+          source ./.venv/bin/activate
+          make clean dist_src
+          deactivate
+          ls -la dist/
+
+      - name: Upload wheel artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: h2o-sonar-wheel
+          path: dist/*.whl
+
+  publish:
+    name: Publish to GitHub Release and PyPI
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: build
+    environment: pypi
+    permissions:
+      contents: write  # required for softprops/action-gh-release to upload assets
+      id-token: write  # required for PyPI OIDC trusted publishing
+    steps:
+      - name: Download wheel artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: h2o-sonar-wheel
+          path: dist/
+
+      - name: Attach wheel to GitHub Release
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
+        with:
+          files: dist/*.whl
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # v1.14.0
+        with:
+          verbose: true
+          print-hash: true
+          skip-existing: true
