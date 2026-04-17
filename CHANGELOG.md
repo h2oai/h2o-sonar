@@ -21,7 +21,10 @@ This is a minor H2O Sonar release.
 
 ### Fixed
 
-No fixes.
+* Fixed SHAP feature importance beeswarm chart to show categorical feature (constant) values.
+* Fixing failing `test_load_lab_judges` and `test_build_lab_multi_turn` tests by
+  updating the h2oGPTe judge LLM to `gemini-2.5-flash` (replacing deprecated
+  Claude Sonnet models no longer available on the h2oGPTe test server).
 
 ### Changed
 
@@ -37,7 +40,11 @@ No removals.
 
 ### Security
 
-* Fixed SHAP feature importance beeswarm chart to show categorical feature (constant) values.
+* Dependencies: Upgraded `langchain-core` from `0.3.x` to `>=1.2.11` to address
+  `CVE-2026-26013`. `ragas==0.1.7` was patched for `langchain-core` 1.x compatibility
+  and published as a private build `ragas==0.1.7+h2osonar.1` on S3
+  (see `make/dependencies/ragas/`). The `openai` dependency was upgraded from `1.81.0`
+  to `1.109.1` (within the 1.x API) to satisfy `langchain-openai>=1.0` requirements.
 
 
 

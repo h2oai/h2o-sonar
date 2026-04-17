@@ -1,0 +1,205 @@
+diff --git a/src/ragas/_analytics.py b/src/ragas/_analytics.py
+index 34e1b79..76c0573 100644
+--- a/src/ragas/_analytics.py
++++ b/src/ragas/_analytics.py
+@@ -9,7 +9,10 @@ from functools import lru_cache, wraps
+ 
+ import requests
+ from appdirs import user_data_dir
+-from langchain_core.pydantic_v1 import BaseModel, Field
++try:
++    from pydantic.v1 import BaseModel, Field  # H2OSONAR-PATCH: langchain_core.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import BaseModel, Field
+ 
+ from ragas.utils import get_debug_mode
+ 
+diff --git a/src/ragas/llms/output_parser.py b/src/ragas/llms/output_parser.py
+index 8ff6c7c..a38db81 100644
+--- a/src/ragas/llms/output_parser.py
++++ b/src/ragas/llms/output_parser.py
+@@ -4,7 +4,10 @@ import typing as t
+ 
+ from langchain_core.exceptions import OutputParserException
+ from langchain_core.output_parsers import PydanticOutputParser
+-from langchain_core.pydantic_v1 import BaseModel
++try:
++    from pydantic.v1 import BaseModel  # H2OSONAR-PATCH: langchain_core.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import BaseModel
+ 
+ from ragas.llms import BaseRagasLLM
+ from ragas.llms.prompt import Prompt, PromptValue
+diff --git a/src/ragas/llms/prompt.py b/src/ragas/llms/prompt.py
+index d65619b..a988143 100644
+--- a/src/ragas/llms/prompt.py
++++ b/src/ragas/llms/prompt.py
+@@ -7,7 +7,10 @@ import typing as t
+ 
+ from langchain_core.messages import BaseMessage, HumanMessage
+ from langchain_core.prompt_values import PromptValue as BasePromptValue
+-from langchain_core.pydantic_v1 import BaseModel, root_validator
++try:
++    from pydantic.v1 import BaseModel, root_validator  # H2OSONAR-PATCH: langchain_core.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import BaseModel, root_validator
+ 
+ from ragas.llms import BaseRagasLLM
+ from ragas.llms.json_load import json_loader
+diff --git a/src/ragas/metrics/_answer_correctness.py b/src/ragas/metrics/_answer_correctness.py
+index fe206b8..f57873d 100644
+--- a/src/ragas/metrics/_answer_correctness.py
++++ b/src/ragas/metrics/_answer_correctness.py
+@@ -5,7 +5,10 @@ import typing as t
+ from dataclasses import dataclass, field
+ 
+ import numpy as np
+-from langchain_core.pydantic_v1 import BaseModel
++try:
++    from pydantic.v1 import BaseModel  # H2OSONAR-PATCH: langchain_core.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import BaseModel
+ 
+ from ragas.llms.output_parser import RagasoutputParser, get_json_format_instructions
+ from ragas.llms.prompt import Prompt
+diff --git a/src/ragas/metrics/_answer_relevance.py b/src/ragas/metrics/_answer_relevance.py
+index af95aa0..d1bb917 100644
+--- a/src/ragas/metrics/_answer_relevance.py
++++ b/src/ragas/metrics/_answer_relevance.py
+@@ -5,7 +5,10 @@ import typing as t
+ from dataclasses import dataclass, field
+ 
+ import numpy as np
+-from langchain_core.pydantic_v1 import BaseModel
++try:
++    from pydantic.v1 import BaseModel  # H2OSONAR-PATCH: langchain_core.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import BaseModel
+ 
+ from ragas.llms.output_parser import RagasoutputParser, get_json_format_instructions
+ from ragas.llms.prompt import Prompt
+diff --git a/src/ragas/metrics/_context_entities_recall.py b/src/ragas/metrics/_context_entities_recall.py
+index ba24910..8224957 100644
+--- a/src/ragas/metrics/_context_entities_recall.py
++++ b/src/ragas/metrics/_context_entities_recall.py
+@@ -6,7 +6,10 @@ from dataclasses import dataclass, field
+ from typing import Dict
+ 
+ import numpy as np
+-from langchain.pydantic_v1 import BaseModel
++try:
++    from pydantic.v1 import BaseModel  # H2OSONAR-PATCH: langchain.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import BaseModel
+ 
+ from ragas.llms.output_parser import RagasoutputParser, get_json_format_instructions
+ from ragas.llms.prompt import Prompt
+diff --git a/src/ragas/metrics/_context_precision.py b/src/ragas/metrics/_context_precision.py
+index e6a0ff4..3bcf746 100644
+--- a/src/ragas/metrics/_context_precision.py
++++ b/src/ragas/metrics/_context_precision.py
+@@ -6,7 +6,10 @@ from dataclasses import dataclass, field
+ 
+ import numpy as np
+ from datasets import Dataset
+-from langchain.pydantic_v1 import BaseModel, Field
++try:
++    from pydantic.v1 import BaseModel, Field  # H2OSONAR-PATCH: langchain.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import BaseModel, Field
+ 
+ from ragas.llms.output_parser import RagasoutputParser, get_json_format_instructions
+ from ragas.llms.prompt import Prompt, PromptValue
+diff --git a/src/ragas/metrics/_context_recall.py b/src/ragas/metrics/_context_recall.py
+index f77c49c..0fac010 100644
+--- a/src/ragas/metrics/_context_recall.py
++++ b/src/ragas/metrics/_context_recall.py
+@@ -5,7 +5,10 @@ import typing as t
+ from dataclasses import dataclass, field
+ 
+ import numpy as np
+-from langchain_core.pydantic_v1 import BaseModel
++try:
++    from pydantic.v1 import BaseModel  # H2OSONAR-PATCH: langchain_core.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import BaseModel
+ 
+ from ragas.llms.output_parser import RagasoutputParser, get_json_format_instructions
+ from ragas.llms.prompt import Prompt
+diff --git a/src/ragas/metrics/_faithfulness.py b/src/ragas/metrics/_faithfulness.py
+index ceacc45..039b482 100644
+--- a/src/ragas/metrics/_faithfulness.py
++++ b/src/ragas/metrics/_faithfulness.py
+@@ -6,7 +6,10 @@ import typing as t
+ from dataclasses import dataclass, field
+ 
+ import numpy as np
+-from langchain_core.pydantic_v1 import BaseModel, Field
++try:
++    from pydantic.v1 import BaseModel, Field  # H2OSONAR-PATCH: langchain_core.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import BaseModel, Field
+ 
+ from ragas.llms.output_parser import RagasoutputParser, get_json_format_instructions
+ from ragas.llms.prompt import Prompt
+diff --git a/src/ragas/metrics/critique.py b/src/ragas/metrics/critique.py
+index 48362c0..6dcd4ca 100644
+--- a/src/ragas/metrics/critique.py
++++ b/src/ragas/metrics/critique.py
+@@ -6,7 +6,10 @@ from collections import Counter
+ from dataclasses import dataclass, field
+ 
+ import numpy as np
+-from langchain_core.pydantic_v1 import BaseModel
++try:
++    from pydantic.v1 import BaseModel  # H2OSONAR-PATCH: langchain_core.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import BaseModel
+ 
+ from ragas.llms.output_parser import RagasoutputParser, get_json_format_instructions
+ from ragas.llms.prompt import Prompt
+diff --git a/src/ragas/testset/docstore.py b/src/ragas/testset/docstore.py
+index b8452d7..1e37642 100644
+--- a/src/ragas/testset/docstore.py
++++ b/src/ragas/testset/docstore.py
+@@ -12,7 +12,10 @@ import numpy as np
+ import numpy.typing as npt
+ from langchain.text_splitter import TextSplitter
+ from langchain_core.documents import Document as LCDocument
+-from langchain_core.pydantic_v1 import Field
++try:
++    from pydantic.v1 import Field  # H2OSONAR-PATCH: langchain_core.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import Field
+ 
+ from ragas.embeddings.base import BaseRagasEmbeddings
+ from ragas.exceptions import ExceptionInRunner
+diff --git a/src/ragas/testset/evolutions.py b/src/ragas/testset/evolutions.py
+index f7feb76..277a2c1 100644
+--- a/src/ragas/testset/evolutions.py
++++ b/src/ragas/testset/evolutions.py
+@@ -6,7 +6,10 @@ from abc import abstractmethod
+ from dataclasses import dataclass, field
+ 
+ import numpy as np
+-from langchain_core.pydantic_v1 import BaseModel
++try:
++    from pydantic.v1 import BaseModel  # H2OSONAR-PATCH: langchain_core.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import BaseModel
+ 
+ from ragas.exceptions import MaxRetriesExceeded
+ from ragas.llms import BaseRagasLLM
+diff --git a/src/ragas/testset/prompts.py b/src/ragas/testset/prompts.py
+index 96a644c..8c97c55 100644
+--- a/src/ragas/testset/prompts.py
++++ b/src/ragas/testset/prompts.py
+@@ -1,4 +1,7 @@
+-from langchain_core.pydantic_v1 import BaseModel
++try:
++    from pydantic.v1 import BaseModel  # H2OSONAR-PATCH: langchain_core.pydantic_v1 removed in 1.x
++except ImportError:
++    from pydantic import BaseModel
+ 
+ from ragas.llms.output_parser import RagasoutputParser, get_json_format_instructions
+ from ragas.llms.prompt import Prompt
