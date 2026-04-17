@@ -37,8 +37,7 @@ No removals.
 
 ### Security
 
-No security fixes.
-
+* Fixed SHAP feature importance beeswarm chart to show categorical feature (constant) values.
 
 
 
