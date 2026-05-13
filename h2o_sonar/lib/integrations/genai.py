@@ -31,6 +31,7 @@ from h2o_sonar.lib.api import commons
 
 
 try:
+    import httpx
     import openai
     import packaging
 
@@ -1291,12 +1292,11 @@ class MsAzureOpenAiLlmClient(LlmHostClient):
         if not HAS_PKG_OPENAI:
             commons.raise_opt_import_err("openai")
 
-        openai.verify_ssl_certs = h2o_sonar_config.config.http_ssl_cert_verify
-
         self._client = openai.AzureOpenAI(
             azure_endpoint=self.base_url,
             api_key=self.connection.token,
             api_version=self.api_version,
+            http_client=httpx.Client(verify=h2o_sonar_config.config.http_ssl_cert_verify),
         )
 
         return self._client

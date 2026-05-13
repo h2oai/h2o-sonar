@@ -62,13 +62,13 @@ evaluators = [
   "langchain-community>=0.4",
   "langchain-core>=1.2.11",
   "langchain>=1.0",
-  "langchain-openai>=1.0,<1.1.10",  # 1.1.10+ requires openai>=2.x (breaking)
+  "langchain-openai>=1.1.14,<2.0.0",
   "langchain-text-splitters>=1.0",
   "lmppl @ https://eval-studio-artifacts.s3.us-east-1.amazonaws.com/dependencies/lmppl/lmppl-0.0.1-py3-none-any.whl",
   "networkx>=2.8.6",
   "nltk~=3.9.3",
   "numba>=0.57.0; platform_system!='Darwin'",  # requires LLVM, not available on macOS
-  "openai~=1.109.1",  # update also genaiclient dependencies; 1.109.1 required by langchain-openai>=1.0
+  "openai>=2.26.0,<3.0.0",  # 2.26.0+ required by langchain-openai>=1.1.14 (GHSA-r7w7-9xr2-qq2r)
   "opensearch-py~=2.7.1",  # update also genaiclient dependencies
   "optimum[onnxruntime-gpu]~=1.17.1",  # supports both CPU and GPU (distro just bigger than [onnxruntime])
   "psutil>=5.8.0",
@@ -86,7 +86,7 @@ genaiclient = [
   "anthropic~=0.72.0",
   "boto3~=1.39.4",
   "opensearch-py~=2.7.1",
-  "openai~=1.109.1",
+  "openai>=2.26.0,<3.0.0",
   "requests",
 ]
 
