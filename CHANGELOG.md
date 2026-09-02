@@ -4,6 +4,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [Unreleased]
+
+### Fixed
+
+* **Build**: Pinned `h2o` to `==3.46.0.10` (previously `~=3.46.0.9`). H2O-3
+  `3.46.0.11`/`3.46.0.12` gate MOJO export behind an "H2O-3 Secure" commercial
+  license, which broke `DecisionTreeSurrogateExplainer` and
+  `ResidualDecisionTreeSurrogateExplainer` (and tests depending on them).
+* **Build**: Pinned `langchain-community` to `==0.4.1` (previously `>=0.4`).
+  `langchain-community==0.4.2` dropped the `ChatVertexAI` re-export from
+  `langchain_community.chat_models`, which broke the `ragas==0.1.7+h2osonar.1`
+  custom judge adapter (`h2o_sonar/lib/integrations/ragas_adapter.py`) with a
+  false "ragas package is required, but not installed" error.
+
+
+
 ## [v3.3.0](https://github.com/h2oai/h2o-sonar/tree/v3.3.0) — 2026-04-17
 
 This is a minor H2O Sonar release.

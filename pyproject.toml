@@ -41,7 +41,7 @@ dependencies = [
 explainers = [
   "daimojo~=2.8.10; platform_system!='Darwin'",  # not supported on macOS
   "graphviz>=0.17",
-  "h2o~=3.46.0.9",
+  "h2o==3.46.0.10",  # 3.46.0.11+ gates MOJO export behind H2O-3 Secure license
   "networkx>=2.8.6",
   "numba>=0.57.0; platform_system!='Darwin'",  # requires LLVM, not available on macOS
   "psutil>=5.8.0",
@@ -59,7 +59,7 @@ evaluators = [
   "hf-xet~=1.1.2",
   "httpx~=0.27.2",
   "jsonschema",
-  "langchain-community>=0.4",
+  "langchain-community==0.4.1",  # 0.4.2 drops ChatVertexAI export needed by pinned ragas wheel
   "langchain-core>=1.2.11",
   "langchain>=1.0",
   "langchain-openai>=1.0,<1.1.10",  # 1.1.10+ requires openai>=2.x (breaking)
